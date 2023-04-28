@@ -29,6 +29,8 @@ const defaultRoutes = () => {
       <Route path="/leads-caller-board" page={LeadsCallerBoardPage} name="leadsCallerBoard" /> */}
       <Route path="/project-edit/{uid}" page={ProjectEditPage} name="projectEdit" />
       <Route path="/project-module" page={ProjectModulePage} name="projectModule" />
+      {/* <Route path="/cource-overview/{uid}" page={CourceOverviewPage} name="courceOverview" /> */}
+
       {/* <Route path="/legal-module" page={LegalHomePage} name="legalModule" />
       <Route path="/finance-module" page={FinanceHomePagePage} name="financeModule" />
       <Route path="/crm-module" page={CrmHomePage} name="crmModule" /> */}
@@ -115,6 +117,10 @@ const Routes = () => {
 
   return (
     <Router>
+      {/* <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" /> */}
+      <Route path="/cource-overview/{uid}" page={CourceOverviewPage} name="courceOverview" />
+      <Route path="/cource-content" page={CourceContentPage} name="courceContent" />
+      <Route path="/learning" page={LearningPage} name="learning" />
       <Route path="/privacyPolicy" page={PrivacyPolicyPage} name="privacyPolicy" />
       <Route path="/construct-module" page={ConstructModulePage} name="constructModule" />
       {/* <Route path="/admin/home" page={HomePage} name="home" /> */}

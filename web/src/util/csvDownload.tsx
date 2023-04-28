@@ -11,6 +11,11 @@ export default function CSVDownloader({ downloadRows, fromLeadsBank = false }) {
   console.log('i was clicked')
   let downloadData
   if (fromLeadsBank) {
+
+    // validate
+    // get data
+    // trigger api
+    // handle api response 
     downloadData = downloadRows.map((item) => {
       return {
         ...item,

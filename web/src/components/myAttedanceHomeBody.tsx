@@ -3,7 +3,9 @@
 // import PhaseDetailsCard from '../PhaseDetailsCard/PhaseDetailsCard'
 
 import { CalendarIcon, EyeIcon } from '@heroicons/react/outline'
+
 import { Link, routes } from '@redwoodjs/router'
+
 import ProjectStatsCard from './ProjectStatsCard/ProjectStatsCard'
 
 const projectFeedData = [

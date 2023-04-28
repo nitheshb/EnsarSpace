@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app'
 import { getAnalytics } from 'firebase/analytics'
+import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { getFirestore, initializeFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
@@ -10,14 +10,15 @@ import { getStorage } from 'firebase/storage'
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+//
 const firebaseConfig = {
-  apiKey: 'AIzaSyDlr5xlq378B5vyetXvE_rK1r4EhPhFTt4',
-  authDomain: 'redefine-erp.firebaseapp.com',
-  projectId: 'redefine-erp',
-  storageBucket: 'redefine-erp.appspot.com',
-  messagingSenderId: '805525655781',
-  appId: '1:805525655781:web:dfa846398899fe3ddc840c',
-  measurementId: 'G-C2BJ3N02SQ',
+  apiKey: 'AIzaSyC9LO1A37tnA0L83yxrzUr7895AJy69ODw',
+  authDomain: 'ensarspace.firebaseapp.com',
+  projectId: 'ensarspace',
+  storageBucket: 'ensarspace.appspot.com',
+  messagingSenderId: '912759673013',
+  appId: '1:912759673013:web:e19c3e9f611e100d2aeefc',
+  measurementId: 'G-1Z5R9EE8T2',
 }
 
 const settings = {

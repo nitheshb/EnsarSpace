@@ -1,13 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect } from 'react'
+
 import { Box, Menu, MenuItem, Typography } from '@mui/material'
 import { useDispatch } from 'react-redux'
+
 import { useAuth } from 'src/context/firebase-auth-context'
 import { logout as logoutAction } from 'src/state/actions/user'
-import ModuleSwitchDrop from '../A_SideMenu/modulesSwitchDrop'
-import { GlobalSearchBar } from './GlobalSearchBar';
 
-const HeadNavBar2 = ({selModule, setSelModule}) => {
+import ModuleSwitchDrop from '../A_SideMenu/modulesSwitchDrop'
+
+import { GlobalSearchBar } from './GlobalSearchBar'
+
+const HeadNavBar2 = ({ selModule, setSelModule }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -37,17 +41,19 @@ const HeadNavBar2 = ({selModule, setSelModule}) => {
         <span
           style={{ marginLeft: '10px' }}
           className="relative z-10 flex items-center text-md font-extrabold leading-none text-black select-none pl-0 ml-4"
-        >REDEFINE ERP .</span>
-            <section className="mt-1">
-            <ModuleSwitchDrop
-              type={selModule}
-              id={'Status'}
-              setStatusFun={makeFilterFun}
-              filteredUnits={filteredUnits}
-              pickedValue={selModule}
-            />
-          </section>
-          <GlobalSearchBar />
+        >
+          EnsarSpace .
+        </span>
+        <section className="mt-1">
+          <ModuleSwitchDrop
+            type={selModule}
+            id={'Status'}
+            setStatusFun={makeFilterFun}
+            filteredUnits={filteredUnits}
+            pickedValue={selModule}
+          />
+        </section>
+        <GlobalSearchBar />
         <button className="flex items-center justify-center h-10 px-4 ml-auto "></button>
         <button className="flex items-center justify-center h-10 text-sm font-medium "></button>
         <Box
