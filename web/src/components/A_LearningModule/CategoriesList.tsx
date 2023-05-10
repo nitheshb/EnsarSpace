@@ -92,7 +92,7 @@ const courses = [
     id: 'dtfo9e',
     category: 'python',
     image: 'learning_images/python_4.jpg',
-    course_name: 'Learning Python for Data Analysis and Visualization',
+    course_name: 'Learning  for Data Analysis and Visualization',
     description:
       'Learn python and how to use it to analyze,visualize and present data. Includes tons of sample code and hours of video!',
     rating_count: 3059,
