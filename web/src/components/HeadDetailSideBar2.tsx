@@ -9,7 +9,7 @@ import { checkActionCode } from '@firebase/auth'
 import { UserGroupIcon } from '@heroicons/react/outline'
 
 import { Link, routes } from '@redwoodjs/router'
-
+git 
 import { USER_ROLES } from 'src/constants/userRoles'
 import { useAuth } from 'src/context/firebase-auth-context'
 const HeadSideBarDetailView2 = ({
@@ -80,7 +80,7 @@ const HeadSideBarDetailView2 = ({
             </svg>
             <span className="ml-" style={{ marginLeft: '-11px' }}>
               {' '}
-              EnsarDay 
+              EnsarDay
             </span>
           </span>
           <ul className=" pt-4">
