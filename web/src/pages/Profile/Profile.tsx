@@ -11,7 +11,7 @@ import bg from '../../../public/Group7.png'
 const Profile = () => {
   return (
     <div>
-      <HeadNavBar />
+      {/* <HeadNavBar /> */}
       <div className="flex flex-row overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
         <HeadSideBar />
 
