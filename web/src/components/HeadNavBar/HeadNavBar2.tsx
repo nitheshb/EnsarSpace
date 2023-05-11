@@ -10,6 +10,8 @@ import { logout as logoutAction } from 'src/state/actions/user'
 import ModuleSwitchDrop from '../A_SideMenu/modulesSwitchDrop'
 
 import { GlobalSearchBar } from './GlobalSearchBar'
+import { Link } from '@redwoodjs/router/dist/links'
+import { routes } from '@redwoodjs/router'
 
 const HeadNavBar2 = ({ selModule, setSelModule }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -94,7 +96,9 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
             'aria-labelledby': 'basic-button',
           }}
         >
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
+          <MenuItem onClick={handleClose}>
+            <Link to={routes.profile()}>Profile</Link>
+          </MenuItem>
           <MenuItem onClick={handleClose}>My account</MenuItem>
           <MenuItem onClick={() => handleClose('Logout')}>Logout</MenuItem>
         </Menu>
