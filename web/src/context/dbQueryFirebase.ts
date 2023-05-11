@@ -85,6 +85,11 @@ export const steamVirtualAccountsList = (orgId, snapshot, error) => {
   return onSnapshot(itemsQuery, snapshot, error)
 }
 
+// export const steamVirtualAccountsList = (orgId, snapshot, error) => {
+//   const itemsQuery = query(collection(db, `${orgId}_VirtualAccounts`))
+//   return onSnapshot(itemsQuery, snapshot, error)
+// }
+
 //  get users activity list
 export const steamUsersActivityLog = (orgId, snapshot, error) => {
   const itemsQuery = query(
@@ -93,6 +98,14 @@ export const steamUsersActivityLog = (orgId, snapshot, error) => {
   )
   return onSnapshot(itemsQuery, snapshot, error)
 }
+
+// export const steamUsersActivityLog = (orgId, snapshot, error) => {
+//   const itemsQuery = query(
+//     collection(db, `${orgId}_user_log`),
+//     orderBy('time', 'desc')
+//   )
+//   return onSnapshot(itemsQuery, snapshot, error)
+// }
 
 // get users activity of user list
 export const steamUsersActivityOfUser = (orgId, snapshot, error) => {
