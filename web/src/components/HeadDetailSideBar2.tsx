@@ -9,7 +9,7 @@ import { checkActionCode } from '@firebase/auth'
 import { UserGroupIcon } from '@heroicons/react/outline'
 
 import { Link, routes } from '@redwoodjs/router'
-git 
+git
 import { USER_ROLES } from 'src/constants/userRoles'
 import { useAuth } from 'src/context/firebase-auth-context'
 const HeadSideBarDetailView2 = ({
@@ -35,6 +35,15 @@ const HeadSideBarDetailView2 = ({
       setUserAccess(access)
     }
   }, [user])
+
+
+
+
+
+
+
+
+  
 
   return (
     <div className="flex flex-col items-left w-16 min-w-[226px]    bg-opacity-75 bg-[#f0f3ff] ">
