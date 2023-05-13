@@ -106,7 +106,7 @@ const LeadsCoversionGraphs = () => {
               </div>
               <div
                 style={{
-                 
+
                   width: '100%',
                   height: '12rem',
                   position: 'relative',
