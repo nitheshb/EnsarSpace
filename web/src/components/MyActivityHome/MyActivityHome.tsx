@@ -70,7 +70,7 @@ const MyActivityHome = ({ source }) => {
       return unsubscribe
     } else {
       const unsubscribe = steamUsersActivityOfUser(
-        orgId, 
+        orgId,
         (querySnapshot) => {
           const usersListA = querySnapshot.docs.map((docSnapshot) =>
             docSnapshot.data()
