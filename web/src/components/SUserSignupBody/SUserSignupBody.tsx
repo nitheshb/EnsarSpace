@@ -482,6 +482,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                       className="error-message text-red-700 text-xs px-2"
                     />
                   </div>
+                  
                   <div className="mb-3 space-y-2 w-full text-xs">
                     <Label
                       name="Email Id*"
