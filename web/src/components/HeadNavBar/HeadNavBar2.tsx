@@ -96,6 +96,8 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
             'aria-labelledby': 'basic-button',
           }}
         >
+
+          
           <MenuItem onClick={handleClose}>
             <Link to={routes.profile()}>Profile</Link>
           </MenuItem>
