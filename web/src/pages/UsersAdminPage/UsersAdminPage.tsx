@@ -30,19 +30,19 @@ const UsersAdminPage = () => {
 
 
         <SlimSideMenuBar
-              pgName={'hrModule'}
-              sourceLink={'hrModule'}
-              showSideView1={undefined}
-              setViewable={setViewable}
-              viewable={viewable}
-            />
+          pgName={'hrModule'}
+          sourceLink={'hrModule'}
+          showSideView1={undefined}
+          setViewable={setViewable}
+          viewable={viewable}
+        />
 
         <div className="flex flex-col flex-grow">
           {/* <HeadNavBar /> */}
           <HeadNavBar2
-              selModule ={selModule}
-              setSelModule={setSelModule}
-            />
+            selModule={selModule}
+            setSelModule={setSelModule}
+          />
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">
               {/* <h1 className="text-lg font-medium">redefine.</h1> */}
@@ -94,6 +94,15 @@ const UsersAdminPage = () => {
               <>
                 <MyActivityHome source={'team'} />
               </>
+            )}
+            {viewable === 'Pay Slips' && (
+
+              <>
+
+                {/* <UserAccessTable /> */}
+
+              </>
+
             )}
 
             <SUserSignup
