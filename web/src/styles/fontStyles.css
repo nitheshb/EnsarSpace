@@ -1,17 +1,17 @@
 /* title 1 */
-.e_t1 {
+.e_t-1 {
   font-size: 60;
   line-height: 72;
   font-weight: bold;
 }
 /* title 2 */
-.e_t2 {
+.e_t-2 {
   font-size: 48;
   line-height: 56;
   font-weight: bold;
 }
 /* title 3 */
-.e_t3 {
+.e_t-3 {
   font-size: 34;
   line-height: 40;
   font-weight: extrabold;
@@ -36,19 +36,19 @@
   font-weight: normal;
 }
 /* body Bold */
-.e_bB {
+.e_b-B {
   font-size: 16;
   line-height: 24;
   font-weight: bold;
 }
 /* body Small */
-.e_bS {
+.e_b-S {
   font-size: 14;
   line-height: 24;
   font-weight: normal;
 }
 /* body Small Bold */
-.e_bSB {
+.e_b-S-B {
   font-size: 14;
   line-height: 24;
   font-weight: bold;
