@@ -123,6 +123,8 @@ const CourseList = () => {
         </div>
       </div>
 
+      
+
       {/* <Tabs courses = {courses} /> */}
     </div>
   )

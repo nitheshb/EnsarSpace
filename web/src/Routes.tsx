@@ -11,6 +11,8 @@ import FinanceHomePagePage from './pages/FinanceHomePagePage/FinanceHomePagePage
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage/PrivacyPolicyPage'
 import Profile from './pages/Profile/Profile'
 
+// import SingleCoursePage from './pages/SeeDetailsPage/CoursedetailsPage'
+
 const defaultRoutes = () => {
   return (
     <>
@@ -35,6 +37,8 @@ const defaultRoutes = () => {
       <Route path="/finance-module" page={FinanceHomePagePage} name="financeModule" />
       <Route path="/crm-module" page={CrmHomePage} name="crmModule" /> */}
       <Route path="/erp-account" page={ErpAccountHomePage} name="erpAccount" />
+
+
     </>
   )
 }
@@ -65,6 +69,10 @@ const Routes = () => {
         <Route path="/admin/legal-module" page={LegalHomePage} name="legalModule" />
         <Route path="/admin/erp-account" page={ErpAccountHomePage} name="erpAccount" />
         <Route path="/privacyPolicy" page={PrivacyPolicyPage} name="privacyPolicy" />
+
+
+   {/*----------------------------------------------- Created Route Here -------------------------------*/}
+
       </>
     )
   } else if (user?.role?.includes(USER_ROLES.HR_MANAGER) || user?.role?.includes(USER_ROLES.HR_EXECUTIVE)) {
@@ -117,6 +125,8 @@ const Routes = () => {
 
   return (
     <Router>
+      <Route path="/coursedetails" page={CoursedetailsPage} name="coursedetails" />
+
       {/* <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" /> */}
       <Route path="/cource-overview/{uid}" page={CourceOverviewPage} name="courceOverview" />
       <Route path="/cource-content" page={CourceContentPage} name="courceContent" />
@@ -134,6 +144,10 @@ const Routes = () => {
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/" page={LoginPage} name="login" />
       <Route notfound page={NotFoundPage} />
+
+
+
+
     </Router>
   )
 }
