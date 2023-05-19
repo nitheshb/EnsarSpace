@@ -1,87 +1,93 @@
 export const USER_ROLES = {
-  SALES_MANAGER: 'sales-manager',
   SALES_EXECUTIVE: 'sales-executive',
+  SALES_MANAGER: 'sales-manager',
   SALES_ASSOCIATE: 'sales-associate',
-  SALES_SENIOR_ASSOCIATE: 'sales-senior-associate',
   SALES_SENIOR_EXECUTIVE: 'sales-senior-executive',
   SALES_SENIOR_MANAGER: 'sales-senior-manager',
+  SALES_SENIOR_ASSOCIATE: 'sales-senior-associate',
   CP_AGENT: 'cp-agent',
 
-  LEGAL_MANAGER: 'legal-manager',
   LEGAL_EXECUTIVE: 'legal-executive',
+  LEGAL_MANAGER: 'legal-manager',
   LEGAL_ASSOCIATE: 'legal-associate',
   LEGAL_SENIOR_EXECUTIVE: 'legal-senior-executive',
-  LEGAL_SENIOR_ASSOCIATE: 'legal-senior-associate',
   LEGAL_SENIOR_MANAGER: 'legal-senior-manager',
+  LEGAL_SENIOR_ASSOCIATE: 'legal-senior-associate',
 
 
-  CRM_MANAGER: 'crm-manager',
   CRM_EXECUTIVE: 'crm-executive',
+  CRM_MANAGER: 'crm-manager',
   CRM_ASSOCIATE: 'crm-associate',
   CRM_SENIOR_EXECUTIVE: 'crm-senior-executive',
-  CRM_SENIOR_ASSOCIATE: 'crm-senior-associate',
   CRM_SENIOR_MANAGER: 'crm-senior-manager',
+  CRM_SENIOR_ASSOCIATE: 'crm-senior-associate',
 
 
-  FINANCE_MANAGER: 'finance-manager',
   FINANCE_EXECUTIVE: 'finance-executive',
+  FINANCE_MANAGER: 'finance-manager',
   FINANCE_ASSOCIATE: 'finance-associate',
   FINANCE_SENIOR_EXECUTIVE: 'finance-senior-executive',
-  FINANCE_SENIOR_ASSOCIATE: 'finance-senior-associate',
   FINANCE_SENIOR_MANAGER: 'finance-senior-manager',
+  FINANCE_SENIOR_ASSOCIATE: 'finance-senior-associate',
 
 
-  HR_MANAGER: 'hr-manager',
   HR_EXECUTIVE: 'hr-executive',
+  HR_MANAGER: 'hr-manager',
   HR_ASSOCIATE: 'hr-associate',
   HR_SENIOR_EXECUTIVE: 'hr-senior-executive',
-  HR_SENIOR_ASSOCIATE: 'hr-senior-associate',
   HR_SENIOR_MANAGER: 'hr-senior-manager',
+  HR_SENIOR_ASSOCIATE: 'hr-senior-associate',
 
 
-  SUPPORT_MANAGER: 'support-manager',
   SUPPORT_EXECUTIVE: 'support-executive',
+  SUPPORT_MANAGER: 'support-manager',
   SUPPORT_ASSOCIATE: 'support-associate',
   SUPPORT_SENIOR_EXECUTIVE: 'support-senior-executive',
-  SUPPORT_SENIOR_ASSOCIATE: 'support-senior-associate',
   SUPPORT_SENIOR_MANAGER: 'support-senior-manager',
+  SUPPORT_SENIOR_ASSOCIATE: 'support-senior-associate',
 
 
-  HELPER_MANAGER: 'helper-manager',
   HELPER_EXECUTIVE: 'helper-executive',
+  HELPER_MANAGER: 'helper-manager',
   HELPER_ASSOCIATE: 'helper-associate',
   HELPER_SENIOR_EXECUTIVE: 'helper-senior-executive',
-  HELPER_SENIOR_ASSOCIATE: 'helper-senior-associate',
   HELPER_SENIOR_MANAGER: 'helper-senior-manager',
+  HELPER_SENIOR_ASSOCIATE: 'helper-senior-associate',
 
 
-  PROJECT_MANAGER: 'project-manager',
   PROJECT_EXECUTIVE: 'project-executive',
+  PROJECT_MANAGER: 'project-manager',
   PROJECT_ASSOCIATE: 'project-associate',
   PROJECT_SENIOR_EXECUTIVE: 'project-senior-executive',
-  PROJECT_SENIOR_ASSOCIATE: 'project-senior-associate',
   PROJECT_SENIOR_MANAGER: 'project-senior-manager',
+  PROJECT_SENIOR_ASSOCIATE: 'project-senior-associate',
 
 
-  DEVELOPER_MANAGER: 'developer manager',
-  DEVELOPER_SENIOR_MANAGER: 'developer senior manager',
   DEVELOPER_EXECUTIVE: 'developer executive',
-  DEVELOPER_SENIOR_EXECUTIVE: 'developer senior executive',
+  DEVELOPER_MANAGER: 'developer manager',
   DEVELOPER_ASSOCIATE: 'developer associate',
+  DEVELOPER_SENIOR_EXECUTIVE: 'developer senior executive',
+  DEVELOPER_SENIOR_MANAGER: 'developer senior manager',
   DEVELOPER_SENIOR_ASSOCIATE: 'developer senior associate',
 
-  TRAINER_MANAGER: 'trainer manager',
+  TUTOR_LEARNER: 'tutor learner',
+  GUEST_LEARNER: 'guest learner',
+  MASTER_LEARNER: 'master learner',
+
+
+
   TRAINER_EXECUTIVE: 'trainer executive',
+  TRAINER_MANAGER: 'trainer manager',
   TRAINER_ASSOCIATE: 'trainer associate',
-  TRAINER_SENIOR_MANAGER: 'trainer senior manager',
   TRAINER_SENIOR_EXECUTIVE: 'trainer senior executive',
+  TRAINER_SENIOR_MANAGER: 'trainer senior manager',
   TRAINER_SENIOR_ASSOCIATE: 'trainer senior associate',
 
-  FRESHER_MANAGER: 'fresher manager',
-  FRESHER_SENIOR_MANAGER: 'fresher senior manager',
   FRESHER_EXECUTIVE: 'fresher executive',
-  FRESHER_SENIOR_EXECUTIVE: 'fresher senior executive',
+  FRESHER_MANAGER: 'fresher manager',
   FRESHER_ASSOCIATE: 'fresher associate',
+  FRESHER_SENIOR_MANAGER: 'fresher senior manager',
+  FRESHER_SENIOR_EXECUTIVE: 'fresher senior executive',
   FRESHER_SENIOR_ASSOCIATE: 'fresher senior associate',
 
 
@@ -100,6 +106,7 @@ export const DEPARTMENT_LIST = [
   { label: 'Support', value: 'support' },
   { label: 'Sales', value: 'sales' },
   { label: 'Developer', value: 'developer' },
+  { label: 'Learner', value: 'learner' },
   { label: 'Trainer', value: 'trainer' },
   { label: 'Fresher', value: 'fresher' },
 ]
@@ -131,25 +138,25 @@ export const EXPERIENCE_LIST = [
 
 export const ROLES_LIST = [
   { label: 'Select the role', value: '' },
-  { label: 'Sales manager', value: USER_ROLES.SALES_MANAGER, dept: 'sales' },
-  { label: 'Sales senior associate', value: USER_ROLES.SALES_SENIOR_ASSOCIATE, dept: 'sales' },
-  { label: 'Sales associate', value: USER_ROLES.SALES_ASSOCIATE, dept: 'sales' },
   {
-    label: 'Sales executive',
+    label: 'Sales Executive',
     value: USER_ROLES.SALES_EXECUTIVE,
     dept: 'sales',
   },
-
+  { label: 'Sales Manager', value: USER_ROLES.SALES_MANAGER, dept: 'sales' },
+  { label: 'Sales Associate', value: USER_ROLES.SALES_ASSOCIATE, dept: 'sales' },
   {
-    label: 'Sales senior executive',
+    label: 'Sales Senior Executive',
     value: USER_ROLES.SALES_SENIOR_EXECUTIVE,
     dept: 'sales',
   },
   {
-    label: 'Sales senior manager',
+    label: 'Sales Senior Manager',
     value: USER_ROLES.SALES_SENIOR_MANAGER,
     dept: 'sales',
   },
+  { label: 'Sales Senior Associate', value: USER_ROLES.SALES_SENIOR_ASSOCIATE, dept: 'sales' },
+
 
 
   {
@@ -159,247 +166,266 @@ export const ROLES_LIST = [
   },
 
 
-  { label: 'Legal manager', value: USER_ROLES.LEGAL_MANAGER, dept: 'legal' },
-  { label: 'Legal senior manager', value: USER_ROLES.LEGAL_SENIOR_MANAGER, dept: 'legal' },
   {
-    label: 'Legal executive',
+    label: 'Legal Executive',
     value: USER_ROLES.LEGAL_EXECUTIVE,
     dept: 'legal',
   },
+  { label: 'Legal Manager', value: USER_ROLES.LEGAL_MANAGER, dept: 'legal' },
   {
-    label: 'Legal senior executive',
-    value: USER_ROLES.LEGAL_SENIOR_EXECUTIVE,
-    dept: 'legal',
-  },
-  {
-    label: 'Legal associate',
+    label: 'Legal Associate',
     value: USER_ROLES.LEGAL_ASSOCIATE,
     dept: 'legal',
   },
   {
-    label: 'Legal senior associate',
+    label: 'Legal Senior Executive',
+    value: USER_ROLES.LEGAL_SENIOR_EXECUTIVE,
+    dept: 'legal',
+  },
+  { label: 'Legal Senior Manager', value: USER_ROLES.LEGAL_SENIOR_MANAGER, dept: 'legal' },
+  {
+    label: 'Legal Senior Associate',
     value: USER_ROLES.LEGAL_SENIOR_EXECUTIVE,
     dept: 'legal',
   },
 
 
-  { label: 'CRM manager', value: USER_ROLES.CRM_MANAGER, dept: 'crm' },
-  { label: 'CRM executive', value: USER_ROLES.CRM_EXECUTIVE, dept: 'crm' },
-  { label: 'CRM senior executive', value: USER_ROLES.CRM_SENIOR_EXECUTIVE, dept: 'crm' },
-  { label: 'CRM associate', value: USER_ROLES.CRM_ASSOCIATE, dept: 'crm' },
-  { label: 'CRM senior associate', value: USER_ROLES.CRM_SENIOR_ASSOCIATE, dept: 'crm' },
-  { label: 'CRM senior manager', value: USER_ROLES.CRM_SENIOR_MANAGER, dept: 'crm' },
+  { label: 'CRM Executive', value: USER_ROLES.CRM_EXECUTIVE, dept: 'crm' },
+  { label: 'CRM Manager', value: USER_ROLES.CRM_MANAGER, dept: 'crm' },
+  { label: 'CRM Associate', value: USER_ROLES.CRM_ASSOCIATE, dept: 'crm' },
+  { label: 'CRM Senior executive', value: USER_ROLES.CRM_SENIOR_EXECUTIVE, dept: 'crm' },
+  { label: 'CRM Senior manager', value: USER_ROLES.CRM_SENIOR_MANAGER, dept: 'crm' },
+  { label: 'CRM Senior associate', value: USER_ROLES.CRM_SENIOR_ASSOCIATE, dept: 'crm' },
 
 
   {
-    label: 'Finance manager',
-    value: USER_ROLES.FINANCE_MANAGER,
-    dept: 'finance',
-  },
-  {
-    label: 'Finance senior manager',
-    value: USER_ROLES.FINANCE_SENIOR_MANAGER,
-    dept: 'finance',
-  },
-  {
-    label: 'Finance executive',
+    label: 'Finance Executive',
     value: USER_ROLES.FINANCE_EXECUTIVE,
     dept: 'finance',
   },
   {
-    label: 'Finance senior executive',
-    value: USER_ROLES.FINANCE_SENIOR_EXECUTIVE,
+    label: 'Finance Manager',
+    value: USER_ROLES.FINANCE_MANAGER,
     dept: 'finance',
   },
   {
-    label: 'Finance associate',
+    label: 'Finance Associate',
     value: USER_ROLES.FINANCE_ASSOCIATE,
     dept: 'finance',
   },
   {
-    label: 'Finance senior associate',
+    label: 'Finance Senior Executive',
+    value: USER_ROLES.FINANCE_SENIOR_EXECUTIVE,
+    dept: 'finance',
+  },
+  {
+    label: 'Finance Senior Manager',
+    value: USER_ROLES.FINANCE_SENIOR_MANAGER,
+    dept: 'finance',
+  },
+  {
+    label: 'Finance Senior Associate',
     value: USER_ROLES.FINANCE_SENIOR_ASSOCIATE,
     dept: 'finance',
   },
 
 
-  { label: 'HR manager', value: USER_ROLES.HR_MANAGER, dept: 'hr' },
-  { label: 'HR senior manager', value: USER_ROLES.HR_SENIOR_MANAGER, dept: 'hr' },
-  { label: 'HR executive', value: USER_ROLES.HR_EXECUTIVE, dept: 'hr' },
-  { label: 'HR senior executive', value: USER_ROLES.HR_SENIOR_EXECUTIVE, dept: 'hr' },
-  { label: 'HR associate', value: USER_ROLES.HR_ASSOCIATE, dept: 'hr' },
-  { label: 'HR senior associate', value: USER_ROLES.HR_SENIOR_ASSOCIATE, dept: 'hr' },
+  { label: 'HR Executive', value: USER_ROLES.HR_EXECUTIVE, dept: 'hr' },
+  { label: 'HR Manager', value: USER_ROLES.HR_MANAGER, dept: 'hr' },
+  { label: 'HR Associate', value: USER_ROLES.HR_ASSOCIATE, dept: 'hr' },
+  { label: 'HR Senior Executive', value: USER_ROLES.HR_SENIOR_EXECUTIVE, dept: 'hr' },
+  { label: 'HR Senior Manager', value: USER_ROLES.HR_SENIOR_MANAGER, dept: 'hr' },
+  { label: 'HR Senior Associate', value: USER_ROLES.HR_SENIOR_ASSOCIATE, dept: 'hr' },
 
   {
-    label: 'Support manager',
-    value: USER_ROLES.SUPPORT_MANAGER,
-    dept: 'support',
-  },
-  {
-    label: 'Support senior manager',
-    value: USER_ROLES.SUPPORT_SENIOR_MANAGER,
-    dept: 'support',
-  },
-  {
-    label: 'Support executive',
+    label: 'Support Executive',
     value: USER_ROLES.SUPPORT_EXECUTIVE,
     dept: 'support',
   },
   {
-    label: 'Support senior executive',
-    value: USER_ROLES.SUPPORT_SENIOR_EXECUTIVE,
+    label: 'Support Manager',
+    value: USER_ROLES.SUPPORT_MANAGER,
     dept: 'support',
   },
   {
-    label: 'Support associate',
+    label: 'Support Associate',
     value: USER_ROLES.SUPPORT_ASSOCIATE,
     dept: 'support',
   },
   {
-    label: 'Support senior associate',
+    label: 'Support Senior Executive',
+    value: USER_ROLES.SUPPORT_SENIOR_EXECUTIVE,
+    dept: 'support',
+  },
+  {
+    label: 'Support Senior Manager',
+    value: USER_ROLES.SUPPORT_SENIOR_MANAGER,
+    dept: 'support',
+  },
+  {
+    label: 'Support Senior Associate',
     value: USER_ROLES.SUPPORT_SENIOR_ASSOCIATE,
     dept: 'support',
   },
 
-  { label: 'Helper manager', value: USER_ROLES.HELPER_MANAGER, dept: 'helper' },
-  { label: 'Helper senior manager', value: USER_ROLES.HELPER_SENIOR_MANAGER, dept: 'helper' },
-  { label: 'Helper associate', value: USER_ROLES.HELPER_ASSOCIATE, dept: 'helper' },
-  { label: 'Helper senior associate', value: USER_ROLES.HELPER_SENIOR_ASSOCIATE, dept: 'helper' },
   {
-    label: 'Helper executive',
+    label: 'Helper Executive',
     value: USER_ROLES.HELPER_EXECUTIVE,
     dept: 'helper',
   },
+  { label: 'Helper Manager', value: USER_ROLES.HELPER_MANAGER, dept: 'helper' },
+  { label: 'Helper Associate', value: USER_ROLES.HELPER_ASSOCIATE, dept: 'helper' },
   {
-    label: 'Helper senior executive',
+    label: 'Helper Senior Executive',
     value: USER_ROLES.HELPER_SENIOR_EXECUTIVE,
     dept: 'helper',
   },
+  { label: 'Helper Senior Manager', value: USER_ROLES.HELPER_SENIOR_MANAGER, dept: 'helper' },
+  { label: 'Helper Senior Associate', value: USER_ROLES.HELPER_SENIOR_ASSOCIATE, dept: 'helper' },
 
 
-  { label: 'project head', value: USER_ROLES.PROJECT_MANAGER, dept: 'project' },
+  { label: 'Project Head', value: USER_ROLES.PROJECT_MANAGER, dept: 'project' },
   {
-    label: 'project manager',
+    label: 'Project Executive',
     value: USER_ROLES.PROJECT_EXECUTIVE,
     dept: 'project',
   },
   {
-    label: 'project senior manager',
-    value: USER_ROLES.PROJECT_SENIOR_EXECUTIVE,
-    dept: 'project',
-  },
-  {
-    label: 'project executive',
+    label: 'Project Manager',
     value: USER_ROLES.PROJECT_EXECUTIVE,
     dept: 'project',
   },
   {
-    label: 'project associate',
+    label: 'Project Associate',
     value: USER_ROLES.PROJECT_ASSOCIATE,
     dept: 'project',
   },
   {
-    label: 'project senior associate',
-    value: USER_ROLES.PROJECT_SENIOR_ASSOCIATE,
-    dept: 'project',
-  },
-  {
-    label: 'project senior executive',
+    label: 'Project Senior Executive',
     value: USER_ROLES.PROJECT_SENIOR_EXECUTIVE,
     dept: 'project',
   },
+  {
+    label: 'Project Senior Manager',
+    value: USER_ROLES.PROJECT_SENIOR_EXECUTIVE,
+    dept: 'project',
+  },
+  {
+    label: 'Project Senior Associate',
+    value: USER_ROLES.PROJECT_SENIOR_ASSOCIATE,
+    dept: 'project',
+  },
 
 
   {
-    label: 'developer manager',
+    label: 'Developer Executive',
+    value: USER_ROLES.DEVELOPER_EXECUTIVE,
+    dept:'developer',
+  },
+  {
+    label: 'Developer Manager',
     value: USER_ROLES.DEVELOPER_MANAGER,
     dept:'developer',
   },
 
   {
-    label: 'developer senior manager',
-    value: USER_ROLES.DEVELOPER_SENIOR_MANAGER,
-    dept:'developer',
-  },
-
-  {
-    label: 'developer executive',
-    value: USER_ROLES.DEVELOPER_EXECUTIVE,
-    dept:'developer',
-  },
-  {
-    label: 'developer senior executive',
-    value: USER_ROLES.DEVELOPER_SENIOR_EXECUTIVE,
-    dept:'developer',
-  },
-  {
-    label: 'developer associate',
+    label: 'Developer Associate',
     value: USER_ROLES.DEVELOPER_ASSOCIATE,
     dept:'developer',
   },
+
+    {
+      label: 'Developer Senior Executive',
+      value: USER_ROLES.DEVELOPER_SENIOR_EXECUTIVE,
+      dept:'developer',
+    },
   {
-    label: 'developer senior associate',
+    label: 'Developer Senior Manager',
+    value: USER_ROLES.DEVELOPER_SENIOR_MANAGER,
+    dept:'developer',
+  },
+  {
+    label: 'Developer Senior Associate',
     value: USER_ROLES.DEVELOPER_SENIOR_ASSOCIATE,
     dept:'developer',
   },
 
   {
-    label: 'trainer manager',
-    value: USER_ROLES.TRAINER_MANAGER,
-    dept:'trainer',
+    label: 'Tutor Learner',
+    value: USER_ROLES.TUTOR_LEARNER,
+    dept:'learner',
   },
+
   {
-    label: 'trainer senior manager',
-    value: USER_ROLES.TRAINER_SENIOR_MANAGER,
-    dept:'trainer',
+    label: 'Guest Learner',
+    value: USER_ROLES.GUEST_LEARNER,
+    dept:'learner',
   },
+
   {
-    label: 'trainer executive',
+    label: 'Master Learner',
+    value: USER_ROLES.MASTER_LEARNER,
+    dept:'learner',
+  },
+
+  {
+    label: 'Trainer Executive',
     value: USER_ROLES.TRAINER_EXECUTIVE,
     dept:'trainer',
   },
   {
-    label: 'trainer senior executive',
-    value: USER_ROLES.TRAINER_SENIOR_EXECUTIVE,
+    label: 'Trainer Manager',
+    value: USER_ROLES.TRAINER_MANAGER,
     dept:'trainer',
   },
   {
-    label: 'trainer associate',
+    label: 'Trainer Associate',
     value: USER_ROLES.TRAINER_ASSOCIATE,
     dept:'trainer',
   },
   {
-    label: 'trainer senior associate',
-    value: USER_ROLES.TRAINER_SENIOR_ASSOCIATE,
+    label: 'Trainer Senior Executive',
+    value: USER_ROLES.TRAINER_SENIOR_EXECUTIVE,
     dept:'trainer',
   },
   {
-    label: 'fresher manager',
-    value: USER_ROLES.FRESHER_MANAGER,
-    dept:'fresher',
+    label: 'Trainer Senior Manager',
+    value: USER_ROLES.TRAINER_SENIOR_MANAGER,
+    dept:'trainer',
   },
   {
-    label: 'fresher senior manager',
-    value: USER_ROLES.FRESHER_SENIOR_MANAGER,
-    dept:'fresher',
+    label: 'Trainer Senior Associate',
+    value: USER_ROLES.TRAINER_SENIOR_ASSOCIATE,
+    dept:'trainer',
   },
+
   {
-    label: 'fresher executive',
+    label: 'Fresher Executive',
     value: USER_ROLES.FRESHER_EXECUTIVE,
     dept:'fresher',
   },
   {
-    label: 'fresher senior executive',
-    value: USER_ROLES.FRESHER_SENIOR_EXECUTIVE,
+    label: 'Fresher Manager',
+    value: USER_ROLES.FRESHER_MANAGER,
     dept:'fresher',
   },
   {
-    label: 'fresher associate',
+    label: 'Fresher Associate',
     value: USER_ROLES.FRESHER_ASSOCIATE,
     dept:'fresher',
   },
   {
-    label: 'fresher senior associate',
+    label: 'Fresher Senior Executive',
+    value: USER_ROLES.FRESHER_SENIOR_EXECUTIVE,
+    dept:'fresher',
+  },
+  {
+    label: 'Fresher Senior Manager',
+    value: USER_ROLES.FRESHER_SENIOR_MANAGER,
+    dept:'fresher',
+  },
+  {
+    label: 'Fresher Senior Associate',
     value: USER_ROLES.FRESHER_SENIOR_ASSOCIATE,
     dept:'fresher',
   },
