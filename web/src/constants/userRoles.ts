@@ -96,42 +96,35 @@ export const USER_ROLES = {
 
 export const DEPARTMENT_LIST = [
   { label: 'Select the Department', value: '' },
-  { label: 'Admin', value: 'admin' },
-  { label: 'CRM', value: 'crm' },
-  { label: 'Finance', value: 'finance' },
-  { label: 'Helper', value: 'helper' },
+  { label: 'IT Employee', value: 'IT_Employee' },
+  { label: 'IT Desk', value: 'it_desk' },
   { label: 'HR', value: 'hr' },
-  { label: 'Legal', value: 'legal' },
+  { label: 'Finance', value: 'finance' },
   { label: 'Project', value: 'project' },
-  { label: 'Support', value: 'support' },
   { label: 'Sales', value: 'sales' },
-  { label: 'Developer', value: 'developer' },
-  { label: 'Learner', value: 'learner' },
-  { label: 'Trainer', value: 'trainer' },
-  { label: 'Fresher', value: 'fresher' },
+  { label: 'Learning', value: 'learning' },
+  { label: 'Admin', value: 'admin' },
 ]
-
 
 export const QUALIFICATION_LIST = [
   { label: 'Select the Qualification', value: '' },
-  { label: 'Xth', value: 'Xth' },
-  { label: 'XIIth', value: 'XIIth' },
+  { label: 'X', value: 'X' },
+  { label: 'XII', value: 'XII' },
   { label: 'Diploma', value: 'Diploma' },
-  { label: 'BE/B.Tech', value: 'be/b.tech' },
+  { label: 'BE/B.Tech', value: 'be_btech' },
   { label: 'Degree', value: 'degree' },
-  { label: 'M.Tech', value: 'm.tech' },
+  { label: 'M.Tech', value: 'm_tech' },
   { label: 'PG', value: 'PG' },
 ]
 
 export const EXPERIENCE_LIST = [
   { label: 'Select the Experience', value: '' },
-  { label: 'None', value: 'none' },
-  { label: '0 to 6 Months', value: '0 to 6 months' },
-  { label: '7 to 12 Months', value: '7 to 12 months' },
-  { label: '1 - 2 Years', value: '1 - 2 Years' },
-  { label: '2 - 3 Years', value: '2 - 3 Years' },
-  { label: '3 - 4 Years', value: '3 - 4 Years' },
-  { label: '5+ Years', value: '5+ Years' },
+  { label: 'Fresher', value: 'fresher' },
+  { label: 'Less than 1 year', value: '0-1_y' },
+  { label: '1 - 2 Years', value: '1-2_y' },
+  { label: '2 - 3 Years', value: '2-3_y' },
+  { label: '3 - 4 Years', value: '3-4_y' },
+  { label: '5+ Years', value: '5+_y' },
 ]
 
 
