@@ -1052,7 +1052,7 @@ const ActivitySummaryReport = ({ project, onSliderOpen = () => { }, isEdit }) =>
   }
   return (
     <div>
-      <section className="pb-8 pt-1 mb-8 leading-7 text-gray-900 bg-white ">
+      <section className="p-8 rounded-lg mb-8 leading-7 text-gray-900 bg-white ">
         <div className="box-border px-4 mx-auto border-solid sm:px-6 md:px-6 lg:px-8 max-w-full "
           style={{
             paddingLeft: '0px',

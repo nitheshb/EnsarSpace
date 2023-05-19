@@ -228,9 +228,6 @@ const ActivitySummary = () => {
         <div className="flex flex-row pb-10">
           <div className="flex flex-col w-8/12">
             <div className="flex flex-row items-center py-4">
-              <span className="text-lg font-semibold mr-auto">
-                All Activity Summary
-              </span>
               {/* <div className="rounded w-2 h-2 mx-1 app-bg-black"></div>
                 <div className="rounded w-2 h-2 mx-1 app-bg-gray-2"></div>
                 <div className="rounded w-2 h-2 mx-1 app-bg-gray-2"></div> */}
