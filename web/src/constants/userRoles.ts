@@ -17,12 +17,16 @@ export const USER_ROLES = {
   PROJECT_MANAGER: 'project-manager',
   PROJECT_EXECUTIVE: 'project-executive',
   ADMIN: 'admin',
+  TRAINEE: 'trainee',
+  DATA_SCIENTIST: 'data-scientist',
+
 }
 
 export const DEPARTMENT_LIST = [
   { label: 'Select the Department', value: '' },
   { label: 'Admin', value: 'admin' },
   { label: 'CRM', value: 'crm' },
+  { label: 'Fresher', value: 'fresher' },
   { label: 'Finance', value: 'finance' },
   { label: 'Helper', value: 'helper' },
   { label: 'HR', value: 'hr' },
@@ -30,15 +34,48 @@ export const DEPARTMENT_LIST = [
   { label: 'Project', value: 'project' },
   { label: 'Support', value: 'support' },
   { label: 'Sales', value: 'sales' },
+  { label: 'Data Scientist', value: 'data scientist' },
 ]
 
 export const ROLES_LIST = [
   { label: 'Select the role', value: '' },
+
   { label: 'Sales manager', value: USER_ROLES.SALES_MANAGER, dept: 'sales' },
   {
     label: 'Sales executive',
     value: USER_ROLES.SALES_EXECUTIVE,
     dept: 'sales',
+  },
+  {
+    label: 'Trainee',
+    value: USER_ROLES.TRAINEE,
+    dept: 'fresher',
+  },
+
+  {
+    label: 'IT Support',
+    value: USER_ROLES.TRAINEE,
+    dept: ' fresher',
+  },
+  {
+    label: 'Quality Assurance Analyst',
+    value: USER_ROLES.TRAINEE,
+    dept: ' fresher',
+  },
+  {
+    label: 'Data Scientist',
+    value: USER_ROLES.DATA_SCIENTIST,
+    dept: 'data scientist',
+  },
+  {
+    label: 'Data Analyst',
+    value: USER_ROLES.DATA_SCIENTIST,
+    dept: 'data scientist',
+  },
+  {
+    label: 'Machine Learning Engineer',
+    value: USER_ROLES.DATA_SCIENTIST,
+    dept: 'data scientist',
   },
   {
     label: 'CP Agent',

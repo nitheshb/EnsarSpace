@@ -92,7 +92,8 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
   const onSubmit = async (data) => {
     console.log('check fo this ', data)
     setLoading(true)
-    const { empId, email, myRole, deptVal, name, offPh, perPh } = data
+    const { empId, email, myRole, deptVal, accessVal, name, offPh, perPh } =
+      data
 
     if (editMode) {
       updateUserRole(
@@ -102,6 +103,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         uid,
         deptVal,
         myRole,
+        accessVal,
         email,
         offPh,
         perPh,
@@ -130,6 +132,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         password: 'redefine@123',
         dept: deptVal,
         role: myRole,
+        access: accessVal,
         orgName: orgName,
         orgId: orgId,
         userStatus: 'active',
@@ -255,7 +258,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
       <div className="px-4 sm:px-6">
         <Dialog.Title className=" font-semibold text-lg mr-auto ml-3">
-          {editMode ? 'Edit Employee Details' : 'Create Employee'}
+          {editMode ? 'Edit Employee Details' : 'Create Roles'}
         </Dialog.Title>
       </div>
       {formMessage.message && (
@@ -274,6 +277,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
             email: email,
             deptVal: department != undefined ? department[0] : '',
             myRole: rolees != undefined ? rolees[0] : '',
+            accessVal:access != undefined ? access[0] : '',
             empId: empId,
             perPh: perPh,
             offPh: offPh,
@@ -335,15 +339,14 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     formik.setFieldValue('perPh', value.value)
                   }}
                 />
-
                 <CustomSelect
                   name="deptName"
                   label="Department"
                   className="input mt-3"
                   onChange={(value) => {
-                    changed(value)
+                    // changed(value)
                     formik.setFieldValue('deptVal', value.value)
-                    formik.setFieldValue('myRole', '')
+                    // formik.setFieldValue('myRole', '')
                   }}
                   value={formik.values.deptVal}
                   options={DEPARTMENT_LIST}
@@ -369,9 +372,24 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     {formik.values.myRole}
                   </div>
                 ) : null}
-
                 {/*  */}
+                <CustomSelect
+                  name="accessName"
+                  label="Access"
+                  className="input mt-3"
+                  onChange={(value) => {
+                    // changed(value)
 
+                    formik.setFieldValue('accessVal', value.value) //  formik.setFieldValue('myRole', '')
+                  }}
+                  value={formik.values.accessVal}
+                  options={ACCESS_LIST}
+                />{' '}
+                {formik.errors.accessVal ? (
+                  <div className="error-message text-red-700 text-xs p-2">
+                    {formik.errors.accessVal}{' '}
+                  </div>
+                ) : null}
                 <div className="md:flex md:flex-row md:space-x-4 w-full text-xs mt-5">
                   <div className="w-full flex flex-col mb-3">
                     <TextField
@@ -390,7 +408,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     />
                   </div>
                 </div>
-
                 <p className="text-xs text-red-500 text-right my-3">
                   Required fields are marked with an asterisk{' '}
                   <abbr title="Required field">*</abbr>
@@ -408,7 +425,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     disabled={loading}
                   >
                     {loading && <Loader />}
-                    {editMode ? 'Edit Employee' : 'Add Employee'}
+                    {editMode ? 'Edit Employee' : 'Add Roles'}
                   </button>
                 </div>
               </Form>

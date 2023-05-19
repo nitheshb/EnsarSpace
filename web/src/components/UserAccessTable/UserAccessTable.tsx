@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+
+import { EyeIcon } from '@heroicons/react/outline'
 import {
   Box,
   Checkbox,
@@ -10,14 +12,16 @@ import {
 } from '@mui/material'
 import TableCell, { tableCellClasses } from '@mui/material/TableCell'
 import { useSnackbar } from 'notistack'
-import { EyeIcon } from '@heroicons/react/outline'
+
+import StyledButton from 'src/components/RoundedButton'
 import {
   getAllRoleAccess,
   updateAccessRoles,
 } from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
 import { getPagesBasedonRoles } from 'src/util/PagesBasedOnRoles'
-import StyledButton from 'src/components/RoundedButton'
+
+import TableData from '../Access/TableData'
 
 const StyledTableHead = styled(TableHead)(({ theme }) => ({
   backgroundColor: theme.palette.action.hover,
@@ -128,7 +132,14 @@ const UserAccessTable = () => {
       return item
     })
     setSettings(newSettings)
-    await updateAccessRoles(orgId,role, newAccess, user, enqueueSnackbar, element)
+    await updateAccessRoles(
+      orgId,
+      role,
+      newAccess,
+      user,
+      enqueueSnackbar,
+      element
+    )
   }
   return (
     <Box className="bg-white pb-4">
@@ -148,16 +159,15 @@ const UserAccessTable = () => {
           isCategoryMatched={category === 'admin'}
           onClick={() => setCategory('admin')}
         >
-          ADMIN
+          TRAINEE
         </StyledButton>
-
         <StyledButton
           variant="outlined"
           size="small"
           isCategoryMatched={category === 'crm'}
           onClick={() => setCategory('crm')}
         >
-          CRM
+          IT SUPPORT
         </StyledButton>
         <StyledButton
           variant="outlined"
@@ -165,7 +175,7 @@ const UserAccessTable = () => {
           isCategoryMatched={category === 'hr'}
           onClick={() => setCategory('hr')}
         >
-          HR
+          LEGAL
         </StyledButton>
         <StyledButton
           variant="outlined"
@@ -173,7 +183,7 @@ const UserAccessTable = () => {
           isCategoryMatched={category === 'legal'}
           onClick={() => setCategory('legal')}
         >
-          LEGAL
+          ADMIN
         </StyledButton>
         <StyledButton
           variant="outlined"
@@ -182,6 +192,22 @@ const UserAccessTable = () => {
           onClick={() => setCategory('project')}
         >
           PROJECT
+        </StyledButton>
+        <StyledButton
+          variant="outlined"
+          size="small"
+          isCategoryMatched={category === 'sales'}
+          onClick={() => setCategory('sales')}
+        >
+            EXECUTIVE
+        </StyledButton>
+        <StyledButton
+          variant="outlined"
+          size="small"
+          isCategoryMatched={category === 'sales'}
+          onClick={() => setCategory('sales')}
+        >
+           HR
         </StyledButton>
         <StyledButton
           variant="outlined"
@@ -199,6 +225,7 @@ const UserAccessTable = () => {
           overflowX: 'auto',
         }}
       >
+
         <Table stickyHeader>
           <StyledTableHead>
             <StyledTableRow>
@@ -212,7 +239,7 @@ const UserAccessTable = () => {
               ))}
             </StyledTableRow>
           </StyledTableHead>
-
+          <TableData />
           <TableBody>
             {filterData?.map((item) => (
               <StyledTableRow key={item?.uid}>
