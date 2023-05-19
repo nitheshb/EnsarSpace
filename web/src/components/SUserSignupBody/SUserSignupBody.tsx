@@ -2,22 +2,29 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react'
+
 import { Dialog } from '@headlessui/react'
+import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
+
 import {
   addUserLog,
   checkIfUserAlreadyExists,
   createUserToWorkReport,
   updateUserRole,
 } from 'src/context/dbQueryFirebase'
+
 import { useAuth } from 'src/context/firebase-auth-context'
-import { useForm } from 'react-hook-form'
+
+
+
 import { Form, Formik } from 'formik'
+
 import { TextField } from 'src/util/formFields/TextField'
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 import axios from 'axios'
 import Loader from '../Loader/Loader'
-import { DEPARTMENT_LIST, ROLES_LIST } from 'src/constants/userRoles'
+import { DEPARTMENT_LIST, ROLES_LIST, QUALIFICATION_LIST, EXPERIENCE_LIST } from 'src/constants/userRoles'
 import { PhoneNoField } from 'src/util/formFields/phNoField'
 
 // import Select from 'react-select'
@@ -158,6 +165,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         .then(async function (response) {
           if (response.data) {
             setLoading(false)
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { success, msg, payload } = await response['data']
             // const { id } = payload
             console.log('user payload is ', response)
@@ -218,6 +226,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         })
     }
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
   const validate = Yup.object({
@@ -372,6 +381,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     {formik.values.myRole}
                   </div>
                 ) : null}
+
                 {/*  */}
                 <CustomSelect
                   name="accessName"
@@ -462,6 +472,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                       className="error-message text-red-700 text-xs px-2"
                     />
                   </div>
+
                   <div className="mb-3 space-y-2 w-full text-xs">
                     <Label
                       name="Email Id*"

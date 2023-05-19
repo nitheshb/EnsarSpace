@@ -6,6 +6,7 @@ import PieChartComp from './PieChart'
 
 const LeadsCoversionGraphs = () => {
   return (
+
     <div
       style={{
         padding: '1rem',
@@ -55,8 +56,8 @@ const LeadsCoversionGraphs = () => {
             ))}
           </div>
         </div>
-        <div style={{ border: '1px solid red', width: '75%' }}>
-          <div style={{ border: '1px solid red', display: 'flex' }}>
+        <div style={{ border: '1px solid black', width: '75%' }}>
+          <div style={{ border: '1px solid black', display: 'flex' }}>
             <Bargraph />
           </div>
           <div style={{ display: 'flex' }}>
@@ -106,7 +107,7 @@ const LeadsCoversionGraphs = () => {
               </div>
               <div
                 style={{
-                 
+
                   width: '100%',
                   height: '12rem',
                   position: 'relative',
@@ -151,7 +152,7 @@ const LeadsCoversionGraphs = () => {
             </div>
             <div
               style={{
-                border: '1px solid red',
+                border: '1px solid black',
                 width: '75%',
 
                 display: 'flex',
@@ -170,23 +171,8 @@ const LeadsCoversionGraphs = () => {
                   alignItems: 'center',
                 }}
               >
-                <div style={{ border: '1px solid red', height: '30%' }}></div>
-                <div style={{ border: '1px solid red' }}>
-                  <LineGraph />
-                </div>
-              </div>
-              <div
-                style={{
-                  border: '1px solid red',
-                  height: '7rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                }}
-              >
-                <div style={{ border: '1px solid red', height: '30%' }}></div>
-                <div style={{ border: '1px solid red' }}>
+                <div style={{ border: '1px solid black', height: '30%' }}></div>
+                <div style={{ border: '1px solid black' }}>
                   <LineGraph />
                 </div>
               </div>
@@ -200,8 +186,23 @@ const LeadsCoversionGraphs = () => {
                   alignItems: 'center',
                 }}
               >
-                <div style={{ border: '1px solid red', height: '30%' }}></div>
-                <div style={{ border: '1px solid red' }}>
+                <div style={{ border: '1px solid black', height: '30%' }}></div>
+                <div style={{ border: '1px solid black' }}>
+                  <LineGraph />
+                </div>
+              </div>
+              <div
+                style={{
+                  border: '1px solid blue',
+                  height: '7rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}
+              >
+                <div style={{ border: '1px solid black', height: '30%' }}></div>
+                <div style={{ border: '1px solid black' }}>
                   <LineGraph />
                 </div>
               </div>

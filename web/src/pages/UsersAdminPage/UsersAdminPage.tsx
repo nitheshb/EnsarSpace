@@ -3,16 +3,16 @@ import { Fragment, useState } from 'react'
 import { MetaTags } from '@redwoodjs/web'
 
 import SlimSideMenuBar from 'src/components/A_SideMenu/slimSideMenu'
-import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
-import HeadNavBar from 'src/components/HeadNavBar/HeadNavBar'
+// import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
 import HeadNavBar2 from 'src/components/HeadNavBar/HeadNavBar2'
-import HeadSideBar from 'src/components/HeadSideBar/HeadSideBar'
-import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
+// import HeadSideBar from 'src/components/HeadSideBar/HeadSideBar'
+// import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
+import OnBoarding from 'src/components/TableComp/OnBoarding'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
-import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
+
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -83,7 +83,7 @@ const UsersAdminPage = () => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-  
+
 
                   >
                     <path
@@ -108,6 +108,12 @@ const UsersAdminPage = () => {
               </>
             )}
 
+            {viewable === 'On Boarding' && (
+              <>
+                <OnBoarding />
+              </>
+            )}
+
             {viewable === 'My Activity' && (
               <>
                 <MyActivityHome source={'individual'} />
@@ -118,6 +124,15 @@ const UsersAdminPage = () => {
               <>
                 <MyActivityHome source={'team'} />
               </>
+            )}
+            {viewable === 'Pay Slips' && (
+
+              <>
+
+                {/* <UserAccessTable /> */}
+
+              </>
+
             )}
 
             <SUserSignup

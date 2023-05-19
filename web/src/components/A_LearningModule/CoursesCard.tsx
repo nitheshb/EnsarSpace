@@ -13,6 +13,10 @@ const CoursesCard = (props) => {
     creator,
     actual_price,
     discounted_price,
+
+// Remove Unwanted Data
+
+
     rating_count,
     rating_star,
     category,
