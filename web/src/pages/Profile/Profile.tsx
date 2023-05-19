@@ -80,7 +80,9 @@ const Profile = () => {
             <div style={{ overflow: 'hidden' }} className="md:flex md:flex-row md:gap-x-8 w-full">
 
 
-              <div className="flex flex-col">
+
+
+                <div className="flex flex-col">
                 <div style={{ position: 'relative' }} className="md:w-[20vw] flex flex-col justify-between items-center md:h-[50vh] rounded-md bg-gray-100">
                   <img className="w-full relative mt-4" src={bg} alt="bg profile" />
                   <div className="w-32 h-32 absolute mt-4 bg-gray-400 rounded-full">
@@ -116,18 +118,22 @@ const Profile = () => {
                   </p>
                 </div>
 
-                {/* <div className="border border-black rounded-lg p-2"> */}
-                {/* <div className="flex-grow mt-[10%]" style={{}}> */}
-                <div className="flex-grow mt-[10%] flex flex-col items-center justify-center">
-                  <h1 className="text-lg font-bold text-gray-800">
+                <h1 className="flex-grow mt-[10%] flex flex-col items-center justify-center bg-white rounded-md border border-white w-full">
                     ManageYourAccount
                   </h1>
-                  <div className="border border-black rounded-lg p-8">
+
+                {/* <div className="border border-black rounded-lg p-2"> */}
+                {/* <div className="flex-grow mt-[10%]" style={{}}> */}
+                <div className="flex-grow mt-[10%] flex flex-col items-center justify-center bg-white rounded-md">
+                  {/* <h1 className="text-lg font-bold text-gray-800">
+                    ManageYourAccount
+                  </h1> */}
+                  <div className="border rounded-lg p-8">
                   {/* <label className="block border border-black rounded-lg p-2"> */}
 
                   <ul className="space-y-1">
-                <li>
 
+                <li style={{ borderBottomWidth: '2px', paddingBottom: '10px' }}>
 
                    <Link
                     to="/about"
@@ -196,7 +202,7 @@ const Profile = () => {
                </ul>
 
                <div className="mt-8">
-                 <h2 className="text-gray-600 font-medium mb-4">CONTACT</h2>
+                 <h2 className="text-gray-600 font-medium mb-4" style={{ borderBottomWidth: '2px',paddingBottom: '10px' }}>CONTACT</h2>
                    {/* <p className="text-gray-800 mb-4">deepthi@ensarsolutions.com</p> */}
 
                    <div className="flex items-center">
@@ -213,9 +219,14 @@ const Profile = () => {
 
 
 
-              <h2 className="text-gray-600 font-medium mb-4">TEAMS</h2>
+              {/* <h2 className="text-gray-600 font-medium mb-4" style={{ borderBottomWidth: '2px' }}>TEAMS</h2> */}
+              <h2 className="text-gray-600 font-medium mb-4" style={{ borderBottomWidth: '2px', paddingBottom: '10px' }}>
+                TEAMS
+                </h2>
 
-                {/* <div className="flex items-center">
+
+
+{/* <div className="flex items-center">
    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" className="mr-2">
      <path fill="none" d="M0 0h24v24H0z" />
     <path d="M13 11v2h-2v-2H8v-2h3V7h2v2h3v2h-3zM3 3v18h18V3H3zm16 16H5V5h14v14z" />
@@ -281,7 +292,7 @@ const Profile = () => {
           </div>
 
         </div>
-      </div>
+       </div>
 
 
   )
