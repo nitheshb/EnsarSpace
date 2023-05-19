@@ -81,7 +81,9 @@ const StyledCheckBox = styled(Checkbox)(() => ({
 }))
 
 const UserAccessTable = () => {
-  const [category, setCategory] = useState('all')
+  const [category, setCategory, ] = useState('all')
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
   const [settings, setSettings] = useState([])
   const [filterData, setFilterData] = useState([])
   const { user } = useAuth()
@@ -156,11 +158,12 @@ const UserAccessTable = () => {
         <StyledButton
           variant="outlined"
           size="small"
-          isCategoryMatched={category === 'admin'}
-          onClick={() => setCategory('admin')}
+          isCategoryMatched={selectedCategory === 'trainee'}
+          onClick={() => setSelectedCategory('trainee')}
         >
           TRAINEE
         </StyledButton>
+
         <StyledButton
           variant="outlined"
           size="small"
@@ -199,7 +202,7 @@ const UserAccessTable = () => {
           isCategoryMatched={category === 'sales'}
           onClick={() => setCategory('sales')}
         >
-            EXECUTIVE
+          EXECUTIVE
         </StyledButton>
         <StyledButton
           variant="outlined"
@@ -207,7 +210,7 @@ const UserAccessTable = () => {
           isCategoryMatched={category === 'sales'}
           onClick={() => setCategory('sales')}
         >
-           HR
+          HR
         </StyledButton>
         <StyledButton
           variant="outlined"
@@ -225,7 +228,6 @@ const UserAccessTable = () => {
           overflowX: 'auto',
         }}
       >
-
         <Table stickyHeader>
           <StyledTableHead>
             <StyledTableRow>
