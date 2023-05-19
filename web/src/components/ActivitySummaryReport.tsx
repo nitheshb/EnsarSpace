@@ -48,6 +48,7 @@ import { serialProjecVisitFixedData } from './LeadsTeamReport/serialProjectVisit
 import { serialMyData } from './LeadsTeamReport/SourceLeads'
 import ReportSideWindow from './SiderForm/ReportSideView'
 import SiderForm from './SiderForm/SiderForm'
+import ActivitySummary from './A_HrModule/ActivitySummary'
 
 const valueFeedData = [
   { k: 'Total', v: 300, pic: '' },
@@ -58,7 +59,7 @@ const valueFeedData = [
   { k: 'Not Interested', v: 50, pic: '' },
 ]
 
-const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
+const ActivitySummaryReport = ({ project, onSliderOpen = () => { }, isEdit }) => {
   // const [unitsView, setUnitsView] = useState(false)
   // const [areaView, setAreaView] = useState(false)
   // const [valueView, setValueView] = useState(false)
@@ -1052,7 +1053,11 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
   return (
     <div>
       <section className="pb-8 pt-1 mb-8 leading-7 text-gray-900 bg-white ">
-        <div className="box-border px-4 mx-auto border-solid sm:px-6 md:px-6 lg:px-8 max-w-full ">
+        <div className="box-border px-4 mx-auto border-solid sm:px-6 md:px-6 lg:px-8 max-w-full "
+          style={{
+            paddingLeft: '0px',
+            paddingRight: '0px'
+          }}>
           <div className="flex flex-col  leading-7  text-gray-900 border-0 border-gray-200 ">
             <div className="flex items-center flex-shrink-0  px-0  pl-0 border-b border-grey  mb-2">
               {/* <Link
@@ -1068,13 +1073,13 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
             <div className="flex overflow-x-auto ml-2 border-b pb-2">
               <section className="mt-4">Reports</section>
               {[
-                { label: 'Leads Performance', value: 'lead_perf' },
-                { label: 'Site Visits', value: 'site_visits' },
-                { label: 'Source Report', value: 'source_report' },
-                { label: 'Employee Report', value: 'emp_status_report' },
-                { label: 'Project Leads Report', value: 'proj_leads_report' },
-                { label: 'Employee Leads Report', value: 'emp_leads_report' },
-                { label: 'Employee Tasks', value: 'emp_tasks' },
+                { label: 'Activity Summary Report', value: 'lead_perf' },
+                { label: 'User Engagement Report', value: 'site_visits' },
+                { label: 'User Performance Report', value: 'source_report' },
+                { label: 'User Conversion Report', value: 'emp_status_report' },
+                { label: 'User Retention Report', value: 'proj_leads_report' },
+                { label: 'User Feedback Report', value: 'emp_leads_report' },
+                { label: 'User Satisfaction Report', value: 'emp_tasks' },
               ].map((data, i) => {
                 return (
                   <section
@@ -1087,11 +1092,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                   >
                     <button>
                       <span
-                        className={`flex ml-2 items-center h-6 px-3 text-xs  ${
-                          selCat === data.value
-                            ? 'font-normal text-green-800 bg-[#FFEDEA]'
-                            : 'font-normal text-black-100 bg-[#f0f8ff]'
-                        }  rounded-full`}
+                        className={`flex ml-2 items-center h-6 px-3 text-xs  ${selCat === data.value
+                          ? 'font-normal text-green-800 bg-[#FFEDEA]'
+                          : 'font-normal text-black-100 bg-[#f0f8ff]'
+                          }  rounded-full`}
                       >
                         {/* <PencilIcon className="h-3 w-3 mr-1" aria-hidden="true" /> */}
                         <img alt="" src="/temp2.png" className="h-3 w-3 mr-1" />
@@ -1264,16 +1268,16 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
           </div>
           {selCat === 'lead_perf' && (
             <div
-              className="flex flex-col  mt-14 drop-shadow-md rounded-lg  px-4"
+              className="flex flex-col  mt-2 drop-shadow-md rounded-lg  px-4"
               style={{ backgroundColor: '#ebfafa' }}
             >
               <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                   <div className="overflow-hidden">
-                    <div className=" text-md font-bold leading-none pl-0 mt-4 border-b pb-4 mb-4 ">
-                      {`Employee vs Tasks `}
+                    <div className=" text-md font-bold leading-none pl-0 mt-4 border-b pb-2 mb-4 ">
+                      {`Activity Summary `}
                     </div>
-                    <LeadsCoversionGraphs />
+                    <ActivitySummary />
                   </div>
                 </div>
               </div>
@@ -1370,9 +1374,8 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             <th
                               key={i}
                               scope="col"
-                              className={`text-sm font-medium text-gray-900 px-6 py-4 ${
-                                ['Name'].includes(d.label) ? 'text-left' : ''
-                              }`}
+                              className={`text-sm font-medium text-gray-900 px-6 py-4 ${['Name'].includes(d.label) ? 'text-left' : ''
+                                }`}
                               onClick={() => {
                                 if (['inprogress', 'archieve'].includes(d.id))
                                   showColumnsSourceFun(d.id)
@@ -1387,11 +1390,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                         {empPerDayTasksCountsA?.map((data, i) => {
                           return (
                             <tr
-                              className={`  ${
-                                i % 2 === 0
-                                  ? 'bg-white border-blue-200'
-                                  : 'bg-gray-100'
-                              }`}
+                              className={`  ${i % 2 === 0
+                                ? 'bg-white border-blue-200'
+                                : 'bg-gray-100'
+                                }`}
                               key={i}
                             >
                               <td className="text-sm text-gray-900 font-medium px-6 py-2 whitespace-nowrap text-left">
@@ -1466,51 +1468,51 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                               previousValue.Total + currentValue.Total,
                             0
                           )} */}
-                            {}
+                            { }
                           </td>
                           <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
+                            { }
                           </td>
                           <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
-                          </td>
-
-                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
-                          </td>
-                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
-                          </td>
-                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
-                          </td>
-                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
-                          </td>
-                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
-                          </td>
-                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
-                          </td>
-                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
+                            { }
                           </td>
 
                           <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
+                            { }
                           </td>
                           <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
+                            { }
                           </td>
                           <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
+                            { }
                           </td>
                           <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
+                            { }
                           </td>
                           <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-                            {}
+                            { }
+                          </td>
+                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
+                            { }
+                          </td>
+                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
+                            { }
+                          </td>
+
+                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
+                            { }
+                          </td>
+                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
+                            { }
+                          </td>
+                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
+                            { }
+                          </td>
+                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
+                            { }
+                          </td>
+                          <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
+                            { }
                           </td>
                         </tr>
                       </tbody>
@@ -1545,11 +1547,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                               }}
                             >
                               <span
-                                className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                                  sourceDateRange === startOfDay(d).getTime()
-                                    ? 'font-semibold text-pink-800 bg-pink-200 '
-                                    : 'text-green-800 bg-green-200 '
-                                }rounded-full`}
+                                className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange === startOfDay(d).getTime()
+                                  ? 'font-semibold text-pink-800 bg-pink-200 '
+                                  : 'text-green-800 bg-green-200 '
+                                  }rounded-full`}
                               >
                                 <EyeIcon
                                   className="h-3 w-3 mr-1"
@@ -1567,11 +1568,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             }}
                           >
                             <span
-                              className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                                sourceDateRange === startOfWeek(d).getTime()
-                                  ? 'font-semibold text-pink-800 bg-pink-200 '
-                                  : 'text-green-800 bg-green-200 '
-                              }rounded-full`}
+                              className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange === startOfWeek(d).getTime()
+                                ? 'font-semibold text-pink-800 bg-pink-200 '
+                                : 'text-green-800 bg-green-200 '
+                                }rounded-full`}
                             >
                               <CalendarIcon
                                 className="h-3 w-3 mr-1"
@@ -1586,11 +1586,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             }}
                           >
                             <span
-                              className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                                sourceDateRange === startOfMonth(d).getTime()
-                                  ? 'font-semibold text-pink-800 bg-pink-200 '
-                                  : 'text-green-800 bg-green-200 '
-                              }rounded-full`}
+                              className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange === startOfMonth(d).getTime()
+                                ? 'font-semibold text-pink-800 bg-pink-200 '
+                                : 'text-green-800 bg-green-200 '
+                                }rounded-full`}
                             >
                               <CalendarIcon
                                 className="h-3 w-3 mr-1"
@@ -1607,12 +1606,11 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             }}
                           >
                             <span
-                              className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                                sourceDateRange ===
+                              className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange ===
                                 subMonths(startOfMonth(d), 6).getTime()
-                                  ? 'font-semibold text-pink-800 bg-pink-200 '
-                                  : 'text-green-800 bg-green-200 '
-                              }rounded-full`}
+                                ? 'font-semibold text-pink-800 bg-pink-200 '
+                                : 'text-green-800 bg-green-200 '
+                                }rounded-full`}
                             >
                               <CalendarIcon
                                 className="h-3 w-3 mr-1"
@@ -1625,11 +1623,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             <label className="bg-green   pl-   flex flex-row cursor-pointer">
                               {!isOpened && (
                                 <span
-                                  className={`flex ml-1 mt-[6px] items-center h-6 px-3 text-xs ${
-                                    sourceDateRange === startDate?.getTime()
-                                      ? 'font-semibold text-pink-800 bg-pink-200 '
-                                      : 'text-green-800 bg-green-200 '
-                                  } rounded-full`}
+                                  className={`flex ml-1 mt-[6px] items-center h-6 px-3 text-xs ${sourceDateRange === startDate?.getTime()
+                                    ? 'font-semibold text-pink-800 bg-pink-200 '
+                                    : 'text-green-800 bg-green-200 '
+                                    } rounded-full`}
                                   onClick={() => {
                                     setIsOpened(true)
                                   }}
@@ -1642,8 +1639,8 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                                   {/* {sourceDateRange} -- {startDate?.getTime()} */}
                                   {startDate != null
                                     ? prettyDate(
-                                        startDate?.getTime() + 21600000
-                                      )
+                                      startDate?.getTime() + 21600000
+                                    )
                                     : ''}
                                   {endDate != null ? '-' : ''}
                                   {endDate != null
@@ -1659,11 +1656,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                                   }}
                                 >
                                   <DatePicker
-                                    className={`z-10 pl- py-1 px-3 mt-[7px] inline text-xs text-[#0091ae] placeholder-green-800 cursor-pointer  max-w-fit   ${
-                                      sourceDateRange === startDate?.getTime()
-                                        ? 'font-semibold text-pink-800 bg-pink-200 '
-                                        : 'text-green-800 bg-green-200 '
-                                    } rounded-full`}
+                                    className={`z-10 pl- py-1 px-3 mt-[7px] inline text-xs text-[#0091ae] placeholder-green-800 cursor-pointer  max-w-fit   ${sourceDateRange === startDate?.getTime()
+                                      ? 'font-semibold text-pink-800 bg-pink-200 '
+                                      : 'text-green-800 bg-green-200 '
+                                      } rounded-full`}
                                     onCalendarClose={() => setIsOpened(false)}
                                     placeholderText="&#128467;	 Custom"
                                     onChange={(update) => {
@@ -1737,23 +1733,22 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                               <th
                                 key={i}
                                 scope="col"
-                                className={`text-sm font-medium text-gray-900 px-6 py-4 ${
-                                  ['Source'].includes(d.label)
-                                    ? 'text-left'
-                                    : ''
-                                }`}
+                                className={`text-sm font-medium text-gray-900 px-6 py-4 ${['Source'].includes(d.label)
+                                  ? 'text-left'
+                                  : ''
+                                  }`}
                                 style={{
                                   display: viewSourceStats1A.includes(d.id)
                                     ? ''
                                     : 'none',
                                   color:
                                     ['inprogress'].includes(d.id) &&
-                                    showInproFSource
+                                      showInproFSource
                                       ? 'blue'
                                       : ['archieve'].includes(d.id) &&
                                         showArchiFSource
-                                      ? 'blue'
-                                      : 'black',
+                                        ? 'blue'
+                                        : 'black',
                                 }}
                                 onClick={() => {
                                   if (['inprogress', 'archieve'].includes(d.id))
@@ -1793,11 +1788,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           {leadsLogFilData.map((data, i) => {
                             return (
                               <tr
-                                className={` ${
-                                  i % 2 === 0
-                                    ? 'bg-white border-blue-200'
-                                    : 'bg-gray-100'
-                                }`}
+                                className={` ${i % 2 === 0
+                                  ? 'bg-white border-blue-200'
+                                  : 'bg-gray-100'
+                                  }`}
                                 key={i}
                               >
                                 <td className="text-sm text-gray-900 font-medium px-6 py-2 whitespace-nowrap text-left">
@@ -2263,7 +2257,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                         update LeadsLastUpdatetTime
                       </div>
 
-                      {}
+                      { }
                     </section>
 
                     <section className="flex flex-row justify-between mt-[18px]">
@@ -2277,11 +2271,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             }}
                           >
                             <span
-                              className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                                sourceDateRange === startOfDay(d).getTime()
-                                  ? 'font-semibold text-pink-800 bg-pink-200 '
-                                  : 'text-green-800 bg-green-200 '
-                              }rounded-full`}
+                              className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange === startOfDay(d).getTime()
+                                ? 'font-semibold text-pink-800 bg-pink-200 '
+                                : 'text-green-800 bg-green-200 '
+                                }rounded-full`}
                             >
                               <EyeIcon
                                 className="h-3 w-3 mr-1"
@@ -2300,11 +2293,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           }}
                         >
                           <span
-                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                              sourceDateRange === startOfWeek(d).getTime()
-                                ? 'font-semibold text-pink-800 bg-pink-200 '
-                                : 'text-green-800 bg-green-200 '
-                            }rounded-full`}
+                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange === startOfWeek(d).getTime()
+                              ? 'font-semibold text-pink-800 bg-pink-200 '
+                              : 'text-green-800 bg-green-200 '
+                              }rounded-full`}
                           >
                             <CalendarIcon
                               className="h-3 w-3 mr-1"
@@ -2320,11 +2312,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           }}
                         >
                           <span
-                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                              sourceDateRange === startOfMonth(d).getTime()
-                                ? 'font-semibold text-pink-800 bg-pink-200 '
-                                : 'text-green-800 bg-green-200 '
-                            }rounded-full`}
+                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange === startOfMonth(d).getTime()
+                              ? 'font-semibold text-pink-800 bg-pink-200 '
+                              : 'text-green-800 bg-green-200 '
+                              }rounded-full`}
                           >
                             <CalendarIcon
                               className="h-3 w-3 mr-1"
@@ -2342,12 +2333,11 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           }}
                         >
                           <span
-                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                              sourceDateRange ===
+                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange ===
                               subMonths(startOfMonth(d), 6).getTime()
-                                ? 'font-semibold text-pink-800 bg-pink-200 '
-                                : 'text-green-800 bg-green-200 '
-                            }rounded-full`}
+                              ? 'font-semibold text-pink-800 bg-pink-200 '
+                              : 'text-green-800 bg-green-200 '
+                              }rounded-full`}
                           >
                             <CalendarIcon
                               className="h-3 w-3 mr-1"
@@ -2360,11 +2350,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           <label className="bg-green   pl-   flex flex-row cursor-pointer">
                             {!isOpened && (
                               <span
-                                className={`flex ml-1 mt-[6px] items-center h-6 px-3 text-xs ${
-                                  sourceDateRange === startDate?.getTime()
-                                    ? 'font-semibold text-pink-800 bg-pink-200 '
-                                    : 'text-green-800 bg-green-200 '
-                                } rounded-full`}
+                                className={`flex ml-1 mt-[6px] items-center h-6 px-3 text-xs ${sourceDateRange === startDate?.getTime()
+                                  ? 'font-semibold text-pink-800 bg-pink-200 '
+                                  : 'text-green-800 bg-green-200 '
+                                  } rounded-full`}
                                 onClick={() => {
                                   setIsOpened(true)
                                 }}
@@ -2391,11 +2380,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                                 }}
                               >
                                 <DatePicker
-                                  className={`z-10 pl- py-1 px-3 mt-[7px] inline text-xs text-[#0091ae] placeholder-green-800 cursor-pointer  max-w-fit   ${
-                                    sourceDateRange === startDate?.getTime()
-                                      ? 'font-semibold text-pink-800 bg-pink-200 '
-                                      : 'text-green-800 bg-green-200 '
-                                  } rounded-full`}
+                                  className={`z-10 pl- py-1 px-3 mt-[7px] inline text-xs text-[#0091ae] placeholder-green-800 cursor-pointer  max-w-fit   ${sourceDateRange === startDate?.getTime()
+                                    ? 'font-semibold text-pink-800 bg-pink-200 '
+                                    : 'text-green-800 bg-green-200 '
+                                    } rounded-full`}
                                   onCalendarClose={() => setIsOpened(false)}
                                   placeholderText="&#128467;	 Custom"
                                   onChange={(update) => {
@@ -2491,21 +2479,20 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             <th
                               key={i}
                               scope="col"
-                              className={`text-sm font-medium text-gray-900 px-6 py-4 ${
-                                ['Source'].includes(d.label) ? 'text-left' : ''
-                              }`}
+                              className={`text-sm font-medium text-gray-900 px-6 py-4 ${['Source'].includes(d.label) ? 'text-left' : ''
+                                }`}
                               style={{
                                 display: viewSourceStats1A.includes(d.id)
                                   ? ''
                                   : 'none',
                                 color:
                                   ['inprogress'].includes(d.id) &&
-                                  showInproFSource
+                                    showInproFSource
                                     ? 'blue'
                                     : ['archieve'].includes(d.id) &&
                                       showArchiFSource
-                                    ? 'blue'
-                                    : 'black',
+                                      ? 'blue'
+                                      : 'black',
                               }}
                               onClick={() => {
                                 if (['inprogress', 'archieve'].includes(d.id))
@@ -2545,11 +2532,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                         {sourceFiltListTuned.map((data, i) => {
                           return (
                             <tr
-                              className={`  ${
-                                i % 2 === 0
-                                  ? 'bg-white border-blue-200'
-                                  : 'bg-gray-100'
-                              }`}
+                              className={`  ${i % 2 === 0
+                                ? 'bg-white border-blue-200'
+                                : 'bg-gray-100'
+                                }`}
                               key={i}
                             >
                               <td className="text-sm text-gray-900 font-medium px-6 py-2 whitespace-nowrap text-left">
@@ -2772,11 +2758,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             }}
                           >
                             <span
-                              className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                                sourceDateRange === startOfDay(d).getTime()
-                                  ? 'font-semibold text-pink-800 bg-pink-200 '
-                                  : 'text-green-800 bg-green-200 '
-                              }rounded-full`}
+                              className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange === startOfDay(d).getTime()
+                                ? 'font-semibold text-pink-800 bg-pink-200 '
+                                : 'text-green-800 bg-green-200 '
+                                }rounded-full`}
                             >
                               <EyeIcon
                                 className="h-3 w-3 mr-1"
@@ -2796,11 +2781,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           }}
                         >
                           <span
-                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                              sourceDateRange === startOfWeek(d).getTime()
-                                ? 'font-semibold text-pink-800 bg-pink-200 '
-                                : 'text-green-800 bg-green-200 '
-                            }rounded-full`}
+                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange === startOfWeek(d).getTime()
+                              ? 'font-semibold text-pink-800 bg-pink-200 '
+                              : 'text-green-800 bg-green-200 '
+                              }rounded-full`}
                           >
                             <CalendarIcon
                               className="h-3 w-3 mr-1"
@@ -2817,11 +2801,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           }}
                         >
                           <span
-                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                              sourceDateRange === startOfMonth(d).getTime()
-                                ? 'font-semibold text-pink-800 bg-pink-200 '
-                                : 'text-green-800 bg-green-200 '
-                            }rounded-full`}
+                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange === startOfMonth(d).getTime()
+                              ? 'font-semibold text-pink-800 bg-pink-200 '
+                              : 'text-green-800 bg-green-200 '
+                              }rounded-full`}
                           >
                             <CalendarIcon
                               className="h-3 w-3 mr-1"
@@ -2840,12 +2823,11 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           }}
                         >
                           <span
-                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                              sourceDateRange ===
+                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange ===
                               subMonths(startOfMonth(d), 6).getTime()
-                                ? 'font-semibold text-pink-800 bg-pink-200 '
-                                : 'text-green-800 bg-green-200 '
-                            } rounded-full`}
+                              ? 'font-semibold text-pink-800 bg-pink-200 '
+                              : 'text-green-800 bg-green-200 '
+                              } rounded-full`}
                           >
                             <CalendarIcon
                               className="h-3 w-3 mr-1"
@@ -2858,11 +2840,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           <label className="bg-green   pl-   flex flex-row cursor-pointer">
                             {!isOpened && (
                               <span
-                                className={`flex ml-1 mt-[6px] items-center h-6 px-3 text-xs ${
-                                  sourceDateRange === startDate?.getTime()
-                                    ? 'font-semibold text-pink-800 bg-pink-200 '
-                                    : 'text-green-800 bg-green-200 '
-                                } rounded-full`}
+                                className={`flex ml-1 mt-[6px] items-center h-6 px-3 text-xs ${sourceDateRange === startDate?.getTime()
+                                  ? 'font-semibold text-pink-800 bg-pink-200 '
+                                  : 'text-green-800 bg-green-200 '
+                                  } rounded-full`}
                                 onClick={() => {
                                   setIsOpened(true)
                                 }}
@@ -2889,11 +2870,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                                 }}
                               >
                                 <DatePicker
-                                  className={`z-10 pl- py-1 px-3 mt-[7px] inline text-xs text-[#0091ae] placeholder-green-800 cursor-pointer  max-w-fit   ${
-                                    sourceDateRange === startDate?.getTime()
-                                      ? 'font-semibold text-pink-800 bg-pink-200 '
-                                      : 'text-green-800 bg-green-200 '
-                                  } rounded-full`}
+                                  className={`z-10 pl- py-1 px-3 mt-[7px] inline text-xs text-[#0091ae] placeholder-green-800 cursor-pointer  max-w-fit   ${sourceDateRange === startDate?.getTime()
+                                    ? 'font-semibold text-pink-800 bg-pink-200 '
+                                    : 'text-green-800 bg-green-200 '
+                                    } rounded-full`}
                                   onCalendarClose={() => setIsOpened(false)}
                                   placeholderText="&#128467;	 Custom"
                                   onChange={(update) => {
@@ -3004,23 +2984,22 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             <th
                               key={i}
                               scope="col"
-                              className={`text-sm font-medium text-gray-900 px-6 py-4 ${
-                                ['Employee'].includes(d.label)
-                                  ? 'text-left'
-                                  : ''
-                              }`}
+                              className={`text-sm font-medium text-gray-900 px-6 py-4 ${['Employee'].includes(d.label)
+                                ? 'text-left'
+                                : ''
+                                }`}
                               style={{
                                 display: viewSourceStats1A.includes(d.id)
                                   ? ''
                                   : 'none',
                                 color:
                                   ['inprogress'].includes(d.id) &&
-                                  showInproFSource
+                                    showInproFSource
                                     ? 'blue'
                                     : ['archieve'].includes(d.id) &&
                                       showArchiFSource
-                                    ? 'blue'
-                                    : 'black',
+                                      ? 'blue'
+                                      : 'black',
                               }}
                               onClick={() => {
                                 if (['inprogress', 'archieve'].includes(d.id))
@@ -3060,11 +3039,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                         {empFiltListTuned.map((data, i) => {
                           return (
                             <tr
-                              className={`  ${
-                                i % 2 === 0
-                                  ? 'bg-white border-blue-200'
-                                  : 'bg-gray-100'
-                              }`}
+                              className={`  ${i % 2 === 0
+                                ? 'bg-white border-blue-200'
+                                : 'bg-gray-100'
+                                }`}
                               key={i}
                             >
                               <td className="text-sm text-gray-900 font-medium px-6 py-2 whitespace-nowrap text-left">
@@ -3277,11 +3255,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             }}
                           >
                             <span
-                              className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                                sourceDateRange === startOfDay(d).getTime()
-                                  ? 'font-semibold text-pink-800 bg-pink-200 '
-                                  : 'text-green-800 bg-green-200 '
-                              }rounded-full`}
+                              className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange === startOfDay(d).getTime()
+                                ? 'font-semibold text-pink-800 bg-pink-200 '
+                                : 'text-green-800 bg-green-200 '
+                                }rounded-full`}
                             >
                               <EyeIcon
                                 className="h-3 w-3 mr-1"
@@ -3299,11 +3276,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           }}
                         >
                           <span
-                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                              sourceDateRange === startOfWeek(d).getTime()
-                                ? 'font-semibold text-pink-800 bg-pink-200 '
-                                : 'text-green-800 bg-green-200 '
-                            }rounded-full`}
+                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange === startOfWeek(d).getTime()
+                              ? 'font-semibold text-pink-800 bg-pink-200 '
+                              : 'text-green-800 bg-green-200 '
+                              }rounded-full`}
                           >
                             <CalendarIcon
                               className="h-3 w-3 mr-1"
@@ -3318,11 +3294,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           }}
                         >
                           <span
-                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                              sourceDateRange === startOfMonth(d).getTime()
-                                ? 'font-semibold text-pink-800 bg-pink-200 '
-                                : 'text-green-800 bg-green-200 '
-                            }rounded-full`}
+                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange === startOfMonth(d).getTime()
+                              ? 'font-semibold text-pink-800 bg-pink-200 '
+                              : 'text-green-800 bg-green-200 '
+                              }rounded-full`}
                           >
                             <CalendarIcon
                               className="h-3 w-3 mr-1"
@@ -3339,12 +3314,11 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           }}
                         >
                           <span
-                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${
-                              sourceDateRange ===
+                            className={`flex ml-2 mt-[5px] items-center h-6 px-3 text-xs ${sourceDateRange ===
                               subMonths(startOfMonth(d), 6).getTime()
-                                ? 'font-semibold text-pink-800 bg-pink-200 '
-                                : 'text-green-800 bg-green-200 '
-                            }rounded-full`}
+                              ? 'font-semibold text-pink-800 bg-pink-200 '
+                              : 'text-green-800 bg-green-200 '
+                              }rounded-full`}
                           >
                             <CalendarIcon
                               className="h-3 w-3 mr-1"
@@ -3357,11 +3331,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           <label className="bg-green   pl-   flex flex-row cursor-pointer">
                             {!isOpened && (
                               <span
-                                className={`flex ml-1 mt-[6px] items-center h-6 px-3 text-xs ${
-                                  sourceDateRange === startDate?.getTime()
-                                    ? 'font-semibold text-pink-800 bg-pink-200 '
-                                    : 'text-green-800 bg-green-200 '
-                                } rounded-full`}
+                                className={`flex ml-1 mt-[6px] items-center h-6 px-3 text-xs ${sourceDateRange === startDate?.getTime()
+                                  ? 'font-semibold text-pink-800 bg-pink-200 '
+                                  : 'text-green-800 bg-green-200 '
+                                  } rounded-full`}
                                 onClick={() => {
                                   setIsOpened(true)
                                 }}
@@ -3389,11 +3362,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                                 }}
                               >
                                 <DatePicker
-                                  className={`z-10 pl- py-1 px-3 mt-[7px] inline text-xs text-[#0091ae] placeholder-green-800 cursor-pointer  max-w-fit   ${
-                                    sourceDateRange === startDate?.getTime()
-                                      ? 'font-semibold text-pink-800 bg-pink-200 '
-                                      : 'text-green-800 bg-green-200 '
-                                  } rounded-full`}
+                                  className={`z-10 pl- py-1 px-3 mt-[7px] inline text-xs text-[#0091ae] placeholder-green-800 cursor-pointer  max-w-fit   ${sourceDateRange === startDate?.getTime()
+                                    ? 'font-semibold text-pink-800 bg-pink-200 '
+                                    : 'text-green-800 bg-green-200 '
+                                    } rounded-full`}
                                   onCalendarClose={() => setIsOpened(false)}
                                   placeholderText="&#128467;	 Custom"
                                   onChange={(update) => {
@@ -3467,21 +3439,20 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             <th
                               key={i}
                               scope="col"
-                              className={`text-sm font-medium text-gray-900 px-6 py-4 ${
-                                ['Source'].includes(d.label) ? 'text-left' : ''
-                              }`}
+                              className={`text-sm font-medium text-gray-900 px-6 py-4 ${['Source'].includes(d.label) ? 'text-left' : ''
+                                }`}
                               style={{
                                 display: viewSourceStats1A.includes(d.id)
                                   ? ''
                                   : 'none',
                                 color:
                                   ['inprogress'].includes(d.id) &&
-                                  showInproFSource
+                                    showInproFSource
                                     ? 'blue'
                                     : ['archieve'].includes(d.id) &&
                                       showArchiFSource
-                                    ? 'blue'
-                                    : 'black',
+                                      ? 'blue'
+                                      : 'black',
                               }}
                               onClick={() => {
                                 if (['inprogress', 'archieve'].includes(d.id))
@@ -3521,11 +3492,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                         {projectFilList.map((data, i) => {
                           return (
                             <tr
-                              className={` ${
-                                i % 2 === 0
-                                  ? 'bg-white border-blue-200'
-                                  : 'bg-gray-100'
-                              }`}
+                              className={` ${i % 2 === 0
+                                ? 'bg-white border-blue-200'
+                                : 'bg-gray-100'
+                                }`}
                               key={i}
                             >
                               <td className="text-sm text-gray-900 font-medium px-6 py-2 whitespace-nowrap text-left">
@@ -3787,9 +3757,8 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             <th
                               key={i}
                               scope="col"
-                              className={`text-sm font-medium text-gray-900 px-6 py-4 ${
-                                ['Name'].includes(d.label) ? 'text-left' : ''
-                              }`}
+                              className={`text-sm font-medium text-gray-900 px-6 py-4 ${['Name'].includes(d.label) ? 'text-left' : ''
+                                }`}
                               onClick={() => {
                                 if (['inprogress', 'archieve'].includes(d.id))
                                   showColumnsSourceFun(d.id)
@@ -3804,11 +3773,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                         {empTaskListTuned?.map((data, i) => {
                           return (
                             <tr
-                              className={`  ${
-                                i % 2 === 0
-                                  ? 'bg-white border-blue-200'
-                                  : 'bg-gray-100'
-                              }`}
+                              className={`  ${i % 2 === 0
+                                ? 'bg-white border-blue-200'
+                                : 'bg-gray-100'
+                                }`}
                               key={i}
                             >
                               <td className="text-sm text-gray-900 font-medium px-6 py-2 whitespace-nowrap text-left">
@@ -3945,4 +3913,4 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
   )
 }
 
-export default LeadsTeamReportBody
+export default ActivitySummaryReport

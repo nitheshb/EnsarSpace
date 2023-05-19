@@ -1674,7 +1674,7 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-            <li className="relative mt-1">
+            {/* <li className="relative mt-1">
               <span
                 className={
                   'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
@@ -1718,7 +1718,7 @@ const SlimSideMenuBar = (props) => {
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                 </span>
               </span>
-            </li>
+            </li> */}
             {(user?.role?.includes(USER_ROLES.HR_MANAGER) ||
               user?.role?.includes(USER_ROLES.ADMIN)) &&(
             <li className="relative mt-1">
