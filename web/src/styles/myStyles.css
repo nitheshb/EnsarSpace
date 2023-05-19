@@ -195,20 +195,23 @@
   margin-top: 0px;
   font-size: 18px;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 3.5;
   text-transform: none;
   white-space: normal;
+  padding-left: -0.75rem;
 }
 
 .css-1lpgd8m {
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 0.1;
   margin-left: 4px;
   text-transform: none;
   white-space: normal;
 }
+
+
 
 .flexCenter {
   display: -webkit-box;

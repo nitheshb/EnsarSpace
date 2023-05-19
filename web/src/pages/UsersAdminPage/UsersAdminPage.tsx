@@ -13,6 +13,7 @@ import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
+import OnBoarding from 'src/components/TableComp/OnBoarding'
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -79,6 +80,12 @@ const UsersAdminPage = () => {
             {viewable === 'Roles Management' && (
               <>
                 <UserAccessTable />
+              </>
+            )}
+
+            {viewable === 'On Boarding' && (
+              <>
+                <OnBoarding />
               </>
             )}
 
