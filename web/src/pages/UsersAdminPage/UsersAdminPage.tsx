@@ -1,15 +1,19 @@
-import { MetaTags } from '@redwoodjs/web'
 import { Fragment, useState } from 'react'
 
-import HeadNavBar from 'src/components/HeadNavBar/HeadNavBar'
-import HeadSideBar from 'src/components/HeadSideBar/HeadSideBar'
-import SUserSignup from 'src/components/SUserSignup/SUserSignup'
-import UserManageTable from 'src/components/UserManageTable/UserManageTable'
-import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
-import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
-import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
+import { MetaTags } from '@redwoodjs/web'
+
 import SlimSideMenuBar from 'src/components/A_SideMenu/slimSideMenu'
+import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
+import HeadNavBar from 'src/components/HeadNavBar/HeadNavBar'
 import HeadNavBar2 from 'src/components/HeadNavBar/HeadNavBar2'
+import HeadSideBar from 'src/components/HeadSideBar/HeadSideBar'
+import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
+import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
+import SUserSignup from 'src/components/SUserSignup/SUserSignup'
+import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
+import UserManageTable from 'src/components/UserManageTable/UserManageTable'
+import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
+import OnBoarding from 'src/components/TableComp/OnBoarding'
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -27,8 +31,6 @@ const UsersAdminPage = () => {
       <MetaTags title="UsersAdmin" description="UsersAdmin page" />
 
       <div className="flex w-screen h-screen text-gray-700">
-
-
         <SlimSideMenuBar
           pgName={'hrModule'}
           sourceLink={'hrModule'}
@@ -43,6 +45,7 @@ const UsersAdminPage = () => {
             selModule={selModule}
             setSelModule={setSelModule}
           />
+          <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">
               {/* <h1 className="text-lg font-medium">redefine.</h1> */}
@@ -84,6 +87,12 @@ const UsersAdminPage = () => {
               </>
             )}
 
+            {viewable === 'On Boarding' && (
+              <>
+                <OnBoarding />
+              </>
+            )}
+
             {viewable === 'My Activity' && (
               <>
                 <MyActivityHome source={'individual'} />
@@ -103,6 +112,20 @@ const UsersAdminPage = () => {
 
               </>
 
+            )}
+
+            {viewable === 'User Report' && (
+              // <ReportMain/>
+              <ActivitySummaryReport
+                project={{
+                  area: 1000,
+                  builderName: 'hello',
+                  location: 'local',
+                  projectName: 'User Report',
+                  projectType: 'aprtment',
+                }}
+                isEdit={false}
+              />
             )}
 
             <SUserSignup

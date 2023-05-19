@@ -55,6 +55,7 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
             pickedValue={selModule}
           />
         </section>
+        
         <GlobalSearchBar />
         <button className="flex items-center justify-center h-10 px-4 ml-auto "></button>
         <button className="flex items-center justify-center h-10 text-sm font-medium "></button>
@@ -96,6 +97,8 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
             'aria-labelledby': 'basic-button',
           }}
         >
+
+          
           <MenuItem onClick={handleClose}>
             <Link to={routes.profile()}>Profile</Link>
           </MenuItem>
