@@ -60,7 +60,7 @@ const UserManageTable = ({ editEmployeeFun }) => {
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <section className="flex ml-auto mt-[18px]  bg-white  border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10">
             {[
-              { label: 'All', val: 'all' },
+              { label: 'All', val: 'All' },
               { label: 'Admin', val: 'admin' },
               { label: 'Crm', val: 'crm' },
               { label: 'Legal', val: 'legal' },
@@ -74,11 +74,10 @@ const UserManageTable = ({ editEmployeeFun }) => {
                 onClick={() => showOnlyDept(dat.val)}
               >
                 <div
-                  className={`py-2 px-8 rounded-full hover:text-indigo-700 hover:bg-indigo-100  ${
-                    selDept.includes(dat.val)
+                  className={`py-2 px-8 rounded-full hover:text-indigo-700 hover:bg-indigo-100  ${selDept.includes(dat.val)
                       ? 'bg-indigo-100 text-indigo-700'
                       : 'text-gray-600'
-                  }`}
+                    }`}
                 >
                   {dat.label}
                 </div>
@@ -93,7 +92,7 @@ const UserManageTable = ({ editEmployeeFun }) => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Name
+                      Name
                   </th>
                   <th
                     scope="col"
@@ -128,24 +127,52 @@ const UserManageTable = ({ editEmployeeFun }) => {
                 {filterData.map((person) => (
                   <motion.tr key={person.email}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
-                          <img
+                       <div className="flex items-center">
+                        {/* <div className="flex-shrink-0 h-10 w-10"> */}
+                          {/* <img
                             className="h-10 w-10 rounded-full"
                             src={
                               'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60'
                             }
                             alt=""
-                          />
-                        </div>
-                        <div className="ml-4">
+                          /> */}
+                          {/* <button className="relative ml-2 text-sm focus:outline-none group items-center justify-center h-10 text-sm font-medium">
+                          <div className="flex items-center justify-between w-10 h-10 rounded-full bg-gray-300">
+                          <span className="text-gray-800 text-lg">{name.charAt(0)}</span>
+                          </div>
+                         </button> */}
+
+
+
+
+                        {/* </div> */}
+
+                        {/* <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">
                             {person.name}
                           </div>
                           <div className="text-sm text-gray-500">
                             {person.email}
                           </div>
-                        </div>
+                        </div> */}
+                        {/* <div className="flex items-center ml-4"> */}
+                          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-300 text-gray-800 text-lg mr-4">
+                            {person.name.charAt(0)}
+                          </div>
+                          <div>
+                            <div className="text-sm font-medium text-gray-900">
+                              {person.name}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              {person.email}
+                            </div>
+                          </div>
+                        {/* </div> */}
+
+
+
+
+
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

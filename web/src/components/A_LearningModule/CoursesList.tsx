@@ -103,6 +103,16 @@ const CourseList = () => {
                 Marketing
               </button>
             </li>
+            <li className="tabs-head-item">
+              <button
+                type="button"
+                className={`tab-btn `}
+                onClick={() => tabHandler('ADD_COURSE')}
+              >
+                Add Course
+              </button>
+            </li>
+
           </ul>
 
           {/* <div className='tabs-body'>
