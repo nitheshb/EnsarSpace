@@ -142,20 +142,6 @@ const UserManageTable = ({ editEmployeeFun }) => {
                           </div>
                          </button> */}
 
-
-
-
-                        {/* </div> */}
-
-                        {/* <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">
-                            {person.name}
-                          </div>
-                          <div className="text-sm text-gray-500">
-                            {person.email}
-                          </div>
-                        </div> */}
-                        {/* <div className="flex items-center ml-4"> */}
                           <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-300 text-gray-800 text-lg mr-4">
                             {person.name.charAt(0)}
                           </div>
@@ -167,12 +153,7 @@ const UserManageTable = ({ editEmployeeFun }) => {
                               {person.email}
                             </div>
                           </div>
-                        {/* </div> */}
-
-
-
-
-
+                       
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

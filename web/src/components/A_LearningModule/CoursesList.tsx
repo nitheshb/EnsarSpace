@@ -29,14 +29,22 @@
 
 // export default CourseList
 import { useState } from 'react'
+import SUserSignup from './addLearning/SUserSignup'
 
 
 import CoursesCard from './CoursesCard'
 const CourseList = () => {
   const [activeTab, setActiveTab] = useState('python')
+
+  const [isOpen, setIsOpen] = useState(false)
+  const handleOnClose = () => setIsOpen(false)
+  const [empData, setEmpData] = useState({})
   const tabHandler = (sel) => {
     setActiveTab(sel)
+    setEmpData(sel)
+    setIsOpen(true)
   }
+
   return (
     <div className="container ml-[50px] mt-8">
       <div className="courses-list-top">
@@ -132,7 +140,12 @@ const CourseList = () => {
             ))}
         </div>
       </div>
-
+      <SUserSignup
+              open={isOpen}
+              setOpen={handleOnClose}
+              title="User"
+              empData={empData}
+            />
       {/* <Tabs courses = {courses} /> */}
     </div>
   )

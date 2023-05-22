@@ -55,21 +55,28 @@ export const USER_ROLES = {
   ADMIN: 'admin',
 }
 
-export const DEPARTMENT_LIST = [
-  { label: 'Select the Department', value: '' },
-  { label: 'Admin', value: 'admin' },
-  { label: 'CRM', value: 'crm' },
-  { label: 'Finance', value: 'finance' },
-  { label: 'Helper', value: 'helper' },
-  { label: 'HR', value: 'hr' },
-  { label: 'Legal', value: 'legal' },
-  { label: 'Project', value: 'project' },
-  { label: 'Support', value: 'support' },
-  { label: 'Sales', value: 'sales' },
-  { label: 'Developer', value: 'developer' },
-  { label: 'Trainer', value: 'trainer' },
-  { label: 'Fresher', value: 'Fresher' },
+export const COURSE_LIST = [
+  { label: 'Select the Course', value: '' },
+  { label: 'Python', value: 'Python' },
+  { label: 'Web Development', value: 'Web Development' },
+  { label: 'Data Science', value: 'Data Science' },
+  { label: 'AWS', value: 'AWS' },
+  { label: 'Java', value: 'Java' },
+  // { label: 'Legal', value: 'legal' },
+  // { label: 'Project', value: 'project' },
+  // { label: 'Support', value: 'support' },
+  // { label: 'Sales', value: 'sales' },
+  // { label: 'Developer', value: 'developer' },
+  // { label: 'Trainer', value: 'trainer' },
+  // { label: 'Fresher', value: 'Fresher' },
 ]
+
+export const GENDER_LIST = [
+  { label: 'Select the Gender', value: '' },
+  { label: 'Male', value: 'Male' },
+  { label: 'Female', value: 'Female' },
+]
+
 
 export const ROLES_LIST = [
   { label: 'Select the role', value: '' },
