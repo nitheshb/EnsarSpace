@@ -81,14 +81,16 @@ const StyledCheckBox = styled(Checkbox)(() => ({
 }))
 
 const UserAccessTable = () => {
-  const [category, setCategory, ] = useState('all')
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [category, setCategory] = useState('all')
+  // const [selectedCategory, setSelectedCategory] = useState('all');
 
   const [settings, setSettings] = useState([])
   const [filterData, setFilterData] = useState([])
   const { user } = useAuth()
   const { orgId } = user
   const { enqueueSnackbar } = useSnackbar()
+  // const [showAll, setShowAll] = useState(true)
+  // const [showTrainee, setShowTrainee],  = useState(false)
 
   const getAllRoleAccessDocs = async () => {
     const data = await getAllRoleAccess(orgId)
@@ -98,7 +100,24 @@ const UserAccessTable = () => {
     getAllRoleAccessDocs()
     setCategory('all')
   }, [])
+  useEffect(() => {
+    getAllRoleAccessDocs()
+  }, [])
 
+  // useEffect(() => {
+  //   // Filter data based on the selected category
+  //   let filteredData = settings
+  //   if (!showAll) {
+  //     if (showTrainee) {
+  //       filteredData = filteredData.filter((item) => item.type === 'TRAINEE')
+  //     }
+  //     if (showITSupport) {
+  //       filteredData = filteredData.filter((item) => item.type === 'IT SUPPORT')
+  //     }
+  //     // Add more conditions for other categories
+  //   }
+  //   setFilterData(filteredData)
+  // }, [settings, showAll, showTrainee, showITSupport])
   useEffect(() => {
     if (category === 'all') {
       setFilterData(settings)
@@ -143,9 +162,13 @@ const UserAccessTable = () => {
       element
     )
   }
+  // function setSelectedCategory(arg0: string) {
+  //   throw new Error('Function not implemented.')
+  // }
+
   return (
     <Box className="bg-white pb-4">
-      <Box className="flex ml-auto  mb-[0.5px] bg-white py-4">
+      <Box className="flex ml-auto  mb-[0.5px] bg-white py-4 ">
         <StyledButton
           variant="outlined"
           size="small"
@@ -158,8 +181,8 @@ const UserAccessTable = () => {
         <StyledButton
           variant="outlined"
           size="small"
-          isCategoryMatched={selectedCategory === 'trainee'}
-          onClick={() => setSelectedCategory('trainee')}
+          isCategoryMatched={category === 'trainee'}
+          onClick={() => setCategory('trainee')}
         >
           TRAINEE
         </StyledButton>
@@ -223,9 +246,10 @@ const UserAccessTable = () => {
       </Box>
       <Box
         sx={{
-          width: (2 / 3) * window.innerWidth,
+          // width: (2 / 3) * window.innerWidth,
           height: (2 / 3) * window.innerHeight,
           overflowX: 'auto',
+          width: '1130px',
         }}
       >
         <Table stickyHeader>
