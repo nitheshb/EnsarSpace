@@ -9,6 +9,7 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 import { MetaTags } from '@redwoodjs/web'
 
+
 import LLeadsTableView from 'src/components/LLeadsTableView/LLeadsTableView'
 import { USER_ROLES } from 'src/constants/userRoles'
 import { getFinanceTransactionsByStatus } from 'src/context/dbQueryFirebase'
