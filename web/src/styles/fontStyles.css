@@ -1,11 +1,11 @@
 /* title 1 */
-.e_t-1 {
+.e_t1 {
   font-size: 60;
   line-height: 72;
   font-weight: bold;
 }
 /* title 2 */
-.e_t-2 {
+.e_t2 {
   font-size: 48;
   line-height: 56;
   font-weight: bold;
@@ -36,19 +36,19 @@
   font-weight: normal;
 }
 /* body Bold */
-.e_b-B {
+.e_bB {
   font-size: 16;
   line-height: 24;
   font-weight: bold;
 }
 /* body Small */
-.e_b-S {
+.e_bS {
   font-size: 14;
   line-height: 24;
   font-weight: normal;
 }
 /* body Small Bold */
-.e_b-S-B {
+.e_bSB {
   font-size: 14;
   line-height: 24;
   font-weight: bold;

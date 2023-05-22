@@ -45,7 +45,7 @@ const UsersAdminPage = () => {
             selModule={selModule}
             setSelModule={setSelModule}
           />
-          <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
+          {/* <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} /> */}
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">
               {/* <h1 className="text-lg font-medium">redefine.</h1> */}
@@ -87,11 +87,11 @@ const UsersAdminPage = () => {
               </>
             )}
 
-            {viewable === 'On Boarding' && (
+            {/* {viewable === 'On Boarding' && (
               <>
                 <OnBoarding />
               </>
-            )}
+            )} */}
 
             {viewable === 'My Activity' && (
               <>
@@ -110,33 +110,33 @@ const UsersAdminPage = () => {
 
                 {/* <UserAccessTable /> */}
 
-              </>
+          </>
 
             )}
 
-            {viewable === 'User Report' && (
-              // <ReportMain/>
-              <ActivitySummaryReport
-                project={{
-                  area: 1000,
-                  builderName: 'hello',
-                  location: 'local',
-                  projectName: 'User Report',
-                  projectType: 'aprtment',
-                }}
-                isEdit={false}
-              />
-            )}
-
-            <SUserSignup
-              open={isOpen}
-              setOpen={handleOnClose}
-              title="User"
-              empData={empData}
+          {viewable === 'User Report' && (
+            // <ReportMain/>
+            <ActivitySummaryReport
+              project={{
+                area: 1000,
+                builderName: 'hello',
+                location: 'local',
+                projectName: 'User Report',
+                projectType: 'aprtment',
+              }}
+              isEdit={false}
             />
-          </div>
+          )}
+
+          <SUserSignup
+            open={isOpen}
+            setOpen={handleOnClose}
+            title="User"
+            empData={empData}
+          />
         </div>
       </div>
+    </div >
     </>
   )
 }

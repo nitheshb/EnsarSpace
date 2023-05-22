@@ -105,7 +105,7 @@ console.log(viewable)
                       (viewable === 'Today1'
                         ? 'text-blue-600 text-md font-semibold '
                         : '')
-                    }
+                    } 
                     onClick={() => setViewable('Today1')}
                   >
                     <span className="flex items-center">

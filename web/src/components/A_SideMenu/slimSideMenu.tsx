@@ -16,15 +16,15 @@ const SlimSideMenuBar = (props) => {
 
   return (
     <div className="flex flex-col items-center w-20 min-w-[83px] pb-4   bg-white bg-opacity-75  bg-[#f0f3ff] h-screen w-[83px] max-w-[83px]">
-      {[
-        'hrModule',
-        'financeModule',
-        'crmModule',
-        'projectModule',
-        'salesModule',
-        'constructModule',
-        'legalModule',
-      ].includes(sourceLink) && (
+      {['hrModule',
+      'financeModule',
+       'crmModule',
+       'projectModule',
+       'salesModule',
+       'constructModule',
+       'legalModule',
+      ]
+       .includes(sourceLink) && (
         <a
           className="flex items-center justify-center flex-shrink-0 w-full py-[9px] mr-4  border-b mt-[4px] pt-[10px]"
           href="#"
@@ -59,7 +59,7 @@ const SlimSideMenuBar = (props) => {
               fill="#FF6492"
             ></path>
             <path
-              d="M22.1336 11.1823L19.0513 13.0019L11.8574 8.78565L7.74692 11.1857L4.66406 9.49917L11.8593 5.17578L22.1336 11.1823Z"
+              d="M22.1336 11.1823L19.0513 1 3.0019L11.8574 8.78565L7.74692 11.1857L4.66406 9.49917L11.8593 5.17578L22.1336 11.1823Z"
               fill="#141446"
             ></path>
             <path
@@ -85,7 +85,7 @@ const SlimSideMenuBar = (props) => {
             width="40"
             height="35"
             fill="#141446"
-          >
+            >
 
             {/* <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --> */}
             <path d="M186.12 343.34c-9.65 9.65-9.65 25.29 0 34.94 9.65 9.65 25.29 9.65 34.94 0L378.24 221.1c19.29-19.29 50.57-19.29 69.86 0s19.29 50.57 0 69.86L293.95 445.1c19.27 19.29 50.53 19.31 69.82.04l.04-.04 119.25-119.24c38.59-38.59 38.59-101.14 0-139.72-38.59-38.59-101.15-38.59-139.72 0l-157.22 157.2zm244.53-104.8c-9.65-9.65-25.29-9.65-34.93 0l-157.2 157.18c-19.27 19.29-50.53 19.31-69.82.05l-.05-.05c-9.64-9.64-25.27-9.65-34.92-.01l-.01.01c-9.65 9.64-9.66 25.28-.02 34.93l.02.02c38.58 38.57 101.14 38.57 139.72 0l157.2-157.2c9.65-9.65 9.65-25.29.01-34.93zm-261.99 87.33l157.18-157.18c9.64-9.65 9.64-25.29 0-34.94-9.64-9.64-25.27-9.64-34.91 0L133.72 290.93c-19.28 19.29-50.56 19.3-69.85.01l-.01-.01c-19.29-19.28-19.31-50.54-.03-69.84l.03-.03L218.03 66.89c-19.28-19.29-50.55-19.3-69.85-.02l-.02.02L28.93 186.14c-38.58 38.59-38.58 101.14 0 139.72 38.6 38.59 101.13 38.59 139.73.01zm-87.33-52.4c9.64 9.64 25.27 9.64 34.91 0l157.21-157.19c19.28-19.29 50.55-19.3 69.84-.02l.02.02c9.65 9.65 25.29 9.65 34.93 0 9.65-9.65 9.65-25.29 0-34.93-38.59-38.59-101.13-38.59-139.72 0L81.33 238.54c-9.65 9.64-9.65 25.28-.01 34.93h.01z" />
@@ -318,6 +318,8 @@ const SlimSideMenuBar = (props) => {
                   marginLeft: 'auto',
                   marginRight: 'auto',
                 }}
+
+
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#692fc2' }}>
@@ -526,68 +528,7 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-
-            <li className="relative mt-1">
-              <span
-                className={
-                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
-                  (viewable === 'On Boardings'
-                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
-                    : '')
-                }
-                onClick={() => setViewable('On Boardings')}
-                style={{
-                  display: 'block',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                }}
-              >
-                <span className="flex items-center flex-col pt-[8px]">
-                  <span style={{ color: '#058527' }}>
-                    {/* <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      className="w-5 h-5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg> */}
-
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M4 6h16M4 12h16M4 18h16"
-                      />
-
-                    </svg>
-                  </span>
-                  <span className="text-[9px] font-bold  pl-1">
-                    On Boardings
-                  </span>
-                </span>
-                <span className="flex ml-auto items-bottom">
-                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
-                </span>
-              </span>
-            </li>
-
-            <li className="relative mt-1">
+            {/* <li className="relative mt-1">
               <span
                 className={
                   'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
@@ -630,7 +571,7 @@ const SlimSideMenuBar = (props) => {
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                 </span>
               </span>
-            </li>
+            </li> */}
           </ul>
         </>
       )}
@@ -1063,8 +1004,6 @@ const SlimSideMenuBar = (props) => {
               </span>
             </li>
             {(user?.role?.includes(USER_ROLES.SALES_MANAGER) || user?.role?.includes(USER_ROLES.ADMIN)) &&
-            {(user?.role?.includes(USER_ROLES.SALES_MANAGER) ||
-              user?.role?.includes(USER_ROLES.ADMIN)) && (
               <li className="relative mt-1">
                 <span
                   className={
@@ -1100,9 +1039,6 @@ const SlimSideMenuBar = (props) => {
                       </svg>
                     </span>
                     <span className="text-[9px] font-bold  pl-1">Leads Bank</span>
-                    <span className="text-[9px] font-bold  pl-1">
-                      Leads Bank
-                    </span>
                   </span>
                   <span className="flex ml-auto items-bottom">
                     <span className="flex ml-auto items-bottom text-xs mt-2"></span>
@@ -1110,7 +1046,6 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </li>
             }
-            )}
             <li className="relative mt-1">
               <span
                 className={
@@ -1148,7 +1083,7 @@ const SlimSideMenuBar = (props) => {
                       </g>
                     </svg>
                   </span>
-                  <span className="text-[9px] font-bold  pl-1">Reports</span>
+                 <span className="text-[9px] font-bold  pl-1">Reports</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
@@ -1156,8 +1091,6 @@ const SlimSideMenuBar = (props) => {
               </span>
             </li>
             {(user?.role?.includes(USER_ROLES.SALES_MANAGER) || user?.role?.includes(USER_ROLES.ADMIN)) &&
-            {(user?.role?.includes(USER_ROLES.SALES_MANAGER) ||
-              user?.role?.includes(USER_ROLES.ADMIN)) && (
               <li className="relative mt-1">
                 <span
                   className={
@@ -1195,7 +1128,6 @@ const SlimSideMenuBar = (props) => {
                         </g>
                       </svg>
                     </span>
-
                     <span className="text-[9px] font-bold  pl-1">
                       Team Reports
                     </span>
@@ -1205,11 +1137,7 @@ const SlimSideMenuBar = (props) => {
                   </span>
                 </span>
               </li>
-<<<<<<< HEAD
             }
-=======
-            )}
->>>>>>> d46e45ed7a94bd91dd1045de586bb81be8d0bef7
           </ul>
         </>
       )}
@@ -1490,46 +1418,6 @@ const SlimSideMenuBar = (props) => {
               </span>
             </li>
 
-            {/* <li className="relative mt-1">
-              <span
-                className={
-                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
-                  (viewable === 'On Boarding'
-                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
-                    : '')
-                }
-                onClick={() => setViewable('On Boarding')}
-                style={{
-                  display: 'block',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                }}
-              >
-                <span className="flex items-center flex-col pt-[8px]">
-                  <span style={{ color: '#058527' }}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
-                  </span>
-                  <span className="text-[9px] font-bold  pl-1">On Boarding</span>
-                </span>
-                <span className="flex ml-auto items-bottom">
-                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
-                </span>
-              </span>
-            </li> */}
-
             <li className="relative mt-1">
               <span
                 className={
@@ -1584,7 +1472,7 @@ const SlimSideMenuBar = (props) => {
             <li className="relative justify-center ">
               <span
                 className={
-                  'flex items-center justify-center text-sm py-1 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  'flex items-center justify-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
                   (viewable === 'myHRTasks'
                     ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
                     : '')
@@ -1881,9 +1769,7 @@ const SlimSideMenuBar = (props) => {
                     >
                       <path d="M6 2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 9h12M6 18h3M6 14h6" />
                     </svg>
-
-
-                  </span>
+                     </span>
                   <span className="text-[9px] font-bold  pl-1">Pay Slips</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
@@ -1932,7 +1818,7 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-            {/* <li className="relative mt-1">
+            <li className="relative mt-1">
               <span
                 className={
                   'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
@@ -1975,57 +1861,7 @@ const SlimSideMenuBar = (props) => {
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                 </span>
               </span>
-            </li> */}
-            {(user?.role?.includes(USER_ROLES.HR_MANAGER) ||
-              user?.role?.includes(USER_ROLES.ADMIN)) && (
-              <li className="relative mt-1">
-                <span
-                  className={
-                    'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
-                    (viewable === 'User Report'
-                      ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
-                      : '')
-                  }
-                  onClick={() => setViewable('User Report')}
-                  style={{
-                    display: 'block',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                  }}
-                >
-                  <span className="flex items-center flex-col pt-[8px]">
-                    <span style={{ color: '#692fc2' }}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                      >
-                        <g fill="none" fillRule="evenodd">
-                          <g fill="currentColor" fillRule="nonzero">
-                            <g>
-                              <g>
-                                <path
-                                  d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 1c-4.418 0-8 3.582-8 8 0 .702.09 1.383.26 2.031l2.886-2.885c.196-.195.512-.195.708 0l2.646 2.647 4.793-4.794L13 9c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h3.52l.052.005L16.5 8c.036 0 .071.004.105.011l.046.012.04.015c.014.005.027.012.04.019.013.006.025.013.036.02l.035.025c.014.01.027.02.04.033l.012.011.011.013c.012.012.023.025.033.039l-.044-.052c.026.027.05.056.069.087l.02.034.02.042.014.04c.005.015.009.03.012.046l.006.033.005.051V12c0 .276-.224.5-.5.5s-.5-.224-.5-.5V9.706l-5.146 5.148c-.196.195-.512.195-.708 0L7.5 12.207 4.618 15.09C5.827 17.974 8.677 20 12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8z"
-                                  transform="translate(-564 -480) translate(528 444) translate(36 36)"
-                                ></path>
-                              </g>
-                            </g>
-                          </g>
-                        </g>
-                      </svg>
-                    </span>
-
-                    <span className="text-[9px] font-bold  pl-1">
-                      User Reports
-                    </span>
-                  </span>
-                  <span className="flex ml-auto items-bottom">
-                    <span className="flex ml-auto items-bottom text-xs mt-2"></span>
-                  </span>
-                </span>
-              </li>
-            )}
+            </li>
           </ul>
         </>
       )}
