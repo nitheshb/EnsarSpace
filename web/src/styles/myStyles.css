@@ -181,14 +181,26 @@
 
 .css-5mn5yy {
   font-family: 'Montserrat', sans-serif;
-  margin-bottom: 0px;
-  margin-top: 0px;
+  margin-bottom: -28px;
+  margin-top: -3px;
+  margin-left: -3px;
   font-size: 18px;
   font-weight: 600;
   line-height: 3.5;
   text-transform: none;
   white-space: normal;
-  padding-left: -0.75rem;
+}
+
+.css-6mn6yy {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: -28px;
+  margin-top: -20px;
+  margin-left: -3px;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 3.5;
+  text-transform: none;
+  white-space: normal;
 }
 
 .css-1lpgd8m {
@@ -196,7 +208,7 @@
   font-size: 12px;
   font-weight: 600;
   line-height: 0.1;
-  margin-left: 4px;
+  margin-left: -4px;
   text-transform: none;
   white-space: normal;
 }
