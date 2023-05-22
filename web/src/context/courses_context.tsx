@@ -45,7 +45,7 @@ import styled from 'styled-components'
 import CourseList from 'src/components/A_LearningModule/CoursesList'
 // import { CoursesContext } from 'src/context/courses_context'
 
-const CourseDetailsPage = (CourseList) => {
+const CourseDetailsPagee = (CourseList) => {
 
   const {id} = useParams();
 
@@ -112,9 +112,9 @@ const CourseDetailsPage = (CourseList) => {
 
       <div style={{ backgroundColor: 'black', color: 'white' }}>
         <div className="course-intro mx-auto grid bg-dark">
-        {/* <div className="item-img">
-        <img src={image} alt={course_name} className='w-full'/>
-      </div> */}
+        <div className="item-img">
+        <img src='learning_images/python_5.jpg' alt={course_name} className='w-full'/>
+      </div>
           <div className="course-details ">
 
           <div className="course-category" style={{ backgroundColor: 'white', color: 'black' ,   display: 'inline', padding: '5px 10px', borderRadius: '5px' }}>
@@ -264,7 +264,7 @@ const CourseDetailsPage = (CourseList) => {
           </li>
         );
       })}
-   
+
   </ul>
         </div>
 
@@ -456,6 +456,6 @@ const SingleCourseWrapper = styled.div`
 
 
 
-export default CourseDetailsPage
+export default CourseDetailsPagee
 
 

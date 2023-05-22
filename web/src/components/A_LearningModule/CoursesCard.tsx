@@ -24,69 +24,7 @@ const CoursesCard = (props) => {
     category,
   } = props
 
-  // const courses = [
-  //   {
-  //     id: 'xMHCZl',
-  //     category: 'python',
-  //     image: 'learning_images/python_5.jpg',
-  //     course_name: 'Learn Python: The Complete Python Programming Course',
-  //     description:
-  //       'Learn A-Z everything about Python, from the basics, to advanced topics like Python GUI, Python Data Analysis, and more!',
-  //     rating_count: 3059,
-  //     rating_star: 4.4,
-  //     students: 18430,
-  //     creator: 'Avinash Jain, The Codex',
-  //     updated_date: '9/2015',
-  //     lang: 'english',
-  //     actual_price: 84.99,
-  //     discounted_price: 9.99,
-  //     what_you_will_learn: [
-  //       'Create their own Python Programs',
-  //       'Become an experienced Python Programmer',
-  //       'Parse the Web and Create their own Games',
-  //     ],
-  //     content: [
-  //       'Up and Running With Python',
-  //       'The Basics(Data Types)',
-  //       'Conditions and Loops',
-  //       'Functions!',
-  //       'Classes! (Object Oriented Programming)',
-  //       'File Input/Output',
-  //       'Using Python Modules',
-  //     ],
-  //   },
-  //   {
-  //     id: 'dtfo9e',
-  //     category: 'python',
-  //     image: 'learning_images/python_4.jpg',
-  //     course_name: 'Learning Python for Data Analysis and Visualization',
-  //     description:
-  //       'Learn python and how to use it to analyze,visualize and present data. Includes tons of sample code and hours of video!',
-  //     rating_count: 3059,
-  //     rating_star: 4.3,
-  //     students: 184053,
-  //     creator: 'Jose Portilla',
-  //     updated_date: '9/2019',
-  //     lang: 'english',
-  //     actual_price: 84.99,
-  //     discounted_price: 9.99,
-  //     what_you_will_learn: [
-  //       'Have an intermediate skill level of Python programming.',
-  //       'Use the numpy library to create and manipulate arrays.',
-  //       'Learn how to work with various data formats within python, including: JSON,HTML, and MS Excel Worksheets.',
-  //       'Have a portfolio of various data analysis projects.',
-  //     ],
-  //     content: [
-  //       'Intro to Course and Python',
-  //       'Learning Numpy',
-  //       'Data Visualization',
-  //       'Example Projects',
-  //       'Machine Learning',
-  //       'SQL and Python',
-  //       'Web Scraping with Python',
-  //     ],
-  //   },
-  // ];
+
 
   return (
 
@@ -108,13 +46,10 @@ const CoursesCard = (props) => {
         </div>
       </div>
       <div className="item-btns flex">
-        {/* <Link to={`/courses/${id}`} className="item-btn see-details-btn">
+        <Link to={`/courses/${id}`} className="item-btn see-details-btn">
           See details
-        </Link> */}
-
-        <Link to={`/coursedetails`} className="item-btn see-details-btn">
-          See Details
         </Link>
+
 
 
 
@@ -138,44 +73,6 @@ const CoursesCard = (props) => {
     </div>
 
 
-
-
-
-
-
-
-//     <div>
-//     <div className="CourseCard">
-//     {courses.map((course) => (
-//       <div key={course.id}>
-//         <div className="item-img">
-//        <img src={course.image} alt={course.course_name} className='w-full'/>
-//       </div>
-
-//       <div className="item-body">
-//          <h5 className="item-name">{course.course_name}</h5>
-//          <span className="item-creator">{course.creator}</span>
-//        <div className="item-rating flex">
-//            <span className="rating-star-val">{course.rating_star}</span>
-//            <StarRating rating_star={course.rating_star} />
-//            <span className="rating-count">({course.rating_count})</span>
-//         </div>
-//          <div className="item-price">
-//          <span className="item-price-new">${course.discounted_price}</span>
-//           <span className="item-price-old">${course.actual_price}</span>
-
-//           <Link to={`/coursedetails/${course.id}`} className="item-btn see-details-btn">
-//            See Details
-//          </Link>
-//          </div>
-//        </div>
-
-
-
-// </div>
-//     ))}
-//   </div>
-//   </div>
 
 
   )

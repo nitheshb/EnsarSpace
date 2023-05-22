@@ -10,6 +10,7 @@ import { useAuth } from 'src/context/firebase-auth-context'
 import FinanceHomePagePage from './pages/FinanceHomePagePage/FinanceHomePagePage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage/PrivacyPolicyPage'
 import Profile from './pages/Profile/Profile'
+import CourseDetailsPagee from './context/courses_context'
 
 // import SingleCoursePage from './pages/SeeDetailsPage/CoursedetailsPage'
 
@@ -125,15 +126,15 @@ const Routes = () => {
 
   return (
     <Router>
-      <Route path="/coursedetails" page={CoursedetailsPage} name="coursedetails" />
+      {/* <Route path="/coursedetailsS" page={CourseDetailsPagee} name="coursedetails" /> */}
 
-      {/* <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" /> */}
+      <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" />
       <Route path="/cource-overview/{uid}" page={CourceOverviewPage} name="courceOverview" />
       <Route path="/cource-content" page={CourceContentPage} name="courceContent" />
       <Route path="/learning" page={LearningPage} name="learning" />
       <Route path="/privacyPolicy" page={PrivacyPolicyPage} name="privacyPolicy" />
       <Route path="/construct-module" page={ConstructModulePage} name="constructModule" />
-      {/* <Route path="/admin/home" page={HomePage} name="home" /> */}
+      <Route path="/admin/home" page={HomePage} name="home" />
       <Route path="/erp-account-home" page={ErpAccountHomePage} name="erpAccountHome" />
       <Route path="/legal-home" page={LegalHomePage} name="legalHome" />
       <Route path="/crm-home" page={CrmHomePage} name="crmHome" />
@@ -143,6 +144,7 @@ const Routes = () => {
       <Route path="/admin/login" page={LoginPage} name="login" />
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/" page={LoginPage} name="login" />
+      <Route path="/courses/{id}" page={CoursedetailsPage} name="coursedetails" />
       <Route notfound page={NotFoundPage} />
 
 
