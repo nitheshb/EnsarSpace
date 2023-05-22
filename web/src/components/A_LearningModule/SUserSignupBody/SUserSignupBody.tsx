@@ -308,7 +308,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
                  <CustomSelect
                   name="gendName"
-                  label="Select Gender"
+                  label="Select Gender*"
                   className="input mt-3"
                   onChange={(value) => {
                     changed(value)
@@ -364,7 +364,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
                 <CustomSelect
                   name="courName"
-                  label="Select Course"
+                  label="Select Course*"
                   className="input mt-3"
                   onChange={(value) => {
                     changed(value)
@@ -403,7 +403,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                 <div className="md:flex md:flex-row md:space-x-4 w-full text-xs mt-5">
                   <div className="w-full flex flex-col mb-3">
                     <TextField
-                      label="Aadhar No"
+                      label="Aadhar No*"
                       name="aadharNo"
                       type="text"
                       disabled={editMode}
@@ -411,7 +411,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                   </div>
                   <div className="w-full flex flex-col mb-3">
                     <TextField
-                      label="Date of Birth"
+                      label="Date of Birth*"
                       name="dob"
                       type="text"
                       disabled={editMode}
@@ -436,7 +436,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     disabled={loading}
                   >
                     {loading && <Loader />}
-                    {editMode ? 'Edit Employee' : 'Submit*'}
+                    {editMode ? 'Edit Employee' : 'Submit'}
                   </button>
                 </div>
               </Form>
