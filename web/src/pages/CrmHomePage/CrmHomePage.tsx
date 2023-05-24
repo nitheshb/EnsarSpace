@@ -354,14 +354,7 @@ const CrmHomePage = () => {
               setViewable={setViewable}
               viewable={viewable}
             />
-            {/* <HeadSideBar pgName={'crmModule'} />
-            <HeadSideBarDetailView2
-              pgName={'crmModule'}
-              sourceLink={'crmModule'}
-              showSideView1={undefined}
-              setViewable={setViewable}
-              viewable={viewable}
-            /> */}
+
             <div className="flex-grow  items-center overflow-y-auto  h-[98%]  px-300  py-300">
             <HeadNavBar2
               selModule ={selModule}
@@ -533,7 +526,7 @@ const CrmHomePage = () => {
 
                           <div className="grid grid-cols-1 gap-1">
                             <div className="min-h-[380px]">
-                              {/* <h1>hello</h1> */}
+                              
 
                               <ResponsiveBar
                                 data={data1}

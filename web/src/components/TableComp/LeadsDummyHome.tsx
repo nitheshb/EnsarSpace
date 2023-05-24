@@ -1,10 +1,7 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-// import { Link, routes } from '@redwoodjs/router'
 
 import { Fragment, useState, useEffect } from 'react'
 
-// import { XIcon } from '@heroicons/react/outline'
+
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 import { MetaTags } from '@redwoodjs/web'
@@ -32,7 +29,7 @@ const LeadsDummyHome = ({ leadsTyper }) => {
     user?.role?.includes(USER_ROLES.SALES_MANAGER)
   const [isImportLeadsOpen, setisImportLeadsOpen] = useState(false)
 
-  // kanban board
+
   const [ready, setReady] = useState(false)
 
   const [addLeadsTypes, setAddLeadsTypes] = useState('')
@@ -64,12 +61,7 @@ const LeadsDummyHome = ({ leadsTyper }) => {
     } else {
       return serialLeadsData.filter((item) => {
         return item?.status?.toLowerCase() === searchKey?.toLowerCase()
-        // if (searchKey === 'inprogress') {
-        //   return item
-        // } else if (item?.status?.toLowerCase() === searchKey?.toLowerCase()) {
-        //   console.log('All1', item)
-        //   return item
-        // }
+
       })
     }
   }
@@ -87,7 +79,7 @@ const LeadsDummyHome = ({ leadsTyper }) => {
           return x
         })
 
-        // setBoardData
+
         await console.log(
           'my Array data is delayer ',
           projAccessA,
@@ -98,10 +90,6 @@ const LeadsDummyHome = ({ leadsTyper }) => {
         await setLeadsFetchedData(usersListA)
         await console.log('this is strange 2', serialLeadsData.length)
 
-        // await setLeadsFetchedRawData(usersListA)
-        // await serealizeData(usersListA)
-        // filter_Leads_Projects_Users_Fun()
-        // await setLeadsFetchedData(usersListA)
       },
       {
         status:
@@ -117,7 +105,7 @@ const LeadsDummyHome = ({ leadsTyper }) => {
                 'negotiation',
                 'reassign',
                 'RNR',
-                // 'booked',
+
               ]
             : leadsTyper === 'booked'
             ? ['booked']
@@ -137,9 +125,9 @@ const LeadsDummyHome = ({ leadsTyper }) => {
             x.id = docSnapshot.id
             return x
           })
-          // setBoardData
+
           console.log('my Array data is ', usersListA, leadsFetchedData)
-          // await serealizeData(usersListA)
+
           await setLeadsFetchedData(usersListA)
           await console.log('my Array data is set it', leadsFetchedData)
         },
@@ -150,7 +138,7 @@ const LeadsDummyHome = ({ leadsTyper }) => {
             'cleared',
             'rejected',
             '',
-            // 'booked',
+
           ],
         },
         (error) => setLeadsFetchedData([])
@@ -165,7 +153,7 @@ const LeadsDummyHome = ({ leadsTyper }) => {
             x.id = docSnapshot.id
             return x
           })
-          // setBoardData
+
           console.log('my Array data is ', usersListA)
           await serealizeData(usersListA)
           await setLeadsFetchedData(usersListA)
@@ -178,7 +166,7 @@ const LeadsDummyHome = ({ leadsTyper }) => {
             'cleared',
             'rejected',
             '',
-            // 'booked',
+
           ],
         },
         (error) => setLeadsFetchedData([])
@@ -186,18 +174,18 @@ const LeadsDummyHome = ({ leadsTyper }) => {
       return unsubscribe
     }
 
-    // await console.log('leadsData', leadsData)
+
   }
 
   const serealizeData = (array) => {
-    // let newData =
+
     const x = [
       'new',
       'review',
       'cleared',
       'rejected',
       '',
-      // 'booked',
+
     ].map((status) => {
       const items = array.filter((data) => data.Status.toLowerCase() == status)
 
@@ -418,7 +406,7 @@ const LeadsDummyHome = ({ leadsTyper }) => {
                             </td>
                             <td>
                               <div className="flex flex-row py-3">
-                                {/* <div className="mr-2 w-[3px]  bg-gray-100 "></div> */}
+
                                 <div className="flex flex-col">
                                   <span className="font-semibold text-sm app-color-black">
                                     {dat?.mode}
@@ -468,14 +456,7 @@ const LeadsDummyHome = ({ leadsTyper }) => {
               </div>
             )}
 
-            {/* {!ready && (
-              <FinanceTableView
-                leadsFetchedData={leadsFetchedData}
-                setisImportLeadsOpen={setisImportLeadsOpen}
-                selUserProfileF={selUserProfileF}
-                leadsTyper={leadsTyper}
-              />
-            )} */}
+            
           </div>
         </div>
       </div>

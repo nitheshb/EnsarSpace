@@ -106,35 +106,13 @@ const AddPaymentDetailsForm = ({
     T_balance = T_elgible - T_review
     console.log('newPlotPS', newPlotPS, newConstructPS, fullPs, T_elgible)
 
-    // get booking details, leadId, unitDetails,
-    //  from existing object send values of
-    //  booking
-    // copy unit data as it is
-    // copy lead data as it is
-    //  unit details
 
-    // 1)Make an entry to finance Table {source: ''}
-    // 2)Create new record in Customer Table
-    // 3)Update unit record with customer record and mark it as booked
-    // 4)update lead status to book
-
-    //   const x = await addDoc(collection(db, 'spark_leads'), data)
-    // await console.log('x value is', x, x.id)
 
     const { id, purpose, customerDetailsObj, secondaryCustomerDetailsObj } =
       leadDetailsObj2
     const { uid } = selUnitDetails
-    // 1)Make an entry to finance Table {source: ''}
+
     console.log('secondary value si s', customerDetailsObj, secondaryCustomerDetailsObj)
-    // const x1 = await addPaymentReceivedEntry(
-    //   orgId,
-    //   uid,
-    //   { leadId: id },
-    //   data,
-    //   'leadsPage',
-    //   'nitheshreddy.email@gmail.com',
-    //   enqueueSnackbar
-    // )
 
     const x1 = []
 
@@ -171,22 +149,14 @@ const AddPaymentDetailsForm = ({
     addModuleScheduler(`${orgId}_project_tasks`, id, projectPaylaod, x1, data.assignedTo)
 
 
-    // create task in finance
-    // create task for crm
-    // create whatsApp Alert
-    // create task to project manager for cost sheet approval
 
-
-    // add phaseNo , projName to selUnitDetails
-    // 2)Create('')
     console.log('submit doc is ', orgId, uid, {
       leadId: id,
       projectName,
       ...customerDetailsObj,
       secondaryCustomerDetailsObj: secondaryCustomerDetailsObj || {},
       assets: arrayUnion(uid),
-      // [`${uid}_cs`]: leadDetailsObj2[`${uid}_cs`],
-      // [`${uid}_ps`]: phase?.paymentScheduleObj || {},
+
       [`${uid}_unitDetails`]: selUnitDetails || {},
       [`${uid}_plotCS`]: newPlotCostSheetA,
       [`${uid}_constructCS`]: newConstructCostSheetA,
@@ -197,7 +167,7 @@ const AddPaymentDetailsForm = ({
       [`${uid}_T_review`]: T_review,
       [`${uid}_T_balance`]: T_balance,
 
-      //paymentScheduleObj
+
     })
     const x2 = await createBookedCustomer(
       orgId,
@@ -206,14 +176,13 @@ const AddPaymentDetailsForm = ({
         leadId: id,
         projectName: leadDetailsObj2?.Project,
         ProjectId: leadDetailsObj2?.ProjectId,
-        // ...customerDetailsObj,
+
         Name: leadDetailsObj2?.Name,
         Mobile: leadDetailsObj2?.Mobile,
         Email: leadDetailsObj2?.Email,
         secondaryCustomerDetailsObj: secondaryCustomerDetailsObj || {},
         assets: arrayUnion(uid),
-        // [`${uid}_cs`]: leadDetailsObj2[`${uid}_cs`],
-        // [`${uid}_ps`]: phase?.paymentScheduleObj || {},
+
         [`${uid}_unitDetails`]: selUnitDetails || {},
         [`${uid}_plotCS`]: newPlotCostSheetA,
         [`${uid}_constructCS`]: newConstructCostSheetA,
@@ -224,17 +193,13 @@ const AddPaymentDetailsForm = ({
         [`${uid}_T_review`]: T_review,
         [`${uid}_T_balance`]: T_balance,
 
-        //paymentScheduleObj
+
       },
       'nitheshreddy.email@gmail.com',
       enqueueSnackbar
     )
 
-    //
 
-    // 3)Update unit record with customer record and mark it as booked
-
-    // customerDetailsObj
     const otherData = leadDetailsObj2[`${uid}_others`]
     const unitUpdate = {
       leadId: id,
@@ -243,7 +208,7 @@ const AddPaymentDetailsForm = ({
       secondaryCustomerDetailsObj: secondaryCustomerDetailsObj || {},
       ...otherData,
     }
-    // unitUpdate[`cs`] = leadDetailsObj2[`${uid}_cs`]
+
     unitUpdate[`plotCS`] = newPlotCostSheetA
     unitUpdate[`constructCS`] = newConstructCostSheetA
     unitUpdate[`fullPs`] = fullPs
@@ -263,8 +228,6 @@ const AddPaymentDetailsForm = ({
       resetForm
     )
 
-    // 4)update lead status to book
-    // updateLeadStatus(leadDocId, newStatus)
 
     updateLeadStatus(
       orgId,
@@ -301,13 +264,7 @@ const AddPaymentDetailsForm = ({
   }
 
   const validateSchema = Yup.object({
-    // date: Yup.string().required('Bank Required'),
-    // amount: Yup.string().required('Required'),
-    // payto: Yup.string().required('Required'),
-    // mode: Yup.string().required('Bank Required'),
-    // drawnonbank: Yup.string().required('Required'),
-    // chequeno: Yup.string().required('Required'),
-    // dated: Yup.string().required('Required'),
+
   })
 
   const submitFormFun = (formik) => {
@@ -317,9 +274,7 @@ const AddPaymentDetailsForm = ({
   return (
     <div className="">
       <div className="">
-        {/* <Dialog.Title className=" font-semibold text-xl mr-auto ml-3 text-[#053219]">
-          {title}
-        </Dialog.Title> */}
+
       </div>
 
       <div className="grid gap-8 grid-cols-1">
@@ -336,7 +291,7 @@ const AddPaymentDetailsForm = ({
               {(formik) => (
                 <Form>
                   <div className="form">
-                    {/* Phase Details */}
+
 
                     <section className="  bg-blueGray-50">
                       <div className="w-full mx-auto ">
@@ -405,13 +360,7 @@ const AddPaymentDetailsForm = ({
                                   </div>
                                 </div>
                                 <div className="w-full lg:w-6/12 px-4">
-                                  {/* <div className="relative w-full mb-3">
-                                    <TextField2
-                                      label="Mode"
-                                      name="mode"
-                                      type="text"
-                                    />
-                                  </div> */}
+                                 
                                   <div className="relative w-full mb-3">
                                     <TextField2
                                       label="Amount"

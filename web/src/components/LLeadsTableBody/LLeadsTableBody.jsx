@@ -1,5 +1,4 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
+
 import * as React from 'react'
 
 import '../../styles/myStyles.css'
@@ -52,27 +51,6 @@ import { ConnectingAirportsOutlined } from '@mui/icons-material'
 
 import LogSkelton from '../shimmerLoaders/logSkelton'
 
-// function createData(
-//   Date,
-//   Name,
-//   Mobile,
-//   Email,
-//   Project,
-//   Source,
-//   Empmobile,
-//   Note
-// ) {
-//   return {
-//     Date,
-//     Name,
-//     Mobile,
-//     Email,
-//     Project,
-//     Source,
-//     Empmobile,
-//     Note,
-//   }
-// }
 
 function descendingComparator(a, b, orderBy) {
   if ((b[orderBy] || b['stsUpT'] || b['Date']) < (a[orderBy] || a['stsUpT'] || a['Date'])) {
@@ -97,8 +75,6 @@ function getComparator(order, orderBy) {
     : (a, b) => -descendingComparator(a, b, orderBy)
 }
 
-// This method is created for cross-browser compatibility, if you don't
-// need to support IE11, you can use Array.prototype.sort() directly
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index])
   stabilizedThis.sort((a, b) => {
@@ -112,12 +88,7 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  // {
-  //   id: 'S.No',
-  //   numeric: true,
-  //   disablePadding: false,
-  //   label: 'S.No',
-  // },
+
   {
     id: 'Date',
     numeric: false,
@@ -214,15 +185,7 @@ function EnhancedTableHead(props) {
     } else {
       return ''
     }
-    //   if(viewUnitStatusA.includes('Assigned To') &&
-    //   headCell === 'Assigned'){
-    //   return ''
-    //   }else{
-    //     return 'none'
-    //   }
-    // }else {
-    //   return ''
-    // }
+
 
 
   }
@@ -248,15 +211,7 @@ function EnhancedTableHead(props) {
             marginRight: '10px',
           }}
         >
-          {/* <Checkbox
-            color="primary"
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{
-              'aria-label': 'select all desserts',
-            }}
-          /> */}
+
           <TableSortLabel>S.No</TableSortLabel>
         </TableCell>
         {headCells.map((headCell) => (
@@ -340,25 +295,7 @@ const EnhancedTableToolbar = (props) => {
   React.useEffect(() => {
     setRowsAfterSearchKey(rows)
   }, [rows])
-  // React.useEffect(() => {
-  //  console.log('calendar state', isOpened, startDate?.getTime())
-  //  if(startDate !== null && endDate !=null){
-  //   console.log('inside you1')
-  //   let rowsR = rows.filter((item) => {
-  //    return item.Date >=startDate.getTime() && item.Date <=endDate.getTime()
-  //   })
-  //   setRowsAfterSearchKey(rowsR)
-  //  }else if(startDate !==null) {
-  //   console.log('inside you')
-  //   let rowsR = rows.filter((item) => {
-  //     console.log('inside you wjat os tjo filter', item.Date>= startDate.getTime() && item.Date <= startDate.getTime()+ 86400000,startDate.getTime()+ 86399999,startDate.getTime(),   item.Name)
-  //     return item.Date>= startDate.getTime() && item.Date <= startDate.getTime()+ 86400000
-  //    })
-  //    console.log('inside you wjat os tjo filter', rowsR.length)
-  //    setRowsAfterSearchKey(rowsR)
-  //    console.log('inside you wjat os tjo filter 1', rowsAfterSearchKey)
-  //  }
-  // }, [startDate,endDate ])
+
 
   React.useEffect(() => {
     let downRows = []
@@ -391,10 +328,10 @@ const EnhancedTableToolbar = (props) => {
   }, [rowsAfterSearchKey])
 React.useEffect(()=>{
   setSearchKey(searchVal)
-  // searchKeyField({target:{value:searchVal}})
+
 },[searchVal])
   const searchKeyField = (e) => {
-    // console.log('searched values is ', e.target.value)
+
     setSearchKey(e.target.value)
     let searchString = e.target.value
 
@@ -403,8 +340,7 @@ React.useEffect(()=>{
         console.log('ami here')
         return item
       } else if (
-        // item.Assignedto.toLowerCase().includes(searchString.toLowerCase()) ||
-        // item.Date.toLowerCase().includes(searchString.toLowerCase()) ||
+
         item.Email.toLowerCase().includes(searchString.toLowerCase()) ||
         item.Mobile.toLowerCase().includes(searchString.toLowerCase()) ||
         item.Name.toLowerCase().includes(searchString.toLowerCase()) ||
@@ -416,7 +352,7 @@ React.useEffect(()=>{
       }
     })
     setRowsAfterSearchKey(rowsR)
-    // setRows(rowsR)
+
   }
   return (
     <section className="flex flex-row justify-between pb pt-1 px-3 ">
@@ -444,66 +380,11 @@ React.useEffect(()=>{
             className="ml-6 bg-transparent text-xs focus:border-transparent focus:ring-0 focus-visible:border-transparent focus-visible:ring-0 focus:outline-none"
           />
         </span>
-        {/* <span className="max-h-[42px] mt-[2px] ml-3">
 
-          <label className="bg-green   pl-   flex flex-row cursor-pointer">
-            <CalendarMonthTwoToneIcon className="mr-1" />
-            <span className="inline">
-              <DatePicker
-                className="z-10 pl- py-1  inline text-xs text-[#0091ae] bg-white cursor-pointer min-w-[170px]"
-
-                onCalendarOpen={() => setIsOpened(true)}
-                onCalendarClose={() => setIsOpened(false)}
-                onChange={(update) => setDateRange(update)}
-                selectsRange={true}
-                startDate={startDate}
-                endDate={endDate}
-                isClearable={true}
-
-                dateFormat="MMM d, yyyy "
-              />
-            </span>
-          </label>
-        </span> */}
       </span>
 
-      {/* <span className="inline mt-[4px] pl-2">
-                    <DatePicker
-                      className=" pl- px- min-w-[151px] inline text-xs text-[#0091ae] bg-white cursor-pointer"
-                      selected={cutOffDate}
-                      onChange={(date) =>{ setCutOffDate(date.getTime())}}
-                      showTimeSelect
-                      timeFormat="HH:mm"
 
-                      dateFormat="MMMM d, yyyy h:mm aa"
-                    />
-                  </span> */}
 
-      {/* {numSelected > 0 ? (
-        <Typography
-          sx={{ flex: '1 1 100%' }}
-          color="inherit"
-          variant="subtitle1"
-          component="div"
-        >
-          {' '}
-          {numSelected} selected
-        </Typography>
-      ) : (
-        <Typography
-          sx={{ flex: '1 1 100%' }}
-          variant="subtitle2"
-          id="tableTitle"
-          component="div"
-        >
-          <span className="ml-3 pt-[7px] font-light font-bodyLato block text-xs ">
-            <span className="ml-1 mr-1 pt-2 font-thick font-bodyLato text-[12px] text-blue-800">
-              {rowsAfterSearchKey.length}
-            </span>
-            Results{' '}
-          </span>
-        </Typography>
-      )} */}
       <span style={{ display: 'flex' }}>
         <section className="pt-1">
           <DropCompUnitStatus
@@ -514,15 +395,7 @@ React.useEffect(()=>{
             pickCustomViewer={pickCustomViewer}
           />
         </section>
-        {/* <Tooltip title={`Download ${rowsAfterSearchKey.length} Rows`}>
 
-          <IconButton className="bg-gray-200 ">
-            <EventNoteTwoToneIcon
-              className="h-[20px] w-[20px]"
-              style={{ height: '20px', width: '20px' }}
-            />
-          </IconButton>
-        </Tooltip> */}
 
         {numSelected > 0 ? (
           <Tooltip title="Delete">
@@ -535,10 +408,7 @@ React.useEffect(()=>{
           </Tooltip>
         ) : (
           <Tooltip title={`Download ${leadsFetchedData?.length} Row`}>
-            {/* <IconButton>
-            <FileDownloadIcon />
-            <CSVDownloader />
-          </IconButton> */}
+
 
             <CSVDownloader
               className="mr-6 h-[20px] w-[20px]"
@@ -595,26 +465,8 @@ export default function LLeadsTableBody({
   const [dateRange, setDateRange] = React.useState([null, null])
   const [startDate, endDate] = dateRange
   React.useEffect(() => {
-    // filterStuff(rowsParent)
-    // let x = rowsParent.filter((item) => {
-    //   if (selStatus === 'all') {
-    //     return item
-    //   } else if (item.Status.toLowerCase() === selStatus.toLowerCase()) {
-    //     console.log('All1', item)
-    //     return item
-    //   } else if (item.Status.toLowerCase().includes(selStatus.toLowerCase())) {
-    //     return item
-    //   } else {
-    //     return item
-    //   }
-    // })
-    // // console.log('All2', x)
 
-    // console.log('what is x', rows)
 
-    // return () => {
-    //   second
-    // }
   }, [selStatus, rowsParent])
   console.log(searchKey, "cdsvfeg")
   React.useEffect(() => {
@@ -633,7 +485,7 @@ export default function LLeadsTableBody({
   const filterByDate = () => {
     rows.filter((item) => {
       {
-        /* console.log('inside xxxx ==>', item?.Date>= startDate.getTime() && item.Date <= startDate.getTime()+ 86400000,startDate.getTime()+ 86399999,startDate.getTime(),   item.Name) */
+
       }
       if (startDate !== null && endDate != null) {
         console.log('inside you1', startDate, endDate, item)
@@ -681,12 +533,7 @@ export default function LLeadsTableBody({
       if (item.Source.toLowerCase().includes(selStatus.toLowerCase())) {
         return item
       }
-      //  else if (item.Status.toLowerCase() === selStatus.toLowerCase()) {
-      //   console.log('All1', item)
-      //   return item
-      // } else if (item.Source.toLowerCase().includes(selStatus.toLowerCase())) {
-      //   return item
-      // }
+
     })
     await setRows(x)
     await console.log('xo', x)
@@ -708,28 +555,16 @@ export default function LLeadsTableBody({
   }
 
   const handleClick = (event, row) => {
-    // const selectedIndex = selected.indexOf(name)
+
     let newSelected = []
 
-    // if (selectedIndex === -1) {
-    //   newSelected = newSelected.concat(selected, name)
-    // } else if (selectedIndex === 0) {
-    //   newSelected = newSelected.concat(selected.slice(1))
-    // } else if (selectedIndex === selected.length - 1) {
-    //   newSelected = newSelected.concat(selected.slice(0, -1))
-    // } else if (selectedIndex > 0) {
-    //   newSelected = newSelected.concat(
-    //     selected.slice(0, selectedIndex),
-    //     selected.slice(selectedIndex + 1)
-    //   )
-    // }
     selUserProfileF('User Profile', row)
     setSelected(newSelected)
   }
 
   const isSelected = (name) => selected.indexOf(name) !== -1
 
-  // Avoid a layout jump when reaching the last page with empty rows.
+
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
 
@@ -738,9 +573,6 @@ export default function LLeadsTableBody({
     'Phone No',
     'Last Activity',
 
-    // 'Blocked',
-    // 'Booked',
-    // 'Total',
   ])
   React.useEffect(() => {
     if (user) {
@@ -807,13 +639,7 @@ export default function LLeadsTableBody({
             />
 
             <TableBody>
-              {/* if you don't need to support IE11, you can replace the `stableSort` call with:
-                 rows.slice().sort(getComparator(order, orderBy)) */}
-              {/* {stableSort(rows, getComparator(order, orderBy)).map( */}
 
-              {/* item.Assignedto.toLowerCase().includes(
-                    searchKey.toLowerCase()
-                  ) || */}
               {
 
                 leadsFetchedData
@@ -902,11 +728,11 @@ export default function LLeadsTableBody({
                             <div>
                               <div
                                 className="relative flex flex-col  group"
-                              // style={{ alignItems: 'end' }}
+
                               >
                                 <div
                                   className="absolute bottom-0 flex-col items-center hidden mb-6 group-hover:flex"
-                                  // style={{  width: '300px' }}
+
                                   style={{ 'zIndex': '9' }}
                                 >
                                   <span
@@ -986,17 +812,10 @@ export default function LLeadsTableBody({
                         </TableCell>
 
                         <TableCell align="left">{row.Project}</TableCell>
-                        {/* display:
-                  viewUnitStatusA.includes('Assigned To') &&
-                  headCell.id === 'Assigned'
-                    ? 'none'
-                    : '', */}
+
                         {viewUnitStatusA.includes('Assigned To') && (
                           <TableCell align="left">
-                            {/* <HighlighterStyle
-                        searchKey={searchKey}
-                        source={row.Assignedto}
-                      /> */}
+
                             <span className="font-bodyLato">
                               {row?.assignedToObj?.label}
                             </span>
@@ -1031,9 +850,6 @@ export default function LLeadsTableBody({
                             padding="none"
                           >
                             <>
-                              {/* <span className="font-bodyLato">
-                          {prettyDate(row?.stsUpT || row.Date).toLocaleString()}
-                        </span> */}
                               <span className="px- py-[1px]  min-w-[100px] inline-flex text-xs leading-5 tracking-wide  rounded-full  text-green-800">
                                 {Math.abs(
                                   getDifferenceInMinutes(
@@ -1059,7 +875,7 @@ export default function LLeadsTableBody({
                                     (row?.leadUpT || row?.stsUpT),
                                     ''
                                   )) || 0} Min`}{' '}
-                                  {/* in above line I have added 0 to take Nan value */}
+
                                 {getDifferenceInMinutes(
                                   (row?.leadUpT || row?.stsUpT),
                                   ''
@@ -1076,9 +892,7 @@ export default function LLeadsTableBody({
                           padding="none"
                         >
                           <>
-                            {/* <span className="font-bodyLato">
-                          {prettyDate(row?.stsUpT || row.Date).toLocaleString()}
-                        </span> */}
+                            
                             <span className="px- py-[1px]  min-w-[100px] inline-flex text-xs leading-5 tracking-wide  rounded-full  text-green-800">
                               {Math.abs(
                                 getDifferenceInMinutes(
