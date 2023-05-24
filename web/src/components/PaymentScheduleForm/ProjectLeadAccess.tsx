@@ -8,7 +8,6 @@ import { useSnackbar } from 'notistack'
 import DatePicker from 'react-datepicker'
 import Select from 'react-select'
 
-// import { Edit, DeleteOutline } from '@material-ui/icons'
 import { MaterialCRUDTable } from 'src/components/MaterialCRUDTable'
 import { paymentScheduleA } from 'src/constants/projects'
 import {
@@ -66,9 +65,6 @@ const PaymentLeadAccess = ({ title, data, source }) => {
     const { project } = data
     const { projectName, uid: projiD } = project
 
-    //  projId
-    // add projectId to users doc
-    // const { uid, projAccessA, , email } = value
     let newProjAccessA = projAccessA || []
     console.log('new porj is', projAccessA)
     if (projAccessA?.includes(projiD)) {
@@ -77,7 +73,6 @@ const PaymentLeadAccess = ({ title, data, source }) => {
     } else {
       newProjAccessA = [...(projAccessA || []), ...[projiD]]
     }
-    // projectName
 
     updateUserAccessProject(
       orgId,
@@ -89,16 +84,14 @@ const PaymentLeadAccess = ({ title, data, source }) => {
       enqueueSnackbar
     )
 
-    // setLeadsProjectAccessA(value.target.value)
+
   }
 
   return (
     <>
       <div className="h-full w-full shadow-xl flex flex-col pt-6 mb-6  bg-[#F1F5F9] rounded-t overflow-y-scroll">
         <div className="z-10">
-          {/* <Dialog.Title className="font-semibold text-xl mr-auto ml-3 text-[#053219]">
-          {title}
-        </Dialog.Title> */}
+          
           <span className="mr-auto ml-3  text-md font-extrabold tracking-tight uppercase font-body ">
             {title}
           </span>

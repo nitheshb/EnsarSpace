@@ -142,13 +142,7 @@ const LeadsCoversionGraphs = () => {
                   </span>
                 </div>
               </div>
-              {/* <div
-                style={{
-                  border: '1px solid red',
-                  width: '100%',
-                  height: '10rem',
-                }}
-              ></div> */}
+              
             </div>
             <div
               style={{

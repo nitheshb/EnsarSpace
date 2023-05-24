@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect } from 'react'
 
 import { Box, Menu, MenuItem, Typography } from '@mui/material'
@@ -25,7 +24,7 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
   const { user, logout } = useAuth()
   const dispatch = useDispatch()
   const makeFilterFun = (id, viewModule) => {
-    // 'Sales', 'CRM', 'Legal', 'Finance', 'HR'
+    
     setSelModule(viewModule)
     console.log('i was clicked', id, viewModule)
   }
@@ -55,7 +54,7 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
             pickedValue={selModule}
           />
         </section>
-        
+
         <GlobalSearchBar />
         <button className="flex items-center justify-center h-10 px-4 ml-auto "></button>
         <button className="flex items-center justify-center h-10 text-sm font-medium "></button>
@@ -70,9 +69,9 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
           <button className="relative ml-2 text-sm focus:outline-none group  items-center justify-center h-10 text-sm font-medium">
             <div className="flex items-center justify-between w-10 h-10 rounded ">
               <svg
-                width="50"
+                width="30"
                 fill="currentColor"
-                height="50"
+                height="30"
                 className="text-gray-800"
                 viewBox="0 0 1792 1792"
                 xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +97,7 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
           }}
         >
 
-          
+
           <MenuItem onClick={handleClose}>
             <Link to={routes.profile()}>Profile</Link>
           </MenuItem>

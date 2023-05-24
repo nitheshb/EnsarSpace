@@ -76,14 +76,7 @@ const AddBlockForm = ({ title, dialogOpen, data }) => {
                         />
                       </div>
                       <div className=" w-full md:space-x-3 md:block flex  mb-6 align-center mt-1 bg-green-400 hover:shadow-sm hover:bg-green-500 rounded-sm ">
-                        {/* <button
-                          onClick={() => dialogOpen(false)}
-                          type="button"
-                          className="mb-4  mt-5 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
-                        >
-                          {' '}
-                          Cancel{' '}
-                        </button> */}
+                        
                         <button
                           className="mb-2 py-[9px] flex pl-[2px] md:mb-0 bg-green-400  py-2 w-[42px] text-sm shadow-sm font-medium tracking-wider text-white rounded-sm "
                           type="submit"

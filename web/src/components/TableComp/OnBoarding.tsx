@@ -1,10 +1,7 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-// import { Link, routes } from '@redwoodjs/router'
 
 import { Fragment, useState, useEffect } from 'react'
 
-// import { XIcon } from '@heroicons/react/outline'
+
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 import { MetaTags } from '@redwoodjs/web'
@@ -27,7 +24,7 @@ const OnBoarding = ({ leadsTyper }) => {
   const { orgId } = user
   const [isImportLeadsOpen, setisImportLeadsOpen] = useState(false)
 
-  // kanban board
+
   const [ready, setReady] = useState(false)
 
   const [addLeadsTypes, setAddLeadsTypes] = useState('')
@@ -73,9 +70,9 @@ const OnBoarding = ({ leadsTyper }) => {
             x.id = docSnapshot.id
             return x
           })
-          // setBoardData
+
           console.log('my Array data is ', usersListA, leadsFetchedData)
-          // await serealizeData(usersListA)
+
           await setLeadsFetchedData(usersListA)
           await console.log('my Array data is set it', leadsFetchedData)
         },
@@ -87,7 +84,7 @@ const OnBoarding = ({ leadsTyper }) => {
             'cleared',
             'rejected',
             '',
-            // 'booked',
+
           ],
         },
         () => setLeadsFetchedData([])
@@ -102,7 +99,7 @@ const OnBoarding = ({ leadsTyper }) => {
             x.id = docSnapshot.id
             return x
           })
-          // setBoardData
+
           console.log('my Array data is ', usersListA)
           await serealizeData(usersListA)
           await setLeadsFetchedData(usersListA)
@@ -116,7 +113,7 @@ const OnBoarding = ({ leadsTyper }) => {
             'cleared',
             'rejected',
             '',
-            // 'booked',
+
           ],
         },
         () => setLeadsFetchedData([])
@@ -124,18 +121,18 @@ const OnBoarding = ({ leadsTyper }) => {
       return unsubscribe
     }
 
-    // await console.log('leadsData', leadsData)
+
   }
 
   const serealizeData = (array) => {
-    // let newData =
+
     const x = [
       'new',
       'review',
       'cleared',
       'rejected',
       '',
-      // 'booked',
+      
     ].map((status) => {
       const items = array.filter((data) => data.Status.toLowerCase() == status)
 

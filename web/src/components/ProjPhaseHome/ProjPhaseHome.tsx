@@ -49,12 +49,12 @@ const ProjPhaseHome = ({
   const { orgId } = user
   const [myProjectDetails, setMyProjectDetails] = useState({ uid: '' })
   const [leadDetailsObj1, setLeadDetailsObj1] = useState({})
-  // phases
+
   const [phases, setPhases] = useState([])
   const [phasesList, setPhasesList] = useState([])
   const [phaseViewFeature, setPhaseViewFeature] = useState('Blocks')
 
-  // blocks
+
   const [selPhaseIs, setSelPhaseIs] = useState('')
   const [selPhaseName, setSelPhaseName] = useState('')
   const [selPhaseObj, setSelPhaseObj] = useState({})
@@ -63,7 +63,7 @@ const ProjPhaseHome = ({
   const [showCostSheetWindow, setShowCostSheetWindow] = useState(false)
   const [selMode, setSelMode] = useState('Detail View')
   const [selUnitDetails, setSelUnitDetails] = useState({})
-  // Set button id
+
   const [buttonId, setButtonId] = useState({})
   const [sliderInfo, setSliderInfo] = useState({
     open: false,
@@ -260,8 +260,7 @@ const ProjPhaseHome = ({
                   selUnitDetails={selUnitDetails}
                 />
               )}
-              {/* {<AddBookingForm title="Booking Form" />} */}
-              {/* <BlockingUnitForm title="Blocking Form" /> */}
+
               {!showCostSheetWindow && (
                 <section
                   key={phase?.uid}
@@ -276,8 +275,7 @@ const ProjPhaseHome = ({
                           src="/m3.png"
                         ></img>
                         <span className="relative z-10 flex items-center w-auto text-md font-bold leading-none pl-0 mt-[px]">
-                          {/* {phase?.phaseName} */}
-                          {/* selPhaseIs, setSelPhaseIs */}
+
                           <AssigedToDropComp
                             assignerName={selPhaseName}
                             id={'id'}
@@ -286,125 +284,7 @@ const ProjPhaseHome = ({
                           />
                         </span>
 
-                        {/* <section className="flex ml-auto mt-[18px] mb-3">
-                    <button
-                      onClick={() => {
-                        setButtonId({
-                          ...buttonId,
-                          [`add-block-${phase.uid}`]:
-                            !buttonId[`add-block-${phase.uid}`],
-                        })
-                        !buttonId[`add-block-${phase.uid}`] &&
-                          getBlocks(phase.uid)
-                      }}
-                      className={
-                        'flex ml-2 items-center h-6 px-3 text-xs font-semibold  rounded-full hover:bg-pink-200 hover:text-pink-800 ' +
-                        (buttonId[`add-block-${phase.uid}`]
-                          ? 'text-pink-800 bg-pink-200'
-                          : 'text-green-800 bg-green-200')
-                      }
-                    >
-                      {buttonId[`add-block-${phase.uid}`] ? (
-                        <EyeIcon className="h-3 w-3 mr-1" aria-hidden="true" />
-                      ) : (
-                        <EyeOffIcon
-                          className="h-3 w-3 mr-1"
-                          aria-hidden="true"
-                        />
-                      )}
-                      View Block Details
-                    </button>
 
-                    <button
-                      onClick={() => {
-                        setSliderInfo({
-                          open: true,
-                          title: 'Edit Phase',
-                          sliderData: phase,
-                          widthClass: 'max-w-2xl',
-                        })
-                      }}
-                      className={
-                        'flex ml-2  cursor-pointer items-center h-6 px-3 text-xs font-semibold  rounded-full hover:bg-pink-200 hover:text-pink-800 text-green-800 bg-green-200'
-                      }
-                    >
-                      <PencilIcon className="h-3 w-3 mr-1" aria-hidden="true" />
-                      Edit Phase
-                    </button>
-                    <button
-                      onClick={() => {
-                        setSliderInfo({
-                          open: true,
-                          title: 'Add Block',
-                          sliderData: {
-                            phase,
-                            block: {},
-                          },
-                          widthClass: 'max-w-2xl',
-                        })
-                      }}
-                      className={
-                        'flex ml-2  cursor-pointer items-center h-6 px-3 text-xs font-semibold  rounded-full hover:bg-pink-200 hover:text-pink-800 text-green-800 bg-green-200'
-                      }
-                    >
-                      <PencilIcon className="h-3 w-3 mr-1" aria-hidden="true" />
-                      Add block
-                    </button>
-                    <button
-                      onClick={() => {
-                        setSliderInfo({
-                          open: true,
-                          title: 'Additional Charges',
-                          sliderData: {
-                            phase,
-                          },
-                          widthClass: 'max-w-6xl',
-                        })
-                      }}
-                      className={
-                        'flex ml-2  cursor-pointer items-center h-6 px-3 text-xs font-semibold  rounded-full hover:bg-pink-200 hover:text-pink-800 text-green-800 bg-green-200'
-                      }
-                    >
-                      <PencilIcon className="h-3 w-3 mr-1" aria-hidden="true" />
-                      Additional Charges
-                    </button>
-                    <button
-                      onClick={() => {
-                        setSliderInfo({
-                          open: true,
-                          title: 'Payment Schedule',
-                          sliderData: {
-                            phase,
-                          },
-                          widthClass: 'max-w-6xl',
-                        })
-                      }}
-                      className={
-                        'flex ml-2  cursor-pointer items-center h-6 px-3 text-xs font-semibold  rounded-full hover:bg-pink-200 hover:text-pink-800 text-green-800 bg-green-200'
-                      }
-                    >
-                      <PencilIcon className="h-3 w-3 mr-1" aria-hidden="true" />
-                      Payment Schedule
-                    </button>
-                    <button
-                      onClick={() => {
-                        setSliderInfo({
-                          open: true,
-                          title: 'More Details',
-                          sliderData: {
-                            phase,
-                          },
-                          widthClass: 'max-w-2xl',
-                        })
-                      }}
-                      className={
-                        'flex ml-2  cursor-pointer items-center h-6 px-3 text-xs font-semibold  rounded-full hover:bg-pink-200 hover:text-pink-800 text-green-800 bg-green-200'
-                      }
-                    >
-                      <PencilIcon className="h-3 w-3 mr-1" aria-hidden="true" />
-                      More Details
-                    </button>
-                  </section> */}
                       </div>
 
                       <div className=" border-gray-800 ">
@@ -455,8 +335,7 @@ const ProjPhaseHome = ({
                                   onClick={() => selCat(d.val, d?.subval)}
                                 >
                                   {`${d.lab} `}
-                                  {/* <span className="bg-gray-100 px-2 py-1 rounded-full">
-                          {/* {rowsCounter(leadsFetchedData, d.val).length} */}
+                                  
                                 </button>
                               </li>
                             )
