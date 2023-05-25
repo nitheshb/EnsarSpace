@@ -1,11 +1,11 @@
 import { render } from '@redwoodjs/testing/web'
 
-import geTable from './UserManageTable'
+import SUserSignupBody from './SUserSignupBody'
 
-describe('geTable', () => {
+describe('SUserSignupBody', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<UserManageTable />)
+      render(<SUserSignupBody />)
     }).not.toThrow()
   })
 })

@@ -9,7 +9,7 @@ module.exports = {
   arrowParens: 'always',
   overrides: [
     {
-      files: 'Routes.*',
+      files: '.*',
       options: {
         printWidth: 999,
       },
