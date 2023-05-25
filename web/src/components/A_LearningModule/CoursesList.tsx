@@ -7,6 +7,7 @@ import { courses } from 'src/constants/courses'
 
 
 import CoursesCard from './CoursesCard'
+import { Link, routes } from '@redwoodjs/router'
 const CourseList = () => {
 
   const [activeTab, setActiveTab] = useState('python')
@@ -163,6 +164,17 @@ const CourseList = () => {
        empData={empData}
 
       />
+
+        <div>
+        <button
+
+            className="flex items-center justify-center h-10 px-4  bg-gray-200 ml-auto text-sm font-medium rounded hover:bg-gray-300"
+            >
+
+
+          <Link to={routes.myjourney()}>My Journey</Link>
+            </button>
+        </div>
 
 
     </div>

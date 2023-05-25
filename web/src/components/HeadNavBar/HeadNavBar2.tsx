@@ -24,7 +24,7 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
   const { user, logout } = useAuth()
   const dispatch = useDispatch()
   const makeFilterFun = (id, viewModule) => {
-    
+
     setSelModule(viewModule)
     console.log('i was clicked', id, viewModule)
   }
@@ -103,6 +103,7 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
           </MenuItem>
           <MenuItem onClick={handleClose}>My account</MenuItem>
           <MenuItem onClick={() => handleClose('Logout')}>Logout</MenuItem>
+
         </Menu>
       </div>
     </div>
