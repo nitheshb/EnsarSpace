@@ -6,7 +6,8 @@ export const courses = [
 
     course_name: 'Learn Python: The Complete Python Programming Course',
     description:
-      'Learn A-Z everything about Python, from the basics, to advanced topics like Python GUI, Python Data Analysis, and more
+      'Learn A-Z everything about Python, from the basics, to advanced topics like Python GUI, Python Data Analysis, and more!',
+      
     rating_count: 3059,
     rating_star: 4.4,
     students: 18430,
