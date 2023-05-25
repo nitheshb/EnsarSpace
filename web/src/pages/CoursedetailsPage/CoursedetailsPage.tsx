@@ -6,7 +6,8 @@ import { TbWorld } from 'react-icons/tb'
 import { FaBars, FaShoppingCart } from 'react-icons/fa'
 import { RiClosedCaptioningFill } from 'react-icons/ri'
 import { BiCheck } from 'react-icons/bi'
-import { courses } from 'src/components/A_LearningModule/CoursesList'
+// import { courses } from 'src/components/A_LearningModule/CoursesList'
+import { courses } from 'src/constants/courses'
 import styled from 'styled-components'
 
 // const courses = [
@@ -77,7 +78,7 @@ const CoursedetailsPage = () => {
   const { id } = useParams()
   const course = courses.find((p) => p.id === id)
 
-  // console.log('course', course)
+  console.log('course', course)
 
   return (
     <SingleCourseWrapper>
@@ -413,7 +414,7 @@ const CoursedetailsPage = () => {
                 }}
                 className="responsive-image"
               />
-              
+
             </div>
           </div>
 

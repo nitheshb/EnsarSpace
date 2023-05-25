@@ -459,6 +459,11 @@
 
 }
 
+
+
+
+
+
 .tab-btn:hover{
   background-color: black;
         color: white;
@@ -561,7 +566,7 @@ margin-left: 8px;
 
 
    .categoty-wrap{
- 
+
     border: 1px solid transparent;
     transition: var(--transition);
     margin:2px;
