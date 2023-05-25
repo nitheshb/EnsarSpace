@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/label-has-associated-control */
+
 import { useState, useEffect } from 'react'
 
 import { Dialog } from '@headlessui/react'
@@ -132,11 +130,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
     return unsubscribe
   }, [])
 
-  // const usersList = [
-  //   { label: 'User1', value: 'User1' },
-  //   { label: 'User2', value: 'User2' },
-  //   { label: 'User3', value: 'User3' },
-  // ]
+
   const budgetList = [
     { label: 'Select Customer Budget', value: '' },
     { label: '5 - 10 Lacs', value: '5-10L' },
@@ -233,13 +227,13 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
       projectId,
     } = data
 
-    // updateUserRole(uid, deptVal, myRole, email, 'nitheshreddy.email@gmail.com')
+
 
     const foundLength = await checkIfLeadAlreadyExists(
       `${orgId}_leads`,
       mobileNo
     )
-    // Timestamp.now().toMillis()
+
     const leadData = {
       Date: startDate.getTime(),
       Email: email,
@@ -282,7 +276,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
           `lead created and assidged to ${assignedToObj?.email || assignedTo}`
         )
       } else {
-        // proceed to copy
+
         await addLead(
           orgId,
           leadData,
@@ -294,9 +288,9 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
             status: 'added',
           })
         }
-        //
+
       }
-      // update the leads bank status
+
       await sendWhatAppTextSms(
         mobileNo,
         `Thank you ${name} for choosing the world class ${project || 'project'}`
@@ -321,46 +315,21 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
     }
   }
 
-  // const sourceList = [
-  //   { label: 'Select the Source', value: '' },
-  //   { label: 'CP Skagen', value: 'cpskagen' },
-  //   { label: 'Direct Contact', value: 'directcontact' },
-  //   { label: 'Facebook Ad', value: 'facebookad' },
-  //   { label: 'Google Adwords', value: 'googleadwords' },
-  //   { label: 'Instagram Ad', value: 'instagramad' },
-  //   { label: 'Magic Bricks', value: 'magicbricks' },
-  //   { label: 'MCube', value: 'mcube' },
-  //   { label: 'Website', value: 'website' },
-  //   { label: '99acres', value: '99acres' },
-  // ]
   const validate = Yup.object({
     name: Yup.string()
       .max(45, 'Must be 45 characters or less')
       .required('Name is Required'),
-    // lastName: Yup.string()
-    //   .max(20, 'Must be 20 characters or less')
-    //   .required('Required'),
+
     email: Yup.string().email('Email is invalid'),
 
-    // password: Yup.string()
-    //   .min(6, 'Password must be at least 6 charaters')
-    //   .required('Password is required'),
-    // confirmPassword: Yup.string()
-    //   .oneOf([Yup.ref('password'), null], 'Password must match')
-    //   .required('Confirm password is required'),
-    // mobileNo
+
     mobileNo: Yup.string()
       .required('Phone number is required')
       .matches(phoneRegExp, 'Phone number is not valid')
       .min(10, 'to short')
       .max(10, 'to long'),
 
-    // deptVal: Yup.string()
-    //   // .oneOf(['Admin', 'CRM'], 'Required Dept')
-    //   .required('Req Dept'),
-    // myRole: Yup.string()
-    //   //  .oneOf(['Admin', 'CRM'], 'DEPT IS REQ')
-    //   .required('Required Role'),
+
   })
   const resetter = () => {
     setSelected({})
@@ -377,11 +346,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
             <span
               className="cursor-pointer"
               onClick={() => {
-                // deleteAssetFun(
-                //   bankDe?.docId,
-                //   bankDe?.accountName,
-                //   bankDe?.usedInA?.length || 0
-                // )
+
                 setTrashMode(true)
               }}
             >
@@ -397,7 +362,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
       <div className="grid  gap-8 grid-cols-1">
         <div className="flex flex-col  my-10 rounded-lg bg-white border border-gray-100 px-4 m-4 mt-4">
           <div className="mt-0">
-            {/* new one */}
+
 
             <Formik
               enableReinitialize={true}
@@ -436,14 +401,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                       </div>
                     </div>
                     <div className="md:flex flex-row md:space-x-4 w-full text-xs mt-2">
-                      {/* <div className="mb-3 space-y-2 w-full text-xs">
 
-                        <TextField
-                          label="Contact Date"
-                          name="cDate"
-                          type="text"
-                        />
-                      </div> */}
 
                       <div className="mb-3 space-y-2 w-full text-xs">
                         <TextField
@@ -453,22 +411,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                         />
                       </div>
                       <div className="mb-3 space-y-2 w-full text-xs">
-                        {/* <TextField
-                          label="Mobile No*"
-                          name="mobileNo"
-                          type="text"
-                        /> */}
-                        {/* <NumberFormat
-                          // label="Mobile No*"
-                          className=" w-full min-w-full flex bg-grey-lighter text-grey-darker border border-[#cccccc] rounded-md h-10 px-4 mt-1"
-                          name="mobileNo"
-                          value={formik.values.mobileNo}
-                          onValueChange={(value) => {
-                            formik.setFieldValue('mobileNo', value.value)
-                          }}
-                          format="+91 ###-###-####"
-                          mask=""
-                        /> */}
+
                         <PhoneNoField
                           name="mobileNo"
                           label="Mobile No*"
@@ -481,7 +424,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                         />
                       </div>
                     </div>
-                    {/* 2 */}
+
                     <div className="md:flex flex-row md:space-x-4 w-full text-xs mt-">
                       <div className="mb-3 space-y-2 w-full text-xs">
                         <TextField label="Email" name="email" type="text" />
@@ -526,7 +469,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                               onChange={(value) => {
                                 // call db to update
                                 setBinreason(value.value)
-                                // formik.setFieldValue('source', value.value)
+
                               }}
                               value={binReason}
                               options={leadBinReasonList}
@@ -602,9 +545,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                         </div>
                         <div className="border-t-4 rounded-xl w-16 mt-1  border-green-600"></div>
 
-                        {/* </div>
-                      <div className="rounded-lg bg-white border border-gray-100 p-4 mt-4"> */}
-                        {/* 3 */}
+
                         <div className="md:flex md:flex-row md:space-x-4 w-full text-xs ">
                           <div className="w-full flex flex-col mb-3 mt-2">
                             <CustomSelect
@@ -685,16 +626,14 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                                     key={plan.name}
                                     value={plan}
                                     className={({ active, checked }) =>
-                                      `${
-                                        active
-                                          ? 'ring-2 ring-offset-2  ring-white ring-opacity-60 col-span-2'
-                                          : ''
+                                      `${active
+                                        ? 'ring-2 ring-offset-2  ring-white ring-opacity-60 col-span-2'
+                                        : ''
                                       }
-                ${
-                  selected.name == plan.name
-                    ? 'ring-1  ring-green-400 bg-opacity-75 text-black'
-                    : 'bg-[#f7f9f8]'
-                }
+                ${selected.name == plan.name
+                                        ? 'ring-1  ring-green-400 bg-opacity-75 text-black'
+                                        : 'bg-[#f7f9f8]'
+                                      }
                   relative rounded-lg px-5 py-2 cursor-pointer flex focus:outline-none col-span-2`
                                     }
                                   >
@@ -705,11 +644,10 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                                             <div className="text-sm">
                                               <RadioGroup.Label
                                                 as="p"
-                                                className={`font-medium  ${
-                                                  selected.name == plan.name
-                                                    ? 'text-gray-900'
-                                                    : 'text-gray-900'
-                                                }`}
+                                                className={`font-medium  ${selected.name == plan.name
+                                                  ? 'text-gray-900'
+                                                  : 'text-gray-900'
+                                                  }`}
                                               >
                                                 <img
                                                   className="w-8 h-8 inline"
@@ -724,11 +662,10 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                                           </div>
                                           {true && (
                                             <div
-                                              className={`${
-                                                selected.name == plan.name
-                                                  ? 'flex-shrink-0 text-white ml-auto'
-                                                  : 'flex-shrink-0 text-black ml-auto'
-                                              } mt-2`}
+                                              className={`${selected.name == plan.name
+                                                ? 'flex-shrink-0 text-white ml-auto'
+                                                : 'flex-shrink-0 text-black ml-auto'
+                                                } mt-2`}
                                             >
                                               <svg
                                                 viewBox="0 0 24 24"
@@ -873,7 +810,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                                             <section className="">
                                               <div className="flex flex-row  cursor-pointer">
                                                 <div className="font-md text-xs text-gray-500 mb-[2px] tracking-wide mr-4">
-                                                  Project {}
+                                                  Project { }
                                                 </div>
                                               </div>
                                               <div className="font-semibold text-sm text-slate-900 tracking-wide overflow-ellipsis">
@@ -905,9 +842,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                                                   ].includes(Status) && (
                                                     <div className="font-semibold text-[#053219] text-sm  mt- px-[3px] pt-[2px] rounded ">
                                                       {Project}{' '}
-                                                      {/* {leadDetailsObj?.Status != tempLeadStatus
-  ? `--> ${' '}${tempLeadStatus}`
-  : ''} */}
+
                                                     </div>
                                                   )}
                                               </div>
@@ -915,7 +850,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
 
                                             <section>
                                               <div className="font-md text-xs text-gray-500 mb-[px] tracking-wide mr-4">
-                                                Assigned To {}
+                                                Assigned To { }
                                               </div>
                                               {!user?.role?.includes(
                                                 USER_ROLES.CP_AGENT
@@ -947,30 +882,26 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                                                 ].includes(Status) && (
                                                   <div className="font-semibold text-[#053219] text-sm  mt- px-[3px] pt-[2px] rounded ">
                                                     {assignedToObj?.label}{' '}
-                                                    {/* {leadDetailsObj?.Status != tempLeadStatus
-  ? `--> ${' '}${tempLeadStatus}`
-  : ''} */}
+
                                                   </div>
                                                 )}
                                               {user?.role?.includes(
                                                 USER_ROLES.CP_AGENT
                                               ) && (
-                                                <span className="text-left text-sm">
-                                                  {' '}
-                                                  {assignedToObj?.label}
-                                                  {/* {assignerName} */}
-                                                </span>
-                                              )}
+                                                  <span className="text-left text-sm">
+                                                    {' '}
+                                                    {assignedToObj?.label}
+                                                    {/* {assignerName} */}
+                                                  </span>
+                                                )}
                                             </section>
                                             <section>
                                               <div className="font-md text-xs text-gray-500 mb-[0px] tracking-wide mr-4">
-                                                Current Status {}
+                                                Current Status { }
                                               </div>
                                               <div className="font-semibold text-[#053219] text-sm  mt- px-[3px] pt-[2px] rounded ">
                                                 {currentStatusDispFun(Status)}{' '}
-                                                {/* {leadDetailsObj?.Status != tempLeadStatus
-? `--> ${' '}${tempLeadStatus}`
-: ''} */}
+
                                               </div>
                                             </section>
                                           </div>
@@ -994,7 +925,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                                                   {stsUpT === undefined
                                                     ? 'NA'
                                                     : prettyDateTime(stsUpT) ||
-                                                      'NA'}
+                                                    'NA'}
                                                 </span>
                                               </span>
                                             </section>
@@ -1022,7 +953,7 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                                       </div>
                                       <div
                                         className="relative flex flex-col  group"
-                                        // style={{ alignItems: 'end' }}
+                                      // style={{ alignItems: 'end' }}
                                       >
                                         <div
                                           className="absolute bottom-0 right-0 flex-col items-center hidden mb-6 group-hover:flex"
@@ -1052,10 +983,6 @@ const AddLeadForm = ({ title, dialogOpen, customerDetails }) => {
                                           ></div>
                                         </div>
                                         <span className="font-bodyLato text-[#867777] text-xs mt-2">
-                                          {/* <HighlighterStyle
-searchKey={searchKey}
-source={row.Source.toString()}
-/> */}
 
                                           {Source?.toString() || 'NA'}
                                         </span>

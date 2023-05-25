@@ -7,13 +7,6 @@ const ProjectModulePage = () => {
         <div className=" mx-auto px-5">
           <div className="flex items-center justify-between h-16">
             <div className=" flex items-center">
-              {/* <a className="flex-shrink-0" href="/">
-                <img
-                  className="h-8 w-8"
-                  src="/icons/rocket.svg"
-                  alt="Workflow"
-                />
-              </a> */}
 
               <span className="relative z-10 flex items-center w-auto text-2xl font-extrabold leading-none text-black select-none">
                 redefine.
@@ -48,39 +41,7 @@ const ProjectModulePage = () => {
                         aria-orientation="vertical"
                         aria-labelledby="options-menu"
                       >
-                        {/* <Link
-                          className="mx-2 text-sm font-semibold text-indigo-700"
-                          to={routes.projectModule()}
-                        >
-                          Projects1
-                        </Link> */}
-                        {/* <a
-                          href="#"
-                          className="block block px-4 py-2 text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600"
-                          role="menuitem"
-                        >
-                          <span className="flex flex-col">
-                            <span>Settings</span>
-                          </span>
-                        </a>
-                        <a
-                          href="#"
-                          className="block block px-4 py-2 text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600"
-                          role="menuitem"
-                        >
-                          <span className="flex flex-col">
-                            <span>Account</span>
-                          </span>
-                        </a>
-                        <a
-                          href="#"
-                          className="block block px-4 py-2 text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600"
-                          role="menuitem"
-                        >
-                          <span className="flex flex-col">
-                            <span>Logout</span>
-                          </span>
-                        </a> */}
+                        
                       </div>
                     </div>
                   </div>

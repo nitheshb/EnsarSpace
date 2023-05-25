@@ -20,8 +20,6 @@ import Loader from '../Loader/Loader'
 import { DEPARTMENT_LIST, ROLES_LIST } from 'src/constants/userRoles'
 import { PhoneNoField } from 'src/util/formFields/phNoField'
 
-// import Select from 'react-select'
-// import SelectSearch from 'react-select-search'
 
 const SUserSignupBody = ({ title, dialogOpen, empData }) => {
   const { register, user } = useAuth()
@@ -61,24 +59,11 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
     if (department) {
       x['value'] = department[0]
       changed(x)
-      // seteditMode(true)
+
     }
   }, [empData])
 
-  // const cityList = [
-  //   { label: 'Bangalore,KA', value: 'Bangalore,KA' },
-  //   { label: 'Cochin,KL', value: 'Cochin,KL' },
-  //   { label: 'Mumbai,MH', value: 'Mumbai,MH' },
-  // ]
 
-  // const plans = []
-  // const [selected, setSelected] = useState(plans[1])
-
-  // const typeSel = async (sel) => {
-  //   await console.log('value is', selected)
-  //   await setSelected(sel)
-  //   await console.log('thsi si sel type', sel, selected)
-  // }
 
   const changed = async (data) => {
     console.log('i was changed', data, data)
@@ -107,7 +92,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         perPh,
         'nitheshreddy.email@gmail.com'
       )
-      //  add docs to report page
 
       setLoading(false)
       addUserLog(orgId, {
@@ -138,8 +122,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         perPh: perPh,
       }
 
-      //       Invalid Arguments {\"empId\":\"102\",\"uid\":\"71wQrhV54oeWxn5Ha9E8pm93XID3\",\"email\":\"nitheshreddy.email@gmail.com\",\"offPh\":\"\",\"perPh\":\"\",\"userStatus\":\"active\",\"orgStatus\":\"active\",\"orgId\":\"spark\",\"department\":[\"admin\"],\"roles\":[\"admin\"],\"name\":\"nitheshreddy\"}"
-      // payload: "{\"code\":\"invalid-argument\",\"name\":\"FirebaseError\"}"
 
       const config = {
         method: 'post',
@@ -150,13 +132,13 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         },
         data,
       }
-      // url: 'https://redefine-functions.azurewebsites.net/api/Redefine_addUser?code=Ojuk8KF6kkxJMoOF4/XZf2kh8WHN5aMtOMlv0bbveJYZrCbRU1C9CA==',
+
       axios(config)
         .then(async function (response) {
           if (response.data) {
             setLoading(false)
             const { success, msg, payload } = await response['data']
-            // const { id } = payload
+
             console.log('user payload is ', response)
 
             if (success) {
@@ -218,37 +200,18 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
   const validate = Yup.object({
-    // empId: Yup.number()
-    //   .positive()
-    //   .min(3, 'Must be atleast 3 digits')
-    //   .max(15, 'Must be 8 characters or less')
-    //   .required('Required'),
+
     name: Yup.string()
       .max(15, 'Must be 15 characters or less')
       .required('Required'),
-    // lastName: Yup.string()
-    //   .max(20, 'Must be 20 characters or less')
-    //   .required('Required'),
+
     email: Yup.string().email('Email is invalid').required('Email is required'),
-    // password: Yup.string()
-    //   .min(6, 'Password must be at least 6 charaters')
-    //   .required('Password is required'),
-    // confirmPassword: Yup.string()
-    //   .oneOf([Yup.ref('password'), null], 'Password must match')
-    //   .required('Confirm password is required'),
-    // offPh: Yup.string()
-    //   .matches(phoneRegExp, 'Phone number is not valid')
-    //   .min(10, 'to short')
-    //   .max(10, 'to long'),
-    // perPh: Yup.string()
-    //   .matches(phoneRegExp, 'Phone number is not valid')
-    //   .min(10, 'to short')
-    //   .max(10, 'to long'),
+
     deptVal: Yup.string()
-      // .oneOf(['Admin', 'CRM'], 'Required Dept')
+
       .required('Req Dept'),
     myRole: Yup.string()
-      //  .oneOf(['Admin', 'CRM'], 'DEPT IS REQ')
+
       .required('Required Role'),
   })
   return (
@@ -305,12 +268,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                   type="email"
                   disabled={editMode}
                 />
-                {/* <TextField
-                  label="Official Phone Number*"
-                  name="offPh"
-                  type="text"
-                  disabled={editMode}
-                /> */}
+
                 <PhoneNoField
                   name="offPh"
                   label="Official Phone Number*"
@@ -320,12 +278,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     formik.setFieldValue('offPh', value.value)
                   }}
                 />
-                {/* <TextField
-                  label="Personal Phone Number*"
-                  name="perPh"
-                  type="text"
-                  disabled={editMode}
-                /> */}
+
                 <PhoneNoField
                   name="perPh"
                   label="Personal Phone Number*"
@@ -367,6 +320,43 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                   <div className="error-message text-red-700 text-xs p-2">
                     {formik.errors.myRole}
                     {formik.values.myRole}
+                  </div>
+                ) : null}
+
+
+<CustomSelect
+                  name="qualName"
+                  label="Qualification"
+                  className="input mt-3"
+                  onChange={(value) => {
+
+                    formik.setFieldValue('qualVal', value.value)
+
+                  }}
+                  value={formik.values.qualVal}
+                  options={QUALIFICATION_LIST}
+                />
+                {formik.errors.qualVal ? (
+                  <div className="error-message text-red-700 text-xs p-2">
+                    {formik.errors.qualVal}
+                  </div>
+                ) : null}
+
+<CustomSelect
+                  name="expName"
+                  label="Experience"
+                  className="input mt-3"
+                   onChange={(value) => {
+
+                    formik.setFieldValue('expVal', value.value)
+
+                   }}
+                  value={formik.values.expVal}
+                  options={EXPERIENCE_LIST}
+                />
+                 {formik.errors.expVal ? (
+                  <div className="error-message text-red-700 text-xs p-2">
+                    {formik.errors.expVal}
                   </div>
                 ) : null}
 
@@ -416,6 +406,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
           )}
         </Formik>
       </div>
+
 
 
     </div>

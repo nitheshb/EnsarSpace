@@ -1,6 +1,4 @@
-// In this file, all Page components from 'src/pages` are auto-imported. Nested
-// directories are supported, and should be uppercase. Each subdirectory will be
-// prepended onto the component name.
+
 
 import { Router, Route, Redirect } from '@redwoodjs/router'
 
@@ -17,26 +15,9 @@ import CourseDetailsPagee from './context/courses_context'
 const defaultRoutes = () => {
   return (
     <>
-      {/* <Route path="/admin/home" page={HomePage} name="home" />
-      <Route path="/admin/users-admin" page={UsersAdminPage} name="usersAdmin" />
-      <Route path="/admin/leads-manager" page={LeadsManagerPage} name="leadsManager" />
-      <Route path="/admin/leads-caller-board" page={LeadsCallerBoardPage} name="leadsCallerBoard" />
-      <Route path="/admin/project-edit/{uid}" page={ProjectEditPage} name="projectEdit" />
-      <Route path="/admin/project-module" page={ProjectModulePage} name="projectModule" />
-      <Route path="/admin/crm-module" page={CrmHomePage} name="crmModule" />
-      <Route path="/admin/finance-module" page={FinanceHomePagePage} name="financeModule" />
-      <Route path="/admin/legal-module" page={LegalHomePage} name="legalModule" />
-      <Route path="/admin/erp-account" page={ErpAccountHomePage} name="erpAccount" />
-      <Route path="/users-admin" page={UsersAdminPage} name="usersAdmin" />
-      <Route path="/leads-manager" page={LeadsManagerPage} name="leadsManager" />
-      <Route path="/leads-caller-board" page={LeadsCallerBoardPage} name="leadsCallerBoard" /> */}
       <Route path="/project-edit/{uid}" page={ProjectEditPage} name="projectEdit" />
       <Route path="/project-module" page={ProjectModulePage} name="projectModule" />
-      {/* <Route path="/cource-overview/{uid}" page={CourceOverviewPage} name="courceOverview" /> */}
 
-      {/* <Route path="/legal-module" page={LegalHomePage} name="legalModule" />
-      <Route path="/finance-module" page={FinanceHomePagePage} name="financeModule" />
-      <Route path="/crm-module" page={CrmHomePage} name="crmModule" /> */}
       <Route path="/erp-account" page={ErpAccountHomePage} name="erpAccount" />
 
 
@@ -55,7 +36,7 @@ const Routes = () => {
         <Route path="/login" page={LoginPage} name="login" />
       </>
     )
-    // return <Redirect to="/login" />
+
   } else if (user?.role?.includes(USER_ROLES.ADMIN)) {
     UpdatedRoutes = (
       <>
@@ -129,12 +110,14 @@ const Routes = () => {
       {/* <Route path="/coursedetailsS" page={CourseDetailsPagee} name="coursedetails" /> */}
 
       <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" />
+
       <Route path="/cource-overview/{uid}" page={CourceOverviewPage} name="courceOverview" />
       <Route path="/cource-content" page={CourceContentPage} name="courceContent" />
       <Route path="/learning" page={LearningPage} name="learning" />
       <Route path="/privacyPolicy" page={PrivacyPolicyPage} name="privacyPolicy" />
       <Route path="/construct-module" page={ConstructModulePage} name="constructModule" />
       <Route path="/admin/home" page={HomePage} name="home" />
+
       <Route path="/erp-account-home" page={ErpAccountHomePage} name="erpAccountHome" />
       <Route path="/legal-home" page={LegalHomePage} name="legalHome" />
       <Route path="/crm-home" page={CrmHomePage} name="crmHome" />

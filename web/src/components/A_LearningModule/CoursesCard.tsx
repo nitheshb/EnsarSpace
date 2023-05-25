@@ -16,7 +16,7 @@ const CoursesCard = (props) => {
     actual_price,
     discounted_price,
 
-// Remove Unwanted Data
+
 
 
     rating_count,
@@ -24,6 +24,8 @@ const CoursesCard = (props) => {
     category,
   } = props
 
+
+  
 
 
   return (
@@ -44,6 +46,7 @@ const CoursesCard = (props) => {
           <span className="item-price-new">${discounted_price}</span>
           <span className="item-price-old">${actual_price}</span>
         </div>
+
       </div>
       <div className="item-btns flex">
         <Link to={`/courses/${id}`} className="item-btn see-details-btn">
@@ -160,5 +163,6 @@ const CourseCard = styled.div`
     }
   }
 `;
+
 
 export default CoursesCard

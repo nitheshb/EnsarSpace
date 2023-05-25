@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import { useEffect, useState, useCallback } from 'react'
 
 import {
@@ -29,7 +27,7 @@ const LoginPage = () => {
   const { login, isAuthenticated, user, forgotPassword } = useAuth()
 
   const navigate = useCallback(async () =>
-    // isAuthenticated && user?.uid && (await navigateBasedOnUser(user?.uid)),
+
     [isAuthenticated, user?.uid]
   )
 
@@ -79,10 +77,8 @@ const LoginPage = () => {
 
       const res: any = await login(email, password)
 
-      // after login success user effect will trigger after setting up local with role values
       if (res?.user?.accessToken) {
-        // const userData = await getUser(res.user.uid)
-        // await navigateBasedOnUser(userData)
+
       } else {
         setloginError(true)
         setloginErrorMsg('Something went wrong')
@@ -129,10 +125,10 @@ const LoginPage = () => {
               </p>
               <div className="flex items-center justify-center pt-8 space-x-6">
                 <button className="rounded-full focus:ring focus:ring-orange-500 focus:outline-none">
-                  {/* <CircleLeftIcon /> */}
+
                 </button>
                 <button className="rounded-full focus:ring focus:ring-orange-500 focus:outline-none">
-                  {/* <CircleRightIcon /> */}
+
                 </button>
               </div>
             </div>
@@ -140,20 +136,14 @@ const LoginPage = () => {
         </div>
         <div className="flex-1 max-w-2xl mx-auto">
           <div className="flex flex-col px-8 pt-10 lg:px-14 xl:px-24">
-            {/* <LogoIcon className="self-center w-32 md:self-end" /> */}
+
 
             <div className="pt-36 pb-6">
               <h1 className="text-[28px] font-bold leading-loose tracking-wide whitespace-nowrap text-center">
                 {passwordResetMode ? 'Password Reset' : 'Account Login'}
               </h1>
 
-              {/* <div className="flex items-center justify-between pt-6">
-                <hr className="w-full border-gray-400" />
-                <span className="px-4 font-light tracking-wider text-gray-500">
-                  or
-                </span>
-                <hr className="w-full border-gray-400" />
-              </div> */}
+
 
               <Form onSubmit={onSubmit} className="mt-10">
                 {loginError && (
@@ -261,18 +251,7 @@ const LoginPage = () => {
                   </p>
                 </div>
               </Form>
-              {/*
-              <div className="pt-4 ">
-                <div className="font-light text-center text-gray-500 ">
-                  <span className=" font-sm">Not registered yet?</span>
-                  <a
-                    href="#"
-                    className="font-normal text-sm text-stone-900 hover:text-stone-900 ml-2"
-                  >
-                    Create an Account
-                  </a>
-                </div>
-              </div> */}
+              
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 // import marketing_2 from '/learning_images/marketing_2.jpg'
 // import AddCourseForm from 'src/pages/CoursedetailsPage/CourseForm'
@@ -143,13 +144,7 @@ const CourseList = () => {
             </div> */}
           {/* </div> */}
 
-          {/* <div className='tabs-body'>
-          {
-            courses.filter(course => course.category === activeTab).map((course) => (
-              <Course key = {course.id} {...course} />
-            ))
-          }
-        </div> */}
+
         </div>
 
         <div className="tabs-body">
@@ -169,7 +164,7 @@ const CourseList = () => {
 
       />
 
-      {/* <Tabs courses = {courses} /> */}
+
     </div>
   )
 }
