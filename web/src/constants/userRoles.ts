@@ -62,19 +62,30 @@ export const COURSE_LIST = [
   { label: 'Data Science', value: 'Data Science' },
   { label: 'AWS', value: 'AWS' },
   { label: 'Java', value: 'Java' },
-  // { label: 'Legal', value: 'legal' },
-  // { label: 'Project', value: 'project' },
-  // { label: 'Support', value: 'support' },
-  // { label: 'Sales', value: 'sales' },
-  // { label: 'Developer', value: 'developer' },
-  // { label: 'Trainer', value: 'trainer' },
-  // { label: 'Fresher', value: 'Fresher' },
+
 ]
 
-export const GENDER_LIST = [
-  { label: 'Select the Gender', value: '' },
-  { label: 'Male', value: 'Male' },
-  { label: 'Female', value: 'Female' },
+export const LANGUAGE_LIST = [
+  { label: 'Select the Language', value: '' },
+  { label: 'English', value: 'English' },
+  { label: 'French', value: 'French' },
+]
+
+export const LEARN_LIST = [
+  { label: 'Select the learn', value: '' },
+  { label: 'Create their own path programs', value: 'Create their own path programs' },
+  { label: 'Parse the web and create their own games', value: 'Parse the web and create their own games' },
+  { label: 'Become an good programmer', value: 'Become an good programmer' },
+
+]
+
+export const CONT_LIST = [
+  { label: 'Select the content', value: '' },
+  { label: 'Functions', value: 'Functions' },
+  { label: 'File Input/Output', value: 'File Input/Output' },
+  { label: 'The Basics', value: 'The Basics' },
+  { label: 'Conditions & Loops', value: 'Conditions & Loops' },
+
 ]
 
 
@@ -88,6 +99,18 @@ export const ROLES_LIST = [
     value: USER_ROLES.SALES_EXECUTIVE,
     dept: 'sales',
   },
+
+  // export const DEPARTMENT_LIST = [
+  //   { label: 'Select the role', value: '' },
+  //   { label: 'Sales manager', value: USER_DEPARTMENT.SALES_MANAGER, dept: 'sales' },
+  //   { label: 'Sales senior associate', value: USER_DEPARTMENT.SALES_SENIOR_ASSOCIATE, dept: 'sales' },
+  //   { label: 'Sales associate', value: USER_DEPARTMENT.SALES_ASSOCIATE, dept: 'sales' },
+  //   {
+  //     label: 'Sales executive',
+  //     value: USER_DEPARTMENT.SALES_EXECUTIVE,
+  //     dept: 'sales',
+  //   },
+
 
   {
     label: 'Sales senior executive',
