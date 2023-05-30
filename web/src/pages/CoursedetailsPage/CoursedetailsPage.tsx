@@ -395,6 +395,13 @@ const CoursedetailsPage = () => {
                 </div>
               </div>
 
+
+
+
+
+
+              
+
               <img
                 src={course.image}
                 alt={course.category}
