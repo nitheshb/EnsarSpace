@@ -71,20 +71,7 @@ export default function ModuleSwitchDrop({
                 <Menu.Item>
                   {({ active }) => (
                     <Link to={routes.home()}>
-                      {/* <button
-                        className={`${
-                          active ? 'bg-violet-500 text-white' : 'text-gray-900'
-                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                        onClick={() => {
-                          setStatusFun('1', 'Projects')
-                        }}
-                      >
-                        <FireIcon
-                          className="w-5 h-5 mr-2 text-violet-500"
-                          aria-hidden="true"
-                        />
-                        {'Projects'}{' '}
-                      </button> */}
+                      
                       <div
                         className="group relative flex items-center gap-x-6 rounded-lg p-2 pb-0 text-sm leading-6 hover:bg-gray-50"
                         onClick={() => {

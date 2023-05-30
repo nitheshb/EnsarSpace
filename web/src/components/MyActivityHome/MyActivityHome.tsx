@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
+
 import { EyeIcon, PencilIcon, PlusCircleIcon } from '@heroicons/react/outline'
 
 import { ClockIcon } from '@heroicons/react/solid'
@@ -53,9 +51,7 @@ const MyActivityHome = ({ source }) => {
     }
   }, [selDept, leadsFetchedData])
   const getLeadsDataFun = async (source) => {
-    // const leadsData = await getUsersList()
-    // setLeadsFetchedData(leadsData)
-    // await console.log('leadsData', leadsData)
+   
     if (source === 'team') {
       const unsubscribe = steamUsersActivityLog(
         orgId,
@@ -70,7 +66,7 @@ const MyActivityHome = ({ source }) => {
       return unsubscribe
     } else {
       const unsubscribe = steamUsersActivityOfUser(
-        orgId, 
+        orgId,
         (querySnapshot) => {
           const usersListA = querySnapshot.docs.map((docSnapshot) =>
             docSnapshot.data()

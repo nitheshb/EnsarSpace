@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect } from 'react'
 
 import { Box, Menu, MenuItem, Typography } from '@mui/material'
@@ -25,7 +24,7 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
   const { user, logout } = useAuth()
   const dispatch = useDispatch()
   const makeFilterFun = (id, viewModule) => {
-    // 'Sales', 'CRM', 'Legal', 'Finance', 'HR'
+    
     setSelModule(viewModule)
     console.log('i was clicked', id, viewModule)
   }
@@ -55,6 +54,7 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
             pickedValue={selModule}
           />
         </section>
+
         <GlobalSearchBar />
         <button className="flex items-center justify-center h-10 px-4 ml-auto "></button>
         <button className="flex items-center justify-center h-10 text-sm font-medium "></button>
@@ -96,6 +96,8 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
             'aria-labelledby': 'basic-button',
           }}
         >
+
+
           <MenuItem onClick={handleClose}>
             <Link to={routes.profile()}>Profile</Link>
           </MenuItem>

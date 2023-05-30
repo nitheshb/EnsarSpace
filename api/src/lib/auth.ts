@@ -1,7 +1,7 @@
 import { AuthenticationError } from '@redwoodjs/graphql-server'
 import admin from 'firebase-admin'
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 const adminApp = admin.initializeApp({
   projectId: process.env.FIREBASE_PROJECT_ID,
 })
@@ -54,6 +54,4 @@ export const requireAuth = () => {
     throw new AuthenticationError("You don't have permission to do that.")
   }
 
-  // Custom RBAC implementation required for firebase
-  // https://firebase.google.com/docs/auth/admin/custom-claims
 }

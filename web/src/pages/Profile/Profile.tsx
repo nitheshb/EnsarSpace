@@ -23,7 +23,7 @@ import ProfileHeader from './ProfileHeader'
 
 const Profile = () => {
   function handleFileInputChange(event: ChangeEvent<HTMLInputElement>): void {
-    // Handle file input change here
+
   }
 
   function getRootProps(arg0: {

@@ -84,10 +84,7 @@ const DialogFormBody = ({ title, dialogOpen, project }) => {
     }
   }
   const EditedBuilderShare = (e) => {
-    // e.preventdefault()
-    // setLandLordShare(e.target.value)
-    // setBuilderShare(100 - e.target.value)
-    // console.log('my eis ', e.target.value)
+   
   }
 
   const onSubmit = async (data, resetForm) => {
