@@ -11,6 +11,17 @@ const Calendar = ({ holidays, deleteHoliday }) => {
     marginTop: '20px',
   };
 
+
+  // const Calendar = ({ holidays, deleteHoliday }) => {
+  //   const tableStyle = {
+  //     borderCollapse: 'collapse',
+  //     width: '60%',
+  //     height: '30%',
+  //     backgroundColor: 'white',
+  //     marginLeft: '50px',
+  //     marginTop: '20px',
+  //   };
+
   const thStyle = {
     border: '1px solid black',
     padding: '8px',
@@ -31,15 +42,8 @@ const Calendar = ({ holidays, deleteHoliday }) => {
 
   return (
     <table style={tableStyle}>
-      {/* <thead>
-        <tr>
-          <th style={thStyle}>S.No</th>
-          <th style={thStyle}>Date</th>
-          <th style={thStyle}>Day</th>
-          <th style={thStyle}>Holidays</th>
-          <th style={thStyle}>Action</th>
-        </tr>
-      </thead> */}
+
+
 
 <thead>
         <tr>
