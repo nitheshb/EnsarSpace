@@ -13,7 +13,7 @@ import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
-import OnBoarding from 'src/components/TableComp/OnBoarding'
+import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -87,7 +87,11 @@ const UsersAdminPage = () => {
               </>
             )}
 
-
+            {viewable === 'Time Off' && (
+              <>
+                <TimeOffTable />
+              </>
+            )}
 
             {viewable === 'My Activity' && (
               <>
@@ -105,33 +109,33 @@ const UsersAdminPage = () => {
               <>
 
 
-          </>
+              </>
 
             )}
 
-          {viewable === 'User Report' && (
-           
-            <ActivitySummaryReport
-              project={{
-                area: 1000,
-                builderName: 'hello',
-                location: 'local',
-                projectName: 'User Report',
-                projectType: 'aprtment',
-              }}
-              isEdit={false}
-            />
-          )}
+            {viewable === 'User Report' && (
 
-          <SUserSignup
-            open={isOpen}
-            setOpen={handleOnClose}
-            title="User"
-            empData={empData}
-          />
+              <ActivitySummaryReport
+                project={{
+                  area: 1000,
+                  builderName: 'hello',
+                  location: 'local',
+                  projectName: 'User Report',
+                  projectType: 'aprtment',
+                }}
+                isEdit={false}
+              />
+            )}
+
+            <SUserSignup
+              open={isOpen}
+              setOpen={handleOnClose}
+              title="User"
+              empData={empData}
+            />
+          </div>
         </div>
-      </div>
-    </div >
+      </div >
     </>
   )
 }
