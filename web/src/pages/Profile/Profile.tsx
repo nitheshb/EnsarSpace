@@ -261,7 +261,7 @@ const Profile = () => {
 
 
 
-               
+
                 <PersonalDetails />
                 <CheckBox />
                 <Account />

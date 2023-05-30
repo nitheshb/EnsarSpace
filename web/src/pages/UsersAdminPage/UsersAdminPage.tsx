@@ -14,6 +14,8 @@ import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 import OnBoarding from 'src/components/TableComp/OnBoarding'
+import AttendenceTab from 'src/components/UserAccessTable/AttendenceTable'
+import AttendancePage from 'src/components/UserAccessTable/AttendenceTable'
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -87,6 +89,12 @@ const UsersAdminPage = () => {
               </>
             )}
 
+            {viewable === 'Attendence' && (
+              <>
+                <AttendancePage />
+              </>
+            )}
+
 
 
             {viewable === 'My Activity' && (
@@ -110,7 +118,7 @@ const UsersAdminPage = () => {
             )}
 
           {viewable === 'User Report' && (
-           
+
             <ActivitySummaryReport
               project={{
                 area: 1000,
