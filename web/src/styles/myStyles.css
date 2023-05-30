@@ -213,6 +213,34 @@
   white-space: normal;
 }
 
+/* table {
+  width: 800px;
+  height:200px;
+   border-collapse: collapse;
+  background-color: white;
+  text-align: left;
+  margin-left:184px;
+}
+
+th {
+  border-bottom: 1px solid black;
+  border:2px solid black;
+  text-align: left;
+
+  border-collapse: collapse;
+
+}
+
+td {
+  text-align: center;
+  border:2px black;
+  text-align: left;
+
+  border-collapse: collapse;
+
+} */
+
+
 .css-1lpgd8m {
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
