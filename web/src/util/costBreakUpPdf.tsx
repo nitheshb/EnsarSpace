@@ -83,7 +83,7 @@ const CostBreakUpPdf = ({
                 selUnitDetails?.plot_Sqf *
                   selUnitDetails?.rate_per_sqft
               ),
-          // charges: y,
+
           gst: {
             label: '0.05',
             value: Number.isFinite(y)
@@ -122,7 +122,7 @@ const CostBreakUpPdf = ({
           TotalSaleValue: Math.round(
             selUnitDetails?.super_built_up_area * (selUnitDetails?.plc || 200)
           ),
-          // charges: y,
+
           gst: {
             label: '0.05',
             value: Math.round(
@@ -165,7 +165,7 @@ const CostBreakUpPdf = ({
             : Number(
                 selUnitDetails?.builtup_area * selUnitDetails?.construct_price
               ),
-          // charges: y,
+
           gst: {
             label: '0.05',
             value: Number.isFinite(y)
@@ -186,62 +186,10 @@ const CostBreakUpPdf = ({
                   selUnitDetails?.builtup_area * selUnitDetails?.construct_price
                 ) * 0.05),
         },
-        // {
-        //   myId: '2',
-        //   units: {
-        //     value: 'fixedcost',
-        //     label: 'Fixed cost',
-        //   },
-        //   component: {
-        //     value: 'Bescom_Sewage_Charges',
-        //     label: 'Bescom & Sewage Charges ',
-        //   },
-        //   others: selUnitDetails?.PLC,
-        //   charges: Number.isFinite(y) ? y : selUnitDetails?.PLC || 200,
-        //   TotalSaleValue: Math.round(
-        //     selUnitDetails?.builtup_area * (selUnitDetails?.PLC || 200)
-        //   ),
-        //   gst: {
-        //     label: '0.05',
-        //     value: Math.round(
-        //       Number(
-        //         selUnitDetails?.builtup_area * (selUnitDetails?.PLC || 200)
-        //       ) * 0.05
-        //     ),
-        //   },
-        //   TotalNetSaleValueGsT:
-        //     Math.round(
-        //       selUnitDetails?.builtup_area * (selUnitDetails?.PLC || 200)
-        //     ) +
-        //     Math.round(
-        //       Number(
-        //         selUnitDetails?.builtup_area * (selUnitDetails?.PLC || 200)
-        //       ) * 0.05
-        //     ),
-        // },
-        // {
-        //   myId: '3',
-        //   units: {
-        //     value: 'fixedcost',
-        //     label: 'Fixed cost',
-        //   },
-        //   component: {
-        //     value: 'clubhouse',
-        //     label: 'Club House ',
-        //   },
-        //   others: selUnitDetails?.PLC,
-        //   charges: 0,
-        //   TotalSaleValue: 354000,
-        //   // charges: y,
-        //   gst: {
-        //     label: '0.05',
-        //     value: Math.round(354000 * 0.0),
-        //   },
-        //   TotalNetSaleValueGsT: 354000,
-        // },
+
       ]
     }
-    // const x = costSheetA
+
     let merged = []
     try {
       if (leadDetailsObj1) {
@@ -303,9 +251,7 @@ const CostBreakUpPdf = ({
 
   const initialState = initialValuesA
   const validate = Yup.object({
-    // blockReason: Yup.number()
-    //   .max(15, 'Must be 15 characters or less')
-    //   .required('Name is Required'),
+
   })
 
   const setTotalFun = async () => {
@@ -333,29 +279,13 @@ const CostBreakUpPdf = ({
 
     const { uid } = selUnitDetails
     const { id } = leadDetailsObj1
-    // const x = {
-    //   myId: '2',
-    //   units: {
-    //     value: 'fixedcost',
-    //     label: 'Fixed cost',
-    //   },
-    //   component: {
-    //     value: 'ratePerSqft',
-    //     label: 'sqftCost',
-    //   },
-    //   charges: Number(newSqftPrice),
-    //   gst: {
-    //     label: '0',
-    //     value: '0',
-    //   },
-    // }
+
 
     const newCostSheetA = costSheetA.map((dat) => {
       dat.charges = data[dat?.component?.value]
       return dat
     })
-    // newCostSheetA.push(x)
-    // i need unit_uID & unit details
+
     const xData = {}
 
     xData[`${uid}${'_cs'}`] = {
@@ -391,11 +321,7 @@ const CostBreakUpPdf = ({
   return (
     <div>
       <div
-      // style={{
-      //   position: 'absolute',
-      //   left: '-1000px',
-      //   top: 0,
-      // }}
+
       >
         <Formik
           enableReinitialize={true}
@@ -409,7 +335,7 @@ const CostBreakUpPdf = ({
             <PDFExport paperSize="A4" margin="1cm" ref={pdfExportComponent}>
               <div className="p-4">
                 <div>
-                  {/* upper part */}
+
                   <CrmUnitHeader projectDetails={projectDetails} />
 
                   <div className="flex flex-row justify-between my-8">
@@ -492,7 +418,6 @@ const CostBreakUpPdf = ({
                                 className="w-[100%] text-[10px] text-right text-gray-800"
                                 name="ratePerSqft"
                                 onChange={(e) => {
-                                  // setNewSqftPrice(e.target.value)
 
                                   formik.setFieldValue(
                                     'unit_cost_charges',
@@ -500,39 +425,17 @@ const CostBreakUpPdf = ({
                                   )
                                   setNewSqftPrice(e.target.value)
                                   changeOverallCostFun(inx, d1, e.target.value)
-                                  // formik.setFieldValue(
-                                  //   'ratePerSqft',
-                                  //   e.target.value
-                                  // )
-                                  // console.log(
-                                  //   'what is =it',
-                                  //   value.value
-                                  // )
-                                  // formik.setFieldValue(
-                                  //   `${d1?.component?.value}`,
-                                  //   value
-                                  // )
+
                                 }}
-                                // value={formik.values[`unit_cost_charges`]}
+
                                 value={d1?.charges?.toLocaleString('en-IN')}
-                                // value={newSqftPrice}
-                                // type="number"
+
                               />
                               <TextFieldFlat
                                 className=" hidden  "
                                 label=""
                                 name={d1?.component?.value}
-                                // onChange={(value) => {
-                                //   console.log('what is =it', value.value)
-                                //   formik.setFieldValue(
-                                //     `${d1?.component?.value}`,
-                                //     value
-                                //   )
-                                // }}
-                                // value={
-                                //   formik.values[`${d1?.component?.value}`]
-                                // }
-                                // value={d1?.charges}
+
                                 type="number"
                               />
                             </td>
@@ -617,7 +520,7 @@ const CostBreakUpPdf = ({
                               {d1?.description}
                             </td>
                             <td className="text-[10px] text-right text-gray-700 ">
-                              {/* {Number(d1?.charges)?.toLocaleString('en-IN')} */}
+
                               {Number(
                                 computeTotal(
                                   d1,
@@ -717,7 +620,7 @@ const CostBreakUpPdf = ({
                       for TDS amount.
                     </h1>
                   </div>
-                  {/* end of paper */}
+                  
                 </div>
               </div>
             </PDFExport>

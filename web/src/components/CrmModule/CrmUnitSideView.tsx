@@ -1,8 +1,5 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Fragment, useEffect, useState } from 'react'
+
 
 import { Menu } from '@headlessui/react'
 import { Listbox, Transition } from '@headlessui/react'
@@ -31,6 +28,7 @@ import DatePicker from 'react-datepicker'
 import { useDropzone } from 'react-dropzone'
 import toast from 'react-hot-toast'
 import { v4 as uuidv4 } from 'uuid'
+
 
 import {
   addLeadScheduler,
@@ -63,27 +61,30 @@ import {
 } from 'src/util/dateConverter'
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 
+
 import SortComp from './sortComp'
+
 
 import 'react-datepicker/dist/react-datepicker.css'
 import { setHours, setMinutes } from 'date-fns'
 import { Timestamp } from 'firebase/firestore'
 
+
 import Loader from './Loader/Loader'
 import AddBookingForm from './bookingForm'
 
+
 import { useSnackbar } from 'notistack'
 
+
 import SiderForm from '../SiderForm/SiderForm'
+
 
 import CrmCustomerSummary from './CrmCustomerSummary'
 import CrmUnitPsHome from './CustomerFinanceStatement'
 
-// interface iToastInfo {
-//   open: boolean
-//   message: string
-//   severity: AlertColor
-// }
+
+
 const people = [
   { name: 'Priority 1' },
   { name: 'Priority 2' },
@@ -93,15 +94,15 @@ const people = [
 const statuslist = [
   { label: 'Select the Status', value: '' },
   { label: 'New', value: 'new' },
-  // { label: 'Follow Up', value: 'followup' },
+
   { label: 'Visit Fixed', value: 'visitfixed' },
   { label: 'Visit Done', value: 'visitdone' },
   { label: 'Negotiation', value: 'Negotiation' },
-  // { label: 'RNR', value: 'rnr' },
+
   { label: 'Booked', value: 'booked' },
   { label: 'Not Interested', value: 'notinterested' },
-  // { label: 'Dead', value: 'Dead' },
 ]
+
 
 const attachTypes = [
   { label: 'Select Document', value: '' },
@@ -111,26 +112,24 @@ const attachTypes = [
   { label: 'Co-Applicant Aadhar', value: 'co-applicant_Aadhar' },
   { label: 'Cancellation Form', value: 'cancellation_form' },
   { label: 'Cost Sheet', value: 'cost_sheet' },
-  // { label: 'Follow Up', value: 'followup' },
   { label: 'Estimation Sheet', value: 'estimation_sheet' },
   { label: 'Payment Screenshot (IMPS/RTGS/NEFT)', value: 'payment_screenshot' },
   { label: 'Payment Receipt', value: 'payment_receipt' },
   { label: 'Others', value: 'others' },
 
-  // { label: 'RNR', value: 'rnr' },
-  // { label: 'Dead', value: 'Dead' },
+
 ]
+
 
 const notInterestOptions = [
   { label: 'Select Document', value: '' },
   { label: 'Budget Issue', value: 'budget_issue' },
   { label: 'Looking for Different Property', value: 'differeent_options' },
 
+
   { label: 'Others', value: 'others' },
 
-  // { label: 'Follow Up', value: 'followup' },
-  // { label: 'RNR', value: 'rnr' },
-  // { label: 'Dead', value: 'Dead' },
+
 ]
 export default function UnitSideViewCRM({
   openUserProfile,
@@ -147,16 +146,18 @@ export default function UnitSideViewCRM({
   const { user } = useAuth()
   const { enqueueSnackbar } = useSnackbar()
 
+
   const { orgId } = user
   const [fetchedUsersList, setfetchedUsersList] = useState([])
   const [usersList, setusersList] = useState([])
 
-  // const [leadStatus, setLeadStatus] = useState([])
+
   const [selFeature, setFeature] = useState('summary')
   const [tempLeadStatus, setLeadStatus] = useState('')
   const [assignerName, setAssignerName] = useState('')
   const [assignedTo, setAssignedTo] = useState('')
   const [leadsActivityFetchedData, setLeadsFetchedActivityData] = useState([])
+
 
   const [leadSchFetchedData, setLeadsFetchedSchData] = useState([])
   const [leadNotesFetchedData, setLeadsFetchedNotesData] = useState([])
@@ -172,10 +173,11 @@ export default function UnitSideViewCRM({
   const [progress, setProgress] = useState(0)
   const [openCapturePayment, setOpenCapturePayment] = useState(false)
 
+
   const d = new window.Date()
   const [value, setValue] = useState(d)
 
-  // const [startDate, setStartDate] = useState(d)
+
   const [startDate, setStartDate] = useState(setHours(setMinutes(d, 30), 16))
   const [selected, setSelected] = useState(people[0])
   const [taskDetails, setTaskDetails] = useState('')
@@ -191,10 +193,12 @@ export default function UnitSideViewCRM({
   const [projectList, setprojectList] = useState([])
   const [financeMode, setFinanceMode] = useState('schedule')
 
+
   const [selProjectIs, setSelProjectIs] = useState({
     projectName: '',
     uid: '',
   })
+
 
   const [leadDetailsObj, setLeadDetailsObj] = useState({})
   const {
@@ -221,8 +225,10 @@ export default function UnitSideViewCRM({
     toAccount,
   } = customerDetails
 
+
   const { assets } = selCustomerPayload
   const totalIs = 0
+
 
   useEffect(() => {
     const unsubscribe = steamUsersListByRole(
@@ -242,6 +248,7 @@ export default function UnitSideViewCRM({
       (error) => setfetchedUsersList([])
     )
 
+
     return unsubscribe
   }, [])
   useEffect(() => {
@@ -254,6 +261,7 @@ export default function UnitSideViewCRM({
     }
     console.log('new setValue is ', selSubMenu)
   }, [selSubMenu])
+
 
   useEffect(() => {
     let x = []
@@ -271,12 +279,11 @@ export default function UnitSideViewCRM({
     setAssignerName(customerDetails?.assignedToObj?.label)
     setSelProjectIs({ projectName: Project, uid: ProjectId })
 
+
     setLeadStatus(Status)
     console.log('assinger to yo yo', customerDetails)
   }, [customerDetails])
-  // adopt this
   useEffect(() => {
-    // setFilterData
     let fet = 'notes'
     if (selFeature === 'notes') {
       getLeadNotesFun()
@@ -291,30 +298,11 @@ export default function UnitSideViewCRM({
       fet = 'status'
     }
 
+
     if (fet === 'appoint') {
       return
     }
-    //  else if (fet === 'ph') {
-    //   const unsubscribe = steamLeadPhoneLog(orgId,
-    //     (doc) => {
-    //       console.log('my total fetched list is yo yo 1', doc.data())
-    //       const usersList = doc.data()
-    //       const usersListA = []
 
-    //       Object.entries(usersList).forEach((entry) => {
-    //         const [key, value] = entry
-    //         usersListA.push(value)
-    //         console.log('my total fetched list is 3', `${key}: ${value}`)
-    //       })
-    //       console.log('my total fetched list is', usersListA.length)
-    //       // setLeadsFetchedActivityData(usersListA)
-    //     },
-    //     {
-    //       uid: id,
-    //     },
-    //     (error) => setLeadsFetchedActivityData([])
-    //   )
-    // }
     else {
       leadsActivityFetchedData.map((data) => {
         console.log('value of filtered feature count before', data)
@@ -334,14 +322,17 @@ export default function UnitSideViewCRM({
     }
   }, [leadsActivityFetchedData, selFeature])
 
+
   useEffect(() => {
     getLeadsDataFun()
   }, [])
+
 
   useEffect(() => {
     getCustomerDocsFun()
     getProjectsListFun()
   }, [])
+
 
   const getCustomerDocsFun = () => {
     const unsubscribe = getCustomerDocs(
@@ -358,6 +349,7 @@ export default function UnitSideViewCRM({
     )
     return unsubscribe
   }
+
 
   const getProjectsListFun = () => {
     const unsubscribe = getAllProjects(
@@ -377,11 +369,13 @@ export default function UnitSideViewCRM({
       (error) => setfetchedUsersList([])
     )
 
+
     return unsubscribe
   }
   useEffect(() => {
     getAllTransactionsUnit()
   }, [])
+
 
   const getAllTransactionsUnit = () => {
     console.log('transactions id is ', selCustomerPayload?.uid)
@@ -395,6 +389,7 @@ export default function UnitSideViewCRM({
         })
         // setBoardData
         console.log('my Array data is ', transactionsListRaw)
+
 
         await setUnitTransactionsA(transactionsListRaw)
         await console.log('my Array data is set it')
@@ -410,32 +405,29 @@ export default function UnitSideViewCRM({
     setLeadStatus(Status?.toLowerCase())
   }, [customerDetails])
 
+
   const setAssigner = (leadDocId, value) => {
     setAssignerName(value.name)
     setAssignedTo(value.value)
-    // save assigner Details in db
 
-    // updateLeadAssigTo(orgId, leadDocId, value, '', by)
   }
   const setNewProject = (leadDocId, value) => {
     console.log('sel pROJECT DETAILS ', value)
 
-    // setProjectName(value.projectName)
-    // setProjectId(value.uid)
-    // save assigner Details in db
-    // projectName
     const x = {
       Project: value.projectName,
       ProjectId: value.uid,
     }
     setSelProjectIs(value)
     updateLeadProject(orgId, leadDocId, x)
-    // updateLeadAssigTo(leadDocId, value, by)
+
   }
+
 
   const setStatusFun = async (leadDocId, newStatus) => {
     setLoader(true)
     setLeadStatus(newStatus)
+
 
     const arr = ['notinterested', 'visitdone', 'visitcancel']
     arr.includes(newStatus) ? setFeature('notes') : setFeature('appointments')
@@ -449,10 +441,9 @@ export default function UnitSideViewCRM({
       setTakTitle(' ')
     }
 
-    //
-    // updateLeadStatus(leadDocId, newStatus)
-    // toast.success('Status Updated Successfully')
+
   }
+
 
   const downloadFile = (url) => {
     window.location.href = url
@@ -466,17 +457,14 @@ export default function UnitSideViewCRM({
         const usersList = doc.data()
         const usersListA = []
 
+
         Object.entries(usersList).forEach((entry) => {
           const [key, value] = entry
           usersListA.push(value)
           console.log('my total fetched list is 3', `${key}: ${value}`)
         })
-        // for (const key in usersList) {
-        //   if (usersList.hasOwnProperty(key)) {
-        //     console.log(`${key} : ${usersList[key]}`)
-        //     console.log(`my total fetched list is 2 ${usersList[key]}`)
-        //   }
-        // }
+
+
 
         console.log('my total fetched list is', usersListA.length)
         setLeadsFetchedActivityData(usersListA)
@@ -487,7 +475,8 @@ export default function UnitSideViewCRM({
       (error) => setLeadsFetchedActivityData([])
     )
 
-    //  lead Schedule list
+
+
     steamLeadScheduleLog(
       orgId,
       (doc) => {
@@ -495,35 +484,28 @@ export default function UnitSideViewCRM({
         const usersList = doc.data()
         const usersListA = []
 
+
         const sMapStsA = []
         const { staA, staDA } = usersList
         console.log('this is what we found', staA)
         setschStsA(staA)
         setschStsMA(staDA)
-        // delete usersList['staA']
-        // delete usersList['staDA']
+
         Object.entries(usersList).forEach((entry) => {
           const [key, value] = entry
           if (['staA', 'staDA'].includes(key)) {
             if (key === 'staA') {
-              // setschStsA(value)
+
             } else if (key === 'staDA') {
-              // sMapStsA = value
+
             }
           } else {
             usersListA.push(value)
-            // console.log(
-            //   'my total fetched list is 3',
-            //   `${key}: ${JSON.stringify(value)}`
-            // )
+
           }
         })
-        // for (const key in usersList) {
-        //   if (usersList.hasOwnProperty(key)) {
-        //     console.log(`${key} : ${usersList[key]}`)
-        //     console.log(`my total fetched list is 2 ${usersList[key]}`)
-        //   }
-        // }
+
+
 
         console.log('my total fetched list is', usersListA.length)
         usersListA.sort((a, b) => {
@@ -541,6 +523,7 @@ export default function UnitSideViewCRM({
       (error) => setLeadsFetchedSchData([])
     )
 
+
     return unsubscribe
   }
   const getLeadNotesFun = async () => {
@@ -550,6 +533,7 @@ export default function UnitSideViewCRM({
         console.log('my total fetched list is yo yo ', doc.data())
         const usersList = doc.data()
         const usersListA = []
+
 
         Object.entries(usersList).forEach((entry) => {
           const [key, value] = entry
@@ -581,12 +565,13 @@ export default function UnitSideViewCRM({
       ct: Timestamp.now().toMillis(),
     }
 
+
     const x = schStsA
+
 
     console.log('new one ', schStsA, x)
     x.push('pending')
     setschStsA(x)
-    // addSchedulerLog(id, data)
     console.log('new one ', schStsA)
     await addLeadScheduler(orgId, id, data, schStsA, '')
     if (Status != tempLeadStatus) {
@@ -598,14 +583,15 @@ export default function UnitSideViewCRM({
   const cancelResetStatusFun = () => {
     setAddSch(false)
     setAddNote(false)
-    // if its not edit mode ignore it
     setLeadStatus(Status)
     setLoader(false)
   }
 
+
   const handleColor = (time) => {
     return time.getHours() > 12 ? 'text-success' : 'text-error'
   }
+
 
   const openPaymentFun = () => {
     setOpenCapturePayment(true)
@@ -616,6 +602,7 @@ export default function UnitSideViewCRM({
     const x = schStsA
     x[inx] = 'completed'
     setschStsA(x)
+
 
     updateSchLog(orgId, id, data.ct, 'completed', schStsA)
   }
@@ -629,17 +616,21 @@ export default function UnitSideViewCRM({
     setschStsA(x)
     setschStsMA(y)
 
+
     deleteSchLog(orgId, id, data.ct, 'completed', schStsA, schStsMA)
   }
+
 
   const selFun = () => {
     console.log('i was selcted')
     setAddNote(true)
   }
 
+
   const showAddAttachF = () => {
     setAttach(true)
   }
+
 
   const fAddNotes = async () => {
     console.log('start time is ', startDate)
@@ -650,16 +641,19 @@ export default function UnitSideViewCRM({
       ct: Timestamp.now().toMillis(),
     }
 
+
     await addLeadNotes(orgId, id, data)
     await setNotesTitle('')
     await setAddNote(false)
   }
+
 
   const docUploadHandler = async (e) => {
     e.preventDefault()
     console.log('filer upload stuff', e.target[0].files[0])
     uploadStuff(e.target[0].files[0])
   }
+
 
   const uploadStuff = async (file) => {
     if (!file) return
@@ -672,6 +666,7 @@ export default function UnitSideViewCRM({
         (snapshot) => {
           const prog =
             Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 100
+
 
           setProgress(prog)
         },
@@ -723,9 +718,7 @@ export default function UnitSideViewCRM({
         <>
           <div className="">
             <div className="">
-              {/* <div className="font-md font-medium text-xs  text-gray-800">
-                          Notes
-                        </div> */}
+
 
               <div className=" border-gray-900  bg-[#F1F5F9] rounded-t-lg ">
                 <ul
@@ -735,18 +728,17 @@ export default function UnitSideViewCRM({
                   role="tablist"
                 >
                   {[
-                    // { lab: 'Schedules', val: 'appointments' },
+
                     { lab: 'Summary', val: 'summary' },
                     { lab: 'Tasks', val: 'tasks' },
 
-                    // { lab: 'Attachments', val: 'attachments' },
-                    // { lab: 'Phone', val: 'phone' },
+
+
 
                     { lab: 'Unit Information', val: 'unit_information' },
                     { lab: 'Commercials', val: 'finance_info' },
                     { lab: 'Legal', val: 'legal_info' },
 
-                    // { lab: 'Phone', val: 'phone' },
                     { lab: 'Timeline', val: 'timeline' },
                   ].map((d, i) => {
                     return (
@@ -766,8 +758,7 @@ export default function UnitSideViewCRM({
                           onClick={() => setFeature(d.val)}
                         >
                           {`${d.lab} `}
-                          {/* <span className="bg-gray-100 px-2 py-1 rounded-full">
-                          {/* {rowsCounter(leadsFetchedData, d.val).length} */}
+
                         </button>
                       </li>
                     )
@@ -802,6 +793,7 @@ export default function UnitSideViewCRM({
                 </div>
               )}
 
+
               {attach && (
                 <div className="flex justify-center mt-4">
                   <div className="mb-3 w-96 px-10 bg-[#FFF9F2] rounded-md py-3 pb-6">
@@ -811,7 +803,7 @@ export default function UnitSideViewCRM({
                         label="Document Type *"
                         className="input mt-3"
                         onChange={(value) => {
-                          // formik.setFieldValue('source', value.value)
+
                           setAttachType(value.value)
                         }}
                         value={attachType}
@@ -846,14 +838,12 @@ export default function UnitSideViewCRM({
                       />
                       <div className="flex flex-row mt-3">
                         <button
-                          // onClick={() => fAddSchedule()}
                           type="submit"
                           className={`flex mt-2 rounded items-center  pl-2 h-[36px] pr-4 py-2 text-sm font-medium text-white bg-[#FF7A53]  hover:bg-gray-700  `}
                         >
                           <span className="ml-1 ">Upload</span>
                         </button>
                         <button
-                          // onClick={() => fSetLeadsType('Add Lead')}
                           onClick={() => setAttach(false)}
                           className={`flex mt-2 ml-4  rounded items-center  pl-2 h-[36px] pr-4 py-2 text-sm font-medium border  hover:bg-gray-700  `}
                         >
@@ -862,10 +852,11 @@ export default function UnitSideViewCRM({
                       </div>
                     </form>
 
-                    {/* <h3> {progress}</h3> */}
+
                   </div>
                 </div>
               )}
+
 
               {docsList.length > 0 && (
                 <div className="py-8">
@@ -888,13 +879,13 @@ export default function UnitSideViewCRM({
                               Name
                             </th>
 
+
                             <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                               Created On / By
                             </th>
                             <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                               Status
                             </th>
-                            {/* <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100"></th> */}
                           </tr>
                         </thead>
                         <tbody>
@@ -914,6 +905,7 @@ export default function UnitSideViewCRM({
                                   </div>
                                 </td>
 
+
                                 <td className="px-5 py-5 bg-white text-sm ">
                                   <p className="text-gray-900 whitespace-no-wrap">
                                     {prettyDate(dat.cTime)}
@@ -924,13 +916,7 @@ export default function UnitSideViewCRM({
                                 </td>
                                 <td className="px-5 py-5 bg-white text-sm">
                                   <>
-                                    {/* <span className="relative inline px-3 py-1 font-semibold text-red-900 leading-tight">
-                                    <span
-                                      aria-hidden
-                                      className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-                                    ></span>
-                                    <span className="relative">Approved</span>
-                                  </span> */}
+
 
                                     <DownloadIcon
                                       onClick={() => downloadFile(dat.url)}
@@ -968,6 +954,7 @@ export default function UnitSideViewCRM({
             </div>
           )}
 
+
           {selFeature === 'timeline' && (
             <div className="py-8 px-8  border bg-[#F6F7FF]">
               {filterData.length == 0 && (
@@ -997,7 +984,6 @@ export default function UnitSideViewCRM({
                       href="#"
                       className="block items-center p-3 sm:flex hover:bg-gray-100 "
                     >
-                      {/* <PlusCircleIcon className="mr-3 mb-3 w-10 h-10 rounded-full sm:mb-0" /> */}
                       {data?.type == 'status' && (
                         <span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white  ">
                           <svg
@@ -1069,18 +1055,8 @@ export default function UnitSideViewCRM({
                           </div>
                           <div className="text-sm font-normal">{data?.txt}</div>
                           <span className="inline-flex items-center text-xs font-normal text-gray-500 ">
-                            {/* <svg
-                          className="mr-1 w-3 h-3"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg> */}
+
+
 
                             <ClockIcon className="mr-1 w-3 h-3" />
                             {data?.type == 'ph'
@@ -1097,6 +1073,7 @@ export default function UnitSideViewCRM({
           )}
         </>
       </div>
+
 
       {selFeature === 'unit_information' && (
         <>
@@ -1191,10 +1168,7 @@ export default function UnitSideViewCRM({
                     Cost
                   </div>
                   <div className="font-md text-xs tracking-wide font-semibold text-slate-900 ">
-                    {/* {(
-                      data?.unitDetail?.builtup_area *
-                      data?.unitDetail?.rate_per_sqft
-                    )?.toLocaleString('en-IN')} */}
+                    
                     {selCustomerPayload?.[
                       `${assets[0]}_unitDetails`
                     ]?.rate_per_sqft?.toLocaleString('en-IN')}
@@ -1265,6 +1239,7 @@ export default function UnitSideViewCRM({
                   </div>
                 </section>
               </section>
+
 
               <div className="mt-2  grid grid-cols-2">
                 <section className="mr-2 flex flex-col bg-[#F6F7FF] p-3 border border-[#e5e7f8] rounded-md ">
@@ -1341,6 +1316,7 @@ export default function UnitSideViewCRM({
         </>
       )}
 
+
       {selFeature === 'legal_info' && <></>}
       <SiderForm
         open={openCapturePayment}
@@ -1353,3 +1329,6 @@ export default function UnitSideViewCRM({
     </div>
   )
 }
+
+
+

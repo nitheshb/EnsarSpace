@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Box, Card, useTheme } from '@mui/material'
-// import { H5, Small } from 'components/Typography'
+
 import Chart from 'react-apexcharts'
 import { useTranslation } from 'react-i18next'
 
@@ -72,9 +72,7 @@ const SemiCircleProgress = () => {
   }
   return (
     <section sx={{}} style={{ minWidth: '200px' }}>
-      {/* <h5>{t('Total Project Completion Rate')}</h5>
-      <span color="text.disabled">More than 50+ new projects running</span> */}
-
+      
       <section
         sx={{
           mt: 2,

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Box, Card, useTheme } from '@mui/material'
-// import { H5, Small } from 'components/Typography'
+
 import Chart from 'react-apexcharts'
 import { useTranslation } from 'react-i18next'
 
@@ -11,7 +11,7 @@ const LeadScoreProgress = () => {
 
   return (
     <section>
-      {/* <h5>Weekly Progress</h5> */}
+     
 
       <Chart
         type="radialBar"

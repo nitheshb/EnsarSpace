@@ -27,7 +27,7 @@ export default function DropCompUnitStatus({
             {type === 'View' && (
               <>
                 <span className=" text-[12px] tracking-wide text-black ">
-                  {/* {type?.toLocaleUpperCase()} */}
+                  
                   {'.'}
                 </span>
                 <ChevronDownIcon className="w-5 h-5 mr-3 mt-[1px] inline text-white" />

@@ -1,10 +1,7 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-// import { Link, routes } from '@redwoodjs/router'
+
 
 import { Fragment, useState, useEffect } from 'react'
 
-// import { XIcon } from '@heroicons/react/outline'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 import { MetaTags } from '@redwoodjs/web'
@@ -27,7 +24,7 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
   const { orgId } = user
   const [isImportLeadsOpen, setisImportLeadsOpen] = useState(false)
 
-  // kanban board
+
   const [ready, setReady] = useState(false)
 
   const [addLeadsTypes, setAddLeadsTypes] = useState('')
@@ -73,9 +70,9 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
             x.id = docSnapshot.id
             return x
           })
-          // setBoardData
+
           console.log('my Array data is ', usersListA, leadsFetchedData)
-          // await serealizeData(usersListA)
+
           await setLeadsFetchedData(usersListA)
           await console.log('my Array data is set it', leadsFetchedData)
         },
@@ -87,7 +84,7 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
             'cleared',
             'rejected',
             '',
-            // 'booked',
+
           ],
         },
         () => setLeadsFetchedData([])
@@ -102,7 +99,6 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
             x.id = docSnapshot.id
             return x
           })
-          // setBoardData
           console.log('my Array data is ', usersListA)
           await serealizeData(usersListA)
           await setLeadsFetchedData(usersListA)
@@ -116,7 +112,7 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
             'cleared',
             'rejected',
             '',
-            // 'booked',
+
           ],
         },
         () => setLeadsFetchedData([])
@@ -124,18 +120,18 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
       return unsubscribe
     }
 
-    // await console.log('leadsData', leadsData)
+
   }
 
   const serealizeData = (array) => {
-    // let newData =
+
     const x = [
       'new',
       'review',
       'cleared',
       'rejected',
       '',
-      // 'booked',
+
     ].map((status) => {
       const items = array.filter((data) => data.Status.toLowerCase() == status)
 
@@ -163,17 +159,13 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
             "
           >
             <div className="items-center justify-between rounded-md mx-1 my-1 py-2 px-2 bg-white ">
-              {/* <div>
-                <h2 className="text-lg font-semibold text-gray-900 leading-light py-2 ">
-                  Accounts Transactions Space
-                </h2>
-              </div> */}
+
               <div className="flex flex-row">
                 <section className="min-w-[100px]">
                 <h5>Weekly Progress</h5>
                   <CircleProgress />
                 </section>
-                {/* <SemiCircleProgress /> */}
+
                 <div className="flex flex-col">
                   <div className="flex flex-row">
                     <h2 className="headTxt1 font-semibold text-[11px] ">
@@ -201,15 +193,6 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
                             >
                               <div className=" flexCenter p-2">
                                 <span className="w-2 h-2 rounded-full bg-[#209653]"></span>
-                                {/* <svg
-                              className="svgIcon text-[#209653] text-[14px] "
-                              focusable="false"
-                              viewBox="0 0 24 24"
-                              aria-hidden="true"
-                              data-testid="ArrowUpwardIcon"
-                            >
-                              <path d="m4 12 1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
-                            </svg> */}
 
                                 <span className="css-1lpgd8m text-[#209653] text-[10px]">
                                   CLEARED (2)
@@ -235,15 +218,7 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
                             >
                               <div className=" flexCenter p-2">
                                 <span className="w-2 h-2 rounded-full bg-[#F59A4C]"></span>
-                                {/* <svg
-                              className="svgIcon text-[#209653] text-[14px] "
-                              focusable="false"
-                              viewBox="0 0 24 24"
-                              aria-hidden="true"
-                              data-testid="ArrowUpwardIcon"
-                            >
-                              <path d="m4 12 1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
-                            </svg> */}
+
 
                                 <span className="css-1lpgd8m text-[#F59A4C] text-[10px]">
                                   PENDING (4)
@@ -269,15 +244,6 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
                             >
                               <div className=" flexCenter p-2">
                                 <span className="w-2 h-2 rounded-full bg-[#EB5657]"></span>
-                                {/* <svg
-                              className="svgIcon text-[#209653] text-[14px] "
-                              focusable="false"
-                              viewBox="0 0 24 24"
-                              aria-hidden="true"
-                              data-testid="ArrowUpwardIcon"
-                            >
-                              <path d="m4 12 1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
-                            </svg> */}
 
                                 <span className="css-1lpgd8m text-[#EB5657] text-[10px]">
                                   CANCELLED (2)
@@ -303,15 +269,7 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
                             >
                               <div className=" flexCenter p-2">
                                 <span className="w-2 h-2 rounded-full bg-[#767676]"></span>
-                                {/* <svg
-                              className="svgIcon text-[#209653] text-[14px] "
-                              focusable="false"
-                              viewBox="0 0 24 24"
-                              aria-hidden="true"
-                              data-testid="ArrowUpwardIcon"
-                            >
-                              <path d="m4 12 1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
-                            </svg> */}
+
 
                                 <span className="css-1lpgd8m text-[#767676] text-[10px]">
                                   TOTAL (10)
@@ -417,8 +375,7 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
                                   {`${fieldHead.lab} `}
                                 </span>
                                 <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded-full ml-[4px] text-[10px] ">
-                                  {/* {rowsCounter(leadsFetchedData, d.val).length} */}
-                                  {/* {statusSepA[0][d.val]?.length || 0} */}
+
                                   {
                                     rowsCounter(
                                       leadsFetchedData,
@@ -426,12 +383,7 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
                                     ).length
                                   }
                                 </span>
-                                {/*
-                        <div className="px-2 mt-1 text-[9px] text-black  rounded-full">
-                          <span className="bg-gray-100 px-2 py-1 rounded-full">
-                            {rowsCounter(leadsFetchedData, d.val).length}
-                          </span>
-                        </div> */}
+
                               </button>
                             </li>
                           )
@@ -479,17 +431,7 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
                                 <div className="flex justify-center text-right items-center rounded-md w-2 h-8 app-bg-yellow-2 app-color-yellow-1 text-xs font-semibold">
                                   {i + 1}
                                 </div>
-                                {/* <div
-                                className={`${
-                                  finData?.status === 'cleared'
-                                    ? 'bg-green-700'
-                                    : finData?.status === 'rejected'
-                                    ? 'bg-yellow-600'
-                                    : 'bg-violet-600'
-                                }   w-24 text-xs font-semibold px-3 py-0.5 rounded-br-md rounded-tl-md text-white`}
-                              >
-                                {finData?.status?.toLocaleUpperCase()}
-                              </div> */}
+
                               </td>
                               <td>
                                 <div className="flex flex-row py-2 ml-4">
@@ -518,7 +460,7 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
                                       {finData?.toAccount?.name}
                                     </span>
                                     <span className="font-normal text-xs app-color-gray-1">
-                                      {/* {finData?.toAccount?.accountNo} */}
+
                                       {finData?.towardsBankDocId}
                                     </span>
                                     <span className="font-normal text-xs app-color-gray-1">
@@ -532,7 +474,7 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
                               </td>
                               <td>
                                 <div className="flex flex-row py-2">
-                                  {/* <div className="mr-2 w-[3px]  bg-gray-100 "></div> */}
+
                                   <div className="flex flex-col">
                                     <span className="font-semibold text-sm app-color-black">
                                       {finData?.mode}
@@ -572,14 +514,7 @@ const FinanceTransactionsHome = ({ leadsTyper }) => {
               </div>
             )}
 
-            {/* {!ready && (
-              <FinanceTableView
-                leadsFetchedData={leadsFetchedData}
-                setisImportLeadsOpen={setisImportLeadsOpen}
-                selUserProfileF={selUserProfileF}
-                leadsTyper={leadsTyper}
-              />
-            )} */}
+            
           </div>
         </div>
       </div>

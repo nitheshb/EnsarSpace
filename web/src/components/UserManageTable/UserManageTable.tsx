@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 import { EyeIcon, PencilIcon } from '@heroicons/react/outline'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
@@ -9,7 +7,7 @@ import { TrashIcon } from '@heroicons/react/outline'
 import StyledButton from 'src/components/RoundedButton'
 import { useAuth } from 'src/context/firebase-auth-context'
 
-const UserManageTable = ({ editEmployeeFun }) => {
+const geTable = ({ editEmployeeFun }) => {
   const { user } = useAuth()
 
   const { orgId } = user
@@ -199,4 +197,4 @@ const UserManageTable = ({ editEmployeeFun }) => {
   )
 }
 
-export default UserManageTable
+export default geTable
