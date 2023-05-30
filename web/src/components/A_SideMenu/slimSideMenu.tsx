@@ -1875,11 +1875,10 @@ const SlimSideMenuBar = (props) => {
       )}
 
       <Link
-        className={
-          'flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300 ' +
+        className={'flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300 ' +
           (pgName === 'erpAccount' ? 'bg-gray-300' : '')
         }
-        // to={routes.erpAccount()}
+        to={''} // to={routes.erpAccount()}
       >
         <svg
           className="w-5 h-5"

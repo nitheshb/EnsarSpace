@@ -105,33 +105,33 @@ const UsersAdminPage = () => {
               <>
 
 
-          </>
+              </>
 
             )}
 
-          {viewable === 'User Report' && (
-           
-            <ActivitySummaryReport
-              project={{
-                area: 1000,
-                builderName: 'hello',
-                location: 'local',
-                projectName: 'User Report',
-                projectType: 'aprtment',
-              }}
-              isEdit={false}
-            />
-          )}
+            {viewable === 'User Report' && (
 
-          <SUserSignup
-            open={isOpen}
-            setOpen={handleOnClose}
-            title="User"
-            empData={empData}
-          />
+              <ActivitySummaryReport
+                project={{
+                  area: 1000,
+                  builderName: 'hello',
+                  location: 'local',
+                  projectName: 'User Report',
+                  projectType: 'aprtment',
+                }}
+                isEdit={false}
+              />
+            )}
+
+            <SUserSignup
+              open={isOpen}
+              setOpen={handleOnClose}
+              title="User"
+              empData={empData}
+            />
+          </div>
         </div>
-      </div>
-    </div >
+      </div >
     </>
   )
 }
