@@ -74,8 +74,11 @@ const Profile = () => {
 
   return (
     <>
+
       <ProfileHeader />
+
       <div >
+
         <div className="white-bg">
           <div className="flex flex-col text-gray-700 bg-white">
             <div className="flex flex-row relative ml-[22vw] w-full">
