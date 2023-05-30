@@ -25,8 +25,7 @@ const ReportSideWindow = ({
   setCustomerDetails,
   setisImportLeadsOpen
 }) => {
-  // dont write too many here
-  //  this is for customerProfileSideView
+  
   const dispatch = useDispatch()
   return (
     <Transition.Root show={open || false} as={Fragment}>

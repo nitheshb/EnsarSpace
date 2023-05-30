@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 import { useState, useEffect } from 'react'
 
 import { MetaTags } from '@redwoodjs/web'
@@ -7,8 +7,6 @@ import { getLeadsByStatus } from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
 
 import SiderForm from './SiderForm/SiderForm'
-// import CardItem from '../../components/leadsCard'
-// import BoardData from '../../components/board-data.json'
 
 const LeadsManagementHome = () => {
   const { user } = useAuth()
@@ -35,10 +33,7 @@ const LeadsManagementHome = () => {
     setAddLeadsTypes(title)
     setisImportLeadsOpen(true)
   }
-  // useEffect(() => {
-  //   console.log('table data is ', tableData2)
-  //   setTableData(tableData2)
-  // }, [])
+
 
   useEffect(() => {
     getLeadsDataFun()
@@ -84,12 +79,7 @@ const LeadsManagementHome = () => {
       if (item.Source.toLowerCase().includes(selStatus.toLowerCase())) {
         return item
       }
-      //  else if (item.Status.toLowerCase() === selStatus.toLowerCase()) {
-      //   console.log('All1', item)
-      //   return item
-      // } else if (item.Source.toLowerCase().includes(selStatus.toLowerCase())) {
-      //   return item
-      // }
+
     })
     await setRows(x)
     await console.log('xo', x)
@@ -177,12 +167,7 @@ const LeadsManagementHome = () => {
             </div>
 
             <MetaTags title="ExecutiveHome" description="ExecutiveHome page" />
-            {/* {!ready && (
-              <TodayLeadsActivityListHomeView
-                setisImportLeadsOpen={setisImportLeadsOpen}
-                selUserProfileF={selUserProfileF}
-              />
-            )} */}
+
             {leadsFetchedData.length === 0 && (
               <div className="py-8 px-8 mt-10 flex flex-col items-center bg-red-100 rounded">
                 <div className="font-md font-medium text-xs mb-4 text-gray-800 items-center">
@@ -201,18 +186,10 @@ const LeadsManagementHome = () => {
               </div>
             )}
             <div>
-              {/* <Header /> */}
+
               <div className="flex justify-center items-center text-gray-900 h-12"></div>
               <div className=" p-16 justify-center items-center text-gray-900">
-                {/* { listings.map(listing => <JobCard listing={listing} key={listing.id} filtering={filterListings} />) } */}
-                {/* <EnhancedTableToolbar
-                  numSelected={selected.length}
-                  selStatus={selStatus}
-                  filteredData={rows}
-                  searchKey={searchKey}
-                  setSearchKey={setSearchKey}
-                  rows={rows}
-                /> */}
+
                 {leadsFetchedData
                   .filter((item) => {
                     if (searchKey == '' || !searchKey) {
@@ -243,8 +220,7 @@ const LeadsManagementHome = () => {
                   .slice()
                   .sort(getComparator(order, orderBy))
                   .map((listing, index) => {
-                    // const isItemSelected = isSelected(listing.Name)
-                    // const labelId = `enhanced-table-checkbox-${index}`
+
                     return (
                       <>
                         <div
@@ -292,7 +268,7 @@ const LeadsManagementHome = () => {
         title={addLeadsTypes}
         widthClass="max-w-4xl"
 
-        // customerDetails={selUserProfile}
+        
       />
     </>
   )

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { prettyDateTime } from 'src/util/dateConverter'
 
 const RecentActivity = ({ title, userTodayPerfA }) => {
-  // change navbar title
+
 
   const { t } = useTranslation()
   const [recActA, setRecActA] = useState([])
@@ -41,14 +41,9 @@ const RecentActivity = ({ title, userTodayPerfA }) => {
           </div>
         )}
         {recActA.map((item, i) => (
-          // <ActivityListItem activity={item} key={item.id} />
+
           <li className="flex flex-row mb-2 pb-2 border-b" key={i}>
-            {/* <ChatBubble
-              sx={{
-                color: 'white',
-                fontSize: 16,
-              }}
-            /> */}
+            
             <section className="flex flex-col">
               <span className="font-bodyLato font-semibold text-xs">
                 {item?.tx}

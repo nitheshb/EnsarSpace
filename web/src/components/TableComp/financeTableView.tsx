@@ -2,7 +2,7 @@ import { TabList } from '@mui/lab'
 import { Box, Card, Grid, styled } from '@mui/material'
 import LLeadsTableBody from '../LLeadsTableBody/LLeadsTableBody'
 import { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next' // styled components
+import { useTranslation } from 'react-i18next'
 import uniqueId from '../../util/generatedId'
 
 import FinanceTableBody from './financeTableBody'
@@ -438,13 +438,12 @@ const FinanceTableView = ({
   leadsFetchedData,
   leadsTyper,
 }) => {
-  // change navbar title
-  // useTitle('Data Table V1')
+
   const { t } = useTranslation()
   const [value, setValue] = useState('new')
   const [tableData, setTableData] = useState([])
   const [tabHeadFieldsA, settabHeadFieldsA] = useState([])
-  // const [leadsFetchedData, setLeadsFetchedData] = useState([])
+
   const [openModal, setOpenModal] = useState(false)
 
   const handleChange = (_, newValue) => {
@@ -455,15 +454,7 @@ const FinanceTableView = ({
   useEffect(() => {
     console.log('table data is ', tableData2)
     setTableData(tableData2)
-    // axios
-    //   .get('/api/tableData1/all')
-    //   .then(({ data }) => {
-    //     setTableData(tableData1)
-    //   })
-    //   .catch((error) => {
-    //     // setTableData(tableData1)
-    //     console.log(error)
-    //   })
+
 
     const tabHeadFieldsA1 =
       leadsTyper === 'inProgress'
@@ -476,11 +467,9 @@ const FinanceTableView = ({
             { lab: 'Visit Cancel', val: 'visitcancel' },
             { lab: 'Negotiation', val: 'negotiation' },
             { lab: 'Reassign', val: 'reassign' },
-            // { lab: 'RNR', val: 'RNR' },
+
             { lab: 'Un Assigned', val: 'unassigned' },
-            // { lab: 'Booked', val: 'booked' },
-            // { lab: 'Not Interested', val: 'notinterested' },
-            // { lab: 'Dead', val: 'dead' },
+
           ]
         : leadsTyper === 'archieveLeads'
         ? archieveTab
@@ -527,7 +516,7 @@ const FinanceTableView = ({
         <Grid container>
           <Grid item xs={12}>
             <div className="mb-4 border-b border-gray-200 dark:border-gray-700">
-              {/* bg-[#fdb7b7] */}
+
               <ul
                 className="flex flex-wrap -mb-px "
                 id="myTab"
@@ -551,19 +540,14 @@ const FinanceTableView = ({
                         <span className="bg-gray-100 px-2 py-1 rounded-full">
                           {rowsCounter(leadsFetchedData, d.val).length}
                         </span>
-                        {/*
-                        <div className="px-2 mt-1 text-[9px] text-black  rounded-full">
-                          <span className="bg-gray-100 px-2 py-1 rounded-full">
-                            {rowsCounter(leadsFetchedData, d.val).length}
-                          </span>
-                        </div> */}
+
                       </button>
                     </li>
                   )
                 })}
               </ul>
             </div>
-            {/*  Data Table */}
+            
             <FinanceTableBody
               data={filterTable}
               handleDelete={handleDelete}

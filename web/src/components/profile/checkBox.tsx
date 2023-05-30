@@ -9,7 +9,9 @@ const CheckBox = () => {
       <div className="w-full  border-b-2 flex flex-row py-4 items-center justify-between">
         {' '}
         <p className="text-2xl">Reclaims</p>{' '}
-      </div>
+       </div>
+
+
       <div className="my-4">
         <small>Auto-Reply</small>
         <div className="flex flex-row">
@@ -18,19 +20,25 @@ const CheckBox = () => {
             Complete requests faster by sending automatic replies to company
             requests.{' '}
           </small>
-          <Switch
-            checked={enabled}
-            onChange={setEnabled}
-            className={`${enabled ? 'bg-teal-500' : 'bg-teal-900'}
-          relative inline-flex h-[28px] w-[60px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
-          >
-            <span className="sr-only">Use setting</span>
-            <span
-              aria-hidden="true"
-              className={`${enabled ? 'translate-x-9' : 'translate-x-0'}
-            pointer-events-none inline-block h-[28px] w-[28px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
-            />
-          </Switch>
+           
+
+<Switch
+  checked={enabled}
+  onChange={setEnabled}
+  className={`${enabled ? 'bg-teal-500' : 'bg-teal-900'}
+    relative inline-flex h-[40px] w-[86px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+>
+  <span className="sr-only">Use setting</span>
+  <span
+    aria-hidden="true"
+    className={`${enabled ? 'translate-x-11' : 'translate-x-0' }
+      border-radius: 0.9rem;
+      pointer-events-none inline-block h-[36px] w-[40px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+  />
+</Switch>
+
+
+
         </div>
       </div>
     </section>
