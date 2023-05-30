@@ -22,6 +22,11 @@ const Calendar = ({ holidays, deleteHoliday }) => {
   //     marginTop: '20px',
   //   };
 
+
+
+
+
+
   const thStyle = {
     border: '1px solid black',
     padding: '8px',
@@ -39,6 +44,9 @@ const Calendar = ({ holidays, deleteHoliday }) => {
     cursor: 'pointer',
     marginLeft: '5px',
   };
+
+
+
 
   return (
     <table style={tableStyle}>
@@ -121,6 +129,9 @@ const App = () => {
     }));
   };
 
+
+
+
   const addHoliday = () => {
     if (newHoliday.date.trim() === '' || newHoliday.day.trim() === '' || newHoliday.name.trim() === '') {
       return;
@@ -143,6 +154,10 @@ const App = () => {
       name: '',
     });
   };
+
+
+
+
 
   const deleteHoliday = (index) => {
     setHolidays((prevHolidays) => {
@@ -172,6 +187,10 @@ const App = () => {
     width: '200px',
   };
 
+
+
+
+  
   const buttonStyle = {
     padding: '5px 10px',
     backgroundColor: '#4CAF50',
