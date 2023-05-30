@@ -31,7 +31,17 @@ const Calendar = ({ holidays, deleteHoliday }) => {
 
   return (
     <table style={tableStyle}>
-      <thead>
+      {/* <thead>
+        <tr>
+          <th style={thStyle}>S.No</th>
+          <th style={thStyle}>Date</th>
+          <th style={thStyle}>Day</th>
+          <th style={thStyle}>Holidays</th>
+          <th style={thStyle}>Action</th>
+        </tr>
+      </thead> */}
+
+<thead>
         <tr>
           <th style={thStyle}>S.No</th>
           <th style={thStyle}>Date</th>
@@ -40,6 +50,9 @@ const Calendar = ({ holidays, deleteHoliday }) => {
           <th style={thStyle}>Action</th>
         </tr>
       </thead>
+
+
+
       <tbody>
         {holidays.map((holiday, index) => (
           <tr key={index}>
