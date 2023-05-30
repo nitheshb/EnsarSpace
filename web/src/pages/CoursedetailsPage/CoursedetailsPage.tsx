@@ -106,6 +106,7 @@ const CoursedetailsPage = () => {
       </nav>
 
       <div>
+        
 
         <div key={course.id}>
           <div style={{ backgroundColor: 'black', color: 'white' }}>
