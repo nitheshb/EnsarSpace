@@ -61,12 +61,14 @@ const UserManageTable = ({ editEmployeeFun }) => {
           <section className="flex ml-auto mt-[18px]  bg-white  border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10">
             {[
               { label: 'All', val: 'all' },
-              { label: 'Admin', val: 'admin' },
-              { label: 'Crm', val: 'crm' },
-              { label: 'Legal', val: 'legal' },
+              { label: 'IT Employee', val: 'itemployee' },
+              { label: 'IT Desk', val: 'itdesk' },
+              { label: 'HR', val: 'hr' },
+              { label: 'Finance', val: 'finance' },
               { label: 'Project', val: 'project' },
-              { label: 'Legal', val: 'legal' },
               { label: 'Sales', val: 'sales' },
+              { label: 'Learning', val: 'learning' },
+              { label: 'Admin', val: 'admin' },
             ].map((dat, index) => (
               <a
                 key={index}
