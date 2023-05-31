@@ -1,4 +1,9 @@
-
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+// import { useState } from 'react'
+// import ProjectStatsCard from '../ProjectStatsCard/ProjectStatsCard'
+// import PhaseDetailsCard from '../PhaseDetailsCard/PhaseDetailsCard'
 
 import { useEffect, useState } from 'react'
 
@@ -54,7 +59,51 @@ const valueFeedData = [
 ]
 
 const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
+  // const [unitsView, setUnitsView] = useState(false)
+  // const [areaView, setAreaView] = useState(false)
+  // const [valueView, setValueView] = useState(false)
 
+  // const [selbg, setSelbg] = useState('')
+  // const [seldata, setSeldata] = useState('')
+  // const [selkind, setSelkind] = useState('')
+  // const [selcurrency, setSelcurrency] = useState('')
+
+  // const [areabg, setAreabg] = useState('')
+  // const [areaData, setAreaData] = useState('')
+  // const [areakind, setAreakind] = useState('')
+  // const [areaCurrency, setareaCurrency] = useState('')
+
+  // const [valuebg, setValuebg] = useState('')
+  // const [valuedata, setValuedata] = useState('')
+  // const [valueKind, setValueKind] = useState('')
+  // const [valueCurrency, setValueCurrency] = useState('')
+  // const displayDetailView = (state, bgColor, data, kind, currency) => {
+  //   // console.log('am i clicked')
+  //   console.log('check')
+  //   setUnitsView(!unitsView)
+  //   setSelbg(bgColor)
+  //   setSeldata(data)
+  //   setSelkind(kind)
+  //   setSelcurrency(currency)
+  // }
+  // const areaDetailView = (state, bgColor, data, kind, currency) => {
+  //   // console.log('am i clicked')
+  //   console.log('check')
+  //   setAreaView(state)
+  //   setAreabg(bgColor)
+  //   setAreaData(data)
+  //   setAreakind(kind)
+  //   setareaCurrency(currency)
+  // }
+  // const valueDetailView = (state, bgColor, data, kind, currency) => {
+  //   // console.log('am i clicked')
+  //   console.log('check')
+  //   setValueView(state)
+  //   setValuebg(bgColor)
+  //   setValuedata(data)
+  //   setValueKind(kind)
+  //   setValueCurrency(currency)
+  // }
   const d = new window.Date()
   const { user } = useAuth()
   const { orgId, access } = user
@@ -150,6 +199,9 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
     showAllEmpTodayActivity()
   }, [usersCleanList])
 
+  // useEffect(() => {
+  //   console.log('emp task list is ', empTaskListTuned)
+  // }, [empTaskListTuned])
 
   useEffect(() => {
     if (selProjectIs?.value === 'allprojects') {
@@ -213,6 +265,11 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
     }
   }, [projectList, viewProjs])
 
+  // const [projectFilList, setFiltProjectListTuned] = useState([])
+  // const [viewProjs, selProjs] = useState({
+  //   label: 'All Projects',
+  //   value: 'allprojects',
+  // })
 
   useEffect(() => {
     setProjectListTuned(serialProjectLeadData(projectList, leadsFetchedRawData))
@@ -280,13 +337,14 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
   }
 
   const showDrillDownFun = async (text, data) => {
-
+    // Display sideForm
     setReportSideForm(true)
     setDrillDownPayload(data)
   }
   const setEmpTaskFun = async () => {
     const x = await serialEmployeeTaskLeadData(usersCleanList)
-
+    // await console.log('master one', x)
+    // await setTaskEmployeeListTuned(x)
     const z = Promise.all(x).then(function (results) {
       console.log('master one', results)
       setTaskEmployeeListTuned(results)
@@ -321,7 +379,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
       setTaskEmployeeListTunedTotal(Total)
       console.log('sum1 is ', Total)
 
-
+      // results.filter((data) => data != 'remove')
       return results
     })
     await console.log('setted value is 0', z)
@@ -349,7 +407,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
 
       return z
     })
-
+    // await setTaskEmployeeListTuned(a1)
     await console.log('setted value is ', a1, a1.length)
   }
   useEffect(() => {
@@ -391,7 +449,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
         const usersListA = querySnapshot.docs.map((docSnapshot) =>
           docSnapshot.data()
         )
-
+        // setusersList(usersListA)
         usersListA.map((user) => {
           user.label = user.displayName || user.name
           user.value = user.uid
@@ -412,7 +470,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
         const projectsListA = querySnapshot.docs.map((docSnapshot) =>
           docSnapshot.data()
         )
-
+        // setprojectList(projectsListA)
         projectsListA.map((user) => {
           user.label = user.projectName
           user.value = user.uid
@@ -479,9 +537,19 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
     await setLeadLogsRawData(steamLeadLogs)
   }
   const GenerateTasksDailyReportForEmp = async () => {
-
+    // get all the employees based on orgId
     console.log('employee list is ', usersList)
-
+    // const data = []
+    // for (const empListD of [
+    //   { uid: 'yP5IMRXqByUNYZ6atk5AaJjaoGH3', name: 'RAM PRASAD' },
+    // ]) {
+    //   const dataUser = await getRestEmpTodayTasksCount(
+    //     empListD?.uid,
+    //     empListD?.name
+    //   )
+    //   data.push(dataUser)
+    // }
+    // return
     await getEmployeesListDept(orgId, {}).then(async (empList) => {
       console.log('employee list is ', empList)
       const data = []
@@ -494,7 +562,17 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
       }
     })
     await setResettingEmpValues(false)
+    // const empDempListA = await getEmployeesListDept(orgId, {})
+    // await empDempListA.map(async (empDetails) => {
+    //   const { uid } = empDetails
+    //   if (uid) {
+    //     await getRestEmpTodayTasksCount(uid)
+    //   } else {
+    //     return
+    //   }
+    // })
 
+    // await console.log('get users list is', empDempListA)
     return
     const unsubscribe = steamUsersListByRole(
       orgId,
@@ -502,7 +580,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
         const usersListA1 = await querySnapshot.docs.map((docSnapshot) =>
           docSnapshot.data()
         )
-
+        // setusersList(usersListA)
         usersListA1.map((user) => {
           user.label = user.displayName || user.name
           user.value = user.uid
@@ -528,34 +606,61 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
     )
   }
   const getRestEmpTodayTasksCount = async (empID, name) => {
-
+    // Get all the employees of sales,crm , finance, legal of each dept
+    // Loop through each emp and get TastDate < Tomorrow
+    // get the Lead status of each task and put that into that section count
+    // save count in db too
+    // send to whats app
 
     return await getTodayTodoLeadsDataByUser(
       orgId,
       async (querySnapshot) => {
         let pro
         let y = []
-
+        // const projects = await querySnapshot.docs.map(async (docSnapshot) => {
+        //   const x = docSnapshot.data()
+        //   console.log('git values is 2', x)
+        //   const { staDA } = x
+        //   y = staDA
+        //   if (y.length > 0) {
+        //     x.uid = docSnapshot.id
+        //     // eslint-disable-next-line prefer-const
+        //     let y1 = await getLeadbyId1(orgId, x.uid)
+        //     x.leadUser = await y1
+        //     return x
+        //   }
+        // })
 
         const userTodoTasksList = []
         console.log('Total fetcher is ', querySnapshot.docs.length, name)
         for (const docSnapshot of querySnapshot.docs) {
           const x = docSnapshot.data()
-
+          // results.filter((data) => data != 'remove')
           console.log('Total Tasks count is ', x, name)
           const { staDA } = x
           y = staDA
           if (y.length > 0) {
             x.uid = docSnapshot.id
-
+            // eslint-disable-next-line prefer-const
             let leadDetails = await getLeadbyId1(orgId, x.uid)
             x.leadUser = await leadDetails
             userTodoTasksList.push(x)
           }
         }
-
+        //  get the task details from docid
         if (userTodoTasksList.length > 0) {
-
+          // projects.filter((data) => data != undefined)
+          // const data = []
+          // for (const results of userTodoTasksList) {
+          //   console.log('TaskListResults is', results)
+          //   results?.filter((data) => data != 'remove')
+          //   const dataUser = await filterTodayTodoFun(
+          //     results?.filter((data) => data != 'remove'),
+          //     empID,
+          //     name
+          //   )
+          //   data.push(dataUser)
+          // }
           Promise.all(userTodoTasksList).then(function (results) {
             results.filter((data) => data != 'remove')
             filterTodayTodoFun(
@@ -587,15 +692,15 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
       todaydate.getMonth() +
       'Y' +
       todaydate.getFullYear()
-
+    //find the year of the current date
     const oneJan = new Date(todaydate.getFullYear(), 0, 1)
 
-
+    // calculating number of days in given year before a given date
     const numberOfDays = Math.floor(
       (todaydate - oneJan) / (24 * 60 * 60 * 1000)
     )
 
-
+    // adding 1 since to current date and returns value starting from 0
     const weekCount = Math.ceil((todaydate.getDay() + 1 + numberOfDays) / 7)
     const streamedTodo = []
     const whole = {
@@ -622,7 +727,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
           +new Date().setHours(0, 0, 0, 0) + 86400000
         ).getTime()
         if (y['sts'] === 'pending' && y['schTime'] < torrowDate) {
-
+          // make sure if date less than tomorrow is added
           if (y['schTime'] < torrowDate) {
             y.uid = data1.uid
             y.id = data1.uid
@@ -672,7 +777,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
         }
       })
     })
-
+    // save this value in DB against the user
     const taskCounts = {
       uid: empID,
       emp: name,
@@ -699,14 +804,44 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
       negotiation_comp: 0,
       others_comp: 0,
     }
-
+    //  this week docId = ${uidXweekcountXtodaydate.getFullYear()}
+    //  this month docId = ${uidXweekcountXtodaydate.getFullYear()}
 
     updateTodayTasksTotal(orgId, `${empID}DD${ddMy}`, taskCounts)
 
     console.log('whole is ', name, whole)
   }
   const updateLeadsLastUpdatetimeFun = async () => {
+    // get data from tasks table with pending as available
+    // steamLeadScheduleLog(
+    //   orgId,
+    //   (doc) => {
+    //     console.log('my total fetched list is 1', doc.data())
+    //     const x = doc.data()
+    //     let y = []
+    //     const { staA, staDA } = x
+    //     const indi = staA.indexOf('pending')
+    //     y = staDA
+    //     if (y.length > 0) {
+    //       // x.uid = docSnapshot.id
+    //       // eslint-disable-next-line prefer-const
+    //       const { comments, ct, schTime } = x[y[indi]]
+    //       if (comments) {
+    //         console.log('insdied coment ', x.uid, comments[0]['t'], schTime)
+    //         // updateLeadLastUpdateTime(orgId, x.uid, comments[0]['t'], schTime)
+    //       } else if (ct) {
+    //         console.log('insdied ct ', x.uid, ct, schTime)
 
+    //         updateLeadLastUpdateTime(orgId, 'suAn4KcwwEUVy4ziYTwb', ct, schTime)
+    //       }
+    //     }
+    //   },
+
+    //   {
+    //     uid: 'suAn4KcwwEUVy4ziYTwb',
+    //   },
+    //   (error) => console.log('error', error)
+    // )
 
     getTodayTodoLeadsData(
       orgId,
@@ -722,12 +857,20 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
           y = staDA
 
           if (y.length > 0 && y[indi]) {
+            // x.uid = docSnapshot.id
+            // eslint-disable-next-line prefer-const
 
             const { comments, ct, schTime } = x[y[indi]]
             if (comments) {
-
+              // console.log(
+              //   'insdied coment ',
+              //   docSnapshot.id,
+              //   comments[0]['t'],
+              //   schTime
+              // )
+              // updateLeadLastUpdateTime(orgId, x.uid, comments[0]['t'], schTime)
             } else if (ct) {
-
+              // console.log('insdied ct ', docSnapshot.id, ct, schTime)
               try {
                 updateLeadLastUpdateTime(orgId, docSnapshot.id, ct, schTime)
               } catch (error) {
@@ -747,7 +890,9 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
     )
   }
   const updateProjectNameInlogs = async () => {
-
+    // get all the logs from supabase
+    // loop through each doc and get projectId
+    // update the respective doc in supabase with projectId
 
     const steamLeadLogs = await streamLeadLogdWithNullProj(
       orgId,
@@ -910,7 +1055,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
         <div className="box-border px-4 mx-auto border-solid sm:px-6 md:px-6 lg:px-8 max-w-full ">
           <div className="flex flex-col  leading-7  text-gray-900 border-0 border-gray-200 ">
             <div className="flex items-center flex-shrink-0  px-0  pl-0 border-b border-grey  mb-2">
-
+              {/* <Link
+                className="flex items-center"
+               // to={routes.projectEdit({ uid })}
+              > */}
               <img className="w-12 h-12" alt="" src="/apart.svg"></img>
               <span className="relative  flex items-center w-auto text-xl font-bold leading-none pl-0 mt-[18px]">
                 {orgId?.toLocaleUpperCase()} Report
@@ -925,7 +1073,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                 { label: 'Source Report', value: 'source_report' },
                 { label: 'Employee Report', value: 'emp_status_report' },
                 { label: 'Project Leads Report', value: 'proj_leads_report' },
-                { label: 'Employee Leads Report', value: 'emp_leads_report' },
+                { label: 'Employee Leads Aging', value: 'emp_leads_report' },
                 { label: 'Employee Tasks', value: 'emp_tasks' },
               ].map((data, i) => {
                 return (
@@ -945,7 +1093,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             : 'font-normal text-black-100 bg-[#f0f8ff]'
                         }  rounded-full`}
                       >
-
+                        {/* <PencilIcon className="h-3 w-3 mr-1" aria-hidden="true" /> */}
                         <img alt="" src="/temp2.png" className="h-3 w-3 mr-1" />
                         {data?.label}
                       </span>
@@ -954,7 +1102,165 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                 )
               })}
             </div>
+            {/* <div className=" mt-10 grid grid-cols-1 gap-7">
+              <span className="min-w-100 ">
+                <span>
+                  <div
+                    className="drop-shadow-md min-w-full z-10 flex flex-col  max-w-md p-4 mx-auto my-0 rounded-lg "
+                    style={{ backgroundColor: '#EBF9F9' }}
+                  >
+                    <div className="flex items-center flex-row px-0  pl-0 mb-2 ">
 
+                      <div className="relative z-10 flex items-center w-auto text-md font-bold leading-none pl-0 ml-1 mt-4 ">
+                        {`Lead Stastics of Team for this Week `}
+                      </div>
+                    </div>
+
+                    <section className="flex ml-auto mt-[18px]">
+                      {!isEdit && (
+
+                        <span className="flex ml-2 items-center h-6 px-3 text-xs font-semibold text-pink-800 bg-pink-200 rounded-full">
+                          <EyeIcon
+                            className="h-3 w-3 mr-1"
+                            aria-hidden="true"
+                          />
+                          Current Week
+                        </span>
+
+                      )}
+
+                      <button onClick={onSliderOpen}>
+                        <span className="flex ml-2 items-center h-6 px-3 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
+                          <CalendarIcon
+                            className="h-3 w-3 mr-1"
+                            aria-hidden="true"
+                          />
+                          This Month
+                        </span>
+                      </button>
+                      <button onClick={onSliderOpen}>
+                        <span className="flex ml-2 items-center h-6 px-3 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
+                          <CalendarIcon
+                            className="h-3 w-3 mr-1"
+                            aria-hidden="true"
+                          />
+                          Last 6 Months
+                        </span>
+                      </button>
+                    </section>
+
+                    <div className="grid grid-cols-2 gap-0">
+                      <ul className="flex-1 p-0 mt-8 ml-2 mr-2 max-w-[300px] border-r pr-10  border-slate-400 leading-7 text-gray-900  border-gray-200">
+                        {valueFeedData.map((data, i) => {
+                          return (
+                            <li
+                              key={i}
+                              className="flex justify-between px-4 py-1 w-full mb-2  font-semibold text-left border-dotted border-b border-gray-300 "
+                            >
+                              <span className="inline-flex">
+                                <span className="text-[16px] text-gray-900 font-light  text-gray-900">
+                                  {' '}
+                                  {data.k}
+                                </span>
+                              </span>
+
+                              <div
+                                className="relative flex flex-col items-center group"
+                                style={{ alignItems: 'end' }}
+                              >
+                                <div
+                                  className="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex"
+                                  style={{ alignItems: 'end', width: '300px' }}
+                                >
+                                  <span
+                                    className="rounded italian relative mr-2 z-100000 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"
+                                    style={{
+                                      color: 'black',
+                                      background: '#e2c062',
+                                      maxWidth: '300px',
+                                    }}
+                                  ></span>
+                                  <div
+                                    className="w-3 h-3  -mt-2 rotate-45 bg-black"
+                                    style={{
+                                      background: '#e2c062',
+                                      marginRight: '12px',
+                                    }}
+                                  ></div>
+                                </div>
+                                <span className="text-[16px] font-medium text-gray-900">
+                                  {data.v.toLocaleString('en-IN')}
+                                </span>
+                              </div>
+                            </li>
+                          )
+                        })}
+                      </ul>
+
+                      <section
+                        className=" mt-[40px]"
+                        style={{ marginLeft: '-220px' }}
+                      >
+                        <BarChart
+                          width={600}
+                          height={300}
+                          data={[
+                            {
+                              name: 'Total',
+                              count: 1050,
+                              pv: 2400,
+                              amt: 2400,
+                            },
+                            {
+                              name: 'Progress',
+                              count: 420,
+                              pv: 1398,
+                              amt: 2210,
+                            },
+                            {
+                              name: 'Booked',
+                              count: 120,
+                              pv: 9800,
+                              amt: 2290,
+                            },
+                            {
+                              name: 'RNR',
+                              count: 105,
+                              pv: 9800,
+                              amt: 2290,
+                            },
+                            {
+                              name: 'Dead',
+                              count: 90,
+                              pv: 9800,
+                              amt: 2290,
+                            },
+                            {
+                              name: 'Non Interested',
+                              count: 750,
+                              pv: 9800,
+                              amt: 2290,
+                            },
+                          ]}
+                          margin={{
+                            top: 5,
+                            right: 30,
+                            left: 0,
+                            bottom: 5,
+                          }}
+                        >
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                          <Legend />
+                          <Bar dataKey="count" barSize={40} fill="#1EB968" />
+                        </BarChart>
+                      </section>
+                    </div>
+                  </div>
+                </span>
+              </span>
+            </div> */}
           </div>
           {selCat === 'lead_perf' && (
             <div
@@ -1017,7 +1323,26 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           </span>
                         </button>
 
-
+                        {/* <SlimSelectBox
+                        name="project"
+                        label=""
+                        className="input min-w-[164px] "
+                        onChange={(value) => {
+                          setSelProjectEmp(value)
+                        }}
+                        value={selProjectEmpIs?.value}
+                        options={[
+                          ...[{ label: 'All Projects', value: 'allprojects' }],
+                          ...projectList,
+                        ]}
+                      /> */}
+                        {/* <span style={{ display: '' }}>
+                        <CSVDownloader
+                          className="mr-6 h-[20px] w-[20px]"
+                          downloadRows={EmpDownloadRows}
+                          style={{ height: '20px', width: '20px' }}
+                        />
+                      </span> */}
                       </div>
                     </section>
                     <table className="min-w-full text-center mt-6">
@@ -1131,7 +1456,16 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             Total
                           </td>
                           <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-
+                            {/* {Object.keys(empTaskListTuned.Total).length
+                            empTaskListTuned.reduce((a, b) => {
+                              return a.Total + b.Total
+                            }).length
+                          } */}
+                            {/* {empTaskListTuned.reduce(
+                            (previousValue, currentValue) =>
+                              previousValue.Total + currentValue.Total,
+                            0
+                          )} */}
                             {}
                           </td>
                           <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
@@ -1189,7 +1523,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
 
           {selCat === 'site_visits' && (
             <>
-
+              {/* old comp */}
               <div
                 className="flex flex-col  mt-14 drop-shadow-md rounded-lg  px-4"
                 style={{ backgroundColor: '#ebfafa' }}
@@ -1204,7 +1538,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                       <section className="flex flex-row justify-between mt-[18px]">
                         <section className="flex">
                           {!isEdit && (
-
+                            // <Link to={routes.projectEdit({ uid })}>
                             <button
                               onClick={() => {
                                 setSourceDateRange(startOfDay(d).getTime())
@@ -1305,7 +1639,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                                     aria-hidden="true"
                                   />
                                   {startDate == null ? 'Custom' : ''}
-
+                                  {/* {sourceDateRange} -- {startDate?.getTime()} */}
                                   {startDate != null
                                     ? prettyDate(
                                         startDate?.getTime() + 21600000
@@ -1935,7 +2269,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                     <section className="flex flex-row justify-between mt-[18px]">
                       <section className="flex">
                         {!isEdit && (
-
+                          // <Link to={routes.projectEdit({ uid })}>
                           <button
                             onClick={() => {
                               setDateRange([null, null])
@@ -1956,7 +2290,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                               Now
                             </span>
                           </button>
-
+                          // </Link>
                         )}
 
                         <button
@@ -2093,10 +2427,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                                 value
                               )
                               selViewSource(value)
-
+                              // formik.setFieldValue('project', value.value)
                             }}
                             value={viewSource?.value}
-
+                            // options={aquaticCreatures}
                             options={[
                               ...[
                                 { label: 'All Sources', value: 'allsources' },
@@ -2112,10 +2446,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                           onChange={(value) => {
                             console.log('zoro condition changed one  is', value)
                             setSelProject(value)
-
+                            // formik.setFieldValue('project', value.value)
                           }}
                           value={selProjectIs?.value}
-
+                          // options={aquaticCreatures}
                           options={[
                             ...[
                               { label: 'All Projects', value: 'allprojects' },
@@ -2429,7 +2763,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                     <section className="flex flex-row justify-between mt-[18px]">
                       <section className="flex">
                         {!isEdit && (
-
+                          // <Link to={routes.projectEdit({ uid })}>
                           <button
                             onClick={() => {
                               setDateRange([null, null])
@@ -2608,10 +2942,10 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                                 value
                               )
                               selEmp1(value)
-
+                              // formik.setFieldValue('project', value.value)
                             }}
                             value={viewEmp1?.value}
-
+                            // options={aquaticCreatures}
                             options={[
                               ...[
                                 {
@@ -2936,7 +3270,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                     <section className="flex flex-row justify-between mt-[18px]">
                       <section className="flex">
                         {!isEdit && (
-
+                          // <Link to={routes.projectEdit({ uid })}>
                           <button
                             onClick={() => {
                               setSourceDateRange(startOfDay(d).getTime())
@@ -2956,7 +3290,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                               Now
                             </span>
                           </button>
-
+                          // </Link>
                         )}
 
                         <button
@@ -3037,7 +3371,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                                   aria-hidden="true"
                                 />
                                 {startDate == null ? 'Custom' : ''}
-
+                                {/* {sourceDateRange} -- {startDate?.getTime()} */}
                                 {startDate != null
                                   ? prettyDate(startDate?.getTime() + 21600000)
                                   : ''}
@@ -3414,7 +3748,26 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             Alert Tasks Counts
                           </span>
                         </button>
-
+                        {/* <SlimSelectBox
+                        name="project"
+                        label=""
+                        className="input min-w-[164px] "
+                        onChange={(value) => {
+                          setSelProjectEmp(value)
+                        }}
+                        value={selProjectEmpIs?.value}
+                        options={[
+                          ...[{ label: 'All Projects', value: 'allprojects' }],
+                          ...projectList,
+                        ]}
+                      /> */}
+                        {/* <span style={{ display: '' }}>
+                        <CSVDownloader
+                          className="mr-6 h-[20px] w-[20px]"
+                          downloadRows={EmpDownloadRows}
+                          style={{ height: '20px', width: '20px' }}
+                        />
+                      </span> */}
                       </div>
                     </section>
                     <table className="min-w-full text-center mt-6">
@@ -3495,7 +3848,16 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                             Total
                           </td>
                           <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
-
+                            {/* {Object.keys(empTaskListTuned.Total).length
+                            empTaskListTuned.reduce((a, b) => {
+                              return a.Total + b.Total
+                            }).length
+                          } */}
+                            {/* {empTaskListTuned.reduce(
+                            (previousValue, currentValue) =>
+                              previousValue.Total + currentValue.Total,
+                            0
+                          )} */}
                             {empTaskListTunedTotal?.TotalSum}
                           </td>
                           <td className="text-sm text-white font-medium px-6 py-2 whitespace-nowrap">
@@ -3529,7 +3891,36 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
             </div>
           )}
 
-          
+          {/* {unitsView && (
+            <div className="grid grid-cols-1 gap-7 mt-10">
+              <PhaseDetailsCard
+                kind={selkind}
+                feedData={seldata}
+                bg={selbg}
+                currency={selcurrency}
+              />
+            </div>
+          )}
+          {areaView && (
+            <div className="grid grid-cols-1 gap-7 mt-10">
+              <PhaseDetailsCard
+                kind={areakind}
+                feedData={areaData}
+                bg={areabg}
+                currency={areaCurrency}
+              />
+            </div>
+          )}
+          {valueView && (
+            <div className="grid grid-cols-1 gap-7 mt-10">
+              <PhaseDetailsCard
+                kind={valueKind}
+                feedData={valuedata}
+                bg={valuebg}
+                currency={valueCurrency}
+              />
+            </div>
+          )} */}
 
           <ReportSideWindow
             open={isOpenSideForm}

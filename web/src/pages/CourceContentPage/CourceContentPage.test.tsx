@@ -2,6 +2,8 @@ import { render } from '@redwoodjs/testing/web'
 
 import CourceContentPage from './CourceContentPage'
 
+//   Improve this test with help from the Redwood Testing Doc:
+//   https://redwoodjs.com/docs/testing#testing-pages-layouts
 
 describe('CourceContentPage', () => {
   it('renders successfully', () => {

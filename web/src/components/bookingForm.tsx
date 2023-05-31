@@ -1,4 +1,6 @@
-
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useEffect } from 'react'
 
 import { Dialog } from '@headlessui/react'
@@ -904,7 +906,7 @@ const AddBookingForm = ({
 
 
 
-
+                                      
                                     </div>
                                   </div>
                                   <div className="w-full lg:w-12/12 px-4">

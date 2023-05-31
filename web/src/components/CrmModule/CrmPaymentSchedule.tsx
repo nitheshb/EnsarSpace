@@ -184,7 +184,17 @@ const CrmUnitPaymentSchedule = ({ selCustomerPayload, assets, totalIs }) => {
               <section className=" mt-4 text-green-600  "></section>
             </section>
           </div>
-         
+          {/* <section className="flex flex-row justify-between mb-1">
+        <div className="font-md text-xs text-gray-500  tracking-wide">
+          From
+        </div>
+        <div className="font-md text-xs tracking-wide font-semibold text-slate-900 ">
+          Imps
+        </div>
+      </section>
+      <div className="font-md text-xs tracking-wide font-semibold text-slate-900 ">
+        data
+      </div> */}
         </section>
       </div>
       <div className="my-2  grid grid-cols-2 ">

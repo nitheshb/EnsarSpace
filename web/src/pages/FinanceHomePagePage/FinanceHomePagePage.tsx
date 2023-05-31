@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-
+// import { ResponsiveBar } from '@nivo/bar'
 import { EyeIcon, PencilIcon } from '@heroicons/react/outline'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -350,7 +350,7 @@ const FinanceHomePagePage = () => {
     <>
       <div className="flex w-screen h-screen text-gray-700">
         <div className="flex flex-col flex-grow">
-
+          {/* <HeadNavBar /> */}
           <div className="flex flex-row  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <SlimSideMenuBar
               pgName={'financeModule'}
@@ -904,7 +904,7 @@ const FinanceHomePagePage = () => {
 
                       <div className="grid grid-cols-1 gap-1">
                         <div className="min-h-[380px]">
-                         
+                          {/* <h1>hello</h1> */}
 
                           <ResponsiveBar
                             data={data1}
