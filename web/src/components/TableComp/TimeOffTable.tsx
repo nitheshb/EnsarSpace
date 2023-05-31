@@ -221,7 +221,7 @@ const TimeoffTable = ({ editEmployeeFun }) => {
                             }
                           />
                         ) : (
-                          truncateString(data.leaveType, 15)
+                          truncateString(data.leaveType, 16)
                         )}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-center">
