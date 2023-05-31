@@ -92,6 +92,10 @@ export const USER_ROLES = {
   ADMIN: 'admin',
 }
 
+
+
+
+
 export const DEPARTMENT_LIST = [
   { label: 'Select the Department', value: '' },
   { label: 'IT Employee', value: 'it_employee' },

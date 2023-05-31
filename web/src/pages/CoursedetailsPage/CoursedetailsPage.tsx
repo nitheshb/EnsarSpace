@@ -106,7 +106,7 @@ const CoursedetailsPage = () => {
       </nav>
 
       <div>
-        
+
 
         <div key={course.id}>
           <div style={{ backgroundColor: 'black', color: 'white' }}>
@@ -433,6 +433,9 @@ const SingleCourseWrapper = styled.div`
     background-color: #f2f2f2;
     padding: 16px;
   }
+
+
+  
 
   .navbar-container {
     display: flex;

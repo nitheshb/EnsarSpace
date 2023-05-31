@@ -922,6 +922,10 @@ const SlimSideMenuBar = (props) => {
                     <span className="text-[9px] font-bold  pl-1">Leads Bank</span>
                   </span>
                   <span className="flex ml-auto items-bottom">
+
+
+
+                    
                     <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                   </span>
                 </span>
