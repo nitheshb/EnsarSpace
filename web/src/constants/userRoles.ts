@@ -62,14 +62,33 @@ export const COURSE_LIST = [
   { label: 'Data Science', value: 'Data Science' },
   { label: 'AWS', value: 'AWS' },
   { label: 'Java', value: 'Java' },
-  // { label: 'Legal', value: 'legal' },
-  // { label: 'Project', value: 'project' },
-  // { label: 'Support', value: 'support' },
-  // { label: 'Sales', value: 'sales' },
-  // { label: 'Developer', value: 'developer' },
-  // { label: 'Trainer', value: 'trainer' },
-  // { label: 'Fresher', value: 'Fresher' },
 ]
+ export const DEPARTMENT_LIST = [
+
+
+    { label: 'Select the Department', value: '' },
+
+    { label: 'IT Employee', value: 'it_employee' },
+
+    { label: 'IT Desk', value: 'it_desk' },
+
+    { label: 'HR', value: 'hr' },
+
+    { label: 'Finance', value: 'finance' },
+
+    { label: 'Project', value: 'project' },
+
+    { label: 'Sales', value: 'sales' },
+
+    { label: 'Learning', value: 'learning' },
+
+    { label: 'Admin', value: 'admin' },
+
+  ]
+
+
+
+
 
 export const GENDER_LIST = [
   { label: 'Select the Gender', value: '' },
