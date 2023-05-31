@@ -1,7 +1,11 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
+ HL-20-DisplayUserProfilePicture
 import SUserSignupBody from '../SUserSignupBody/SUserSignupBody'
+
+import SUserSignupBody from '../LearningForms/SUserSignupBody'
+ Development_dev
 
 const SUserSignup = ({ open, setOpen, title, empData }) => {
   return (

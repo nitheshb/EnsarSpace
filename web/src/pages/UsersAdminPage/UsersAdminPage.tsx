@@ -12,6 +12,10 @@ import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
+import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
+import OnBoarding from 'src/components/TableComp/OnBoarding'
+import AttendenceTab from 'src/components/UserAccessTable/AttendenceTable'
+import AttendancePage from 'src/components/UserAccessTable/AttendenceTable'
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -38,11 +42,15 @@ const UsersAdminPage = () => {
         />
 
         <div className="flex flex-col flex-grow">
-          {/* <HeadNavBar /> */}
-          <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
+
+          <HeadNavBar2
+            selModule={selModule}
+            setSelModule={setSelModule}
+          />
+
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">
-              {/* <h1 className="text-lg font-medium">redefine.</h1> */}
+
               <span className="relative  flex items-center w-auto text-2xl font-bold leading-none pl-0">
                 {viewable}
               </span>
@@ -66,6 +74,24 @@ const UsersAdminPage = () => {
                       d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                     />
                   </svg>
+
+                  {/* <svg
+                    className="w-5 h-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                    />
+
+
+                    
+                  </svg> */}
                   <span className="ml-1 leading-none">Add Employee</span>
                 </button>
               )}
@@ -81,6 +107,14 @@ const UsersAdminPage = () => {
               </>
             )}
 
+            {viewable === 'Attendence' && (
+              <>
+                <AttendancePage />
+              </>
+            )}
+
+
+
             {viewable === 'My Activity' && (
               <>
                 <MyActivityHome source={'individual'} />
@@ -92,30 +126,38 @@ const UsersAdminPage = () => {
                 <MyActivityHome source={'team'} />
               </>
             )}
+            {viewable === 'Pay Slips' && (
 
-            {viewable === 'User Report' && (
-              // <ReportMain/>
-              <LeadsTeamReportBody
-                project={{
-                  area: 1000,
-                  builderName: 'hello',
-                  location: 'local',
-                  projectName: 'User Report',
-                  projectType: 'aprtment',
-                }}
-                isEdit={false}
-              />
+              <>
+
+
+          </>
+
             )}
 
-            <SUserSignup
-              open={isOpen}
-              setOpen={handleOnClose}
-              title="User"
-              empData={empData}
+          {viewable === 'User Report' && (
+
+            <ActivitySummaryReport
+              project={{
+                area: 1000,
+                builderName: 'hello',
+                location: 'local',
+                projectName: 'User Report',
+                projectType: 'aprtment',
+              }}
+              isEdit={false}
             />
-          </div>
+          )}
+
+          <SUserSignup
+            open={isOpen}
+            setOpen={handleOnClose}
+            title="User"
+            empData={empData}
+          />
         </div>
       </div>
+    </div >
     </>
   )
 }

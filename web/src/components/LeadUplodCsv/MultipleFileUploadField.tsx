@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable no-unused-expressions */
+
 import React, { useCallback, useEffect, useState, useMemo } from 'react'
 
 import { Timestamp } from '@firebase/firestore'
@@ -35,14 +33,12 @@ import { UploadError } from './UploadError'
 let currentId = 0
 
 function getNewId() {
-  // we could use a fancier solution instead of a sequential ID :)
+
   return ++currentId
 }
 
 export interface UploadableFile {
-  // id was added after the video being released to fix a bug
-  // Video with the bug -> https://youtube-2021-feb-multiple-file-upload-formik-bmvantunes.vercel.app/bug-report-SMC-Alpha-thank-you.mov
-  // Thank you for the bug report SMC Alpha - https://www.youtube.com/channel/UC9C4AlREWdLoKbiLNiZ7XEA
+
   id: number
   file: File
   errors: FileError[]
@@ -78,13 +74,7 @@ const baseStyle = {
   transition: 'border .24s ease-in-out',
   lineHeight: '70px',
 
-  // background: 'yellow',
-  // textAlign: 'center',
-  // lineHeight: '100px',
-  // background: 'linear-gradient(to right, orange 50%, rgba(255, 255, 255, 0) 0%), linear-gradient(blue 50%, rgba(255, 255, 255, 0) 0%), linear-gradient(to right, green 50%, rgba(255, 255, 255, 0) 0%), linear-gradient(red 50%, rgba(255, 255, 255, 0) 0%)',
-  // backgroundPosition: 'top, right, bottom, left',
-  // backgroundRepeat: 'repeat-x, repeat-y',
-  // backgroundSize: '10px 1px, 1px 10px',
+
 }
 
 const focusedStyle = {
@@ -124,7 +114,7 @@ export function MultipleFileUploadField({
   const [formMessage, setFormMessage] = useState('')
 
   useEffect(() => {
-    // get sales Team details
+
     if (title === 'Import Leads') {
       getAllProjects(
         orgId,
@@ -168,7 +158,7 @@ export function MultipleFileUploadField({
 
   useEffect(() => {
     helpers.setValue(files)
-    // helpers.setTouched(true);
+
   }, [files])
 
   function uploadFile(file: File) {
@@ -185,7 +175,7 @@ export function MultipleFileUploadField({
           const prog =
             Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 100
 
-          // setProgress(prog)
+
         },
         (err) => console.log(err),
         async () => {
@@ -217,12 +207,12 @@ export function MultipleFileUploadField({
             type,
             'pdf'
           )
-          // setUploadedUrl(url)
+
           setLoading(false)
           setFormMessage('Uploaded Successfully..!')
           await console.log('file url i s', url, myPhase)
           return url
-          //  save this doc as a new file in spark_leads_doc
+
         }
       )
     } catch (error) {
@@ -234,17 +224,15 @@ export function MultipleFileUploadField({
 
     parse(file, {
       header: true,
-      // download: true,
+
       complete: async function (input) {
         const records = input.data
-        // await setfileRecords((existing) => [...existing, ...input.data])
-        // set All records
+
         if (['Import Units', 'Import Project Units'].includes(title)) {
           console.log('import stuff is ', records)
           const clean1 = records.filter((row) => row['unit_no'] != '')
 
-          // set duplicate & valid records
-          // check in db if record exists with matched phone Number & email
+
           const serialData = await Promise.all(
             clean1.map(async (dRow) => {
               console.log('input date is ', dRow)
@@ -268,18 +256,16 @@ export function MultipleFileUploadField({
           )
 
           await setfileRecords(serialData)
-          // let x =   await getLedsData()
+
 
           await console.log('Finished: records', serialData, fileRecords)
         } else if (['Plan Diagram', 'Brouchers', 'Approvals'].includes(title)) {
           console.log('data os jere', records)
-          // uploadFile(file)
-          // upload pdf to cloud
+
         } else {
           const clean1 = records.filter((row) => row['Date'] != '')
 
-          // set duplicate & valid records
-          // check in db if record exists with matched phone Number & email
+
           const serialData = await Promise.all(
             clean1.map(async (dRow) => {
               console.log('found row is ', dRow)
@@ -287,19 +273,18 @@ export function MultipleFileUploadField({
                 `${orgId}_leads`,
                 dRow['Mobile']
               )
-              // modify date
-              const date = new Date(dRow['Date']) // some mock date
-              const milliseconds = date.getTime() + 21600000 // adding 21600000 ms == 6hrs to match local time with utc + 6hrs
+
+              const date = new Date(dRow['Date'])
+              const milliseconds = date.getTime() + 21600000
               console.log('milliseconds is', milliseconds)
-              // dRow['Date'] = prettyDate(milliseconds).toLocaleString()
+
               dRow['Date'] = milliseconds
               dRow['Status'] = dRow['Status']?.toLowerCase() || ''
               dRow['Source'] = dRow['Source']?.toLowerCase() || ''
               dRow['mode'] = await makeMode(foundLength)
               if (dRow['mode'] === 'valid' && dRow['EmpId'] != '') {
                 console.log('found row is 1', dRow)
-                // check & get employee details and push it to dRow
-                // project Id
+
                 const MatchedValA = await salesTeamList.filter((data) => {
                   return data.empId == dRow['EmpId']
                 })
@@ -346,7 +331,6 @@ export function MultipleFileUploadField({
           )
 
           await setfileRecords(serialData)
-          // let x =   await getLedsData()
 
           await console.log('Finished: records', serialData, fileRecords)
         }
@@ -387,7 +371,7 @@ export function MultipleFileUploadField({
       ].includes(title)
         ? '.pdf'
         : '.csv, text/csv, .xlsx',
-      maxSize: 40000 * 1024, // 1200KB
+      maxSize: 40000 * 1024,
     })
 
   const style = useMemo(
@@ -407,7 +391,7 @@ export function MultipleFileUploadField({
 
   const validate = Yup.object({
     file_name: Yup.string()
-      // .max(15, 'Must be 15 characters or less')
+
       .required('file_name is Required'),
   })
 
@@ -452,8 +436,7 @@ export function MultipleFileUploadField({
             </div>
           )}
           <input {...getInputProps()} />
-          {/* <DocumentAddIcon className="h-20 w-60 " aria-hidden="true" /> */}
-          {/* <span>sample template</span> */}
+
           <div className="pt-2 pb-8 px-8 flex flex-col items-center">
             <div className="font-md font-medium text-xs mb-4 text-gray-800 items-center">
               <img
@@ -476,23 +459,11 @@ export function MultipleFileUploadField({
               ].includes(title)
                 ? '*.pdf'
                 : '*.csv'}
-              {/* <span className="text-blue-600"> get sample template</span> */}
+
+
             </time>
           </div>
-          {/* <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-20 w-30 mt-4"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z" />
-          <path d="M9 13h2v5a1 1 0 11-2 0v-5z" />
-        </svg> */}
-          {/* <p>
-          {' '}
-          Drag & drop or <span className="text-blue-600">click to choose </span>
-          <span className="text-black-600">*.csv</span>
-        </p> */}
+
         </div>
       )}
       {files.length >= 1 && (
@@ -530,16 +501,16 @@ export function MultipleFileUploadField({
                     initialValues={{
                       file_name: '',
                     }}
-                    // validationSchema={validate}
+
                     onSubmit={(values, { resetForm }) => {
                       console.log('ami submitted', values)
                       uploadFile(fileWrapper.file)
-                      // onSubmitFun(values, resetForm)
+
                     }}
                   >
                     {(formik) => (
                       <Form>
-                        {/* 2 */}
+
                         <div className="md:flex flex-row md:space-x-4 w-full text-xs mt-1">
                           <div className="mb-3 space-y-2 w-full text-xs mt-4">
                             <TextField
@@ -604,7 +575,7 @@ export function MultipleFileUploadField({
                   </Formik>
                 )}
 
-                {/* this is for csv file upload */}
+
 
                 {!['Plan Diagram', 'Brouchers', 'Approvals'].includes(
                   title
@@ -623,10 +594,7 @@ export function MultipleFileUploadField({
           </div>
         ))}
 
-      {/* <div className="mt-4 text-bold text-lg">or</div> */}
-      {/* <div className="mt-2 p-6 bg-white border border-gray-100">
-        <LAddLeadTable />
-      </div> */}
+      
     </React.Fragment>
   )
 }

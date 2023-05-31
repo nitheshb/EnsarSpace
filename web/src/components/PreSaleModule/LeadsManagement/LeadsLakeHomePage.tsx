@@ -1,45 +1,4 @@
-// /* eslint-disable jsx-a11y/no-static-element-interactions */
-// import { Fragment, useState } from 'react'
 
-// import { MetaTags } from '@redwoodjs/web'
-
-// import TodayLeadsActivityListHomeView from 'src/components/TodayLeadsAcivityListHome'
-
-// // import CardItem from '../../components/leadsCard'
-// // import BoardData from '../../components/board-data.json'
-
-// const LeadsLakeHomePage = ({ taskType }) => {
-//   const [, setisImportLeadsOpen] = useState(false)
-
-//   // kanban board
-//   const [ready, setReady] = useState(false)
-//   const [addLeadsTypes, setAddLeadsTypes] = useState('')
-
-//   const selUserProfileF = (title) => {
-//     setAddLeadsTypes(title)
-//     setisImportLeadsOpen(true)
-//   }
-//   return (
-//     <>
-//       <div className="flex  flex-row  text-gray-700">
-//         <div className="flex-1 overflow-auto">
-//           <div className="p-3 ">
-//             <MetaTags title="ExecutiveHome" description="ExecutiveHome page" />
-//             {!ready && (
-//               <TodayLeadsActivityListHomeView
-//                 setisImportLeadsOpen={setisImportLeadsOpen}
-//                 selUserProfileF={selUserProfileF}
-//                 taskType={taskType}
-//               />
-//             )}
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   )
-// }
-
-// export default LeadsLakeHomePage
 
 import { useEffect, useState } from 'react'
 
@@ -47,10 +6,8 @@ import { CleaningServicesRounded } from '@mui/icons-material'
 import { TabList } from '@mui/lab'
 import { Box, Card, Grid, styled } from '@mui/material'
 import { yearsToMonths } from 'date-fns'
-// import LLeadsTableBody from '../LLeadsTableBody/LLeadsTableBody'
-import { useTranslation } from 'react-i18next' // styled components
 
-// import uniqueId from '../../util/generatedId'
+import { useTranslation } from 'react-i18next'
 import {
   getLeadbyId1,
   getTodayTodoLeadsData,
@@ -72,8 +29,7 @@ const rowsCounter = (parent, searchKey) => {
 }
 
 const LeadsLakeHomePage = ({ taskType }) => {
-  // change navbar title
-  // useTitle('Data Table V1')
+
   const { t } = useTranslation()
   const { user } = useAuth()
   const { orgId } = user
@@ -87,7 +43,7 @@ const LeadsLakeHomePage = ({ taskType }) => {
 
   const [, setisImportLeadsOpen] = useState(false)
 
-  // kanban board
+
   const [ready, setReady] = useState(false)
   const [addLeadsTypes, setAddLeadsTypes] = useState('')
 
@@ -101,23 +57,11 @@ const LeadsLakeHomePage = ({ taskType }) => {
     setValue(newValue)
   }
 
-  // useEffect(() => {
-  //   console.log('table data is ', tableData2)
-  //   setTableData(tableData2)
-  // }, [])
-
   useEffect(() => {
     console.log('check if this is loading on new page check', user?.uid)
     getLeadsDataFun()
   }, [taskType, user])
 
-  // useEffect(() => {
-  //   console.log('check if this is loading on new page check', user?.uid)
-  //          //   y = searchKey.includes('upcoming')
-  //             //     ? staDA.filter((da) => x[da]['schTime'] > torrowDate)
-  //             //     : staDA.filter((da) => x[da]['schTime'] < torrowDate)
-  //   getLeadsDataFun()
-  // }, [searchKey])
 
   const getLeadsDataFun = async () => {
     const uid = user?.uid
@@ -144,7 +88,7 @@ const LeadsLakeHomePage = ({ taskType }) => {
               y = staDA
               if (y.length > 0) {
                 x.uid = docSnapshot.id
-                // eslint-disable-next-line prefer-const
+
                 let y1 = await getLeadbyId1(orgId, x.uid)
                 await console.log('fetched value is ', x, y)
                 x.leadUser = await y1
@@ -155,7 +99,7 @@ const LeadsLakeHomePage = ({ taskType }) => {
               }
             })
 
-            //  get the task details from docid
+
             if (projects.length > 0) {
               console.log(
                 'my values are ',
@@ -197,16 +141,10 @@ const LeadsLakeHomePage = ({ taskType }) => {
               console.log('git values is 2', x)
               const { staDA } = x
               y = staDA
-              // if (taskType === 'Today1') {
 
-              //   console.log('git values is ', staDA)
-              //   y = staDA
-              // } else {
-              //   y = staDA.filter((da) => x[da]['schTime'] > torrowDate)
-              // }
               if (y.length > 0) {
                 x.uid = docSnapshot.id
-                // eslint-disable-next-line prefer-const
+
                 let y1 = await getLeadbyId1(orgId, x.uid)
                 await console.log('fetched value is ', x, y)
                 x.leadUser = await y1
@@ -215,12 +153,12 @@ const LeadsLakeHomePage = ({ taskType }) => {
                 setSchLoading(false)
 
                 return
-                // return 'remove'
+
               }
             })
-            //  get the task details from docid
+
             if (projects.length > 0) {
-              // projects.filter((data) => data != undefined)
+
               Promise.all(projects).then(function (results) {
                 console.log(
                   'my values are ',
@@ -251,7 +189,7 @@ const LeadsLakeHomePage = ({ taskType }) => {
   }
 
   useEffect(() => {
-    // getValueByIdFun()
+   
   }, [todaySchL])
 
   const handleDelete = async (ids) => {

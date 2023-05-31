@@ -1,10 +1,9 @@
 import { ControlPoint } from '@mui/icons-material'
 import { TabContext, TabList } from '@mui/lab'
 import { Box, Button, Card, Grid, styled, Tab } from '@mui/material'
-// import AddEmployeeModal from 'components/dataTable/dataTableV1/AddEmployeeModal'
-// import useTitle from './../hooks/useTitle'
+
 import { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next' // styled components
+import { useTranslation } from 'react-i18next'
 import uniqueId from '../util/generatedId'
 import LfileuploadTableTemplate from './LfileuploadTableTemplate'
 
@@ -135,8 +134,7 @@ function createData(
 
 
 const LfileUploadTableHome = ({ fileRecords, title, pId, myBlock }) => {
-  // change navbar title
-  // useTitle('Data Table V1')
+
   const { t } = useTranslation()
   const [value, setValue] = useState('validR')
   const [validRows, setValidRows] = useState([])
@@ -161,7 +159,7 @@ const LfileUploadTableHome = ({ fileRecords, title, pId, myBlock }) => {
 
     setValidRows(validMode)
     setdupRows(dupMode)
-    // setTableData(tableData2)
+
   }, [fileRecords])
 
   return (
@@ -234,7 +232,7 @@ const LfileUploadTableHome = ({ fileRecords, title, pId, myBlock }) => {
               </ul>
             </div>
 
-            {/*  Data Table */}
+
             {value === 'all' && (
               <LfileuploadTableTemplate
                 title={title}
@@ -256,23 +254,19 @@ const LfileUploadTableHome = ({ fileRecords, title, pId, myBlock }) => {
             )}
 
             {value === 'duplicateR' && (
-              // dupeDatais.map((data, index) => (
+
               <LfileuploadTableTemplate
-                // key={index}
+
                 title={title}
                 selStatus={'all'}
                 rowsParent={dupRows}
                 sourceTab={value}
                 pId={pId}
               />
-              // )
+              
             )}
 
-            {/* <LLeadsTableBody
-              data={filterTable}
-              handleDelete={handleDelete}
-              selStatus={value}
-            /> */}
+
           </Grid>
         </Grid>
       </Card>
