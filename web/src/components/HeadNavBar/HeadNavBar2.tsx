@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect } from 'react'
 
 import { Box, Menu, MenuItem, Typography } from '@mui/material'
@@ -25,7 +24,7 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
   const { user, logout } = useAuth()
   const dispatch = useDispatch()
   const makeFilterFun = (id, viewModule) => {
-    // 'Sales', 'CRM', 'Legal', 'Finance', 'HR'
+
     setSelModule(viewModule)
     console.log('i was clicked', id, viewModule)
   }
@@ -55,7 +54,7 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
             pickedValue={selModule}
           />
         </section>
-        
+
         <GlobalSearchBar />
         <button className="flex items-center justify-center h-10 px-4 ml-auto "></button>
         <button className="flex items-center justify-center h-10 text-sm font-medium "></button>
@@ -67,20 +66,27 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
           component="span"
           onClick={handleClick}
         >
-          <button className="relative ml-2 text-sm focus:outline-none group  items-center justify-center h-10 text-sm font-medium">
-            <div className="flex items-center justify-between w-10 h-10 rounded ">
-              <svg
-                width="50"
+
+          {/* <button className="relative ml-2 text-sm focus:outline-none group items-center justify-center h-10 text-sm font-medium">
+            <div className="flex items-center justify-between w-10 h-10 rounded-full bg-gray-300">
+            <svg
+                width="100"
                 fill="currentColor"
                 height="50"
                 className="text-gray-800"
                 viewBox="0 0 1792 1792"
-                xmlns="http://www.w3.org/2000/svg"
+                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M1523 1339q-22-155-87.5-257.5t-184.5-118.5q-67 74-159.5 115.5t-195.5 41.5-195.5-41.5-159.5-115.5q-119 16-184.5 118.5t-87.5 257.5q106 150 271 237.5t356 87.5 356-87.5 271-237.5zm-243-699q0-159-112.5-271.5t-271.5-112.5-271.5 112.5-112.5 271.5 112.5 271.5 271.5 112.5 271.5-112.5 112.5-271.5zm512 256q0 182-71 347.5t-190.5 286-285.5 191.5-349 71q-182 0-348-71t-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z"></path>
+                  <path d="M1523 1339q-22-155-87.5-257.5t-184.5-118.5q-67 74-159.5 115.5t-195.5 41.5-195.5-41.5-159.5-115.5q-119 16-184.5 118.5t-87.5 257.5q106 150 271 237.5t356 87.5 356-87.5 271-237.5zm-243-699q0-159-112.5-271.5t-271.5-112.5-271.5 112.5-112.5 271.5 112.5 271.5 271.5 112.5 271.5-112.5 112.5-271.5zm512 256q0 182-71 347.5t-190.5 286-285.5 191.5-349 71q-182 0-348-71t-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z"></path>
               </svg>
+              <span className="text-gray-800 text-lg">{name.charAt(0)}
+               </span>
             </div>
-          </button>
+          </button> */}
+          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-300 text-gray-800 text-lg mr-4">
+            {user?.displayName.charAt(0)}
+          </div>
+
           <Box display="flex" flexDirection="column" mr={2}>
             <Typography variant="body2">{user?.displayName}</Typography>
             <Typography variant="caption" className="text-gray-500">
@@ -98,12 +104,13 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
           }}
         >
 
-          
+
           <MenuItem onClick={handleClose}>
             <Link to={routes.profile()}>Profile</Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>My account</MenuItem>
           <MenuItem onClick={() => handleClose('Logout')}>Logout</MenuItem>
+
         </Menu>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { Dialog } from '@headlessui/react'
 import { useSnackbar } from 'notistack'
-// import Quill from 'quill'
+
 
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
@@ -73,51 +73,11 @@ const WhatsAppTextQuillForm = ({ wbPayload }) => {
     }
 
     fetchDbValue()
-    // const unsubscribe = getProjectByUid(
-    //   orgId,
-    //   uid,
-    //   (querySnapshot) => {
-    //     const projects = querySnapshot.docs.map((docSnapshot) =>
-    //       docSnapshot.data()
-    //     )
-    //     console.log('set project value is ', projects[0])
-    //   },
-    //   () =>
-    //     setProject({
-    //       projectName: '',
-    //     })
-    // )
-    // return unsubscribe
+
   }, [selProjectIs])
 
-  // useEffect(() => {
-  //   const quill = new Quill('#editor', {
-  //     theme: 'snow',
-  //     modules: {
-  //       toolbar: [
-  //         [{ header: [1, 2, 3, 4, 5, 6, false] }],
-  //         ['bold', 'italic', 'underline'],
-  //         ['link', 'image'],
-  //         ['clean'],
-  //       ],
-  //     },
-  //   })
 
-  //   quill.on('text-change', () => {
-  //     // am i here
-  //     console.log('am here')
-  //     setEditorState(quill.root.innerHTML)
-  //   })
 
-  //   // quill.setContents(editorState)
-  //   // quill.setContents([{ insert: 'Hello World!' }]);
-  //   // const delta = JSON.parse(editorState);
-  //   // quill.setContents([{ insert: "<p>helo</p>" }]);
-  //   quill.setText()
-
-  //   // quill.setContents(JSON.parse(editorState))
-
-  // }, [])
 
   useEffect(() => {
     console.log('retrieve this value ', wbPayload)
@@ -131,9 +91,9 @@ const WhatsAppTextQuillForm = ({ wbPayload }) => {
 
     if (data.length > 0) {
       console.log('check it ', data)
-      // data.id ==
+
       const x = data.filter((data) => {
-        // return data
+
         return data.scope === selProjectIs.value
       })
       setEditorState(x[0].template)
@@ -142,7 +102,7 @@ const WhatsAppTextQuillForm = ({ wbPayload }) => {
   }
 
   const checkIt = () => {
-    // save it in db
+
 
     const x = wbPayload
     x.scope = selProjectIs.value
@@ -226,10 +186,10 @@ const WhatsAppTextQuillForm = ({ wbPayload }) => {
             onChange={(value) => {
               console.log('zoro condition changed one  is', value)
               setSelProject(value)
-              // formik.setFieldValue('project', value.value)
+
             }}
             value={selProjectIs?.value}
-            // options={aquaticCreatures}
+
             options={[
               ...[{ label: 'All Projects', value: 'allProjects' }],
               ...projectList,
@@ -249,7 +209,7 @@ const WhatsAppTextQuillForm = ({ wbPayload }) => {
             placeholder="Enter Target WhatsApp No..."
             onChange={phKeyFieldFun}
             autoComplete="on"
-            // value={customerName}
+
             className=" ml-3 w-[200px] bg-transparent focus:border-transparent focus:ring-0 focus-visible:border-transparent focus-visible:ring-0 focus:outline-none text-sm leading-7 text-gray-900  relative"
           />
         </span>
@@ -329,12 +289,7 @@ const WhatsAppTextQuillForm = ({ wbPayload }) => {
         </span>
       </section>
       <section className="bg-teal-50 h-[400px] m-5 rounded-md">
-        {/* <div id="editor"></div> */}
-        {/* <Quill
-          value={editorState}
-          // onChange={handleEditorChange}
-          // options={editorOptions}
-        /> */}
+        
 
         <ReactQuill
           theme="snow"

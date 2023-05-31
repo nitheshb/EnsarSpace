@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useEffect } from 'react'
 
 import { Dialog } from '@headlessui/react'
@@ -106,11 +103,6 @@ const ViewUnitDetails = ({
     { label: 'Esperanza', value: 'esperanza' },
     { label: 'Nakshatra Township', value: 'nakshatratownship' },
   ]
-  // const usersList = [
-  //   { label: 'User1', value: 'User1' },
-  //   { label: 'User2', value: 'User2' },
-  //   { label: 'User3', value: 'User3' },
-  // ]
 
   const devTypeA = [
     {
@@ -155,7 +147,7 @@ const ViewUnitDetails = ({
       super_build_up_area,
       unit_no,
     } = data
-    // updateUserRole(uid, deptVal, myRole, email, 'nitheshreddy.email@gmail.com')
+
 
     const foundLength = await checkIfUnitAlreadyExists(
       'spark_units',
@@ -163,9 +155,6 @@ const ViewUnitDetails = ({
       phaseDetails?.uid,
       blockDetails?.uid,
       unit_no
-
-      // myBlock?.uid,
-      // dRow['unit_no']
     )
     const leadData = {
       Date: Timestamp.now().toMillis(),
@@ -198,10 +187,10 @@ const ViewUnitDetails = ({
     } else {
       console.log('foundLENGTH IS empty ', foundLength)
 
-      // proceed to copy
+
       await addUnit(orgId, leadData, user?.email, `Unit Created by form `)
 
-      // msg2
+
       resetForm()
       setFormMessage('Saved Successfully..!')
       setLoading(false)
@@ -237,11 +226,9 @@ const ViewUnitDetails = ({
   ]
   const validate = Yup.object({
     unit_no: Yup.string()
-      // .max(15, 'Must be 15 characters or less')
+
       .required('Unit_no is Required'),
-    // lastName: Yup.string()
-    //   .max(20, 'Must be 20 characters or less')
-    //   .required('Required'),
+
     sqft_rate: Yup.number().required('sqft rate is required'),
     bedRooms:
       projectDetails?.projectType?.name === 'Apartment'
@@ -252,7 +239,7 @@ const ViewUnitDetails = ({
       projectDetails?.projectType?.name === 'Apartment'
         ? Yup.string().required('bathrooms is required')
         : Yup.string().notRequired(),
-    // bathrooms: Yup.string().required('bathrooms is required'),
+
     area:
       projectDetails?.projectType?.name === 'Plots'
         ? Yup.number().required('area is required')
@@ -284,17 +271,12 @@ const ViewUnitDetails = ({
               </div>
             </>
 
-            {/* 2 */}
+
             <div className=" flex flex-row">
               <div className="font text-sm text-slate-900 tracking-wide overflow-ellipsis overflow-hidden">
                 {projectDetails?.projectName}
               </div>
-              {/* <span
-                className={`items-center h-6 px-3 py-1 mt-1 text-xs font-semibold text-green-500 bg-green-100 rounded-full
-                      `}
-              >
-                {projectDetails?.projectType?.name}
-              </span> */}
+
             </div>
           </div>
         </Dialog.Title>
@@ -303,7 +285,7 @@ const ViewUnitDetails = ({
       <div className="grid  gap-8 grid-cols-1">
         <div className="flex flex-col  my-10 rounded-lg bg-white border border-gray-100 px-4 m-4 mt-4">
           <div className="mt-0">
-            {/* new one */}
+            
 
             <Formik
               initialValues={{

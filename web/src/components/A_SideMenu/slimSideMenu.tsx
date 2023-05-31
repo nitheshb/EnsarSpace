@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { UserGroupIcon } from '@heroicons/react/outline'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -6,29 +5,29 @@ import { Link, routes } from '@redwoodjs/router'
 import { USER_ROLES } from 'src/constants/userRoles'
 import { useAuth } from 'src/context/firebase-auth-context'
 
+
 const SlimSideMenuBar = (props) => {
   const { pgName, sourceLink, showSideView1, setViewable, viewable } = props
   const { user } = useAuth()
 
-  // if (!user?.role?.includes(USER_ROLES.ADMIN)) {
-  //   return null
-  // }
+
 
   return (
     <div className="flex flex-col items-center w-20 min-w-[83px] pb-4   bg-white bg-opacity-75  bg-[#f0f3ff] h-screen w-[83px] max-w-[83px]">
-      {[
-        'hrModule',
-        'financeModule',
-        'crmModule',
-        'projectModule',
-        'salesModule',
-        'constructModule',
-        'legalModule',
-      ].includes(sourceLink) && (
+      {['hrModule',
+      'financeModule',
+       'crmModule',
+       'projectModule',
+       'salesModule',
+       'constructModule',
+       'legalModule',
+      ]
+       .includes(sourceLink) && (
         <a
           className="flex items-center justify-center flex-shrink-0 w-full py-[9px] mr-4  border-b mt-[4px] pt-[10px]"
           href="#"
         >
+ HL-40-Holidays-Calendar
           {/* bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200 */}
           {/* <svg
           className="w-8 h-8 to-indigo-600 "
@@ -78,6 +77,19 @@ const SlimSideMenuBar = (props) => {
               d="M4.66391 13V9.4973L11.8592 5.17391V1L1.58105 7.03243V18.9676L11.8573 13V8.71892L4.66391 13Z"
               fill="#7A77FF"
             ></path>
+
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            width="40"
+            height="35"
+            fill="#141446"
+            >
+
+
+            <path d="M186.12 343.34c-9.65 9.65-9.65 25.29 0 34.94 9.65 9.65 25.29 9.65 34.94 0L378.24 221.1c19.29-19.29 50.57-19.29 69.86 0s19.29 50.57 0 69.86L293.95 445.1c19.27 19.29 50.53 19.31 69.82.04l.04-.04 119.25-119.24c38.59-38.59 38.59-101.14 0-139.72-38.59-38.59-101.15-38.59-139.72 0l-157.22 157.2zm244.53-104.8c-9.65-9.65-25.29-9.65-34.93 0l-157.2 157.18c-19.27 19.29-50.53 19.31-69.82.05l-.05-.05c-9.64-9.64-25.27-9.65-34.92-.01l-.01.01c-9.65 9.64-9.66 25.28-.02 34.93l.02.02c38.58 38.57 101.14 38.57 139.72 0l157.2-157.2c9.65-9.65 9.65-25.29.01-34.93zm-261.99 87.33l157.18-157.18c9.64-9.65 9.64-25.29 0-34.94-9.64-9.64-25.27-9.64-34.91 0L133.72 290.93c-19.28 19.29-50.56 19.3-69.85.01l-.01-.01c-19.29-19.28-19.31-50.54-.03-69.84l.03-.03L218.03 66.89c-19.28-19.29-50.55-19.3-69.85-.02l-.02.02L28.93 186.14c-38.58 38.59-38.58 101.14 0 139.72 38.6 38.59 101.13 38.59 139.73.01zm-87.33-52.4c9.64 9.64 25.27 9.64 34.91 0l157.21-157.19c19.28-19.29 50.55-19.3 69.84-.02l.02.02c9.65 9.65 25.29 9.65 34.93 0 9.65-9.65 9.65-25.29 0-34.93-38.59-38.59-101.13-38.59-139.72 0L81.33 238.54c-9.65 9.64-9.65 25.28-.01 34.93h.01z" />
+ Development_dev
           </svg>
         </a>
       )}
@@ -192,15 +204,7 @@ const SlimSideMenuBar = (props) => {
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
-                    {/* <svg width="24" height="24" viewBox="0 0 24 24">
-                            <g fill="currentColor" fillRule="nonzero">
-                              <path
-                                d="M10 14.5a2 2 0adfaf 104 0h5.5V18a1.5 1.5 0 01-1.5 1.5H6A1.5 1.5 0 014.5 18v-3.5H10z"
-                                opacity="0.1"
-                              ></path>
-                              <path d="M8.062 adfafafafa4h7.876a2 2 0 011.94 1.515l2.062 8.246a2 2 0 01.06.485V18a2 2 0 01-2 2H6a2 2 0 01-2-2v-3.754a2 2 0 01.06-.485l2.06-8.246A2 2 0 018.061 4zm0 1a1 1 0 00-.97.757L5.03 14.004a1 1 0 00-.03.242V18a1 1 0 001 1h12a1 1 0 001-1v-3.754a1 1 0 00-.03-.242l-2.06-8.247A1 1 0 0015.94 5H8.061zM12 17.25A2.75 2.75 0 019.295 15H7a.5.5 0 110-1h2.75a.5.5 0 01.5.5 1.75 1.75 0 003.5 0 .5.5 0 01.5-.5H17a.5.5 0 110 1h-2.295A2.75 2.75 0 0112 17.25z"></path>
-                            </g>
-                          </svg> */}
+
 
                     <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
                   </span>
@@ -306,6 +310,8 @@ const SlimSideMenuBar = (props) => {
                   marginLeft: 'auto',
                   marginRight: 'auto',
                 }}
+
+
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#692fc2' }}>
@@ -515,6 +521,7 @@ const SlimSideMenuBar = (props) => {
               </span>
             </li>
 
+ HL-40-Holidays-Calendar
             {/* <li className="relative mt-1">
               <span
                 className={
@@ -605,6 +612,8 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+
+ Development_dev
           </ul>
         </>
       )}
@@ -719,15 +728,7 @@ const SlimSideMenuBar = (props) => {
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
-                    {/* <svg width="24" height="24" viewBox="0 0 24 24">
-                            <g fill="currentColor" fillRule="nonzero">
-                              <path
-                                d="M10 14.5a2 2 0adfaf 104 0h5.5V18a1.5 1.5 0 01-1.5 1.5H6A1.5 1.5 0 014.5 18v-3.5H10z"
-                                opacity="0.1"
-                              ></path>
-                              <path d="M8.062 adfafafafa4h7.876a2 2 0 011.94 1.515l2.062 8.246a2 2 0 01.06.485V18a2 2 0 01-2 2H6a2 2 0 01-2-2v-3.754a2 2 0 01.06-.485l2.06-8.246A2 2 0 018.061 4zm0 1a1 1 0 00-.97.757L5.03 14.004a1 1 0 00-.03.242V18a1 1 0 001 1h12a1 1 0 001-1v-3.754a1 1 0 00-.03-.242l-2.06-8.247A1 1 0 0015.94 5H8.061zM12 17.25A2.75 2.75 0 019.295 15H7a.5.5 0 110-1h2.75a.5.5 0 01.5.5 1.75 1.75 0 003.5 0 .5.5 0 01.5-.5H17a.5.5 0 110 1h-2.295A2.75 2.75 0 0112 17.25z"></path>
-                            </g>
-                          </svg> */}
+
 
                     <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
                   </span>
@@ -982,15 +983,6 @@ const SlimSideMenuBar = (props) => {
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
-                    {/* <svg width="24" height="24" viewBox="0 0 24 24">
-                            <g fill="currentColor" fillRule="nonzero">
-                              <path
-                                d="M10 14.5a2 2 0adfaf 104 0h5.5V18a1.5 1.5 0 01-1.5 1.5H6A1.5 1.5 0 014.5 18v-3.5H10z"
-                                opacity="0.1"
-                              ></path>
-                              <path d="M8.062 adfafafafa4h7.876a2 2 0 011.94 1.515l2.062 8.246a2 2 0 01.06.485V18a2 2 0 01-2 2H6a2 2 0 01-2-2v-3.754a2 2 0 01.06-.485l2.06-8.246A2 2 0 018.061 4zm0 1a1 1 0 00-.97.757L5.03 14.004a1 1 0 00-.03.242V18a1 1 0 001 1h12a1 1 0 001-1v-3.754a1 1 0 00-.03-.242l-2.06-8.247A1 1 0 0015.94 5H8.061zM12 17.25A2.75 2.75 0 019.295 15H7a.5.5 0 110-1h2.75a.5.5 0 01.5.5 1.75 1.75 0 003.5 0 .5.5 0 01.5-.5H17a.5.5 0 110 1h-2.295A2.75 2.75 0 0112 17.25z"></path>
-                            </g>
-                          </svg> */}
 
                     <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
                   </span>
@@ -1041,8 +1033,12 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+ HL-40-Holidays-Calendar
             {(user?.role?.includes(USER_ROLES.SALES_MANAGER) ||
               user?.role?.includes(USER_ROLES.ADMIN)) && (
+
+            {(user?.role?.includes(USER_ROLES.SALES_MANAGER) || user?.role?.includes(USER_ROLES.ADMIN)) &&
+ Development_dev
               <li className="relative mt-1">
                 <span
                   className={
@@ -1077,16 +1073,28 @@ const SlimSideMenuBar = (props) => {
                         />
                       </svg>
                     </span>
+ HL-40-Holidays-Calendar
                     <span className="text-[9px] font-bold  pl-1">
                       Leads Bank
                     </span>
+
+                    <span className="text-[9px] font-bold  pl-1">Leads Bank</span>
+ Development_dev
                   </span>
                   <span className="flex ml-auto items-bottom">
+
+
+
+                    
                     <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                   </span>
                 </span>
               </li>
+ HL-40-Holidays-Calendar
             )}
+
+            }
+ Development_dev
             <li className="relative mt-1">
               <span
                 className={
@@ -1124,16 +1132,24 @@ const SlimSideMenuBar = (props) => {
                       </g>
                     </svg>
                   </span>
+ HL-40-Holidays-Calendar
 
                   <span className="text-[9px] font-bold  pl-1">Reports</span>
+
+                 <span className="text-[9px] font-bold  pl-1">Reports</span>
+ Development_dev
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                 </span>
               </span>
             </li>
+ HL-40-Holidays-Calendar
             {(user?.role?.includes(USER_ROLES.SALES_MANAGER) ||
               user?.role?.includes(USER_ROLES.ADMIN)) && (
+
+            {(user?.role?.includes(USER_ROLES.SALES_MANAGER) || user?.role?.includes(USER_ROLES.ADMIN)) &&
+ Development_dev
               <li className="relative mt-1">
                 <span
                   className={
@@ -1171,7 +1187,6 @@ const SlimSideMenuBar = (props) => {
                         </g>
                       </svg>
                     </span>
-
                     <span className="text-[9px] font-bold  pl-1">
                       Team Reports
                     </span>
@@ -1181,7 +1196,11 @@ const SlimSideMenuBar = (props) => {
                   </span>
                 </span>
               </li>
+ HL-40-Holidays-Calendar
             )}
+
+            }
+            Development_dev
           </ul>
         </>
       )}
@@ -1462,46 +1481,6 @@ const SlimSideMenuBar = (props) => {
               </span>
             </li>
 
-            {/* <li className="relative mt-1">
-              <span
-                className={
-                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
-                  (viewable === 'On Boarding'
-                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
-                    : '')
-                }
-                onClick={() => setViewable('On Boarding')}
-                style={{
-                  display: 'block',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                }}
-              >
-                <span className="flex items-center flex-col pt-[8px]">
-                  <span style={{ color: '#058527' }}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
-                  </span>
-                  <span className="text-[9px] font-bold  pl-1">On Boarding</span>
-                </span>
-                <span className="flex ml-auto items-bottom">
-                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
-                </span>
-              </span>
-            </li> */}
-
             <li className="relative mt-1">
               <span
                 className={
@@ -1568,6 +1547,10 @@ const SlimSideMenuBar = (props) => {
                   marginRight: 'auto',
                 }}
               >
+ HL-40-Holidays-Calendar
+
+
+ Development_dev
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
                     <svg width="24" height="24" viewBox="0 0 24 24">
@@ -1660,15 +1643,7 @@ const SlimSideMenuBar = (props) => {
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
-                    {/* <svg width="24" height="24" viewBox="0 0 24 24">
-                            <g fill="currentColor" fillRule="nonzero">
-                              <path
-                                d="M10 14.5a2 2 0adfaf 104 0h5.5V18a1.5 1.5 0 01-1.5 1.5H6A1.5 1.5 0 014.5 18v-3.5H10z"
-                                opacity="0.1"
-                              ></path>
-                              <path d="M8.062 adfafafafa4h7.876a2 2 0 011.94 1.515l2.062 8.246a2 2 0 01.06.485V18a2 2 0 01-2 2H6a2 2 0 01-2-2v-3.754a2 2 0 01.06-.485l2.06-8.246A2 2 0 018.061 4zm0 1a1 1 0 00-.97.757L5.03 14.004a1 1 0 00-.03.242V18a1 1 0 001 1h12a1 1 0 001-1v-3.754a1 1 0 00-.03-.242l-2.06-8.247A1 1 0 0015.94 5H8.061zM12 17.25A2.75 2.75 0 019.295 15H7a.5.5 0 110-1h2.75a.5.5 0 01.5.5 1.75 1.75 0 003.5 0 .5.5 0 01.5-.5H17a.5.5 0 110 1h-2.295A2.75 2.75 0 0112 17.25z"></path>
-                            </g>
-                          </svg> */}
+
 
                     <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
                   </span>
@@ -1680,7 +1655,83 @@ const SlimSideMenuBar = (props) => {
               </span>
             </li>
 
+ HL-40-Holidays-Calendar
             <li className="relative justify-center ">
+
+
+
+
+            {/* <li className="relative mt-1">
+              <span
+                className={
+                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  (viewable === 'Attendence'
+                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                    : '')
+                }
+                onClick={() => setViewable('Attendence')}
+                style={{
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                }}
+              >
+                <span className="flex items-center flex-col pt-[8px]">
+                  <span style={{ color: '#058527' }}>
+
+
+                    <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
+
+                  </span>
+                  <span className="text-[9px] font-bold  pl-1">Attendence</span>
+                </span>
+                <span className="flex ml-auto items-bottom">
+                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+                </span>
+              </span>
+            </li> */}
+
+<li className="relative mt-1">
+  <span
+    className={
+      'flex items-center text-sm py-1 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded rounded-tl-[30px] rounded-bl-[30px] hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+      (viewable === 'Attendence'
+        ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+        : '')
+    }
+    onClick={() => setViewable('Attendence')}
+    style={{
+      display: 'block',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    }}
+  >
+    <span className="flex items-center flex-col pt-[8px]">
+      <span style={{ color: '#058527' }}>
+      <svg
+  xmlns="http://www.w3.org/2000/svg"
+  className="h-5 w-5"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  strokeWidth="2"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+  <path d="M16 8L10 15L8 12" />
+</svg>
+      </span>
+      <span className="text-[9px] font-bold pl-1">Attendence</span>
+    </span>
+    <span className="flex ml-auto items-bottom">
+      <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+    </span>
+  </span>
+</li>
+
+            <li className="relative mt-1 pt-1">
+ Development_dev
               <span
                 className={
                   'flex items-center justify-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
@@ -1746,6 +1797,7 @@ const SlimSideMenuBar = (props) => {
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
+ HL-40-Holidays-Calendar
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-6"
@@ -1759,6 +1811,28 @@ const SlimSideMenuBar = (props) => {
                         strokeLinejoin="round"
                         d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
                       />
+
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="w-5 h-5"
+                    >
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                      <line x1="7" y1="14" x2="7" y2="21" />
+                      <line x1="17" y1="14" x2="17" y2="21" />
+                      <line x1="3" y1="14" x2="3" y2="21" />
+ Development_dev
                     </svg>
                   </span>
                   <span className="text-[9px] font-bold  pl-1">Bank</span>
@@ -1785,6 +1859,7 @@ const SlimSideMenuBar = (props) => {
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
+ HL-40-Holidays-Calendar
                     <svg
                       width="24"
                       height="24"
@@ -1803,11 +1878,30 @@ const SlimSideMenuBar = (props) => {
                     </svg>
                   </span>
                   <span className="text-[9px] font-bold  pl-1">Access</span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="w-5 h-5"
+                    >
+                      <path d="M6 2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 9h12M6 18h3M6 14h6" />
+                    </svg>
+                     </span>
+                  <span className="text-[9px] font-bold  pl-1">Pay Slips</span>
+ Development_dev
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                 </span>
               </span>
+              
             </li>
 
             <li className="relative mt-1">
@@ -1865,7 +1959,10 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+ HL-40-Holidays-Calendar
 
+
+ Development_dev
             <li className="relative mt-1">
               <span
                 className={
@@ -1911,6 +2008,7 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+ HL-40-Holidays-Calendar
             {(user?.role?.includes(USER_ROLES.HR_MANAGER) ||
               user?.role?.includes(USER_ROLES.ADMIN)) && (
               <li className="relative mt-1">
@@ -1961,6 +2059,8 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </li>
             )}
+
+Development_dev
           </ul>
         </>
       )}
@@ -1970,7 +2070,11 @@ const SlimSideMenuBar = (props) => {
           'flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300 ' +
           (pgName === 'erpAccount' ? 'bg-gray-300' : '')
         }
+ HL-40-Holidays-Calendar
         // to={routes.erpAccount()}
+
+
+ Development_dev
       >
         <svg
           className="w-5 h-5"

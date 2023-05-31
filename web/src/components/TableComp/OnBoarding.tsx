@@ -1,10 +1,7 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-// import { Link, routes } from '@redwoodjs/router'
 
 import { Fragment, useState, useEffect } from 'react'
 
-// import { XIcon } from '@heroicons/react/outline'
+
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 import { MetaTags } from '@redwoodjs/web'
@@ -28,7 +25,7 @@ const OnBoarding = ({ leadsTyper }) => {
   const { orgId } = user
   const [isImportLeadsOpen, setisImportLeadsOpen] = useState(false)
 
-  // kanban board
+
   const [ready, setReady] = useState(false)
 
   const [addLeadsTypes, setAddLeadsTypes] = useState('')
@@ -74,9 +71,9 @@ const OnBoarding = ({ leadsTyper }) => {
             x.id = docSnapshot.id
             return x
           })
-          // setBoardData
+
           console.log('my Array data is ', usersListA, leadsFetchedData)
-          // await serealizeData(usersListA)
+
           await setLeadsFetchedData(usersListA)
           await console.log('my Array data is set it', leadsFetchedData)
         },
@@ -88,7 +85,7 @@ const OnBoarding = ({ leadsTyper }) => {
             'cleared',
             'rejected',
             '',
-            // 'booked',
+
           ],
         },
         () => setLeadsFetchedData([])
@@ -103,7 +100,7 @@ const OnBoarding = ({ leadsTyper }) => {
             x.id = docSnapshot.id
             return x
           })
-          // setBoardData
+
           console.log('my Array data is ', usersListA)
           await serealizeData(usersListA)
           await setLeadsFetchedData(usersListA)
@@ -117,7 +114,7 @@ const OnBoarding = ({ leadsTyper }) => {
             'cleared',
             'rejected',
             '',
-            // 'booked',
+
           ],
         },
         () => setLeadsFetchedData([])
@@ -125,18 +122,18 @@ const OnBoarding = ({ leadsTyper }) => {
       return unsubscribe
     }
 
-    // await console.log('leadsData', leadsData)
+
   }
 
   const serealizeData = (array) => {
-    // let newData =
+
     const x = [
       'new',
       'review',
       'cleared',
       'rejected',
       '',
-      // 'booked',
+      
     ].map((status) => {
       const items = array.filter((data) => data.Status.toLowerCase() == status)
 
@@ -298,6 +295,7 @@ const OnBoarding = ({ leadsTyper }) => {
                                <path d="M19.9574 23.2155H25.2418V26.3995H19.9574V23.2155ZM24.2324 18.562H19.9574V21.3007H25.2344V19.5417C25.2047 19.0073 24.7668 18.5843 24.2324 18.562ZM18.0426 31.0382V25.7538H12.7656V30.0659C12.7953 30.5409 13.1367 30.9269 13.5895 31.0233C13.634 31.0308 13.6785 31.0382 13.723 31.0382H18.0426ZM12.7656 19.5417V23.8464H18.05V18.562H13.775C13.2332 18.5843 12.7953 19.0073 12.7656 19.5417ZM25.2344 30.0733V28.3069H19.95V31.0456H24.277C24.3215 31.0456 24.366 31.0382 24.4105 31.0308C24.8633 30.9343 25.2047 30.5409 25.2344 30.0733Z" fill="#FFC10D"/>
                                      </svg>
 
+ HL-40-Holidays-Calendar
                                      <div class="width-30 height-55 font-medium flex-end text-black-1500">
                                                <p className=" css-6mn6yy">0</p>
                                                 </div>
@@ -306,11 +304,17 @@ const OnBoarding = ({ leadsTyper }) => {
 
                                                      </div>
 
+                                     <div class="width-30 height-50 font-medium flex-end text-black-1500">
+                                              <p className=" css-6mn6yy">0</p>
+                                                  </div>
+                                                  </div>
+ Development_dev
+
                             <div className="px-2 flex flex-row justify-between">
                               <h3 className=" css-5mn5yy">Sim Card</h3>
                             </div>
 
-                            <span className="css-1lpgd8m px-4 text-[#767676] text-[10px]">
+                             <span className="css-1lpgd8m px-3 text-[black] text-[10px]">
                                   Android
                                 </span>
 
