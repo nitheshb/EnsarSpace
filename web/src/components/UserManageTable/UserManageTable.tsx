@@ -1,4 +1,10 @@
 
+ HL-40-Holidays-Calendar
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+
+ Development_dev
 import { EyeIcon, PencilIcon } from '@heroicons/react/outline'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
@@ -58,18 +64,24 @@ const geTable = ({ editEmployeeFun }) => {
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <section className="flex ml-auto mt-[18px]  bg-white  border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10">
             {[
+ HL-40-Holidays-Calendar
+
  HL-20-DisplayUserProfilePicture
               { label: 'All', val: 'All' },
               { label: 'Admin', val: 'admin' },
               { label: 'Crm', val: 'crm' },
               { label: 'Legal', val: 'legal' },
 
+ Development_dev
               { label: 'All', val: 'all' },
               { label: 'IT Employee', val: 'it employee' },
               { label: 'IT Desk', val: 'it desk' },
               { label: 'HR', val: 'hr' },
               { label: 'Finance', val: 'finance' },
+HL-40-Holidays-Calendar
+
 Development_dev
+ Development_dev
               { label: 'Project', val: 'project' },
               { label: 'Sales', val: 'sales' },
               { label: 'Learning', val: 'learning' },
@@ -82,9 +94,12 @@ Development_dev
                 onClick={() => showOnlyDept(dat.val)}
               >
                 <div
+HL-40-Holidays-Calendar
+
  HL-20-DisplayUserProfilePicture
                   className={`py-2 px-8 rounded-full hover:text-indigo-700 hover:bg-indigo-100  ${selDept.includes(dat.val)
 
+ Development_dev
                   className={`py-2 px-6 rounded-full hover:text-indigo-700 hover:bg-indigo-100  ${
                     selDept.includes(dat.val)
  Development_dev
