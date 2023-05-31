@@ -92,9 +92,20 @@ export const USER_ROLES = {
   ADMIN: 'admin',
 }
 
+ HL--38-My-Journey
 
 
 
+
+ HL-20-DisplayUserProfilePicture
+export const COURSE_LIST = [
+  { label: 'Select the Course', value: '' },
+  { label: 'Python', value: 'Python' },
+  { label: 'Web Development', value: 'Web Development' },
+  { label: 'Data Science', value: 'Data Science' },
+  { label: 'AWS', value: 'AWS' },
+  { label: 'Java', value: 'Java' },
+ Development_dev
 
 export const DEPARTMENT_LIST = [
   { label: 'Select the Department', value: '' },
@@ -128,7 +139,41 @@ export const EXPERIENCE_LIST = [
   { label: '2 - 3 Years', value: '2-3_Y' },
   { label: '3 - 4 Years', value: '3-4_Y' },
   { label: '5+ Years', value: '5+ Y' },
+ Development_dev
 ]
+ export const DEPARTMENT_LIST = [
+
+
+    { label: 'Select the Department', value: '' },
+
+    { label: 'IT Employee', value: 'it_employee' },
+
+    { label: 'IT Desk', value: 'it_desk' },
+
+    { label: 'HR', value: 'hr' },
+
+    { label: 'Finance', value: 'finance' },
+
+    { label: 'Project', value: 'project' },
+
+    { label: 'Sales', value: 'sales' },
+
+    { label: 'Learning', value: 'learning' },
+
+    { label: 'Admin', value: 'admin' },
+
+  ]
+
+
+
+
+
+export const GENDER_LIST = [
+  { label: 'Select the Gender', value: '' },
+  { label: 'Male', value: 'Male' },
+  { label: 'Female', value: 'Female' },
+]
+
 
 export const Category = [
   { label: 'Select the Category', value: '' },

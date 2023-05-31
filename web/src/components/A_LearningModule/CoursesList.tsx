@@ -1,9 +1,13 @@
 
 import { useState } from 'react'
+ HL-20-DisplayUserProfilePicture
+import SUserSignup from './addLearning/SUserSignup'
+
 // import marketing_2 from '/learning_images/marketing_2.jpg'
 // import AddCourseForm from 'src/pages/CoursedetailsPage/CourseForm'
 import SUserSignup from './addLearning/SUserSignup'
 import { courses } from 'src/constants/courses'
+ Development_dev
 
 
 import CoursesCard from './CoursesCard'
@@ -11,6 +15,18 @@ import { Link, routes } from '@redwoodjs/router'
 const CourseList = () => {
 
   const [activeTab, setActiveTab] = useState('python')
+ HL-20-DisplayUserProfilePicture
+
+  const [isOpen, setIsOpen] = useState(false)
+  const handleOnClose = () => setIsOpen(false)
+  const [empData, setEmpData] = useState({})
+  const tabHandler = (sel) => {
+    setActiveTab(sel)
+    setEmpData(sel)
+    setIsOpen(true)
+  }
+
+
    const [isOpen, setIsOpen] = useState(false)
    const handleOnClose = () => setIsOpen(false)
    const [empData, setEmpData] = useState({})
@@ -20,6 +36,7 @@ const CourseList = () => {
     setEmpData(sel)
     setIsOpen(true)
    }
+ Development_dev
   return (
     <div>
 
@@ -118,6 +135,27 @@ const CourseList = () => {
                 Marketing
               </button>
             </li>
+ HL-20-DisplayUserProfilePicture
+            <li className="tabs-head-item">
+              <button
+                type="button"
+                className={`tab-btn `}
+                onClick={() => tabHandler('ADD_COURSE')}
+              >
+                Add Course
+              </button>
+            </li>
+
+          </ul>
+
+          {/* <div className='tabs-body'>
+          {
+            courses.filter(course => course.category === activeTab).map((course) => (
+              <Course key = {course.id} {...course} />
+            ))
+          }
+        </div> */}
+
 
 
 
@@ -150,6 +188,7 @@ const CourseList = () => {
           {/* </div> */}
 
 
+ Development_dev
         </div>
 
         <div className="tabs-body">
@@ -161,6 +200,14 @@ const CourseList = () => {
         </div>
       </div>
       <SUserSignup
+ HL-20-DisplayUserProfilePicture
+              open={isOpen}
+              setOpen={handleOnClose}
+              title="User"
+              empData={empData}
+            />
+      {/* <Tabs courses = {courses} /> */}
+
 
        open={isOpen}
        setOpen={handleOnClose}
@@ -182,6 +229,7 @@ const CourseList = () => {
 
 
     </div>
+ Development_dev
     </div>
   )
 }
