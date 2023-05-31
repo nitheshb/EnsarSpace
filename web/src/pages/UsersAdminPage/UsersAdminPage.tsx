@@ -14,6 +14,8 @@ import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 import OnBoarding from 'src/components/TableComp/OnBoarding'
+import AttendenceTab from 'src/components/UserAccessTable/AttendenceTable'
+import AttendancePage from 'src/components/UserAccessTable/AttendenceTable'
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -72,6 +74,24 @@ const UsersAdminPage = () => {
                       d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                     />
                   </svg>
+
+                  {/* <svg
+                    className="w-5 h-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                    />
+
+
+                    
+                  </svg> */}
                   <span className="ml-1 leading-none">Add Employee</span>
                 </button>
               )}
@@ -84,6 +104,12 @@ const UsersAdminPage = () => {
             {viewable === 'Roles Management' && (
               <>
                 <UserAccessTable />
+              </>
+            )}
+
+            {viewable === 'Attendence' && (
+              <>
+                <AttendancePage />
               </>
             )}
 
@@ -110,7 +136,7 @@ const UsersAdminPage = () => {
             )}
 
           {viewable === 'User Report' && (
-           
+
             <ActivitySummaryReport
               project={{
                 area: 1000,
