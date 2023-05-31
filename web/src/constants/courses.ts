@@ -7,7 +7,7 @@ export const courses = [
     course_name: 'Learn Python: The Complete Python Programming Course',
     description:
       'Learn A-Z everything about Python, from the basics, to advanced topics like Python GUI, Python Data Analysis, and more!',
-      
+
     rating_count: 3059,
     rating_star: 4.4,
     students: 18430,
@@ -52,6 +52,10 @@ export const courses = [
       'Learn how to work with various data formats within python, including: JSON,HTML, and MS Excel Worksheets.',
       'Have a portfolio of various data analysis projects.',
     ],
+
+
+
+
     content: [
       'Intro to Course and Python',
       'Learning Numpy',
@@ -81,6 +85,9 @@ export const courses = [
       'To learn the python language',
       'To learn the CORE skills to understand any programming language',
     ],
+
+
+
     content: [
       'Programming fundamentals',
       'Getting Started with Python',
@@ -112,6 +119,9 @@ export const courses = [
       'Work with Python file handling',
       'Manipulate strings and data',
     ],
+
+
+    
     content: [
       'Getting Started',
       'The Basics',

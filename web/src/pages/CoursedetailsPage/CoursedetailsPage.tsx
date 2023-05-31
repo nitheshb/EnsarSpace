@@ -106,7 +106,178 @@ const CoursedetailsPage = () => {
       </nav>
 
       <div>
+HL-25-Show-Course-details-page-with-dummy-data
+          {/* {courses.map((course) => (
+          <div key={course.id}>
+            <div style={{ backgroundColor: 'black', color: 'white' }}>
+              <div className="course-intro mx-auto grid bg-dark">
+                <div className="course-details ">
+                  <div
+                    className="course-category"
+                    style={{
+                      backgroundColor: 'white',
+                      color: 'black',
+                      display: 'inline',
+                      padding: '5px 10px',
+                      borderRadius: '5px',
+                    }}
+                  >
+                    {course.category}
+                  </div>
+                  <div
+                    className="course-head"
+                    style={{
+                      fontWeight: 'bold',
+                      fontFamily: 'sans-serif',
+                    }}
+                  >
+                    <h5>{course.course_name}</h5>
+                  </div>
+                  <div className="course-body">
+                    <p
+                      className="course-para fs-18"
+                      style={{
+                        textDecoration: 'none',
+                        fontFamily: ' sans-serif',
+                      }}
+                    >
+                      {course.description}
+                    </p>
+                    <div className="course-rating flex">
+                      <span className="rating-star-val fw-8 fs-16">
+                        {course.rating_star}
+                      </span>
+                      <StarRating rating_star={course.rating_star} />
+                      <span className="rating-count fw-5 fs-14">
+                        {course.rating_count}
+                      </span>
+                      <span className="students-count fs-14">
+                        {course.students}
+                      </span>
+                    </div>
+                    <ul className="course-info">
+                      <li>
+                        <span className="fs-14">
+                          Created by{' '}
+                          <span className="fw-6 opacity-08">
+                            {course.creator}
+                          </span>
+                        </span>
+                      </li>
+                      <li className="flex">
+                        <span>
+                          <MdInfo />
+                        </span>
+                        <span className="fs-14 course-info-txt fw-5">
+                          Latest Updated {course.updated_date}
+                        </span>
+                      </li>
+                      <li className="flex">
+                        <span>
+                          <TbWorld />
+                        </span>
+                        <span className="fs-14 course-info-txt fw-5">
+                          {course.lang}
+                        </span>
+                      </li>
+                      <li className="flex">
+                        <span>
+                          <RiClosedCaptioningFill />
+                        </span>
+                        <span className="fs-14 course-info-txt fw-5">
+                          {course.lang} [Auto]
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="course-foot">
+                    <div className="course-price">
+                      <span className="new-price fs-26 fw-8">
+                        ${course.discounted_price}
+                      </span>
+                      <span className="old-price fs-26 fw-6">
+                        ${course.actual_price}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="course-price">
+                    <button
+                      style={{
+                        textDecoration: 'none',
+                        fontWeight: 'bold',
+                        fontFamily: 'sans-serif',
+                        // marginLeft: '5%',
+                        backgroundColor: '#b823fc',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '4px',
+                        padding: '8px 16px',
+                        cursor: 'pointer',
+                        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+                        transition: 'background-color 0.3s ease',
+                      }}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <img
+                    src={course.image}
+                    alt={course.category}
+                    className="responsive-image"
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'cover',
+                      // borderRadius: '8px',
+                      marginRight: '5%',
+                      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="course-full bg-white text-dark">
+              <div className="course-learn mx-auto">
+                <div className="course-sc-title">What you'll learn</div>
+                <ul className="course-learn-list grid">
+                  {course.what_you_will_learn &&
+                    course.what_you_will_learn.map(
+                      (what_you_will_learn, idx) => {
+                        return (
+                          <li key={idx}>
+                            <span>
+                              <BiCheck />
+                            </span>
+                            <span className="fs-14 fw-5 opacity-09">
+                              {what_you_will_learn}
+                            </span>
+                          </li>
+                        )
+                      }
+                    )}
+                </ul>
+              </div>
+              <div className="course-content mx-auto">
+                <div className="course-sc-title">Course content</div>
+                <ul className="course-content-list">
+                  {course.content &&
+                    course.content.map((contentItem, idx) => {
+                      return (
+                        <li key={idx}>
+                          <span>{contentItem}</span>
+                        </li>
+                      )
+                    })}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))} */}
 
+
+Development_dev
 
         <div key={course.id}>
           <div style={{ backgroundColor: 'black', color: 'white' }}>
@@ -226,6 +397,13 @@ const CoursedetailsPage = () => {
                   </button>
                 </div>
               </div>
+
+
+
+
+
+
+              
 
               <img
                 src={course.image}
