@@ -17,7 +17,7 @@ import { TextField } from 'src/util/formFields/TextField'
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 import axios from 'axios'
 import Loader from '../Loader/Loader'
-import { DEPARTMENT_LIST, ROLES_LIST } from 'src/constants/userRoles'
+import { ROLES_LIST } from 'src/constants/userRoles'
 import { PhoneNoField } from 'src/util/formFields/phNoField'
 
 // import Select from 'react-select'

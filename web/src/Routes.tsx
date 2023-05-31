@@ -117,6 +117,7 @@ const Routes = () => {
 
   return (
     <Router>
+      <Route path="/timeoff" page={TimeoffPage} name="timeoff" />
       {/* <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" /> */}
       <Route path="/cource-overview/{uid}" page={CourceOverviewPage} name="courceOverview" />
       <Route path="/cource-content" page={CourceContentPage} name="courceContent" />

@@ -12,6 +12,7 @@ import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
+import Timeoff from 'src/components/TableComp/Timeoff'
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -81,11 +82,11 @@ const UsersAdminPage = () => {
               </>
             )}
 
-            {/* {viewable === 'Time off' && (
+            {viewable === 'Time off' && (
               <>
                 <Timeoff />
               </>
-            )} */}
+            )}
 
             {viewable === 'My Activity' && (
               <>
