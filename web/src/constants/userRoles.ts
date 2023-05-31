@@ -92,6 +92,11 @@ export const USER_ROLES = {
   ADMIN: 'admin',
 }
 
+ HL--38-My-Journey
+
+
+
+
  HL-20-DisplayUserProfilePicture
 export const COURSE_LIST = [
   { label: 'Select the Course', value: '' },
@@ -100,6 +105,7 @@ export const COURSE_LIST = [
   { label: 'Data Science', value: 'Data Science' },
   { label: 'AWS', value: 'AWS' },
   { label: 'Java', value: 'Java' },
+ Development_dev
 
 export const DEPARTMENT_LIST = [
   { label: 'Select the Department', value: '' },

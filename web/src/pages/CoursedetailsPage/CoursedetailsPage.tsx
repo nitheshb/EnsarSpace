@@ -106,6 +106,9 @@ const CoursedetailsPage = () => {
       </nav>
 
       <div>
+ HL--38-My-Journey
+
+
 HL-25-Show-Course-details-page-with-dummy-data
           {/* {courses.map((course) => (
           <div key={course.id}>
@@ -278,6 +281,7 @@ HL-25-Show-Course-details-page-with-dummy-data
 
 
 Development_dev
+ Development_dev
 
         <div key={course.id}>
           <div style={{ backgroundColor: 'black', color: 'white' }}>
@@ -611,6 +615,9 @@ const SingleCourseWrapper = styled.div`
     background-color: #f2f2f2;
     padding: 16px;
   }
+
+
+  
 
   .navbar-container {
     display: flex;
