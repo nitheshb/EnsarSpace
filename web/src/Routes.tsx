@@ -10,6 +10,7 @@ import { useAuth } from 'src/context/firebase-auth-context'
 import FinanceHomePagePage from './pages/FinanceHomePagePage/FinanceHomePagePage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage/PrivacyPolicyPage'
 import Profile from './pages/Profile/Profile'
+import LeaveApprovalPage from './pages/LeaveApprovalPage/LeaveApprovalPage'
 
 const defaultRoutes = () => {
   return (
