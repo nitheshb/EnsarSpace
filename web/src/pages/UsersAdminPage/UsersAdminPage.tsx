@@ -12,6 +12,7 @@ import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
+import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -75,6 +76,12 @@ const UsersAdminPage = () => {
               <UserManageTable editEmployeeFun={editEmployeeFun} />
             )}
 
+            {viewable === 'Leave Approval' && (
+              <>
+                <LeaveApprovalPage />
+              </>
+            )}
+            
             {viewable === 'Roles Management' && (
               <>
                 <UserAccessTable />
