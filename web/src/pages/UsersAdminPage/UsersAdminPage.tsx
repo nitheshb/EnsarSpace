@@ -12,7 +12,11 @@ import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
+ HL-37-Create-a-leave-form
 import Timeoff from 'src/components/TableComp/Timeoff'
+
+import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
+ Development_dev
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -76,6 +80,12 @@ const UsersAdminPage = () => {
               <UserManageTable editEmployeeFun={editEmployeeFun} />
             )}
 
+            {viewable === 'Leave Approval' && (
+              <>
+                <LeaveApprovalPage />
+              </>
+            )}
+            
             {viewable === 'Roles Management' && (
               <>
                 <UserAccessTable />

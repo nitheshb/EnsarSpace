@@ -17,7 +17,11 @@ import { TextField } from 'src/util/formFields/TextField'
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 import axios from 'axios'
 import Loader from '../Loader/Loader'
+ HL-37-Create-a-leave-form
 import { ROLES_LIST } from 'src/constants/userRoles'
+
+import { DEPARTMENT_LIST, ROLES_LIST, QUALIFICATION_LIST, EXPERIENCE_LIST } from 'src/constants/userRoles'
+ Development_dev
 import { PhoneNoField } from 'src/util/formFields/phNoField'
 
 // import Select from 'react-select'
@@ -370,6 +374,43 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                   </div>
                 ) : null}
 
+
+<CustomSelect
+                  name="qualName"
+                  label="Qualification"
+                  className="input mt-3"
+                  onChange={(value) => {
+                    // changed(value)
+                    formik.setFieldValue('qualVal', value.value)
+                    //  formik.setFieldValue('myRole', '')
+                  }}
+                  value={formik.values.qualVal}
+                  options={QUALIFICATION_LIST}
+                />
+                {formik.errors.qualVal ? (
+                  <div className="error-message text-red-700 text-xs p-2">
+                    {formik.errors.qualVal}
+                  </div>
+                ) : null}
+
+<CustomSelect
+                  name="expName"
+                  label="Experience"
+                  className="input mt-3"
+                   onChange={(value) => {
+                    //  changed(value)
+                    formik.setFieldValue('expVal', value.value)
+                    //  formik.setFieldValue('myRole', '')
+                   }}
+                  value={formik.values.expVal}
+                  options={EXPERIENCE_LIST}
+                />
+                 {formik.errors.expVal ? (
+                  <div className="error-message text-red-700 text-xs p-2">
+                    {formik.errors.expVal}
+                  </div>
+                ) : null}
+
                 {/*  */}
 
                 <div className="md:flex md:flex-row md:space-x-4 w-full text-xs mt-5">
@@ -445,6 +486,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                       className="error-message text-red-700 text-xs px-2"
                     />
                   </div>
+                  
                   <div className="mb-3 space-y-2 w-full text-xs">
                     <Label
                       name="Email Id*"
