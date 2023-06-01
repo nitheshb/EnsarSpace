@@ -110,6 +110,7 @@ export const ROLES_LIST = [
   //     value: USER_DEPARTMENT.SALES_EXECUTIVE,
   //     dept: 'sales',
   //   },
+  // ]
 
 
   {
