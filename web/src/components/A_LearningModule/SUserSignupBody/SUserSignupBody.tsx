@@ -6,7 +6,7 @@ import { Form, Formik } from 'formik';
 import { TextField } from 'src/util/formFields/TextField';
 import axios from 'axios';
 import Loader from '../../Loader/Loader';
-import { Course_Names, Lang } from 'src/constants/userRoles';
+import { DEPARTMENT_LIST,Course_Names, Lang } from 'src/constants/userRoles';
 
 const AddCourseDialog = ({ isOpen, onClose }) => {
   const formMethods = useForm();

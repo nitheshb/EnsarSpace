@@ -118,7 +118,11 @@ const Routes = () => {
 
   return (
     <Router>
+ HL-37-Create-a-leave-form
+      <Route path="/timeoff" page={TimeoffPage} name="timeoff" />
+
       <Route path="/leave-approval" page={LeaveApprovalPage} name="leaveApproval" />
+ Development_dev
       {/* <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" /> */}
       <Route path="/cource-overview/{uid}" page={CourceOverviewPage} name="courceOverview" />
       <Route path="/cource-content" page={CourceContentPage} name="courceContent" />
