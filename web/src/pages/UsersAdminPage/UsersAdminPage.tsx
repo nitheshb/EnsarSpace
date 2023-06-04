@@ -77,6 +77,7 @@ const UsersAdminPage = () => {
               )}
             </div>
 
+
             {viewable === 'User Management' && (
               <UserManageTable editEmployeeFun={editEmployeeFun} />
             )}
