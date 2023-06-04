@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { Dialog, Listbox, Transition } from '@headlessui/react'
 import { useState, useEffect, Fragment } from 'react'
 import { RadioGroup } from '@headlessui/react'
@@ -93,7 +96,11 @@ const AddTaskForm = ({ title, dialogOpen }) => {
     { label: 'Esperanza', value: 'esperanza' },
     { label: 'Nakshatra Township', value: 'nakshatratownship' },
   ]
-
+  // const usersList = [
+  //   { label: 'User1', value: 'User1' },
+  //   { label: 'User2', value: 'User2' },
+  //   { label: 'User3', value: 'User3' },
+  // ]
 
   const budgetList = [
     { label: 'Select Customer Budget', value: '' },
@@ -175,6 +182,7 @@ const AddTaskForm = ({ title, dialogOpen }) => {
       project,
       projectId,
     } = data
+    // updateUserRole(uid, deptVal, myRole, email, 'nitheshreddy.email@gmail.com')
 
     const foundLength = await checkIfLeadAlreadyExists('spark_leads', mobileNo)
     const leadData = {
@@ -242,17 +250,30 @@ const AddTaskForm = ({ title, dialogOpen }) => {
     name: Yup.string()
       .max(15, 'Must be 15 characters or less')
       .required('Name is Required'),
-
+    // lastName: Yup.string()
+    //   .max(20, 'Must be 20 characters or less')
+    //   .required('Required'),
     email: Yup.string().email('Email is invalid').required('Email is required'),
 
-
+    // password: Yup.string()
+    //   .min(6, 'Password must be at least 6 charaters')
+    //   .required('Password is required'),
+    // confirmPassword: Yup.string()
+    //   .oneOf([Yup.ref('password'), null], 'Password must match')
+    //   .required('Confirm password is required'),
+    // mobileNo
     mobileNo: Yup.string()
       .required('Phone number is required')
       .matches(phoneRegExp, 'Phone number is not valid')
       .min(10, 'to short')
       .max(10, 'to long'),
 
-
+    // deptVal: Yup.string()
+    //   // .oneOf(['Admin', 'CRM'], 'Required Dept')
+    //   .required('Req Dept'),
+    // myRole: Yup.string()
+    //   //  .oneOf(['Admin', 'CRM'], 'DEPT IS REQ')
+    //   .required('Required Role'),
   })
   const resetter = () => {
     setSelected({})
@@ -424,24 +445,29 @@ const AddTaskForm = ({ title, dialogOpen }) => {
                         </div>
                       </div>
                     </div>
+                    {/* <span className="text-[#0091ae]">
+                    Save
+                    <ArrowRightIcon className="w-5 ml-5" />
+                  </span> */}
 
                     <div className="flex flex-row justify-between mt-4">
                       <section></section>
                       <section className="flex flex-row ">
                         <button
-
+                          // onClick={() => fAddSchedule()}
                           className={`flex mt-2 cursor-pointer rounded items-center  pl-2 h-[36px] pr-4 py-2 text-sm font-medium text-white  bg-green-700  hover:bg-green-500 `}
                         >
                           <span className="ml-1 ">Add Task</span>
                         </button>
                         <button
-
+                          // onClick={() => fAddSchedule()}
                           className={`flex mt-2 ml-4 cursor-pointer rounded items-center  pl-2 h-[36px] pr-4 py-2 text-sm font-medium text-white   hover:bg-green-500  bg-green-700 `}
                         >
                           <span className="ml-1 ">Add Task & close</span>
                         </button>
                         <button
-                         
+                          // onClick={() => fSetLeadsType('Add Lead')}
+                          // onClick={() => cancelResetStatusFun()}
                           className={`flex mt-2 ml-4 rounded items-center  pl-2 h-[36px] pr-4 py-2 text-sm font-medium border  hover:bg-gray-700  `}
                         >
                           <span className="ml-1 ">Cancel</span>

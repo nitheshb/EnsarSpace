@@ -41,10 +41,16 @@ export default function ConstructUnitsDetails({
       setPaymentSchA(fullPs)
     }
   }, [fullPs])
-
+  // get payment schedule from project
 
   const validateSchema = Yup.object({
-
+    // date: Yup.string().required('Bank Required'),
+    // amount: Yup.string().required('Required'),
+    // payto: Yup.string().required('Required'),
+    // mode: Yup.string().required('Bank Required'),
+    // drawnonbank: Yup.string().required('Required'),
+    // chequeno: Yup.string().required('Required'),
+    // dated: Yup.string().required('Required'),
   })
 
   return (
@@ -57,13 +63,13 @@ export default function ConstructUnitsDetails({
               initialValues={initialState}
               validationSchema={validateSchema}
               onSubmit={(values, { resetForm }) => {
-
+                // onSubmit(values, resetForm)
               }}
             >
               {(formik) => (
                 <Form>
                   <div className="form">
-
+                    {/* Phase Details */}
 
                     <section className="  bg-blueGray-50">
                       <div className="w-full mx-auto ">
@@ -474,7 +480,15 @@ export default function ConstructUnitsDetails({
                                           />
                                         </div>
                                       </div>
-                                      
+                                      {/* <div className="flex flex-wrap w-1/3">
+                                        <div className="w-full p-1 md:p-2">
+                                          <img
+                                            alt="gallery"
+                                            className="block object-cover object-center w-full h-full rounded-lg"
+                                            src="https://martilyo.com/blog/wp-content/uploads/2020/10/2020-10-29-14.28.05-768x1024.jpg"
+                                          />
+                                        </div>
+                                      </div> */}
                                       <div className="flex flex-wrap w-1/3">
                                         <div className="w-full p-1 md:p-2">
                                           <img

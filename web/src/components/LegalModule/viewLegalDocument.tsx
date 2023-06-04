@@ -34,7 +34,13 @@ export default function LegalDocsViewHome({
   }
 
   const validateSchema = Yup.object({
-
+    // date: Yup.string().required('Bank Required'),
+    // amount: Yup.string().required('Required'),
+    // payto: Yup.string().required('Required'),
+    // mode: Yup.string().required('Bank Required'),
+    // drawnonbank: Yup.string().required('Required'),
+    // chequeno: Yup.string().required('Required'),
+    // dated: Yup.string().required('Required'),
   })
 
   return (
@@ -47,13 +53,13 @@ export default function LegalDocsViewHome({
               initialValues={initialState}
               validationSchema={validateSchema}
               onSubmit={(values, { resetForm }) => {
-
+                // onSubmit(values, resetForm)
               }}
             >
               {(formik) => (
                 <Form>
                   <div className="form">
-
+                    {/* Phase Details */}
 
                     <section className="  bg-blueGray-50">
                       <div className="w-full mx-auto ">
@@ -336,7 +342,7 @@ export default function LegalDocsViewHome({
                                     </span>
                                   </div>
                                   <p className="mr4">Date Created</p>
-                                 
+                                  {/* <Icon name="folder" size="3xl" color="gray" /> */}
                                 </div>
                               </div>
                               {[

@@ -1,3 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import * as React from 'react'
 import { Fragment, useState, useEffect } from 'react'
 
@@ -178,6 +184,7 @@ const EnhancedTableToolbar = (props) => {
         console.log('ami here')
         return item
       } else if (
+        // item.Assignedto.toLowerCase().includes(searchString.toLowerCase()) ||
 
         item.Email.toLowerCase().includes(searchString.toLowerCase()) ||
         item.Mobile.toLowerCase().includes(searchString.toLowerCase()) ||
@@ -190,7 +197,7 @@ const EnhancedTableToolbar = (props) => {
       }
     })
     setRowsAfterSearchKey(rowsR)
-
+    // setRows(rowsR)
   }
   return (
     <Toolbar
@@ -251,7 +258,10 @@ const EnhancedTableToolbar = (props) => {
       )}
       <span style={{ display: 'flex' }}>
         <Tooltip title={`Download ${rowsAfterSearchKey.length} Rows`}>
-
+          {/* <IconButton>
+            <FileDownloadIcon />
+            <CSVDownloader />
+          </IconButton> */}
           <IconButton className="bg-gray-200">
             <EventNoteTwoToneIcon />
           </IconButton>
@@ -265,7 +275,10 @@ const EnhancedTableToolbar = (props) => {
           </Tooltip>
         ) : (
           <Tooltip title={`Download ${rowsAfterSearchKey.length} Rows`}>
-
+            {/* <IconButton>
+            <FileDownloadIcon />
+            <CSVDownloader />
+          </IconButton> */}
 
             <CSVDownloader className="mr-6" downloadRows={rowsAfterSearchKey} />
           </Tooltip>
@@ -340,7 +353,25 @@ export default function TodayLeadsActivitySearchView({
   React.useEffect(() => {
     console.log('send values is', rowsParent)
     filterStuff(rowsParent)
+    // let x = rowsParent.filter((item) => {
+    //   if (selStatus === 'all') {
+    //     return item
+    //   } else if (item.Status.toLowerCase() === selStatus.toLowerCase()) {
+    //     console.log('All1', item)
+    //     return item
+    //   } else if (item.Status.toLowerCase().includes(selStatus.toLowerCase())) {
+    //     return item
+    //   } else {
+    //     return item
+    //   }
+    // })
+    // // console.log('All2', x)
 
+    // console.log('what is x', rows)
+
+    // return () => {
+    //   second
+    // }
   }, [selStatus, rowsParent])
   useEffect(() => {
     getMyTodayProgress()
@@ -351,7 +382,9 @@ export default function TodayLeadsActivitySearchView({
       orgId,
       (doc) => {
         const myTaskA = doc.data()
-     console.log('fetched users list is', myTaskA)
+        // setprojectList(projectsListA)
+
+        console.log('fetched users list is', myTaskA)
 
         setUserTodayPerfA(myTaskA)
       },
@@ -405,10 +438,25 @@ export default function TodayLeadsActivitySearchView({
     return unsubscribe
   }, [])
 
+  // React.useEffect(() => {
+  //   // console.log('search on is', searchKey)
+  //   // filterSearchString(rows)
+  //   // searchKey
+  //   console.log('my mosket check i s', schFetData)
+  //   if (todaySch) {
+  //     const y = todaySch?.filter((item) => {
+  //       item?.staA.some((r) => schFetData.includes(r))
+  //     })
+  //     setSchFetData(y)
+  //   }
+  // }, [searchKey])
   const sorterFilterFun = async (todaySch) => {
     console.log('max check it my value is ', todaySch)
     const streamedTodo = []
     let y = []
+
+    //  updaing the lookup array to look for pending status when ever user selects upcoming as there is no sta
+
     let TaskStatusReq = []
     if (searchKey.includes('upcoming')) {
       TaskStatusReq = ['pending']
@@ -444,7 +492,7 @@ export default function TodayLeadsActivitySearchView({
           searchKey.includes('pending') &&
           y['sts'] === 'pending'
         ) {
-
+          // make sure if date less than tomorrow is added
           if (y['schTime'] < torrowDate) {
             y.uid = data1.uid
             y.id = data1.uid
@@ -458,7 +506,7 @@ export default function TodayLeadsActivitySearchView({
         }
 
         if (searchKey.length == 1 && searchKey.includes('upcoming')) {
-
+          // make sure if date greater than tomorrow is added
           if (y['schTime'] > torrowDate) {
             y.uid = data1.uid
             y.leadUser = data1.leadUser
@@ -478,7 +526,7 @@ export default function TodayLeadsActivitySearchView({
         return y
       })
     })
-
+    // this is for list view
     if (sortType === 'Latest') {
       streamedTodo.sort((a, b) => {
         return b.schTime - a.schTime
@@ -511,7 +559,17 @@ export default function TodayLeadsActivitySearchView({
       const z = todaySch?.filter((item) => {
         if (selLeadsOf?.value == 'mytasks') {
           return item
-
+          // console.log('zoro i s mytasks')
+          // if (selProjectIs?.value === 'allprojects') {
+          //   console.log('zoro i s mytasks allprojects')
+          //   return item?.leadUser?.assignedTo === user?.uid
+          // } else {
+          //   console.log('zoro i s mytasks allprojects else')
+          //   return (
+          //     item?.leadUser?.assignedTo === user?.uid &&
+          //     item?.leadUser.ProjectId === selProjectIs?.value
+          //   )
+          // }
         } else if (selLeadsOf?.value === 'teamtasks') {
           console.log('zoro i s teamtasks')
           console.log('zoro condition', selProjectIs?.value)
@@ -604,7 +662,12 @@ export default function TodayLeadsActivitySearchView({
       if (item.Source.toLowerCase().includes(selStatus.toLowerCase())) {
         return item
       }
-
+      //  else if (item.Status.toLowerCase() === selStatus.toLowerCase()) {
+      //   console.log('All1', item)
+      //   return item
+      // } else if (item.Source.toLowerCase().includes(selStatus.toLowerCase())) {
+      //   return item
+      // }
     })
     await setRows(x)
     await console.log('xo', x)
@@ -732,7 +795,61 @@ export default function TodayLeadsActivitySearchView({
                     />
                   </div>
                 )}
-
+                {/* <span className="inline-flex p-1 border bg-gray-200 rounded-md">
+                  <button
+                    className={`px-2  rounded ${
+                      leadByViewLayout ? 'bg-white shadow' : ''
+                    }`}
+                    onClick={() => setLeadByViewLayout(true)}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 text-gray-600"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    className={`px-2  rounded ${
+                      !leadByViewLayout ? 'bg-white shadow' : ''
+                    }`}
+                    onClick={() => setLeadByViewLayout(false)}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 text-gray-600"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </button>
+                </span> */}
+                {/* <div className="ml-2 py-3 px-4 flex items-center text-sm font-medium leading-none text-gray-600 bg-gray-200 hover:bg-gray-300 cursor-pointer rounded max-h-[35px]">
+                  <p>Sort By:</p>
+                  <select
+                    aria-label="select"
+                    className="focus:text-indigo-600 focus:outline-none bg-transparent ml-1"
+                    onChange={(e) => handleSortDrop(e)}
+                  >
+                    <option className="text-sm text-indigo-800">Latest</option>
+                    <option className="text-sm text-indigo-800">Oldest</option>
+                  </select>
+                </div> */}
               </section>
             </div>
           </div>
@@ -742,9 +859,23 @@ export default function TodayLeadsActivitySearchView({
               [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((data, i) => (
                 <LogSkelton key={i} />
               ))
-
+            // <div className="py-8 px-8 mt-10 flex flex-col items-center bg-red-100 rounded">
+            //   <div className="font-md font-medium text-xs mb-4 text-gray-800 items-center">
+            //     <img
+            //       className="w-[180px] h-[180px] inline"
+            //       alt=""
+            //       src="../note-widget.svg"
+            //     />
+            //   </div>
+            //   <h3 className="mb-1 text-sm font-semibold text-gray-900 dark:text-white">
+            //     <Loader /> Loading
+            //   </h3>
+            //   <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+            //     <span className="text-blue-600"> Add New Lead</span>
+            //   </time>
+            // </div>
           }
-
+          {/* searchKey, setSearchKey */}
           {!schLoading && !leadByViewLayout && todaySch && (
             <>
               <div className=" ">
@@ -787,7 +918,9 @@ export default function TodayLeadsActivitySearchView({
 
           {leadByViewLayout && todaySch && (
             <div className=" w-full">
+              {/* <div className="px-4 md:pb-10 pb-3 md:pb-3">
 
+              </div> */}
 
               <div className="bg-white py-4 md:py-7 px-4 md:px-4 xl:px-6 rounded">
                 <div className="sm:flex items-center justify-between">
@@ -900,13 +1033,29 @@ export default function TodayLeadsActivitySearchView({
                             selUserProfileF('User Profile', leadUser)
                           }}
                         >
+                          {/* <div className="inline">
+                    <div className="ml-4 mt-4">
+                      <label className="font-semibold text-[#053219]  text-sm  mb-1  ">
+                        Lead Schedule Details<abbr title="required"></abbr>
+                      </label>
+                    </div>
 
+                    <div className="border-t-4 rounded-xl w-16 mt-1 ml-4 border-green-600"></div>
+                  </div> */}
 
                           <div className="flex  w-full mx-4 py-2 border-b mt-4 ">
                             <label className="font-semibold text-[#053219] px-4 py-[4px] bg-green-100  text-2xl  mb-1 mr-2  ">
                               {index + 1}
                             </label>
-                          
+                            {/* <div className="inline">
+                    <div className="ml-4 mt-4">
+                      <label className="font-semibold text-[#053219]  text-sm  mb-1  ">
+                        Lead Schedule Details<abbr title="required"></abbr>
+                      </label>
+                    </div>
+
+                    <div className="border-t-4 rounded-xl w-16 mt-1 ml-4 border-green-600"></div>
+                  </div> */}
                             <section className="mt-2">
                               <span className="inline-flex mr-4">
                                 <span className="text-sm  font-light  font text-gray-700 ">

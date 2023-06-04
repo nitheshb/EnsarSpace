@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 
 import { TabList } from '@mui/lab'
 import { Box as Section, Card, Grid, styled } from '@mui/material'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next' // styled components
+
 import { prettyDate } from 'src/util/dateConverter'
 
 import LLeadsTableBody from '../LLeadsTableBody/LLeadsTableBody'
@@ -31,7 +32,8 @@ const LLeadsTableView = ({
   leadsTyper,
   searchVal,
 }) => {
-
+  // change navbar title
+  // useTitle('Data Table V1')
   const { t } = useTranslation()
   const [value, setValue] = useState('all')
   const [tableData, setTableData] = useState([])
@@ -39,10 +41,19 @@ const LLeadsTableView = ({
 
   const [statusSepA, setStatusSepA] = useState([])
 
+  // const [leadsFetchedData, setLeadsFetchedData] = useState([])
   const [finalKeyA, setFinalKeyA] = useState([])
 
   useEffect(() => {
-
+    // axios
+    //   .get('/api/tableData1/all')
+    //   .then(({ data }) => {
+    //     setTableData(tableData1)
+    //   })
+    //   .catch((error) => {
+    //     // setTableData(tableData1)
+    //     console.log(error)
+    //   })
 
     const tabHeadFieldsA1 =
       leadsTyper === 'inProgress'
@@ -51,17 +62,22 @@ const LLeadsTableView = ({
             { lab: 'New', val: 'new' },
             { lab: 'Follow Up', val: 'followup' },
             { lab: 'Visit Fixed', val: 'visitfixed' },
-
+            // { lab: 'Visit Done', val: 'visitdone' },
+            // { lab: 'Visit Cancel', val: 'visitcancel' },
             { lab: 'Negotiation', val: 'negotiation' },
-
+            // { lab: 'Reassign', val: 'reassign' },
+            // { lab: 'RNR', val: 'RNR' },
             { lab: 'Un Assigned', val: 'unassigned' },
-
+            // { lab: 'Booked', val: 'booked' },
+            // { lab: 'Not Interested', val: 'notinterested' },
+            // { lab: 'Dead', val: 'dead' },
           ]
         : leadsTyper === 'archieveLeads'
         ? archieveTab
         : [
             { lab: 'Booked', val: 'booked' },
-
+            // { lab: 'Not Interested', val: 'notinterested' },
+            // { lab: 'Dead', val: 'dead' },
           ]
     settabHeadFieldsA(tabHeadFieldsA1)
 
@@ -111,11 +127,12 @@ const LLeadsTableView = ({
     }
   }
   useEffect(() => {
-
+    // split data as per
     console.time('query Fetch Time')
     console.timeLog('query Fetch Time')
     return
     for (let i = 0; i < leadsFetchedData.length; i++) {
+      // your operations
 
       switch (leadsFetchedData[i].Status.toLowerCase()) {
         case 'new':
@@ -149,15 +166,19 @@ const LLeadsTableView = ({
             { lab: 'Visit Done', val: 'visitdone' },
             { lab: 'Visit Cancel', val: 'visitcancel' },
             { lab: 'Negotiation', val: 'negotiation' },
-
+            // { lab: 'Reassign', val: 'reassign' },
+            // { lab: 'RNR', val: 'RNR' },
             { lab: 'Un Assigned', val: 'unassigned' },
-
+            // { lab: 'Booked', val: 'booked' },
+            // { lab: 'Not Interested', val: 'notinterested' },
+            // { lab: 'Dead', val: 'dead' },
           ]
         : leadsTyper === 'archieveLeads'
         ? archieveTab
         : [
             { lab: 'Booked', val: 'booked' },
-
+            // { lab: 'Not Interested', val: 'notinterested' },
+            // { lab: 'Dead', val: 'dead' },
           ]
     const y = {}
 
@@ -188,7 +209,7 @@ const LLeadsTableView = ({
       junk: [],
       others: [],
     }
-
+    // vedant
     if (leadsTyper === 'inProgress') {
       console.log('my Array data is delayer z2', new Date())
       const z2 = leadsFetchedData
@@ -287,7 +308,9 @@ const LLeadsTableView = ({
   }, [leadsFetchedData, tabHeadFieldsA])
 
   const [filLeadsA, setFilLeadsA] = useState([])
-
+  // useEffect(() => {
+  //   setFilLeadsA(leadsFetchedData)
+  // }, [leadsFetchedData])
   useEffect(() => {
     switch (value) {
       case 'all':
@@ -325,7 +348,7 @@ const LLeadsTableView = ({
         <Grid container>
           <Grid item xs={12}>
             <div className="mb-1 border-b border-gray-200 ">
-
+              {/* bg-[#fdb7b7] */}
               <ul
                 className="flex flex-wrap -mb-px "
                 id="myTab"
@@ -363,16 +386,73 @@ const LLeadsTableView = ({
                         <span className="bg-gray-100 text-black px-2 py-1 rounded-full ml-[4px]  ">
                           {rowsCounter(leadsFetchedData, d.val).length}
                         </span>
-
+                        {/*
+                        <div className="px-2 mt-1 text-[9px] text-black  rounded-full">
+                          <span className="bg-gray-100 px-2 py-1 rounded-full">
+                            {rowsCounter(leadsFetchedData, d.val).length}
+                          </span>
+                        </div> */}
                       </button>
                     </li>
                   )
                 })}
               </ul>
-             
+              {/* <ul
+                className="flex flex-wrap -mb-px "
+                id="myTab"
+                data-tabs-toggle="#myTabContent"
+                role="tablist"
+              >
+                {tabHeadFieldsA.map((d, i) => {
+                  return (
+                    <li key={i} className="mr-2" role="presentation">
+                      <button
+                        className={`inline-block py-4 px-4 text-sm font-medium text-center text-[#4f5861] rounded-t-lg border-b-2  hover:text-gray-600 hover:border-[#1A91EB] dark:text-gray-400 dark:hover:text-gray-300  ${
+                          value === d.val
+                            ? 'border-[#1A91EB] text-gray-800'
+                            : 'border-transparent'
+                        }`}
+                        type="button"
+                        role="tab"
+                        onClick={() => {
+                          setFetchLeadsLoader(true)
+                          setValue(d.val)
+                          setFetchLeadsLoader(false)
+                        }}
+                      >
+                        <span
+                          className={`font-PlayFair ${
+                            value === d.val
+                              ? 'text-[#0080ff] text-gray-800'
+                              : ''
+                          }`}
+                        >
+                          {' '}
+                          {`${d.lab} `}
+                        </span>
+                        <span className="bg-gray-100 text-black px-2 py-1 rounded-full ml-[4px]  ">
+                          {statusSepA[0][d.val]?.length || 0}
+                        </span>
+                      </button>
+                    </li>
+                  )
+                })}
+              </ul> */}
             </div>
 
-
+            {/* {
+              <table>
+                {statusSepA[0]?.[value].map((dat, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{i + 1}</td>
+                      <td>{prettyDate(dat.Date).toLocaleString()}</td>
+                      <td>{dat.Name.toString()}</td>
+                    </tr>
+                  )
+                })}
+              </table>
+            } */}
             {fetchLeadsLoader &&
               [1, 2, 3].map((data, i) => <LogSkelton key={i} />)}
             {statusSepA[0]?.[value].length === 0 && (
@@ -383,7 +463,7 @@ const LLeadsTableView = ({
                     display: 'block',
                     marginLeft: 'auto',
                     marginRight: 'auto',
-
+                    // width: '50%',
                   }}
                 >
                   No Records
@@ -392,7 +472,7 @@ const LLeadsTableView = ({
             )}
             {!fetchLeadsLoader && statusSepA[0]?.[value].length != 0 && (
               <LLeadsTableBody
-
+                // data={filterTable}
                 fetchLeadsLoader={fetchLeadsLoader}
                 selStatus={value}
                 rowsParent={statusSepA[0]}

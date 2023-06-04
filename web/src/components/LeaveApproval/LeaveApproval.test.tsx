@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import MyjourneyPage from './MyjourneyPage'
+import LeaveApproval from './LeaveApproval'
 
 //   Improve this test with help from the Redwood Testing Doc:
-//   https://redwoodjs.com/docs/testing#testing-pages-layouts
+//    https://redwoodjs.com/docs/testing#testing-components
 
-describe('MyjourneyPage', () => {
+describe('LeaveApproval', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<MyjourneyPage />)
+      render(<LeaveApproval />)
     }).not.toThrow()
   })
 })

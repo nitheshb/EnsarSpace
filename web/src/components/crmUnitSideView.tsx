@@ -1,4 +1,7 @@
-
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Fragment, useEffect, useState } from 'react'
 
 import { Menu } from '@headlessui/react'
@@ -62,6 +65,11 @@ import { H4 } from './Typography'
 
 import { useSnackbar } from 'notistack'
 
+// interface iToastInfo {
+//   open: boolean
+//   message: string
+//   severity: AlertColor
+// }
 const people = [
   { name: 'Priority 1' },
   { name: 'Priority 2' },
@@ -71,14 +79,14 @@ const people = [
 const statuslist = [
   { label: 'Select the Status', value: '' },
   { label: 'New', value: 'new' },
-
+  // { label: 'Follow Up', value: 'followup' },
   { label: 'Visit Fixed', value: 'visitfixed' },
   { label: 'Visit Done', value: 'visitdone' },
   { label: 'Negotiation', value: 'Negotiation' },
-
+  // { label: 'RNR', value: 'rnr' },
   { label: 'Booked', value: 'booked' },
   { label: 'Not Interested', value: 'notinterested' },
-
+  // { label: 'Dead', value: 'Dead' },
 ]
 
 const attachTypes = [
@@ -89,13 +97,14 @@ const attachTypes = [
   { label: 'Co-Applicant Aadhar', value: 'co-applicant_Aadhar' },
   { label: 'Cancellation Form', value: 'cancellation_form' },
   { label: 'Cost Sheet', value: 'cost_sheet' },
-
+  // { label: 'Follow Up', value: 'followup' },
   { label: 'Estimation Sheet', value: 'estimation_sheet' },
   { label: 'Payment Screenshot (IMPS/RTGS/NEFT)', value: 'payment_screenshot' },
   { label: 'Payment Receipt', value: 'payment_receipt' },
   { label: 'Others', value: 'others' },
 
-
+  // { label: 'RNR', value: 'rnr' },
+  // { label: 'Dead', value: 'Dead' },
 ]
 
 const notInterestOptions = [
@@ -105,7 +114,9 @@ const notInterestOptions = [
 
   { label: 'Others', value: 'others' },
 
-
+  // { label: 'Follow Up', value: 'followup' },
+  // { label: 'RNR', value: 'rnr' },
+  // { label: 'Dead', value: 'Dead' },
 ]
 export default function CrmUnitSideView({
   openUserProfile,
@@ -121,6 +132,7 @@ export default function CrmUnitSideView({
   const [fetchedUsersList, setfetchedUsersList] = useState([])
   const [usersList, setusersList] = useState([])
 
+  // const [leadStatus, setLeadStatus] = useState([])
   const [selFeature, setFeature] = useState('payment_schedule')
   const [tempLeadStatus, setLeadStatus] = useState('')
   const [assignerName, setAssignerName] = useState('')
@@ -143,7 +155,7 @@ export default function CrmUnitSideView({
   const d = new window.Date()
   const [value, setValue] = useState(d)
 
-
+  // const [startDate, setStartDate] = useState(d)
   const [startDate, setStartDate] = useState(setHours(setMinutes(d, 30), 16))
   const [selected, setSelected] = useState(people[0])
   const [taskDetails, setTaskDetails] = useState('')
@@ -313,19 +325,24 @@ export default function CrmUnitSideView({
   const setAssigner = (leadDocId, value) => {
     setAssignerName(value.name)
     setAssignedTo(value.value)
+    // save assigner Details in db
 
+    // updateLeadAssigTo(orgId, leadDocId, value,'', by)
   }
   const setNewProject = (leadDocId, value) => {
     console.log('sel pROJECT DETAILS ', value)
 
-
+    // setProjectName(value.projectName)
+    // setProjectId(value.uid)
+    // save assigner Details in db
+    // projectName
     const x = {
       Project: value.projectName,
       ProjectId: value.uid,
     }
     setSelProjectIs(value)
     updateLeadProject(orgId, leadDocId, x)
-
+    // updateLeadAssigTo(leadDocId, value, by)
   }
 
   const setStatusFun = async (leadDocId, newStatus) => {
@@ -344,7 +361,9 @@ export default function CrmUnitSideView({
       setTakTitle(' ')
     }
 
-    
+    //
+    // updateLeadStatus(leadDocId, newStatus)
+    // toast.success('Status Updated Successfully')
   }
 
   const downloadFile = (url) => {
@@ -801,10 +820,11 @@ export default function CrmUnitSideView({
                       return (
                         <li key={i} className="mr-2" role="presentation">
                           <button
-                            className={`inline-block py-3 px-4 text-sm font-medium text-center text-black rounded-t-lg border-b-2  hover:text-black hover:border-gray-300   ${selFeature === d.val
+                            className={`inline-block py-3 px-4 text-sm font-medium text-center text-black rounded-t-lg border-b-2  hover:text-black hover:border-gray-300   ${
+                              selFeature === d.val
                                 ? 'border-black text-black'
                                 : 'border-transparent'
-                              }`}
+                            }`}
                             type="button"
                             role="tab"
                             onClick={() => setFeature(d.val)}
@@ -1944,7 +1964,7 @@ export default function CrmUnitSideView({
                         href="#"
                         className="block items-center p-3 sm:flex hover:bg-gray-100 "
                       >
-
+                        {/* <PlusCircleIcon className="mr-3 mb-3 w-10 h-10 rounded-full sm:mb-0" /> */}
                         {data?.type == 'status' && (
                           <span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white  ">
                             <svg
@@ -1990,8 +2010,8 @@ export default function CrmUnitSideView({
                                 <ClockIcon className="mr-1 w-3 h-3" />
                                 {data?.type == 'ph'
                                   ? timeConv(
-                                    Number(data?.time)
-                                  ).toLocaleString()
+                                      Number(data?.time)
+                                    ).toLocaleString()
                                   : timeConv(data?.T).toLocaleString()}
                                 {'    '}
                                 <span className="text-red-900 ml-4 mr-4">
@@ -2020,6 +2040,18 @@ export default function CrmUnitSideView({
                               {data?.txt}
                             </div>
                             <span className="inline-flex items-center text-xs font-normal text-gray-500 ">
+                              {/* <svg
+                          className="mr-1 w-3 h-3"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg> */}
 
                               <ClockIcon className="mr-1 w-3 h-3" />
                               {data?.type == 'ph'
@@ -2040,4 +2072,3 @@ export default function CrmUnitSideView({
     </div>
   )
 }
-

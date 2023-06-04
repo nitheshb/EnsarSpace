@@ -1,7 +1,8 @@
-
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react'
 
 import { ErrorMessage, useField } from 'formik'
+// import { InputField, Label } from '@redwoodjs/forms'
 
 export const TextField2 = ({ label, ...props }) => {
   const [field, meta] = useField(props)
@@ -30,6 +31,30 @@ export const TextField2 = ({ label, ...props }) => {
         />
       </label>
     </div>
-    
+    // <div className="mb-2 w-full">
+    //   <div className="flex flex-row">
+    //     <label
+    //       htmlFor={field.name}
+    //       className="label font-regular text-[#4b4b4b]  text-sm block mb-1 text-opacity-40 text-[12px]"
+    //     >
+    //       {label}
+    //     </label>
+    //     <ErrorMessage
+    //       component="div"
+    //       name={field.name}
+    //       className="error-message text-red-700 text-xs p-1 mx-auto"
+    //     />
+    //   </div>
+
+    //   <input
+    //     className={` ${meta.touched && meta.error && 'is-invalid'} ${
+    //       field.name === 'blockName' ? '' : ' h-8  '
+    //     }
+    //        w-full min-w-full text-[16px] flex  text-[#4b4b4b]  border-b border-[#2b2a351a] rounded-sm leading-normal `}
+    //     {...field}
+    //     {...props}
+    //     autoComplete="off"
+    //   />
+    // </div>
   )
 }
