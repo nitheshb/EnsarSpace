@@ -1,6 +1,6 @@
 import React from 'react';
-import styled , { createGlobalStyle } from 'styled-components';
-import { FaCheck, FaCircle, FaSpinner } from 'react-icons/fa';
+import styled, { createGlobalStyle } from 'styled-components';
+// import { FaCheck, FaCircle, FaSpinner } from 'react-icons/fa';
 import MyJourneyHeadBar from './MyJourneyHeadBar';
 
 
@@ -113,7 +113,7 @@ const CompletionTick = styled.span`
   line-height: 18px;
   font-size: 14px;
   color: ${({ completed }) => (completed ? '#4caf50' : '#f44336')};
-  
+
 `;
 
 const InProgressIcon = styled(FaSpinner)`
@@ -195,7 +195,7 @@ const FullPageCard = () => {
   return (
     <div>
       <GlobalStyle />
-     <MyJourneyHeadBar selModule={'none'} setSelModule={'none'} />
+      <MyJourneyHeadBar selModule={'none'} setSelModule={'none'} />
       <CourseTitle>{courseTitle}</CourseTitle>
       <CardContainer>
         {cardData.map((card, index) => (
