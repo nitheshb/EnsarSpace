@@ -188,6 +188,8 @@ const CourseList = () => {
 
 export default CourseList
 
+
+
 // export const courses = [
 //   {
     // id: 'xMHCZl',
