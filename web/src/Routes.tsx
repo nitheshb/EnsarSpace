@@ -107,6 +107,7 @@ const Routes = () => {
 
   return (
     <Router>
+      <Route path="/my-journey" page={MyJourneyPage} name="myJourney" />
       {/* <Route path="/coursedetailsS" page={CourseDetailsPagee} name="coursedetails" /> */}
 
       <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" />

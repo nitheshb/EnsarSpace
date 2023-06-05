@@ -242,7 +242,7 @@ if (val.trim() && val.length>=10 ) {
               {user?.orgName || user?.orgId} - {user?.role?.[0]}
             </div>
           </section>
-          
+
         </Box>
         <Menu
           id="basic-menu"
