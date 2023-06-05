@@ -861,7 +861,7 @@ export default CourseList
 //     ],
 //   },
 // ]
-=======
+
 const courses = [
   {
     id: 'xMHCZl',

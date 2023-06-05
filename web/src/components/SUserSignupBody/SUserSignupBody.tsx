@@ -2,8 +2,19 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react'
+
 import { Dialog } from '@headlessui/react'
+import axios from 'axios'
+import { Form, Formik } from 'formik'
+import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
+
+import {
+  DEPARTMENT_LIST,
+  ROLES_LIST,
+  QUALIFICATION_LIST,
+  EXPERIENCE_LIST,
+} from 'src/constants/userRoles'
 import {
   addUserLog,
   checkIfUserAlreadyExists,
@@ -11,18 +22,14 @@ import {
   updateUserRole,
 } from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
-import { useForm } from 'react-hook-form'
-import { Form, Formik } from 'formik'
-import { TextField } from 'src/util/formFields/TextField'
-import { CustomSelect } from 'src/util/formFields/selectBoxField'
-import axios from 'axios'
-import Loader from '../Loader/Loader'
- HL-37-Create-a-leave-form
-import { ROLES_LIST } from 'src/constants/userRoles'
-
-import { DEPARTMENT_LIST, ROLES_LIST, QUALIFICATION_LIST, EXPERIENCE_LIST } from 'src/constants/userRoles'
- Development_dev
 import { PhoneNoField } from 'src/util/formFields/phNoField'
+import { CustomSelect } from 'src/util/formFields/selectBoxField'
+import { TextField } from 'src/util/formFields/TextField'
+
+import Loader from '../Loader/Loader'
+
+HL - 37 - Create - a - leave - form
+Development_dev
 
 // import Select from 'react-select'
 // import SelectSearch from 'react-select-search'
@@ -374,8 +381,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                   </div>
                 ) : null}
 
-
-<CustomSelect
+                <CustomSelect
                   name="qualName"
                   label="Qualification"
                   className="input mt-3"
@@ -393,19 +399,19 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                   </div>
                 ) : null}
 
-<CustomSelect
+                <CustomSelect
                   name="expName"
                   label="Experience"
                   className="input mt-3"
-                   onChange={(value) => {
+                  onChange={(value) => {
                     //  changed(value)
                     formik.setFieldValue('expVal', value.value)
                     //  formik.setFieldValue('myRole', '')
-                   }}
+                  }}
                   value={formik.values.expVal}
                   options={EXPERIENCE_LIST}
                 />
-                 {formik.errors.expVal ? (
+                {formik.errors.expVal ? (
                   <div className="error-message text-red-700 text-xs p-2">
                     {formik.errors.expVal}
                   </div>
@@ -486,7 +492,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                       className="error-message text-red-700 text-xs px-2"
                     />
                   </div>
-                  
+
                   <div className="mb-3 space-y-2 w-full text-xs">
                     <Label
                       name="Email Id*"
