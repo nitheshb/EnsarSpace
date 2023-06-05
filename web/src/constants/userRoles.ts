@@ -88,39 +88,6 @@ export const USER_ROLES = {
   ADMIN: 'admin',
 }
 
-<<<<<<< HEAD
-export const COURSE_LIST = [
-  { label: 'Select the Course', value: '' },
-  { label: 'Python', value: 'Python' },
-  { label: 'Web Development', value: 'Web Development' },
-  { label: 'Data Science', value: 'Data Science' },
-  { label: 'AWS', value: 'AWS' },
-  { label: 'Java', value: 'Java' },
-
-]
-
-export const LANGUAGE_LIST = [
-  { label: 'Select the Language', value: '' },
-  { label: 'English', value: 'English' },
-  { label: 'French', value: 'French' },
-]
-
-export const LEARN_LIST = [
-  { label: 'Select the learn', value: '' },
-  { label: 'Create their own path programs', value: 'Create their own path programs' },
-  { label: 'Parse the web and create their own games', value: 'Parse the web and create their own games' },
-  { label: 'Become an good programmer', value: 'Become an good programmer' },
-
-]
-
-export const CONT_LIST = [
-  { label: 'Select the content', value: '' },
-  { label: 'Functions', value: 'Functions' },
-  { label: 'File Input/Output', value: 'File Input/Output' },
-  { label: 'The Basics', value: 'The Basics' },
-  { label: 'Conditions & Loops', value: 'Conditions & Loops' },
-
-=======
 export const DEPARTMENT_LIST = [
   { label: 'Select the Department', value: '' },
   { label: 'Admin', value: 'admin' },
@@ -147,7 +114,6 @@ export const QUALIFICATION_LIST = [
   { label: 'Degree', value: 'degree' },
   { label: 'M.Tech', value: 'm.tech' },
   { label: 'PG', value: 'PG' },
->>>>>>> 68b0ba4afb6dddb7f2b93a7d1fd6ca33bccf061d
 ]
 
 export const EXPERIENCE_LIST = [
