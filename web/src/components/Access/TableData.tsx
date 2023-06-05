@@ -1,10 +1,4 @@
-
 import React, { useState } from 'react';
-
-import th from 'date-fns/locale/th';
-
-import tr from 'date-fns/locale/tr';
-
 
 const TableData = () => {
   const headers = [
@@ -20,19 +14,9 @@ const TableData = () => {
     'View Users',
     'View CRM',
     'Update CRM',
-  ]
-  const rows = [
-    // [
+  ];
 
-    //       'Trainee',
-    //       'IT Support',
-    //       'Legal Manager',
-    //       'Admin Project Manager',
-    //       'Project Executive',
-    //       'Data Scientist',
-    //       'Sales Manager',
-    //       'HR Executive',
-    //     ],
+  const rows = [
     [
       'Trainee',
       true,
@@ -145,9 +129,10 @@ const TableData = () => {
       true,
       true,
     ],
-  ]
+  ];
 
   const [checkboxValues, setCheckboxValues] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   const handleCheckboxChange = (rowIndex, columnIndex) => {
     setCheckboxValues((prevValues) => ({
@@ -159,8 +144,84 @@ const TableData = () => {
     }));
   };
 
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const filteredRows =
+    selectedCategory === 'all'
+      ? rows
+      : rows.filter((row) => row[0] === selectedCategory);
+
   return (
-    <section className="flex ml-auto mt-[18px] bg-white border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10">
+    <section className="flex flex-col ml-auto mt-[18px] bg-white border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10">
+      <div className="category-buttons" >
+        <button
+          className={selectedCategory === 'all' ? 'active' : ''}
+
+          onClick={() => handleCategoryChange('all')}
+        >
+          All
+        </button>
+        <button
+          className={selectedCategory === 'Trainee' ? 'active' : ''}
+          onClick={() => handleCategoryChange('Trainee')}
+        >
+          Trainee
+        </button>
+        <button
+          className={selectedCategory === 'IT Support' ? 'active' : ''}
+          onClick={() => handleCategoryChange('IT Support')}
+        >
+          IT Support
+        </button>
+        <button
+          className={selectedCategory === 'Legal Manager' ? 'active' : ''}
+          onClick={() => handleCategoryChange('Legal Manager')}
+        >
+          Legal Manager
+        </button>
+        <button
+          className={
+            selectedCategory === 'Admin Project Manager' ? 'active' : ''
+          }
+          onClick={() => handleCategoryChange('Admin Project Manager')}
+        >
+          Admin Project Manager
+        </button>
+        <button
+          className={
+            selectedCategory === 'Project Executive' ? 'active' : ''
+          }
+          onClick={() => handleCategoryChange('Project Executive')}
+        >
+          Project Executive
+        </button>
+        <button
+          className={
+            selectedCategory === 'Data Scientist' ? 'active' : ''
+          }
+          onClick={() => handleCategoryChange('Data Scientist')}
+        >
+          Data Scientist
+        </button>
+        <button
+          className={
+            selectedCategory === 'Sales Manager' ? 'active' : ''
+          }
+          onClick={() => handleCategoryChange('Sales Manager')}
+        >
+          Sales Manager
+        </button>
+        <button
+          className={
+            selectedCategory === 'HR Executive' ? 'active' : ''
+          }
+          onClick={() => handleCategoryChange('HR Executive')}
+        >
+          HR Executive
+        </button>
+      </div>
       <table>
         <thead>
           <tr>
@@ -170,7 +231,7 @@ const TableData = () => {
           </tr>
         </thead>
         <tbody style={{ textAlign: 'center' }}>
-          {rows.map((row, rowIndex) => (
+          {filteredRows.map((row, rowIndex) => (
             <tr key={row[0]}>
               <td>{row[0]}</td>
               {row.slice(1).map((_, columnIndex) => (
@@ -197,11 +258,27 @@ const TableData = () => {
           border: 1px solid black;
           padding: 8px;
           text-align: center;
-          
         }
 
         th {
           border-bottom: none; /* Remove bottom border from table header */
+        }
+
+        .category-buttons {
+          display: flex;
+          justify-content: flex-start;
+          margin-bottom: 10px;
+        }
+
+        .category-buttons button {
+          padding: 5px 10px;
+          margin-right: 5px;
+          font-size: 14px;
+          cursor: pointer;
+        }
+
+        .category-buttons button.active {
+          background-color: #ccc;
         }
         `}
       </style>

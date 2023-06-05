@@ -1,33 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Box, Checkbox, styled, Table, TableBody, TableHead, TableRow } from '@mui/material';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import { useSnackbar } from 'notistack';
 
-import { EyeIcon } from '@heroicons/react/outline'
-import {
-  Box,
-  Checkbox,
-  styled,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-} from '@mui/material'
-import TableCell, { tableCellClasses } from '@mui/material/TableCell'
-import { useSnackbar } from 'notistack'
+import StyledButton from 'src/components/RoundedButton';
+import { getAllRoleAccess, updateAccessRoles } from 'src/context/dbQueryFirebase';
+import { useAuth } from 'src/context/firebase-auth-context';
+import { getPagesBasedonRoles } from 'src/util/PagesBasedOnRoles';
 
-import StyledButton from 'src/components/RoundedButton'
-import {
-  getAllRoleAccess,
-  updateAccessRoles,
-} from 'src/context/dbQueryFirebase'
-import { useAuth } from 'src/context/firebase-auth-context'
-import { getPagesBasedonRoles } from 'src/util/PagesBasedOnRoles'
-
-import TableData from '../Access/TableData'
+import TableData from '../Access/TableData';
 
 const StyledTableHead = styled(TableHead)(({ theme }) => ({
   backgroundColor: theme.palette.action.hover,
   borderTop: '1px solid rgba(224, 224, 224, 1)',
   borderBottom: '1px solid rgba(224, 224, 224, 1)',
-}))
+}));
 
 const StyledTableCell = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`]: {
@@ -45,7 +32,7 @@ const StyledTableCell = styled(TableCell)(() => ({
       textAlign: 'left',
     },
   },
-}))
+}));
 
 const StickyTableCell = styled(TableCell)(({ theme }) => ({
   minWidth: '50px',
@@ -54,7 +41,7 @@ const StickyTableCell = styled(TableCell)(({ theme }) => ({
   zIndex: theme.zIndex.appBar + 1,
   borderBottom: 0,
   backgroundColor: '#F5F5F5',
-}))
+}));
 
 const StickyHeaderCell = styled(TableCell)(({ theme }) => ({
   minWidth: '50px',
@@ -63,7 +50,7 @@ const StickyHeaderCell = styled(TableCell)(({ theme }) => ({
   zIndex: theme.zIndex.appBar + 2,
   borderBottom: 0,
   backgroundColor: '#F5F5F5',
-}))
+}));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(even)': {
@@ -74,53 +61,33 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
     backgroundColor: '#F5F5F5',
   },
-}))
+}));
 
 const StyledCheckBox = styled(Checkbox)(() => ({
   padding: 0,
-}))
+}));
 
 const UserAccessTable = () => {
-  const [category, setCategory] = useState('all')
-  // const [selectedCategory, setSelectedCategory] = useState('all');
-
-  const [settings, setSettings] = useState([])
-  const [filterData, setFilterData] = useState([])
-  const { user } = useAuth()
-  const { orgId } = user
-  const { enqueueSnackbar } = useSnackbar()
-  // const [showAll, setShowAll] = useState(true)
-  // const [showTrainee, setShowTrainee],  = useState(false)
+  const [category, setCategory] = useState('all');
+  const [settings, setSettings] = useState([]);
+  const [filterData, setFilterData] = useState([]);
+  const { user } = useAuth();
+  const { orgId } = user;
+  const { enqueueSnackbar } = useSnackbar();
 
   const getAllRoleAccessDocs = async () => {
-    const data = await getAllRoleAccess(orgId)
-    setSettings(data)
-  }
-  useEffect(() => {
-    getAllRoleAccessDocs()
-    setCategory('all')
-  }, [])
-  useEffect(() => {
-    getAllRoleAccessDocs()
-  }, [])
+    const data = await getAllRoleAccess(orgId);
+    setSettings(data);
+  };
 
-  // useEffect(() => {
-  //   // Filter data based on the selected category
-  //   let filteredData = settings
-  //   if (!showAll) {
-  //     if (showTrainee) {
-  //       filteredData = filteredData.filter((item) => item.type === 'TRAINEE')
-  //     }
-  //     if (showITSupport) {
-  //       filteredData = filteredData.filter((item) => item.type === 'IT SUPPORT')
-  //     }
-  //     // Add more conditions for other categories
-  //   }
-  //   setFilterData(filteredData)
-  // }, [settings, showAll, showTrainee, showITSupport])
+  useEffect(() => {
+    getAllRoleAccessDocs();
+    setCategory('all');
+  }, []);
+
   useEffect(() => {
     if (category === 'all') {
-      setFilterData(settings)
+      setFilterData(settings);
     } else {
       const updatedData = settings.map((item) => {
         return {
@@ -128,14 +95,14 @@ const UserAccessTable = () => {
           access: item.access.filter((access) =>
             getPagesBasedonRoles(category).includes(access.key)
           ),
-        }
-      })
-      setFilterData(updatedData)
+        };
+      });
+      setFilterData(updatedData);
     }
-  }, [category, settings])
+  }, [category, settings]);
 
   const onRoleChangeListener = async (role, element) => {
-    let newAccess = {}
+    let newAccess = {};
     const newSettings = settings.map((item) => {
       if (item.uid === role.uid) {
         newAccess = item.access.map((accessRole) => {
@@ -143,95 +110,87 @@ const UserAccessTable = () => {
             return {
               ...accessRole,
               checked: !element.checked,
-            }
+            };
           }
-          return accessRole
-        })
-        item.access = newAccess
-        return item
+          return accessRole;
+        });
+        item.access = newAccess;
+        return item;
       }
-      return item
-    })
-    setSettings(newSettings)
-    await updateAccessRoles(
-      orgId,
-      role,
-      newAccess,
-      user,
-      enqueueSnackbar,
-      element
-    )
-  }
-  // function setSelectedCategory(arg0: string) {
-  //   throw new Error('Function not implemented.')
-  // }
+      return item;
+    });
+    setSettings(newSettings);
+    await updateAccessRoles(orgId, role, newAccess, user, enqueueSnackbar, element);
+  };
+
+  const handleCategoryChange = (newCategory) => {
+    setCategory(newCategory);
+  };
 
   return (
     <Box className="bg-white pb-4">
-      <Box className="flex ml-auto  mb-[0.5px] bg-white py-4 ">
+      <Box className="flex ml-auto  mb-[0.5px] bg-white py-4">
         <StyledButton
           variant="outlined"
           size="small"
           isCategoryMatched={category === 'all'}
-          onClick={() => setCategory('all')}
+          onClick={() => handleCategoryChange('all')}
         >
-          <EyeIcon className="h-3 w-3 mr-1" aria-hidden="true" />
           All
         </StyledButton>
         <StyledButton
           variant="outlined"
           size="small"
           isCategoryMatched={category === 'trainee'}
-          onClick={() => setCategory('trainee')}
+          onClick={() => handleCategoryChange('trainee')}
         >
-          TRAINEE
-        </StyledButton>
-
-        <StyledButton
-          variant="outlined"
-          size="small"
-          isCategoryMatched={category === 'crm'}
-          onClick={() => setCategory('crm')}
-        >
-          IT SUPPORT
+          Trainee
         </StyledButton>
         <StyledButton
           variant="outlined"
           size="small"
-          isCategoryMatched={category === 'hr'}
-          onClick={() => setCategory('hr')}
+          isCategoryMatched={category === 'support'}
+          onClick={() => handleCategoryChange('support')}
         >
-          LEGAL
+          Support
         </StyledButton>
         <StyledButton
           variant="outlined"
           size="small"
           isCategoryMatched={category === 'legal'}
-          onClick={() => setCategory('legal')}
+          onClick={() => handleCategoryChange('legal')}
         >
-          ADMIN
+          Legal
+        </StyledButton>
+        <StyledButton
+          variant="outlined"
+          size="small"
+          isCategoryMatched={category === 'admin'}
+          onClick={() => handleCategoryChange('admin')}
+        >
+          Admin
         </StyledButton>
         <StyledButton
           variant="outlined"
           size="small"
           isCategoryMatched={category === 'project'}
-          onClick={() => setCategory('project')}
+          onClick={() => handleCategoryChange('project')}
         >
-          PROJECT
+          Project
         </StyledButton>
         <StyledButton
           variant="outlined"
           size="small"
-          isCategoryMatched={category === 'sales'}
-          onClick={() => setCategory('sales')}
+          isCategoryMatched={category === 'executive'}
+          onClick={() => handleCategoryChange('executive')}
         >
-          EXECUTIVE
+          Executive
         </StyledButton>
         <StyledButton
           variant="outlined"
           size="small"
-          isCategoryMatched={category === 'sales'}
-          onClick={() => setCategory('sales')}
+          isCategoryMatched={category === 'hr'}
+          onClick={() => handleCategoryChange('hr')}
         >
           HR
         </StyledButton>
@@ -239,19 +198,12 @@ const UserAccessTable = () => {
           variant="outlined"
           size="small"
           isCategoryMatched={category === 'sales'}
-          onClick={() => setCategory('sales')}
+          onClick={() => handleCategoryChange('sales')}
         >
-          SALES
+          Sales
         </StyledButton>
       </Box>
-      <Box
-        sx={{
-          // width: (2 / 3) * window.innerWidth,
-          height: (2 / 3) * window.innerHeight,
-          overflowX: 'auto',
-          width: '1130px',
-        }}
-      >
+      <Box sx={{ height: (2 / 3) * window.innerHeight, overflowX: 'auto', width: '1130px' }}>
         <Table stickyHeader>
           <StyledTableHead>
             <StyledTableRow>
@@ -265,21 +217,17 @@ const UserAccessTable = () => {
               ))}
             </StyledTableRow>
           </StyledTableHead>
-          <TableData />
+          <TableData data={filterData} onRoleChangeListener={onRoleChangeListener} />
           <TableBody>
             {filterData?.map((item) => (
-              <StyledTableRow key={item?.uid}>
-                <StickyTableCell>
-                  <StyledTableCell>{item?.type}</StyledTableCell>
-                </StickyTableCell>
-
-                {item?.access?.map((element) => (
-                  <StyledTableCell key={element.key}>
+              <StyledTableRow key={item.uid}>
+                {item?.access?.map((access) => (
+                  <TableCell key={access.key} align="center">
                     <StyledCheckBox
-                      defaultChecked={element.checked}
-                      onChange={() => onRoleChangeListener(item, element)}
+                      checked={access.checked}
+                      onChange={() => onRoleChangeListener(item, access)}
                     />
-                  </StyledTableCell>
+                  </TableCell>
                 ))}
               </StyledTableRow>
             ))}
@@ -287,7 +235,7 @@ const UserAccessTable = () => {
         </Table>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default UserAccessTable
+export default UserAccessTable;

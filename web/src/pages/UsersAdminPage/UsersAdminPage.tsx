@@ -12,6 +12,7 @@ import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 import OnBoarding from 'src/components/TableComp/OnBoarding'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
+import TableData from 'src/components/Access/TableData'
 
 
 const UsersAdminPage = () => {
@@ -104,7 +105,7 @@ const UsersAdminPage = () => {
 
             {viewable === 'Roles Management' && (
               <>
-                <UserAccessTable />
+                <TableData />
               </>
             )}
 
