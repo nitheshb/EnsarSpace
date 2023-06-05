@@ -127,7 +127,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         empId: empId,
         email: email,
         name: name,
-        password: 'redefine@123',
+        password: 'Ensar@123',
         dept: deptVal,
         role: myRole,
         orgName: orgName,
@@ -144,7 +144,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
       const config = {
         method: 'post',
 
-        url: 'https://asia-south1-redefine-erp.cloudfunctions.net/erpAddUser',
+        url: 'https://ensarspace-usersignup.azurewebsites.net/api/usersignup',
         headers: {
           'Content-Type': 'text/plain',
         },
@@ -155,7 +155,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         .then(async function (response) {
           if (response.data) {
             setLoading(false)
-            const { success, msg, payload } = await response['data']
+            const { success, msg, payload, uId } = await response['data']
             // const { id } = payload
             console.log('user payload is ', response)
 
@@ -165,12 +165,12 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                 email
               )
 
-              console.log('docDetailsIs', docDetailsIs, docDetailsIs[0]['uid'])
+              // console.log('docDetailsIs', docDetailsIs, docDetailsIs[0]['uid'])
               updateUserRole(
                 empId,
                 orgName,
                 orgId,
-                docDetailsIs[0]['uid'],
+                uId,
                 deptVal,
                 myRole,
                 email,
@@ -182,7 +182,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                 name,
                 empId,
                 email,
-                uid: docDetailsIs[0]['uid'],
+                uid: uId,
                 userStatus: 'active',
                 orgStatus: 'active',
               }
@@ -200,7 +200,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
             setFormMessage({
               color: success ? 'green' : 'red',
               message: success
-                ? `Email ${email} is added with password redefine@123`
+                ? `Email ${email} is added with password Ensar@123`
                 : `${email} already in Use`,
             })
           }
@@ -482,7 +482,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                       className="error-message text-red-700 text-xs px-2"
                     />
                   </div>
-                  
+
                   <div className="mb-3 space-y-2 w-full text-xs">
                     <Label
                       name="Email Id*"
