@@ -154,7 +154,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
       const config = {
         method: 'post',
-
         url: 'https://asia-south1-redefine-erp.cloudfunctions.net/erpAddUser',
         headers: {
           'Content-Type': 'text/plain',
