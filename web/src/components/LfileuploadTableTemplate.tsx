@@ -41,27 +41,6 @@ import { prettyDate } from 'src/util/dateConverter'
 
 import CSVDownloader from '../util/csvDownload'
 
-// function createData(
-//   Date,
-//   Name,
-//   Mobile,
-//   Email,
-//   Project,
-//   Source,
-//   Empmobile,
-//   Note
-// ) {
-//   return {
-//     Date,
-//     Name,
-//     Mobile,
-//     Email,
-//     Project,
-//     Source,
-//     Empmobile,
-//     Note,
-//   }
-// }
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -79,8 +58,6 @@ function getComparator(order, orderBy) {
     : (a, b) => -descendingComparator(a, b, orderBy)
 }
 
-// This method is created for cross-browser compatibility, if you don't
-// need to support IE11, you can use Array.prototype.sort() directly
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index])
   stabilizedThis.sort((a, b) => {
@@ -263,7 +240,7 @@ const EnhancedTableToolbar = (props) => {
       }
     })
     setRowsAfterSearchKey(rowsR)
-    // setRows(rowsR)
+
   }
   const addLeadsToDB = async (records) => {
     setUploadIcon(false)
@@ -273,7 +250,7 @@ const EnhancedTableToolbar = (props) => {
         const newData = data
         newData['intype'] = 'bulk'
         newData['by'] = 'bulk'
-        // newData['Status'] = 'unassigned'
+
         console.log('am inside addLeadstoDB', newData)
 
         await addLead(orgId, newData, user?.email, 'Lead Created by csv')
@@ -299,8 +276,7 @@ const EnhancedTableToolbar = (props) => {
         if (builderBankDocId) {
           setBuilderbankId(builderBankDocId)
         } else {
-          // show bank details not available error
-          // vedant
+
         }
         console.log('set project value is ', projects[0])
       },
@@ -314,13 +290,9 @@ const EnhancedTableToolbar = (props) => {
   }
   const addUnitsToDB = async (records, pId) => {
     setUnitUploadMessage(false)
-    // upload successfully
 
-    // get additionalCharges obj
-    //   additonalChargesObj,
-    // ConstructOtherChargesObj,
     const projPayload = await getProjById1(orgId, pId)
-    // phase details of zero
+
     console.log('proj details is', projPayload)
     const { ConstructOtherChargesObj, additonalChargesObj } = projPayload[0]
     return
@@ -504,7 +476,7 @@ const HighlighterStyle = (props) => {
 }
 let columns
 
-// title
+
 export default function LfileuploadTableTemplate({
   selStatus,
   rowsParent,
@@ -526,7 +498,7 @@ export default function LfileuploadTableTemplate({
     if (title === 'Import Project Units') {
       columns = [
         { id: 'unit_no', label: 'unit_no', minWidth: 80 },
-        // { id: 'floor', label: 'floor', minWidth: 100 },
+
         {
           id: 'status',
           label: 'status',
@@ -695,25 +667,7 @@ export default function LfileuploadTableTemplate({
 
   React.useEffect(() => {
     filterStuff(rowsParent)
-    // let x = rowsParent.filter((item) => {
-    //   if (selStatus === 'all') {
-    //     return item
-    //   } else if (item.Status.toLowerCase() === selStatus.toLowerCase()) {
-    //     console.log('All1', item)
-    //     return item
-    //   } else if (item.Status.toLowerCase().includes(selStatus.toLowerCase())) {
-    //     return item
-    //   } else {
-    //     return item
-    //   }
-    // })
-    // // console.log('All2', x)
 
-    // console.log('what is x', rows)
-
-    // return () => {
-    //   second
-    // }
     console.log('rows parent is ', rowsParent)
   }, [selStatus, rowsParent])
 
@@ -742,12 +696,7 @@ export default function LfileuploadTableTemplate({
       if (item.Source.toLowerCase().includes(selStatus.toLowerCase())) {
         return item
       }
-      //  else if (item.Status.toLowerCase() === selStatus.toLowerCase()) {
-      //   console.log('All1', item)
-      //   return item
-      // } else if (item.Source.toLowerCase().includes(selStatus.toLowerCase())) {
-      //   return item
-      // }
+
     })
     await setRows(x)
     await console.log('xo', x)
@@ -802,7 +751,7 @@ export default function LfileuploadTableTemplate({
 
   const isSelected = (name) => selected.indexOf(name) !== -1
 
-  // Avoid a layout jump when reaching the last page with empty rows.
+
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
 
@@ -845,10 +794,6 @@ export default function LfileuploadTableTemplate({
               </TableRow>
             </TableHead>
             <TableBody>
-              {/* if you don't need to support IE11, you can replace the `stableSort` call with:
-                 rows.slice().sort(getComparator(order, orderBy)) */}
-              {/* {stableSort(rows, getComparator(order, orderBy)).map( */}
-
               {rows
                 .filter((item) => {
                   if (searchKey == '' || !searchKey) {
@@ -906,9 +851,7 @@ export default function LfileuploadTableTemplate({
 
                         return (
                           <TableCell key={column.id} align={column.align}>
-                            {/* {column.format && typeof value === 'number'
-                              ? column.format(value)
-                              : value} */}
+
                             <HighlighterStyle
                               searchKey={searchKey}
                               source={value}
@@ -919,79 +862,7 @@ export default function LfileuploadTableTemplate({
                     </TableRow>
                   )
 
-                  // return (
-                  //   <TableRow
-                  //     hover
-                  //     onClick={(event) => handleClick(event, row.Name)}
-                  //     role="checkbox"
-                  //     aria-checked={isItemSelected}
-                  //     tabIndex={-1}
-                  //     key={row.Name}
-                  //     selected={isItemSelected}
-                  //   >
-                  //     {sourceTab == 'all' && (
-                  //       <TableCell padding="checkbox">
-                  //         <Checkbox
-                  //           color="primary"
-                  //           checked={isItemSelected}
-                  //           inputProps={{
-                  //             'aria-labelledby': labelId,
-                  //           }}
-                  //         />
-                  //       </TableCell>
-                  //     )}
-                  //     <TableCell
-                  //       component="th"
-                  //       id={labelId}
-                  //       scope="row"
-                  //       padding="none"
-                  //     >
-                  //       {row.Date}
-                  //     </TableCell>
-                  //     <TableCell align="left">
-                  //       <section>
-                  //         <div>
-                  //           <HighlighterStyle
-                  //             searchKey={searchKey}
-                  //             source={row.Name.toString()}
-                  //           />
-                  //         </div>
-                  //         <div>
-                  //           <HighlighterStyle
-                  //             searchKey={searchKey}
-                  //             source={row.Email.toString()}
-                  //           />
-                  //         </div>
-                  //         <div>
-                  //           <HighlighterStyle
-                  //             searchKey={searchKey}
-                  //             source={row.Mobile.toString()}
-                  //           />
-                  //         </div>
-                  //       </section>
-                  //     </TableCell>
-                  //     <TableCell align="left">
-                  //       <HighlighterStyle
-                  //         searchKey={searchKey}
-                  //         source={row.Assignedto.toString()}
-                  //       />
-                  //     </TableCell>
-                  //     <TableCell align="left">
-                  //       <HighlighterStyle
-                  //         searchKey={searchKey}
-                  //         source={row.Source.toString()}
-                  //       />
-                  //     </TableCell>
-                  //     <TableCell align="left">{row.Project}</TableCell>
-                  //     <TableCell align="center">
-                  //       <HighlighterStyle
-                  //         searchKey={searchKey}
-                  //         source={row.Status.toString()}
-                  //       />
-                  //     </TableCell>
-                  //     <TableCell align="center">{row.Note}</TableCell>
-                  //   </TableRow>
-                  // )
+                  
                 })}
               {emptyRows > 0 && (
                 <TableRow

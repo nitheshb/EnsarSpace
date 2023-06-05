@@ -131,6 +131,24 @@ export const EXPERIENCE_LIST = [
   { label: '5+ Years', value: '5+ Years' },
 ]
 
+export const Category = [
+  { label: 'Select the Category', value: '' },
+  { label: 'Aws', value: 'Aws' },
+  { label: 'Data Science', value: 'Data Science' },
+  { label: 'Design', value: 'Design' },
+  // { label: 'Java', value: 'Java' },
+  { label: 'Marketing', value: 'Marketing' },
+  { label: 'Python', value: 'Python' },
+  { label: 'Web Development', value: 'Web Development' },
+]
+
+export const Lang = [
+  { label: 'Select the Language', value: '' },
+  { label: 'English', value: 'English' },
+  { label: 'French', value: 'French' },
+]
+
+
 
 
 export const ROLES_LIST = [

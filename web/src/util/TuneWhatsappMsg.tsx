@@ -18,9 +18,9 @@ export const getWhatsAppTemplates = async (
 
   if (templateA.length > 1) {
     console.log('check it ', templateA)
-    // data.id ==
+
     const x = templateA.filter((data) => {
-      // return data
+
       return data.scope === projectId
     })
     whatsAppTesting(x[0].template, receiverDetails, msgPayload)
@@ -89,7 +89,7 @@ export const whatsAppTesting = (editorState, receiverDetails, msgPayload) => {
     plainText = plainText.split(tag).join(formatMapping[tag])
   }
   console.log(plainText)
-  // sendWhatAppTextSms1(`${receiverPhNo}`, `${plainText}`)
+ 
 
   sendWhatAppTextSms1(`${'7760959579'}`, `${plainText}`)
 

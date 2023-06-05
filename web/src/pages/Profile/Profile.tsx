@@ -26,7 +26,7 @@ import ProfileHeaderPage from '../../components/profile/ProfileHeaderPage'
 
 const Profile = () => {
   function handleFileInputChange(event: ChangeEvent<HTMLInputElement>): void {
-    // Handle file input change here
+
   }
 
   function getRootProps(arg0: {
@@ -78,22 +78,23 @@ const Profile = () => {
   }
 
   return (
-    // <div style={{ backgroundColor: '#6fa5fc' }}>
-    <div style={{ backgroundColor: '#6fa5fc', height: '100vh' }}>
-      <ProfileHeaderPage />
+    <div>
       {/* <HeadNavBar /> */}
-      <div className="white-bg">
-        <div className="flex flex-col overflow-auto text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
-          {/* <HeadSideBar /> */}
-          {/* <ProfileHeader /> */}
-          <div className="flex flex-row relative ml-[18%]  w-full">
-            <div className="mb-10">
-              {/* <h1 className="text-5xl text-[#2B2A35] ">My Profile</h1> */}
-              {/* <p className="text-lg my-4">It’s awesome to have you with us.</p> */}
-              <div
-                style={{ overflow: 'hidden' }}
-                className="md:flex md:flex-row md:gap-x-8 w-full"
-              >
+
+      <div className="flex flex-row overflow-auto text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
+        <HeadSideBar />
+         <div className="flex flex-col relative ml-[10%] my-[5%] w-full">
+
+
+
+          <div className="mb-10">
+            <h1 className="text-5xl text-[#2B2A35] ">My Profile</h1>
+            <p className="text-lg my-4">It’s awesome to have you with us.</p>
+            <div style={{ overflow: 'hidden' }} className="md:flex md:flex-row md:gap-x-8 w-full">
+
+
+
+
                 <div className="flex flex-col">
                   <div
                     style={{ position: 'relative' }}
@@ -175,15 +176,14 @@ const Profile = () => {
                     ManageYourAccount
                   </h1>
 
-                  {/* <div className="border border-black rounded-lg p-2"> */}
-                  {/* <div className="flex-grow mt-[10%]" style={{}}> */}
-                  {/* <div className="flex-grow mt-[10%] flex flex-col items-center justify-center bg-white rounded-md"> */}
+                {/* <div className="border border-black rounded-lg p-2"> */}
+                {/* <div className="flex-grow mt-[10%]" style={{}}> */}
+                <div className="flex-grow mt-[10%] flex flex-col items-center justify-center bg-white rounded-md">
                   {/* <h1 className="text-lg font-bold text-gray-800">
                     ManageYourAccount
                   </h1> */}
-                  {/* <div className="border rounded-lg p-8"> */}
+                  <div className="border rounded-lg p-8">
                   {/* <label className="block border border-black rounded-lg p-2"> */}
-                  {/* <div style={{ border: '1px solid black' }}> */}
 
                   <div className="border border-black p-4 mx-auto max-w-md">
                     <ul className="space-y-1">
@@ -277,11 +277,9 @@ const Profile = () => {
                       </div>
                     </ul>
 
-                    <div className="mt-8">
-                      <h2 className="text-gray-600 font-medium mb-4">
-                        CONTACT
-                      </h2>
-                      {/* <p className="text-gray-800 mb-4">deepthi@ensarsolutions.com</p> */}
+               <div className="mt-8">
+                 <h2 className="text-gray-600 font-medium mb-4" style={{ borderBottomWidth: '2px',paddingBottom: '10px' }}>CONTACT</h2>
+                   {/* <p className="text-gray-800 mb-4">deepthi@ensarsolutions.com</p> */}
 
                       <div className="flex items-center">
                         <svg
@@ -301,11 +299,18 @@ const Profile = () => {
                         </p>
                       </div>
 
-                      {/* <h2 className="text-gray-600 font-medium mb-4" style={{ borderBottomWidth: '2px' }}>TEAMS</h2> */}
-                      <h2 className="text-gray-600 font-medium mb-4">TEAMS</h2>
 
-                      {/*
- <div className="flex items-center">
+
+
+
+              {/* <h2 className="text-gray-600 font-medium mb-4" style={{ borderBottomWidth: '2px' }}>TEAMS</h2> */}
+              <h2 className="text-gray-600 font-medium mb-4" style={{ borderBottomWidth: '2px', paddingBottom: '10px' }}>
+                TEAMS
+                </h2>
+
+
+
+{/* <div className="flex items-center">
    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" className="mr-2">
      <path fill="none" d="M0 0h24v24H0z" />
     <path d="M13 11v2h-2v-2H8v-2h3V7h2v2h3v2h-3zM3 3v18h18V3H3zm16 16H5V5h14v14z" />
@@ -346,26 +351,24 @@ const Profile = () => {
               </div>
             </div>
 
-            {/* <div className="flex flex-col gap- ml-[20%] flex-grow"> */}
+                {/* <div className="flex flex-col gap- ml-[20%] flex-grow"> */}
 
-            {/* <div className="flex flex-col gap-1 absolute top-0 left-0 right-0 mt-10 "> */}
-            {/* <div className="flex flex-col gap-3 absolute top-0 right-0 mt-10 mr-6"> */}
+      {/* <div className="flex flex-col gap-1 absolute top-0 left-0 right-0 mt-10 "> */}
+      {/* <div className="flex flex-col gap-3 absolute top-0 right-0 mt-10 mr-6"> */}
 
             {/* <div className="flex flex-col gap-3 absolute top-0 right-10 mt-10 mr-6" style={{right:"15rem"}}> */}
 
-            {/* <div className="flex flex-col gap-3 absolute top-0 left-0 mt-10 ml-1"> */}
+                {/* <div className="flex flex-col gap-3 absolute top-0 left-0 mt-10 ml-1"> */}
 
-            <div
-              className="flex flex-col gap-1 absolute top-0 left-10 right-10 mt-10 "
-              style={{
-                marginLeft: '300px',
-              }}
-            >
-              <PersonalDetails />
-              <CheckBox />
-               <Account />
+                {/* <div className="flex flex-col gap-1 absolute top-0 left-10 right-10 mt-10 "> */}
+                <PersonalDetails />
+                <CheckBox />
+                <Account />
+              </div>
             </div>
-            {/* </div> */}
+
+
+
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 import { Fragment, useState, useEffect } from 'react'
 
 import { XIcon } from '@heroicons/react/outline'
@@ -13,7 +13,7 @@ import HeadSideBar from '../../components/HeadSideBar/HeadSideBar'
 import CardItem from '../../components/leadsCard'
 import SiderForm from '../../components/SiderForm/SiderForm'
 
-// import BoardData from '../../components/board-data.json'
+
 const BoardData = [
   {
     name: 'New',
@@ -195,9 +195,7 @@ function createGuidId() {
 }
 const ExecutiveHomePage = () => {
   const [isImportLeadsOpen, setisImportLeadsOpen] = useState(false)
-  // const [selUserProfileF, setSelUserProfileF] = useState({})
 
-  // kanban board
   const [ready, setReady] = useState(true)
   const [boardData, setBoardData] = useState(BoardData)
   const [showForm, setShowForm] = useState(false)
@@ -205,9 +203,9 @@ const ExecutiveHomePage = () => {
   const [openUserProfile, setopenUserProfile] = useState(false)
   const [addLeadsTypes, setAddLeadsTypes] = useState('')
   useEffect(() => {
-    // if (process.browser) {
+
     setReady(true)
-    // }
+
   }, [])
 
   const selUserProfileF = (data, check) => {
@@ -232,7 +230,7 @@ const ExecutiveHomePage = () => {
 
   const onTextAreaKeyPress = (e) => {
     if (e.keyCode === 13) {
-      //Enter
+
       const val = e.target.value
       if (val.length === 0) {
         setShowForm(false)
@@ -275,9 +273,7 @@ const ExecutiveHomePage = () => {
               </div>
               <div className="flex">
                 <span className="inline-flex p-1 border bg-gray-200 rounded-md">
-                  {/* ${
-                    ready ? 'bg-white shadow' : ''
-                  } */}
+
                   <button
                     className={`px-2 py-1  rounded ${
                       ready ? 'bg-white shadow' : ''
@@ -524,9 +520,7 @@ const ExecutiveHomePage = () => {
                     </div>
                     <div className="border-b">
                       <div className="py-6 px-4 ">
-                        {/* <div className="font-md font-medium text-xs  text-gray-800">
-                            Notes
-                          </div> */}
+
                         <div className=" font-md font-medium text-sm   text-gray-800">
                           Notes
                         </div>
@@ -594,24 +588,7 @@ const ExecutiveHomePage = () => {
                             Released on January 13th, 2022
                           </time>
 
-                          {/* <a
-                            href="#"
-                            className="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                          >
-                            <svg
-                              className="mr-2 w-4 h-4"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z"
-                                clipRule="evenodd"
-                              ></path>
-                            </svg>{' '}
-                            Download ZIP
-                          </a> */}
+
                         </li>
                         <li className="mb-10 ml-6">
                           <span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
@@ -687,7 +664,7 @@ const ExecutiveHomePage = () => {
                 setisImportLeadsOpen={setisImportLeadsOpen}
                 fSetLeadsType={fSetLeadsType}
                 selUserProfileF={selUserProfileF}
-                // setSelUserProfileF={setSelUserProfileF}
+                
               />
             )}
           </div>

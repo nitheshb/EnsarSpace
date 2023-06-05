@@ -82,7 +82,7 @@ const SideVisitLeadsBody = ({
         coveredA
       } = await x
       console.log('proj details are', x)
-      // logData = x
+
       logData.Project = Project
       logData.Name = Name
       logData.id = Luid
@@ -112,20 +112,11 @@ const SideVisitLeadsBody = ({
 
       logData.Time = prettyDate(logData?.T).toLocaleString()
 
-      // logData = { ...x }
-      // console.log('dta is', logData)
+
 
       streamedTodo.push(logData)
       return logData
-      // updateLeadsLogWithProject(
-      //   orgId,
-      //   'snap',
-      //   {
-      //     LeadId: Luid,
-      //     pId: ProjectId,
-      //   },
-      //   (error) => []
-      // )
+
       setLeadsData(streamedTodo)
       console.log('use effect stuff', leadsLogsPayload)
     })
@@ -151,12 +142,7 @@ const SideVisitLeadsBody = ({
       <div className="grid  gap-8 grid-cols-1">
         <div className="flex flex-col m-4">
           <div className="flex flex-col mt-2 rounded-lg bg-white border border-gray-100 p-4 ">
-            {/* <CustomRadioGroup
-              label="Type"
-              value={selected}
-              options={projectPlans}
-              onChange={setSelected}
-            /> */}
+            
 
             <table className="min-w-full text-center mt-6">
               <thead className="border-b">

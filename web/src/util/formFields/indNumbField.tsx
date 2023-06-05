@@ -26,11 +26,7 @@ export const IndNoField = ({
         thousandsGroupStyle="lakh"
         prefix=""
       />
-      {/* <ErrorMessage
-        component="div"
-        name={name}
-        className="error-message text-red-700 text-xs px-2"
-      /> */}
+      
     </div>
   )
 }

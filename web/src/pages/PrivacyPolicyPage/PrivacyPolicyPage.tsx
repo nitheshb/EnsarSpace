@@ -11,15 +11,7 @@ const PrivacyPolicyPage = () => {
         <HeadNavBar />
       </div>
 
-      {/* <h1>PrivacyPolicyPage</h1>
-      <p>
-        Find me in{' '}
-        <code>./web/src/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx</code>
-      </p>
-      <p>
-        My default route is named <code>privacyPolicy</code>, link to me with `
-        <Link to={routes.privacyPolicy()}>PrivacyPolicy</Link>`
-      </p> */}
+      
       <div className="row mt-10">
         <div className="mx-40">
           <div className="intro-content no-padding">
