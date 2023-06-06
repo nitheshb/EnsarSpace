@@ -1,5 +1,5 @@
 import { relative } from 'path';
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 const ProfileHeaderPage = () => {
   const handleImageUpload = (event) => {
@@ -7,6 +7,10 @@ const ProfileHeaderPage = () => {
   };
 
   function handleFileInputChange(event: ChangeEvent<HTMLInputElement>): void {
+    throw new Error('Function not implemented.');
+  }
+
+  function handleImageClick(): void {
     throw new Error('Function not implemented.');
   }
 
@@ -87,7 +91,7 @@ const ProfileHeaderPage = () => {
                 </svg> */}
               </label>
               <span className="text-white text-4xl font-bold">
-                DR
+               DR
               </span>
 
             </div>
