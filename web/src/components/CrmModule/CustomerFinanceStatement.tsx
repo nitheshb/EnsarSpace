@@ -53,7 +53,8 @@ const CrmUnitPsHome = ({
                   onClick={() => setFinanceMode(d.val)}
                 >
                   {`${d.lab} `}
-
+                  {/* <span className="bg-gray-100 px-2 py-1 rounded-full">
+                {/* {rowsCounter(leadsFetchedData, d.val).length} */}
                 </button>
               </li>
             )
@@ -144,7 +145,8 @@ const CrmUnitPsHome = ({
       {financeMode === 'schedule' && (
         <>
           <PDFExport paperSize="A4" margin="1cm" ref={pdfPaymentScheduleComp}>
-           
+            {/* 1 } customer details */}
+            {/* Unit details */}
             {showHeader && (
               <>
                 <CrmUnitHeader projectDetails={selCustomerPayload} />

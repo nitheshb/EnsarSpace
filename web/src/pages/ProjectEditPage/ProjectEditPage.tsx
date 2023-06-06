@@ -51,9 +51,9 @@ const ProjectEditPage = ({selModule, setSelModule,viewable, setViewable, }) => {
   return (
     <>
       <div className="flex w-screen h-screen text-gray-700">
-
+        {/* <HeadSideBar /> */}
         <div className="flex flex-col flex-grow">
-
+          {/* <HeadNavBar /> */}
           <div className="flex overflow-y-hidden flex-row overflow-auto h-[100vh]  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
 
              <SlimSideMenuBar
@@ -71,7 +71,7 @@ const ProjectEditPage = ({selModule, setSelModule,viewable, setViewable, }) => {
               setSelModule={""}
             />
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">
-             
+              {/* <h1 className="text-lg font-medium">redefine.</h1> */}
               <span className="relative  flex items-center w-auto text-xl  leading-none pl-0">
                 Project Details
               </span>

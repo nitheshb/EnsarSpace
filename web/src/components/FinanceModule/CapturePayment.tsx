@@ -74,9 +74,23 @@ const CaptureUnitPayment = ({
   }, [])
 
   const onSubmit = async (data, resetForm) => {
+    // get booking details, leadId, unitDetails,
+    //  from existing object send values of
+    //  booking
+    // copy unit data as it is
+    // copy lead data as it is
+    //  unit details
 
+    // 1)Make an entry to finance Table {source: ''}
+    // 2)Create new record in Customer Table
+    // 3)Update unit record with customer record and mark it as booked
+    // 4)update lead status to book
+
+    //   const x = await addDoc(collection(db, 'spark_leads'), data)
+    // await console.log('x value is', x, x.id)
 
     const { uid } = selUnitDetails
+    // 1)Make an entry to finance Table {source: ''}
 
     const x1 = await addPaymentReceivedEntry(
       orgId,
@@ -88,7 +102,13 @@ const CaptureUnitPayment = ({
       enqueueSnackbar
     )
 
+    // add phaseNo , projName to selUnitDetails
+    // 2)Create('')
 
+    // 3)Update unit record with customer record and mark it as booked
+
+    // 4)update lead status to book
+    // updateLeadStatus(leadDocId, newStatus)
   }
 
   const initialState = {
@@ -103,7 +123,13 @@ const CaptureUnitPayment = ({
   }
 
   const validateSchema = Yup.object({
-
+    // date: Yup.string().required('Bank Required'),
+    // amount: Yup.string().required('Required'),
+    // payto: Yup.string().required('Required'),
+    // mode: Yup.string().required('Bank Required'),
+    // drawnonbank: Yup.string().required('Required'),
+    // chequeno: Yup.string().required('Required'),
+    // dated: Yup.string().required('Required'),
   })
 
   const submitFormFun = (formik) => {
@@ -113,7 +139,9 @@ const CaptureUnitPayment = ({
   return (
     <div className="">
       <div className="">
-
+        {/* <Dialog.Title className=" font-semibold text-xl mr-auto ml-3 text-[#053219]">
+          {title}
+        </Dialog.Title> */}
       </div>
 
       <div className="grid gap-8 grid-cols-1">
@@ -130,7 +158,7 @@ const CaptureUnitPayment = ({
               {(formik) => (
                 <Form>
                   <div className="form">
-
+                    {/* Phase Details */}
 
                     <section className="  bg-blueGray-50">
                       <div className="w-full mx-auto ">
@@ -196,7 +224,13 @@ const CaptureUnitPayment = ({
                                   </div>
                                 </div>
                                 <div className="w-full lg:w-6/12 px-4">
-                                 
+                                  {/* <div className="relative w-full mb-3">
+                                    <TextField2
+                                      label="Mode"
+                                      name="mode"
+                                      type="text"
+                                    />
+                                  </div> */}
                                   <div className="relative w-full mb-3">
                                     <TextField2
                                       label="Amount"

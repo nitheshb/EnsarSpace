@@ -1,3 +1,4 @@
+ HL-17-Access_management
 import React, { useState } from 'react'
 
 const PersonalDetails = () => {
@@ -12,14 +13,20 @@ const PersonalDetails = () => {
       className=" flex flex-col  md:px-8  rounded-md"
       style={{
         width: '600px',
-        // height: '200px'
       }}
     >
       <div className="w-full  flex flex-row py-4 items-center ">
+import React from 'react'
+
+const PersonalDetails = () => {
+  return (
+    <section className="md:w-[30vw] flex flex-col  md:px-8  rounded-md bg-gray-100">
+      <div className="w-full  border-b-2 flex flex-row py-4 items-center justify-between">
+ Development_dev
         {' '}
         <span>
-          <p className="text-[20px] font-medium text-gray-900">Worked On</p>{' '}
-          <p className="text-[10px] text-gray-500">
+          <p className="text-sm font-medium text-gray-900">Worked On</p>{' '}
+          <p className=" text-sm text-gray-500">
             Others will only see what they can access.
           </p>
         </span>
@@ -28,8 +35,8 @@ const PersonalDetails = () => {
         </button> */}
       </div>
       <div>
-        <div className="border-black rounded-xl border w-full">
-          {/* <span className="flex">
+        <div className="border-[#2499EF] rounded-xl border w-full">
+          <span className="flex">
             <svg
               style={{
                 width: '50px',
@@ -48,7 +55,7 @@ const PersonalDetails = () => {
             <p className=" h-10 w-full  hover:bg-blue-300 rounded-xl pl-2 pt-2 ">
               Programming Foundations
             </p>
-          </span> */}
+          </span>
           <span className="flex">
             <svg
               style={{
@@ -64,11 +71,11 @@ const PersonalDetails = () => {
                 fill="#7248EA"
               />
             </svg>
-            <p className=" h-10 w-full hover:bg-blue-300 rounded-xl pl-2 pt-2">
+            <p className=" h-10 w-full  hover:bg-blue-300 rounded-xl pl-2 pt-2 ">
               Web Applications
             </p>
           </span>
-          {/* <span className="flex">
+          <span className="flex">
             <svg
               style={{
                 width: '50px',
@@ -86,7 +93,7 @@ const PersonalDetails = () => {
             <p className=" h-10 w-full  hover:bg-blue-300 rounded-xl pl-2 pt-2">
               Introduction to Database
             </p>
-          </span> */}
+          </span>
           <span className="flex">
             <svg
               style={{
@@ -137,14 +144,18 @@ const PersonalDetails = () => {
           </div>
         </div>
       </div>
+ HL-17-Access_management
 
       {/* <form className="flex flex-col my-4 ">
+
+      <form className="flex flex-col my-4 ">
+ Development_dev
         <label className="text-[12px] text-left mt-6 text-gray-700 ">
           Full Name
         </label>
         <input
           className=" bg-transparent focus:outline-none  border-b-2 "
-          placeholder=" Enter your full name "
+          placeholder=" John Doe "
           type="text"
         />
         <label className="text-[12px] text-left mt-6 text-gray-700 ">
@@ -152,7 +163,7 @@ const PersonalDetails = () => {
         </label>
         <input
           className=" bg-transparent focus:outline-none  border-b-2 "
-          placeholder=" Enter your country "
+          placeholder=" India "
           type="text"
         />
       </form> */}

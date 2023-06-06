@@ -1,4 +1,6 @@
-
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { EyeIcon, PencilIcon } from '@heroicons/react/outline'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
@@ -7,13 +9,18 @@ import { TrashIcon } from '@heroicons/react/outline'
 import StyledButton from 'src/components/RoundedButton'
 import { useAuth } from 'src/context/firebase-auth-context'
 
-const geTable = ({ editEmployeeFun }) => {
+const UserManageTable = ({ editEmployeeFun }) => {
   const { user } = useAuth()
 
   const { orgId } = user
   const [leadsFetchedData, setLeadsFetchedData] = useState([])
   const [filterData, setFilterData] = useState([])
   const [selDept, setSelDept] = useState('')
+  const [selRole, setSelRole] = useState([]);
+
+  const showOnlyRole = (role) => {
+    setSelRole(role);
+  };
   useEffect(() => {
     getLeadsDataFun()
     setSelDept('all')
@@ -58,6 +65,7 @@ const geTable = ({ editEmployeeFun }) => {
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <section className="flex ml-auto mt-[18px]  bg-white  border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10">
             {[
+<<<<<<< HEAD
 
               { label: 'All', val: 'All' },
               { label: 'Admin', val: 'admin' },
@@ -69,11 +77,15 @@ const geTable = ({ editEmployeeFun }) => {
               { label: 'IT Desk', val: 'it desk' },
               { label: 'HR', val: 'hr' },
               { label: 'Finance', val: 'finance' },
-              { label: 'Project', val: 'project' },
-              { label: 'Sales', val: 'sales' },
-              { label: 'Learning', val: 'learning' },
+=======
+              { label: 'All', val: 'all' },
               { label: 'Admin', val: 'admin' },
-
+              { label: 'Crm', val: 'crm' },
+              { label: 'Legal', val: 'legal' },
+>>>>>>> 05cbc5c3e7e31c13ff6c60d80de881750ea415a4
+              { label: 'Project', val: 'project' },
+              { label: 'Legal', val: 'legal' },
+              { label: 'Sales', val: 'sales' },
             ].map((dat, index) => (
               <a
                 key={index}
@@ -81,20 +93,26 @@ const geTable = ({ editEmployeeFun }) => {
                 onClick={() => showOnlyDept(dat.val)}
               >
                 <div
+<<<<<<< HEAD
 
                   className={`py-2 px-8 rounded-full hover:text-indigo-700 hover:bg-indigo-100  ${selDept.includes(dat.val)
 
                   
 
+=======
+                  className={`py-2 px-8 rounded-full hover:text-indigo-700 hover:bg-indigo-100  ${
+                    selDept.includes(dat.val)
+>>>>>>> 05cbc5c3e7e31c13ff6c60d80de881750ea415a4
                       ? 'bg-indigo-100 text-indigo-700'
                       : 'text-gray-600'
-                    }`}
+                  }`}
                 >
                   {dat.label}
                 </div>
               </a>
             ))}
           </section>
+          
           <div className="shadow overflow-hidden border-b border-gray-200  bg-white pb-4 md:py-7 px-4 md:px-8 xl:px-10">
             <table className="min-w-full divide-y divide-gray-200 ">
               <thead className="bg-gray-50">
@@ -103,7 +121,7 @@ const geTable = ({ editEmployeeFun }) => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                      Name
+                    Name
                   </th>
                   <th
                     scope="col"
@@ -138,24 +156,24 @@ const geTable = ({ editEmployeeFun }) => {
                 {filterData.map((person) => (
                   <motion.tr key={person.email}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                       <div className="flex items-center">
-                        {/* <div className="flex-shrink-0 h-10 w-10"> */}
-                          {/* <img
+                      <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                          <img
                             className="h-10 w-10 rounded-full"
                             src={
                               'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60'
                             }
                             alt=""
-                          /> */}
-                          {/* <button className="relative ml-2 text-sm focus:outline-none group items-center justify-center h-10 text-sm font-medium">
-                          <div className="flex items-center justify-between w-10 h-10 rounded-full bg-gray-300">
-                          <span className="text-gray-800 text-lg">{name.charAt(0)}</span>
+                          />
+                        </div>
+                        <div className="ml-4">
+                          <div className="text-sm font-medium text-gray-900">
+                            {person.name}
                           </div>
-                         </button> */}
-
-                          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-300 text-gray-800 text-lg mr-4">
-                            {person.name.charAt(0)}
+                          <div className="text-sm text-gray-500">
+                            {person.email}
                           </div>
+<<<<<<< HEAD
                           <div>
                             <div className="text-sm font-medium text-gray-900">
                               {person.name}
@@ -165,6 +183,9 @@ const geTable = ({ editEmployeeFun }) => {
                             </div>
                           </div>
 
+=======
+                        </div>
+>>>>>>> 05cbc5c3e7e31c13ff6c60d80de881750ea415a4
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -218,4 +239,4 @@ const geTable = ({ editEmployeeFun }) => {
   )
 }
 
-export default geTable
+export default UserManageTable

@@ -3,11 +3,75 @@ import { Link, useParams } from '@redwoodjs/router'
 import StarRating from 'src/components/A_LearningModule/StarRatings'
 import { MdInfo } from 'react-icons/md'
 import { TbWorld } from 'react-icons/tb'
-import { FaBars } from 'react-icons/fa'
+import { FaBars, FaShoppingCart } from 'react-icons/fa'
 import { RiClosedCaptioningFill } from 'react-icons/ri'
 import { BiCheck } from 'react-icons/bi'
 import { courses } from 'src/constants/courses'
 import styled from 'styled-components'
+
+
+//   {
+//     id: 'xMHCZl',
+//     category: 'python',
+//     image: 'learning_images/python_5.jpg',
+//     course_name: 'Learn Python: The Complete Python Programming Course',
+//     description:
+//       'Learn A-Z everything about Python, from the basics, to advanced topics like Python GUI, Python Data Analysis, and more!',
+//     rating_count: 3059,
+//     rating_star: 4.4,
+//     students: 18430,
+//     creator: 'Avinash Jain, The Codex',
+//     updated_date: '9/2015',
+//     lang: 'english',
+//     actual_price: 84.99,
+//     discounted_price: 9.99,
+//     what_you_will_learn: [
+//       'Create their own Python Programs',
+//       'Become an experienced Python Programmer',
+//       'Parse the Web and Create their own Games',
+//     ],
+//     content: [
+//       'Up and Running With Python',
+//       'The Basics(Data Types)',
+//       'Conditions and Loops',
+//       'Functions!',
+//       'Classes! (Object Oriented Programming)',
+//       'File Input/Output',
+//       'Using Python Modules',
+//     ],
+//   },
+//   {
+//     id: 'dtfo9e',
+//     category: 'python',
+//     image: 'learning_images/python_4.jpg',
+//     course_name: 'Learning Python for Data Analysis and Visualization',
+//     description:
+//       'Learn python and how to use it to analyze,visualize and present data. Includes tons of sample code and hours of video!',
+//     rating_count: 3059,
+//     rating_star: 4.3,
+//     students: 184053,
+//     creator: 'Jose Portilla',
+//     updated_date: '9/2019',
+//     lang: 'english',
+//     actual_price: 84.99,
+//     discounted_price: 9.99,
+//     what_you_will_learn: [
+//       'Have an intermediate skill level of Python programming.',
+//       'Use the numpy library to create and manipulate arrays.',
+//       'Learn how to work with various data formats within python, including: JSON,HTML, and MS Excel Worksheets.',
+//       'Have a portfolio of various data analysis projects.',
+//     ],
+//     content: [
+//       'Intro to Course and Python',
+//       'Learning Numpy',
+//       'Data Visualization',
+//       'Example Projects',
+//       'Machine Learning',
+//       'SQL and Python',
+//       'Web Scraping with Python',
+//     ],
+//   },
+// ];
 
 const CoursedetailsPage = () => {
   const { id } = useParams()
@@ -43,7 +107,7 @@ const CoursedetailsPage = () => {
 
       <div>
 
-
+        
 
         <div key={course.id}>
           <div style={{ backgroundColor: 'black', color: 'white' }}>
