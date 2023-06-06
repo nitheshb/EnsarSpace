@@ -43,8 +43,6 @@ import Loader from '../Loader/Loader'
 HL - 37 - Create - a - leave - form
 Development_dev
 
-// import Select from 'react-select'
-// import SelectSearch from 'react-select-search'
 
 const SUserSignupBody = ({ title, dialogOpen, empData }) => {
   const { register, user } = useAuth()
@@ -84,24 +82,9 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
     if (department) {
       x['value'] = department[0]
       changed(x)
-      // seteditMode(true)
     }
   }, [empData])
 
-  // const cityList = [
-  //   { label: 'Bangalore,KA', value: 'Bangalore,KA' },
-  //   { label: 'Cochin,KL', value: 'Cochin,KL' },
-  //   { label: 'Mumbai,MH', value: 'Mumbai,MH' },
-  // ]
-
-  // const plans = []
-  // const [selected, setSelected] = useState(plans[1])
-
-  // const typeSel = async (sel) => {
-  //   await console.log('value is', selected)
-  //   await setSelected(sel)
-  //   await console.log('thsi si sel type', sel, selected)
-  // }
 
   const changed = async (data) => {
     console.log('i was changed', data, data)
@@ -132,7 +115,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         perPh,
         'nitheshreddy.email@gmail.com'
       )
-      //  add docs to report page
 
       setLoading(false)
       addUserLog(orgId, {
@@ -152,7 +134,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         empId: empId,
         email: email,
         name: name,
-        password: 'redefine@123',
+        password: 'Ensar@123',
         dept: deptVal,
         role: myRole,
         access: accessVal,
@@ -164,24 +146,23 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         perPh: perPh,
       }
 
-      //       Invalid Arguments {\"empId\":\"102\",\"uid\":\"71wQrhV54oeWxn5Ha9E8pm93XID3\",\"email\":\"nitheshreddy.email@gmail.com\",\"offPh\":\"\",\"perPh\":\"\",\"userStatus\":\"active\",\"orgStatus\":\"active\",\"orgId\":\"spark\",\"department\":[\"admin\"],\"roles\":[\"admin\"],\"name\":\"nitheshreddy\"}"
-      // payload: "{\"code\":\"invalid-argument\",\"name\":\"FirebaseError\"}"
-
       const config = {
         method: 'post',
-        url: 'https://asia-south1-redefine-erp.cloudfunctions.net/erpAddUser',
+
+        url: 'https://ensarspace-usersignup.azurewebsites.net/api/usersignup',
+
         headers: {
           'Content-Type': 'text/plain',
         },
         data,
       }
-      // url: 'https://redefine-functions.azurewebsites.net/api/Redefine_addUser?code=Ojuk8KF6kkxJMoOF4/XZf2kh8WHN5aMtOMlv0bbveJYZrCbRU1C9CA==',
       axios(config)
         .then(async function (response) {
           if (response.data) {
             setLoading(false)
+            const { success, msg, payload, uId } = await response['data']
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { success, msg, payload } = await response['data']
+           
             // const { id } = payload
             console.log('user payload is ', response)
 
@@ -191,12 +172,12 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                 email
               )
 
-              console.log('docDetailsIs', docDetailsIs, docDetailsIs[0]['uid'])
+              // console.log('docDetailsIs', docDetailsIs, docDetailsIs[0]['uid'])
               updateUserRole(
                 empId,
                 orgName,
                 orgId,
-                docDetailsIs[0]['uid'],
+                uId,
                 deptVal,
                 myRole,
                 email,
@@ -208,7 +189,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                 name,
                 empId,
                 email,
-                uid: docDetailsIs[0]['uid'],
+                uid: uId,
                 userStatus: 'active',
                 orgStatus: 'active',
               }
@@ -226,7 +207,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
             setFormMessage({
               color: success ? 'green' : 'red',
               message: success
-                ? `Email ${email} is added with password redefine@123`
+                ? `Email ${email} is added with password Ensar@123`
                 : `${email} already in Use`,
             })
           }
@@ -245,37 +226,18 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
   const validate = Yup.object({
-    // empId: Yup.number()
-    //   .positive()
-    //   .min(3, 'Must be atleast 3 digits')
-    //   .max(15, 'Must be 8 characters or less')
-    //   .required('Required'),
+
     name: Yup.string()
       .max(15, 'Must be 15 characters or less')
       .required('Required'),
-    // lastName: Yup.string()
-    //   .max(20, 'Must be 20 characters or less')
-    //   .required('Required'),
+
     email: Yup.string().email('Email is invalid').required('Email is required'),
-    // password: Yup.string()
-    //   .min(6, 'Password must be at least 6 charaters')
-    //   .required('Password is required'),
-    // confirmPassword: Yup.string()
-    //   .oneOf([Yup.ref('password'), null], 'Password must match')
-    //   .required('Confirm password is required'),
-    // offPh: Yup.string()
-    //   .matches(phoneRegExp, 'Phone number is not valid')
-    //   .min(10, 'to short')
-    //   .max(10, 'to long'),
-    // perPh: Yup.string()
-    //   .matches(phoneRegExp, 'Phone number is not valid')
-    //   .min(10, 'to short')
-    //   .max(10, 'to long'),
+
     deptVal: Yup.string()
-      // .oneOf(['Admin', 'CRM'], 'Required Dept')
+
       .required('Req Dept'),
     myRole: Yup.string()
-      //  .oneOf(['Admin', 'CRM'], 'DEPT IS REQ')
+
       .required('Required Role'),
   })
   return (
@@ -348,12 +310,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     formik.setFieldValue('offPh', value.value)
                   }}
                 />
-                {/* <TextField
-                  label="Personal Phone Number*"
-                  name="perPh"
-                  type="text"
-                  disabled={editMode}
-                /> */}
                 <PhoneNoField
                   name="perPh"
                   label="Personal Phone Number*"
@@ -491,38 +447,6 @@ HL-17-Access_management
         </Formik>
       </div>
 
-      {/* <div className="grid gap-8 grid-cols-1 mx-10">
-        <div className="flex flex-col ">
-
-          <div className="mt-0">
-            <Form
-              formMethods={formMethods}
-              onSubmit={onSubmit}
-              className="mt-8"
-            >
-              <div className="form">
-                <div className="md:flex flex-row md:space-x-4 w-full text-xs">
-                  <div className="mb-3 space-y-2 w-full text-xs">
-                    <Label
-                      name="User Name* "
-                      className="label font-regular text-sm"
-                      errorClassName="label font-regular text-sm"
-                    />
-                    <InputField
-                      name="name"
-                      placeholder="User Name"
-                      className="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                      validation={{ required: true }}
-                    />
-                    <FieldError
-                      name="name"
-                      className="error-message text-red-700 text-xs px-2"
-                    />
-                  </div>
-<<<<<<< HEAD
-=======
- HL-17-Access_management
->>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
 
                   <div className="mb-3 space-y-2 w-full text-xs">
                     <Label
@@ -764,7 +688,6 @@ HL-17-Access_management
                     />
                   </div>
                 </div>
-Development_dev
 
                 <div className="md:flex md:flex-row md:space-x-4 w-full text-xs">
                   <div className="w-full flex flex-col mb-3">
@@ -993,6 +916,7 @@ Development_dev
           </div>
         </div>
       </div> */}
+
     </div>
   )
 }
