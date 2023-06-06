@@ -205,6 +205,8 @@ const OnBoarding = ({ leadsTyper }) => {
                                   Windows
                                 </span>
 
+
+
                           </section>
                         </div>
                       </div>
