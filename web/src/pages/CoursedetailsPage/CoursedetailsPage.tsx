@@ -1,12 +1,11 @@
 import React from 'react'
 import { Link, useParams } from '@redwoodjs/router'
 import StarRating from 'src/components/A_LearningModule/StarRatings'
-// import { MdInfo } from 'react-icons/md'
-// import { MdInfo } from 'react-icons/md';
-// import { TbWorld } from 'react-icons/tb'
-// import { FaBars, FaShoppingCart } from 'react-icons/fa'
-// import { RiClosedCaptioningFill } from 'react-icons/ri'
-// import { BiCheck } from 'react-icons/bi'
+import { MdInfo } from 'react-icons/md'
+import { TbWorld } from 'react-icons/tb'
+import { FaBars, FaShoppingCart } from 'react-icons/fa'
+import { RiClosedCaptioningFill } from 'react-icons/ri'
+import { BiCheck } from 'react-icons/bi'
 // import { courses } from 'src/components/A_LearningModule/CoursesList'
 import { courses } from 'src/constants/courses'
 
