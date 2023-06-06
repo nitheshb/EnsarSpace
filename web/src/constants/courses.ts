@@ -8,6 +8,7 @@ export const courses = [
     description:
       'Learn A-Z everything about Python, from the basics, to advanced topics like Python GUI, Python Data Analysis, and more!',
 
+      
     rating_count: 3059,
     rating_star: 4.4,
     students: 18430,
@@ -121,7 +122,7 @@ export const courses = [
     ],
 
 
-    
+
     content: [
       'Getting Started',
       'The Basics',
