@@ -121,7 +121,7 @@ export const courses = [
     ],
 
 
-    
+
     content: [
       'Getting Started',
       'The Basics',
