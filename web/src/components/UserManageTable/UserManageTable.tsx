@@ -58,7 +58,7 @@ const geTable = ({ editEmployeeFun }) => {
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <section className="flex ml-auto mt-[18px]  bg-white  border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10">
             {[
- HL-20-DisplayUserProfilePicture
+
               { label: 'All', val: 'All' },
               { label: 'Admin', val: 'admin' },
               { label: 'Crm', val: 'crm' },
@@ -69,7 +69,6 @@ const geTable = ({ editEmployeeFun }) => {
               { label: 'IT Desk', val: 'it desk' },
               { label: 'HR', val: 'hr' },
               { label: 'Finance', val: 'finance' },
-Development_dev
               { label: 'Project', val: 'project' },
               { label: 'Sales', val: 'sales' },
               { label: 'Learning', val: 'learning' },
@@ -82,12 +81,11 @@ Development_dev
                 onClick={() => showOnlyDept(dat.val)}
               >
                 <div
- HL-20-DisplayUserProfilePicture
+
                   className={`py-2 px-8 rounded-full hover:text-indigo-700 hover:bg-indigo-100  ${selDept.includes(dat.val)
 
-                  className={`py-2 px-6 rounded-full hover:text-indigo-700 hover:bg-indigo-100  ${
-                    selDept.includes(dat.val)
- Development_dev
+                  
+
                       ? 'bg-indigo-100 text-indigo-700'
                       : 'text-gray-600'
                     }`}
@@ -166,7 +164,7 @@ Development_dev
                               {person.email}
                             </div>
                           </div>
-                       
+
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

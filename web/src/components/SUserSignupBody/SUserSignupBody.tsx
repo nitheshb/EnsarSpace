@@ -397,7 +397,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     type="submit"
                     disabled={loading}
                   >
-                    {loading && <Loader />}
+                    {loading && <Loader texColor={undefined} size={undefined} />}
                     {editMode ? 'Edit Employee' : 'Add Employee'}
                   </button>
                 </div>

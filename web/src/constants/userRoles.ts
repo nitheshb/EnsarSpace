@@ -92,7 +92,7 @@ export const USER_ROLES = {
   ADMIN: 'admin',
 }
 
- HL-20-DisplayUserProfilePicture
+
 export const COURSE_LIST = [
   { label: 'Select the Course', value: '' },
   { label: 'Python', value: 'Python' },
@@ -101,16 +101,6 @@ export const COURSE_LIST = [
   { label: 'AWS', value: 'AWS' },
   { label: 'Java', value: 'Java' },
 
-export const DEPARTMENT_LIST = [
-  { label: 'Select the Department', value: '' },
-  { label: 'IT Employee', value: 'it_employee' },
-  { label: 'IT Desk', value: 'it_desk' },
-  { label: 'HR', value: 'hr' },
-  { label: 'Finance', value: 'finance' },
-  { label: 'Project', value: 'project' },
-  { label: 'Sales', value: 'sales' },
-  { label: 'Learning', value: 'learning' },
-  { label: 'Admin', value: 'admin' },
 ]
 
 
@@ -133,7 +123,7 @@ export const EXPERIENCE_LIST = [
   { label: '2 - 3 Years', value: '2-3_Y' },
   { label: '3 - 4 Years', value: '3-4_Y' },
   { label: '5+ Years', value: '5+ Y' },
- Development_dev
+
 ]
  export const DEPARTMENT_LIST = [
 
