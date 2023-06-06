@@ -1,7 +1,5 @@
 import { Fragment, useState } from 'react'
-
 import { MetaTags } from '@redwoodjs/web'
-
 import SlimSideMenuBar from 'src/components/A_SideMenu/slimSideMenu'
 // import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
 import HeadNavBar2 from 'src/components/HeadNavBar/HeadNavBar2'
@@ -14,11 +12,15 @@ import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 
 
+
 import Timeoff from 'src/components/TableComp/Timeoff'
 
 import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
  
-=======
+
+// import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
+import TimeOffTable from 'src/components/TableComp/TimeOffTable'
+
  HL-17-Access_management
 import TableData from 'src/components/Access/TableData'
 
@@ -57,13 +59,13 @@ const UsersAdminPage = () => {
 
         <div className="flex flex-col flex-grow">
           {/* <HeadNavBar /> */}
- HL-17-Access_management
+ 
           <HeadNavBar2
             selModule={selModule}
             setSelModule={setSelModule}
           />
 
- Development_dev
+ 
           <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">
@@ -122,6 +124,7 @@ const UsersAdminPage = () => {
               )}
             </div>
 
+
             {viewable === 'User Management' && (
               <UserManageTable editEmployeeFun={editEmployeeFun} />
             )}
@@ -138,9 +141,9 @@ const UsersAdminPage = () => {
               </>
             )}
 
-            {viewable === 'Time off' && (
+            {viewable === 'Time Off' && (
               <>
-                <Timeoff />
+                <TimeOffTable />
               </>
             )}
 
@@ -150,9 +153,22 @@ const UsersAdminPage = () => {
               </>
             )}
 
+            {viewable === 'Time off' && (
+            <>
+            <UserAccessTable />
+            </>
+            )}
+
             {viewable === 'Team Activity' && (
               <>
                 <MyActivityHome source={'team'} />
+              </>
+            )}
+            {viewable === 'Pay Slips' && (
+
+              <>
+
+
               </>
             )}
 
@@ -170,6 +186,9 @@ const UsersAdminPage = () => {
               />
             )}
 
+            {viewable === 'User Report' && (
+
+
  HL-17-Access_management
             {viewable === 'User Report' && (
               // <ReportMain/>
@@ -186,7 +205,6 @@ const UsersAdminPage = () => {
             )}
 
 
- Development_dev
             <SUserSignup
               open={isOpen}
               setOpen={handleOnClose}
@@ -195,7 +213,7 @@ const UsersAdminPage = () => {
             />
           </div>
         </div>
-      </div>
+      </div >
     </>
   )
 }

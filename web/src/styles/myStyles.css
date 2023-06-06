@@ -23,6 +23,8 @@
   top: 0;
 
 }
+
+
 .blockHead {
 
   width: '100%';
@@ -38,7 +40,7 @@
   background-color: #4D81BF;
 
   overflow: 'hidden';
-   white-space: 'nowrap';
+  white-space: 'nowrap';
   /*width: 150px; */
   height: 40px;
 
@@ -49,6 +51,8 @@
   position: relative;
 
 }
+
+
 .blocktext {
 
   color: white;
@@ -62,6 +66,8 @@
   font-size: 11;
 
 }
+
+
 /* loader section */
 
 .skeleton {
@@ -71,7 +77,6 @@
   animation: skeleton-loading 1s linear infinite alternate;
 
 }
-
 
 
 
@@ -86,6 +91,8 @@
   border-radius: .125rem;
 
 }
+
+
 .skeleton-text-md {
 
   width: 50%;
@@ -97,6 +104,8 @@
   border-radius: .125rem;
 
 }
+
+
 .skeleton-text-xs {
 
   width: 30%;
@@ -108,6 +117,8 @@
   border-radius: .125rem;
 
 }
+
+
 .skeleton-text-xss {
 
   width: 20%;
@@ -121,8 +132,6 @@
 }
 
 
-
-
 .skeleton-text:last-child {
 
   margin-bottom: 0;
@@ -130,7 +139,6 @@
   width: 80%;
 
 }
-
 
 
 
@@ -144,7 +152,6 @@
 
 
 
-
   100% {
 
     background-color: hsl(200, 20%, 95%);
@@ -152,6 +159,8 @@
   }
 
 }
+
+
 .card {
 
   background-color: white;
@@ -166,7 +175,6 @@
 
 
 
-
 .header {
 
   margin-bottom: 4px;
@@ -176,8 +184,6 @@
   align-items: center;
 
 }
-
-
 
 
 .header-img {
@@ -195,7 +201,6 @@
   flex-shrink: 0;
 
 }
-
 
 
 
@@ -218,18 +223,23 @@
   flex-grow: 1;
 
 }
+
+
 .react-datepicker-popper {
 
   z-index: 10
 
 }
-.react-datepicker__input-container{
+
+
+.react-datepicker__input-container {
   min-width: 170px;
 
 }
 
 
-.borderLeft{
+
+.borderLeft {
   border-left: #0000;
 
   border-left-width: 2px;
@@ -237,7 +247,6 @@
   border-left-style: solid;
 
 }
-
 
 
 
@@ -253,7 +262,9 @@
     white-space: normal;
     color:#1d2438
 }
-.subText{
+
+
+.subText {
   font-family: 'Montserrat', sans-serif;
 
   font-size: 12px;
@@ -273,8 +284,6 @@
 }
 
 
-
-
 .whiteSmallText {
     font-size: 12px;
     font-weight: 600;
@@ -283,6 +292,8 @@
     text-transform: none;
     white-space: normal;
 }
+
+
 .css-17tn7gx {
 
   font-family: 'Montserrat', sans-serif;
@@ -304,6 +315,8 @@
   white-space: normal;
 
 }
+
+
 .headTxt1 {
 
   font-family: 'Montserrat', sans-serif;
@@ -326,9 +339,6 @@
 
 }
 
-
-
-
 .css-5mn5yy {
   font-family: 'Montserrat', sans-serif;
   margin-bottom: 0px;
@@ -339,6 +349,21 @@
   text-transform: none;
   white-space: normal;
 }
+
+
+.css-6mn6yy {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: -28px;
+  margin-top: -20px;
+  margin-left: -3px;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 3.5;
+  text-transform: none;
+  white-space: normal;
+}
+
+
 .css-1lpgd8m {
 
   font-family: 'Montserrat', sans-serif;
@@ -346,13 +371,16 @@
   font-size: 12px;
 
   font-weight: 600;
-  line-height: 1.5;
-  margin-left: 4px;
+  line-height: 0.1;
+  margin-left: -4px;
   text-transform: none;
 
   white-space: normal;
 
 }
+
+
+
 
 .flexCenter {
 
@@ -368,24 +396,25 @@
 
 
 
-
 /* bg */
 .cardBg{
 
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    height: 65px;
-    padding: 16px;
-    margin-top: 16px;
-    max-width: 260px;
-    border-radius: 16px;
-    background-color: #2499EF;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 65px;
+  padding: 16px;
+  margin-top: 16px;
+  max-width: 260px;
+  border-radius: 16px;
+  background-color: #2499EF;
+
 
 }
 
@@ -432,7 +461,6 @@
 
 
 
-
 .css-rr2k8m-MuiLinearProgress-root {
 
   position: relative;
@@ -460,8 +488,6 @@
 }
 
 
-
-
 .css-1fwf2za-MuiPaper-root-MuiCard-root {
 
   background-color: #fff;
@@ -471,7 +497,6 @@
   -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-
 
 
 
@@ -488,11 +513,14 @@
   border-top-left-radius: 4px;
   border-bottom-left-radius : 4px;
 
+
   padding: 1rem 1.5rem;
 
   height: 170px;
 
 }
+
+
 .css-19otv5r {
 
   width: 27px;
@@ -530,7 +558,6 @@
   background-color: #e6dff9;
 
 }
-
 
 
 
@@ -572,7 +599,6 @@
 
 
 
-
 .md-chip-remove {
 
   display: inline-block;
@@ -598,7 +624,6 @@
   line-height: 18px;
 
 }
-
 
 
 
@@ -634,7 +659,8 @@
 
 }
 
-.templateItem{
+
+.templateItem {
   display: -webkit-inline-box;
 
   display: -webkit-inline-flex;
@@ -750,7 +776,8 @@
 
 }
 
-.tempalteIcon{
+
+.tempalteIcon {
   -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -770,7 +797,6 @@
 
 
 
-
 .hightlightItem {
     justify-content: flex-start;
     background-color: #F9F9F9 !important;
@@ -778,7 +804,8 @@
     min-width: 211px;
 }
 
-.hightlightItem::before{
+
+.hightlightItem::before {
   width: 4px;
 
   right: 0;
@@ -793,7 +820,8 @@
 
 }
 
-.tab-btn{
+
+.tab-btn {
   border: 1px solid rgba(0, 0, 0, 0.7);
       padding: 10px 13px;
       margin-right: 6px;
@@ -804,11 +832,14 @@
 
 
 
+
 }
 
-.tab-btn:hover{
+
+.tab-btn:hover {
   background-color: black;
         color: white;
+
 
 }
 
@@ -817,7 +848,8 @@
 
 }
 
-.tabs-head-item button{
+
+.tabs-head-item button {
   border: 1px solid rgba(0, 0, 0, 0.7);
 
   padding: 10px 13px;
@@ -836,19 +868,20 @@
 
 
 
-
 .tabs-head-item button:hover {
 
   background-color: black;
         color: white;
 }
 
-.tabs{
+
+.tabs {
   margin-top: 16px;
 
 }
 
-.tabs-body{
+
+.tabs-body {
   display: grid;
 
   gap: 26px;
@@ -857,21 +890,25 @@
 
 }
 
-.CourseCard{
-   margin-bottom: 20px;
-border: 1px solid rgba(0, 0, 0, 0.1);
-box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
-display: flex;
-flex-direction: column;
+
+.CourseCard {
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+  display: flex;
+  flex-direction: column;
 }
 
-.item-body{
+
+.item-body {
   margin: 14px 0;
 
   padding: 4px 18px;
 
 }
-.item-name{
+
+
+.item-name {
   font-size: 15px;
 
   line-height: 1.4;
@@ -879,7 +916,9 @@ flex-direction: column;
   font-weight: 800;
 
 }
-.item-creator{
+
+
+.item-creator {
   font-size: 12.5px;
 
   font-weight: 500;
@@ -887,32 +926,41 @@ flex-direction: column;
   color: rgba(0, 0, 0, 0.6);
 
 }
-.rating-star-val{
-margin-bottom: 5px;
-font-size: 14px;
-font-weight: 800;
-color: #b4690e;
-margin-right: 6px;
-}
-.rating-count{
-font-size: 12.5px;
-margin-left: 3px;
-font-weight: 500;
-opacity: 0.8;
-}
-.item-price-new{
-font-weight: 700;
-font-size: 15px;
-}
-.item-price-old{
-opacity: 0.8;
-font-weight: 500;
-text-decoration: line-through;
-font-size: 15px;
-margin-left: 8px;
+
+
+.rating-star-val {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #b4690e;
+  margin-right: 6px;
 }
 
-.item-btns{
+
+.rating-count {
+  font-size: 12.5px;
+  margin-left: 3px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+
+.item-price-new {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+
+.item-price-old {
+  opacity: 0.8;
+  font-weight: 500;
+  text-decoration: line-through;
+  font-size: 15px;
+  margin-left: 8px;
+}
+
+
+.item-btns {
   justify-self: flex-start;
 
   padding: 4px 8px 30px 18px;
@@ -964,7 +1012,7 @@ margin-left: 8px;
 
 
 
- HL-17-Access_management
+
   box-shadow: 0px 24px 50px -12px rgba(45, 54, 67, 0.12);
   border-radius: 10px;
 }
@@ -989,4 +1037,4 @@ border-radius: 13.8053px;
 }
 
 
- Development_dev
+

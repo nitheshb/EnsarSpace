@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react'
 
 import { Dialog } from '@headlessui/react'
@@ -522,7 +519,10 @@ HL-17-Access_management
                       className="error-message text-red-700 text-xs px-2"
                     />
                   </div>
+<<<<<<< HEAD
+=======
  HL-17-Access_management
+>>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
 
                   <div className="mb-3 space-y-2 w-full text-xs">
                     <Label
