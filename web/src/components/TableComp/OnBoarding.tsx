@@ -202,6 +202,9 @@ const OnBoarding = ({ leadsTyper }) => {
                               <h3 className=" css-5mn5yy">Laptop</h3>
                             </div>
 
+
+                            
+
                             <span className="css-1lpgd8m px-3 text-[black] text-[10px]">
                                   Windows
                                 </span>
