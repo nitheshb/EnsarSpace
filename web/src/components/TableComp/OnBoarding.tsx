@@ -170,12 +170,7 @@ const OnBoarding = ({ leadsTyper }) => {
                           <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                           <section>
 
-
-
-
-
-
-                                               <div class="flex item-center justify-between">
+                                              <div class="flex item-center justify-between">
 
                                            <svg width="45.46px" height="40.42px" viewBox="0 0 43 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -204,12 +199,7 @@ const OnBoarding = ({ leadsTyper }) => {
                             <span className="css-1lpgd8m px-3 text-[black] text-[10px]">
                                   Windows
                                 </span>
-
-
-
-
-
-                 </section>
+                </section>
                         </div>
                       </div>
                       <div className=" m-1">
@@ -319,8 +309,6 @@ const OnBoarding = ({ leadsTyper }) => {
                         </div>
                       </div>
                   </section>
-
-
           </div>
         </div>
       </div>

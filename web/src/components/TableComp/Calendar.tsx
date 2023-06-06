@@ -190,7 +190,7 @@ const App = () => {
 
 
 
-  
+
   const buttonStyle = {
     padding: '5px 10px',
     backgroundColor: '#4CAF50',
@@ -290,7 +290,6 @@ const App = () => {
 };
 
 export default App;
-
 
 
 
