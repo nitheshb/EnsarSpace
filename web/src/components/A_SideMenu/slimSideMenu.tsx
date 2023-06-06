@@ -1428,6 +1428,36 @@ const SlimSideMenuBar = (props) => {
               </span>
             </li>
 
+
+            <li className="relative mt-1">
+              <span
+                className={
+                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  (viewable === 'Attendance'
+                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                    : '')
+                }
+                onClick={() => setViewable('Attendance')}
+                style={{
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                }}
+              >
+                <span className="flex items-center flex-col pt-[8px]">
+                  <span style={{ color: '#058527' }}>
+
+
+                    <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
+                  </span>
+                  <span className="text-[9px] font-bold  pl-1">Attendance</span>
+                </span>
+                <span className="flex ml-auto items-bottom">
+                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+                </span>
+              </span>
+            </li>
+
             <li className="relative mt-1 pt-1">
               <span
                 className={
@@ -1653,7 +1683,7 @@ const SlimSideMenuBar = (props) => {
           'flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300 ' +
           (pgName === 'erpAccount' ? 'bg-gray-300' : '')
         }
-      
+
       >
         <svg
           className="w-5 h-5"

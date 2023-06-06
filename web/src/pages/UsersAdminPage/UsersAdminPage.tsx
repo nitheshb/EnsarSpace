@@ -14,6 +14,7 @@ import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 import OnBoarding from 'src/components/TableComp/OnBoarding'
+import AttendancePage from 'src/components/A_LearningModule/Attendance'
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -81,6 +82,10 @@ const UsersAdminPage = () => {
               <UserManageTable editEmployeeFun={editEmployeeFun} />
             )}
 
+            {viewable === 'Attendance' && (
+              <AttendancePage />
+            )}
+
             {viewable === 'Roles Management' && (
               <>
                 <UserAccessTable />
@@ -110,7 +115,7 @@ const UsersAdminPage = () => {
             )}
 
           {viewable === 'User Report' && (
-           
+
             <ActivitySummaryReport
               project={{
                 area: 1000,
