@@ -16,19 +16,21 @@ const SlimSideMenuBar = (props) => {
 
   return (
     <div className="flex flex-col items-center w-20 min-w-[83px] pb-4   bg-white bg-opacity-75  bg-[#f0f3ff] h-screen w-[83px] max-w-[83px]">
-      {[
-        'hrModule',
+      {['hrModule',
         'financeModule',
         'crmModule',
         'projectModule',
         'salesModule',
         'constructModule',
         'legalModule',
-      ].includes(sourceLink) && (
+      ]
+        .includes(sourceLink) && (
           <a
             className="flex items-center justify-center flex-shrink-0 w-full py-[9px] mr-4  border-b mt-[4px] pt-[10px]"
             href="#"
           >
+<<<<<<< HEAD
+=======
             {/* bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200 */}
             {/* <svg
           className="w-8 h-8 to-indigo-600 "
@@ -105,41 +107,20 @@ HL-17-Access_management
           </svg>
         </a>
       )}
+>>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="78"
-              height="24"
-              viewBox="0 0 1 28"
-              fill="none"
-              className="my-1"
-              data-src="/images/logo/cubejs-logo.svg"
+              viewBox="0 0 512 512"
+              width="40"
+              height="35"
+              fill="#141446"
             >
-              <path
-                d="M22.1337 7.03243L11.8594 1V5.17391L22.1336 11.1804L22.1337 7.03243Z"
-                fill="#FF6492"
-              ></path>
-              <path
-                d="M22.1336 11.1823L19.0513 13.0019L11.8574 8.78565L7.74692 11.1857L4.66406 9.49917L11.8593 5.17578L22.1336 11.1823Z"
-                fill="#141446"
-              ></path>
-              <path
-                d="M7.74692 11.1826L4.66406 9.49609V12.9988L7.74692 11.1826Z"
-                fill="#A14474"
-              ></path>
-              <path
-                d="M1.58105 18.9676L11.8572 13L22.1334 18.9676L11.8572 25L1.58105 18.9676Z"
-                fill="#141446"
-              ></path>
-              <path
-                d="M22.1336 14.8259L11.8574 8.71875V12.9998L22.1336 18.9674L22.1336 14.8259Z"
-                fill="#FF6492"
-              ></path>
-              <path
-                d="M4.66391 13V9.4973L11.8592 5.17391V1L1.58105 7.03243V18.9676L11.8573 13V8.71892L4.66391 13Z"
-                fill="#7A77FF"
-              ></path>
+
+
+              <path d="M186.12 343.34c-9.65 9.65-9.65 25.29 0 34.94 9.65 9.65 25.29 9.65 34.94 0L378.24 221.1c19.29-19.29 50.57-19.29 69.86 0s19.29 50.57 0 69.86L293.95 445.1c19.27 19.29 50.53 19.31 69.82.04l.04-.04 119.25-119.24c38.59-38.59 38.59-101.14 0-139.72-38.59-38.59-101.15-38.59-139.72 0l-157.22 157.2zm244.53-104.8c-9.65-9.65-25.29-9.65-34.93 0l-157.2 157.18c-19.27 19.29-50.53 19.31-69.82.05l-.05-.05c-9.64-9.64-25.27-9.65-34.92-.01l-.01.01c-9.65 9.64-9.66 25.28-.02 34.93l.02.02c38.58 38.57 101.14 38.57 139.72 0l157.2-157.2c9.65-9.65 9.65-25.29.01-34.93zm-261.99 87.33l157.18-157.18c9.64-9.65 9.64-25.29 0-34.94-9.64-9.64-25.27-9.64-34.91 0L133.72 290.93c-19.28 19.29-50.56 19.3-69.85.01l-.01-.01c-19.29-19.28-19.31-50.54-.03-69.84l.03-.03L218.03 66.89c-19.28-19.29-50.55-19.3-69.85-.02l-.02.02L28.93 186.14c-38.58 38.59-38.58 101.14 0 139.72 38.6 38.59 101.13 38.59 139.73.01zm-87.33-52.4c9.64 9.64 25.27 9.64 34.91 0l157.21-157.19c19.28-19.29 50.55-19.3 69.84-.02l.02.02c9.65 9.65 25.29 9.65 34.93 0 9.65-9.65 9.65-25.29 0-34.93-38.59-38.59-101.13-38.59-139.72 0L81.33 238.54c-9.65 9.64-9.65 25.28-.01 34.93h.01z" />
             </svg>
+
           </a>
         )}
  Development_dev
@@ -1287,8 +1268,11 @@ Development_dev
                       </g>
                     </svg>
                   </span>
+<<<<<<< HEAD
+=======
  HL-17-Access_management
  Development_dev
+>>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
                   <span className="text-[9px] font-bold  pl-1">Reports</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
@@ -1984,26 +1968,33 @@ Development_dev
               </span>
             </li>
 
-            <li className="relative justify-center ">
+
+            <li className="relative mt-1">
               <span
                 className={
-                  'flex items-center justify-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
-                  (viewable === 'Time off'
+                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  (viewable === 'Time Off'
                     ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
                     : '')
                 }
+<<<<<<< HEAD
+                onClick={() => setViewable('Time Off')}
+=======
                 onClick={() => setViewable('Time off')}
  Development_dev
+>>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
                 style={{
                   display: 'block',
                   marginLeft: 'auto',
                   marginRight: 'auto',
                 }}
               >
-
-
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
+<<<<<<< HEAD
+
+                  <svg
+=======
                     {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-6"
@@ -2053,6 +2044,7 @@ Development_dev
                       />
                     </svg> */}
                     <svg
+>>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
@@ -2067,6 +2059,10 @@ Development_dev
                       <path d="M12 2c-5.514 0-10 4.486-10 10s4.486 10 10 10 10-4.486 10-10c0-5.514-4.486-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
                       <path d="M12 6v6l4 2" />
                     </svg>
+<<<<<<< HEAD
+                  </span>
+                  <span className="text-[9px] font-bold  pl-1">Time Off</span>
+=======
 
  HL-17-Access_management
                     <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
@@ -2076,18 +2072,18 @@ Development_dev
                   </span>
                   <span className="text-xs pl-1">Time off</span>
  Development_dev
+>>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                 </span>
               </span>
             </li>
-
             <li className="relative mt-1">
               <span
                 className={
                   'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
-                  (viewable === 'Bank Accounts'
+                  (viewable === 'Pay Slips'
                     ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
                     : '')
                 }
@@ -2139,8 +2135,12 @@ Development_dev
                   <span className="text-[9px] font-bold  pl-1">Pay Slips</span>
 
                   </span>
+<<<<<<< HEAD
+                  <span className="text-[9px] font-bold  pl-1">Pay Slips</span>
+=======
                   <span className="text-[9px] font-bold  pl-1">Bank</span>
  Development_dev
+>>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
@@ -2294,7 +2294,6 @@ Development_dev
           'flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300 ' +
           (pgName === 'erpAccount' ? 'bg-gray-300' : '')
         }
-      // to={routes.erpAccount()}
       >
         <svg
           className="w-5 h-5"
