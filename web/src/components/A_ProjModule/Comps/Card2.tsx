@@ -8,7 +8,7 @@ import { motion, AnimateSharedLayout } from 'framer-motion'
 import Chart from 'react-apexcharts'
 import { CircularProgressbar } from 'react-circular-progressbar'
 
-
+// parent Card
 
 const Card2 = (props) => {
   const { count, title } = props

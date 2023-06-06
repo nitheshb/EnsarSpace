@@ -1,4 +1,4 @@
-
+// https://prettier.io/docs/en/options.html
 /** @type {import('prettier').RequiredOptions} */
 module.exports = {
   trailingComma: 'es5',
@@ -9,7 +9,7 @@ module.exports = {
   arrowParens: 'always',
   overrides: [
     {
-      files: '.*',
+      files: 'Routes.*',
       options: {
         printWidth: 999,
       },

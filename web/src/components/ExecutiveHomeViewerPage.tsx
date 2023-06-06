@@ -1,10 +1,16 @@
-
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+// import { Link, routes } from '@redwoodjs/router'
 import { Fragment, useState, useEffect } from 'react'
 
 import { CalendarIcon, EyeIcon } from '@heroicons/react/outline'
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone'
 import { useFormik } from 'formik'
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
+// import { XIcon } from '@heroicons/react/outline'
+
+
+// import { XIcon } from '@heroicons/react/outline'
 
 import { useSnackbar } from 'notistack'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
@@ -36,10 +42,18 @@ import { SlimSelectBox } from 'src/util/formFields/slimSelectBoxField'
 import CardItem from './leadsCard'
 import SiderForm from './SiderForm/SiderForm'
 
-
+// import CustomerProfileSideView from './customerProfileSideView'
+// import CardItem from '../../components/leadsCard'
+// import BoardData from '../../components/board-data.json'
 import { Search } from '@material-ui/icons/Search';
 
-
+// function createGuidId() {
+//   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+//     const r = (Math.random() * 16) | 0,
+//       v = c == 'x' ? r : (r & 0x3) | 0x8
+//     return v.toString(16)
+//   })
+// }
 const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
   const uid = uuidv4()
 
@@ -54,7 +68,8 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
   // kanban board
   const [ready, setReady] = useState(false)
   const [boardData, setBoardData] = useState([])
-
+  // const [showForm, setShowForm] = useState(false)
+  // const [selectedBoard, setSelectedBoard] = useState(0)
   const [fetchedUsersList, setfetchedUsersList] = useState([])
   const [isOpened, setIsOpened] = React.useState(false)
   const [dateRange, setDateRange] = React.useState([null, null])
@@ -101,6 +116,9 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
       selUserProfileF('User Profile', searchData)
   }, [searchData, isClicked])
   const archieveFields = ['Dead', 'RNR', 'blocked', 'notinterested', 'junk']
+  // useEffect(() => {
+  //   getLeadsDataFun()
+  // }, [])
 
   useEffect(() => {
     setFetchLeadsLoader(true)
@@ -217,7 +235,28 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
             x.id = docSnapshot.id
             return x
           })
-
+          // usersListA.map((data) => {
+          //   const y = data
+          //   delete y.Note
+          //   delete y.AssignedTo
+          //   delete y.AssignTo
+          //   delete y.AssignedBy
+          //   delete y['Country Code']
+          //   delete y.assignT
+          //   delete y.CT
+          //   delete y.visitDoneNotes
+          //   delete y.VisitDoneNotes
+          //   delete y.VisitDoneReason
+          //   delete y.EmpId
+          //   delete y.CountryCode
+          //   delete y.from
+          //   delete y['Followup date']
+          //   delete y.mode
+          //   delete y.notInterestedNotes
+          //   delete y.notInterestedReason
+          //   y.coveredA = { a: data.coveredA }
+          //   addLeadSupabase(data)
+          // })
           await setLeadsFetchedRawData(usersListA)
           await serealizeData(usersListA)
         },
@@ -230,9 +269,11 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
                   'unassigned',
                   'visitfixed',
                   '',
-
+                  // 'visitdone',
+                  // 'visitcancel',
                   'negotiation',
-
+                  // 'reassign',
+                  // 'RNR',
                 ]
               : leadsTyper === 'booked'
               ? ['booked']
@@ -253,9 +294,12 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
           x.id = docSnapshot.id
           return x
         })
-
+        // setBoardData
+        // await setLeadsFetchedRawData(usersListA)
+        // await serealizeData(usersListA)
         await getUnassignedLeads(usersListA)
-
+        // filter_Leads_Projects_Users_Fun()
+        // await setLeadsFetchedData(usersListA)
       },
       {
         status:
@@ -271,7 +315,7 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
                 'negotiation',
                 'reassign',
                 'RNR',
-
+                // 'booked',
               ]
             : leadsTyper === 'booked'
             ? ['booked']
@@ -292,10 +336,12 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
           x.id = docSnapshot.id
           return x
         })
-
+        // setBoardData
         await setLeadsFetchedRawData(usersListA)
         await serealizeData(usersListA)
+        // filter_Leads_Projects_Users_Fun()
 
+        //  await setLeadsFetchedData(usersListA)
       },
       {
         isCp: user?.role?.includes(USER_ROLES.CP_AGENT),
@@ -313,7 +359,7 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
                 'negotiation',
                 'reassign',
                 'RNR',
-
+                // 'booked',
               ]
             : leadsTyper === 'booked'
             ? ['booked']
@@ -372,7 +418,8 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
                   'visitdone',
                   'visitcancel',
                   'negotiation',
-
+                  // 'reassign',
+                  // 'RNR',
                 ]
               : leadsTyper === 'booked'
               ? ['booked']
@@ -391,9 +438,12 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
             x.id = docSnapshot.id
             return x
           })
-
+          // setBoardData
+          // await setLeadsFetchedRawData(usersListA)
+          // await serealizeData(usersListA)
           await getUnassignedLeads(usersListA)
-
+          // filter_Leads_Projects_Users_Fun()
+          // await setLeadsFetchedData(usersListA)
         },
         {
           status:
@@ -409,7 +459,7 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
                   'negotiation',
                   'reassign',
                   'RNR',
-
+                  // 'booked',
                 ]
               : leadsTyper === 'booked'
               ? ['booked']
@@ -466,7 +516,7 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
       let y = z
       if (selLeadsOf?.value == 'myleads') {
         y = z
-
+          // .filter((d1) => d1?.assingedTo === user.uid)
           .filter((item) => {
             if (startDate !== null && endDate != null) {
               return (
@@ -527,7 +577,7 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
         console.log('my Array data is delayer 2 yo', x)
         if (startDate !== null) {
           y = x
-
+            // .filter((d1) => d1?.assingedTo === user.uid)
             .filter((item) => {
               if (startDate !== null && endDate != null) {
                 return (
@@ -595,7 +645,7 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
   }
 
   const serealizeData = (array) => {
-
+    // let newData =
     const x = statusFields.map((status) => {
       const items = array.filter((data) => data.Status.toLowerCase() == status)
       return { name: status, items }
@@ -603,6 +653,30 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
     setSerialLeadsData(x)
   }
 
+  // const onTextAreaKeyPress = (e) => {
+  //   if (e.keyCode === 13) {
+  //     //Enter
+  //     const val = e.target.value
+  //     if (val.length === 0) {
+  //       setShowForm(false)
+  //     } else {
+  //       const boardId = e.target.attributes['data-id'].value
+  //       const item = {
+  //         id: createGuidId(),
+  //         title: val,
+  //         priority: 0,
+  //         chat: 0,
+  //         attachment: 0,
+  //         assignees: [],
+  //       }
+  //       const newBoardData = boardData
+  //       newBoardData[boardId].items.push(item)
+  //       setBoardData(newBoardData)
+  //       setShowForm(false)
+  //       e.target.value = ''
+  //     }
+  //   }
+  // }
 
   const fSetLeadsType = (type) => {
     setAddLeadsTypes(type)
@@ -637,10 +711,10 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
                     onChange={(value) => {
                       console.log('changed value is ', value.value)
                       setSelProject(value)
-
+                      // formik.setFieldValue('project', value.value)
                     }}
                     value={selProjectIs?.value}
-
+                    // options={aquaticCreatures}
                     options={[
                       ...[{ label: 'All Projects', value: 'allprojects' }],
                       ...projectList,
@@ -657,10 +731,10 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
                       onChange={(value) => {
                         console.log('changed value is ', value.value)
                         setSelLeadsOf(value)
-
+                        // formik.setFieldValue('project', value.value)
                       }}
                       value={selLeadsOf?.value}
-
+                      // options={aquaticCreatures}
                       options={[
                         ...[
                           { label: 'Team Leads', value: 'teamleads' },
@@ -673,13 +747,21 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
                   </div>
                 )}
                 <span className="max-h-[42px] mt-[2px] ml-3 bg-white pl-[2px] rounded-[2px] ">
-
+                  {/* <span className="text-xs font-bodyLato text-[#516f90] cursor-none">
+                  Set Due Date
+                </span> */}
+                  {/* {border-radius: 4px;
+    border-color: hsl(0, 0%, 80%);
+    min-height: 31px;} */}
+                  {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                   <label className="bg-green   pl-[2px]   flex flex-row cursor-pointer">
                     <CalendarMonthTwoToneIcon className="mr-1 mt-[2px]" />
                     <span className="inline">
                       <DatePicker
                         className="z-10 pl- py-1 rounded-[4px] min-h-[30px] inline text-xs text-[#0091ae] bg-white cursor-pointer min-w-[170px] border-l-[#cccccc]"
-
+                        // selected={cutOffDate}
+                        // onChange={(date) => setCutOffDate(date)}
+                        // calendarContainer={MyContainer(setIsOpened)}
                         onCalendarOpen={() => setIsOpened(true)}
                         onCalendarClose={() => setIsOpened(false)}
                         onChange={(update) => setDateRange(update)}
@@ -687,13 +769,62 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
                         startDate={startDate}
                         endDate={endDate}
                         isClearable={true}
-
+                        // injectTimes={[
+                        //   setHours(setMinutes(d, 1), 0),
+                        //   setHours(setMinutes(d, 5), 12),
+                        //   setHours(setMinutes(d, 59), 23),
+                        // ]}
                         dateFormat="MMM d, yyyy "
                       />
                     </span>
                   </label>
                 </span>
-
+                {/* {leadsTyper == 'inProgress' && (
+                  <span className="inline-flex p-1 border bg-gray-200 rounded-md">
+                    <button
+                      className={`px-2 py-1  rounded ${
+                        ready ? 'bg-white shadow' : ''
+                      }`}
+                      onClick={() => setReady(true)}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 text-gray-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      className={`px-2 py-1  rounded ${
+                        !ready ? 'bg-white shadow' : ''
+                      }`}
+                      onClick={() => setReady(false)}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 text-gray-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                )} */}
                 <>
                   <button
                     onClick={() => fSetLeadsType('Add Lead')}
@@ -719,7 +850,7 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
                   {!user?.role?.includes(USER_ROLES.CP_AGENT) && (
                     <button
                       onClick={() => fSetLeadsType('Import Leads')}
-                       className={`flex items-center ml-5 pl-2 pr-4 py-1 max-h-[30px] mt-[2px]  text-sm font-medium text-white bg-gray-800 rounded-[4px] hover:bg-gray-700  `}
+                      className={`flex items-center ml-5 pl-2 pr-4 py-1 max-h-[30px] mt-[2px]  text-sm font-medium text-white bg-gray-800 rounded-[4px] hover:bg-gray-700  `}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -739,14 +870,106 @@ const ExecutiveHomeViewerPage = ({ leadsTyper, isClicked, setIsClicked }) => {
                       <span className="ml-1">Import Lead</span>
                     </button>
                   )}
+                  {/* {isImportLeads && (
+                    <button
+                      onClick={() => fSetLeadsType('Import Leads')}
+                      className={`flex items-center ml-5 pl-2 pr-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-700  `}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                        />
+                      </svg>
 
+                      <span className="ml-1">Import Lead</span>
+                    </button>
+                  )} */}
                 </>
               </div>
             </div>
 
             <MetaTags title="ExecutiveHome" description="ExecutiveHome page" />
 
-            
+            {/* {ready && (
+              <div className="flex flex-row ">
+                <main className="mt-3 flex flex-row overflow-auto max-h-[60%] rounded ">
+                  <div className="flex">
+                    <DragDropContext onDragEnd={onDragEnd}>
+                      {serialLeadsData.map((board, bIndex) => {
+                        const x = leadsFetchedData.filter(
+                          (data) =>
+                            data.Status.toLowerCase() ===
+                            board.name.toLowerCase()
+                        )
+                        console.log('serialLeadsData, ', serialLeadsData)
+                        return (
+                          <div
+                            key={bIndex}
+                            className=" border-[1px]  border-gray-200  bg-[#F5F8FA] w-56"
+                          >
+                            <Droppable droppableId={bIndex.toString()}>
+                              {(provided, snapshot) => (
+                                <div
+                                  {...provided.droppableProps}
+                                  ref={provided.innerRef}
+                                  className={`flex-shrink-0  min-w-150 bg-[#F5F8FA] rounded-md  h-screen ${
+                                    snapshot.isDraggingOver && 'bg-green-100'
+                                  }`}
+                                >
+                                  <div className="flex border-b p-3 ">
+                                    <span className="text-sm  mb-1  ml-1 font-medium text-gray-900">
+                                      {board.name}
+                                    </span>
+                                    <span className="flex items-center justify-center w-5 h-5 ml-2 text-sm font-semibold text-indigo-500 bg-white rounded bg-opacity-30">
+
+                                      {board.items.length}
+                                    </span>
+                                  </div>
+                                  <div>
+                                    {board.items.length > 0 &&
+                                      board.items.map((item, iIndex) => {
+                                        return (
+                                          <div
+                                            key={item.id}
+                                            className="mt-2 ml-2.5 "
+                                            onClick={() => {
+                                              setopenUserProfile(
+                                                !openUserProfile
+                                              )
+                                              console.log('iam clicked1', item)
+                                            }}
+                                          >
+                                            <CardItem
+                                              key={item.id}
+                                              data={item}
+                                              index={iIndex}
+                                            />
+                                          </div>
+                                        )
+                                      })}
+                                    {provided.placeholder}
+                                    {console.log('dragDatga is', board)}
+                                  </div>
+                                </div>
+                              )}
+                            </Droppable>
+                          </div>
+                        )
+                      })}
+                    </DragDropContext>
+                  </div>
+                </main>
+              </div>
+            )} */}
 
             {!ready && (
               <LLeadsTableView

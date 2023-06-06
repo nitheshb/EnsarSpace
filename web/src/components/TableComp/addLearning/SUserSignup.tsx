@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-import SUserSignupBody from '../LearningForms/SUserSignupBody'
+import SUserSignupBody from '../SUserSignupBody/SUserSignupBody'
 
 const SUserSignup = ({ open, setOpen, title, empData }) => {
   return (
@@ -44,13 +44,6 @@ const SUserSignup = ({ open, setOpen, title, empData }) => {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-
-
-
-
-
-
-                  
                   <div className="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
                     <button
                       type="button"

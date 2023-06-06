@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/iframe-has-title */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect, useState } from 'react'
 
 import { PlusCircleIcon, TrashIcon } from '@heroicons/react/outline'
@@ -80,7 +84,8 @@ const PlanDiagramView = ({
   }
   const deleteAssetFun = async (docId) => {
     console.log('assert details ', docId)
-
+    // create a delete query for assetDetails
+    // where url = assetDetails?.url
     deleteAsset(orgId, docId, '', '', '')
   }
 
@@ -165,7 +170,13 @@ const PlanDiagramView = ({
                       </span>
                     )}
                   </div>
-
+                  {/* <span>{planDiagram?.url}</span> */}
+                  {/* <BlockStatsCards
+                  kind={block?.blockName}
+                  feedData={block}
+                  bg={selBlock?.uid === block?.uid ? '#efefef' : '#fef7f7'}
+                  setSelBlock={setSelBlock}
+                /> */}
                 </li>
               )
             })}
@@ -173,7 +184,11 @@ const PlanDiagramView = ({
         </div>
         {planDiagramsA.length > 0 && (
           <>
-            
+            {/* <iframe
+              src="http://docs.google.com/gview?url=https://firebasestorage.googleapis.com/v0/b/redefine-erp.appspot.com/o/spark_files%2F_1ee556d8-a0c0-4be1-a4bd-841a85807eab?alt=media&token=3ca92b26-ed31-4205-b006-acba3bb5951a&embedded=true"
+              style={{ width: '718px', height: '700px' }}
+              frameBorder="0"
+            ></iframe> */}
             <section className="h-[600px] w-[51%]">
               <object
                 data={showAssetLink}

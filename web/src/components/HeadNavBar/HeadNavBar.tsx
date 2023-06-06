@@ -1,4 +1,4 @@
-
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect } from 'react'
 
 import { Diversity1 } from '@mui/icons-material'
@@ -6,7 +6,7 @@ import { Box, Menu, MenuItem, Typography } from '@mui/material'
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
 import { useCallback } from 'react'
 import { Link, routes } from '@redwoodjs/router'
-
+// import { useDispatch } from 'react-redux'
 import { useAuth } from 'src/context/firebase-auth-context'
 import debounce from 'lodash.debounce'
 import ExecutiveHomeViewerPage from 'src/components/ExecutiveHomeViewerPage'
@@ -19,7 +19,7 @@ import ModuleSwitchDrop from '../A_SideMenu/modulesSwitchDrop'
 const HeadNavBar = (props) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const [searchKey, setSearchKey] = React.useState<string>(props.searchVal?props.searchVal : '')
-
+  // const [searchKey, setSearchKey] = React.useState<string>('')
 
   const [showSearchDropdown, setShowSearchDropdown] = React.useState<boolean>(false)
   const [showLoader, setshowLoader] = React.useState<boolean>(false)
@@ -55,14 +55,27 @@ if (val.trim() && val.length>=10 ) {
   dispatch(searchValue(val))
   setShowSearchDropdown(true)
   setshowLoader(true)
-
+  // let res
   const orgId = user?.orgId
   const res = await getLeadsByPhoneNo(orgId, {search: val})
   console.log(res)
   setSearchData(res)
   dispatch(searchResponse({ ...res[0], id: 'dkcjbkdjbadkj' }))
   setshowLoader(false)
-
+  // setTimeout(() => {
+  //   setSearchData([
+  //     {
+  //       customerName: 'Raghu',
+  //       sales: '/admin/leads-manager',
+  //     },
+  //     {
+  //       customerName: 'Raghu',
+  //       sales: '/admin/leads-manager',
+  //       finance: '/admin/leads-manager',
+  //     },
+  //   ])
+  //   setshowLoader(false)
+  // }, 2000)
 }
   }
   const handleClickOutside = (event) => {
@@ -81,15 +94,17 @@ if (val.trim() && val.length>=10 ) {
    React.useEffect(() => {
      document.addEventListener('click', handleClickOutside)
    }, [])
-
+  // const debouncedSave = useCallback(debounce(getSearchData, 1000),[])
+  // const debouncedSave = useCallback(debounce(getSearchData, 1000), [])
   const searchKeyField = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value
     getSearchData(val)
   }
   console.log(searchKey, "acdsvfj")
-
+  // const searchingData = useSelector((state: RootStateOrAny) => state?.searchData)
+  // console.log(searchingData, "sdvfdbvlkjzsbvlkjsb")
   const makeFilterFun = (id, viewModule) => {
-
+    // 'Sales', 'CRM', 'Legal', 'Finance', 'HR'
     setSelModule(viewModule)
     console.log('i was clicked', id, viewModule)
   }
@@ -97,12 +112,26 @@ if (val.trim() && val.length>=10 ) {
   return (
     <div>
       <div className="flex items-center flex-shrink-0 h-[50px] px-2  pl-0 bg-white bg-opacity-75 ">
-
+        {/* <h1 className="text-lg font-medium">redefine.</h1> */}
         <span
           style={{ marginLeft: '-19px' }}
           className="relative z-10 flex items-center text-md font-extrabold leading-none text-[#141446] select-none pl-0"
         >
-
+          {/* <svg
+            className="w-8 h-8 to-indigo-600 "
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            // color="#a770ef"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+            />
+          </svg> */}
 
           <span className="ml- text-md" style={{ marginLeft: '41px' }}>
             {' '}
@@ -119,7 +148,33 @@ if (val.trim() && val.length>=10 ) {
           </section>
         </span>
 
+        {/* <a
+        className="flex items-center fixe flex-shrink-0 w-full h-16  border-b bg-white"
+        href="#"
+      >
 
+        <span
+          style={{ marginLeft: '10px' }}
+          className="relative z-10 flex items-center text-2xl font-extrabold leading-none text-black select-none pl-0"
+        >
+          <svg
+            className="w-8 h-8 to-indigo-600 "
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            // color="#a770ef"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+            />
+          </svg>
+          <span className="ml-1"> Redefine Erp.</span>
+        </span>
+      </a> */}
 
         <span
           style={{ marginLeft: '10px' }}
@@ -146,7 +201,7 @@ if (val.trim() && val.length>=10 ) {
               placeholder="Search something here"
               onChange={searchKeyField}
               autoComplete="off"
-
+              // value={searchKey}
               className="ml-6 w-52 bg-transparent focus:border-transparent focus:ring-0 focus-visible:border-transparent focus-visible:ring-0 focus:outline-none text-sm leading-7 placeholder-white text-white"
             />
 
@@ -155,11 +210,12 @@ if (val.trim() && val.length>=10 ) {
                 {showLoader ? (
                   <div className="z-10 absolute w-72 bg-zinc-700 text-white p-2">
                     <div className="flex justify-center">
-                      <Loader texColor="text-white" />
+                      <Loader texColor="text-white" size={undefined} />
                     </div>
                   </div>
                 ) : (
-
+                  // console.log(searchData)
+                  // {console.log(searchData)}
                   <div className="z-10 absolute w-72 bg-zinc-700 text-white">
                     {searchData.length
                       ? searchData.map((item, index) => {
@@ -167,7 +223,7 @@ if (val.trim() && val.length>=10 ) {
                             <div className="m-1">
                               <span>{item.Name}</span>
                               <div className="">
-
+                                {/* {item.sales && ( */}
                                 <Link
                                   to={routes.leadsManager({
                                     type: 'inProgress',
@@ -184,14 +240,16 @@ if (val.trim() && val.length>=10 ) {
                                 >
                                   CRM {'   '}
                                 </Link>
-
+                                {/* )} */}
+                                {/* {item.finance && ( */}
                                 <Link
                                   to={routes.financeModule()}
                                   className="text-lg underline mr-2"
                                 >
                                   Finance {'   '}
                                 </Link>
-
+                                {/* )} */}
+                                {/* {item.legal && ( */}
                                 <Link
                                   to={routes.legalModule()}
                                   className="text-lg underline mr-2"
@@ -199,7 +257,15 @@ if (val.trim() && val.length>=10 ) {
                                   Legal {'   '}
                                 </Link>
 
-
+                                {/* )} */}
+                                {/* {item.construction && ( */}
+                                {/* <Link
+                                  to={routes.leadsManager()}
+                                  className="text-lg underline mr-2"
+                                >
+                                  Construction {'   '}
+                                </Link> */}
+                                {/* )} */}
                               </div>
                               {searchData.length - 1 !== index && <hr></hr>}
                             </div>
@@ -242,7 +308,14 @@ if (val.trim() && val.length>=10 ) {
               {user?.orgName || user?.orgId} - {user?.role?.[0]}
             </div>
           </section>
-
+          {/* <Box display="flex" flexDirection="column" mr={2}>
+            <Typography variant="body2" className="text-sm">
+              {user?.displayName}
+            </Typography>
+            <Typography variant="caption" className="text-gray-500">
+              {user?.orgName || user?.orgId} - {user?.role?.[0]}
+            </Typography>
+          </Box> */}
         </Box>
         <Menu
           id="basic-menu"
