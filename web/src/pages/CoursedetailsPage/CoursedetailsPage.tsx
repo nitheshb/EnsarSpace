@@ -9,9 +9,6 @@ import { BiCheck } from 'react-icons/bi'
 import { courses } from 'src/constants/courses'
 import styled from 'styled-components'
 
-
-
-
 const CoursedetailsPage = () => {
   const { id } = useParams()
   const course = courses.find((p) => p.id === id)
