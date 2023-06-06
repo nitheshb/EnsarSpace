@@ -82,9 +82,9 @@ const UsersAdminPage = () => {
               <UserManageTable editEmployeeFun={editEmployeeFun} />
             )}
 
-            {viewable === 'Attendance' && (
+            {/* {viewable === 'Attendance' && (
               <AttendancePage />
-            )}
+            )} */}
 
             {viewable === 'Roles Management' && (
               <>
