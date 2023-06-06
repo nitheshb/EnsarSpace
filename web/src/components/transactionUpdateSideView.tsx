@@ -1,4 +1,7 @@
-
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Fragment, useEffect, useState } from 'react'
 
 import { Menu } from '@headlessui/react'
@@ -73,7 +76,11 @@ import AddBookingForm from './bookingForm'
 
 import { useSnackbar } from 'notistack'
 
-
+// interface iToastInfo {
+//   open: boolean
+//   message: string
+//   severity: AlertColor
+// }
 const people = [
   { name: 'Priority 1' },
   { name: 'Priority 2' },
@@ -83,14 +90,14 @@ const people = [
 const statuslist = [
   { label: 'Select the Status', value: '' },
   { label: 'New', value: 'new' },
-
+  // { label: 'Follow Up', value: 'followup' },
   { label: 'Visit Fixed', value: 'visitfixed' },
   { label: 'Visit Done', value: 'visitdone' },
   { label: 'Negotiation', value: 'Negotiation' },
-
+  // { label: 'RNR', value: 'rnr' },
   { label: 'Booked', value: 'booked' },
   { label: 'Not Interested', value: 'notinterested' },
-
+  // { label: 'Dead', value: 'Dead' },
 ]
 
 const attachTypes = [
@@ -101,13 +108,14 @@ const attachTypes = [
   { label: 'Co-Applicant Aadhar', value: 'co-applicant_Aadhar' },
   { label: 'Cancellation Form', value: 'cancellation_form' },
   { label: 'Cost Sheet', value: 'cost_sheet' },
-
+  // { label: 'Follow Up', value: 'followup' },
   { label: 'Estimation Sheet', value: 'estimation_sheet' },
   { label: 'Payment Screenshot (IMPS/RTGS/NEFT)', value: 'payment_screenshot' },
   { label: 'Payment Receipt', value: 'payment_receipt' },
   { label: 'Others', value: 'others' },
 
-
+  // { label: 'RNR', value: 'rnr' },
+  // { label: 'Dead', value: 'Dead' },
 ]
 
 const notInterestOptions = [
@@ -117,7 +125,9 @@ const notInterestOptions = [
 
   { label: 'Others', value: 'others' },
 
-
+  // { label: 'Follow Up', value: 'followup' },
+  // { label: 'RNR', value: 'rnr' },
+  // { label: 'Dead', value: 'Dead' },
 ]
 export default function TransactionUpdateSideView({
   openUserProfile,
@@ -158,7 +168,7 @@ export default function TransactionUpdateSideView({
   const d = new window.Date()
   const [value, setValue] = useState(d)
 
-
+  // const [startDate, setStartDate] = useState(d)
   const [startDate, setStartDate] = useState(setHours(setMinutes(d, 30), 16))
   const [selected, setSelected] = useState(people[0])
   const [taskDetails, setTaskDetails] = useState('')
@@ -262,7 +272,27 @@ export default function TransactionUpdateSideView({
     if (fet === 'appoint') {
       return
     }
+    //  else if (fet === 'ph') {
+    //   const unsubscribe = steamLeadPhoneLog(orgId,
+    //     (doc) => {
+    //       console.log('my total fetched list is yo yo 1', doc.data())
+    //       const usersList = doc.data()
+    //       const usersListA = []
 
+    //       Object.entries(usersList).forEach((entry) => {
+    //         const [key, value] = entry
+    //         usersListA.push(value)
+    //         console.log('my total fetched list is 3', `${key}: ${value}`)
+    //       })
+    //       console.log('my total fetched list is', usersListA.length)
+    //       // setLeadsFetchedActivityData(usersListA)
+    //     },
+    //     {
+    //       uid: id,
+    //     },
+    //     (error) => setLeadsFetchedActivityData([])
+    //   )
+    // }
     else {
       leadsActivityFetchedData.map((data) => {
         console.log('value of filtered feature count before', data)
@@ -334,19 +364,24 @@ export default function TransactionUpdateSideView({
   const setAssigner = (leadDocId, value) => {
     setAssignerName(value.name)
     setAssignedTo(value.value)
+    // save assigner Details in db
 
+    // updateLeadAssigTo(orgId, leadDocId, value, '', by)
   }
   const setNewProject = (leadDocId, value) => {
     console.log('sel pROJECT DETAILS ', value)
 
-
+    // setProjectName(value.projectName)
+    // setProjectId(value.uid)
+    // save assigner Details in db
+    // projectName
     const x = {
       Project: value.projectName,
       ProjectId: value.uid,
     }
     setSelProjectIs(value)
     updateLeadProject(orgId, leadDocId, x)
-
+    // updateLeadAssigTo(leadDocId, value, by)
   }
 
   const setStatusFun = async (leadDocId, newStatus) => {
@@ -365,7 +400,9 @@ export default function TransactionUpdateSideView({
       setTakTitle(' ')
     }
 
-
+    //
+    // updateLeadStatus(leadDocId, newStatus)
+    // toast.success('Status Updated Successfully')
   }
 
   const downloadFile = (url) => {
@@ -385,7 +422,12 @@ export default function TransactionUpdateSideView({
           usersListA.push(value)
           console.log('my total fetched list is 3', `${key}: ${value}`)
         })
-
+        // for (const key in usersList) {
+        //   if (usersList.hasOwnProperty(key)) {
+        //     console.log(`${key} : ${usersList[key]}`)
+        //     console.log(`my total fetched list is 2 ${usersList[key]}`)
+        //   }
+        // }
 
         console.log('my total fetched list is', usersListA.length)
         setLeadsFetchedActivityData(usersListA)
@@ -396,7 +438,7 @@ export default function TransactionUpdateSideView({
       (error) => setLeadsFetchedActivityData([])
     )
 
-
+    //  lead Schedule list
     steamLeadScheduleLog(
       orgId,
       (doc) => {
@@ -409,21 +451,30 @@ export default function TransactionUpdateSideView({
         console.log('this is what we found', staA)
         setschStsA(staA)
         setschStsMA(staDA)
-
+        // delete usersList['staA']
+        // delete usersList['staDA']
         Object.entries(usersList).forEach((entry) => {
           const [key, value] = entry
           if (['staA', 'staDA'].includes(key)) {
             if (key === 'staA') {
-
+              // setschStsA(value)
             } else if (key === 'staDA') {
-
+              // sMapStsA = value
             }
           } else {
             usersListA.push(value)
-
+            // console.log(
+            //   'my total fetched list is 3',
+            //   `${key}: ${JSON.stringify(value)}`
+            // )
           }
         })
-
+        // for (const key in usersList) {
+        //   if (usersList.hasOwnProperty(key)) {
+        //     console.log(`${key} : ${usersList[key]}`)
+        //     console.log(`my total fetched list is 2 ${usersList[key]}`)
+        //   }
+        // }
 
         console.log('my total fetched list is', usersListA.length)
         usersListA.sort((a, b) => {
@@ -486,7 +537,7 @@ export default function TransactionUpdateSideView({
     console.log('new one ', schStsA, x)
     x.push('pending')
     setschStsA(x)
-
+    // addSchedulerLog(id, data)
     console.log('new one ', schStsA)
     await addLeadScheduler(orgId, id, data, schStsA, '')
     if (Status != tempLeadStatus) {
@@ -498,7 +549,7 @@ export default function TransactionUpdateSideView({
   const cancelResetStatusFun = () => {
     setAddSch(false)
     setAddNote(false)
-
+    // if its not edit mode ignore it
     setLeadStatus(Status)
     setLoader(false)
   }
@@ -581,7 +632,7 @@ export default function TransactionUpdateSideView({
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
             createAttach(orgId, url, by, file.name, id, attachType)
             console.log('file url i s', url)
-
+            //  save this doc as a new file in spark_leads_doc
           })
         }
       )
@@ -602,7 +653,9 @@ export default function TransactionUpdateSideView({
       </div>
       <div className="py-3 px-3 m-4 mt-2 rounded-lg border border-gray-100 h-screen overflow-y-auto">
         <div className="flex flex-row justify-between">
-
+          {/* <div className="px-3  font-md font-medium text-sm mt-3 mb-2 text-gray-800">
+            Customer Details
+          </div> */}
 
           <div className="inline mt-2 ml-2 mb-5">
             <div className="">
@@ -716,7 +769,59 @@ export default function TransactionUpdateSideView({
           </section>
         </div>
 
+        {/* <div className="border-b mt-3">
+          <div className="py-2 px-1">
+            <div className="px-3  font-md font-medium text-sm mb-3  text-gray-800">
+              Assigner Details
+            </div>
+            <div className="px-3  flex justify-between">
+              <section>
+                <div className="font-md text-xs text-gray-500 mb-[2]">
+                  Assigned To
+                </div>
+                <div className="font-lg text-sm text-slate-900 min-w-[200%] bg-red-50">
 
+                  <CustomSelect
+                    name="roleName"
+                    label=""
+                    className="input mt-3"
+                    onChange={(value) => {
+                      // formik.setFieldValue('myRole', value.value)
+                      console.log('i was changed', value, usersList)
+                      setAssigner(id, value)
+                    }}
+                    value={assignedTo}
+                    options={usersList}
+                  />
+                </div>
+              </section>
+              <section>
+                <div className="font-md text-xs text-gray-500 mb-[2]">
+                  Assigned On
+                </div>
+
+                <div className="font-lg text-sm text-slate-900">26 July</div>
+              </section>
+            </div>
+
+            <div className="px-3 py-1 mb-3 mt-3 flex justify-between">
+              <div>
+                <div className="font-md text-xs mt-2 text-gray-500 mb-[2]">
+                  Assigned By
+                </div>
+                <div className="font-lg text-sm text-slate-900">
+                  {AssignedBy || 'NA'}
+                </div>
+              </div>
+              <div>
+                <div className="font-md text-xs mt-2 text-gray-500 mb-[2]">
+                  Last Activist
+                </div>
+                <div className="font-lg text-sm text-slate-900">3 days ago</div>
+              </div>
+            </div>
+          </div>
+        </div> */}
 
         {unitsViewMode && (
           <>
@@ -730,6 +835,9 @@ export default function TransactionUpdateSideView({
           <>
             <div className="">
               <div className="">
+                {/* <div className="font-md font-medium text-xs  text-gray-800">
+                          Notes
+                        </div> */}
 
                 <div className=" border-gray-900 bg-[#F6F7FF] rounded-t-lg ">
                   <ul
@@ -739,10 +847,11 @@ export default function TransactionUpdateSideView({
                     role="tablist"
                   >
                     {[
-
+                      // { lab: 'Schedules', val: 'appointments' },
+                      // { lab: 'Tasks', val: 'tasks' },
                       { lab: 'Notes', val: 'notes' },
                       { lab: 'Attachments', val: 'attachments' },
-
+                      // { lab: 'Phone', val: 'phone' },
                       { lab: 'Timeline', val: 'timeline' },
                     ].map((d, i) => {
                       return (
@@ -762,7 +871,8 @@ export default function TransactionUpdateSideView({
                             onClick={() => setFeature(d.val)}
                           >
                             {`${d.lab} `}
-
+                            {/* <span className="bg-gray-100 px-2 py-1 rounded-full">
+                          {/* {rowsCounter(leadsFetchedData, d.val).length} */}
                           </button>
                         </li>
                       )
@@ -803,7 +913,7 @@ export default function TransactionUpdateSideView({
                             label="Not Interest Reason*"
                             className="input mt-3"
                             onChange={(value) => {
-
+                              // formik.setFieldValue('source', value.value)
                               setNotInterestType(value.value)
                             }}
                             value={notInterestType}
@@ -833,7 +943,7 @@ export default function TransactionUpdateSideView({
                             <span className="ml-1 ">Save & Whats App</span>
                           </button>
                           <button
-
+                            // onClick={() => fSetLeadsType('Add Lead')}
                             onClick={() => cancelResetStatusFun()}
                             className={`flex mt-2 ml-4  rounded items-center  pl-2 h-[36px] pr-4 py-2 text-sm font-medium border  hover:bg-gray-700  `}
                           >
@@ -859,7 +969,14 @@ export default function TransactionUpdateSideView({
                           {leadNotesFetchedData.map((data, i) => (
                             <section key={i} className="">
                               <span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-green-200 rounded-full ring-8 ring-white  ">
-
+                                {/* <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-3 w-3 text-blue-600 "
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                            </svg> */}
                                 <DocumentIcon className=" w-3 h-3" />
                               </span>
                               <div className="text-gray-600  m-3 ml-6">
@@ -928,7 +1045,7 @@ export default function TransactionUpdateSideView({
                           label="Document Type *"
                           className="input mt-3"
                           onChange={(value) => {
-
+                            // formik.setFieldValue('source', value.value)
                             setAttachType(value.value)
                           }}
                           value={attachType}
@@ -963,14 +1080,14 @@ export default function TransactionUpdateSideView({
                         />
                         <div className="flex flex-row mt-3">
                           <button
-
+                            // onClick={() => fAddSchedule()}
                             type="submit"
                             className={`flex mt-2 rounded items-center  pl-2 h-[36px] pr-4 py-2 text-sm font-medium text-white bg-[#FF7A53]  hover:bg-gray-700  `}
                           >
                             <span className="ml-1 ">Upload</span>
                           </button>
                           <button
-
+                            // onClick={() => fSetLeadsType('Add Lead')}
                             onClick={() => setAttach(false)}
                             className={`flex mt-2 ml-4  rounded items-center  pl-2 h-[36px] pr-4 py-2 text-sm font-medium border  hover:bg-gray-700  `}
                           >
@@ -979,7 +1096,7 @@ export default function TransactionUpdateSideView({
                         </div>
                       </form>
 
-
+                      {/* <h3> {progress}</h3> */}
                     </div>
                   </div>
                 )}
@@ -1011,7 +1128,7 @@ export default function TransactionUpdateSideView({
                               <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                 Status
                               </th>
-
+                              {/* <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100"></th> */}
                             </tr>
                           </thead>
                           <tbody>
@@ -1041,6 +1158,13 @@ export default function TransactionUpdateSideView({
                                   </td>
                                   <td className="px-5 py-5 bg-white text-sm">
                                     <>
+                                      {/* <span className="relative inline px-3 py-1 font-semibold text-red-900 leading-tight">
+                                    <span
+                                      aria-hidden
+                                      className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+                                    ></span>
+                                    <span className="relative">Approved</span>
+                                  </span> */}
 
                                       <DownloadIcon
                                         onClick={() => downloadFile(dat.url)}
@@ -1108,7 +1232,7 @@ export default function TransactionUpdateSideView({
                         href="#"
                         className="block items-center p-3 sm:flex hover:bg-gray-100 "
                       >
-
+                        {/* <PlusCircleIcon className="mr-3 mb-3 w-10 h-10 rounded-full sm:mb-0" /> */}
                         {data?.type == 'status' && (
                           <span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white  ">
                             <svg
@@ -1184,7 +1308,18 @@ export default function TransactionUpdateSideView({
                               {data?.txt}
                             </div>
                             <span className="inline-flex items-center text-xs font-normal text-gray-500 ">
-                             
+                              {/* <svg
+                          className="mr-1 w-3 h-3"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg> */}
 
                               <ClockIcon className="mr-1 w-3 h-3" />
                               {data?.type == 'ph'

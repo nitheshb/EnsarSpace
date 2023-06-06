@@ -8,7 +8,7 @@ import { motion, AnimateSharedLayout } from 'framer-motion'
 import Chart from 'react-apexcharts'
 import { CircularProgressbar } from 'react-circular-progressbar'
 
-
+// parent Card
 
 const FileCardAnim = (props) => {
   const { count, title } = props
@@ -16,7 +16,7 @@ const FileCardAnim = (props) => {
   return (
     <div className="folder">
     <div className="folder-back">
-      
+      {/* <p className="files">Files</p> */}
       <div className="px-4 py-2 mb-4 flex flex-col">
                       <span  style={{color: 'white'}}>#103459</span>
 

@@ -8,7 +8,7 @@ import { motion, AnimateSharedLayout } from 'framer-motion'
 import Chart from 'react-apexcharts'
 import { CircularProgressbar } from 'react-circular-progressbar'
 
-
+// parent Card
 
 const ProjectProgressDisplayCard = (props) => {
   const [expanded, setExpanded] = useState(false)
@@ -23,7 +23,7 @@ const ProjectProgressDisplayCard = (props) => {
   )
 }
 
-
+// Compact Card
 function CompactCard({ param, setExpanded }) {
   const Png = param.png
   return (
@@ -41,11 +41,11 @@ function CompactCard({ param, setExpanded }) {
           value={param.barValue}
           text={`${param.barValue}%`}
         />
-
+        {/* <span>{param.title}</span> */}
         <span style={{ fontSize: '12px' }}>120,000 sft</span>
       </div>
       <div className="detail">
-
+        {/* <Png /> */}
         <span className="flex flex-col text-center mt-4 text-xl">
           72 <span className="text-xs">Available Units</span>
         </span>
@@ -56,7 +56,7 @@ function CompactCard({ param, setExpanded }) {
   )
 }
 
-
+// Expanded Card
 function ExpandedCard({ param, setExpanded }) {
   const data = {
     options: {

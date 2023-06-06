@@ -1,4 +1,6 @@
-
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable prettier/prettier */
 import { useEffect, useState } from 'react'
 
 import { MenuItem, styled } from '@mui/material'
@@ -52,7 +54,11 @@ const UnitsSmallViewCard = ({ kind, feedData, bg,  setSelUnitDetails,
         <h3 className="m-0 ml-2 text-sm font-semibold  leading-tight tracking-tight text-black border-0 border-gray-200 sm:text-1xl md:text-1xl ">
           {kind?.unit_no}
         </h3>
-
+        {/* <DropCompUnitStatus
+            type={'unitMode'}
+            id={'id'}
+            pickCustomViewer={handleClose}
+          /> */}
       </div>
       <div className="flex flex-row justify-between px-2">
         <span className="flex flex-row items-center justify-between mr-2">
@@ -65,7 +71,12 @@ const UnitsSmallViewCard = ({ kind, feedData, bg,  setSelUnitDetails,
 
       </div>
 
-     
+      {/* <SiderForm
+        open={sliderInfo.open}
+        setOpen={handleSliderClose}
+        title={sliderInfo.title}
+        data={sliderInfo.sliderData}
+      /> */}
     </div>
   )
 }

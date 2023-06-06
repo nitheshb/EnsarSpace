@@ -1,9 +1,12 @@
-
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+// import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import { Fragment, useState, useEffect } from 'react'
 import LLeadsTableView from 'src/components/LLeadsTableView/LLeadsTableView'
 
+// import { XIcon } from '@heroicons/react/outline'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 import { useAuth } from 'src/context/firebase-auth-context'
@@ -22,7 +25,7 @@ const CrmBucketList = ({ leadsTyper }) => {
     user?.role?.includes(USER_ROLES.SALES_MANAGER)
   const [isImportLeadsOpen, setisImportLeadsOpen] = useState(false)
 
-
+  // kanban board
   const [ready, setReady] = useState(false)
 
   const [addLeadsTypes, setAddLeadsTypes] = useState('')
@@ -70,9 +73,9 @@ const CrmBucketList = ({ leadsTyper }) => {
             x.id = docSnapshot.id
             return x
           })
-
+          // setBoardData
           console.log('my Array data is ', usersListA, leadsFetchedData)
-
+          // await serealizeData(usersListA)
           await setLeadsFetchedData(usersListA)
           await console.log('my Array data is set it', leadsFetchedData)
         },
@@ -84,7 +87,7 @@ const CrmBucketList = ({ leadsTyper }) => {
             'demands',
             'payments',
             'queries',
-
+            // 'booked',
           ],
         },
         (error) => setLeadsFetchedData([])
@@ -99,7 +102,7 @@ const CrmBucketList = ({ leadsTyper }) => {
             x.id = docSnapshot.id
             return x
           })
-
+          // setBoardData
           console.log('my Array data is ', usersListA)
           await serealizeData(usersListA)
           await setLeadsFetchedData(usersListA)
@@ -113,7 +116,7 @@ const CrmBucketList = ({ leadsTyper }) => {
             'demands',
             'payments',
             'queries',
-
+            // 'booked',
           ],
         },
         (error) => setLeadsFetchedData([])
@@ -121,18 +124,18 @@ const CrmBucketList = ({ leadsTyper }) => {
       return unsubscribe
     }
 
-
+    // await console.log('leadsData', leadsData)
   }
 
   const serealizeData = (array) => {
-
+    // let newData =
     const x = [
       'new',
       'review',
       'cleared',
       'rejected',
       '',
-
+      // 'booked',
     ].map((status) => {
       const items = array.filter((data) => data.Status.toLowerCase() == status)
 
@@ -334,7 +337,7 @@ const CrmBucketList = ({ leadsTyper }) => {
                             </td>
                             <td>
                               <div className="flex flex-row py-3">
-                                
+                                {/* <div className="mr-2 w-[3px]  bg-gray-100 "></div> */}
                                 <div className="flex flex-col">
                                   <span className="font-semibold text-sm app-color-black">
                                     {dat?.total_unit_cost || 0}

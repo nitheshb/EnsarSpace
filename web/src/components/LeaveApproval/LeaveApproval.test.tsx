@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import CoursedetailsPage from './CoursedetailsPage'
+import LeaveApproval from './LeaveApproval'
 
 //   Improve this test with help from the Redwood Testing Doc:
-//   https://redwoodjs.com/docs/testing#testing-pages-layouts
+//    https://redwoodjs.com/docs/testing#testing-components
 
-describe('CoursedetailsPage', () => {
+describe('LeaveApproval', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<CoursedetailsPage />)
+      render(<LeaveApproval />)
     }).not.toThrow()
   })
 })

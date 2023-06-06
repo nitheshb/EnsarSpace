@@ -1,4 +1,5 @@
-
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import {
   PuzzleIcon,
   ArrowsExpandIcon,
@@ -239,6 +240,7 @@ const Floordetails = ({
     console.log('inside close it ')
   }
   const makeFilterFun = async (id, value) => {
+    // unitsFeed, setUnitsFeed
 
     if (id === 'Status') {
       let x = []
@@ -256,7 +258,8 @@ const Floordetails = ({
         filRatePerSqft,
         filFacing
       )
-
+      // const y = await unitsFeed?.filter((da) => x.includes(da?.Status))
+      // await setFilteredUnits(y)
     }
     if (id === 'facing') {
       let x = []
@@ -353,7 +356,19 @@ const Floordetails = ({
       )
     }
 
-
+    // console.log(
+    //   'filtered stuff is ',
+    //   x,
+    //   filBedRooms,
+    //   unitsFeed[0]['bed_rooms'],
+    //   filFacing,
+    //   filStatus,
+    //   unitsFeed[0]['Status'],
+    //   filStatus.includes(unitsFeed[0]['Status']),
+    //   value,
+    //   unitsFeed[0][id] == value
+    // )
+    // console.log('id==>', id, value)
   }
   const allmakeOverFun = async (
     Status,
@@ -376,7 +391,8 @@ const Floordetails = ({
         facing.includes(da?.facing.toLocaleLowerCase()) &&
         Status.includes(da?.Status) &&
         bed_rooms.includes(da?.bed_rooms) &&
-
+        // bath_rooms.includes(da?.bath_rooms) &&
+        // super_built_up_area.includes(da?.super_built_up_area) &&
         da?.rate_per_sqft < rate_per_sqft
       )
     })
@@ -436,7 +452,8 @@ const Floordetails = ({
                   onClick={() => setBlocksViewFeature(d.val)}
                 >
                   {`${d.lab} `}
-
+                  {/* <span className="bg-gray-100 px-2 py-1 rounded-full">
+                          {/* {rowsCounter(leadsFetchedData, d.val).length} */}
                 </button>
               </li>
             )
@@ -454,13 +471,16 @@ const Floordetails = ({
                   style={{ backgroundColor: '#EBF9F9' }}
                 >
                   <div className="flex items-center flex-row px-0  pl-0 mb-2 ">
-
+                    {/* <h1 className="text-lg font-medium">redefine.</h1> */}
+                    {/* <img className="w-8 h-8" alt="" src={'/m4.png'}></img> */}
                     <div className="relative z-10 flex items-center w-auto text-md font-bold leading-none pl-0 ml-1 mt-4 ">
                       {selBlock?.blockName} Report
                     </div>
                   </div>
 
-
+                  {/* <div className="relative z-10 flex items-center w-auto text-md  text-gray-500 leading-none pl-0 ml-1 mt-1 ">
+                      {'Does not include future absense requests'}
+                    </div> */}
                   <section className="flex ml-auto mt-[18px]">
                     {true && (
                       <span className="flex ml-2 items-center h-6 px-3 text-xs font-semibold text-pink-800 bg-pink-200 rounded-full">
@@ -497,7 +517,11 @@ const Floordetails = ({
                         style={{ minWidth: '30%' }}
                         onClick={() => selReportFun(unitStatsData)}
                       >
-
+                        {/* <UnitsStatsCard
+                            kind={data}
+                            feedData={unitFeedData}
+                            bg="#fef7f7"
+                          /> */}
 
                         <div
                           className="drop-shadow-md min-w-full z-10 flex flex-col  max-w-md p-4 mx-auto my-0 rounded-lg "
@@ -769,16 +793,18 @@ const Floordetails = ({
               <ul className="">
                 <li className="py-2">
                   <section>
-
+                    {/* <section className="px-8 bg-red-100 w-[130px] rounded-r-2xl">
+                      Fl-{floorDat}
+                    </section> */}
                     <div className=" px-4 mt-">
                       {filteredUnits
-
+                        // ?.filter((da) => da?.floor == i)
                         .map((data, index) => {
                           return unitShrink ? (
                             <div
                               className=" mb-1  mx-1 inline-block"
                               key={index}
-
+                              // onClick={() => handleDetailView_Close(data)}
                               onClick={() => {
                                 console.log('check is ', leadDetailsObj)
                                 setSliderInfo({
@@ -821,15 +847,23 @@ const Floordetails = ({
                 </li>
               </ul>
             )}
-
+            {/* 1 */}
             {source === 'projectManagement' && (
               <div className=" z-10 flex flex-row my-[30px]">
                 {['Apartments'].includes(projectDetails?.projectType?.name) && (
                   <div
                     className=" cursor-pointer  z-10 flex flex-col  max-w-md p-2 my-0 mx-3 rounded-sm inline-block min-h-[50px]  min-w-[100px] border border-dotted border-black"
-
+                    // style={{ backgroundColor: '#fef7f7' }}
                     onClick={() => {
-
+                      // setSliderInfo({
+                      //   open: true,
+                      //   title: 'Add Unit',
+                      //   sliderData: {
+                      //     phase: {},
+                      //     block: {},
+                      //   },
+                      //   widthClass: 'max-w-2xl',
+                      // })
                       const { uid, floorA } = selBlock
                       updateBlock_AddFloor(
                         uid,
@@ -844,7 +878,9 @@ const Floordetails = ({
                       <h3 className="m-0 mt-1 text-sm font-semibold  leading-tight tracking-tight text-black border-0 border-gray-200 sm:text-1xl md:text-1xl ">
                         Add Floor
                       </h3>
-
+                      {/* <IconButton onClick={handleClick}>
+          <MoreVert sx={{ fontSize: '1rem' }} />
+        </IconButton> */}
                     </div>
                     <div className="flex flex-row justify-between px-2">
                       <span className="flex flex-row items-center justify-between mr-2">
@@ -855,7 +891,7 @@ const Floordetails = ({
                 )}
                 <div
                   className=" cursor-pointer z-10 flex flex-col  max-w-md p-2 my-0 mx-3 rounded-sm inline-block min-h-[50px]  min-w-[100px] border border-dotted border-black"
-
+                  // style={{ backgroundColor: '#fef7f7' }}
                   onClick={() => {
                     setSliderInfo({
                       open: true,
@@ -873,7 +909,9 @@ const Floordetails = ({
                     <h3 className="m-0 mt-1 text-sm font-semibold  leading-tight tracking-tight text-black border-0 border-gray-200 sm:text-1xl md:text-1xl ">
                       Add Unit
                     </h3>
-
+                    {/* <IconButton onClick={handleClick}>
+          <MoreVert sx={{ fontSize: '1rem' }} />
+        </IconButton> */}
                   </div>
                   <div className="flex flex-row justify-between px-2">
                     <span className="flex flex-row items-center justify-between mr-2">
@@ -905,7 +943,9 @@ const Floordetails = ({
                     <h3 className="m-0  text-sm  mt-1 font-semibold  leading-tight tracking-tight text-black border-0 border-gray-200 sm:text-1xl md:text-1xl ">
                       Import Units
                     </h3>
-
+                    {/* <IconButton onClick={handleClick}>
+          <MoreVert sx={{ fontSize: '1rem' }} />
+        </IconButton> */}
                   </div>
                   <div className="flex flex-row justify-between px-2">
                     <span className="flex flex-row items-center justify-between mr-2">
@@ -919,7 +959,37 @@ const Floordetails = ({
         </>
       )}
 
-      
+      {/* <div className="bg-white rounded mt-4 shadow-lg">
+        {[1, 2].map((data, i) => {
+          return (
+            <div key={i} className="grid grid-cols-12 gap-0">
+              <div className="h-42 col-span-2 border border-gray-300 content-center">
+                <FloorStatsCard
+                  kind={`Floor - ${data}`}
+                  feedData={unitFeedData}
+                  bg="#fef7f7"
+                />
+              </div>
+              <div className="h-42 col-span-10 bg-white border border-gray-300 border-l-0">
+                <div
+                  id="scrolling-content"
+                  className="flex overflow-x-scroll h-full"
+                >
+                  {[1, 2, 3, 4, 5, 6].map((data) => (
+                    <div className="p-2 mb-2.5 flex-shrink-0 " key={data}>
+                      <UnitsStatsCard
+                        kind={data}
+                        feedData={unitFeedData}
+                        bg="#fef7f7"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </div> */}
 
       <SiderForm
         open={sliderInfo.open}
