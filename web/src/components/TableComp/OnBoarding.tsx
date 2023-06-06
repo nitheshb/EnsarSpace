@@ -201,15 +201,9 @@ const OnBoarding = ({ leadsTyper }) => {
                                                  <div className="px-2 flex flex-row justify-between">
                               <h3 className=" css-5mn5yy">Laptop</h3>
                             </div>
-
-
-                            
-
                             <span className="css-1lpgd8m px-3 text-[black] text-[10px]">
                                   Windows
                                 </span>
-
-
 
                           </section>
                         </div>
