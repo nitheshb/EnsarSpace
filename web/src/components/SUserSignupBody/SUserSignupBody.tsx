@@ -17,7 +17,13 @@ import { TextField } from 'src/util/formFields/TextField'
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 import axios from 'axios'
 import Loader from '../Loader/Loader'
-import { DEPARTMENT_LIST, ROLES_LIST, QUALIFICATION_LIST, EXPERIENCE_LIST } from 'src/constants/userRoles'
+// import { DEPARTMENT_LIST, ROLES_LIST, QUALIFICATION_LIST, EXPERIENCE_LIST } from 'src/constants/userRoles'
+
+ import { DEPARTMENT_LIST} from 'src/constants/userRoles'
+ import { ROLES_LIST } from 'src/constants/userRoles'
+ import { QUALIFICATION_LIST } from 'src/constants/userRoles'
+ import { EXPERIENCE_LIST } from 'src/constants/userRoles'
+
 import { PhoneNoField } from 'src/util/formFields/phNoField'
 
 // import Select from 'react-select'
@@ -482,7 +488,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                       className="error-message text-red-700 text-xs px-2"
                     />
                   </div>
-                  
+
                   <div className="mb-3 space-y-2 w-full text-xs">
                     <Label
                       name="Email Id*"

@@ -331,19 +331,3 @@ const OnBoarding = ({ leadsTyper }) => {
 export default OnBoarding
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
