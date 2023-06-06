@@ -15,7 +15,7 @@ export const PhoneNoField = ({
     <div className={className}>
       <label className="label font-regular text-sm mb-2">{label}</label>
       <NumberFormat
-        
+        // label="Mobile No*"
         className=" w-full min-w-full flex bg-grey-lighter text-grey-darker border border-[#cccccc] rounded-md h-10 px-4 mt-1"
         name="mobileNo"
         value={value}

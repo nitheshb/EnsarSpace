@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { UserGroupIcon } from '@heroicons/react/outline'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -9,23 +10,35 @@ const SlimSideMenuBar = (props) => {
   const { pgName, sourceLink, showSideView1, setViewable, viewable } = props
   const { user } = useAuth()
 
-
+  // if (!user?.role?.includes(USER_ROLES.ADMIN)) {
+  //   return null
+  // }
 
   return (
     <div className="flex flex-col items-center w-20 min-w-[83px] pb-4   bg-white bg-opacity-75  bg-[#f0f3ff] h-screen w-[83px] max-w-[83px]">
-      {['hrModule',
-      'financeModule',
-       'crmModule',
-       'projectModule',
-       'salesModule',
-       'constructModule',
-       'legalModule',
-      ]
-       .includes(sourceLink) && (
-        <a
-          className="flex items-center justify-center flex-shrink-0 w-full py-[9px] mr-4  border-b mt-[4px] pt-[10px]"
-          href="#"
+      {[
+        'hrModule',
+        'financeModule',
+        'crmModule',
+        'projectModule',
+        'salesModule',
+        'constructModule',
+        'legalModule',
+      ].includes(sourceLink) && (
+          <a
+            className="flex items-center justify-center flex-shrink-0 w-full py-[9px] mr-4  border-b mt-[4px] pt-[10px]"
+            href="#"
+          >
+            {/* bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200 */}
+            {/* <svg
+          className="w-8 h-8 to-indigo-600 "
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          // color="#a770ef"
         >
+ HL-17-Access_management
           {/* bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200 */}
           {/* <svg
           className="w-8 h-8 to-indigo-600 "
@@ -35,6 +48,8 @@ const SlimSideMenuBar = (props) => {
           stroke="currentColor"
           // color="#a770ef"
         >
+
+ Development_dev
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -42,6 +57,7 @@ const SlimSideMenuBar = (props) => {
             d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
           />
         </svg> */}
+HL-17-Access_management
           {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             width="78"
@@ -89,6 +105,44 @@ const SlimSideMenuBar = (props) => {
           </svg>
         </a>
       )}
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="78"
+              height="24"
+              viewBox="0 0 1 28"
+              fill="none"
+              className="my-1"
+              data-src="/images/logo/cubejs-logo.svg"
+            >
+              <path
+                d="M22.1337 7.03243L11.8594 1V5.17391L22.1336 11.1804L22.1337 7.03243Z"
+                fill="#FF6492"
+              ></path>
+              <path
+                d="M22.1336 11.1823L19.0513 13.0019L11.8574 8.78565L7.74692 11.1857L4.66406 9.49917L11.8593 5.17578L22.1336 11.1823Z"
+                fill="#141446"
+              ></path>
+              <path
+                d="M7.74692 11.1826L4.66406 9.49609V12.9988L7.74692 11.1826Z"
+                fill="#A14474"
+              ></path>
+              <path
+                d="M1.58105 18.9676L11.8572 13L22.1334 18.9676L11.8572 25L1.58105 18.9676Z"
+                fill="#141446"
+              ></path>
+              <path
+                d="M22.1336 14.8259L11.8574 8.71875V12.9998L22.1336 18.9674L22.1336 14.8259Z"
+                fill="#FF6492"
+              ></path>
+              <path
+                d="M4.66391 13V9.4973L11.8592 5.17391V1L1.58105 7.03243V18.9676L11.8573 13V8.71892L4.66391 13Z"
+                fill="#7A77FF"
+              ></path>
+            </svg>
+          </a>
+        )}
+ Development_dev
       <section className="mb-4"></section>
       {['crmModule'].includes(sourceLink) && (
         <>
@@ -200,7 +254,15 @@ const SlimSideMenuBar = (props) => {
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
-
+                    {/* <svg width="24" height="24" viewBox="0 0 24 24">
+                            <g fill="currentColor" fillRule="nonzero">
+                              <path
+                                d="M10 14.5a2 2 0adfaf 104 0h5.5V18a1.5 1.5 0 01-1.5 1.5H6A1.5 1.5 0 014.5 18v-3.5H10z"
+                                opacity="0.1"
+                              ></path>
+                              <path d="M8.062 adfafafafa4h7.876a2 2 0 011.94 1.515l2.062 8.246a2 2 0 01.06.485V18a2 2 0 01-2 2H6a2 2 0 01-2-2v-3.754a2 2 0 01.06-.485l2.06-8.246A2 2 0 018.061 4zm0 1a1 1 0 00-.97.757L5.03 14.004a1 1 0 00-.03.242V18a1 1 0 001 1h12a1 1 0 001-1v-3.754a1 1 0 00-.03-.242l-2.06-8.247A1 1 0 0015.94 5H8.061zM12 17.25A2.75 2.75 0 019.295 15H7a.5.5 0 110-1h2.75a.5.5 0 01.5.5 1.75 1.75 0 003.5 0 .5.5 0 01.5-.5H17a.5.5 0 110 1h-2.295A2.75 2.75 0 0112 17.25z"></path>
+                            </g>
+                          </svg> */}
 
                     <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
                   </span>
@@ -516,7 +578,45 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+            <li className="relative mt-1">
+              <span
+                className={
+                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  (viewable === 'projectReports'
+                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                    : '')
+                }
+                onClick={() => setViewable('projectReports')}
+                style={{
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                }}
+              >
+                <span className="flex items-center flex-col pt-[8px]">
+                  <span style={{ color: '#692fc2' }}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                    >
+                      <g fill="none" fillRule="evenodd">
+                        <g fill="currentColor" fillRule="nonzero">
+                          <g>
+                            <g>
+                              <path
+                                d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 1c-4.418 0-8 3.582-8 8 0 .702.09 1.383.26 2.031l2.886-2.885c.196-.195.512-.195.708 0l2.646 2.647 4.793-4.794L13 9c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h3.52l.052.005L16.5 8c.036 0 .071.004.105.011l.046.012.04.015c.014.005.027.012.04.019.013.006.025.013.036.02l.035.025c.014.01.027.02.04.033l.012.011.011.013c.012.012.023.025.033.039l-.044-.052c.026.027.05.056.069.087l.02.034.02.042.014.04c.005.015.009.03.012.046l.006.033.005.051V12c0 .276-.224.5-.5.5s-.5-.224-.5-.5V9.706l-5.146 5.148c-.196.195-.512.195-.708 0L7.5 12.207 4.618 15.09C5.827 17.974 8.677 20 12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8z"
+                                transform="translate(-564 -480) translate(528 444) translate(36 36)"
+                              ></path>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                  </span>
 
+HL-17-Access_management
             {/* <li className="relative mt-1">
               <span
                 className={
@@ -599,6 +699,8 @@ const SlimSideMenuBar = (props) => {
                       </g>
                     </svg>
                   </span>
+
+ Development_dev
                   <span className="text-[9px] font-bold  pl-1">Reports</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
@@ -720,7 +822,15 @@ const SlimSideMenuBar = (props) => {
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
-
+                    {/* <svg width="24" height="24" viewBox="0 0 24 24">
+                            <g fill="currentColor" fillRule="nonzero">
+                              <path
+                                d="M10 14.5a2 2 0adfaf 104 0h5.5V18a1.5 1.5 0 01-1.5 1.5H6A1.5 1.5 0 014.5 18v-3.5H10z"
+                                opacity="0.1"
+                              ></path>
+                              <path d="M8.062 adfafafafa4h7.876a2 2 0 011.94 1.515l2.062 8.246a2 2 0 01.06.485V18a2 2 0 01-2 2H6a2 2 0 01-2-2v-3.754a2 2 0 01.06-.485l2.06-8.246A2 2 0 018.061 4zm0 1a1 1 0 00-.97.757L5.03 14.004a1 1 0 00-.03.242V18a1 1 0 001 1h12a1 1 0 001-1v-3.754a1 1 0 00-.03-.242l-2.06-8.247A1 1 0 0015.94 5H8.061zM12 17.25A2.75 2.75 0 019.295 15H7a.5.5 0 110-1h2.75a.5.5 0 01.5.5 1.75 1.75 0 003.5 0 .5.5 0 01.5-.5H17a.5.5 0 110 1h-2.295A2.75 2.75 0 0112 17.25z"></path>
+                            </g>
+                          </svg> */}
 
                     <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
                   </span>
@@ -975,6 +1085,15 @@ const SlimSideMenuBar = (props) => {
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
+                    {/* <svg width="24" height="24" viewBox="0 0 24 24">
+                            <g fill="currentColor" fillRule="nonzero">
+                              <path
+                                d="M10 14.5a2 2 0adfaf 104 0h5.5V18a1.5 1.5 0 01-1.5 1.5H6A1.5 1.5 0 014.5 18v-3.5H10z"
+                                opacity="0.1"
+                              ></path>
+                              <path d="M8.062 adfafafafa4h7.876a2 2 0 011.94 1.515l2.062 8.246a2 2 0 01.06.485V18a2 2 0 01-2 2H6a2 2 0 01-2-2v-3.754a2 2 0 01.06-.485l2.06-8.246A2 2 0 018.061 4zm0 1a1 1 0 00-.97.757L5.03 14.004a1 1 0 00-.03.242V18a1 1 0 001 1h12a1 1 0 001-1v-3.754a1 1 0 00-.03-.242l-2.06-8.247A1 1 0 0015.94 5H8.061zM12 17.25A2.75 2.75 0 019.295 15H7a.5.5 0 110-1h2.75a.5.5 0 01.5.5 1.75 1.75 0 003.5 0 .5.5 0 01.5-.5H17a.5.5 0 110 1h-2.295A2.75 2.75 0 0112 17.25z"></path>
+                            </g>
+                          </svg> */}
 
                     <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
                   </span>
@@ -1025,6 +1144,7 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+ HL-17-Access_management
             {(user?.role?.includes(USER_ROLES.SALES_MANAGER) || user?.role?.includes(USER_ROLES.ADMIN)) &&
             {(user?.role?.includes(USER_ROLES.SALES_MANAGER) ||
               user?.role?.includes(USER_ROLES.ADMIN)) && (
@@ -1061,19 +1181,75 @@ const SlimSideMenuBar = (props) => {
                           d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                       </svg>
+
+            {(user?.role?.includes(USER_ROLES.SALES_MANAGER) ||
+              user?.role?.includes(USER_ROLES.ADMIN)) && (
+                <li className="relative mt-1">
+                  <span
+                    className={
+                      'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                      (viewable === 'leadslake'
+                        ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                        : '')
+                    }
+                    onClick={() => setViewable('leadslake')}
+                    style={{
+                      display: 'block',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                    }}
+                  >
+                    <span className="flex items-center flex-col pt-[8px]">
+                      <span style={{ color: '#058527' }}>
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          className="w-5 h-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                      </span>
+                      <span className="text-[9px] font-bold  pl-1">
+                        Leads Bank
+                      </span>
                     </span>
+                    <span className="flex ml-auto items-bottom">
+                      <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+ Development_dev
+                    </span>
+
                     <span className="text-[9px] font-bold  pl-1">Leads Bank</span>
                     <span className="text-[9px] font-bold  pl-1">
                       Leads Bank
                     </span>
                   </span>
                   <span className="flex ml-auto items-bottom">
+
+
+
+
                     <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+
+
                   </span>
+ HL-17-Access_management
                 </span>
               </li>
             }
             )}
+
+                </li>
+              )}
+Development_dev
             <li className="relative mt-1">
               <span
                 className={
@@ -1111,6 +1287,8 @@ const SlimSideMenuBar = (props) => {
                       </g>
                     </svg>
                   </span>
+ HL-17-Access_management
+ Development_dev
                   <span className="text-[9px] font-bold  pl-1">Reports</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
@@ -1118,6 +1296,7 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+ HL-17-Access_management
             {(user?.role?.includes(USER_ROLES.SALES_MANAGER) || user?.role?.includes(USER_ROLES.ADMIN)) &&
             {(user?.role?.includes(USER_ROLES.SALES_MANAGER) ||
               user?.role?.includes(USER_ROLES.ADMIN)) && (
@@ -1147,31 +1326,70 @@ const SlimSideMenuBar = (props) => {
                         <g fill="none" fillRule="evenodd">
                           <g fill="currentColor" fillRule="nonzero">
                             <g>
+
+            {(user?.role?.includes(USER_ROLES.SALES_MANAGER) ||
+              user?.role?.includes(USER_ROLES.ADMIN)) && (
+                <li className="relative mt-1">
+                  <span
+                    className={
+                      'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                      (viewable === 'Team Lead Report'
+                        ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                        : '')
+                    }
+                    onClick={() => setViewable('Team Lead Report')}
+                    style={{
+                      display: 'block',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                    }}
+                  >
+                    <span className="flex items-center flex-col pt-[8px]">
+                      <span style={{ color: '#692fc2' }}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                        >
+                          <g fill="none" fillRule="evenodd">
+                            <g fill="currentColor" fillRule="nonzero">
+ Development_dev
                               <g>
-                                <path
-                                  d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 1c-4.418 0-8 3.582-8 8 0 .702.09 1.383.26 2.031l2.886-2.885c.196-.195.512-.195.708 0l2.646 2.647 4.793-4.794L13 9c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h3.52l.052.005L16.5 8c.036 0 .071.004.105.011l.046.012.04.015c.014.005.027.012.04.019.013.006.025.013.036.02l.035.025c.014.01.027.02.04.033l.012.011.011.013c.012.012.023.025.033.039l-.044-.052c.026.027.05.056.069.087l.02.034.02.042.014.04c.005.015.009.03.012.046l.006.033.005.051V12c0 .276-.224.5-.5.5s-.5-.224-.5-.5V9.706l-5.146 5.148c-.196.195-.512.195-.708 0L7.5 12.207 4.618 15.09C5.827 17.974 8.677 20 12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8z"
-                                  transform="translate(-564 -480) translate(528 444) translate(36 36)"
-                                ></path>
+                                <g>
+                                  <path
+                                    d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 1c-4.418 0-8 3.582-8 8 0 .702.09 1.383.26 2.031l2.886-2.885c.196-.195.512-.195.708 0l2.646 2.647 4.793-4.794L13 9c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h3.52l.052.005L16.5 8c.036 0 .071.004.105.011l.046.012.04.015c.014.005.027.012.04.019.013.006.025.013.036.02l.035.025c.014.01.027.02.04.033l.012.011.011.013c.012.012.023.025.033.039l-.044-.052c.026.027.05.056.069.087l.02.034.02.042.014.04c.005.015.009.03.012.046l.006.033.005.051V12c0 .276-.224.5-.5.5s-.5-.224-.5-.5V9.706l-5.146 5.148c-.196.195-.512.195-.708 0L7.5 12.207 4.618 15.09C5.827 17.974 8.677 20 12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8z"
+                                    transform="translate(-564 -480) translate(528 444) translate(36 36)"
+                                  ></path>
+                                </g>
                               </g>
                             </g>
                           </g>
-                        </g>
-                      </svg>
+                        </svg>
+                      </span>
+
+                      <span className="text-[9px] font-bold  pl-1">
+                        Team Reports
+                      </span>
                     </span>
-                    <span className="text-[9px] font-bold  pl-1">
-                      Team Reports
+                    <span className="flex ml-auto items-bottom">
+                      <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                     </span>
                   </span>
+ HL-17-Access_management
                   <span className="flex ml-auto items-bottom">
                     <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                   </span>
                 </span>
               </li>
-<<<<<<< HEAD
+ HEAD
             }
-=======
-            )}
->>>>>>> d46e45ed7a94bd91dd1045de586bb81be8d0bef7
+     )}
+ d46e45ed7a94bd91dd1045de586bb81be8d0bef7
+
+                </li>
+              )}
+ Development_dev
           </ul>
         </>
       )}
@@ -1370,6 +1588,7 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+
             <li className="relative mt-1 pt-1">
               <span
                 className={
@@ -1518,6 +1737,7 @@ const SlimSideMenuBar = (props) => {
                   marginRight: 'auto',
                 }}
               >
+ HL-17-Access_management
                 {/* <span className="flex items-center flex-col pt-[8px]">
   <span style={{ color: '#058527' }}>
     <svg width="24" height="24" viewBox="0 0 24 24">
@@ -1546,7 +1766,7 @@ const SlimSideMenuBar = (props) => {
   </span>
   <span className="text-xs pl-1">Sales</span>
 </span> */}
-
+Development_dev
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
                     <svg width="24" height="24" viewBox="0 0 24 24">
@@ -1580,16 +1800,46 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-
             <li className="relative mt-1">
               <span
                 className={
                   'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
-                  (viewable === 'User Management'
+                  (viewable === 'Leave Approval'
                     ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
                     : '')
                 }
-                onClick={() => setViewable('User Management')}
+                onClick={() => setViewable('Leave Approval')}
+                style={{
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                }}
+              >
+                <span className="flex items-center flex-col pt-[8px]">
+                  <span style={{ color: '#058527' }}>
+                    <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" fill="#068e3a"></path> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" fill="#068e3a"></path> <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" fill="#068e3a"></path> </svg>
+                  </span>
+                  <span className="text-[9px] font-bold  pl-1">Leave</span>
+                </span>
+                <span className="flex ml-auto items-bottom">
+                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+                </span>
+              </span>
+            </li>
+
+
+
+
+
+            {/* <li className="relative mt-1">
+              <span
+                className={
+                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  (viewable === 'Attendence'
+                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                    : '')
+                }
+                onClick={() => setViewable('Attendence')}
                 style={{
                   display: 'block',
                   marginLeft: 'auto',
@@ -1609,14 +1859,55 @@ const SlimSideMenuBar = (props) => {
                           </svg> */}
 
                     <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
+
                   </span>
-                  <span className="text-[9px] font-bold  pl-1">Organization</span>
+                  <span className="text-[9px] font-bold  pl-1">Attendence</span>
+                </span>
+                <span className="flex ml-auto items-bottom">
+                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+                </span>
+              </span>
+            </li> */}
+
+            <li className="relative mt-1">
+              <span
+                className={
+                  'flex items-center text-sm py-1 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded rounded-tl-[30px] rounded-bl-[30px] hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  (viewable === 'Attendence'
+                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                    : '')
+                }
+                onClick={() => setViewable('Attendence')}
+                style={{
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                }}
+              >
+                <span className="flex items-center flex-col pt-[8px]">
+                  <span style={{ color: '#058527' }}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <path d="M16 8L10 15L8 12" />
+                    </svg>
+                  </span>
+                  <span className="text-[9px] font-bold pl-1">Attendence</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                 </span>
               </span>
             </li>
+
 
             <li className="relative mt-1 pt-1">
               <span
@@ -1665,6 +1956,12 @@ const SlimSideMenuBar = (props) => {
                 className={
                   'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
                   (viewable === 'User Management'
+ HL-17-Access_management
+                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                    : '')
+                }
+                onClick={() => setViewable('User Management')}
+
                     ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
                     : '')
                 }
@@ -1675,6 +1972,36 @@ const SlimSideMenuBar = (props) => {
                   marginRight: 'auto',
                 }}
               >
+                <span className="flex items-center flex-col pt-[8px]">
+                  <span style={{ color: '#058527' }}>
+                    <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
+                  </span>
+                  <span className="text-[9px] font-bold  pl-1">Employees</span>
+                </span>
+                <span className="flex ml-auto items-bottom">
+                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+                </span>
+              </span>
+            </li>
+
+            <li className="relative justify-center ">
+              <span
+                className={
+                  'flex items-center justify-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  (viewable === 'Time off'
+                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                    : '')
+                }
+                onClick={() => setViewable('Time off')}
+ Development_dev
+                style={{
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                }}
+              >
+
+
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
                     {/* <svg
@@ -1737,18 +2064,18 @@ const SlimSideMenuBar = (props) => {
                       strokeLinejoin="round"
                       className="w-5 h-5"
                     >
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                      <line x1="16" y1="2" x2="16" y2="6" />
-                      <line x1="8" y1="2" x2="8" y2="6" />
-                      <line x1="3" y1="10" x2="21" y2="10" />
-                      <line x1="7" y1="14" x2="7" y2="21" />
-                      <line x1="17" y1="14" x2="17" y2="21" />
-                      <line x1="3" y1="14" x2="3" y2="21" />
+                      <path d="M12 2c-5.514 0-10 4.486-10 10s4.486 10 10 10 10-4.486 10-10c0-5.514-4.486-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
+                      <path d="M12 6v6l4 2" />
                     </svg>
 
+ HL-17-Access_management
                     <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
                   </span>
                   <span className="text-[9px] font-bold  pl-1">Employees</span>
+
+                  </span>
+                  <span className="text-xs pl-1">Time off</span>
+ Development_dev
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
@@ -1773,6 +2100,7 @@ const SlimSideMenuBar = (props) => {
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
+ HL-17-Access_management
                     {/* <svg
                       width="24"
                       height="24"
@@ -1789,30 +2117,37 @@ const SlimSideMenuBar = (props) => {
                         d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg> */}
+ Development_dev
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
+                      className="h-5 w-6"
                       fill="none"
+                      viewBox="0 0 24 24"
                       stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="w-5 h-5"
+                      strokeWidth={2}
                     >
-                      <path d="M6 2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 9h12M6 18h3M6 14h6" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                      />
                     </svg>
+ HL-17-Access_management
 
 
                   </span>
                   <span className="text-[9px] font-bold  pl-1">Pay Slips</span>
+
+                  </span>
+                  <span className="text-[9px] font-bold  pl-1">Bank</span>
+ Development_dev
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                 </span>
               </span>
             </li>
+
             <li className="relative mt-1">
               <span
                 className={
@@ -1854,6 +2189,7 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+
             <li className="relative mt-1">
               <span
                 className={
@@ -1899,6 +2235,56 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+            {(user?.role?.includes(USER_ROLES.HR_MANAGER) ||
+              user?.role?.includes(USER_ROLES.ADMIN)) && (
+                <li className="relative mt-1">
+                  <span
+                    className={
+                      'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                      (viewable === 'User Report'
+                        ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                        : '')
+                    }
+                    onClick={() => setViewable('User Report')}
+                    style={{
+                      display: 'block',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                    }}
+                  >
+                    <span className="flex items-center flex-col pt-[8px]">
+                      <span style={{ color: '#692fc2' }}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                        >
+                          <g fill="none" fillRule="evenodd">
+                            <g fill="currentColor" fillRule="nonzero">
+                              <g>
+                                <g>
+                                  <path
+                                    d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 1c-4.418 0-8 3.582-8 8 0 .702.09 1.383.26 2.031l2.886-2.885c.196-.195.512-.195.708 0l2.646 2.647 4.793-4.794L13 9c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h3.52l.052.005L16.5 8c.036 0 .071.004.105.011l.046.012.04.015c.014.005.027.012.04.019.013.006.025.013.036.02l.035.025c.014.01.027.02.04.033l.012.011.011.013c.012.012.023.025.033.039l-.044-.052c.026.027.05.056.069.087l.02.034.02.042.014.04c.005.015.009.03.012.046l.006.033.005.051V12c0 .276-.224.5-.5.5s-.5-.224-.5-.5V9.706l-5.146 5.148c-.196.195-.512.195-.708 0L7.5 12.207 4.618 15.09C5.827 17.974 8.677 20 12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8z"
+                                    transform="translate(-564 -480) translate(528 444) translate(36 36)"
+                                  ></path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </span>
+
+                      <span className="text-[9px] font-bold  pl-1">
+                        User Reports
+                      </span>
+                    </span>
+                    <span className="flex ml-auto items-bottom">
+                      <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+                    </span>
+                  </span>
+                </li>
+              )}
           </ul>
         </>
       )}

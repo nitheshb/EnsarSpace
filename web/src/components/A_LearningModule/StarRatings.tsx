@@ -1,6 +1,6 @@
 import React from 'react'
 
-
+// import { BsStar, BsStarHalf, BsStarFill } from 'react-icons'
 import { StarBorder, StarHalf, StarOutline } from '@mui/icons-material'
 import styled from 'styled-components'
 

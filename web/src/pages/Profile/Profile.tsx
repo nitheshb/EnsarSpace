@@ -1,6 +1,10 @@
+ HL-17-Access_management
 import { title } from 'process'
 
 import React, { ChangeEvent } from 'react'
+
+import React from 'react'
+ Development_dev
 
 import { DownloadIcon } from '@heroicons/react/outline'
 import { Height } from '@mui/icons-material'
@@ -21,6 +25,7 @@ import CheckBox from 'src/components/profile/checkBox'
 import PersonalDetails from 'src/components/profile/personalDetails'
 
 import bg from '../../../public/Group7.png'
+HL-17-Access_management
 
 import ProfileHeaderPage from '../../components/profile/ProfileHeaderPage'
 
@@ -348,9 +353,39 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
+
+const Profile = () => {
+  return (
+    <div>
+      {/* <HeadNavBar /> */}
+      <div className="flex flex-row overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
+        <HeadSideBar />
+
+        <div className="flex flex-col mx-[10%] my-[2%]">
+          {' '}
+          <h1 className="text-5xl text-[#2B2A35] ">My Profile</h1>
+          <p className=" text-lg my-4 ">It’s awesome to have you with us.</p>
+          {/* div for making the profile card */}
+          <div className="md:flex md:flex-row md:gap-x-60 w-full ">
+            {' '}
+            <div className="md:w-[20vw] flex flex-col justify-between items-center md:h-[50vh] rounded-md bg-gray-100">
+              <img
+                className="w-full relative mt-4 "
+                src={bg}
+                alt="bg profile"
+              />
+              <div className=" w-32 h-32 absolute mt-4 bg-gray-400 rounded-full "></div>
+              <div>
+                {' '}
+                <p className=" font-semibold text-2xl text-center ">Nithesh</p>
+                <small className="font-medium  text-gray-500 ">
+                  nitheshb@gmail.com
+                </small>
+ Development_dev
               </div>
             </div>
 
+ HL-17-Access_management
                 {/* <div className="flex flex-col gap- ml-[20%] flex-grow"> */}
 
       {/* <div className="flex flex-col gap-1 absolute top-0 left-0 right-0 mt-10 "> */}
@@ -365,16 +400,27 @@ const Profile = () => {
                 <CheckBox />
                 <Account />
               </div>
+
+              <p className=" mb-4 font-medium text-gary-600 ">
+                Redefine user since sept 2021
+              </p>
             </div>
-
-
-
+            {/* div for making change the details  */}
+            <div className="flex flex-col gap-10">
+              <PersonalDetails />
+              <CheckBox />
+              <Account />
+Development_dev
+            </div>
           </div>
         </div>
       </div>
     </div>
+ HL-17-Access_management
 
     //  </div>
+
+Development_dev
   )
 }
 {

@@ -9,6 +9,7 @@ const CheckBox = () => {
       <div className="w-full  border-b-2 flex flex-row py-4 items-center justify-between">
         {' '}
         <p className="text-2xl">Reclaims</p>{' '}
+ HL-17-Access_management
        </div>
        {/* <Switch
             checked={enabled}
@@ -25,6 +26,9 @@ const CheckBox = () => {
           </Switch> */}
           {/* </div> */}
 
+
+      </div>
+ Development_dev
       <div className="my-4">
         <small>Auto-Reply</small>
         <div className="flex flex-row">
@@ -33,7 +37,11 @@ const CheckBox = () => {
             Complete requests faster by sending automatic replies to company
             requests.{' '}
           </small>
+ HL-17-Access_management
            {/* <Switch
+
+          <Switch
+ Development_dev
             checked={enabled}
             onChange={setEnabled}
             className={`${enabled ? 'bg-teal-500' : 'bg-teal-900'}
@@ -42,6 +50,7 @@ const CheckBox = () => {
             <span className="sr-only">Use setting</span>
             <span
               aria-hidden="true"
+ HL-17-Access_management
               className={`${enabled ? 'translate-x-11' : 'translate-x-0' }
               border-radius: 0.9rem;
             pointer-events-none inline-block h-[28px] w-[28px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
@@ -82,6 +91,12 @@ const CheckBox = () => {
               Learn More
             </p>
           </div>
+
+              className={`${enabled ? 'translate-x-9' : 'translate-x-0'}
+            pointer-events-none inline-block h-[28px] w-[28px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+            />
+          </Switch>
+Development_dev
         </div>
       </div>
     </section>

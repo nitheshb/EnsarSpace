@@ -4,10 +4,10 @@ import { CleaningServicesRounded } from '@mui/icons-material'
 import { TabList } from '@mui/lab'
 import { Box, Card, Grid, styled } from '@mui/material'
 import { yearsToMonths } from 'date-fns'
+// import LLeadsTableBody from '../LLeadsTableBody/LLeadsTableBody'
+import { useTranslation } from 'react-i18next' // styled components
 
-import { useTranslation } from 'react-i18next'
-
-
+// import uniqueId from '../../util/generatedId'
 import {
   getLeadbyId1,
   getTodayTodoLeadsData,
@@ -35,7 +35,8 @@ const TodayLeadsActivityListHomeView = ({
   selUserProfileF,
   taskType,
 }) => {
-
+  // change navbar title
+  // useTitle('Data Table V1')
   const { t } = useTranslation()
   const { user } = useAuth()
   const { orgId } = user
@@ -52,13 +53,23 @@ const TodayLeadsActivityListHomeView = ({
     setValue(newValue)
   }
 
-
+  // useEffect(() => {
+  //   console.log('table data is ', tableData2)
+  //   setTableData(tableData2)
+  // }, [])
 
   useEffect(() => {
     console.log('check if this is loading on new page check', user?.uid)
     getLeadsDataFun()
   }, [taskType, user])
 
+  // useEffect(() => {
+  //   console.log('check if this is loading on new page check', user?.uid)
+  //          //   y = searchKey.includes('upcoming')
+  //             //     ? staDA.filter((da) => x[da]['schTime'] > torrowDate)
+  //             //     : staDA.filter((da) => x[da]['schTime'] < torrowDate)
+  //   getLeadsDataFun()
+  // }, [searchKey])
 
   const getLeadsDataFun = async () => {
     const uid = user?.uid
@@ -85,7 +96,7 @@ const TodayLeadsActivityListHomeView = ({
               y = staDA
               if (y.length > 0) {
                 x.uid = docSnapshot.id
-
+                // eslint-disable-next-line prefer-const
                 let y1 = await getLeadbyId1(orgId, x.uid)
                 await console.log('fetched value is ', x, y)
                 x.leadUser = await y1
@@ -96,7 +107,7 @@ const TodayLeadsActivityListHomeView = ({
               }
             })
 
-
+            //  get the task details from docid
             if (projects.length > 0) {
               console.log(
                 'my values are ',
@@ -138,9 +149,16 @@ const TodayLeadsActivityListHomeView = ({
               console.log('git values is 2', x)
               const { staDA } = x
               y = staDA
+              // if (taskType === 'Today1') {
+
+              //   console.log('git values is ', staDA)
+              //   y = staDA
+              // } else {
+              //   y = staDA.filter((da) => x[da]['schTime'] > torrowDate)
+              // }
               if (y.length > 0) {
                 x.uid = docSnapshot.id
-
+                // eslint-disable-next-line prefer-const
                 let y1 = await getLeadbyId1(orgId, x.uid)
                 await console.log('fetched value is ', x, y)
                 x.leadUser = await y1
@@ -149,12 +167,12 @@ const TodayLeadsActivityListHomeView = ({
                 setSchLoading(false)
 
                 return
-
+                // return 'remove'
               }
             })
-
+            //  get the task details from docid
             if (projects.length > 0) {
-
+              // projects.filter((data) => data != undefined)
               Promise.all(projects).then(function (results) {
                 console.log(
                   'my values are ',
@@ -185,7 +203,7 @@ const TodayLeadsActivityListHomeView = ({
   }
 
   useEffect(() => {
-    
+    // getValueByIdFun()
   }, [todaySchL])
 
 

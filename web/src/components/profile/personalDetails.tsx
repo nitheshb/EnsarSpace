@@ -1,3 +1,4 @@
+ HL-17-Access_management
 import React, { useState } from 'react'
 
 const PersonalDetails = () => {
@@ -15,6 +16,13 @@ const PersonalDetails = () => {
       }}
     >
       <div className="w-full  flex flex-row py-4 items-center ">
+import React from 'react'
+
+const PersonalDetails = () => {
+  return (
+    <section className="md:w-[30vw] flex flex-col  md:px-8  rounded-md bg-gray-100">
+      <div className="w-full  border-b-2 flex flex-row py-4 items-center justify-between">
+ Development_dev
         {' '}
         <span>
           <p className="text-sm font-medium text-gray-900">Worked On</p>{' '}
@@ -136,14 +144,18 @@ const PersonalDetails = () => {
           </div>
         </div>
       </div>
+ HL-17-Access_management
 
       {/* <form className="flex flex-col my-4 ">
+
+      <form className="flex flex-col my-4 ">
+ Development_dev
         <label className="text-[12px] text-left mt-6 text-gray-700 ">
           Full Name
         </label>
         <input
           className=" bg-transparent focus:outline-none  border-b-2 "
-          placeholder=" Enter your full name "
+          placeholder=" John Doe "
           type="text"
         />
         <label className="text-[12px] text-left mt-6 text-gray-700 ">
@@ -151,7 +163,7 @@ const PersonalDetails = () => {
         </label>
         <input
           className=" bg-transparent focus:outline-none  border-b-2 "
-          placeholder=" Enter your country "
+          placeholder=" India "
           type="text"
         />
       </form> */}
