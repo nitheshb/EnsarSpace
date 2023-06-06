@@ -30,8 +30,25 @@
 // export default CourseList
 import { useState } from 'react'
 
+import styled from 'styled-components';
+
+
+const Button = styled.button`
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+`;
+
 
 import CoursesCard from './CoursesCard'
+import { routes } from '@redwoodjs/router/dist/router'
+import { Link } from '@redwoodjs/router'
 const CourseList = () => {
   const [activeTab, setActiveTab] = useState('python')
   const tabHandler = (sel) => {
@@ -121,6 +138,17 @@ const CourseList = () => {
               <CoursesCard key={course.id} {...course} />
             ))}
         </div>
+
+
+
+
+        <Button>
+      <Link to={routes.myJourney()} style={{ textDecoration: 'none', color: '#333' }}>
+        My Journey
+      </Link>
+    </Button>
+
+
       </div>
 
       {/* <Tabs courses = {courses} /> */}
@@ -129,6 +157,10 @@ const CourseList = () => {
 }
 
 export default CourseList
+
+
+
+
 
 const courses = [
   {
@@ -849,3 +881,4 @@ const courses = [
     ],
   },
 ]
+
