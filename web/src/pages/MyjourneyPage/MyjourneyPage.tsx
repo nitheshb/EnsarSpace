@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-// import { FaCheck, FaCircle, FaSpinner } from 'react-icons/fa';
+import { FaCheck, FaCircle, FaSpinner } from 'react-icons/fa';
 import MyJourneyHeadBar from './MyJourneyHeadBar';
 
 
