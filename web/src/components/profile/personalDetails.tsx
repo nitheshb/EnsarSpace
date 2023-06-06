@@ -1,28 +1,13 @@
- HL-17-Access_management
+
 import React, { useState } from 'react'
 
-const PersonalDetails = () => {
-  function handleUpdate(
-    event: MouseEvent<HTMLButtonElement, MouseEvent>
-  ): void {
-    throw new Error('Function not implemented.')
-  }
 
-  return (
-    <section
-      className=" flex flex-col  md:px-8  rounded-md"
-      style={{
-        width: '600px',
-      }}
-    >
-      <div className="w-full  flex flex-row py-4 items-center ">
-import React from 'react'
 
 const PersonalDetails = () => {
   return (
     <section className="md:w-[30vw] flex flex-col  md:px-8  rounded-md bg-gray-100">
       <div className="w-full  border-b-2 flex flex-row py-4 items-center justify-between">
- Development_dev
+
         {' '}
         <span>
           <p className="text-sm font-medium text-gray-900">Worked On</p>{' '}

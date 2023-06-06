@@ -7,7 +7,7 @@ import HeadNavBar2 from 'src/components/HeadNavBar/HeadNavBar2'
 // import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
-import OnBoarding from 'src/components/TableComp/OnBoarding'
+// import OnBoarding from 'src/components/TableComp/OnBoarding'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 
@@ -20,15 +20,6 @@ import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
 
 // import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
-
-
-import TableData from 'src/components/Access/TableData'
-
-
-
-import Timeoff from 'src/components/TableComp/Timeoff'
-
-import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
 
 
 
@@ -59,10 +50,10 @@ const UsersAdminPage = () => {
         <div className="flex flex-col flex-grow">
           {/* <HeadNavBar /> */}
 
-          <HeadNavBar2
+          {/* <HeadNavBar2
             selModule={selModule}
             setSelModule={setSelModule}
-          />
+          /> */}
 
 
           <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
@@ -185,7 +176,7 @@ const UsersAdminPage = () => {
               />
             )}
 
-            {viewable === 'User Report' && (
+
 
 
             {viewable === 'User Report' && (
