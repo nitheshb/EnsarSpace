@@ -10,8 +10,17 @@ import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 import OnBoarding from 'src/components/TableComp/OnBoarding'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
+
+
+
+import Timeoff from 'src/components/TableComp/Timeoff'
+
+import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
+ 
+
 // import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
+
  HL-17-Access_management
 import TableData from 'src/components/Access/TableData'
 
@@ -22,6 +31,7 @@ import Timeoff from 'src/components/TableComp/Timeoff'
 import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
  Development_dev
  Development_dev
+
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -49,13 +59,13 @@ const UsersAdminPage = () => {
 
         <div className="flex flex-col flex-grow">
           {/* <HeadNavBar /> */}
- HL-17-Access_management
+ 
           <HeadNavBar2
             selModule={selModule}
             setSelModule={setSelModule}
           />
 
- Development_dev
+ 
           <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">
@@ -176,14 +186,12 @@ const UsersAdminPage = () => {
               />
             )}
 
-<<<<<<< HEAD
             {viewable === 'User Report' && (
 
-=======
+
  HL-17-Access_management
             {viewable === 'User Report' && (
               // <ReportMain/>
->>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
               <ActivitySummaryReport
                 project={{
                   area: 1000,
@@ -196,11 +204,7 @@ const UsersAdminPage = () => {
               />
             )}
 
-<<<<<<< HEAD
-=======
 
- Development_dev
->>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
             <SUserSignup
               open={isOpen}
               setOpen={handleOnClose}

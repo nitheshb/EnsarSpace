@@ -29,8 +29,7 @@ const SlimSideMenuBar = (props) => {
             className="flex items-center justify-center flex-shrink-0 w-full py-[9px] mr-4  border-b mt-[4px] pt-[10px]"
             href="#"
           >
-<<<<<<< HEAD
-=======
+
             {/* bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200 */}
             {/* <svg
           className="w-8 h-8 to-indigo-600 "
@@ -107,7 +106,7 @@ HL-17-Access_management
           </svg>
         </a>
       )}
->>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
+
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -681,7 +680,7 @@ HL-17-Access_management
                     </svg>
                   </span>
 
- Development_dev
+ 
                   <span className="text-[9px] font-bold  pl-1">Reports</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
@@ -1125,7 +1124,7 @@ HL-17-Access_management
                 </span>
               </span>
             </li>
- HL-17-Access_management
+ 
             {(user?.role?.includes(USER_ROLES.SALES_MANAGER) || user?.role?.includes(USER_ROLES.ADMIN)) &&
             {(user?.role?.includes(USER_ROLES.SALES_MANAGER) ||
               user?.role?.includes(USER_ROLES.ADMIN)) && (
@@ -1205,7 +1204,7 @@ HL-17-Access_management
                     </span>
                     <span className="flex ml-auto items-bottom">
                       <span className="flex ml-auto items-bottom text-xs mt-2"></span>
- Development_dev
+ 
                     </span>
 
                     <span className="text-[9px] font-bold  pl-1">Leads Bank</span>
@@ -1222,7 +1221,7 @@ HL-17-Access_management
 
 
                   </span>
- HL-17-Access_management
+ 
                 </span>
               </li>
             }
@@ -1230,7 +1229,7 @@ HL-17-Access_management
 
                 </li>
               )}
-Development_dev
+
             <li className="relative mt-1">
               <span
                 className={
@@ -1268,11 +1267,7 @@ Development_dev
                       </g>
                     </svg>
                   </span>
-<<<<<<< HEAD
-=======
- HL-17-Access_management
- Development_dev
->>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
+
                   <span className="text-[9px] font-bold  pl-1">Reports</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
@@ -1280,7 +1275,7 @@ Development_dev
                 </span>
               </span>
             </li>
- HL-17-Access_management
+ 
             {(user?.role?.includes(USER_ROLES.SALES_MANAGER) || user?.role?.includes(USER_ROLES.ADMIN)) &&
             {(user?.role?.includes(USER_ROLES.SALES_MANAGER) ||
               user?.role?.includes(USER_ROLES.ADMIN)) && (
@@ -1338,7 +1333,7 @@ Development_dev
                         >
                           <g fill="none" fillRule="evenodd">
                             <g fill="currentColor" fillRule="nonzero">
- Development_dev
+ 
                               <g>
                                 <g>
                                   <path
@@ -1360,7 +1355,7 @@ Development_dev
                       <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                     </span>
                   </span>
- HL-17-Access_management
+
                   <span className="flex ml-auto items-bottom">
                     <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                   </span>
@@ -1369,11 +1364,11 @@ Development_dev
  HEAD
             }
      )}
- d46e45ed7a94bd91dd1045de586bb81be8d0bef7
+
 
                 </li>
               )}
- Development_dev
+
           </ul>
         </>
       )}
@@ -1940,7 +1935,7 @@ Development_dev
                 className={
                   'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
                   (viewable === 'User Management'
- HL-17-Access_management
+
                     ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
                     : '')
                 }
@@ -1977,12 +1972,11 @@ Development_dev
                     ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
                     : '')
                 }
-<<<<<<< HEAD
+
                 onClick={() => setViewable('Time Off')}
-=======
+
                 onClick={() => setViewable('Time off')}
- Development_dev
->>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
+ 
                 style={{
                   display: 'block',
                   marginLeft: 'auto',
@@ -1991,10 +1985,10 @@ Development_dev
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
-<<<<<<< HEAD
+
 
                   <svg
-=======
+
                     {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-6"
@@ -2044,7 +2038,7 @@ Development_dev
                       />
                     </svg> */}
                     <svg
->>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
+
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
@@ -2059,20 +2053,17 @@ Development_dev
                       <path d="M12 2c-5.514 0-10 4.486-10 10s4.486 10 10 10 10-4.486 10-10c0-5.514-4.486-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
                       <path d="M12 6v6l4 2" />
                     </svg>
-<<<<<<< HEAD
+
                   </span>
                   <span className="text-[9px] font-bold  pl-1">Time Off</span>
-=======
 
- HL-17-Access_management
                     <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
                   </span>
                   <span className="text-[9px] font-bold  pl-1">Employees</span>
 
                   </span>
                   <span className="text-xs pl-1">Time off</span>
- Development_dev
->>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
+
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
@@ -2096,7 +2087,7 @@ Development_dev
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
- HL-17-Access_management
+ 
                     {/* <svg
                       width="24"
                       height="24"
@@ -2128,19 +2119,18 @@ Development_dev
                         d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
                       />
                     </svg>
- HL-17-Access_management
+
 
 
                   </span>
                   <span className="text-[9px] font-bold  pl-1">Pay Slips</span>
 
                   </span>
-<<<<<<< HEAD
+
                   <span className="text-[9px] font-bold  pl-1">Pay Slips</span>
-=======
+
                   <span className="text-[9px] font-bold  pl-1">Bank</span>
- Development_dev
->>>>>>> 9d3c82fe3ebca824284c18176da3974863e4f63e
+ 
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
@@ -2290,10 +2280,15 @@ Development_dev
       )}
 
       <Link
+
+        className={'flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300 ' +
+          (pgName === 'erpAccount' ? 'bg-gray-300' : '')} to={''}      // to={routes.erpAccount()}
+
         className={
           'flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300 ' +
           (pgName === 'erpAccount' ? 'bg-gray-300' : '')
         }
+
       >
         <svg
           className="w-5 h-5"

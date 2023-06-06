@@ -1,175 +1,13 @@
-// import React from 'react';
-// import styled from "styled-components";
-// import Tabs from "./Tabs";
-// import { useCoursesContext } from '../context/courses_context';
-
-// const CourseList = () => {
-//   const {courses} = useCoursesContext();
-
-//   return (
-//     <CoursesListWrapper>
-//       <div className='container'>
-//         <div className='courses-list-top'>
-//           <h2>A broad selection of courses</h2>
-//           <p>Choose from 204,000 online video courses with new additions publihsed every month</p>
-//         </div>
-
-//         <Tabs courses = {courses} />
-//       </div>
-//     </CoursesListWrapper>
-//   )
-// }
-
-// const CoursesListWrapper = styled.div`
-//   padding: 40px 0;
-//   .courses-list-top p{
-//     font-size: 1.8rem;
-//   }
-// `;
-
-// export default CourseList
-import { useState } from 'react'
-
-import styled from 'styled-components';
-
-
-const Button = styled.button`
-  background-color: #f1f1f1;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-  cursor: pointer;
-`;
-
-
-import CoursesCard from './CoursesCard'
-import { routes } from '@redwoodjs/router/dist/router'
-import { Link } from '@redwoodjs/router'
-const CourseList = () => {
-  const [activeTab, setActiveTab] = useState('python')
-  const tabHandler = (sel) => {
-    setActiveTab(sel)
-  }
-  return (
-    <div className="container ml-[50px] mt-8">
-      <div className="courses-list-top">
-        <h2 className="text-[20px] font-bold">A Broad Selection Of Courses</h2>
-        <p>
-          6+ learning paths with hand picked courses,Code Challenges, Tips,
-          e.t.c
-        </p>
-
-        <div className="tabs mt-[16px]">
-          <ul className="flex flex-wrap">
-            <li className="tabs-head-item">
-              <button
-                type="button"
-                className={`tab-btn py-[10px] px-[13px] mr-[6px]`}
-                style={{ border: '1px solid rgba(0,0,0,0.7)' }}
-                onClick={() => tabHandler('PYTHON')}
-              >
-                Python
-              </button>
-            </li>
-            <li className="tabs-head-item">
-              <button
-                type="button"
-                className={`tab-btn `}
-                onClick={() => tabHandler('WEB_DEVELOPMENT')}
-              >
-                Web Development
-              </button>
-            </li>
-            <li className="tabs-head-item">
-              <button
-                type="button"
-                className={`tab-btn `}
-                onClick={() => tabHandler('DATA_SCIENCE')}
-              >
-                Data Science
-              </button>
-            </li>
-            <li className="tabs-head-item">
-              <button
-                type="button"
-                className={`tab-btn `}
-                onClick={() => tabHandler('AWS')}
-              >
-                AWS Certification
-              </button>
-            </li>
-            <li className="tabs-head-item">
-              <button
-                type="button"
-                className={`tab-btn `}
-                onClick={() => tabHandler('DESIGN')}
-              >
-                Design
-              </button>
-            </li>
-            <li className="tabs-head-item">
-              <button
-                type="button"
-                className={`tab-btn `}
-                onClick={() => tabHandler('MARKETING')}
-              >
-                Marketing
-              </button>
-            </li>
-          </ul>
-
-          {/* <div className='tabs-body'>
-          {
-            courses.filter(course => course.category === activeTab).map((course) => (
-              <Course key = {course.id} {...course} />
-            ))
-          }
-        </div> */}
-        </div>
-
-        <div className="tabs-body">
-          {courses
-            .filter((course) => course.category === activeTab)
-            .map((course) => (
-              <CoursesCard key={course.id} {...course} />
-            ))}
-        </div>
-
-
-
-
-        <Button>
-      <Link to={routes.myJourney()} style={{ textDecoration: 'none', color: '#333' }}>
-        My Journey
-      </Link>
-    </Button>
-
-
-      </div>
-
-      {/* <Tabs courses = {courses} /> */}
-    </div>
-  )
-}
-
-export default CourseList
-
-
-
-
-
-const courses = [
+export const courses = [
   {
     id: 'xMHCZl',
     category: 'python',
-    image: 'learning_images/python_5.jpg',
+    image:'learning_images/python_5.jpg',
+
     course_name: 'Learn Python: The Complete Python Programming Course',
     description:
       'Learn A-Z everything about Python, from the basics, to advanced topics like Python GUI, Python Data Analysis, and more!',
+
     rating_count: 3059,
     rating_star: 4.4,
     students: 18430,
@@ -196,7 +34,7 @@ const courses = [
   {
     id: 'dtfo9e',
     category: 'python',
-    image: 'learning_images/python_4.jpg',
+    image:'learning_images/python_4.jpg',
     course_name: 'Learning Python for Data Analysis and Visualization',
     description:
       'Learn python and how to use it to analyze,visualize and present data. Includes tons of sample code and hours of video!',
@@ -214,6 +52,10 @@ const courses = [
       'Learn how to work with various data formats within python, including: JSON,HTML, and MS Excel Worksheets.',
       'Have a portfolio of various data analysis projects.',
     ],
+
+
+
+
     content: [
       'Intro to Course and Python',
       'Learning Numpy',
@@ -243,6 +85,9 @@ const courses = [
       'To learn the python language',
       'To learn the CORE skills to understand any programming language',
     ],
+
+
+
     content: [
       'Programming fundamentals',
       'Getting Started with Python',
@@ -274,6 +119,9 @@ const courses = [
       'Work with Python file handling',
       'Manipulate strings and data',
     ],
+
+
+
     content: [
       'Getting Started',
       'The Basics',
@@ -881,4 +729,3 @@ const courses = [
     ],
   },
 ]
-
