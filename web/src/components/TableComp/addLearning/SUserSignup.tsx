@@ -3,6 +3,11 @@ import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import SUserSignupBody from '../SUserSignupBody/SUserSignupBody'
 
+<<<<<<< HEAD:web/src/components/A_LearningModule/addLearning/SUserSignup.tsx
+
+
+=======
+>>>>>>> 05cbc5c3e7e31c13ff6c60d80de881750ea415a4:web/src/components/TableComp/addLearning/SUserSignup.tsx
 const SUserSignup = ({ open, setOpen, title, empData }) => {
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -44,6 +49,16 @@ const SUserSignup = ({ open, setOpen, title, empData }) => {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
+<<<<<<< HEAD:web/src/components/A_LearningModule/addLearning/SUserSignup.tsx
+
+
+
+
+
+
+
+=======
+>>>>>>> 05cbc5c3e7e31c13ff6c60d80de881750ea415a4:web/src/components/TableComp/addLearning/SUserSignup.tsx
                   <div className="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
                     <button
                       type="button"

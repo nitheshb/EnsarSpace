@@ -1,10 +1,8 @@
- HL-17-Access_management
+
 import { title } from 'process'
 
 import React, { ChangeEvent } from 'react'
 
-import React from 'react'
- Development_dev
 
 import { DownloadIcon } from '@heroicons/react/outline'
 import { Height } from '@mui/icons-material'
@@ -25,7 +23,7 @@ import CheckBox from 'src/components/profile/checkBox'
 import PersonalDetails from 'src/components/profile/personalDetails'
 
 import bg from '../../../public/Group7.png'
-HL-17-Access_management
+
 
 import ProfileHeaderPage from '../../components/profile/ProfileHeaderPage'
 
@@ -105,70 +103,7 @@ const Profile = () => {
                     style={{ position: 'relative' }}
                     className="md:w-[10vw] flex flex-col justify-between items-center md:h-[10vh] rounded-md"
                   >
-                    {/* <img className="w-full relative mt-4" src={bg} alt="bg profile" /> */}
-                    {/* <div className="w-32 h-32 absolute mt-4 bg-blue-900 rounded-full">
 
-
-                  </div> */}
-                    {/*
-  <div className="w-32 h-32 bg-blue-900 rounded-full flex items-center justify-center relative mt-[-18px] p-0">
-    <input
-      id="file-input"
-      type="file"
-      accept="image/*"
-      onChange={handleFileInputChange}
-      className="sr-only"
-    />
-    <label htmlFor="file-input" className="flex items-center justify-center absolute top-0 left-0 w-full h-full">
-      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-        <path fillRule="evenodd" d="M11 9h3l-4-4-4 4h3v4h2V9zm5-7h-3v2h-2V2H5v2H3a2 2 0 00-2 2v11a2 2 0 002 2h14a2 2 0 002-2V4a2 2 0 00-2-2zm0 13H3V7h14v11z" clipRule="evenodd" />
-      </svg>
-    </label>
-    <span className="text-white text-4xl font-bold">
-      DR
-
-  </span>
-
-</div> */}
-
-                    {/*
-<div className="w-32 h-32 bg-blue-900 rounded-full flex items-center justify-center relative mt-[-20px] p-0">
-  <input
-    id="file-input"
-    type="file"
-    accept="image/*"
-    onChange={handleFileInputChange}
-    className="sr-only"
-  />
-  <label htmlFor="file-input" className="flex items-center justify-center absolute top-0 left-0 w-full h-full">
-    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M11 9h3l-4-4-4 4h3v4h2V9zm5-7h-3v2h-2V2H5v2H3a2 2 0 00-2 2v11a2 2 0 002 2h14a2 2 0 002-2V4a2 2 0 00-2-2zm0 13H3V7h14v11z" clipRule="evenodd" />
-    </svg>
-  </label>
-  <span className="text-white text-4xl font-bold">
-    DR
-  </span>
-</div> */}
-
-                    {/*
-<div style={{top:"-50%", zIndex:"99999999", transform: "translateY(100%)"}} className="w-32 h-32 bg-blue-900 rounded-full flex flex-col items-center justify-center absolute mt-[2px]">
-  <input
-    id="file-input"
-    type="file"
-    accept="image/*"
-    onChange={handleFileInputChange}
-    className="sr-only"
-  />
-  <label htmlFor="file-input" className="flex items-center justify-center absolute bottom-0 right-0 w-full h-full">
-    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M11 9h3l-4-4-4 4h3v4h2V9zm5-7h-3v2h-2V2H5v2H3a2 2 0 00-2 2v11a2 2 0 002 2h14a2 2 0 002-2V4a2 2 0 00-2-2zm0 13H3V7h14v11z" clipRule="evenodd" />
-    </svg>
-  </label>
-
-  <span className="text-white text-4xl font-bold">
-    DR
-  </span>
-</div> */}
 
                     <div className="flex flex-col justify-center items-end mt-16 mb-16 ml-4">
                       <h1 className="text-center text-2xl font-semibold blink">
@@ -381,21 +316,9 @@ const Profile = () => {
                 <small className="font-medium  text-gray-500 ">
                   nitheshb@gmail.com
                 </small>
- Development_dev
               </div>
             </div>
 
- HL-17-Access_management
-                {/* <div className="flex flex-col gap- ml-[20%] flex-grow"> */}
-
-      {/* <div className="flex flex-col gap-1 absolute top-0 left-0 right-0 mt-10 "> */}
-      {/* <div className="flex flex-col gap-3 absolute top-0 right-0 mt-10 mr-6"> */}
-
-            {/* <div className="flex flex-col gap-3 absolute top-0 right-10 mt-10 mr-6" style={{right:"15rem"}}> */}
-
-                {/* <div className="flex flex-col gap-3 absolute top-0 left-0 mt-10 ml-1"> */}
-
-                {/* <div className="flex flex-col gap-1 absolute top-0 left-10 right-10 mt-10 "> */}
                 <PersonalDetails />
                 <CheckBox />
                 <Account />
@@ -410,21 +333,14 @@ const Profile = () => {
               <PersonalDetails />
               <CheckBox />
               <Account />
-Development_dev
             </div>
           </div>
         </div>
       </div>
     </div>
- HL-17-Access_management
 
-    //  </div>
-
-Development_dev
   )
 }
-{
-  /* < ProfileHeaderPage /> */
-}
+
 
 export default Profile

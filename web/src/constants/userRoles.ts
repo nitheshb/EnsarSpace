@@ -103,10 +103,8 @@ export const DEPARTMENT_LIST = [
   { label: 'Support', value: 'support' },
   { label: 'Sales', value: 'sales' },
   { label: 'Developer', value: 'developer' },
- HL-17-Access_management
   { label: 'Learner', value: 'learner' },
 
- Development_dev
   { label: 'Trainer', value: 'trainer' },
   { label: 'Fresher', value: 'fresher' },
 ]
@@ -132,7 +130,6 @@ export const EXPERIENCE_LIST = [
   { label: '2 - 3 Years', value: '2 - 3 Years' },
   { label: '3 - 4 Years', value: '3 - 4 Years' },
   { label: '5+ Years', value: '5+ Years' },
-HL-17-Access_management
 ]
 
 export const Category = [
@@ -150,7 +147,6 @@ export const Lang = [
   { label: 'Select the Language', value: '' },
   { label: 'English', value: 'English' },
   { label: 'French', value: 'French' },
- Development_dev
 ]
 
 
@@ -158,30 +154,17 @@ export const Lang = [
 export const ROLES_LIST = [
   { label: 'Select the role', value: '' },
   { label: 'Sales manager', value: USER_ROLES.SALES_MANAGER, dept: 'sales' },
- HL-17-Access_management
 
   { label: 'Sales senior associate', value: USER_ROLES.SALES_SENIOR_ASSOCIATE, dept: 'sales' },
   { label: 'Sales associate', value: USER_ROLES.SALES_ASSOCIATE, dept: 'sales' },
- Development_dev
   {
     label: 'Sales executive',
     value: USER_ROLES.SALES_EXECUTIVE,
     dept: 'sales',
   },
- HL-17-Access_management
 
 
-  // export const DEPARTMENT_LIST = [
-  //   { label: 'Select the role', value: '' },
-  //   { label: 'Sales manager', value: USER_DEPARTMENT.SALES_MANAGER, dept: 'sales' },
-  //   { label: 'Sales senior associate', value: USER_DEPARTMENT.SALES_SENIOR_ASSOCIATE, dept: 'sales' },
-  //   { label: 'Sales associate', value: USER_DEPARTMENT.SALES_ASSOCIATE, dept: 'sales' },
-  //   {
-  //     label: 'Sales executive',
-  //     value: USER_DEPARTMENT.SALES_EXECUTIVE,
-  //     dept: 'sales',
-  //   },
-  // ]
+ 
 
 
   {
@@ -196,7 +179,6 @@ export const ROLES_LIST = [
   },
 
 
- Development_dev
   {
     label: 'CP Agent',
     value: USER_ROLES.CP_AGENT,

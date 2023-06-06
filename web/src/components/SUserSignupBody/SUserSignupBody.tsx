@@ -437,8 +437,13 @@ HL-17-Access_management
                     type="submit"
                     disabled={loading}
                   >
+<<<<<<< HEAD
+                    {loading && <Loader texColor={undefined} size={undefined} />}
+                    {editMode ? 'Edit Employee' : 'Add Employee'}
+=======
                     {loading && <Loader />}
                     {editMode ? 'Edit Employee' : 'Add Roles'}
+>>>>>>> 05cbc5c3e7e31c13ff6c60d80de881750ea415a4
                   </button>
                 </div>
               </Form>

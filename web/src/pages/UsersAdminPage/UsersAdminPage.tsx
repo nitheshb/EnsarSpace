@@ -16,21 +16,20 @@ import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 import Timeoff from 'src/components/TableComp/Timeoff'
 
 import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
- 
+
 
 // import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 
- HL-17-Access_management
+
 import TableData from 'src/components/Access/TableData'
 
 
- HL-37-Create-a-leave-form
+
 import Timeoff from 'src/components/TableComp/Timeoff'
 
 import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
- Development_dev
- Development_dev
+
 
 
 const UsersAdminPage = () => {
@@ -59,13 +58,13 @@ const UsersAdminPage = () => {
 
         <div className="flex flex-col flex-grow">
           {/* <HeadNavBar /> */}
- 
+
           <HeadNavBar2
             selModule={selModule}
             setSelModule={setSelModule}
           />
 
- 
+
           <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">
@@ -189,7 +188,6 @@ const UsersAdminPage = () => {
             {viewable === 'User Report' && (
 
 
- HL-17-Access_management
             {viewable === 'User Report' && (
               // <ReportMain/>
               <ActivitySummaryReport
