@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-
+// import { ResponsiveBar } from '@nivo/bar'
 import { EyeIcon, PencilIcon } from '@heroicons/react/outline'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
@@ -358,9 +358,9 @@ const HomePage = () => {
       {loading && <div>Loading...</div>}
       <div className="flex w-screen h-screen text-gray-700">
         <div className="flex flex-col flex-grow">
-
+          {/* <HeadNavBar /> */}
           <div className="flex overflow-y-hidden flex-row overflow-auto h-[100vh]  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
-
+            {/* <HeadSideBar pgName={'home'} /> */}
             <SlimSideMenuBar
               pgName={'projectModule'}
               sourceLink={'projectModule'}
@@ -580,7 +580,7 @@ const HomePage = () => {
 
                                     <div className="grid grid-cols-1 gap-1">
                                       <div className="min-h-[380px]">
-
+                                        {/* <h1>hello</h1> */}
 
                                         <ResponsiveBar
                                           data={data}
@@ -783,7 +783,8 @@ const HomePage = () => {
 
                                     <div className="grid grid-cols-1 gap-1">
                                       <div className="min-h-[380px]">
-                                       
+                                        {/* <h1>hello</h1> */}
+
                                         <ResponsiveBar
                                           data={data1}
                                           keys={[
