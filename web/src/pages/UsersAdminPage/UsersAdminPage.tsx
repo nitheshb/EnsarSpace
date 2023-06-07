@@ -146,7 +146,7 @@ const UsersAdminPage = () => {
 
             {viewable === 'Time off' && (
             <>
-            <UserAccessTable />
+            <TimeOffTable />
             </>
             )}
 
