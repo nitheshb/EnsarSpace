@@ -20,6 +20,7 @@ import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
 
 // import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
+import AttendancePage from 'src/components/A_LearningModule/Attendance'
 
 
 
@@ -146,6 +147,12 @@ const UsersAdminPage = () => {
             {viewable === 'Time off' && (
             <>
             <UserAccessTable />
+            </>
+            )}
+
+          {viewable === 'Attendance' && (
+            <>
+            <AttendancePage />
             </>
             )}
 

@@ -182,6 +182,7 @@ const FullPageCard = () => {
 
   return (
     <div>
+      <GlobalStyle />
       <MyJourneyNavBar selModule={undefined} setSelModule={undefined}/>
       <CourseTitle>{courseTitle}</CourseTitle>
       <CardContainer>
