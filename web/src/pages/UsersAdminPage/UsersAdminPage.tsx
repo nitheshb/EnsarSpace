@@ -150,7 +150,7 @@ const UsersAdminPage = () => {
             </>
             )}
 
-          {viewable === 'Attendance' && (
+          {viewable === 'AttendancePage' && (
             <>
             <AttendancePage />
             </>
