@@ -22,6 +22,7 @@ const Button = styled.button`
 
 
 import CoursesCard from './CoursesCard'
+import SUserSignup from '../SUserSignup/SUserSignup';
 const CourseList = () => {
   const [activeTab, setActiveTab] = useState('python')
   const tabHandler = (sel) => {
