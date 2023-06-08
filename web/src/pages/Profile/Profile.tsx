@@ -88,7 +88,7 @@ const Profile = () => {
                     <div style={{ position: 'relative' }} className="md:w-[12vw] flex flex-col justify-between items-center md:h-[10vh] rounded-md">
                       <div className=" justify-center items-end mt-20 mb-16 ml-10">
                         <h1 className="text-center text-xl font-bold blink">
-                          PavanKumar
+                          Deepthi Rani
                         </h1>
                       </div>
                     </div>
