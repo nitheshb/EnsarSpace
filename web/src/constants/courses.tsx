@@ -14,6 +14,7 @@ export const courses = [
     creator: 'Avinash Jain, The Codex',
     updated_date: '9/2015',
     lang: 'english',
+    
     actual_price: 84.99,
     discounted_price: 9.99,
     what_you_will_learn: [

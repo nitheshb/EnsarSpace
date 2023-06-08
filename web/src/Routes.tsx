@@ -135,8 +135,6 @@ const Routes = () => {
 
   return (
     <Router>
-      <Route path="/my-journey" page={MyJourneyPage} name="myJourney" />
-      {/* <Route path="/coursedetailsS" page={CourseDetailsPagee} name="coursedetails" /> */}
 
       <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" />
 
@@ -158,6 +156,7 @@ const Routes = () => {
       <Route path="/admin/login" page={LoginPage} name="login" />
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/" page={LoginPage} name="login" />
+      <Route path="/courses/{id}" page={CoursedetailsPage} name="coursedetails"  />
       <Route notfound page={NotFoundPage} />
     </Router>
   )
