@@ -112,6 +112,8 @@ const CourseList = () => {
                 AWS Certification
               </button>
             </li>
+
+
             <li className="tabs-head-item">
               <button
                 type="button"
