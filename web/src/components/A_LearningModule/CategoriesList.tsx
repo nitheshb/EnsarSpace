@@ -1,7 +1,5 @@
 import { useState } from 'react'
 
-// import { Link } from '@redwoodjs/router/dist/links'
-
 import { Link, routes } from '@redwoodjs/router'
 
 import CoursesCard from './CoursesCard'
@@ -28,9 +26,9 @@ const CategoriesList = () => {
             {[...new Set(courses.map((item) => item.category))].map(
               (category, idx) => {
                 return (
-                  // <Category image = {categories_images[idx]} category = {category} key = {idx} />
+
                   <Link to={`/cource-overview/${category}`} key={idx}>
-                    {/* <Link to={routes.courceOverview()} key={idx} > */}
+                    
                     <div className="categoty-wrap">
                       <div className="flex flex-col bg-[#f8f9fb] p-[60px]">
                         <div className="category-item-img">

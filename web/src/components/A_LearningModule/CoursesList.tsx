@@ -1,11 +1,11 @@
 
 import { useState } from 'react'
+// import marketing_2 from '/learning_images/marketing_2.jpg'
+// import AddCourseForm from 'src/pages/CoursedetailsPage/CourseForm'
+import SUserSignup from './addLearning/SUserSignup'
 import { courses } from 'src/constants/courses'
-import { routes } from '@redwoodjs/router/dist/router'
+
 import styled from 'styled-components';
-
-
-import { Link } from '@redwoodjs/router'
 
 
 const Button = styled.button`
@@ -22,20 +22,54 @@ const Button = styled.button`
 
 
 import CoursesCard from './CoursesCard'
-import SUserSignup from '../SUserSignup/SUserSignup';
+import { routes } from '@redwoodjs/router/dist/router'
+import { Link } from '@redwoodjs/router'
 const CourseList = () => {
+
   const [activeTab, setActiveTab] = useState('python')
-  const tabHandler = (sel) => {
+   const [isOpen, setIsOpen] = useState(false)
+   const handleOnClose = () => setIsOpen(false)
+   const [empData, setEmpData] = useState({})
+
+   const tabHandler = (sel) => {
     setActiveTab(sel)
-  }
+    setEmpData(sel)
+    setIsOpen(true)
+   }
   return (
-    <div className="container ml-[50px] mt-8">
+    <div className="container ml-[50px]  mt-8">
+
       <div className="courses-list-top">
+        <div>
+        <button
+            onClick={() => tabHandler('ADD_COURSE')}
+            className="flex items-center justify-center h-10 px-4  bg-gray-200 ml-auto text-sm font-medium rounded hover:bg-gray-300"
+            >
+            <svg
+            className="w-5 h-5"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+            />
+            </svg>
+            <span className="mr-1 leading-none">Add Course</span>
+            </button>
+        </div>
+
         <h2 className="text-[20px] font-bold">A Broad Selection Of Courses</h2>
+
         <p>
           6+ learning paths with hand picked courses,Code Challenges, Tips,
           e.t.c
         </p>
+
 
         <div className="tabs mt-[16px]">
           <ul className="flex flex-wrap">
@@ -44,7 +78,7 @@ const CourseList = () => {
                 type="button"
                 className={`tab-btn py-[10px] px-[13px] mr-[6px]`}
                 style={{ border: '1px solid rgba(0,0,0,0.7)' }}
-                onClick={() => tabHandler('PYTHON')}
+                onClick={() => setActiveTab('python')}
               >
                 Python
               </button>
@@ -53,8 +87,10 @@ const CourseList = () => {
               <button
                 type="button"
                 className={`tab-btn `}
-                onClick={() => tabHandler('WEB_DEVELOPMENT')}
+                // onClick={() => tabHandler('WEB_DEVELOPMENT')}
+                onClick={() => setActiveTab('web development')}
               >
+
                 Web Development
               </button>
             </li>
@@ -62,7 +98,7 @@ const CourseList = () => {
               <button
                 type="button"
                 className={`tab-btn `}
-                onClick={() => tabHandler('DATA_SCIENCE')}
+                onClick={() => setActiveTab('data science')}
               >
                 Data Science
               </button>
@@ -71,7 +107,7 @@ const CourseList = () => {
               <button
                 type="button"
                 className={`tab-btn `}
-                onClick={() => tabHandler('AWS')}
+                onClick={() => setActiveTab('aws')}
               >
                 AWS Certification
               </button>
@@ -80,7 +116,7 @@ const CourseList = () => {
               <button
                 type="button"
                 className={`tab-btn `}
-                onClick={() => tabHandler('DESIGN')}
+                onClick={() => setActiveTab('design')}
               >
                 Design
               </button>
@@ -89,30 +125,44 @@ const CourseList = () => {
               <button
                 type="button"
                 className={`tab-btn `}
-                onClick={() => tabHandler('MARKETING')}
+                onClick={() => setActiveTab('marketing')}
               >
                 Marketing
               </button>
             </li>
 
-            <li className="tabs-head-item">
-              <button
-                type="button"
-                className={`tab-btn `}
-                onClick={() => tabHandler('ADD_COURSE')}
-              >
-                Add Course
-              </button>
-            </li>
-          </ul>
 
-          {/* <div className='tabs-body'>
-          {
-            courses.filter(course => course.category === activeTab).map((course) => (
-              <Course key = {course.id} {...course} />
-            ))
-          }
-        </div> */}
+
+            </ul>
+
+{/*
+            <div>
+            <button
+            onClick={() => tabHandler('ADD_COURSE')}
+            className="flex items-center justify-center h-10 px-4  bg-gray-200 ml-auto text-sm font-medium rounded hover:bg-gray-300"
+            >
+            <svg
+            className="w-5 h-5"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+            />
+            </svg>
+            <span className="mr-1 leading-none">Add Course</span>
+            </button>
+
+
+            </div> */}
+          {/* </div> */}
+
+
         </div>
 
         <div className="tabs-body">
@@ -126,25 +176,28 @@ const CourseList = () => {
 
 
 
-
-
-
-      </div>
-
-      <Button>
+        <Button>
       <Link to={routes.myJourney()} style={{ textDecoration: 'none', color: '#333' }}>
         My Journey
       </Link>
     </Button>
+
+
+      </div>
+      <SUserSignup
+
+       open={isOpen}
+       setOpen={handleOnClose}
+       title="User"
+       empData={empData}
+
+      />
+
+
     </div>
   )
 }
 
 export default CourseList
-
-
-
-
-
 
 
