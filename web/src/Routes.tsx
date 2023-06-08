@@ -8,7 +8,7 @@ import { useAuth } from 'src/context/firebase-auth-context'
 import FinanceHomePagePage from './pages/FinanceHomePagePage/FinanceHomePagePage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage/PrivacyPolicyPage'
 import Profile from './pages/Profile/Profile'
-import CourseDetailsPagee from './context/courses_context'
+// import CourseDetailsPagee from './context/courses_context'
 
 // import SingleCoursePage from './pages/SeeDetailsPage/CoursedetailsPage'
 
@@ -127,7 +127,7 @@ const Routes = () => {
       <Route path="/admin/login" page={LoginPage} name="login" />
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/" page={LoginPage} name="login" />
-      <Route path="/courses/{id}" page={CoursedetailsPage} name="coursedetails" />
+      <Route path="/courses/{id}" page={CoursedetailsPage} name="coursedetails"  />
       <Route notfound page={NotFoundPage} />
 
 
