@@ -114,7 +114,7 @@ const ProfileHeader = () => {
 
                     ) : (
 
-                      'PK'
+                      'DR'
 
                     )}
 
