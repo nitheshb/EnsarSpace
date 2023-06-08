@@ -1,37 +1,24 @@
-// import React from 'react';
-// import styled from "styled-components";
-// import Tabs from "./Tabs";
-// import { useCoursesContext } from '../context/courses_context';
 
-// const CourseList = () => {
-//   const {courses} = useCoursesContext();
-
-//   return (
-//     <CoursesListWrapper>
-//       <div className='container'>
-//         <div className='courses-list-top'>
-//           <h2>A broad selection of courses</h2>
-//           <p>Choose from 204,000 online video courses with new additions publihsed every month</p>
-//         </div>
-
-//         <Tabs courses = {courses} />
-//       </div>
-//     </CoursesListWrapper>
-//   )
-// }
-
-// const CoursesListWrapper = styled.div`
-//   padding: 40px 0;
-//   .courses-list-top p{
-//     font-size: 1.8rem;
-//   }
-// `;
-
-// export default CourseList
 import { useState } from 'react'
-// import marketing_2 from '/learning_images/marketing_2.jpg'
-// import AddCourseForm from 'src/pages/CoursedetailsPage/CourseForm'
 import { courses } from 'src/constants/courses'
+import { routes } from '@redwoodjs/router/dist/router'
+import styled from 'styled-components';
+
+
+import { Link } from '@redwoodjs/router'
+
+
+const Button = styled.button`
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+`;
 
 
 import CoursesCard from './CoursesCard'
@@ -106,6 +93,16 @@ const CourseList = () => {
                 Marketing
               </button>
             </li>
+
+            <li className="tabs-head-item">
+              <button
+                type="button"
+                className={`tab-btn `}
+                onClick={() => tabHandler('ADD_COURSE')}
+              >
+                Add Course
+              </button>
+            </li>
           </ul>
 
           {/* <div className='tabs-body'>
@@ -133,7 +130,11 @@ const CourseList = () => {
 
       </div>
 
-      {/* <Tabs courses = {courses} /> */}
+      <Button>
+      <Link to={routes.myJourney()} style={{ textDecoration: 'none', color: '#333' }}>
+        My Journey
+      </Link>
+    </Button>
     </div>
   )
 }
