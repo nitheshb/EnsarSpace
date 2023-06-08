@@ -138,6 +138,10 @@ const Routes = () => {
 
       <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" />
 
+      <Route path="/my-journey" page={MyJourneyPage} name="myJourney" />
+
+
+
       <Route path="/leave-approval" page={LeaveApprovalPage} name="leaveApproval" />
 
       {/* <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" /> */}
