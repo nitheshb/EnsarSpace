@@ -27,11 +27,7 @@ export default function EditLeadTask({
       <section className=" px-4">
         <div className="text-xs font-bodyLato text-[#516f90]">
           Edit Title
-          {/* <ErrorMessage
-                                              component="div"
-                                              name="taskTitle"
-                                              className="error-message text-red-700 text-xs p-1"
-                                            /> */}
+
           {error && (
             <div className="error-message text-red-700 text-xs p-1">
               {' '}
@@ -91,7 +87,7 @@ export default function EditLeadTask({
             <span className="ml-1 ">Edit Task</span>
           </button>
           <button
-            // onClick={() => fSetLeadsType('Add Lead')}
+           
             onClick={() => cancelResetStatusFun()}
             className={`flex mt-2 ml-4 rounded items-center text-bodyLato pl-2 h-[36px] pr-4 py-2 text-sm font-medium border  hover:bg-gray-700 hover:text-white `}
           >

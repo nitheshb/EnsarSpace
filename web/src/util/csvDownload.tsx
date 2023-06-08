@@ -12,10 +12,7 @@ export default function CSVDownloader({ downloadRows, fromLeadsBank = false }) {
   let downloadData
   if (fromLeadsBank) {
 
-    // validate
-    // get data
-    // trigger api
-    // handle api response 
+
     downloadData = downloadRows.map((item) => {
       return {
         ...item,
@@ -33,7 +30,7 @@ export default function CSVDownloader({ downloadRows, fromLeadsBank = false }) {
     >
       <Tooltip title={`Download ${downloadRows.length} Rows`}>
         <IconButton>
-          {/* style={{ background: '#f9f9f9' }} */}
+          
           <DownloadTwoToneIcon style={{ height: '20px', width: '20px' }} />
         </IconButton>
       </Tooltip>

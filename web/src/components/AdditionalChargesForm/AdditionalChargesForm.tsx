@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
+
 import { Dialog } from '@headlessui/react'
 import { Alert, AlertTitle } from '@mui/lab'
 import { useSnackbar } from 'notistack'
 import Select from 'react-select'
+
 
 import { MaterialCRUDTable } from 'src/components/MaterialCRUDTable'
 import {
@@ -18,14 +20,17 @@ import {
 } from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
 
+
 const AdditionalChargesForm = ({ title, data, source, blocksViewFeature }) => {
   const { user } = useAuth()
+
 
   const { orgId } = user
   const [tableData, setTableData] = useState([])
   const [iserror, setIserror] = useState(false)
   const [errorMessages, setErrorMessages] = useState([])
   const [editOpitionsObj, setEditOptions] = useState({})
+
 
   useEffect(() => {
     if (source === 'projectManagement') {
@@ -38,8 +43,10 @@ const AdditionalChargesForm = ({ title, data, source, blocksViewFeature }) => {
     }
   }, [source, data, tableData])
 
+
   useEffect(() => {
     const { phase } = data
+
 
     const { additonalChargesObj, ConstructOtherChargesObj } = phase
     const x =
@@ -50,6 +57,7 @@ const AdditionalChargesForm = ({ title, data, source, blocksViewFeature }) => {
     console.log('phase is ', phase, x)
   }, [data, blocksViewFeature])
 
+
   const { enqueueSnackbar } = useSnackbar()
   const defaultValue = (options, value) => {
     return (
@@ -58,7 +66,7 @@ const AdditionalChargesForm = ({ title, data, source, blocksViewFeature }) => {
         : '') || ''
     )
   }
-  // paymentScheduleA
+  
   const columns = [
     {
       title: 'Charges For*',
@@ -94,15 +102,7 @@ const AdditionalChargesForm = ({ title, data, source, blocksViewFeature }) => {
           />
         )
       },
-      // editComponent: ({ value, onChange }) => (
-      //   <input
-      //     placeholder="Charges For"
-      //     className="w-full min-w-full flex bg-grey-lighter text-grey-darker border border-[#cccccc] rounded-md h-10 px-2"
-      //     autoComplete="off"
-      //     onChange={(e) => onChange(e.target.value)}
-      //     value={value}
-      //   />
-      // ),
+
     },
     {
       title: 'Units*',
@@ -206,33 +206,12 @@ const AdditionalChargesForm = ({ title, data, source, blocksViewFeature }) => {
     },
   ]
 
-  // const getCharges = async () => {
-  //   const { projectId, uid } = data?.phase || {}
 
-  //   const unsubscribe = getAdditionalCharges(
-  //     { projectId, phaseId: uid },
-  //     (querySnapshot) => {
-  //       const response = querySnapshot.docs.map((docSnapshot) =>
-  //         docSnapshot.data()
-  //       )
-  //       console.log('before', response)
 
-  //       setTableData(response)
-  //     },
-  //     (e) => {
-  //       console.log('error', e)
-  //       setTableData([])
-  //     }
-  //   )
-  //   return unsubscribe
-  // }
 
-  // useEffect(() => {
-  //   getCharges()
-  // }, [])
 
   const errors = (formData) => {
-    //validating the data inputs
+
     const errorList = []
     if (!formData.component) {
       errorList.push("Try Again, You didn't enter the Charges For field")
@@ -247,14 +226,14 @@ const AdditionalChargesForm = ({ title, data, source, blocksViewFeature }) => {
       errorList.push("Try Again, You didn't enter the gst field")
     }
 
-    // if (!formData.description) {
-    //   errorList.push("Try Again, description field can't be blank")
-    // }
+
+
     return errorList
   }
-  //function for updating the existing row details
+
   const handleRowUpdate = async (newData, oldData) => {
     const { uid, additonalChargesObj } = data?.phase || {}
+
 
     console.log('check this stuff', tableData, additonalChargesObj)
     const c = await tableData.map((e) => {
@@ -276,7 +255,8 @@ const AdditionalChargesForm = ({ title, data, source, blocksViewFeature }) => {
     )
   }
 
-  //function for deleting a row
+
+
   const handleRowDelete = async (oldData) => {
     const { uid } = data?.phase || {}
     const c = tableData.filter((e) => e.myId != oldData.myId)
@@ -290,12 +270,14 @@ const AdditionalChargesForm = ({ title, data, source, blocksViewFeature }) => {
         : 'additonalChargesObj',
       enqueueSnackbar
     )
-    // await deleteAdditionalCharge(oldData?.uid, enqueueSnackbar)
+
   }
 
-  //function for adding a new row to the table
+
+
   const handleRowAdd = async (newData) => {
     console.log('newData is', newData)
+
 
     setIserror(false)
     setErrorMessages([])
@@ -304,10 +286,11 @@ const AdditionalChargesForm = ({ title, data, source, blocksViewFeature }) => {
       console.log('newData is inside yo', newData)
       const { projectId, uid } = data?.phase || {}
 
+
       const additonalChargesObj = {
         ...newData,
       }
-      // await createAdditonalCharges(additonalChargesObj, enqueueSnackbar)
+
       await addPhaseAdditionalCharges(
         orgId,
         uid,
@@ -323,17 +306,17 @@ const AdditionalChargesForm = ({ title, data, source, blocksViewFeature }) => {
     }
   }
 
+
   return (
     <div className="h-full shadow-xl flex flex-col pt-6 mb-6 mt-10 bg-[#F1F5F9] rounded-t overflow-y-scroll">
       <div className="z-10">
-        {/* <Dialog.Title className="font-semibold text-xl mr-auto ml-3 text-[#053219]">
-          {title}
-        </Dialog.Title> */}
+
         <span className="mr-auto ml-3  text-md font-extrabold tracking-tight uppercase font-body ">
           {blocksViewFeature === 'Construction_Other_Charges'
             ? 'Construction Other Charges (section B)'
             : 'Plot Other Charges (section B)'}
         </span>
+
 
         <div className="mt-5 min">
           <MaterialCRUDTable
@@ -378,4 +361,8 @@ const AdditionalChargesForm = ({ title, data, source, blocksViewFeature }) => {
   )
 }
 
+
 export default AdditionalChargesForm
+
+
+

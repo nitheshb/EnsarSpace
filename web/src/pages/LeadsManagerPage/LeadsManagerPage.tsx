@@ -32,9 +32,7 @@ const LeadsManagerPage = (props) => {
   const [isClicked, setIsClicked] = useState(false)
   const [selModule, setSelModule] = useState('Sales')
 
-  //confetti
 
-  //confetti
   const a = window.location.pathname
   window.history.pushState('', document.title, a)
   const showSideView1 = () => {
@@ -55,17 +53,9 @@ const LeadsManagerPage = (props) => {
   return (
     <>
       <div className="flex w-screen h-screen text-gray-700">
-        {/* {showSideBar && <HeadSideBar pgName={'leadsManager'} />}
-        <HeadSideBarDetailView
-          pgName={'leadsManager'}
-          sourceLink={'leadsScreen'}
-          showSideBar={showSideBar}
-          showSideView1={showSideView1}
-          setViewable={setViewable}
-        /> */}
 
         <div className="flex flex-col flex-grow">
-          {/* <HeadNavBar /> */}
+
           {}
           <div className="flex flex-row  h-[100vh]  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <div
@@ -126,7 +116,7 @@ const LeadsManagerPage = (props) => {
 
               {viewable === 'LeadsManagerHome' && <LeadsManagementHome />}
               {viewable === 'Team Lead Report' && (
-                // <ReportMain/>
+
                 <LeadsTeamReportBody
                   project={{
                     area: 1000,
@@ -187,26 +177,7 @@ const LeadsManagerPage = (props) => {
                 />
               )}
             </div>
-            {/* <div className="flex-grow mx-4  my-2 items-center overflow-y-auto  h-screen  px-300  py-300"> */}
-            {/* {viewable === 'Today' && <ExecutiveHomeViewerPage />} *SS/}
-            {/* {viewable === 'Today1' && <TodayLeadsHomePage />} */}
-            {/* {viewable === 'LeadsManagerHome' && <LeadsManagementHome />} */}
-            {/* </div> */}
-            {/* <div
-              flex-grow
-              p-6
-              overflow-auto
-              h-screen
-              text-gray-700
-              bg-gradient-to-tr
-              from-blue-200
-              via-indigo-200
-              to-pink-200
-            >
-              {viewable === 'Today' && <ExecutiveHomeViewerPage />}
-              {viewable === 'Today1' && <TodayLeadsHomePage />}
-              {viewable === 'LeadsManagerHome' && <LeadsManagementHome />}
-            </div> */}
+            
           </div>
         </div>
       </div>

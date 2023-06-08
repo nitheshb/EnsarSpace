@@ -1,7 +1,4 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/iframe-has-title */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+
 import { useEffect, useState } from 'react'
 
 import { PlusCircleIcon, TrashIcon } from '@heroicons/react/outline'
@@ -84,7 +81,7 @@ const MarkeingMessagesList = ({ title, pId, data }) => {
                       : 'font-normal text-black-100 bg-[#f0f8ff]'
                   }  rounded-full`}
                 >
-                  {/* <PencilIcon className="h-3 w-3 mr-1" aria-hidden="true" /> */}
+
                   <img alt="" src="/temp2.png" className="h-3 w-3 mr-1" />
                   {data?.label}
                 </span>
@@ -251,57 +248,7 @@ const MarkeingMessagesList = ({ title, pId, data }) => {
           </section>
         </div>
       )}
-      {/* <div className="w-full  flex flex-row">
-        {selCat === 'enquiry_journey_status' && (
-          <section className="m-4 inline-block">
-            <div className="bg-[#FFEDEA] p-4 rounded-xl shadow-md shadow-neutral-200 w-96">
-              <h2 className="text-sm font-semibold pb-2 border-b border-grey">
-                {'Lead/Client Notifications'}
-              </h2>
-
-              <div className=" justify-between mb-4">
-                {[
-                  { btnTxt: 'On Payment Request', target: 'Sales Customer' },
-                  { btnTxt: 'On Payment Receival', target: 'Sales Customer' },
-                  {
-                    btnTxt: 'On Payament Accepted',
-                    target: 'Sales Customer',
-                  },
-                  {
-                    btnTxt: 'On CostSheet Approval',
-                    target: 'Sales Customer',
-                  },
-                ].map((data, i) => (
-                  <section key={i}>
-                    <div className="flex flex-row justify-between">
-                      <section className="flex  mt-[18px]">
-                        <button>
-                          <span className="flex ml-2 items-center h-6 px-3 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
-                            <PencilIcon
-                              className="h-3 w-3 mr-1"
-                              aria-hidden="true"
-                            />
-                            {data?.btnTxt}
-                          </span>
-                        </button>
-                      </section>
-
-                      <section className="flex  mt-[18px]">
-                        <span className="flex ml-2 items-center h-6 px-3 text-xs  text-green-800">
-                          {data?.target}
-                        </span>
-                      </section>
-                    </div>
-                  </section>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-      </div> */}
-
-      {/* Crm block */}
-      {selCat === 'CRM_status' && (
+    {selCat === 'CRM_status' && (
         <div className="w-full  flex flex-row">
           <div className="lg:col-span-2 mr-4">
             <div>
@@ -475,7 +422,7 @@ const MarkeingMessagesList = ({ title, pId, data }) => {
         </div>
       )}
 
-      {/* Finance Block  */}
+
       {selCat === 'Finance_status' && (
         <div className="w-full  flex flex-row">
           <div className="lg:col-span-2 mr-4">
@@ -707,7 +654,7 @@ const MarkeingMessagesList = ({ title, pId, data }) => {
           </div>
         </div>
       )}
-      {/* Legal_status */}
+      
       {selCat === 'Legal_status' && (
         <div className="w-full  flex flex-row">
           <div className="lg:col-span-2 mr-4">

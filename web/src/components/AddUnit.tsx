@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { Dialog } from '@headlessui/react'
 import { useState, useEffect } from 'react'
 import { RadioGroup } from '@headlessui/react'
@@ -110,11 +107,7 @@ const AddUnit = ({
     { label: 'Esperanza', value: 'esperanza' },
     { label: 'Nakshatra Township', value: 'nakshatratownship' },
   ]
-  // const usersList = [
-  //   { label: 'User1', value: 'User1' },
-  //   { label: 'User2', value: 'User2' },
-  //   { label: 'User3', value: 'User3' },
-  // ]
+
   const budgetList = [
     { label: 'Select Customer Budget', value: '' },
     { label: '5 - 10 Lacs', value: 'Bangalore,KA' },
@@ -196,7 +189,7 @@ const AddUnit = ({
       super_build_up_area,
       unit_no,
     } = data
-    // updateUserRole(uid, deptVal, myRole, email, 'nitheshreddy.email@gmail.com')
+
 
     const foundLength = await checkIfUnitAlreadyExists(
       'spark_units',
@@ -205,8 +198,7 @@ const AddUnit = ({
       blockDetails?.uid,
       unit_no
 
-      // myBlock?.uid,
-      // dRow['unit_no']
+
     )
     const leadData = {
       Date: Timestamp.now().toMillis(),
@@ -278,12 +270,9 @@ const AddUnit = ({
   ]
   const validate = Yup.object({
     unit_no: Yup.string()
-      // .max(15, 'Must be 15 characters or less')
+
       .required('Unit_no is Required'),
-    // lastName: Yup.string()
-    //   .max(20, 'Must be 20 characters or less')
-    //   .required('Required'),
-    sqft_rate: Yup.number().required('sqft rate is required'),
+       sqft_rate: Yup.number().required('sqft rate is required'),
     bedRooms:
       projectDetails?.projectType?.name === 'Apartment'
         ? Yup.string().required('bedRooms is required')
@@ -293,7 +282,7 @@ const AddUnit = ({
       projectDetails?.projectType?.name === 'Apartment'
         ? Yup.string().required('bathrooms is required')
         : Yup.string().notRequired(),
-    // bathrooms: Yup.string().required('bathrooms is required'),
+
     area:
       projectDetails?.projectType?.name === 'Plots'
         ? Yup.number().required('area is required')
@@ -475,7 +464,7 @@ const AddUnit = ({
                             formik.setFieldValue('facing', value.value)
                           }}
                           value={formik.values.facing}
-                          // options={aquaticCreatures}
+
                           options={facingTypeList}
                         />
                       </div>
@@ -517,7 +506,7 @@ const AddUnit = ({
                       </>
                     )}
 
-                    {/* 6 */}
+                    
 
                     <div className="mb-8">
                       <p className="text-xs text-red-400 text-right my-3">

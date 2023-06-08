@@ -1,8 +1,8 @@
 import { render } from '@redwoodjs/testing/web'
 
-import UserManageTable from './UserManageTable'
+import geTable from './UserManageTable'
 
-describe('UserManageTable', () => {
+describe('geTable', () => {
   it('renders successfully', () => {
     expect(() => {
       render(<UserManageTable />)

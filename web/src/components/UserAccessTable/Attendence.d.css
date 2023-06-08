@@ -1,0 +1,24 @@
+.card {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-card {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.attendance-table {
+  margin-top: 20px;
+}
+
+.attendance-table h6 {
+  margin-bottom: 10px;
+}
