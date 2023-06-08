@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useEffect, createRef } from 'react'
 
 import { Form, Formik } from 'formik'
@@ -109,7 +112,9 @@ const PaymentScheduleSheet = ({
   }
 
   const validate = Yup.object({
-
+    // blockReason: Yup.number()
+    //   .max(15, 'Must be 15 characters or less')
+    //   .required('Name is Required'),
   })
 
   useEffect(() => {
@@ -123,7 +128,26 @@ const PaymentScheduleSheet = ({
         : ''
 
     const x = [
+      // {
+      //   myId: '1',
+      //   units: {
+      //     value: 'fixedcost',
+      //     label: 'Fixed cost',
+      //   },
+      //   component: {
+      //     value: 'unit_cost_charges',
+      //     label: 'Unit Cost',
+      //   },
+      //   charges: typeof y
+      //     ? selUnitDetails?.super_built_up_area * y
+      //     : selUnitDetails?.super_built_up_area * selUnitDetails?.rate_per_sqft,
+      //   gst: {
+      //     label: '0',
+      //     value: '0',
+      //   },
+      // },
     ]
+    // const x = costSheetA
     let merged = []
     try {
       if (leadDetailsObj2) {
@@ -160,7 +184,16 @@ const PaymentScheduleSheet = ({
   const initialState = initialValuesA
 
   const validateSchema = Yup.object({
-
+    // customerName1: Yup.string().required('Required'),
+    // co_Name1: Yup.string().required('Required'),
+    // panNo1: Yup.string().required('Required'),
+    // panDocUrl1: Yup.string().required('Required'),
+    // aadharNo1: Yup.string().required('Required'),
+    // aadharUrl1: Yup.string().required('Required'),
+    // occupation1: Yup.string().required('Required'),
+    // phoneNo1: Yup.string().required('Required'),
+    // email1: Yup.string().required('Required'),
+    // aggrementAddress: Yup.string().required('Required'),
   })
 
   const resetter = () => {
@@ -176,14 +209,14 @@ const PaymentScheduleSheet = ({
         (obj['stage'].value === 'Booking'
           ? Number(formik.values[`${obj['stage'].value}`])
           : Number(
-            (soldPrice - formik.values[`Booking`]) *
-            Number(formik.values[`${obj['stage'].value}`]) *
-            0.01
-          )),
+              (soldPrice - formik.values[`Booking`]) *
+                Number(formik.values[`${obj['stage'].value}`]) *
+                0.01
+            )),
       0
     )
 
-
+    // setSoldPrice(total)
     return total
   }
 
@@ -259,7 +292,7 @@ const PaymentScheduleSheet = ({
     }
 
     const xData = {}
-    xData[`${uid}${'_source_of_pay'}`] = { self: 20, bank: 80 }
+    xData[`${uid}${'_source_of_pay'}`] = { self: 20, bank: 80 } // sourceOfPay
     xData[`${uid}${'_otherInfo'}`] = { leadSource, sourceOfPay, purpose }
 
     const updateDoc = {
@@ -302,7 +335,7 @@ const PaymentScheduleSheet = ({
                 {(formik) => (
                   <Form>
                     <div className="form">
-
+                      {/* Phase Details */}
 
                       <section className=" bg-blueGray-50">
                         <div className="w-full  mx-auto ">
@@ -313,6 +346,12 @@ const PaymentScheduleSheet = ({
                                   Payment Schedule
                                 </p>
 
+                                {/* <button
+                                  className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                  type="button"
+                                >
+                                  Receipt Download
+                                </button> */}
                                 <div className="flex-auto flex flex-row-reverse">
                                   <button
                                     className="h-[30px] text-base hover:scale-110 focus:outline-none flex justify-center px-2  rounded font-bold cursor-pointer
@@ -417,15 +456,28 @@ const PaymentScheduleSheet = ({
 
                                                   <td className="py-4 pl-3 pr-4 text-sm text-right text-slate-500 sm:pr-6 md:pr-0">
                                                     {d1?.stage?.value ===
-                                                      'Booking' ? (
+                                                    'Booking' ? (
                                                       <>
                                                         <TextFieldFlat
                                                           label=""
                                                           name="Booking"
                                                           onChange={(e) => {
-
+                                                            // setNewSqftPrice(e.target.value)
+                                                            // console.log(
+                                                            //   'changed value is',
+                                                            //   e.target.value
+                                                            // )
+                                                            // formik.setFieldValue(
+                                                            //   'unit_cost_charges',
+                                                            //   selUnitDetails?.super_built_up_area *
+                                                            //     e.target.value
+                                                            // )
+                                                            // setNewSqftPrice(
+                                                            //   e.target.value
+                                                            // )
                                                             formik.setFieldValue(
-                                                              `${d1?.stage?.value
+                                                              `${
+                                                                d1?.stage?.value
                                                               }_${'cal'}`,
 
                                                               d1?.stage
@@ -433,22 +485,22 @@ const PaymentScheduleSheet = ({
                                                                 'Booking'
                                                                 ? d1?.percentage
                                                                 : Number(
-                                                                  (soldPrice -
-                                                                    formik
-                                                                      .values[
-                                                                    `Booking`
-                                                                    ]) *
-                                                                  d1?.percentage *
-                                                                  0.01
-                                                                )
+                                                                    (soldPrice -
+                                                                      formik
+                                                                        .values[
+                                                                        `Booking`
+                                                                      ]) *
+                                                                      d1?.percentage *
+                                                                      0.01
+                                                                  )
                                                             )
                                                           }}
                                                           value={
                                                             formik.values[
-                                                            `Booking`
+                                                              `Booking`
                                                             ]
                                                           }
-
+                                                          // value={newSqftPrice}
                                                           type="number"
                                                         />
                                                       </>
@@ -457,21 +509,22 @@ const PaymentScheduleSheet = ({
                                                         label=""
                                                         onChange={(e) => {
                                                           formik.setFieldValue(
-                                                            `${d1?.stage?.value
+                                                            `${
+                                                              d1?.stage?.value
                                                             }_${'cal'}`,
 
                                                             d1?.stage?.value ===
                                                               'Booking'
                                                               ? d1?.percentage
                                                               : Number(
-                                                                (soldPrice -
-                                                                  formik
-                                                                    .values[
-                                                                  `Booking`
-                                                                  ]) *
-                                                                d1?.percentage *
-                                                                0.01
-                                                              )
+                                                                  (soldPrice -
+                                                                    formik
+                                                                      .values[
+                                                                      `Booking`
+                                                                    ]) *
+                                                                    d1?.percentage *
+                                                                    0.01
+                                                                )
                                                           )
                                                         }}
                                                         name={d1?.stage?.value}
@@ -485,16 +538,16 @@ const PaymentScheduleSheet = ({
                                                   >
                                                     <div className="font-medium text-slate-700">
                                                       {d1?.stage?.value ===
-                                                        'Booking'
+                                                      'Booking'
                                                         ? d1?.percentage
                                                         : Number(
-                                                          (soldPrice -
-                                                            formik.values[
-                                                            `Booking`
-                                                            ]) *
-                                                          d1?.percentage *
-                                                          0.01
-                                                        )}
+                                                            (soldPrice -
+                                                              formik.values[
+                                                                `Booking`
+                                                              ]) *
+                                                              d1?.percentage *
+                                                              0.01
+                                                          )}
                                                     </div>
                                                     <div className="mt-0.5 text-slate-500 sm:hidden">
                                                       1 unit at $0.00
@@ -530,7 +583,19 @@ const PaymentScheduleSheet = ({
                                                   paymentScheduleA,
                                                   formik
                                                 )}
-
+                                                {/* {paymentScheduleA.reduce(
+                                                  (partialSum, obj) =>
+                                                    partialSum +
+                                                    Number(
+                                                      formik.values[
+                                                        `${obj['percentage']}`
+                                                      ]
+                                                    ),
+                                                  0
+                                                )} */}
+                                                {/* {paymentScheduleA.reduce(function (acc, obj) {
+                                    return acc + obj.x
+                                  }, 0)} */}
                                               </td>
                                             </tr>
                                           </tfoot>
@@ -546,7 +611,18 @@ const PaymentScheduleSheet = ({
                                             {' '}
                                             Send to WhatsApp{' '}
                                           </button>
-
+                                          {/* <Pdf targetRef={ref} filename="post.pdf">
+                              {({ toPdf }) => (
+                                <button
+                                  onClick={toPdf}
+                                  type="button"
+                                  className="mb-4 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-sm hover:shadow-lg hover:bg-gray-100"
+                                >
+                                  {' '}
+                                  Download{' '}
+                                </button>
+                              )}
+                            </Pdf> */}
                                           <button
                                             onClick={() => downloadPdf()}
                                             type="button"
@@ -560,9 +636,9 @@ const PaymentScheduleSheet = ({
                                             className="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-sm hover:shadow-lg hover:bg-green-500"
                                             type="submit"
                                             disabled={loading}
-
+                                            // onClick={() => submitFormFun(formik)}
                                           >
-
+                                            {/* {loading && <Loader />} */}
                                             Save
                                           </button>
                                         </div>
@@ -584,6 +660,7 @@ const PaymentScheduleSheet = ({
         </div>
       </div>
 
+      {/* old form  */}
     </>
   )
 }

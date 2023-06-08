@@ -1,4 +1,4 @@
-
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react'
 import createClass from 'create-react-class'
 import PropTypes from 'prop-types'
@@ -72,7 +72,12 @@ const MyOption = (props) => {
   const { data, innerProps, innerRef } = props
 
   return (
-
+    // <article ref={innerRef} {...innerProps} className="custom-option">
+    //   <h4>{props.data.name}</h4>
+    //   <div className="sub">
+    //     <h4>{props.data.name}</h4> {props.data.email}{' '}
+    //   </div>
+    // </article>
     <>
       {data?.value === 'addNewOption' && (
         <div
@@ -138,7 +143,52 @@ const GravatarValue = createClass({
   },
 })
 
+// const MultiSelectMultiLineField = createClass({
+//   propTypes: {
+//     hint: PropTypes.string,
+//     label: PropTypes.string,
+//   },
+//   getInitialState() {
+//     return {}
+//   },
+//   setValue(value) {
+//     this.setState({ value })
+//   },
+//   render() {
+//     const placeholder = <span>&#9786; Select User</span>
 
+//     return (
+//       <div className="section">
+//         <h3 className="section-heading">
+//           {this.props.label}{' '}
+//           <a href="https://github.com/JedWatson/react-select/tree/v1.x/examples/src/components/CustomComponents.js">
+//             (Source)
+//           </a>
+//         </h3>
+//         <Select
+//           arrowRenderer={arrowRenderer}
+//           onChange={this.setValue}
+//           optionComponent={GravatarOption}
+//           options={USERS}
+//           placeholder={placeholder}
+//           value={this.state.value}
+//           valueComponent={GravatarValue}
+//         />
+//         <div className="hint">
+//           This example implements custom Option and Value components to render a
+//           Gravatar image for each user based on their email. It also
+//           demonstrates rendering HTML elements as the placeholder.
+//         </div>
+//       </div>
+//     )
+//   },
+// })
+
+// function arrowRenderer() {
+//   return <span>+</span>
+// }
+
+// module.exports = MultiSelectMultiLineField
 
 function arrowRenderer() {
   return <span>+</span>
@@ -183,6 +233,18 @@ export const MultiSelectMultiLineField = ({
         className="text-sm  mt-1"
       />
     </div>
-    
+    // <div>
+    //   <label className="label font-regular text-sm mb-2">{label}</label>
+    //   <Select
+    //     name={name}
+    //     value={defaultValue(options, value)}
+    //     onChange={(value) => {
+    //       onChange(value)
+    //     }}
+    //     options={options}
+    //     className="text-sm  mt-1 border-transparent"
+    //   />
+
+    // </div>
   )
 }

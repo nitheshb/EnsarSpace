@@ -1,3 +1,5 @@
+
+
 .blockHead:after {
 
 
@@ -545,6 +547,7 @@
 
 
   z-index: 10
+
 }
 
 
@@ -853,6 +856,25 @@
 
 }
 
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 500;
+
+  line-height: 1.5;
+
+  color: #545252;
+
+  display: block;
+
+  margin-top: 8px;
+
+  text-transform: none;
+
+  white-space: normal;
+
+}
 
 
 

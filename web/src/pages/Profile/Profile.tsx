@@ -19,7 +19,7 @@ import { SingleFileUploadWithProgress } from 'src/components/LeadUplodCsv/Single
 import { UploadError } from 'src/components/LeadUplodCsv/UploadError'
 
 import { Height } from '@mui/icons-material'
-import ProfileHeader from './ProfileHeader'
+import ProfileHeader from 'src/components/profile/ProfileHeader'
 
 const Profile = () => {
   function handleFileInputChange(event: ChangeEvent<HTMLInputElement>): void {
@@ -88,7 +88,7 @@ const Profile = () => {
                     <div style={{ position: 'relative' }} className="md:w-[12vw] flex flex-col justify-between items-center md:h-[10vh] rounded-md">
                       <div className=" justify-center items-end mt-20 mb-16 ml-10">
                         <h1 className="text-center text-xl font-bold blink">
-                          Deepthi Rani
+                          PavanKumar
                         </h1>
                       </div>
                     </div>

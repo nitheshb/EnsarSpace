@@ -63,22 +63,33 @@ export const SlimSelectBox = ({
         classNamePrefix="react-select"
         styles={customStyles}
       />
-
+      {/* <ErrorMessage
+        component="div"
+        name={name}
+        className="error-message text-red-700 text-xs px-2"
+      /> */}
     </div>
   )
 }
 
 export const SlimDateSelectBox = ({
   onChange,
-
+  // options,
+  // value,
+  // name,
   label,
   placeholder,
-
+  // className,
 }) => {
   {
     ;<label className="label font-regular text-sm ">{label}</label>
   }
-
+  //   const defaultValue = (options, value) => {
+  //     return (
+  //       (options ? options.find((option) => option.value === value) : '') || ''
+  //     )
+  //   }
+  // console.log(options,'opt')
   const [dateRange, setDateRange] = useState([null, null])
   const [startDate, endDate] = dateRange
   const d = new window.Date()
@@ -116,7 +127,9 @@ export const SlimDateSelectBox = ({
   console.log(value, 'value')
   return (
     <div style={{width:'200px'}}>
-
+      {/* {label != '' && label != 'Assign To' && (
+        <label className="label font-regular text-sm ">{label}</label>
+      )} */}
       {!isDatePicker ? (
         <Select
           minMenuHeight={150}
@@ -141,7 +154,7 @@ export const SlimDateSelectBox = ({
         <div className="flex" style={{ alignItems: 'flex-end' }}>
           <DatePicker
             className={`z-10 pl- py-1 px-3 mt-[7px] inline text-xs text-[#0091ae] placeholder-green-800 cursor-pointer  max-w-fit   ${'font-semibold text-pink-800 bg-pink-200 '} rounded-full`}
-
+            // onCalendarClose={() => setDatePicker(false)}
             placeholderText="&#128467;	 Custom"
             onChange={(update) => {
               setDateRange(update)
@@ -161,7 +174,11 @@ export const SlimDateSelectBox = ({
           />
         </div>
       )}
-
+      {/* <ErrorMessage
+        component="div"
+        name={name}
+        className="error-message text-red-700 text-xs px-2"
+      /> */}
     </div>
   )
 }

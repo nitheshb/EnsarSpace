@@ -1,3 +1,9 @@
+/* eslint-disable no-constant-condition */
+/* eslint-disable new-cap */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useEffect, createRef, useRef } from 'react'
 
 import { Dialog } from '@headlessui/react'

@@ -1,7 +1,11 @@
 import * as React from 'react'
 import Snackbar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
-
+// interface iToastInfo {
+//   open: boolean
+//   message: string
+//   severity: AlertColor
+// }
 export default function ToastMessage({
   duration = 3000,
   toastInfo = {

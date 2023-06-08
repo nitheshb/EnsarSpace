@@ -63,7 +63,11 @@ const AddBankDetailsForm = ({ title, dialogOpen, phase: bankData }) => {
       )
       await setLoading(false)
     }
-    
+    // if (bankData?.editMode) {
+    //   await updatePhase(bankData.uid, updatedData, enqueueSnackbar)
+    // } else {
+    //   await createPhase(updatedData, enqueueSnackbar, resetForm)
+    // }
   }
 
   const initialState = {
