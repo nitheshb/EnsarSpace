@@ -90,7 +90,7 @@ const UserManageTable = ({ editEmployeeFun }) => {
               </a>
             ))}
           </section>
-          
+
           <div className="shadow overflow-hidden border-b border-gray-200  bg-white pb-4 md:py-7 px-4 md:px-8 xl:px-10">
             <table className="min-w-full divide-y divide-gray-200 ">
               <thead className="bg-gray-50">

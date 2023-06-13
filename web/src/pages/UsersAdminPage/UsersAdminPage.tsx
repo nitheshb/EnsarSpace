@@ -12,9 +12,11 @@ import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 import Timeoff from 'src/components/TableComp/Timeoff'
 import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
-import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 import TableData from 'src/components/Access/TableData'
 import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
+import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
+import TimeOffTable from 'src/components/TableComp/TimeOffTable'
+import AttendancePage from 'src/components/A_LearningModule/Attendance'
 
 
 
@@ -43,10 +45,6 @@ const UsersAdminPage = () => {
         />
 
         <div className="flex flex-col flex-grow">
-          {/* <HeadNavBar /> */}
-
-
-
 
           <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
@@ -141,6 +139,12 @@ const UsersAdminPage = () => {
               </>
             )}
 
+          {viewable === 'AttendancePage' && (
+            <>
+            <AttendancePage />
+            </>
+            )}
+
             {viewable === 'Team Activity' && (
               <>
                 <MyActivityHome source={'team'} />
@@ -156,6 +160,23 @@ const UsersAdminPage = () => {
 
             {viewable === 'User Report' && (
               <LeadsTeamReportBody
+                project={{
+                  area: 1000,
+                  builderName: 'hello',
+                  location: 'local',
+                  projectName: 'User Report',
+                  projectType: 'aprtment',
+                }}
+                isEdit={false}
+              />
+            )}
+
+
+
+
+            {viewable === 'User Report' && (
+              // <ReportMain/>
+              <ActivitySummaryReport
                 project={{
                   area: 1000,
                   builderName: 'hello',
