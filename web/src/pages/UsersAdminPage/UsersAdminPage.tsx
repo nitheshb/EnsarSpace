@@ -14,7 +14,7 @@ import Timeoff from 'src/components/TableComp/Timeoff'
 import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
 import TableData from 'src/components/Access/TableData'
 import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
-import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
+// import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 import AttendancePage from 'src/components/A_LearningModule/Attendance'
 
