@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import LeaveApproval from '../../components/LeaveApproval/LeaveApproval';
+import LeaveApproval from '../../components/A_LeaveModule/LeaveApproval/LeaveApproval/LeaveApproval';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { format, addDays, subDays } from 'date-fns'; // Added import for date manipulation
@@ -7,45 +7,45 @@ import { format, addDays, subDays } from 'date-fns'; // Added import for date ma
 const LeaveApprovalPage: React.FC = () => {
   const [leaveApprovals, setLeaveApprovals] = useState([
     {
-      dateApplied: '2023-05-28',
+      dateApplied: '2023-06-08',
       employeeName: 'Connor Miller',
-      fromDate: '2023-05-30',
-      toDate: '2023-06-01',
+      fromDate: '2023-06-10',
+      toDate: '2023-06-13',
       isLeaveApproved: false,
     },
     {
-      dateApplied: '2023-05-28',
+      dateApplied: '2023-06-10',
       employeeName: 'Elizabeth Sharp',
-      fromDate: '2023-05-29',
-      toDate: '2023-06-02',
+      fromDate: '2023-06-12',
+      toDate: '2023-06-14',
       isLeaveApproved: false,
     },
     {
-      dateApplied: '2023-05-30',
+      dateApplied: '2023-06-08',
       employeeName: 'Anthony King',
-      fromDate: '2023-05-31',
-      toDate: '2023-06-06',
-      isLeaveApproved: false,
-    },
-    {
-      dateApplied: '2023-05-31',
-      employeeName: 'Victoria	McDonald',
-      fromDate: '2023-06-02',
-      toDate: '2023-06-06',
-      isLeaveApproved: false,
-    },
-    {
-      dateApplied: '2023-06-01',
-      employeeName: 'Karen	Bond',
-      fromDate: '2023-06-05',
+      fromDate: '2023-06-09',
       toDate: '2023-06-15',
       isLeaveApproved: false,
     },
     {
-      dateApplied: '2023-05-31',
+      dateApplied: '2023-06-07',
+      employeeName: 'Victoria	McDonald',
+      fromDate: '2023-06-08',
+      toDate: '2023-06-16',
+      isLeaveApproved: false,
+    },
+    {
+      dateApplied: '2023-06-07',
+      employeeName: 'Karen	Bond',
+      fromDate: '2023-06-08',
+      toDate: '2023-06-11',
+      isLeaveApproved: false,
+    },
+    {
+      dateApplied: '2023-06-09',
       employeeName: 'Austin	Lawrence',
-      fromDate: '2023-05-31',
-      toDate: '2023-06-03',
+      fromDate: '2023-06-10',
+      toDate: '2023-06-13',
       isLeaveApproved: false,
     },
     {

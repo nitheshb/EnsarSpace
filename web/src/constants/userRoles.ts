@@ -104,7 +104,6 @@ export const DEPARTMENT_LIST = [
   { label: 'Sales', value: 'sales' },
   { label: 'Developer', value: 'developer' },
   { label: 'Learner', value: 'learner' },
-
   { label: 'Trainer', value: 'trainer' },
   { label: 'Fresher', value: 'fresher' },
 ]
@@ -137,7 +136,6 @@ export const Category = [
   { label: 'Aws', value: 'Aws' },
   { label: 'Data Science', value: 'Data Science' },
   { label: 'Design', value: 'Design' },
-  // { label: 'Java', value: 'Java' },
   { label: 'Marketing', value: 'Marketing' },
   { label: 'Python', value: 'Python' },
   { label: 'Web Development', value: 'Web Development' },
@@ -162,10 +160,6 @@ export const ROLES_LIST = [
     value: USER_ROLES.SALES_EXECUTIVE,
     dept: 'sales',
   },
-
-
- 
-
 
   {
     label: 'Sales senior executive',

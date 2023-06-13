@@ -229,6 +229,16 @@ export const leadBinReasonList = [
   { label: 'Duplicate', value: 'DUPLICATE_ENTRY' },
   { label: 'Invalid Data', value: 'INVALID_DATA' },
 ]
+
+export const deptList = [
+  { label: 'HR', value: 'hr' },
+  { label: 'Developer', value: 'developer' },
+  { label: 'Admin', value: 'admin' },
+]
+export const ACCESS_LIST = [
+  { label: 'B.Tech', value: 'btech' },
+]
+
 export const developmentTypes = [
   {
     name: 'Outright',

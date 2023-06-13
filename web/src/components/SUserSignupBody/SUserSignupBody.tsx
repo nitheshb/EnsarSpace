@@ -7,6 +7,8 @@ import * as Yup from 'yup'
 import {
   addUserLog,
   checkIfUserAlreadyExists,
+  createEnsarUser,
+  createUser,
   createUserToWorkReport,
   updateUserRole,
 } from 'src/context/dbQueryFirebase'
@@ -17,9 +19,8 @@ import { TextField } from 'src/util/formFields/TextField'
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 import axios from 'axios'
 import Loader from '../Loader/Loader'
-import { DEPARTMENT_LIST, ROLES_LIST } from 'src/constants/userRoles'
+import { DEPARTMENT_LIST, ROLES_LIST, QUALIFICATION_LIST, EXPERIENCE_LIST } from 'src/constants/userRoles'
 import { PhoneNoField } from 'src/util/formFields/phNoField'
-
 
 const SUserSignupBody = ({ title, dialogOpen, empData }) => {
   const { register, user } = useAuth()
@@ -59,10 +60,8 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
     if (department) {
       x['value'] = department[0]
       changed(x)
-
     }
   }, [empData])
-
 
 
   const changed = async (data) => {
@@ -92,7 +91,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         perPh,
         'nitheshreddy.email@gmail.com'
       )
-
       setLoading(false)
       addUserLog(orgId, {
         s: 's',
@@ -111,7 +109,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         empId: empId,
         email: email,
         name: name,
-        password: 'redefine@123',
+        password: 'ensarspace@123',
         dept: deptVal,
         role: myRole,
         orgName: orgName,
@@ -122,23 +120,19 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         perPh: perPh,
       }
 
-
       const config = {
         method: 'post',
-
-        url: 'https://asia-south1-redefine-erp.cloudfunctions.net/erpAddUser',
+        url: 'https://ensarspace-usersignup.azurewebsites.net/api/usersignup',
         headers: {
           'Content-Type': 'text/plain',
         },
         data,
       }
-
       axios(config)
         .then(async function (response) {
           if (response.data) {
             setLoading(false)
-            const { success, msg, payload } = await response['data']
-
+            const { success, msg, payload, uId } = await response['data']
             console.log('user payload is ', response)
 
             if (success) {
@@ -147,19 +141,32 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                 email
               )
 
-              console.log('docDetailsIs', docDetailsIs, docDetailsIs[0]['uid'])
-              updateUserRole(
-                empId,
-                orgName,
-                orgId,
-                docDetailsIs[0]['uid'],
-                deptVal,
-                myRole,
-                email,
-                offPh,
-                perPh,
-                'nitheshreddy.email@gmail.com'
-              )
+              let addedUserDocR = await createEnsarUser({
+                empId: empId,
+                uid: uId,
+                orgName: orgName,
+                orgId: orgId,
+                department: deptVal,
+                roles: myRole,
+                name: name,
+                email: email,
+                offPh: offPh,
+                perPh: perPh
+              })
+
+              console.log('docDetailsIs', docDetailsIs, docDetailsIs)
+              // updateUserRole(
+              //   empId,
+              //   orgName,
+              //   orgId,
+              //   docDetailsIs[0]['uid'],
+              //   deptVal,
+              //   myRole,
+              //   email,
+              //   offPh,
+              //   perPh,
+              //   'nitheshreddy.email@gmail.com'
+              // )
               const x = {
                 name,
                 empId,
@@ -200,18 +207,13 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
   const validate = Yup.object({
-
     name: Yup.string()
       .max(15, 'Must be 15 characters or less')
       .required('Required'),
-
     email: Yup.string().email('Email is invalid').required('Email is required'),
-
     deptVal: Yup.string()
-
       .required('Req Dept'),
     myRole: Yup.string()
-
       .required('Required Role'),
   })
   return (
@@ -230,6 +232,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
           </p>
         </div>
       )}
+
       <div className="grid gap-8 grid-cols-1 mx-10 flex flex-col">
         <Formik
           initialValues={{
@@ -278,7 +281,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     formik.setFieldValue('offPh', value.value)
                   }}
                 />
-
                 <PhoneNoField
                   name="perPh"
                   label="Personal Phone Number*"
@@ -324,7 +326,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                 ) : null}
 
 
-<CustomSelect
+                <CustomSelect
                   name="qualName"
                   label="Qualification"
                   className="input mt-3"
@@ -342,19 +344,19 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                   </div>
                 ) : null}
 
-<CustomSelect
+                <CustomSelect
                   name="expName"
                   label="Experience"
                   className="input mt-3"
-                   onChange={(value) => {
-
+                  onChange={(value) => {
+                    //  changed(value)
                     formik.setFieldValue('expVal', value.value)
-
-                   }}
+                    //  formik.setFieldValue('myRole', '')
+                  }}
                   value={formik.values.expVal}
                   options={EXPERIENCE_LIST}
                 />
-                 {formik.errors.expVal ? (
+                {formik.errors.expVal ? (
                   <div className="error-message text-red-700 text-xs p-2">
                     {formik.errors.expVal}
                   </div>
@@ -397,7 +399,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     type="submit"
                     disabled={loading}
                   >
-                    {loading && <Loader texColor={undefined} size={undefined} />}
+                    {loading && <Loader />}
                     {editMode ? 'Edit Employee' : 'Add Employee'}
                   </button>
                 </div>
@@ -406,12 +408,8 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
           )}
         </Formik>
       </div>
-
-
-
     </div>
   )
 }
 
 export default SUserSignupBody
-

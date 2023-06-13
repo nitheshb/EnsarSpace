@@ -2798,9 +2798,21 @@
 
 
 
-.category-item-name h6 {
 
+  box-shadow: 0px 24px 50px -12px rgba(45, 54, 67, 0.12);
+  border-radius: 10px;
+}
 
+/* Rectangle 4610 */
+.e-r2{
+position: absolute;
+width: 115.04px;
+height: 27.61px;
+left: 0px;
+top: 0px;
+background: #F1ECFE;
+border-radius: 13.8053px;
+}
 
 
   font-size: 15px;
