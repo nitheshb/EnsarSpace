@@ -38,125 +38,6 @@ const OnBoarding = ({ leadsTyper }) => {
   const [projectList, setprojectList] = useState([])
   const [transactionData, setTransactionData] = useState({})
 
-  const [value, setValue] = useState('latest')
-  const tabHeadFieldsA = [
-    { lab: 'All Transactions', val: 'all' },
-    { lab: 'Latest', val: 'latest' },
-    { lab: 'Reviewing', val: 'reviewing' },
-    { lab: 'Cleared', val: 'cleared' },
-    { lab: 'Rejected', val: 'rejected' },
-  ]
-  useEffect(() => {
-    getLeadsDataFun()
-  }, [])
-
-  const rowsCounter = (parent, searchKey) => {
-    return parent.filter((item) => {
-      if (searchKey === 'all') {
-        return item
-      } else if (item.status.toLowerCase() === searchKey.toLowerCase()) {
-        console.log('All1', item)
-        return item
-      }
-    })
-  }
-
-  const getLeadsDataFun = async () => {
-    console.log('login role detials', user)
-    const { access, uid } = user
-
-    if (access?.includes('manage_leads')) {
-      const unsubscribe = getFinanceTransactionsByStatus(
-        orgId,
-        async (querySnapshot) => {
-          const usersListA = querySnapshot.docs.map((docSnapshot) => {
-            const x = docSnapshot.data()
-            x.id = docSnapshot.id
-            return x
-          })
-          // setBoardData
-          console.log('my Array data is ', usersListA, leadsFetchedData)
-          // await serealizeData(usersListA)
-          await setLeadsFetchedData(usersListA)
-          await console.log('my Array data is set it', leadsFetchedData)
-        },
-        {
-          status: [
-            'latest',
-            'reviewing',
-            'review',
-            'cleared',
-            'rejected',
-            '',
-            // 'booked',
-          ],
-        },
-        () => setLeadsFetchedData([])
-      )
-      return unsubscribe
-    } else {
-      const unsubscribe = getFinanceTransactionsByStatus(
-        orgId,
-        async (querySnapshot) => {
-          const usersListA = querySnapshot.docs.map((docSnapshot) => {
-            const x = docSnapshot.data()
-            x.id = docSnapshot.id
-            return x
-          })
-          // setBoardData
-          console.log('my Array data is ', usersListA)
-          await serealizeData(usersListA)
-          await setLeadsFetchedData(usersListA)
-        },
-        {
-          uid: uid,
-          status: [
-            'new',
-            'reviewing',
-            'review',
-            'cleared',
-            'rejected',
-            '',
-            // 'booked',
-          ],
-        },
-        () => setLeadsFetchedData([])
-      )
-      return unsubscribe
-    }
-
-    // await console.log('leadsData', leadsData)
-  }
-
-  const serealizeData = (array) => {
-    // let newData =
-    const x = [
-      'new',
-      'review',
-      'cleared',
-      'rejected',
-      '',
-      // 'booked',
-    ].map((status) => {
-      const items = array.filter((data) => data.Status.toLowerCase() == status)
-
-      return { name: status, items }
-    })
-    setSerialLeadsData(x)
-  }
-
-  const selUserProfileF = (title, data) => {
-    setAddLeadsTypes(title)
-    setisImportLeadsOpen(true)
-    setSelUserProfile(data)
-  }
-
-  const viewTransaction = (docData) => {
-    setTransactionData(docData)
-    setisImportLeadsOpen(!isImportLeadsOpen)
-  }
-
-
 
   return (
     <>
@@ -170,7 +51,7 @@ const OnBoarding = ({ leadsTyper }) => {
                           <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                           <section>
 
-                                              <div class="flex item-center justify-between">
+                                              <div className="flex item-center justify-between">
 
                                            <svg width="45.46px" height="40.42px" viewBox="0 0 43 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -184,7 +65,7 @@ const OnBoarding = ({ leadsTyper }) => {
 
                                                     </svg>
 
-                                                <div class="width-30 height-55 font-medium flex-end text-black-1500">
+                                                <div className="width-30 height-55 font-medium flex-end text-black-1500">
                                                <p className=" css-6mn6yy">01</p>
                                                 </div>
 
@@ -207,7 +88,7 @@ const OnBoarding = ({ leadsTyper }) => {
                           <section>
 
 
-                          <div class="flex item-center justify-between">
+                          <div className="flex item-center justify-between">
 
                                       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_77_21456)">
@@ -220,7 +101,7 @@ const OnBoarding = ({ leadsTyper }) => {
                                                     </clipPath>
                                              </defs>
                                               </svg>
-                                              <div class="width-30 height-50 font-medium flex-end text-black-1500">
+                                              <div className="width-30 height-50 font-medium flex-end text-black-1500">
                                               <p className=" css-6mn6yy">0</p>
                                                   </div>
 
@@ -243,7 +124,7 @@ const OnBoarding = ({ leadsTyper }) => {
                       <div className=" m-1">
                         <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                           <section>
-                          <div class="flex item-center justify-between">
+                          <div className="flex item-center justify-between">
 
 
                                <svg width="48" height="40" viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -252,7 +133,7 @@ const OnBoarding = ({ leadsTyper }) => {
                                  <path d="M21.3337 6.66667H27.2087C27.4683 6.66667 27.7174 6.57887 27.901 6.42259C28.0847 6.26631 28.1878 6.05435 28.1878 5.83333C28.1878 5.61232 28.0847 5.40036 27.901 5.24408C27.7174 5.0878 27.4683 5 27.2087 5H21.3337C21.074 5 20.8249 5.0878 20.6413 5.24408C20.4577 5.40036 20.3545 5.61232 20.3545 5.83333C20.3545 6.05435 20.4577 6.26631 20.6413 6.42259C20.8249 6.57887 21.074 6.66667 21.3337 6.66667ZM15.4587 35H17.417C17.6767 35 17.9257 34.9122 18.1094 34.7559C18.293 34.5996 18.3962 34.3877 18.3962 34.1667C18.3962 33.9457 18.293 33.7337 18.1094 33.5774C17.9257 33.4211 17.6767 33.3333 17.417 33.3333H15.4587C15.199 33.3333 14.9499 33.4211 14.7663 33.5774C14.5827 33.7337 14.4795 33.9457 14.4795 34.1667C14.4795 34.3877 14.5827 34.5996 14.7663 34.7559C14.9499 34.9122 15.199 35 15.4587 35ZM33.0837 33.3333H31.1253C30.8656 33.3333 30.6166 33.4211 30.4329 33.5774C30.2493 33.7337 30.1462 33.9457 30.1462 34.1667C30.1462 34.3877 30.2493 34.5996 30.4329 34.7559C30.6166 34.9122 30.8656 35 31.1253 35H33.0837C33.3433 35 33.5924 34.9122 33.776 34.7559C33.9597 34.5996 34.0628 34.3877 34.0628 34.1667C34.0628 33.9457 33.9597 33.7337 33.776 33.5774C33.5924 33.4211 33.3433 33.3333 33.0837 33.3333Z" fill="#303C42"/>
                                  </svg>
 
-                                 <div class="width-30 height-55 font-medium flex-end text-black-1500">
+                                 <div className="width-30 height-55 font-medium flex-end text-black-1500">
                                                <p className=" css-6mn6yy">02</p>
                                                 </div>
 
@@ -280,7 +161,8 @@ const OnBoarding = ({ leadsTyper }) => {
                         <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                           <section>
 
-                          <div class="flex item-center justify-between">
+                          <div className="flex item-center justify-between">
+
                               <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                                <path d="M24.2846 2.24878H8.7877C8.20879 2.24878 7.74121 2.71636 7.74121 3.29526V34.7121C7.74121 35.291 8.20879 35.7585 8.7877 35.7585H29.2053C29.7842 35.7585 30.2518 35.291 30.2518 34.7121V8.21597C30.2518 7.93394 30.1404 7.67417 29.9475 7.47378L25.0193 2.54565C24.8264 2.35269 24.5666 2.24878 24.2846 2.24878Z" fill="white"/>
                                   <path d="M23.8543 4.3418H9.8418V5.65547H12.6102C13.1891 5.65547 13.6566 6.12305 13.6566 6.70195C13.6566 7.28086 13.1891 7.74844 12.6102 7.74844H9.8418V10.3238H10.5098C11.0887 10.3238 11.5562 10.7914 11.5562 11.3703C11.5562 11.9492 11.0887 12.4168 10.5098 12.4168H9.8418V33.6656H28.1664V8.65391L23.8543 4.3418Z" fill="#D1C3FC"/>
@@ -289,7 +171,7 @@ const OnBoarding = ({ leadsTyper }) => {
                                <path d="M19.9574 23.2155H25.2418V26.3995H19.9574V23.2155ZM24.2324 18.562H19.9574V21.3007H25.2344V19.5417C25.2047 19.0073 24.7668 18.5843 24.2324 18.562ZM18.0426 31.0382V25.7538H12.7656V30.0659C12.7953 30.5409 13.1367 30.9269 13.5895 31.0233C13.634 31.0308 13.6785 31.0382 13.723 31.0382H18.0426ZM12.7656 19.5417V23.8464H18.05V18.562H13.775C13.2332 18.5843 12.7953 19.0073 12.7656 19.5417ZM25.2344 30.0733V28.3069H19.95V31.0456H24.277C24.3215 31.0456 24.366 31.0382 24.4105 31.0308C24.8633 30.9343 25.2047 30.5409 25.2344 30.0733Z" fill="#FFC10D"/>
                                      </svg>
 
-                                     <div class="width-30 height-55 font-medium flex-end text-black-1500">
+                                     <div className="width-30 height-55 font-medium flex-end text-black-1500">
                                                <p className=" css-6mn6yy">0</p>
                                                 </div>
 

@@ -161,7 +161,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         .then(async function (response) {
           if (response.data) {
             setLoading(false)
-            const { success, msg, payload } = await response['data']
+            const { success } = await response['data']
             // const { id } = payload
             console.log('user payload is ', response)
 
@@ -280,6 +280,8 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
             email: email,
             deptVal: department != undefined ? department[0] : '',
             myRole: rolees != undefined ? rolees[0] : '',
+            qualval: '',
+            expval: '',
             empId: empId,
             perPh: perPh,
             offPh: offPh,
@@ -376,15 +378,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                   </div>
                 ) : null}
 
-
-
-
-
-
-
-
-
-<CustomSelect
+                <CustomSelect
                   name="qualName"
                   label="Qualification"
                   className="input mt-3"
