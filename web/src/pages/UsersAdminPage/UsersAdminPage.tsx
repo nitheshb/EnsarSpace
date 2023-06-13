@@ -7,30 +7,15 @@ import HeadNavBar2 from 'src/components/HeadNavBar/HeadNavBar2'
 // import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
-import OnBoarding from 'src/components/TableComp/OnBoarding'
+// import OnBoarding from 'src/components/TableComp/OnBoarding'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
-
-
-
 import Timeoff from 'src/components/TableComp/Timeoff'
-
 import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
- 
-
-// import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
-
- HL-17-Access_management
 import TableData from 'src/components/Access/TableData'
+import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 
-
- HL-37-Create-a-leave-form
-import Timeoff from 'src/components/TableComp/Timeoff'
-
-import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
- Development_dev
- Development_dev
 
 
 const UsersAdminPage = () => {
@@ -59,13 +44,10 @@ const UsersAdminPage = () => {
 
         <div className="flex flex-col flex-grow">
           {/* <HeadNavBar /> */}
- 
-          <HeadNavBar2
-            selModule={selModule}
-            setSelModule={setSelModule}
-          />
 
- 
+
+
+
           <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">
@@ -141,22 +123,22 @@ const UsersAdminPage = () => {
               </>
             )}
 
-            {viewable === 'Time Off' && (
-              <>
-                <TimeOffTable />
-              </>
-            )}
-
             {viewable === 'My Activity' && (
               <>
                 <MyActivityHome source={'individual'} />
               </>
             )}
 
-            {viewable === 'Time off' && (
-            <>
-            <UserAccessTable />
-            </>
+            {viewable === 'Time Off' && (
+              <>
+                <TimeOffTable />
+              </>
+            )}
+
+            {viewable === 'Time Off' && (
+              <>
+                <Timeoff />
+              </>
             )}
 
             {viewable === 'Team Activity' && (
@@ -173,26 +155,7 @@ const UsersAdminPage = () => {
             )}
 
             {viewable === 'User Report' && (
-              // <ReportMain/>
               <LeadsTeamReportBody
-                project={{
-                  area: 1000,
-                  builderName: 'hello',
-                  location: 'local',
-                  projectName: 'User Report',
-                  projectType: 'aprtment',
-                }}
-                isEdit={false}
-              />
-            )}
-
-            {viewable === 'User Report' && (
-
-
- HL-17-Access_management
-            {viewable === 'User Report' && (
-              // <ReportMain/>
-              <ActivitySummaryReport
                 project={{
                   area: 1000,
                   builderName: 'hello',

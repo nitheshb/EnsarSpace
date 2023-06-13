@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { format } from 'date-fns';
+import { useDispatch } from 'react-redux';
+import { approveLeave, rejectLeave } from '../../../../state/actions/'; // Import the action creators
 
 interface LeaveApprovalProps {
   dateApplied: string; // Added dateApplied prop
@@ -22,35 +24,38 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
 }) => {
   const [approved, setApproved] = useState(false);
 
-  const handleApproval = (status: string) => {
-    console.log('Approval status:', status);
-
-    const leaveStatus = status === 'Accepted' ? 'Approved' : 'Rejected';
-
-    console.log('Details:', {
-      dateApplied,
-      employeeName,
-      fromDate,
-      toDate,
-      isLeaveApproved: leaveStatus,
-    });
-
-    if (status === 'Accepted') {
-      toast.success('Leave Approved', { position: 'top-right' });
-      setApproved(true);
-    } else if (status === 'Rejected') {
-      toast.error('Leave Rejected', { position: 'top-right' });
-      setApproved(true);
-    }
-
-    onLeaveStatusChange();
-  };
-
   // Calculate the number of leave days
   const from = new Date(fromDate);
   const to = new Date(toDate);
   const diffTime = Math.abs(to.getTime() - from.getTime());
   const leaveDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  const dispatch = useDispatch();
+
+  const handleApproval = (status: string) => {
+    const leaveStatus = status === 'Accepted' ? 'Approved' : 'Rejected';
+
+    const leaveDetails = {
+      dateApplied,
+      employeeName,
+      fromDate,
+      toDate,
+      leaveDays,
+      isLeaveApproved: leaveStatus,
+    };
+
+    if (status === 'Accepted') {
+      toast.success('Leave Approved', { position: 'top-right' });
+      setApproved(true);
+      dispatch(approveLeave(leaveDetails)); // Pass the leaveDetails as payload
+    } else if (status === 'Rejected') {
+      toast.error('Leave Rejected', { position: 'top-right' });
+      setApproved(true);
+      dispatch(rejectLeave(leaveDetails)); // Pass the leaveDetails as payload
+    }
+
+    onLeaveStatusChange();
+  };
 
   if (approved) {
     return null; // Render nothing if leave is already approved
@@ -58,7 +63,7 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
 
   return (
     <tr>
-      <td className="py-2 text-center border border-black">{format(new Date(dateApplied), 'dd-MM-yyyy')}</td> 
+      <td className="py-2 text-center border border-black">{format(new Date(dateApplied), 'dd-MM-yyyy')}</td>
       <td className="py-2 text-center border border-black">{employeeName}</td>
       <td className="py-2 text-center border border-black">{format(new Date(fromDate), 'dd-MM-yyyy')}</td>
       <td className="py-2 text-center border border-black">{format(new Date(toDate), 'dd-MM-yyyy')}</td>

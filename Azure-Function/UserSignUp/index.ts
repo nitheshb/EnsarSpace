@@ -6,14 +6,14 @@ require('firebase/firestore');
 
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyC9LO1A37tnA0L83yxrzUr7895AJy69ODw',
-  authDomain: 'ensarspace.firebaseapp.com',
-  projectId: 'ensarspace',
-  storageBucket: 'ensarspace.appspot.com',
-  messagingSenderId: '912759673013',
-  appId: '1:912759673013:web:e19c3e9f611e100d2aeefc',
-  measurementId: 'G-1Z5R9EE8T2',
-}
+  apiKey: "AIzaSyANYyTx06DsGPRERNipL3ahWv2gTXSu8LU",
+  authDomain: "ensar-space.firebaseapp.com",
+  projectId: "ensar-space",
+  storageBucket: "ensar-space.appspot.com",
+  messagingSenderId: "519786637049",
+  appId: "1:519786637049:web:013048b1e92b3593636428",
+  measurementId: "G-0B0R3VR78D"
+};
 
   const settings = {
     experimentalForceLongPolling: true,
@@ -61,7 +61,7 @@ module.exports = async function (context, req) {
         offPh: offPh,
         perPh: perPh
       })
-      responseMessage = {success: true, uId: user.uid , msg: `Email ${email} and ${user.uid } is added Successfully `, payload: JSON.stringify(addedUserDocR)}
+      responseMessage = {success: true, uId: user.uid , msg: `Email ${user.email} and ${user.uid } is added Successfully `, payload: JSON.stringify(addedUserDocR)}
       context.res = {
         // status: 200, /* Defaults to 200 */
         body: responseMessage
