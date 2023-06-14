@@ -8,7 +8,7 @@ import { getAllRoleAccess, updateAccessRoles } from 'src/context/dbQueryFirebase
 import { useAuth } from 'src/context/firebase-auth-context';
 import { getPagesBasedonRoles } from 'src/util/PagesBasedOnRoles';
 
-import TableData from '../Access/TableData';
+import TableData from '../A_AccessManagement/TableData';
 
 const StyledTableHead = styled(TableHead)(({ theme }) => ({
   backgroundColor: theme.palette.action.hover,
@@ -56,7 +56,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(even)': {
     backgroundColor: theme.palette.action.hover,
   },
- 
+
   '&:last-child td, &:last-child th': {
     border: 0,
     backgroundColor: '#F5F5F5',

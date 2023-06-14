@@ -7,7 +7,7 @@ import { useAuth } from 'src/context/firebase-auth-context'
 
 import FinanceHomePagePage from './pages/FinanceHomePagePage/FinanceHomePagePage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage/PrivacyPolicyPage'
-import Profile from './pages/Profile/Profile'
+import Profile from './components/A_HrModule/profile/Profile'
 import CourseDetailsPagee from './context/courses_context'
 
 // import SingleCoursePage from './pages/SeeDetailsPage/CoursedetailsPage'

@@ -12,7 +12,7 @@ import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 import OnBoarding from 'src/components/TableComp/OnBoarding'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
-import TableData from 'src/components/Access/TableData'
+import TableData from 'src/components/A_AccessManagement/TableData'
 
 
 const UsersAdminPage = () => {
@@ -41,10 +41,7 @@ const UsersAdminPage = () => {
 
         <div className="flex flex-col flex-grow">
           {/* <HeadNavBar /> */}
-          <HeadNavBar2
-            selModule={selModule}
-            setSelModule={setSelModule}
-          />
+
           <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">

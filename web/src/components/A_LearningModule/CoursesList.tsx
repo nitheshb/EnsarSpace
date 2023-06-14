@@ -169,7 +169,7 @@ const CourseList = () => {
   )
 }
 
-export default CourseList
+
 
 // export const courses = [
 //   {
@@ -899,3 +899,5 @@ export default CourseList
 //     ],
 //   },
 // ]
+
+export default CourseList
