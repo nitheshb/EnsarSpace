@@ -113,7 +113,6 @@ export const EXPERIENCE_LIST = [
   { label: '5+ Years', value: '5+ Y' },
 ]
 
-
 export const ROLES_LIST = [
   { label: 'Select the role', value: '' },
   {
