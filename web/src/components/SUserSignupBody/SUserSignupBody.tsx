@@ -171,7 +171,8 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                 name,
                 empId,
                 email,
-                uid: docDetailsIs[0]['uid'],
+                // uid: docDetailsIs[0]['uid'],
+                uid: uId,
                 userStatus: 'active',
                 orgStatus: 'active',
               }
@@ -189,7 +190,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
             setFormMessage({
               color: success ? 'green' : 'red',
               message: success
-                ? `Email ${email} is added with password redefine@123`
+                ? `Email ${email} is added with password ensarspace@123`
                 : `${email} already in Use`,
             })
           }

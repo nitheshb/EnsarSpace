@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { format } from 'date-fns';
 import { useDispatch } from 'react-redux';
 import { approveLeave, rejectLeave } from '../../../../state/actions/'; // Import the action creators
+import { storeLeaveDetails } from 'src/context/dbQueryFirebase';
 
 interface LeaveApprovalProps {
   dateApplied: string; // Added dateApplied prop
@@ -32,7 +33,7 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
 
   const dispatch = useDispatch();
 
-  const handleApproval = (status: string) => {
+  const handleApproval = async (status: string) => {
     const leaveStatus = status === 'Accepted' ? 'Approved' : 'Rejected';
 
     const leaveDetails = {
@@ -43,6 +44,8 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
       leaveDays,
       isLeaveApproved: leaveStatus,
     };
+
+    await storeLeaveDetails(leaveDetails);
 
     if (status === 'Accepted') {
       toast.success('Leave Approved', { position: 'top-right' });
