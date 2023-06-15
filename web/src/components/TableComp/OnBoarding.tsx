@@ -155,9 +155,15 @@ const OnBoarding = ({ leadsTyper }) => {
     setTransactionData(docData)
     setisImportLeadsOpen(!isImportLeadsOpen)
   }
+  const OnBoardAssertBody = (productData) => {
+    setproductData(productData)
+    setIsOpen(true)
+  }
+  console.log('add productData is', OnBoardAssertBody)
 
   return (
     <>
+
       <div className="">
         <button
           onClick={() => OnBoardAssertBody({})}
@@ -179,6 +185,7 @@ const OnBoarding = ({ leadsTyper }) => {
           </svg>
           <span className="ml-1 leading-none">Add Asset</span>
         </button>
+
         <div className="">
           <div className="">
             <section className="flex flex-row justify-between">
