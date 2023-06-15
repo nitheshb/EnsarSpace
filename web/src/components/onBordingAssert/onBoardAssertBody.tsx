@@ -87,7 +87,7 @@ const OnBoardAssertBody = () => {
       setLoading(false)
       setFormMessage({
         color: 'green',
-        message: 'Product added successfully!',
+        message: 'Asset added successfully!',
       })
     }, 2000)
 
@@ -99,7 +99,7 @@ const OnBoardAssertBody = () => {
     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
       <div className="px-4 sm:px-6">
         <Dialog.Title className="font-semibold text-lg mr-auto ml-3">
-          Add Products
+          Add Assets
         </Dialog.Title>
       </div>
       {formMessage.message && (
