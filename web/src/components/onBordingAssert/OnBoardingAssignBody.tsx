@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Dialog } from '@headlessui/react';
+import { Form, Formik, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
-import { Dialog } from '@headlessui/react'
-import { Form, Formik, Field, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
+import { CustomSelect } from 'src/util/formFields/selectBoxField';
 
-import { CustomSelect } from 'src/util/formFields/selectBoxField'
-
-import Loader from '../Loader/Loader'
+import Loader from '../Loader/Loader';
 
 const validate = Yup.object().shape({
   Name: Yup.string().required('Name is required'),
@@ -14,51 +13,56 @@ const validate = Yup.object().shape({
   Date: Yup.string().required('Date is required'),
   Time: Yup.string().required('Time is required'),
   Version: Yup.string().required('Version is required'),
-})
+});
 
 const ProductName = [
-  { value: 'a', label: 'Apple iphone' },
-  { value: 'realme gt', label: 'Realme gt' },
-  { value: 'oppo', label: 'Oppo' },
+  { label: 'Select the product', value: '' },
+  { value: 'Laptop', label: 'Laptop' },
+  { value: 'phone android', label: 'Phone android' },
+  { value: 'Phone windows', label: 'phone windows' },
+  { value: 'Sim', label: 'Sim Card' },
 ]
 
 const Version = [
-  { value: 'virtual keypad', label: 'Virtual keypad' },
-  { value: 'gboard', label: 'Gboard' },
-  { value: 'swiftkey', label: 'Swiftkey' },
+  { label: 'Select the Version', value: '' },
+  { value: 'updated 11.0', label: 'updated 11.0' },
+  { value: 'WW 12.0', label: 'WW 12.0' },
+  { value: 'Touch 15', label: 'Touch 15' },
+  { value: ' andriod 1 Above', label: '1_10' },
+  { value: 'android 10 Above', label: '_10' },
 ]
 
-const OnBoardingAssignBody = () => {
+const OnBoardAssertBody = () => {
   const [formMessage, setFormMessage] = useState({
     color: 'green',
     message: '',
-  })
+  });
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (values) => {
-    console.log('Submitted', values)
+    console.log('Submitted', values);
     // Handle form submission
 
     // Example: Simulating form submission delay
-    setLoading(true)
+    setLoading(true);
     setTimeout(() => {
-      setLoading(false)
+      setLoading(false);
       setFormMessage({
         color: 'green',
         message: 'Product added successfully!',
-      })
-    }, 2000)
+      });
+    }, 2000);
 
     // Display form values in the console
-    console.log('Form Values:', values)
-  }
+    console.log('Form Values:', values);
+  };
 
   return (
     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
       <div className="px-4 sm:px-6">
         <Dialog.Title className="font-semibold text-lg mr-auto ml-3">
-          Assign Assets
+          Add Products
         </Dialog.Title>
       </div>
       {formMessage.message && (
@@ -151,8 +155,8 @@ const OnBoardingAssignBody = () => {
                     Time
                   </label>
                   <Field
-                    type="Time"
-                    name="time"
+                    type="text"
+                    name="Time"
                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
                   />
                   <ErrorMessage
@@ -200,7 +204,7 @@ const OnBoardingAssignBody = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default OnBoardingAssignBody
+export default OnBoardAssertBody
