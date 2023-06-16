@@ -712,6 +712,33 @@ export const checkIfUserAlreadyExists = async (cName, matchVal) => {
 
   // db.collection(`${orgId}_leads`).add(data)
 }
+
+export const createEnsarUser = async (data) => {
+  try {
+    const userRef = doc(db, 'users', data.uid)
+    const docSnap = await getDoc(userRef)
+    if (!docSnap.exists()) {
+      await setDoc(userRef, data, { merge: true })
+    } else {
+      // doc.data() will be undefined in this case
+      console.log('No such document!')
+      return null
+    }
+  } catch (error) {
+    console.log('error in db', error)
+  }
+}
+
+export const storeLeaveDetails = async (leaveDetails) => {
+  try {
+    const leaveRef = doc(db, 'leaves', leaveDetails.employeeName) 
+    await setDoc(leaveRef, leaveDetails, { merge: true })
+    console.log('Leave details stored successfully!')
+  } catch (error) {
+    console.log('Error storing leave details:', error)
+  }
+}
+
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data
   const getAllProjectsQuery = await query(
