@@ -7,6 +7,7 @@ import HeadNavBar2 from 'src/components/HeadNavBar/HeadNavBar2'
 // import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
+import OnBoarding from 'src/components/TableComp/OnBoarding'
 // import OnBoarding from 'src/components/TableComp/OnBoarding'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
@@ -117,7 +118,7 @@ const UsersAdminPage = () => {
 
             {viewable === 'Roles Management' && (
               <>
-                <TableData />
+                <OnBoarding leadsTyper={undefined} />
               </>
             )}
 
