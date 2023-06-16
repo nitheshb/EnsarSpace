@@ -10,9 +10,9 @@ import HeadSideBar from 'src/components/HeadSideBar/HeadSideBar'
 import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
+import OnBoarding from 'src/components/TableComp/OnBoarding'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
-import OnBoarding from 'src/components/TableComp/OnBoarding'
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -84,7 +84,7 @@ const UsersAdminPage = () => {
 
             {viewable === 'On Boarding' && (
               <>
-                <OnBoarding />
+                <OnBoarding leadsTyper={undefined} />
               </>
             )}
 

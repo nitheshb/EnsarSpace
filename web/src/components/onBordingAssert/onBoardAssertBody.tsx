@@ -28,9 +28,10 @@ const validate = Yup.object().shape({
 })
 
 const options = [
-  { value: 'apple iphone', label: 'Apple iphone' },
-  { value: 'realme gt', label: 'Realme gt' },
-  { value: 'oppo', label: 'Oppo' },
+  { value: 'Laptop', label: 'Laptop' },
+  { value: 'Phone windows', label: 'Phone windows' },
+  { value: 'Phone android', label: 'Phone android' },
+  { value: 'Sim', label: 'Sim' },
 ]
 
 const options1 = [

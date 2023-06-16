@@ -1,308 +1,206 @@
-// import React, { useState } from 'react'
+import React, { useState } from 'react'
 
-// import { Dialog } from '@headlessui/react'
-// import { Form, Formik, Field, ErrorMessage } from 'formik'
-// import * as Yup from 'yup'
+import { Dialog } from '@headlessui/react'
+import { Form, Formik, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
 
-// // import {
-// //   options,
-// //   options1,
-// //   options2,
-// //   options3,
-// //   options4,
-// //   options5,
-// //   options6,
-// // } from 'src/constants/userRoles'
-// import { CustomSelect } from 'src/util/formFields/selectBoxField'
+import { CustomSelect } from 'src/util/formFields/selectBoxField'
 
-// import Loader from '../Loader/Loader'
+import Loader from '../Loader/Loader'
 
-// const validate = Yup.object().shape({
-//   Product: Yup.string().required('Product is required'),
-//   Touchscreen: Yup.string().required('Touchscreen is required'),
-//   Sensors: Yup.string().required('Sensors is required'),
-//   NFC: Yup.string().required('NFC is required'),
-//   Display: Yup.string().required('Display is required'),
-//   PhoneConnector: Yup.string().required('Phone connector is required'),
-//   Keypad: Yup.string().required('Keypad is required'),
-// })
+const validate = Yup.object().shape({
+  Name: Yup.string().required('Name is required'),
+  ProductName: Yup.string().required('Product name is required'),
+  Date: Yup.string().required('Date is required'),
+  Time: Yup.string().required('Time is required'),
+  Version: Yup.string().required('Version is required'),
+})
 
-// const options = [
-//   { value: 'apple iphone', label: 'Apple iphone' },
-//   { value: 'realme gt', label: 'Realme gt' },
-//   { value: 'oppo', label: 'Oppo' },
-// ]
+const ProductName = [
+  { value: 'a', label: 'Apple iphone' },
+  { value: 'realme gt', label: 'Realme gt' },
+  { value: 'oppo', label: 'Oppo' },
+]
 
-// const options1 = [
-//   { value: 'amoled', label: 'Amoled' },
-//   { value: 'lcd', label: 'Lcd' },
-//   { value: 'hd', label: 'Hd' },
-// ]
+const Version = [
+  { value: 'virtual keypad', label: 'Virtual keypad' },
+  { value: 'gboard', label: 'Gboard' },
+  { value: 'swiftkey', label: 'Swiftkey' },
+]
 
-// const options2 = [
-//   { value: 'acclerometer', label: 'Acclerometer' },
-//   { value: 'gyroscope', label: 'Gyroscope' },
-//   { value: 'proximity', label: 'Proximity' },
-//   { value: 'fingerprint', label: 'Fingerprint' },
-// ]
+const OnBoardingAssignBody = () => {
+  const [formMessage, setFormMessage] = useState({
+    color: 'green',
+    message: '',
+  })
 
-// const options3 = [
-//   { value: 'yes', label: 'Yes' },
-//   { value: 'no', label: 'No' },
-// ]
+  const [loading, setLoading] = useState(false)
 
-// const options4 = [
-//   { value: 'gorilla', label: 'Gorilla' },
-//   { value: 'diamondglass', label: 'Diamond glass' },
-//   { value: 'temperglass', label: 'Temperglass' },
-// ]
+  const handleSubmit = (values) => {
+    console.log('Submitted', values)
+    // Handle form submission
 
-// const options5 = [
-//   { value: 'microusb ', label: 'Micro USB' },
-//   { value: 'type-c', label: 'Type-c' },
-//   { value: 'usb type-a', label: 'Usb type-a' },
-// ]
+    // Example: Simulating form submission delay
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      setFormMessage({
+        color: 'green',
+        message: 'Product added successfully!',
+      })
+    }, 2000)
 
-// const options6 = [
-//   { value: 'virtual keypad', label: 'Virtual keypad' },
-//   { value: 'gboard', label: 'Gboard' },
-//   { value: 'swiftkey', label: 'Swiftkwy' },
-// ]
+    // Display form values in the console
+    console.log('Form Values:', values)
+  }
 
-// const OnBoardAssertBody = () => {
-//   const [formMessage, setFormMessage] = useState({
-//     color: 'green',
-//     message: '',
-//   })
+  return (
+    <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+      <div className="px-4 sm:px-6">
+        <Dialog.Title className="font-semibold text-lg mr-auto ml-3">
+          Assign Assets
+        </Dialog.Title>
+      </div>
+      {formMessage.message && (
+        <div className="w-full bg-[#E9F6ED] ml-2 mt-3 mb-5 p-3 text-green-700">
+          {formMessage.message}
+        </div>
+      )}
+      <div className="px-4 sm:px-6 mt-4">
+        <div className="mt-1">
+          <Formik
+            initialValues={{
+              Name: '',
+              ProductName: '',
+              Date: '',
+              Time: '',
+              Version: '',
+            }}
+            validationSchema={validate}
+            onSubmit={handleSubmit}
+          >
+            {({ values, setFieldValue }) => (
+              <Form className="space-y-6">
+                <div>
+                  <label
+                    htmlFor="Name"
+                    className="block text-sm font-medium bold-black-700"
+                  >
+                    Name
+                  </label>
+                  <Field
+                    type="text"
+                    name="Name"
+                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                  />
+                  <ErrorMessage
+                    name="Name"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
+                </div>
 
-//   const [loading, setLoading] = useState(false)
+                <div>
+                  <label
+                    htmlFor="ProductName"
+                    className="block text-sm font-medium bold-black-700"
+                  >
+                    Product Name
+                  </label>
+                  <Field
+                    as={CustomSelect}
+                    name="ProductName"
+                    options={ProductName}
+                    placeholder="Select a product"
+                    className="mt-1"
+                    onChange={(option) =>
+                      setFieldValue('ProductName', option.value)
+                    }
+                  />
+                  <ErrorMessage
+                    name="ProductName"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
+                </div>
 
-//   const handleSubmit = (values) => {
-//     console.log('Submitted', values)
-//     // Handle form submission
+                <div>
+                  <label
+                    htmlFor="Date"
+                    className="block text-sm font-medium bold-black-700"
+                  >
+                    Date
+                  </label>
+                  <Field
+                    type="Date"
+                    name="Date"
+                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                  />
+                  <ErrorMessage
+                    name="Date"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
+                </div>
 
-//     // Example: Simulating form submission delay
-//     setLoading(true)
-//     setTimeout(() => {
-//       setLoading(false)
-//       setFormMessage({
-//         color: 'green',
-//         message: 'Product added successfully!',
-//       })
-//     }, 2000)
+                <div>
+                  <label
+                    htmlFor="Time"
+                    className="block text-sm font-medium bold-black-700"
+                  >
+                    Time
+                  </label>
+                  <Field
+                    type="Time"
+                    name="time"
+                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                  />
+                  <ErrorMessage
+                    name="Time"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
+                </div>
 
-//     // Display form values in the console
-//     console.log('Form Values:', values)
-//   }
+                <div>
+                  <label
+                    htmlFor="Version"
+                    className="block text-sm font-medium bold-black-700"
+                  >
+                    Version
+                  </label>
+                  <Field
+                    as={CustomSelect}
+                    name="Version"
+                    options={Version}
+                    placeholder="Select a version"
+                    className="mt-1"
+                    onChange={(option) =>
+                      setFieldValue('Version', option.value)
+                    }
+                  />
+                  <ErrorMessage
+                    name="Version"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
+                </div>
 
-//   return (
-//     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
-//       <div className="px-4 sm:px-6">
-//         <Dialog.Title className="font-semibold text-lg mr-auto ml-3">
-//           Add Products
-//         </Dialog.Title>
-//       </div>
-//       {formMessage.message && (
-//         <div className="w-full bg-[#E9F6ED] ml-2 mt-3 mb-5 p-3 text-green-700">
-//           {formMessage.message}
-//         </div>
-//       )}
-//       <div className="px-4 sm:px-6 mt-4">
-//         <div className="mt-1">
-//           <Formik
-//             initialValues={{
-//               Product: '',
-//               Touchscreen: '',
-//               Sensors: '',
-//               NFC: '',
-//               Display: '',
-//               PhoneConnector: '',
-//               Keypad: '',
-//             }}
-//             validationSchema={validate}
-//             onSubmit={handleSubmit}
-//           >
-//             {({ values, setFieldValue }) => (
-//               <Form className="space-y-6">
-//                 <div>
-//                   <label
-//                     htmlFor="Product"
-//                     className="block text-sm font-medium bold-black-700"
-//                   >
-//                     Product
-//                   </label>
-//                   <Field
-//                     as={CustomSelect}
-//                     name="Product"
-//                     options={options}
-//                     placeholder="Select a product"
-//                     className="mt-1"
-//                     onChange={(option) =>
-//                       setFieldValue('Product', option.value)
-//                     }
-//                   />
-//                   <ErrorMessage
-//                     name="Product"
-//                     component="div"
-//                     className="text-red-500 text-sm mt-1"
-//                   />
-//                 </div>
+                <div className="flex justify-end">
+                  <button
+                    type="submit"
+                    className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                  >
+                    {loading ? <Loader /> : 'Submit'}
+                  </button>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      </div>
+    </div>
+  )
+}
 
-//                 <div>
-//                   <label
-//                     htmlFor="Touchscreen"
-//                     className="block text-sm font-medium bold-black-700"
-//                   >
-//                     Touchscreen
-//                   </label>
-//                   <Field
-//                     as={CustomSelect}
-//                     name="Touchscreen"
-//                     options={options1}
-//                     placeholder="Select touchscreen option"
-//                     className="mt-1"
-//                     onChange={(option) =>
-//                       setFieldValue('Touchscreen', option.value)
-//                     }
-//                   />
-//                   <ErrorMessage
-//                     name="Touchscreen"
-//                     component="div"
-//                     className="text-red-500 text-sm mt-1"
-//                   />
-//                 </div>
-
-//                 <div>
-//                   <label
-//                     htmlFor="Sensors"
-//                     className="block text-sm font-medium bold-black-700"
-//                   >
-//                     Sensors
-//                   </label>
-//                   <Field
-//                     as={CustomSelect}
-//                     name="Sensors"
-//                     options={options2}
-//                     placeholder="Select sensor"
-//                     className="mt-1"
-//                     onChange={(option) =>
-//                       setFieldValue('Sensors', option.value)
-//                     }
-//                   />
-//                   <ErrorMessage
-//                     name="Sensors"
-//                     component="div"
-//                     className="text-red-500 text-sm mt-1"
-//                   />
-//                 </div>
-
-//                 <div>
-//                   <label
-//                     htmlFor="NFC"
-//                     className="block text-sm font-medium bold-black-700"
-//                   >
-//                     NFC
-//                   </label>
-//                   <Field
-//                     as={CustomSelect}
-//                     name="NFC"
-//                     options={options3}
-//                     placeholder="Select NFC option"
-//                     className="mt-1"
-//                     onChange={(option) => setFieldValue('NFC', option.value)}
-//                   />
-//                   <ErrorMessage
-//                     name="NFC"
-//                     component="div"
-//                     className="text-red-500 text-sm mt-1"
-//                   />
-//                 </div>
-
-//                 <div>
-//                   <label
-//                     htmlFor="Display"
-//                     className="block text-sm font-medium bold-black-700"
-//                   >
-//                     Display
-//                   </label>
-//                   <Field
-//                     as={CustomSelect}
-//                     name="Display"
-//                     options={options4}
-//                     placeholder="Select display type"
-//                     className="mt-1"
-//                     onChange={(option) =>
-//                       setFieldValue('Display', option.value)
-//                     }
-//                   />
-//                   <ErrorMessage
-//                     name="Display"
-//                     component="div"
-//                     className="text-red-500 text-sm mt-1"
-//                   />
-//                 </div>
-
-//                 <div>
-//                   <label
-//                     htmlFor="PhoneConnector"
-//                     className="block text-sm font-medium bold-black-700"
-//                   >
-//                     Phone Connector
-//                   </label>
-//                   <Field
-//                     as={CustomSelect}
-//                     name="PhoneConnector"
-//                     options={options5}
-//                     placeholder="Select phone connector"
-//                     className="mt-1"
-//                     onChange={(option) =>
-//                       setFieldValue('PhoneConnector', option.value)
-//                     }
-//                   />
-//                   <ErrorMessage
-//                     name="PhoneConnector"
-//                     component="div"
-//                     className="text-red-500 text-sm mt-1"
-//                   />
-//                 </div>
-
-//                 <div>
-//                   <label
-//                     htmlFor="Keypad"
-//                     className="block text-sm font-medium bold-black-700"
-//                   >
-//                     Keypad
-//                   </label>
-//                   <Field
-//                     as={CustomSelect}
-//                     name="Keypad"
-//                     options={options6}
-//                     placeholder="Select keypad"
-//                     className="mt-1"
-//                     onChange={(option) => setFieldValue('Keypad', option.value)}
-//                   />
-//                   <ErrorMessage
-//                     name="Keypad"
-//                     component="div"
-//                     className="text-red-500 text-sm mt-1"
-//                   />
-//                 </div>
-
-//                 <div className="flex justify-end">
-//                   <button
-//                     type="submit"
-//                     className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-//                   >
-//                     {loading ? <Loader /> : 'Submit'}
-//                   </button>
-//                 </div>
-//               </Form>
-//             )}
-//           </Formik>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default OnBoardAssertBody
+export default OnBoardingAssignBody
