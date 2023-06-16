@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { Dialog } from '@headlessui/react';
-import { Form, Formik, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import React, { useState } from 'react'
 
-import { CustomSelect } from 'src/util/formFields/selectBoxField';
+import { Dialog } from '@headlessui/react'
+import { Form, Formik, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
 
-import Loader from '../Loader/Loader';
+import { CustomSelect } from 'src/util/formFields/selectBoxField'
+
+import Loader from '../Loader/Loader'
 
 const validate = Yup.object().shape({
   Name: Yup.string().required('Name is required'),
@@ -13,7 +14,7 @@ const validate = Yup.object().shape({
   Date: Yup.string().required('Date is required'),
   Time: Yup.string().required('Time is required'),
   Version: Yup.string().required('Version is required'),
-});
+})
 
 const ProductName = [
   { label: 'Select the product', value: '' },
@@ -36,27 +37,27 @@ const OnBoardAssertBody = () => {
   const [formMessage, setFormMessage] = useState({
     color: 'green',
     message: '',
-  });
+  })
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = (values) => {
-    console.log('Submitted', values);
+    console.log('Submitted', values)
     // Handle form submission
 
     // Example: Simulating form submission delay
-    setLoading(true);
+    setLoading(true)
     setTimeout(() => {
-      setLoading(false);
+      setLoading(false)
       setFormMessage({
         color: 'green',
         message: 'Product added successfully!',
-      });
-    }, 2000);
+      })
+    }, 2000)
 
     // Display form values in the console
-    console.log('Form Values:', values);
-  };
+    console.log('Form Values:', values)
+  }
 
   return (
     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
@@ -204,7 +205,7 @@ const OnBoardAssertBody = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default OnBoardAssertBody
