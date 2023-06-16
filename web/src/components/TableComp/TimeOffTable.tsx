@@ -82,6 +82,10 @@ const LeaveForm = ({ submitLeaveRequest }) => {
 
   const leaveTypes = ["Casual Leave", "Sick Leave", "LOP"];
 
+  function setNoOfDays(value: string): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <div style={formStyle}>
       <form onSubmit={handleSubmit}>
@@ -356,4 +360,8 @@ const App = () => {
 export default App;
 
 
+
+function setNoOf(arg0: string) {
+  throw new Error("Function not implemented.");
+}
 

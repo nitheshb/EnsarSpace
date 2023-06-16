@@ -712,6 +712,62 @@ export const checkIfUserAlreadyExists = async (cName, matchVal) => {
 
   // db.collection(`${orgId}_leads`).add(data)
 }
+
+export const createEnsarUser = async (data) => {
+  try {
+    const userRef = doc(db, 'users', data.uid)
+    const docSnap = await getDoc(userRef)
+    if (!docSnap.exists()) {
+      await setDoc(userRef, data, { merge: true })
+    } else {
+      // doc.data() will be undefined in this case
+      console.log('No such document!')
+      return null
+    }
+  } catch (error) {
+    console.log('error in db', error)
+  }
+}
+
+
+// export const createCourse = async (courseDetails) => {
+//   try {
+//     const courseRef = doc(db, 'courses', courseDetails.id);
+//     const docSnap = await getDoc(courseRef);
+//     if (!docSnap.exists()) {
+//       await setDoc(courseRef, courseDetails, { merge: true });
+//     } else {
+//       console.log('Course already exists!');
+//       return null;
+//     }
+//   } catch (error) {
+//     console.log('Error in Firestore:', error);
+//   }
+// };
+
+
+export const storeCourseDetails = async (orgId, uid, courseDetails) => {
+  try {
+    const addCourseData = {uid, ...courseDetails}
+    const x = await addDoc(collection(db, `${orgId}_course_Repo`), addCourseData)
+    console.log('Course details stored successfully!')
+  } catch (error) {
+    console.log('Error storing Course details:', error)
+  }
+}
+
+export const getCourseDetails = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "ensar_course_Repo"));
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+  }
+}
+
+
+
+
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data
   const getAllProjectsQuery = await query(

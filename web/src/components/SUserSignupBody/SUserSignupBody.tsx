@@ -1,3 +1,8 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+
+/* eslint-disable jsx-a11y/label-has-associated-control */
 
 import React, { useEffect, useState } from 'react'
 
@@ -10,6 +15,10 @@ import {
   addUserLog,
 
   checkIfUserAlreadyExists,
+
+  createEnsarUser,
+
+  createUser,
 
   createUserToWorkReport,
 
@@ -48,6 +57,7 @@ import Loader from '../Loader/Loader'
 
 
 import { PhoneNoField } from 'src/util/formFields/phNoField'
+
 
 
 
@@ -130,12 +140,9 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
       changed(x)
 
-      // seteditMode(true)
-
     }
 
   }, [empData])
-
 
 
 
@@ -196,11 +203,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
       )
 
-      //  add docs to report page
-
-
-
-
       setLoading(false)
 
       addUserLog(orgId, {
@@ -238,7 +240,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
         name: name,
 
-        password: 'redefine@123',
+        password: 'ensarspace@123',
 
         dept: deptVal,
 
@@ -261,21 +263,11 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
 
 
-      //       Invalid Arguments {\"empId\":\"102\",\"uid\":\"71wQrhV54oeWxn5Ha9E8pm93XID3\",\"email\":\"nitheshreddy.email@gmail.com\",\"offPh\":\"\",\"perPh\":\"\",\"userStatus\":\"active\",\"orgStatus\":\"active\",\"orgId\":\"spark\",\"department\":[\"admin\"],\"roles\":[\"admin\"],\"name\":\"nitheshreddy\"}"
-
-      // payload: "{\"code\":\"invalid-argument\",\"name\":\"FirebaseError\"}"
-
-
-
-
       const config = {
 
         method: 'post',
 
-
-
-
-        url: 'https://asia-south1-redefine-erp.cloudfunctions.net/erpAddUser',
+        url: 'https://ensarspace-usersignup.azurewebsites.net/api/usersignup',
 
         headers: {
 
@@ -287,8 +279,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
       }
 
-      // url: 'https://redefine-functions.azurewebsites.net/api/Redefine_addUser?code=Ojuk8KF6kkxJMoOF4/XZf2kh8WHN5aMtOMlv0bbveJYZrCbRU1C9CA==',
-
       axios(config)
 
         .then(async function (response) {
@@ -297,9 +287,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
             setLoading(false)
 
-            const { success } = await response['data']
-
-            // const { id } = payload
+            const { success, msg, payload, uId } = await response['data']
 
             console.log('user payload is ', response)
 
@@ -319,31 +307,58 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
 
 
-              console.log('docDetailsIs', docDetailsIs, docDetailsIs[0]['uid'])
+              let addedUserDocR = await createEnsarUser({
 
-              updateUserRole(
+                empId: empId,
 
-                empId,
+                uid: uId,
 
-                orgName,
+                orgName: orgName,
 
-                orgId,
+                orgId: orgId,
 
-                docDetailsIs[0]['uid'],
+                department: [deptVal],
 
-                deptVal,
+                roles: [myRole],
 
-                myRole,
+                name: name,
 
-                email,
+                email: email,
 
-                offPh,
+                offPh: offPh,
 
-                perPh,
+                perPh: perPh
 
-                'nitheshreddy.email@gmail.com'
+              })
 
-              )
+
+
+
+              console.log('docDetailsIs', docDetailsIs, docDetailsIs)
+
+              // updateUserRole(
+
+              //   empId,
+
+              //   orgName,
+
+              //   orgId,
+
+              //   docDetailsIs[0]['uid'],
+
+              //   deptVal,
+
+              //   myRole,
+
+              //   email,
+
+              //   offPh,
+
+              //   perPh,
+
+              //   'nitheshreddy.email@gmail.com'
+
+              // )
 
               const x = {
 
@@ -425,67 +440,19 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
   const validate = Yup.object({
 
-    // empId: Yup.number()
-
-    //   .positive()
-
-    //   .min(3, 'Must be atleast 3 digits')
-
-    //   .max(15, 'Must be 8 characters or less')
-
-    //   .required('Required'),
-
     name: Yup.string()
 
       .max(15, 'Must be 15 characters or less')
 
       .required('Required'),
 
-    // lastName: Yup.string()
-
-    //   .max(20, 'Must be 20 characters or less')
-
-    //   .required('Required'),
-
     email: Yup.string().email('Email is invalid').required('Email is required'),
 
-    // password: Yup.string()
-
-    //   .min(6, 'Password must be at least 6 charaters')
-
-    //   .required('Password is required'),
-
-    // confirmPassword: Yup.string()
-
-    //   .oneOf([Yup.ref('password'), null], 'Password must match')
-
-    //   .required('Confirm password is required'),
-
-    // offPh: Yup.string()
-
-    //   .matches(phoneRegExp, 'Phone number is not valid')
-
-    //   .min(10, 'to short')
-
-    //   .max(10, 'to long'),
-
-    // perPh: Yup.string()
-
-    //   .matches(phoneRegExp, 'Phone number is not valid')
-
-    //   .min(10, 'to short')
-
-    //   .max(10, 'to long'),
-
     deptVal: Yup.string()
-
-      // .oneOf(['Admin', 'CRM'], 'Required Dept')
 
       .required('Req Dept'),
 
     myRole: Yup.string()
-
-      //  .oneOf(['Admin', 'CRM'], 'DEPT IS REQ')
 
       .required('Required Role'),
 
@@ -522,6 +489,9 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         </div>
 
       )}
+
+
+
 
       <div className="grid gap-8 grid-cols-1 mx-10 flex flex-col">
 
@@ -603,17 +573,8 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
                 />
 
-                {/* <TextField
 
-                  label="Official Phone Number*"
 
-                  name="offPh"
-
-                  type="text"
-
-                  disabled={editMode}
-
-                /> */}
 
                 <PhoneNoField
 
@@ -632,18 +593,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                   }}
 
                 />
-
-                {/* <TextField
-
-                  label="Personal Phone Number*"
-
-                  name="perPh"
-
-                  type="text"
-
-                  disabled={editMode}
-
-                /> */}
 
                 <PhoneNoField
 
@@ -745,11 +694,13 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
                   onChange={(value) => {
 
-                    // changed(value)
+
+
 
                     formik.setFieldValue('qualVal', value.value)
 
-                    //  formik.setFieldValue('myRole', '')
+
+
 
                   }}
 
@@ -772,10 +723,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
 
 
-
-
-
-<CustomSelect
+                <CustomSelect
 
                   name="expName"
 
@@ -783,7 +731,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
                   className="input mt-3"
 
-                   onChange={(value) => {
+                  onChange={(value) => {
 
                     //  changed(value)
 
@@ -791,7 +739,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
                     //  formik.setFieldValue('myRole', '')
 
-                   }}
+                  }}
 
                   value={formik.values.expVal}
 
@@ -799,7 +747,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
                 />
 
-                 {formik.errors.expVal ? (
+                {formik.errors.expVal ? (
 
                   <div className="error-message text-red-700 text-xs p-2">
 
@@ -906,9 +854,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
       </div>
 
-
-
- </div>
+    </div>
 
   )
 
@@ -918,4 +864,3 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
 
 export default SUserSignupBody
-

@@ -1,8 +1,4 @@
 import React, { ChangeEvent } from 'react'
-
-
-
-
 import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
 
 import HeadNavBar from 'src/components/HeadNavBar/HeadNavBar'
@@ -14,10 +10,6 @@ import Account from 'src/components/profile/account'
 import CheckBox from 'src/components/profile/checkBox'
 
 import PersonalDetails from 'src/components/profile/personalDetails'
-
-
-
-
 import bg from '../../../public/Group7.png'
 
 import { Link } from '@redwoodjs/router/dist/links'
@@ -37,15 +29,8 @@ import { title } from 'process'
 import { SingleFileUploadWithProgress } from 'src/components/LeadUplodCsv/SingleFileUploadWithProgress'
 
 import { UploadError } from 'src/components/LeadUplodCsv/UploadError'
-
-
-
-
 import { Height } from '@mui/icons-material'
-
-// import ProfileHeader from './ProfileHeader'
-
-import ProfileHeader from 'src/components/profile/ProfileHeader'
+import ProfileHeader from 'src/components/profile/ProfileHeaderPage'
 
 
 
@@ -53,15 +38,7 @@ import ProfileHeader from 'src/components/profile/ProfileHeader'
 const Profile = () => {
 
   function handleFileInputChange(event: ChangeEvent<HTMLInputElement>): void {
-
-
-
-
   }
-
-
-
-
   function getRootProps(arg0: {
 
     style: any
@@ -75,10 +52,6 @@ const Profile = () => {
     throw new Error('Function not implemented.')
 
   }
-
-
-
-
   function getInputProps(): JSX.IntrinsicAttributes &
 
     globalThis.React.ClassAttributes<HTMLInputElement> &
@@ -88,99 +61,49 @@ const Profile = () => {
     throw new Error('Function not implemented.')
 
   }
-
-
-
-
   function clearUploadDocs() {
 
     throw new Error('Function not implemented.')
 
   }
-
-
-
-
   function onDelete(file: File): void {
 
     throw new Error('Function not implemented.')
 
   }
-
-
-
-
   function onUpload(file: File, url: string): void {
 
     throw new Error('Function not implemented.')
 
   }
-
-
-
-
   function uploadFile(file: any) {
 
     throw new Error('Function not implemented.')
 
   }
-
-
-
-
   function setFileName(value: string) {
 
     throw new Error('Function not implemented.')
 
   }
-
-
-
-
   function resetter(): void {
 
     throw new Error('Function not implemented.')
 
   }
-
-
-
-
   function handleSubmit(file: any): void {
 
     throw new Error('Function not implemented.')
 
   }
-
-
-
-
-  function handleClick(event: MouseEvent<HTMLHeadingElement, MouseEvent>): void {
-
-    throw new Error('Function not implemented.')
-
-  }
-
-
-
-
+  // function handleClick(event: MouseEvent<HTMLHeadingElement, MouseEvent>): void {
+  //   throw new Error('Function not implemented.')
+  // }
   return (
 
     <>
-
-
-
-
       <ProfileHeader />
-
-
-
-
       <div >
-
-
-
-
         <div className="white-bg">
 
           <div className="flex flex-col text-gray-700 bg-white">
@@ -198,9 +121,7 @@ const Profile = () => {
                       <div className=" justify-center items-end mt-20 mb-16 ml-10">
 
                         <h1 className="text-center text-xl font-bold blink">
-
                           Deepthi Rani
-
                         </h1>
 
                       </div>
@@ -212,11 +133,6 @@ const Profile = () => {
                       ManageYourAccount
 
                     </button>
-
-
-
-
-
                     <div className="border border-black hover:text-grey-800 p-3 mx-auto max-w-md font-sans">
 
                       <ul className="space-y-1">
@@ -338,10 +254,6 @@ const Profile = () => {
                           </p>
 
                         </div>
-
-
-
-
                         <h2 className="text-black font-medium mt-3 ">
 
                           TEAMS

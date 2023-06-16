@@ -44,7 +44,6 @@ const CoursedetailsPage = () => {
       <div>
 
 
-
         <div key={course.id}>
           <div style={{ backgroundColor: 'black', color: 'white' }}>
             <div className="course-intro mx-auto grid bg-dark">
