@@ -1,4 +1,3 @@
-
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -17,6 +16,11 @@ const UserManageTable = ({ editEmployeeFun }) => {
   const [leadsFetchedData, setLeadsFetchedData] = useState([])
   const [filterData, setFilterData] = useState([])
   const [selDept, setSelDept] = useState('')
+  const [selRole, setSelRole] = useState([]);
+
+  const showOnlyRole = (role) => {
+    setSelRole(role);
+  };
   useEffect(() => {
     getLeadsDataFun()
     setSelDept('all')
@@ -62,15 +66,12 @@ const UserManageTable = ({ editEmployeeFun }) => {
           <section className="flex ml-auto mt-[18px]  bg-white  border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10">
             {[
               { label: 'All', val: 'all' },
-              { label: 'IT Employee', val: 'it employee' },
-              { label: 'IT Desk', val: 'it desk' },
-              { label: 'HR', val: 'hr' },
-              { label: 'Finance', val: 'finance' },
-              { label: 'Project', val: 'project' },
-              { label: 'Sales', val: 'sales' },
-              { label: 'Learning', val: 'learning' },
               { label: 'Admin', val: 'admin' },
-
+              { label: 'Crm', val: 'crm' },
+              { label: 'Legal', val: 'legal' },
+              { label: 'Project', val: 'project' },
+              { label: 'Legal', val: 'legal' },
+              { label: 'Sales', val: 'sales' },
             ].map((dat, index) => (
               <a
                 key={index}
@@ -78,7 +79,7 @@ const UserManageTable = ({ editEmployeeFun }) => {
                 onClick={() => showOnlyDept(dat.val)}
               >
                 <div
-                  className={`py-2 px-6 rounded-full hover:text-indigo-700 hover:bg-indigo-100  ${
+                  className={`py-2 px-8 rounded-full hover:text-indigo-700 hover:bg-indigo-100  ${
                     selDept.includes(dat.val)
                       ? 'bg-indigo-100 text-indigo-700'
                       : 'text-gray-600'
@@ -89,6 +90,7 @@ const UserManageTable = ({ editEmployeeFun }) => {
               </a>
             ))}
           </section>
+
           <div className="shadow overflow-hidden border-b border-gray-200  bg-white pb-4 md:py-7 px-4 md:px-8 xl:px-10">
             <table className="min-w-full divide-y divide-gray-200 ">
               <thead className="bg-gray-50">

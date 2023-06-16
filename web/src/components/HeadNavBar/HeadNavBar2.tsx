@@ -70,9 +70,9 @@ const HeadNavBar2 = ({ selModule, setSelModule }) => {
           <button className="relative ml-2 text-sm focus:outline-none group  items-center justify-center h-10 text-sm font-medium">
             <div className="flex items-center justify-between w-10 h-10 rounded ">
               <svg
-                width="50"
+                width="30"
                 fill="currentColor"
-                height="50"
+                height="30"
                 className="text-gray-800"
                 viewBox="0 0 1792 1792"
                 xmlns="http://www.w3.org/2000/svg"

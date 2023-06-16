@@ -476,7 +476,6 @@ export function MultipleFileUploadField({
               ].includes(title)
                 ? '*.pdf'
                 : '*.csv'}
-
               {/* <span className="text-blue-600"> get sample template</span> */}
             </time>
           </div>

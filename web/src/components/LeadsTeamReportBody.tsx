@@ -1073,7 +1073,7 @@ const LeadsTeamReportBody = ({ project, onSliderOpen = () => {}, isEdit }) => {
                 { label: 'Source Report', value: 'source_report' },
                 { label: 'Employee Report', value: 'emp_status_report' },
                 { label: 'Project Leads Report', value: 'proj_leads_report' },
-                { label: 'Employee Leads Report', value: 'emp_leads_report' },
+                { label: 'Employee Leads Aging', value: 'emp_leads_report' },
                 { label: 'Employee Tasks', value: 'emp_tasks' },
               ].map((data, i) => {
                 return (
