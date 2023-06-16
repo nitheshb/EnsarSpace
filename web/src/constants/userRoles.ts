@@ -113,6 +113,50 @@ export const EXPERIENCE_LIST = [
   { label: '5+ Years', value: '5+ Y' },
 ]
 
+export const options = [
+  { label: 'Select the product', value: '' },
+  { value: 'Laptop', label: 'Laptop' },
+  { value: 'Phone windows', label: 'Phone windows' },
+  { value: 'Phone android', label: 'Phone android' },
+  { value: 'Sim', label: 'Sim' },
+]
+export const options1 = [
+  { label: 'Select the screen', value: '' },
+  { value: 'amoled', label: 'Amoled' },
+  { value: 'lcd', label: 'Lcd' },
+  { value: 'hd', label: 'Hd' },
+]
+export const options2 = [
+  { label: 'Select the sensor', value: '' },
+  { value: 'acclerometer', label: 'Acclerometer' },
+  { value: 'gyroscope', label: 'Gyroscope' },
+  { value: 'proximity', label: 'Proximity' },
+  { value: 'fingerprint', label: 'Fingerprint' },
+]
+ export const options3 = [
+  { label: 'Select the Nfc', value: '' },
+  { value: 'yes', label: 'Yes' },
+  { value: 'no', label: 'No' },
+]
+export const options4 = [
+  { label: 'Select the display', value: '' },
+  { value: 'gorilla', label: 'Gorilla' },
+  { value: 'diamondglass', label: 'Diamond glass' },
+  { value: 'temperglass', label: 'Temperglass' },
+]
+export const options5 = [
+  { label: 'Select phone connector', value: '' },
+  { value: 'microusb ', label: 'Micro USB' },
+  { value: 'type-c', label: 'Type-c' },
+  { value: 'usb type-a', label: 'Usb type-a' },
+]
+export const options6 = [
+  { label: 'Select the keypad', value: '' },
+  { value: 'virtual keypad', label: 'Virtual keypad' },
+  { value: 'gboard', label: 'Gboard' },
+  { value: 'swiftkey', label: 'Swiftkwy' },
+]
+
 export const ROLES_LIST = [
   { label: 'Select the role', value: '' },
   {
