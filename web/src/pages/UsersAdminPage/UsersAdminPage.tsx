@@ -115,12 +115,29 @@ const UsersAdminPage = () => {
                 <LeaveApprovalPage />
               </>
             )}
+            {/* {viewable === 'Roles Management' && (
+              <>
+                <TableData />
+              </>
+            )} */}
 
             {viewable === 'Roles Management' && (
+              <>
+                <TableData/>
+                {/* <OnBoarding leadsTyper={undefined} /> */}
+              </>
+            )}
+
+            {viewable === 'OnBoarding' && (
               <>
                 <OnBoarding leadsTyper={undefined} />
               </>
             )}
+            {/* {viewable === 'OnBoarding' && (
+              <>
+                <OnBoarding />
+              </>
+            )} */}
 
             {viewable === 'My Activity' && (
               <>
@@ -149,13 +166,6 @@ const UsersAdminPage = () => {
             {viewable === 'Team Activity' && (
               <>
                 <MyActivityHome source={'team'} />
-              </>
-            )}
-            {viewable === 'Pay Slips' && (
-
-              <>
-
-
               </>
             )}
 
