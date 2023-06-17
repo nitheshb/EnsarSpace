@@ -235,6 +235,9 @@ const ConstructUnitsHome = ({ project }) => {
                   })
                 }}
               >
+
+
+
                 <div
                   className="flex flex-col items-center justify-between"
                   onClick={() => setIsOpenSideView(!isOpenSideView)}
