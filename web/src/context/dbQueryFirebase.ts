@@ -731,13 +731,34 @@ export const createEnsarUser = async (data) => {
 
 export const storeLeaveDetails = async (leaveDetails) => {
   try {
-    const leaveRef = doc(db, 'leaves', leaveDetails.employeeName) 
+    const leaveRef = doc(db, 'leaves', leaveDetails.employeeName)
     await setDoc(leaveRef, leaveDetails, { merge: true })
     console.log('Leave details stored successfully!')
   } catch (error) {
     console.log('Error storing leave details:', error)
   }
 }
+
+export const storeAssetdetails = async (AssetDetails) => {
+  try {
+    const AssetRef = doc(db, 'Assets', AssetDetails.Product)
+    await setDoc(AssetRef, AssetDetails, { merge: true })
+    console.log('Asset details stored successfully!')
+  } catch (error) {
+    console.log('Asset storing Asset details:', error)
+  }
+}
+
+export const storeAssignDetails = async (AssignDetails) => {
+  try {
+    const AssignRef = doc(db, 'Assign assets', AssignDetails.ProductName)
+    await setDoc(AssignRef, AssignDetails, { merge: true })
+    console.log('Assign details stored successfully!')
+  } catch (error) {
+    console.log('Error storing Assign details:', error)
+  }
+}
+
 
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data
