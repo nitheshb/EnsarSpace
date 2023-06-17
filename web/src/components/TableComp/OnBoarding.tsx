@@ -403,21 +403,6 @@ const OnBoarding = ({ leadsTyper }) => {
                     </span>
                   </section>
                 </div>
-                {/* <div>
-                  <OnBoardingAsset
-                    open={isOpen}
-                    setOpen={handleOnClose}
-                    title="User"
-                    productData={productData}
-                  />
-                  <OnBoardingAssign
-                    open={isOpen}
-                    setOpen={handleOnClose}
-                    title="User"
-                    assetData={assetData}
-                    // productData={productData}
-                  />
-                </div> */}
                 <div>
                   <OnBoardingAsset
                     open={isAssetOpen}
@@ -430,18 +415,11 @@ const OnBoarding = ({ leadsTyper }) => {
                     setOpen={handleAssignOnClose}
                     title="User"
                     assetData={assetData}
-                    // productData={productData}
                   />
                 </div>
               </div>
             </section>
             <div>
-              {/* <OnBoardingAsset
-                open={isOpen}
-                setOpen={handleOnClose}
-                title="User"
-                productData={productData}
-              /> */}
             </div>
           </div>
         </div>
