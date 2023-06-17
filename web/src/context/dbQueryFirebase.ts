@@ -729,6 +729,16 @@ export const createEnsarUser = async (data) => {
   }
 }
 
+export const storeLeaveDetails = async (leaveDetails) => {
+  try {
+    const leaveRef = doc(db, 'leaves', leaveDetails.employeeName) 
+    await setDoc(leaveRef, leaveDetails, { merge: true })
+    console.log('Leave details stored successfully!')
+  } catch (error) {
+    console.log('Error storing leave details:', error)
+  }
+}
+
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data
   const getAllProjectsQuery = await query(

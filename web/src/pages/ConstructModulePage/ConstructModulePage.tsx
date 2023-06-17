@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import SlimSideMenuBar from 'src/components/A_SideMenu/slimSideMenu'
 
+import SlimSideMenuBar from 'src/components/A_SideMenu/slimSideMenu'
 import ConstructUnitsHome from 'src/components/ConstructModule/ConstructUnitsHome'
 import ExecutiveHomeViewerPage from 'src/components/ExecutiveHomeViewerPage'
 import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
@@ -65,20 +65,16 @@ const ConstructModulePage = () => {
               }`}
             >
               <SlimSideMenuBar
-              pgName={'constructModule'}
-              sourceLink={'constructModule'}
-              showSideView1={undefined}
-              setViewable={setViewable}
-              viewable={viewable}
-            />
-
+                pgName={'constructModule'}
+                sourceLink={'constructModule'}
+                showSideView1={undefined}
+                setViewable={setViewable}
+                viewable={viewable}
+              />
             </div>
 
             <div className="flex-grow  items-center overflow-y-auto  px-300  py-300">
-            <HeadNavBar2
-              selModule ={selModule}
-              setSelModule={setSelModule}
-            />
+              <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
 
               {viewable === 'ConstructUnits' && (
                 <ConstructUnitsHome

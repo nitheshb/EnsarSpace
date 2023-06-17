@@ -1674,18 +1674,20 @@ const SlimSideMenuBar = (props) => {
                       <path d="M12 6v6l4 2" />
                     </svg>
                   </span>
-                  <span className="text-[9px] font-bold  pl-1">Time Off</span>
                   <span>
-                    <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
                   </span>
-                  <span className="text-[9px] font-bold  pl-1">Employees</span>
                   <span className="text-xs pl-1">Time off</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                 </span>
               </span>
+ HL-58-Assets-management
             </li> */}
+
+            </li>
+
+ Development_dev
             <li className="relative mt-1">
               <span
                 className={
