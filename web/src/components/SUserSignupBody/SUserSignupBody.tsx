@@ -19,7 +19,13 @@ import { TextField } from 'src/util/formFields/TextField'
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 import axios from 'axios'
 import Loader from '../Loader/Loader'
-import { DEPARTMENT_LIST, ROLES_LIST, QUALIFICATION_LIST, EXPERIENCE_LIST } from 'src/constants/userRoles'
+// import { DEPARTMENT_LIST, ROLES_LIST, QUALIFICATION_LIST, EXPERIENCE_LIST } from 'src/constants/userRoles'
+
+ import { DEPARTMENT_LIST} from 'src/constants/userRoles'
+ import { ROLES_LIST } from 'src/constants/userRoles'
+ import { QUALIFICATION_LIST } from 'src/constants/userRoles'
+ import { EXPERIENCE_LIST } from 'src/constants/userRoles'
+
 import { PhoneNoField } from 'src/util/formFields/phNoField'
 
 const SUserSignupBody = ({ title, dialogOpen, empData }) => {
@@ -241,6 +247,8 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
             email: email,
             deptVal: department != undefined ? department[0] : '',
             myRole: rolees != undefined ? rolees[0] : '',
+            qualval: '',
+            expval: '',
             empId: empId,
             perPh: perPh,
             offPh: offPh,
@@ -270,6 +278,27 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                   label="Email Id*"
                   name="email"
                   type="email"
+                  disabled={editMode}
+                />
+
+                  <TextField
+                  label="Organization*"
+                  name="organizor"
+                  type="text"
+                  disabled={editMode}
+                />
+
+                 <TextField
+                  label="Location*"
+                  name="location"
+                  type="location"
+                  disabled={editMode}
+                />
+
+<TextField
+                  label="Job Tittle*"
+                  name="job"
+                  type="text"
                   disabled={editMode}
                 />
 
@@ -325,7 +354,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     {formik.values.myRole}
                   </div>
                 ) : null}
-
 
                 <CustomSelect
                   name="qualName"

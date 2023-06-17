@@ -460,6 +460,8 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+
+
             <li className="relative mt-1">
               <span
                 className={
@@ -501,6 +503,57 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+
+
+
+
+            {/* <li className="relative mt-1">
+              <span
+                className={
+                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  (viewable === 'On Boarding1'
+                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                    : '')
+                }
+                onClick={() => setViewable('On Boarding1')}
+                style={{
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                }}
+              >
+                <span className="flex items-center flex-col pt-[8px]">
+                  <span style={{ color: '#058527' }}>
+
+
+<svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  className="w-5 h-5"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+>
+  <path
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    d="M4 6H20M4 12H20M4 18H20"
+  />
+</svg>
+
+
+                  </span>
+                  <span className="text-[9px] font-bold  pl-1">OnBoarding</span>
+                </span>
+                <span className="flex ml-auto items-bottom">
+                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+                </span>
+              </span>
+            </li> */}
+
+
             <li className="relative mt-1">
               <span
                 className={
@@ -1589,7 +1642,7 @@ const SlimSideMenuBar = (props) => {
               </span>
             </li>
 
-            <li className="relative justify-center ">
+            {/* <li className="relative justify-center ">
               <span
                 className={
                   'flex items-center justify-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
@@ -1629,9 +1682,12 @@ const SlimSideMenuBar = (props) => {
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                 </span>
               </span>
+ HL-58-Assets-management
+            </li> */}
+
             </li>
 
-
+ Development_dev
             <li className="relative mt-1">
               <span
                 className={
@@ -1671,6 +1727,149 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+
+{/*
+
+            <li className="relative mt-1">
+              <span
+                className={
+                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  (viewable === 'On Boarding'
+                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                    : '')
+                }
+                onClick={() => setViewable('On Boarding')}
+                style={{
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                }}
+              >
+                <span className="flex items-center flex-col pt-[8px]">
+                  <span style={{ color: '#058527' }}>
+
+
+<svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  className="w-5 h-5"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+>
+  <path
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    d="M4 6H20M4 12H20M4 18H20"
+  />
+</svg>
+
+
+                  </span>
+                  <span className="text-[9px] font-bold  pl-1">On Boarding</span>
+                </span>
+                <span className="flex ml-auto items-bottom">
+                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+                </span>
+              </span>
+            </li> */}
+
+
+<li className="relative mt-1">
+              <span
+                className={
+                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  (viewable === 'On Boarding'
+                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                    : '')
+                }
+                onClick={() => setViewable('On Boarding')}
+                style={{
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                }}
+              >
+                <span className="flex items-center flex-col pt-[8px]">
+                  <span style={{ color: '#058527' }}>
+
+
+<svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  className="w-5 h-5"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+>
+  <path
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    d="M4 6H20M4 12H20M4 18H20"
+  />
+</svg>
+
+
+                  </span>
+                  <span className="text-[9px] font-bold  pl-1">OnBoarding</span>
+                </span>
+                <span className="flex ml-auto items-bottom">
+                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+                </span>
+              </span>
+            </li>
+
+
+            
+
+            <li className="relative mt-1">
+              <span
+                className={
+                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  (viewable === 'Holidays Calendar'
+                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                    : '')
+                }
+                onClick={() => setViewable('Holidays Calendar')}
+                style={{
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                }}
+              >
+                <span className="flex items-center flex-col pt-[8px]">
+                  <span style={{ color: '#058527' }}>
+
+                    <svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  className="w-5 h-5"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+>
+  <path
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    d="M4 5H20V19H4V5ZM8 3V5M16 3V5M8 19V21M16 19V21M8 8H9M15 8H16M8 12H9M15 12H16M8 16H9M12 8H13M12 12H13M12 16H13"
+  />
+</svg>
+
+                  </span>
+                  <span className="text-[9px] font-bold  pl-1">Calendar</span>
+                </span>
+                <span className="flex ml-auto items-bottom">
+                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+                </span>
+              </span>
+            </li>
+
 
             <li className="relative mt-1">
               <span

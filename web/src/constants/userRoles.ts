@@ -61,12 +61,28 @@ export const USER_ROLES = {
   DEVELOPER_ASSOCIATE: 'developer associate',
   DEVELOPER_SENIOR_ASSOCIATE: 'developer senior associate',
 
+ HL-58-Assets-management
+  LEARNER_MANAGER: 'learner manager',
+  LEARNER_EXECUTIVE: 'learner executive',
+  LEARNER_ASSOCIATE: 'learner associate',
+  LEARNER_SENIOR_MANAGER: 'learner senior manager',
+  LEARNER_SENIOR_EXECUTIVE: 'learner senior executive',
+  LEARNER_SENIOR_ASSOCIATE: 'learner senior associate',
+
+  TRAINER_MANAGER: 'trainer manager',
+  TRAINER_EXECUTIVE: 'trainer executive',
+  TRAINER_ASSOCIATE: 'trainer associate',
+  TRAINER_SENIOR_MANAGER: 'trainer senior manager',
+  TRAINER_SENIOR_EXECUTIVE: 'trainer senior executive',
+  TRAINER_SENIOR_ASSOCIATE: 'trainer senior associate',
+
   LEARNING_EXECUTIVE: 'learning executive',
   LEARNING_MANAGER: 'learning manager',
   LEARNING_ASSOCIATE: 'learning associate',
   LEARNING_SENIOR_EXECUTIVE: 'learning senior executive',
   LEARNING_SENIOR_MANAGER: 'learning senior manager',
   LEARNING_SENIOR_ASSOCIATE: 'learning senior associate',
+ Development_dev
 
   FRESHER_EXECUTIVE: 'fresher executive',
   FRESHER_MANAGER: 'fresher manager',
@@ -513,6 +529,39 @@ export const ROLES_LIST = [
     value: USER_ROLES.FRESHER_EXECUTIVE,
     dept: 'fresher',
   },
+
+  {
+    label: 'learner manager',
+    value: USER_ROLES.LEARNER_MANAGER,
+    dept:'learner',
+  },
+  {
+    label: 'learner senior manager',
+    value: USER_ROLES.LEARNER_SENIOR_MANAGER,
+    dept:'learner',
+  },
+  {
+    label: 'learner executive',
+    value: USER_ROLES.LEARNER_EXECUTIVE,
+    dept:'learner',
+  },
+  {
+    label: 'learner senior executive',
+    value: USER_ROLES.LEARNER_SENIOR_EXECUTIVE,
+    dept:'learner',
+  },
+  {
+    label: 'learner associate',
+    value: USER_ROLES.LEARNER_ASSOCIATE,
+    dept:'learner',
+  },
+  {
+    label: 'learner senior associate',
+    value: USER_ROLES.LEARNER_SENIOR_ASSOCIATE,
+    dept:'learner',
+  },
+
+
   {
     label: 'fresher manager',
     value: USER_ROLES.FRESHER_MANAGER,
