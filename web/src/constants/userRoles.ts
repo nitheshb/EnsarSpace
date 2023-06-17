@@ -61,7 +61,7 @@ export const USER_ROLES = {
   DEVELOPER_ASSOCIATE: 'developer associate',
   DEVELOPER_SENIOR_ASSOCIATE: 'developer senior associate',
 
- HL-58-Assets-management
+//  HL-58-Assets-management
   LEARNER_MANAGER: 'learner manager',
   LEARNER_EXECUTIVE: 'learner executive',
   LEARNER_ASSOCIATE: 'learner associate',
@@ -82,7 +82,7 @@ export const USER_ROLES = {
   LEARNING_SENIOR_EXECUTIVE: 'learning senior executive',
   LEARNING_SENIOR_MANAGER: 'learning senior manager',
   LEARNING_SENIOR_ASSOCIATE: 'learning senior associate',
- Development_dev
+//  Development_dev
 
   FRESHER_EXECUTIVE: 'fresher executive',
   FRESHER_MANAGER: 'fresher manager',

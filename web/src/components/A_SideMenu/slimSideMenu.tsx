@@ -1685,9 +1685,9 @@ const SlimSideMenuBar = (props) => {
  HL-58-Assets-management
             </li> */}
 
-            </li>
+            {/* </li> */}
 
- Development_dev
+              {/* Development_dev */}
             <li className="relative mt-1">
               <span
                 className={
@@ -1824,7 +1824,7 @@ const SlimSideMenuBar = (props) => {
             </li>
 
 
-            
+
 
             <li className="relative mt-1">
               <span
