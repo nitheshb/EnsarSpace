@@ -88,16 +88,12 @@ const ConstructModulePage = () => {
                   isEdit={undefined}
                 />
               )}
-{/* 
+{/*
  {viewable === 'On Boarding1' && (
              <OnBoarding/>
               )} */}
 
-  {/* {viewable === 'On Boarding1' && (
-              <>
-                <Assets />
-              </>
-            )} */}
+ 
 
             </div>
             {/* <div className="flex-grow mx-4  my-2 items-center overflow-y-auto  h-screen  px-300  py-300"> */}

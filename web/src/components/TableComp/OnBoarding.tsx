@@ -381,12 +381,18 @@ const OnBoarding = ({ leadsTyper }) => {
 
 
 
-
+{/*
                             <span className="css-1lpgd8m px-4 text-[#767676] text-[10px]">
 
                                   Android
 
-                                </span>
+                                </span> */}
+
+<span className="css-1lpgd8m px-3 text-[black] text-[10px]">
+
+Android
+
+</span>
 
 
 

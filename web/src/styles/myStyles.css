@@ -282,13 +282,14 @@ color: #94A4C4;
 
 .css-5mn5yy {
  font-family: 'Montserrat', sans-serif;
- margin-bottom: 0px;
- margin-top: 0px;
+ margin-bottom: -11px;
+ margin-top: 19px;
  font-size: 18px;
  font-weight: 600;
  line-height: 1.5;
  text-transform: none;
  white-space: normal;
+ margin-left: -3px;
 }
 
 
@@ -298,8 +299,8 @@ color: #94A4C4;
 font-family: 'Montserrat', sans-serif;
   font-size: 12px;
  font-weight: 600;
- line-height: 1.5;
- margin-left: 4px;
+ line-height: 0.5;
+ margin-left: -6px;
  text-transform: none;
  white-space: normal;
 }
