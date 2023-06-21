@@ -221,7 +221,7 @@ const OnBoardAssertBody = () => {
                     htmlFor="AllocationStatus"
                     className="block text-sm font-medium bold-black-700"
                   >
-                    AllocationStatus
+                    Allocation Status
                   </label>
                   <Field
                     as={CustomSelect}
@@ -245,7 +245,7 @@ const OnBoardAssertBody = () => {
                     htmlFor="WorkingStatus"
                     className="block text-sm font-medium bold-black-700"
                   >
-                    WorkingStatus
+                    Working Status
                   </label>
                   <Field
                     as={CustomSelect}

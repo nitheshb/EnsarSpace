@@ -153,20 +153,20 @@ export const options1 = [
 ]
 export const options2 = [
   { label: 'Select the Ram', value: '' },
-  { value: '32GB', label: '32GB' },
-  { value: '64GB', label: '64GB' },
-  { value: '128GB', label: '128GB' },
-  { value: '256GB', label: '256GB' },
+  { value: '4GB', label: '4GB' },
+  { value: '6GB', label: '6GB' },
+  { value: '8GB', label: '8GB' },
+  { value: '16GB', label: '16GB' },
 ]
  export const options3 = [
   { label: 'Select the SerialNUmber', value: '' },
   { value: '01', label: '01' },
   { value: '02', label: '02' },
   { value: '03', label: '03' },
-  { value: '04', label: '02' },
-  { value: '05', label: '02' },
-  { value: '06', label: '02' },
-  { value: '07', label: '02' },
+  { value: '04', label: '04' },
+  { value: '05', label: '05' },
+  { value: '06', label: '06' },
+  { value: '07', label: '07' },
   { value: '08', label: '08' },
   { value: '09', label: '09' },
   { value: '10', label: '10' },
