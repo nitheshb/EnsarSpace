@@ -739,26 +739,33 @@ export const storeLeaveDetails = async (leaveDetails) => {
   }
 }
 
-export const storeAssetdetails = async (AssetDetails) => {
+export const storeAssetDetails = async (orgId, assetDetails) => {
   try {
-    const AssetRef = doc(db, 'Assets', AssetDetails.Product)
-    await setDoc(AssetRef, AssetDetails, { merge: true })
+    // const { user } = useAuth();
+    const assetManagementData = { ...assetDetails }
+    const x = await addDoc(
+      collection(db, `${orgId}_asset_Repo`),
+      assetManagementData
+    )
     console.log('Asset details stored successfully!')
   } catch (error) {
-    console.log('Asset storing Asset details:', error)
+    console.log('Error storing Asset details:', error)
   }
 }
 
-export const storeAssignDetails = async (AssignDetails) => {
+export const storeAssignDetails = async (orgId, assignDetails) => {
   try {
-    const AssignRef = doc(db, 'Assign assets', AssignDetails.ProductName)
-    await setDoc(AssignRef, AssignDetails, { merge: true })
+    // const { user } = useAuth();
+    const assignManagementData = { ...assignDetails }
+    const x = await addDoc(
+      collection(db, `${orgId}_assign_Repo`),
+      assignManagementData
+    )
     console.log('Assign details stored successfully!')
   } catch (error) {
     console.log('Error storing Assign details:', error)
   }
 }
-
 
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data

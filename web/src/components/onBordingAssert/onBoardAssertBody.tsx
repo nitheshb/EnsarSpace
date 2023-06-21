@@ -15,6 +15,8 @@ import {
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 
 import Loader from '../Loader/Loader'
+import { useAuth } from 'src/context/firebase-auth-context'
+import { storeAssetDetails } from 'src/context/dbQueryFirebase'
 
 const validate = Yup.object().shape({
   Product: Yup.string().required('Product is required'),
@@ -74,23 +76,65 @@ const OnBoardAssertBody = () => {
     message: '',
   })
 
+  // const [loading, setLoading] = useState(false)
+
+  // const handleSubmit = (values) => {
+  //   console.log('Submitted', values)
+  // Handle form submission
+
+  //   // Example: Simulating form submission delay
+  //   setLoading(true)
+  //   setTimeout(() => {
+  //     setLoading(false)
+  //     setFormMessage({
+  //       color: 'green',
+  //       message: 'Asset added successfully!',
+  //     })
+  //   }, 2000)
+
+  //   // Display form values in the console
+  //   console.log('Form Values:', values)
+  // }
+
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (values) => {
+  const { user } = useAuth()
+
+  // const { orgId } = user
+
+  const handleSubmit = async (values) => {
     console.log('Submitted', values)
-    // Handle form submission
 
     // Example: Simulating form submission delay
-    setLoading(true)
-    setTimeout(() => {
+
+    // setLoading(true)
+
+    // setTimeout(() => {
+
+    //   setLoading(false)
+
+    //   setFormMessage({
+
+    //     color: 'green',
+
+    //     message: 'Asset added successfully!',
+
+    //   })
+
+    // }, 2000)
+
+    try {
+      setLoading(true)
+
+      await storeAssetDetails(user.orgId, values)
+
       setLoading(false)
-      setFormMessage({
-        color: 'green',
-        message: 'Asset added successfully!',
-      })
-    }, 2000)
+    } catch (error) {
+      console.log(error)
+    }
 
     // Display form values in the console
+
     console.log('Form Values:', values)
   }
 
@@ -203,7 +247,7 @@ const OnBoardAssertBody = () => {
                     as={CustomSelect}
                     name="SerialNumber"
                     options={options3}
-                    placeholder="Select SerialNumber option"
+                    placeholder="Select SerialNumber"
                     className="mt-1"
                     onChange={(option) =>
                       setFieldValue('SerialNumber', option.value)
@@ -227,7 +271,7 @@ const OnBoardAssertBody = () => {
                     as={CustomSelect}
                     name="AllocationStatus"
                     options={options4}
-                    placeholder="Select display type"
+                    placeholder="Select Allocation Status"
                     className="mt-1"
                     onChange={(option) =>
                       setFieldValue('AllocationStatus', option.value)
@@ -251,7 +295,7 @@ const OnBoardAssertBody = () => {
                     as={CustomSelect}
                     name="WorkingStatus"
                     options={options5}
-                    placeholder="Select phone connector"
+                    placeholder="Select Working Status"
                     className="mt-1"
                     onChange={(option) =>
                       setFieldValue('WorkingStatus', option.value)
@@ -263,28 +307,6 @@ const OnBoardAssertBody = () => {
                     className="text-red-500 text-sm mt-1"
                   />
                 </div>
-
-                {/* <div>
-                  <label
-                    htmlFor="Keypad"
-                    className="block text-sm font-medium bold-black-700"
-                  >
-                    Keypad
-                  </label>
-                  <Field
-                    as={CustomSelect}
-                    name="Keypad"
-                    options={options6}
-                    placeholder="Select keypad"
-                    className="mt-1"
-                    onChange={(option) => setFieldValue('Keypad', option.value)}
-                  />
-                  <ErrorMessage
-                    name="Keypad"
-                    component="div"
-                    className="text-red-500 text-sm mt-1"
-                  />
-                </div> */}
 
                 <div className="flex justify-end">
                   <button

@@ -217,9 +217,13 @@ import { Dialog } from '@headlessui/react'
 import { Form, Formik, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
+import { storeAssignDetails } from 'src/context/dbQueryFirebase'
+import { useAuth } from 'src/context/firebase-auth-context'
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 
 import Loader from '../Loader/Loader'
+
+import OnBoardingAssign from './OnBoardingAssign'
 
 const validate = Yup.object().shape({
   Name: Yup.string().required('Name is required'),
@@ -273,38 +277,80 @@ const Version = [
   { value: 'android 10 Above', label: '_10' },
 ]
 
-const OnBoardAssertBody = () => {
+const OnBoardingAssignBody = () => {
   const [formMessage, setFormMessage] = useState({
     color: 'green',
 
     message: '',
   })
 
+  // const [loading, setLoading] = useState(false)
+
+  // const handleSubmit = (values) => {
+  //   console.log('Submitted', values)
+
+  //   // Handle form submission
+
+  //   // Example: Simulating form submission delay
+
+  //   setLoading(true)
+
+  //   setTimeout(() => {
+  //     setLoading(false)
+
+  //     setFormMessage({
+  //       color: 'green',
+
+  //       message: 'Product added successfully!',
+  //     })
+  //   }, 2000)
+
+  // Handle form submission
+
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (values) => {
-    console.log('Submitted', values)
+  const { user } = useAuth()
 
-    // Handle form submission
+  const handleSubmit = async (values) => {
+    console.log('Submitted', values)
 
     // Example: Simulating form submission delay
 
-    setLoading(true)
+    // setLoading(true)
 
-    setTimeout(() => {
+    // setTimeout(() => {
+
+    //   setLoading(false)
+
+    //   setFormMessage({
+
+    //     color: 'green',
+
+    //     message: 'Product added successfully!',
+
+    //   })
+
+    // }, 2000)
+
+    try {
+      setLoading(true)
+
+      await storeAssignDetails(user.orgId, values)
+
       setLoading(false)
-
-      setFormMessage({
-        color: 'green',
-
-        message: 'Product added successfully!',
-      })
-    }, 2000)
+    } catch (error) {
+      console.log(error)
+    }
 
     // Display form values in the console
 
     console.log('Form Values:', values)
   }
+
+  // Display form values in the console
+
+  //   console.log('Form Values:', values)
+  // }
 
   return (
     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
@@ -528,4 +574,4 @@ const OnBoardAssertBody = () => {
   )
 }
 
-export default OnBoardAssertBody
+export default OnBoardingAssignBody

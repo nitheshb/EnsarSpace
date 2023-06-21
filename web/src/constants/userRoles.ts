@@ -157,7 +157,7 @@ export const options2 = [
   { label: '16GB', value: '16GB' },
 ]
 export const options3 = [
-  { label: 'Select the Serial NUmber', value: '' },
+  { label: 'Select the Serial Number', value: '' },
   { label: '01', value: '01' },
   { label: '02', value: '02' },
   { label: '03', value: '03' },
