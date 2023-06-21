@@ -753,6 +753,17 @@ export const storeAssetDetails = async (orgId, assetDetails) => {
   }
 }
 
+export const getAssetdetails = async (orgId) => {
+  try {
+    const querySnapshot = await getDocs(collection(db, `${orgId}_asset_Repo`))
+
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting Asset details:', error)
+  }
+}
+
+
 export const storeAssignDetails = async (orgId, assignDetails) => {
   try {
     // const { user } = useAuth();

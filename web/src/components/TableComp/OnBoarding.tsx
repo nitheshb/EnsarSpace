@@ -1,30 +1,17 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-// import { Link, routes } from '@redwoodjs/router'
-
 import { Fragment, useState, useEffect, SetStateAction } from 'react'
 
-// import { XIcon } from '@heroicons/react/outline'
-import { DragDropContext, Droppable } from 'react-beautiful-dnd'
-
-import { MetaTags } from '@redwoodjs/web'
-
-import LLeadsTableView from 'src/components/LLeadsTableView/LLeadsTableView'
-import { USER_ROLES } from 'src/constants/userRoles'
-import { getFinanceTransactionsByStatus } from 'src/context/dbQueryFirebase'
+import {
+  getAssetdetails,
+  getFinanceTransactionsByStatus,
+} from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
-import { CustomSelect } from 'src/util/formFields/selectBoxField'
 
-import CircleProgress from '../Charts_Graphs/CircleProgress'
-import SemiCircleProgress from '../Charts_Graphs/SemiCircleProgress'
-import CardItem from '../leadsCard'
-import OnBoardAssertBody from '../onBordingAssert/OnBoardAssertBody'
+import OnBoardAssertBody from '../onBordingAssert/onBoardAssertBody'
 import OnBoardingAsset from '../onBordingAssert/OnBoardingAsset'
 import OnBoardingAssign from '../onBordingAssert/OnBoardingAssign'
 import OnBoardingAssignBody from '../onBordingAssert/OnBoardingAssignBody'
-import SiderForm from '../SiderForm/SiderForm'
-
-import FinanceTableView from './financeTableView'
 
 const OnBoarding = ({ leadsTyper }) => {
   const { user } = useAuth()
@@ -45,10 +32,16 @@ const OnBoarding = ({ leadsTyper }) => {
   const [transactionData, setTransactionData] = useState({})
   const [isAssetOpen, handleAssetOnClose] = useState(false)
   const [isAssignOpen, handleAssignOnClose] = useState(false)
+  const [laptopCount, setLaptopCount] = useState(0);
+  const [PhoneCount, setPhoneCount] = useState(0);
+  const [PhoneACount, setPhoneACount] = useState(0);
+  const [SimCount, setSimCount] = useState(0);
+
 
   const handleOnClose = () => setIsOpen(false)
 
   const [value, setValue] = useState('latest')
+  // const [assetData, setAssetData] = useState()
   const tabHeadFieldsA = [
     { lab: 'All Transactions', val: 'all' },
     { lab: 'Latest', val: 'latest' },
@@ -127,19 +120,14 @@ const OnBoarding = ({ leadsTyper }) => {
             'cleared',
             'rejected',
             '',
-            // 'booked',
           ],
         },
         () => setLeadsFetchedData([])
       )
       return unsubscribe
     }
-
-    // await console.log('leadsData', leadsData)
   }
-
   const serealizeData = (array) => {
-    // let newData =
     const x = [
       'new',
       'review',
@@ -160,7 +148,6 @@ const OnBoarding = ({ leadsTyper }) => {
     setisImportLeadsOpen(true)
     setSelUserProfile(data)
   }
-
   const viewTransaction = (docData) => {
     setTransactionData(docData)
     setisImportLeadsOpen(!isImportLeadsOpen)
@@ -175,6 +162,65 @@ const OnBoarding = ({ leadsTyper }) => {
   }
 
   console.log('add productData is', OnBoardAssertBody)
+
+  // useEffect(() => {
+  //   const getAssetData = async () => {
+  //     try {
+  //       const requests = await getAssetdetails(user.orgId)
+
+  //       return requests
+  //     } catch (error) {
+  //       console.error('Error retrieving Asset data:', error)
+
+  //       return []
+  //     }
+  //   }
+  //   getAssetData()
+  //     .then((requests) => {
+  //       console.log('REQUEST DETAILS DATA')
+  //       console.log(requests)
+  //    // setAssetData(requests);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error setting asset details:', error)
+  //     })
+  // }, [])
+
+  useEffect(() => {
+    const getAssetData = async () => {
+      try {
+        const requests = await getAssetdetails(user.orgId);
+
+        // Calculate the count of laptops
+        const laptopCount = requests.filter(request => request.Product === 'Laptop').length;
+        setLaptopCount(laptopCount);
+
+        const PhoneCount = requests.filter(request => request.Product === 'phone').length;
+        setPhoneCount(PhoneCount);
+
+        const PhoneACount = requests.filter(request => request.Product === 'phoneA').length;
+        setPhoneACount(PhoneACount);
+
+        const SimCount = requests.filter(request => request.Product === 'Sim').length;
+        setSimCount(SimCount);
+
+
+        return requests;
+      } catch (error) {
+        console.error('Error retrieving Asset data:', error);
+        return [];
+      }
+    };
+
+    getAssetData()
+      .then((requests) => {
+        console.log('REQUEST DETAILS DATA');
+        console.log(requests);
+      })
+      .catch((error) => {
+        console.error('Error setting asset details:', error);
+      });
+  }, []);
 
   return (
     <>
@@ -201,7 +247,6 @@ const OnBoarding = ({ leadsTyper }) => {
             </svg>
             <span className="ml-1 leading-none">Add Asset</span>
           </button>
-
           <button
             className="flex items-center justify-center h-10 px-4 bg-gray-200 text-sm font-medium rounded hover:bg-gray-300"
             onClick={() => OnBoardingAssignBody('Assign Asset')}
@@ -267,7 +312,8 @@ const OnBoarding = ({ leadsTyper }) => {
                       </svg>
 
                       <div className="width-30 height-55 font-medium flex-end text-black-1500">
-                        <p className=" css-6mn6yy">01</p>
+                        {/* <p className=" css-6mn6yy">01</p> */}
+                        <p className="css-6mn6yy">{laptopCount.toString().padStart(2, '0')}</p>
                       </div>
                     </div>
 
@@ -281,6 +327,7 @@ const OnBoarding = ({ leadsTyper }) => {
                   </section>
                 </div>
               </div>
+
               <div className=" m-1">
                 <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                   <section>
@@ -309,7 +356,8 @@ const OnBoarding = ({ leadsTyper }) => {
                         </defs>
                       </svg>
                       <div className="width-30 height-50 font-medium flex-end text-black-1500">
-                        <p className=" css-6mn6yy">0</p>
+                        {/* <p className=" css-6mn6yy">0</p> */}
+                        <p className="css-6mn6yy">{PhoneCount.toString().padStart(2, '0')}</p>
                       </div>
                     </div>
 
@@ -348,7 +396,7 @@ const OnBoarding = ({ leadsTyper }) => {
                       </svg>
 
                       <div className="width-30 height-55 font-medium flex-end text-black-1500">
-                        <p className=" css-6mn6yy">02</p>
+                        <p className="css-6mn6yy">{PhoneACount.toString().padStart(2, '0')}</p>
                       </div>
                     </div>
 
@@ -362,6 +410,8 @@ const OnBoarding = ({ leadsTyper }) => {
                   </section>
                 </div>
               </div>
+
+
               <div className=" m-1">
                 <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                   <section>
@@ -393,6 +443,11 @@ const OnBoarding = ({ leadsTyper }) => {
                         fill="#FFC10D"
                       />
                     </svg>
+
+
+                    <div className="width-30 height-55 font-medium flex-end text-black-1500">
+                        <p className="css-6mn6yy">{SimCount.toString().padStart(2, '0')}</p>
+                      </div>
 
                     <div className="px-2 flex flex-row justify-between">
                       <h3 className=" css-5mn5yy">Sim Card</h3>
@@ -428,3 +483,6 @@ const OnBoarding = ({ leadsTyper }) => {
 }
 
 export default OnBoarding
+function getassetRepo(orgId: any) {
+  throw new Error('Function not implemented.')
+}

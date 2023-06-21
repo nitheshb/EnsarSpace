@@ -12,11 +12,11 @@ import {
   options4,
   options5,
 } from 'src/constants/userRoles'
+import { storeAssetDetails } from 'src/context/dbQueryFirebase'
+import { useAuth } from 'src/context/firebase-auth-context'
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 
 import Loader from '../Loader/Loader'
-import { useAuth } from 'src/context/firebase-auth-context'
-import { storeAssetDetails } from 'src/context/dbQueryFirebase'
 
 const validate = Yup.object().shape({
   Product: Yup.string().required('Product is required'),
@@ -76,53 +76,11 @@ const OnBoardAssertBody = () => {
     message: '',
   })
 
-  // const [loading, setLoading] = useState(false)
-
-  // const handleSubmit = (values) => {
-  //   console.log('Submitted', values)
-  // Handle form submission
-
-  //   // Example: Simulating form submission delay
-  //   setLoading(true)
-  //   setTimeout(() => {
-  //     setLoading(false)
-  //     setFormMessage({
-  //       color: 'green',
-  //       message: 'Asset added successfully!',
-  //     })
-  //   }, 2000)
-
-  //   // Display form values in the console
-  //   console.log('Form Values:', values)
-  // }
-
   const [loading, setLoading] = useState(false)
 
   const { user } = useAuth()
-
-  // const { orgId } = user
-
   const handleSubmit = async (values) => {
     console.log('Submitted', values)
-
-    // Example: Simulating form submission delay
-
-    // setLoading(true)
-
-    // setTimeout(() => {
-
-    //   setLoading(false)
-
-    //   setFormMessage({
-
-    //     color: 'green',
-
-    //     message: 'Asset added successfully!',
-
-    //   })
-
-    // }, 2000)
-
     try {
       setLoading(true)
 
@@ -132,6 +90,18 @@ const OnBoardAssertBody = () => {
     } catch (error) {
       console.log(error)
     }
+
+    // const Onboarding = () => {
+    //   const [loading, setLoading] = useState(false);
+    //   const [count, setCount] = useState(0);
+
+    //   const handleSubmit = () => {
+    //     setLoading(true);
+    //     // Perform your submit logic here
+    //     // You can increment the count after successful submission
+    //     setCount(prevCount => prevCount + 1);
+    //     setLoading(false);
+    //   };
 
     // Display form values in the console
 
@@ -309,11 +279,18 @@ const OnBoardAssertBody = () => {
                 </div>
 
                 <div className="flex justify-end">
-                  <button
+                  {/* <button
                     type="submit"
                     className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   >
                     {loading ? <Loader /> : 'Submit'}
+                  </button> */}
+                  <button
+                    type="submit"
+                    className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                    // onClick={handleSubmit}
+                  >
+                    {loading ? <Loader texColor={undefined} size={undefined} /> : 'Submit'}
                   </button>
                 </div>
               </Form>
