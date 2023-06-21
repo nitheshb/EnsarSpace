@@ -20,8 +20,8 @@ import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 import AttendancePage from 'src/components/A_LearningModule/Attendance'
 import TimeOff from 'src/components/TableComp/TimeOff'
 import Calendar from 'src/components/TableComp/Calendar'
-import OnBoarding1 from 'src/components/ConstructModule/OnBoarding1'
-import Assets from 'src/components/ConstructModule/OnBoarding'
+// import OnBoarding1 from 'src/components/ConstructModule/OnBoarding1'
+// import Assets from 'src/components/ConstructModule/OnBoarding'
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
