@@ -10,13 +10,14 @@ import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 // import OnBoarding from 'src/components/TableComp/OnBoarding'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
-import Timeoff from 'src/components/TableComp/Timeoff'
+// import TimeOff from 'src/components/TableComp/TimeOff'
 import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
 import TableData from 'src/components/Access/TableData'
 import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 // import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 import AttendancePage from 'src/components/A_LearningModule/Attendance'
+import TimeOff from 'src/components/TableComp/TimeOff'
 
 
 
@@ -127,22 +128,22 @@ const UsersAdminPage = () => {
               </>
             )}
 
-            {viewable === 'Time Off' && (
+            {viewable === 'TimeOff' && (
+              <>
+                <TimeOff />
+              </>
+            )}
+            {viewable === 'TimeOff' && (
               <>
                 <TimeOffTable />
               </>
             )}
 
-            {viewable === 'Time Off' && (
-              <>
-                <Timeoff />
-              </>
-            )}
 
-          {viewable === 'AttendancePage' && (
-            <>
-            <AttendancePage />
-            </>
+            {viewable === 'AttendancePage' && (
+              <>
+                <AttendancePage />
+              </>
             )}
 
             {viewable === 'Team Activity' && (

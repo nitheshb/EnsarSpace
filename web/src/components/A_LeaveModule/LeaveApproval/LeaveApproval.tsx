@@ -3,33 +3,42 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { format } from 'date-fns';
 import { useDispatch } from 'react-redux';
-import { approveLeave, rejectLeave } from '../../../../state/actions/'; // Import the action creators
+import { approveLeave, rejectLeave } from "../../../state/actions/index"; // Import the action creators
 import { storeLeaveDetails } from 'src/context/dbQueryFirebase';
+import { useAuth } from 'src/context/firebase-auth-context';
+import { v4 as uuidv4 } from 'uuid';
+import differenceInCalendarDays from 'date-fns/esm/differenceInCalendarDays';
 
 interface LeaveApprovalProps {
-  dateApplied: string; // Added dateApplied prop
+  requestId:string;
   employeeName: string;
+  employeeId: string;
   fromDate: string;
   toDate: string;
+  noOfDays: string,
+  leaveReason: string;
+  comment: string;
+  leaveType: string;
   isLeaveApproved: boolean;
-  onLeaveStatusChange: () => void;
+  onLeaveStatusChange: (requestId: string) => void;
 }
 
 const LeaveApproval: React.FC<LeaveApprovalProps> = ({
-  dateApplied,
+  requestId,
   employeeName,
+  employeeId,
   fromDate,
   toDate,
+  noOfDays,
+  leaveReason,
+  comment,
+  leaveType,
   isLeaveApproved,
   onLeaveStatusChange,
 }) => {
   const [approved, setApproved] = useState(false);
 
-  // Calculate the number of leave days
-  const from = new Date(fromDate);
-  const to = new Date(toDate);
-  const diffTime = Math.abs(to.getTime() - from.getTime());
-  const leaveDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const {user} = useAuth();
 
   const dispatch = useDispatch();
 
@@ -37,40 +46,54 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
     const leaveStatus = status === 'Accepted' ? 'Approved' : 'Rejected';
 
     const leaveDetails = {
-      dateApplied,
+      requestId: uuidv4(),
       employeeName,
+      employeeId,
+      leaveType,
       fromDate,
       toDate,
-      leaveDays,
+      noOfDays,
+      leaveReason,
+      comment,
       isLeaveApproved: leaveStatus,
     };
 
-    await storeLeaveDetails(leaveDetails);
+    await storeLeaveDetails(user.orgId, leaveDetails);
 
     if (status === 'Accepted') {
       toast.success('Leave Approved', { position: 'top-right' });
       setApproved(true);
-      dispatch(approveLeave(leaveDetails)); // Pass the leaveDetails as payload
+      dispatch(approveLeave(leaveDetails));
     } else if (status === 'Rejected') {
       toast.error('Leave Rejected', { position: 'top-right' });
       setApproved(true);
-      dispatch(rejectLeave(leaveDetails)); // Pass the leaveDetails as payload
+      dispatch(rejectLeave(leaveDetails));
     }
 
-    onLeaveStatusChange();
+    onLeaveStatusChange(leaveDetails.requestId);
+  };
+
+  const calculateNumberOfDays = () => {
+    const startDate = new Date(fromDate);
+    const endDate = new Date(toDate);
+    const numberOfDays = differenceInCalendarDays(endDate, startDate) + 1;
+    return numberOfDays;
   };
 
   if (approved) {
-    return null; // Render nothing if leave is already approved
+    return null;
   }
 
   return (
     <tr>
-      <td className="py-2 text-center border border-black">{format(new Date(dateApplied), 'dd-MM-yyyy')}</td>
       <td className="py-2 text-center border border-black">{employeeName}</td>
+      <td className="py-2 text-center border border-black">{employeeId}</td>
       <td className="py-2 text-center border border-black">{format(new Date(fromDate), 'dd-MM-yyyy')}</td>
       <td className="py-2 text-center border border-black">{format(new Date(toDate), 'dd-MM-yyyy')}</td>
-      <td className="py-2 text-center border border-black">{leaveDays}</td>
+      <td className="py-2 text-center border border-black">{noOfDays}</td>
+      <td className="py-2 text-center border border-black">{leaveType}</td>
+      <td className="py-2 text-center border border-black">{leaveReason}</td>
+      <td className="py-2 text-center border border-black">{comment}</td>
       <td className="py-2 text-center border border-black">
         <div className="flex justify-center">
           <button
