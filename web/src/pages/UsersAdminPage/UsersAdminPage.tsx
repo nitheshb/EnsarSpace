@@ -113,7 +113,7 @@ const UsersAdminPage = () => {
 
             {viewable === 'Roles Management' && (
               <>
-                <OnBoarding leadsTyper={undefined} />
+                <TableData />
               </>
             )}
 
@@ -159,8 +159,8 @@ const UsersAdminPage = () => {
                 <MyActivityHome source={'team'} />
               </>
             )}
-            {viewable === 'Pay Slips' && (
-            )}
+            {viewable === 'Pay Slips'
+            }
 
             {viewable === 'User Report' && (
               <LeadsTeamReportBody
