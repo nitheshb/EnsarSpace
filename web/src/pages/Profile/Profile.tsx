@@ -17,8 +17,12 @@ import { SingleFileUploadWithProgress } from 'src/components/LeadUplodCsv/Single
 import { UploadError } from 'src/components/LeadUplodCsv/UploadError'
 import { Height } from '@mui/icons-material'
 import ProfileHeader from 'src/components/profile/ProfileHeaderPage'
+import { useAuth } from 'src/context/firebase-auth-context'
 
 const Profile = () => {
+
+  const { user } = useAuth()
+  console.log("user detailsssssssss", user)
 
   function handleFileInputChange(event: ChangeEvent<HTMLInputElement>): void {
   }
@@ -71,7 +75,7 @@ const Profile = () => {
                     <div style={{ position: 'relative' }} className="md:w-[12vw] flex flex-col justify-between items-center md:h-[10vh] rounded-md">
                       <div className=" justify-center items-end mt-20 mb-16 ml-10">
                         <h1 className="text-center text-xl font-bold blink">
-                          Deepthi Rani
+                          {user?.displayName}
                         </h1>
                       </div>
                     </div>
@@ -94,9 +98,11 @@ const Profile = () => {
                           </svg>
                           <input
                             type="text"
-                            className="border-b border-black py-2 pl-10 pr-4 w-full border-none bg-transparent rounded-lg focus:border-black focus:outline-none focus:ring-1 focus:white  "
-                            placeholder="Your Job Title"
+                            className="border-b border-black py-2 pl-10 pr-4 w-full border-none bg-transparent rounded-lg focus:border-black focus:outline-none focus:ring-1 focus:white"
+                            placeholder={user?.role[0] ? user.role[0].charAt(0).toUpperCase() + user.role[0].slice(1) : ''}
+                            readOnly
                           />
+
                         </div>
                         <div className="relative">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="absolute top-3 left-3 text-black">
@@ -104,8 +110,9 @@ const Profile = () => {
                           </svg>
                           <input
                             type="text"
-                            placeholder="Your Department"
-                            className="border-b border-black py-2 pl-10 pr-4 w-full border-none bg-transparent rounded-lg focus:border-black focus:outline-none focus:ring-1 focus:white  "
+                            placeholder={user?.department[0] ? user.department[0].charAt(0).toUpperCase() + user.department[0].slice(1) : ''}
+                            readOnly
+                            className="border-b border-black py-2 pl-10 pr-4 w-full border-none bg-transparent rounded-lg focus:border-black focus:outline-none focus:ring-1 focus:white"
                           />
                         </div>
                         <div className="relative">
@@ -114,7 +121,8 @@ const Profile = () => {
                           </svg>
                           <input
                             type="text"
-                            placeholder="Your Organization"
+                            placeholder={user?.orgName}
+                            readOnly
                             className="border-b border-black py-2 pl-10 pr-4 w-full border-none bg-transparent rounded-lg focus:border-black focus:outline-none focus:ring-1 focus:white  "
                           />
                         </div>
@@ -136,7 +144,7 @@ const Profile = () => {
                             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
                           </svg>
                           <p className="text-black mb-2.5">
-                            <span className="mr-2">deepthi@ensarsolutions.com</span>
+                            <span className="mr-2">{user?.email}</span>
                           </p>
                         </div>
                         <h2 className="text-black font-medium mt-3 ">
