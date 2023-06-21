@@ -1,11 +1,13 @@
-
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useState } from 'react'
 
 import { ArrowNarrowRightIcon } from '@heroicons/react/solid'
 import { TabList } from '@mui/lab'
 import { Box, Card, Grid, styled } from '@mui/material'
 import Tooltip from '@mui/material/Tooltip'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next' // styled components
 
 import { useAuth } from 'src/context/firebase-auth-context'
 import {
@@ -22,7 +24,7 @@ import {
 import uniqueId from 'src/util/generatedId'
 
 import CSVDownloader from '../../../util/csvDownload'
-
+// import LLeadsTableBody from '../LLeadsTableBody/LLeadsTableBody'
 
 const torrowDate = new Date(
   +new Date().setHours(0, 0, 0, 0) + 86400000
@@ -36,7 +38,8 @@ const LeadsDisplayTable = ({
   allProjectsA,
   setDateRange,
 }) => {
-
+  // change navbar title
+  // useTitle('Data Table V1')
   const { user } = useAuth()
   const { orgId } = user
   const [sortedList, setSortedList] = useState([])
@@ -148,10 +151,10 @@ const LeadsDisplayTable = ({
                     onChange={(value) => {
                       console.log('zoro condition changed one  is', value)
                       setSelProject(value)
-
+                      // formik.setFieldValue('project', value.value)
                     }}
                     value={selProjectIs?.value}
-
+                    // options={aquaticCreatures}
                     options={[
                       ...[{ label: 'All Projects', value: 'allprojects' }],
                       ...allProjectsA,
@@ -190,7 +193,14 @@ const LeadsDisplayTable = ({
             <table className="w-full whitespace-nowrap">
               <tbody>
                 {
-
+                  // [
+                  //   {
+                  //     title: 'Marketing Keynote Presentation1',
+                  //     p: 'Urgent',
+                  //     date: '04/07',
+                  //     due: 'Today',
+                  //   },
+                  // ]
                   sortedList.map((dat, i) => {
                     const {
                       comments,
@@ -212,7 +222,9 @@ const LeadsDisplayTable = ({
                         key={i}
                         onClick={() => {
                           console.log('macho 1', dat?.leadUser, dat)
-                          
+                          // const y = dat.leadUser
+                          // y.id = dat?.uid
+                          // console.log('macho 1', y)
                           selUserProfileF('User Profile', dat)
                         }}
                       >

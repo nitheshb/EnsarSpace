@@ -8,7 +8,19 @@ import SiderForm from 'src/components/SiderForm/SiderForm'
 const LeadsCallerBoardPage = () => {
   const [isImportLeadsOpen, setisImportLeadsOpen] = useState(false)
   return (
+    // <>
+    //   {/* <MetaTags title="LeadsCallerBoard" description="LeadsCallerBoard page" />
 
+    //   <h1>LeadsCallerBoardPage</h1>
+    //   <p>
+    //     Find me in <code>./web/src/pages/LeadsCallerBoardPage/LeadsCallerBoardPage.tsx</code>
+    //   </p>
+    //   <p>
+    //     My default route is named <code>leadsCallerBoard</code>, link to me with `
+    //     <Link to={routes.leadsCallerBoard()}>LeadsCallerBoard</Link>`
+    //   </p> */}
+
+    // </>
 
     <>
       <div className="flex flex-col w-screen h-screen overflow-auto text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
@@ -33,7 +45,10 @@ const LeadsCallerBoardPage = () => {
               Team
             </Link>
           </div>
-          
+          {/* <buton className="flex items-center justify-center w-8 h-8 ml-auto overflow-hidden rounded-full cursor-pointer">
+    <img
+alt="" src="https://assets.codepen.io/5041378/internal/avatars/users/default.png?fit=crop&format=auto&height=512&version=1600304177&width=512" alt="">
+  </buton> */}
         </div>
         <div className="px-10 mt-6">
           <h1 className="text-2xl font-bold">User1 Executive Board</h1>

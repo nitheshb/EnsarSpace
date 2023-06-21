@@ -24,7 +24,14 @@ const CrmCustomerSummary = ({
   return (
     <PDFExport paperSize="A4" margin="1cm" ref={pdfUnitSummaryComp}>
       <div className="py-3 px-3 m-4 mt-2 rounded-lg border border-gray-100 h-[100%] overflow-y-scroll">
+        {/* customer details */}
+        {/* Unit details */}
+        {/* payment schedule */}
+        {/* Finance History */}
+        {/* Payment Summay */}
+        {/* Unit Position Summary */}
 
+        {/* customer details */}
         <div className="text-end items-end mr-2 mt-3">
           <div
             className=" flex flex-row justify-end items-center align-middle text-blue-500 text-xs cursor-pointer hover:underline"
@@ -54,8 +61,9 @@ const CrmCustomerSummary = ({
 
         <CrmUnitHeader projectDetails={selCustomerPayload} />
 
-
-
+        {/* 1 } customer details */}
+        {/* Unit details */}
+        
         <CrmUnitCustomerDetailsView1
           Name={selCustomerPayload?.customerName1}
           Mobile={selCustomerPayload?.phoneNo1}
@@ -63,7 +71,7 @@ const CrmCustomerSummary = ({
           selCustomerPayload={selCustomerPayload}
           assets={assets}
         />
-
+        {/* Payment Summay */}
 
         <div>
           <CrmPaymentSummary
@@ -71,7 +79,8 @@ const CrmCustomerSummary = ({
             assets={assets}
           />
         </div>
-
+        {/* Unit Position Summary */}
+        {/* payment schedule */}
 
         <div>
           <CrmUnitPaymentSchedule
@@ -80,7 +89,7 @@ const CrmCustomerSummary = ({
             totalIs={totalIs}
           />
         </div>
-
+        {/* Finance History */}
         <div>
           <CrmUnitFinanceHistory
             selCustomerPayload={selCustomerPayload}
@@ -91,7 +100,9 @@ const CrmCustomerSummary = ({
         </div>
 
         <div className="flex flex-row justify-between">
-          
+          {/* <div className="px-3  font-md font-medium text-sm mt-3 mb-2 text-gray-800">
+              Customer Details
+            </div> */}
 
           <div className="inline mt-2 ml-2 mb-5">
             <div className="">

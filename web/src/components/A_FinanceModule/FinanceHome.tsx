@@ -4,10 +4,10 @@ import { CleaningServicesRounded } from '@mui/icons-material'
 import { TabList } from '@mui/lab'
 import { Box, Card, Grid, styled } from '@mui/material'
 import { yearsToMonths } from 'date-fns'
+// import LLeadsTableBody from '../LLeadsTableBody/LLeadsTableBody'
+import { useTranslation } from 'react-i18next' // styled components
 
-import { useTranslation } from 'react-i18next'
-
-
+// import uniqueId from '../../util/generatedId'
 import {
   getCRMdocById1,
   getCRMTeamTasks,
@@ -38,7 +38,8 @@ const FinanceHome = ({
   selUserProfileF,
   taskType,
 }) => {
-
+  // change navbar title
+  // useTitle('Data Table V1')
   const { t } = useTranslation()
   const { user } = useAuth()
   const { orgId } = user
@@ -84,7 +85,7 @@ const FinanceHome = ({
               y = staDA
               if (y.length > 0) {
                 x.uid = docSnapshot.id
-
+                // eslint-disable-next-line prefer-const
                 let y1 = await getCRMdocById1(orgId, x.uid)
                 console.log('fetched customer doc is ', y1, x.uid)
 
@@ -96,7 +97,7 @@ const FinanceHome = ({
               }
             })
 
-
+            //  get the task details from docid
             if (projects.length > 0) {
               console.log(
                 'my values are ',
@@ -138,10 +139,16 @@ const FinanceHome = ({
               console.log('git values is 2', x)
               const { staDA } = x
               y = staDA
+              // if (taskType === 'Today1') {
 
+              //   console.log('git values is ', staDA)
+              //   y = staDA
+              // } else {
+              //   y = staDA.filter((da) => x[da]['schTime'] > torrowDate)
+              // }
               if (y.length > 0) {
                 x.uid = docSnapshot.id
-
+                // eslint-disable-next-line prefer-const
                 let y1 = await getLeadbyId1(orgId, x.uid)
                 await console.log('fetched value is ', x, y)
                 x.leadUser = await y1
@@ -150,12 +157,12 @@ const FinanceHome = ({
                 setSchLoading(false)
 
                 return
-
+                // return 'remove'
               }
             })
-
+            //  get the task details from docid
             if (projects.length > 0) {
-
+              // projects.filter((data) => data != undefined)
               Promise.all(projects).then(function (results) {
                 console.log(
                   'my values are ',
@@ -186,7 +193,7 @@ const FinanceHome = ({
   }
 
   useEffect(() => {
-    
+    // getValueByIdFun()
   }, [todaySchL])
 
 

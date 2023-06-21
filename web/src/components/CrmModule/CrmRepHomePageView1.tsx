@@ -1,8 +1,10 @@
-
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+// import { Link, routes } from '@redwoodjs/router'
 
 import { Fragment, useState, useEffect } from 'react'
 
-
+// import { XIcon } from '@heroicons/react/outline'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 import { MetaTags } from '@redwoodjs/web'
@@ -25,7 +27,7 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
   const { orgId } = user
   const [isImportLeadsOpen, setisImportLeadsOpen] = useState(false)
 
-
+  // kanban board
   const [ready, setReady] = useState(false)
 
   const [addLeadsTypes, setAddLeadsTypes] = useState('')
@@ -119,9 +121,9 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
             x.id = docSnapshot.id
             return x
           })
-
+          // setBoardData
           console.log('my Array data is ', usersListA, leadsFetchedData)
-
+          // await serealizeData(usersListA)
           await setLeadsFetchedData(usersListA)
           await console.log('my Array data is set it', leadsFetchedData)
         },
@@ -133,7 +135,7 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
             'cleared',
             'rejected',
             '',
-
+            // 'booked',
           ],
         },
         () => setLeadsFetchedData([])
@@ -148,7 +150,7 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
             x.id = docSnapshot.id
             return x
           })
-
+          // setBoardData
           console.log('my Array data is ', usersListA)
           await serealizeData(usersListA)
           await setLeadsFetchedData(usersListA)
@@ -162,7 +164,7 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
             'cleared',
             'rejected',
             '',
-
+            // 'booked',
           ],
         },
         () => setLeadsFetchedData([])
@@ -170,18 +172,18 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
       return unsubscribe
     }
 
-
+    // await console.log('leadsData', leadsData)
   }
 
   const serealizeData = (array) => {
-
+    // let newData =
     const x = [
       'new',
       'review',
       'cleared',
       'rejected',
       '',
-
+      // 'booked',
     ].map((status) => {
       const items = array.filter((data) => data.Status.toLowerCase() == status)
 
@@ -209,9 +211,13 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
             "
           >
             <div className="items-center justify-between rounded-md my-1 py-2 px-2 bg-white ">
-
+              {/* <div>
+                <h2 className="text-lg font-semibold text-gray-900 leading-light py-2 ">
+                  Accounts Transactions Space
+                </h2>
+              </div> */}
               <div className="flex flex-row">
-
+                {/* section 1 */}
                 <div className="flex flex-col">
                   <div className="flex flex-row">
                     <h2 className="headTxt1 font-semibold text-[11px] ml-2">
@@ -317,7 +323,7 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
                     </section>
                   </section>
                 </div>
-
+                {/* section 3 */}
                 <div className="flex flex-col ml-3">
                   <div className="flex flex-row">
                     <h2 className="headTxt1 font-semibold text-[11px] ml-2">
@@ -369,7 +375,7 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
                     </section>
                   </section>
                 </div>
-
+                {/* section 4 */}
                 <div className="flex flex-col ml-3">
                   <div className="flex flex-row">
                     <h2 className="headTxt1 font-semibold text-[11px] ml-2">
@@ -421,7 +427,7 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
                     </section>
                   </section>
                 </div>
-
+                {/* section 5 */}
                 <div className="flex flex-col ml-3">
                   <div className="flex flex-row">
                     <h2 className="headTxt1 font-semibold text-[11px] ml-2">
@@ -566,7 +572,8 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
                                   {`${fieldHead.lab} `}
                                 </span>
                                 <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded-full ml-[4px] text-[10px] ">
-
+                                  {/* {rowsCounter(leadsFetchedData, d.val).length} */}
+                                  {/* {statusSepA[0][d.val]?.length || 0} */}
                                   {
                                     rowsCounter(
                                       leadsFetchedData,
@@ -574,8 +581,12 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
                                     ).length
                                   }
                                 </span>
-
-
+                                {/*
+                        <div className="px-2 mt-1 text-[9px] text-black  rounded-full">
+                          <span className="bg-gray-100 px-2 py-1 rounded-full">
+                            {rowsCounter(leadsFetchedData, d.val).length}
+                          </span>
+                        </div> */}
                               </button>
                             </li>
                           )
@@ -641,7 +652,17 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
                                 <div className="flex justify-center text-right items-center rounded-md w-2 h-8 app-bg-yellow-2 app-color-yellow-1 text-xs font-semibold">
                                   {i + 1}
                                 </div>
-
+                                {/* <div
+                                className={`${
+                                  finData?.status === 'cleared'
+                                    ? 'bg-green-700'
+                                    : finData?.status === 'rejected'
+                                    ? 'bg-yellow-600'
+                                    : 'bg-violet-600'
+                                }   w-24 text-xs font-semibold px-3 py-0.5 rounded-br-md rounded-tl-md text-white`}
+                              >
+                                {finData?.status?.toLocaleUpperCase()}
+                              </div> */}
                               </td>
                               <td>
                                 <div className="flex flex-row py-2 ml-4">
@@ -670,7 +691,7 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
                                       {finData?.toAccount?.name}
                                     </span>
                                     <span className="font-normal text-xs app-color-gray-1">
-
+                                      {/* {finData?.toAccount?.accountNo} */}
                                       {finData?.towardsBankDocId}
                                     </span>
                                     <span className="font-normal text-xs app-color-gray-1">
@@ -684,7 +705,7 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
                               </td>
                               <td>
                                 <div className="flex flex-row py-2">
-
+                                  {/* <div className="mr-2 w-[3px]  bg-gray-100 "></div> */}
                                   <div className="flex flex-col">
                                     <span className="font-semibold text-sm app-color-black">
                                       {finData?.mode}
@@ -724,7 +745,14 @@ const CrmRepHomePageView1 = ({ leadsTyper }) => {
               </div>
             )}
 
-            
+            {/* {!ready && (
+              <FinanceTableView
+                leadsFetchedData={leadsFetchedData}
+                setisImportLeadsOpen={setisImportLeadsOpen}
+                selUserProfileF={selUserProfileF}
+                leadsTyper={leadsTyper}
+              />
+            )} */}
           </div>
         </div>
       </div>

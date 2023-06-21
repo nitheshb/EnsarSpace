@@ -1,4 +1,6 @@
-
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable prettier/prettier */
 import { useEffect, useState } from 'react'
 
 import { Box, LinearProgress, MenuItem, styled } from '@mui/material'
@@ -78,6 +80,12 @@ const ConstructUnitCardSmall = ({ kind, feedData, bg,  setSelUnitDetails,
         />
       </Box>
 
+      {/* <SiderForm
+        open={sliderInfo.open}
+        setOpen={handleSliderClose}
+        title={sliderInfo.title}
+        data={sliderInfo.sliderData}
+      /> */}
     </div>
   )
 }

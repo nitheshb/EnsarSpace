@@ -1,7 +1,5 @@
 import { Fragment, useState } from 'react'
-
 import { MetaTags } from '@redwoodjs/web'
-
 import SlimSideMenuBar from 'src/components/A_SideMenu/slimSideMenu'
 // import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
 import HeadNavBar2 from 'src/components/HeadNavBar/HeadNavBar2'
@@ -9,10 +7,17 @@ import HeadNavBar2 from 'src/components/HeadNavBar/HeadNavBar2'
 // import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
-import OnBoarding from 'src/components/TableComp/OnBoarding'
-import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
+// import OnBoarding from 'src/components/TableComp/OnBoarding'
+// import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
+import Timeoff from 'src/components/TableComp/Timeoff'
+import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
 import TableData from 'src/components/A_AccessManagement/TableData'
+import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
+// import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
+import TimeOffTable from 'src/components/TableComp/TimeOffTable'
+import AttendancePage from 'src/components/A_LearningModule/Attendance'
+
 
 
 const UsersAdminPage = () => {
@@ -40,12 +45,11 @@ const UsersAdminPage = () => {
         />
 
         <div className="flex flex-col flex-grow">
-          {/* <HeadNavBar /> */}
 
           <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">
-
+              {/* <h1 className="text-lg font-medium">redefine.</h1> */}
               <span className="relative  flex items-center w-auto text-2xl font-bold leading-none pl-0">
                 {viewable}
               </span>
@@ -100,8 +104,15 @@ const UsersAdminPage = () => {
               )}
             </div>
 
+
             {viewable === 'User Management' && (
               <UserManageTable editEmployeeFun={editEmployeeFun} />
+            )}
+
+            {viewable === 'Leave Approval' && (
+              <>
+                <LeaveApprovalPage />
+              </>
             )}
 
             {viewable === 'Roles Management' && (
@@ -110,12 +121,28 @@ const UsersAdminPage = () => {
               </>
             )}
 
-
-
             {viewable === 'My Activity' && (
               <>
                 <MyActivityHome source={'individual'} />
               </>
+            )}
+
+            {viewable === 'Time Off' && (
+              <>
+                <TimeOffTable />
+              </>
+            )}
+
+            {viewable === 'Time Off' && (
+              <>
+                <Timeoff />
+              </>
+            )}
+
+          {viewable === 'AttendancePage' && (
+            <>
+            <AttendancePage />
+            </>
             )}
 
             {viewable === 'Team Activity' && (
@@ -128,9 +155,24 @@ const UsersAdminPage = () => {
               <>
 
 
-          </>
-
+              </>
             )}
+
+            {viewable === 'User Report' && (
+              <LeadsTeamReportBody
+                project={{
+                  area: 1000,
+                  builderName: 'hello',
+                  location: 'local',
+                  projectName: 'User Report',
+                  projectType: 'aprtment',
+                }}
+                isEdit={false}
+              />
+            )}
+
+
+
 
             {viewable === 'User Report' && (
               // <ReportMain/>
@@ -146,6 +188,7 @@ const UsersAdminPage = () => {
               />
             )}
 
+
             <SUserSignup
               open={isOpen}
               setOpen={handleOnClose}
@@ -154,7 +197,7 @@ const UsersAdminPage = () => {
             />
           </div>
         </div>
-      </div>
+      </div >
     </>
   )
 }

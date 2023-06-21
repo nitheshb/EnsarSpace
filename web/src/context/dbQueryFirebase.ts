@@ -4,6 +4,7 @@ import {
   doc,
   orderBy,
   addDoc,
+  // getFirestore,
   onSnapshot,
   collection,
   getDoc,
@@ -24,12 +25,20 @@ import { sendWhatAppTextSms1 } from 'src/util/axiosWhatAppApi'
 
 import { db } from './firebaseConfig'
 import { supabase } from './supabase'
+
+// import { userAccessRoles } from 'src/constants/userAccess'
+
+// **********************************************
+// getF
+// **********************************************
+
+// get users list
 export const steamUsersList = (orgId, snapshot, error) => {
   const itemsQuery = query(collection(db, 'users'), where('orgId', '==', orgId))
   console.log('orgname is ====>', orgId)
   return onSnapshot(itemsQuery, snapshot, error)
 }
-
+// get users list
 export const steamUsersListByRole = (orgId, snapshot, error) => {
   const itemsQuery = query(
     collection(db, 'users'),
@@ -38,15 +47,15 @@ export const steamUsersListByRole = (orgId, snapshot, error) => {
   )
   return onSnapshot(itemsQuery, snapshot, error)
 }
-
+// get all bank detials list
 export const steamBankDetailsList = (orgId, snapshot, error) => {
   const itemsQuery = query(collection(db, `${orgId}_BankDetails`))
   return onSnapshot(itemsQuery, snapshot, error)
 }
-
+// get matched rows details
 export const getWbNotifyTemplate = async (payload) => {
   const { event, target, type, scope } = payload
-
+  //{ event: 'on_enquiry', target: 'customer', 'template': payload , type: 'wa', scope: 'allProjects'}
   const { data, error } = await supabase
     .from('maahomes_notifyTemplates')
     .select('*')
@@ -58,8 +67,9 @@ export const getWbNotifyTemplate = async (payload) => {
   return data
 }
 
+// get matched rows details
 export const getWbAllNotifyTemplates = async (event, scope, type, target) => {
-
+  //{ event: 'on_enquiry', target: 'customer', 'template': payload , type: 'wa', scope: 'allProjects'}
   const { data, error } = await supabase
     .from('maahomes_notifyTemplates')
     .select('*')
@@ -69,13 +79,18 @@ export const getWbAllNotifyTemplates = async (event, scope, type, target) => {
 
   return data
 }
-
+// get all Virtual Accounts detials list
 export const steamVirtualAccountsList = (orgId, snapshot, error) => {
   const itemsQuery = query(collection(db, `${orgId}_VirtualAccounts`))
   return onSnapshot(itemsQuery, snapshot, error)
 }
 
+// export const steamVirtualAccountsList = (orgId, snapshot, error) => {
+//   const itemsQuery = query(collection(db, `${orgId}_VirtualAccounts`))
+//   return onSnapshot(itemsQuery, snapshot, error)
+// }
 
+//  get users activity list
 export const steamUsersActivityLog = (orgId, snapshot, error) => {
   const itemsQuery = query(
     collection(db, `${orgId}_user_log`),
@@ -85,6 +100,16 @@ export const steamUsersActivityLog = (orgId, snapshot, error) => {
 }
 
 
+
+// export const steamUsersActivityLog = (orgId, snapshot, error) => {
+//   const itemsQuery = query(
+//     collection(db, `${orgId}_user_log`),
+//     orderBy('time', 'desc')
+//   )
+//   return onSnapshot(itemsQuery, snapshot, error)
+// }
+
+// get users activity of user list
 export const steamUsersActivityOfUser = (orgId, snapshot, error) => {
   const itemsQuery = query(
     collection(db, `${orgId}_user_log`),
@@ -92,45 +117,47 @@ export const steamUsersActivityOfUser = (orgId, snapshot, error) => {
   )
   return onSnapshot(itemsQuery, snapshot, error)
 }
-
+// get all leadLogs from supabase
 export const steamAllLeadsActivity = async (orgId, snapshot, data, error) => {
-
+  // const itemsQuery = query(doc(db, `${orgId}_leads_log', 'W6sFKhgyihlsKmmqDG0r'))
   const { uid, cutoffDate } = data
-
+  // return onSnapshot(doc(db, `${orgId}_leads_log`, uid), snapshot, error)
   const { data: lead_logs, error1 } = await supabase
     .from(`${orgId}_lead_logs`)
     .select('projectId, type,subtype,T, by, from, to, uid, Luid, payload')
-
+    //.eq('Luid', uid)
     .eq('type', 'sts_change')
     .eq('from', 'visitfixed')
     .gte('T', cutoffDate)
 
   return lead_logs
-
+  // return onSnapshot(itemsQuery, snapshot, error)
 }
 
-
+// get all leadLogs from supabase
 export const streamLeadLogdWithNullProj = async (
   orgId,
   snapshot,
   data,
   error
 ) => {
-
+  // const itemsQuery = query(doc(db, `${orgId}_leads_log', 'W6sFKhgyihlsKmmqDG0r'))
   const { uid, cutoffDate } = data
-
+  // return onSnapshot(doc(db, `${orgId}_leads_log`, uid), snapshot, error)
   const { data: lead_logs, error1: countError } = await supabase
     .from(`${orgId}_lead_logs`)
     .select('projectId, type,subtype,T, by, from, to, uid, Luid, payload')
     .eq('type', 'sts_change')
     .is('projectId', null)
+  // .isNull('projectId')
+  // .eq('from', 'visitfixed')
 
   if (countError) {
     console.error(countError)
     return
   }
   return lead_logs
-
+  // return onSnapshot(itemsQuery, snapshot, error)
 }
 export const getEmployeesTaskProgressDept = async (
   orgId,
@@ -155,9 +182,9 @@ export const updateLeadsLogWithProject = async (
   data1,
   error1
 ) => {
-
+  // const itemsQuery = query(doc(db, `${orgId}_leads_log', 'W6sFKhgyihlsKmmqDG0r'))
   const { pId, LeadId } = data1
-
+  // return onSnapshot(doc(db, `${orgId}_leads_log`, uid), snapshot, error)
   const { data: lead_logs, error } = await supabase
     .from(`${orgId}_lead_logs`)
     .update({ projectId: pId })
@@ -166,39 +193,39 @@ export const updateLeadsLogWithProject = async (
 
   console.log('updating error', lead_logs, error)
   return lead_logs
-
+  // return onSnapshot(itemsQuery, snapshot, error)
 }
 
-
+//  get lead activity list
 export const steamLeadActivityLog = async (orgId, snapshot, data, error) => {
-
+  // const itemsQuery = query(doc(db, `${orgId}_leads_log', 'W6sFKhgyihlsKmmqDG0r'))
   const { uid } = data
   console.log('is uid g', data, uid)
-
+  // return onSnapshot(doc(db, `${orgId}_leads_log`, uid), snapshot, error)
   const { data: lead_logs, error1 } = await supabase
     .from(`${orgId}_lead_logs`)
     .select('type,subtype,T, by, from, to ')
     .eq('Luid', uid)
     .order('T', { ascending: false })
   return lead_logs
-
+  // return onSnapshot(itemsQuery, snapshot, error)
 }
 export const steamLeadNotes = (orgId, snapshot, data, error) => {
-
+  // const itemsQuery = query(doc(db, `${orgId}_leads_log', 'W6sFKhgyihlsKmmqDG0r'))
   const { uid } = data
   console.log('is uid g', uid)
   return onSnapshot(doc(db, `${orgId}_leads_notes`, uid), snapshot, error)
-
+  // return onSnapshot(itemsQuery, snapshot, error)
 }
 export const steamLeadPhoneLog = (orgId, snapshot, data, error) => {
-
+  // const itemsQuery = query(doc(db, `${orgId}_leads_log', 'W6sFKhgyihlsKmmqDG0r'))
   const { uid } = data
 
   return onSnapshot(doc(db, `${orgId}_leads_log`, uid), snapshot, error)
-
+  // return onSnapshot(itemsQuery, snapshot, error)
 }
 export const steamUserTodayProgress = (orgId, snapshot, data, error) => {
-
+  // const itemsQuery = query(doc(db, `${orgId}_leads_log', 'W6sFKhgyihlsKmmqDG0r'))
   const todaydate = new Date()
   const { uid } = data
   const ddMy =
@@ -214,27 +241,28 @@ export const steamUserTodayProgress = (orgId, snapshot, data, error) => {
 
   console.log('is uid g', uid)
   return onSnapshot(doc(db, `${orgId}_emp_performance`, id), snapshot, error)
-
+  // return onSnapshot(itemsQuery, snapshot, error)
 }
 export const steamLeadScheduleLog = (orgId, snapshot, data, error) => {
-
+  // const itemsQuery = query(doc(db, `${orgId}_leads_log', 'W6sFKhgyihlsKmmqDG0r'))
   const { uid } = data
   return onSnapshot(doc(db, `${orgId}_leads_sch`, uid), snapshot, error)
+  // return onSnapshot(itemsQuery, snapshot, error)
 }
 export const steamLeadById = (orgId, snapshot, data, error) => {
-
+  // const itemsQuery = query(doc(db, `${orgId}_leads_log', 'W6sFKhgyihlsKmmqDG0r'))
   const { uid } = data
   return onSnapshot(doc(db, `${orgId}_leads`, uid), snapshot, error)
-
+  // return onSnapshot(itemsQuery, snapshot, error)
 }
-
+// stream
 export const getLeadsByStatus = (orgId, snapshot, data, error) => {
   const { projAccessA, isCp } = data
   const colName = isCp ? `${orgId}_leads_cp` : `${orgId}_leads`
   const itemsQuery = query(
     collection(db, colName),
     where('ProjectId', 'in', projAccessA)
-
+    // where('Status', 'in', status)
   )
   return onSnapshot(itemsQuery, snapshot, error)
 }
@@ -250,7 +278,7 @@ export const getLeadsByAdminStatus = (orgId, snapshot, data, error) => {
   const itemsQuery = query(
     collection(db, `${orgId}_leads`),
     where('Status', 'in', status)
-
+    //  orderBy('Date')
   )
   console.log('hello by Status', onSnapshot(itemsQuery, snapshot, error))
   return onSnapshot(itemsQuery, snapshot, error)
@@ -260,7 +288,7 @@ export const getCpLeadsByAdminStatus = (orgId, snapshot, data, error) => {
   const itemsQuery = query(
     collection(db, `${orgId}_leads_cp`),
     where('Status', 'in', status)
-
+    //  orderBy('Date')
   )
   console.log(
     'hello by Status cpleads',
@@ -277,7 +305,7 @@ export const getEmployeesListDept = async (orgId, data) => {
     where('roles', 'array-contains-any', ['sales-manager', 'sales-executive'])
   )
   const citySnapshot = await getDocs(itemsQuery)
-
+  // await citySnapshot.docs.map((doc) => doc.data())
   console.log('my Array data is delayer 1', citySnapshot)
   return await citySnapshot.docs.map((doc) => doc.data())
 }
@@ -292,7 +320,7 @@ export const getMyLeadsByDate = async (orgId, data) => {
     where('Date', '>=', cutoffDate)
   )
   const citySnapshot = await getDocs(itemsQuery)
-
+  // await citySnapshot.docs.map((doc) => doc.data())
   console.log('my Array data is delayer 1', citySnapshot)
   return await citySnapshot.docs.map((doc) => doc.data())
 }
@@ -303,11 +331,11 @@ export const getLeadsByDate = async (orgId, data) => {
     where('Date', '>=', cutoffDate)
   )
   const citySnapshot = await getDocs(itemsQuery)
-
+  // await citySnapshot.docs.map((doc) => doc.data())
   console.log('my Array data is delayer 1', citySnapshot)
   return await citySnapshot.docs.map((doc) => doc.data())
 }
-
+//for global search
 export const getLeadsByPhoneNo = async (orgId, data) => {
   const { search } = data
   const itemsQuery = query(
@@ -315,7 +343,7 @@ export const getLeadsByPhoneNo = async (orgId, data) => {
     where('Mobile', '==', search)
   )
   const citySnapshot = await getDocs(itemsQuery)
-
+  // await citySnapshot.docs.map((doc) => doc.data())
   console.log('my Array data is delayer 1', citySnapshot)
   await citySnapshot.docs.map((doc) => {
     console.log('value is', doc.id, doc.data())
@@ -326,19 +354,19 @@ export const getLeadsByPhoneNo = async (orgId, data) => {
     return x
   })
 }
-
+// get crmCustomers list
 
 export const getCRMCustomerByProject = (orgId, snapshot, data, error) => {
   const { status } = data
 
   const itemsQuery = query(
     collection(db, `${orgId}_customers`)
-
+    // where('status', 'in', status)
   )
   console.log('hello ', status, itemsQuery)
   return onSnapshot(itemsQuery, snapshot, error)
 }
-
+// get finance transactions
 export const getFinanceTransactionsByStatus = (
   orgId,
   snapshot,
@@ -354,7 +382,7 @@ export const getFinanceTransactionsByStatus = (
   console.log('hello ', status, itemsQuery)
   return onSnapshot(itemsQuery, snapshot, error)
 }
-
+// get finance transactions of Unit
 export const getFinanceForUnit = (orgId, snapshot, data, error) => {
   const { unitId } = data
 
@@ -365,7 +393,7 @@ export const getFinanceForUnit = (orgId, snapshot, data, error) => {
   console.log('hello ', unitId, itemsQuery)
   return onSnapshot(itemsQuery, snapshot, error)
 }
-
+// get unit details Matching to status
 export const getCrmUnitsByStatus = (orgId, snapshot, data, error) => {
   const { status } = data
 
@@ -376,7 +404,7 @@ export const getCrmUnitsByStatus = (orgId, snapshot, data, error) => {
   console.log('hello ', status, itemsQuery)
   return onSnapshot(itemsQuery, snapshot, error)
 }
-
+// get leads only of a user
 export const getLeadsByStatusUser = (orgId, snapshot, data, error) => {
   console.log('orgId is ', orgId)
   const { status, uid, isCp } = data
@@ -393,20 +421,37 @@ export const getLeadsByStatusUser = (orgId, snapshot, data, error) => {
 export const getTodayTodoLeadsData = (orgId, snapshot, data, error) => {
   const { type } = data
 
-
+  // type: 'upcoming'
 
   const itemsQuery = query(
     collection(db, `${orgId}_leads_sch`),
     where('staA', 'array-contains-any', ['pending', 'overdue'])
   )
-
+  // const itemsQuery1 = query(
+  //   collection(db, `${orgId}_leads_sch'),
+  //   where('staA', 'array-contains-any', ['pending', 'overdue'])
+  // )
+  // return onSnapshot(itemsQuery, (docSna) => {
+  //   console.log('Current data: ', docSna.docs.length)
+  //   docSna.docs.map(async (dataSnp) => {
+  //     const userRef = doc(db, `${orgId}_leads', dataSnp.id)
+  //     const docSnap1 = await getDoc(userRef)
+  //     if (docSnap1.exists()) {
+  //       return docSnap1.data()
+  //     } else {
+  //       // doc.data() will be undefined in this case
+  //       console.log('No such document!')
+  //       return null
+  //     }
+  //   })
+  // })
   console.log('hello ', status, itemsQuery)
   return onSnapshot(itemsQuery, snapshot, error)
 }
 export const getCRMTeamTasks = (orgId, snapshot, data, error) => {
   const { type } = data
 
-
+  // type: 'upcoming'
 
   const itemsQuery = query(
     collection(db, `${orgId}_crm_tasks`),
@@ -420,7 +465,7 @@ export const getCRMTeamTasks = (orgId, snapshot, data, error) => {
 export const getFinanceTeamTasks = (orgId, snapshot, data, error) => {
   const { type } = data
 
-
+  // type: 'upcoming'
 
   const itemsQuery = query(
     collection(db, `${orgId}_fin_tasks`),
@@ -433,6 +478,7 @@ export const getFinanceTeamTasks = (orgId, snapshot, data, error) => {
 export const getProjectsTasks = (orgId, snapshot, data, error) => {
   const { type } = data
 
+  // type: 'upcoming'
 
   const itemsQuery = query(
     collection(db, `${orgId}_project_tasks`),
@@ -458,10 +504,10 @@ export const getLeadbyId1 = async (orgId, uid) => {
   const docSnap = await getDoc(docRef)
 
   if (docSnap.exists()) {
-
+    // console.log('Document data:', docSnap.data())
     return docSnap.data()
   } else {
-
+    // doc.data() will be undefined in this case
     console.log('No such document!')
   }
 }
@@ -470,10 +516,10 @@ export const getCRMdocById1 = async (orgId, uid) => {
   const docSnap = await getDoc(docRef)
 
   if (docSnap.exists()) {
-
+    // console.log('Document data:', docSnap.data())
     return docSnap.data()
   } else {
-
+    // doc.data() will be undefined in this case
     console.log('No such document!')
   }
 }
@@ -484,7 +530,7 @@ export const getProjById1 = async (orgId, uid) => {
   )
 
   const citySnapshot = await getDocs(itemsQuery)
-
+  // await citySnapshot.docs.map((doc) => doc.data())
   console.log('my Array data is delayer 1', citySnapshot)
   return await citySnapshot.docs.map((doc) => doc.data())
 }
@@ -563,7 +609,7 @@ export const getUser = async (uid: string) => {
     if (docSnap.exists()) {
       return docSnap.data()
     } else {
-
+      // doc.data() will be undefined in this case
       console.log('No such document!')
       return null
     }
@@ -573,7 +619,8 @@ export const getUser = async (uid: string) => {
 }
 
 export const checkIfLeadAlreadyExists = async (cName, matchVal) => {
-
+  // db.collection(`${orgId}_leads`).doc().set(data)
+  // db.collection('')
   console.log('matchVal', matchVal)
   const q = await query(collection(db, cName), where('Mobile', '==', matchVal))
   const parentDocs = []
@@ -581,9 +628,10 @@ export const checkIfLeadAlreadyExists = async (cName, matchVal) => {
 
   const querySnapshot = await getDocs(q)
   await console.log('foundLength @@', querySnapshot.docs.length)
+  // return await querySnapshot.docs.length
 
   querySnapshot.forEach((doc) => {
-
+    // doc.data() is never undefined for query doc snapshots
     console.log('dc', doc.id, ' => ', doc.data())
     parentDocs.push(doc.data())
   })
@@ -596,13 +644,16 @@ export const checkIfLeadAlreadyExists = async (cName, matchVal) => {
   const querySnapshot1 = await getDocs(q1)
 
   querySnapshot1.forEach((doc) => {
-
+    // doc.data() is never undefined for query doc snapshots
     console.log('dc', doc.id, ' => ', doc.data())
     parentDocs.push(doc.data())
   })
   return parentDocs
 
+  // await console.log('length is ', q.length)
+  // return await q.length
 
+  // db.collection(`${orgId}_leads`).add(data)
 }
 
 export const checkIfUnitAlreadyExists = async (
@@ -612,7 +663,8 @@ export const checkIfUnitAlreadyExists = async (
   blockId,
   unitId
 ) => {
-
+  // db.collection(`${orgId}_leads').doc().set(data)
+  // db.collection('')
   console.log('inoinel', pId, phaseId, blockId, unitId)
   const q = await query(
     collection(db, cName),
@@ -624,36 +676,61 @@ export const checkIfUnitAlreadyExists = async (
 
   const querySnapshot = await getDocs(q)
   await console.log('foundLength @@', querySnapshot.docs.length)
-
+  // return await querySnapshot.docs.length
   const parentDocs = []
   querySnapshot.forEach((doc) => {
-
+    // doc.data() is never undefined for query doc snapshots
     console.log('dc', doc.id, ' => ', doc.data())
     parentDocs.push(doc.data())
   })
 
   return parentDocs
 
+  // await console.log('length is ', q.length)
+  // return await q.length
+
+  // db.collection(`${orgId}_leads').add(data)
 }
 export const checkIfUserAlreadyExists = async (cName, matchVal) => {
-
+  // db.collection(`${orgId}_leads`).doc().set(data)
+  // db.collection('')
   console.log('matchVal', matchVal)
   const q = await query(collection(db, cName), where('email', '==', matchVal))
 
   const querySnapshot = await getDocs(q)
   await console.log('foundLength @@', querySnapshot.docs.length)
-
+  // return await querySnapshot.docs.length
   const parentDocs = []
   querySnapshot.forEach((doc) => {
-
+    // doc.data() is never undefined for query doc snapshots
     console.log('dc', doc.id, ' => ', doc.data())
     parentDocs.push(doc.data())
   })
 
   return parentDocs
 
+  // await console.log('length is ', q.length)
+  // return await q.length
 
+  // db.collection(`${orgId}_leads`).add(data)
 }
+
+export const createEnsarUser = async (data) => {
+  try {
+    const userRef = doc(db, 'users', data.uid)
+    const docSnap = await getDoc(userRef)
+    if (!docSnap.exists()) {
+      await setDoc(userRef, data, { merge: true })
+    } else {
+      // doc.data() will be undefined in this case
+      console.log('No such document!')
+      return null
+    }
+  } catch (error) {
+    console.log('error in db', error)
+  }
+}
+
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data
   const getAllProjectsQuery = await query(
@@ -663,7 +740,15 @@ export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   return onSnapshot(getAllProjectsQuery, snapshot, error)
 }
 export const getAllRoleAccess = async (orgId) => {
-
+  // userAccessRoles.forEach(async (element) => {
+  //   const r = 'A' + Math.random() * 100000000000000000 + 'Z'
+  //   const updated = {
+  //     ...element,
+  //     uid: r,
+  //   }
+  //   const ref = doc(db, `${orgId}_roles_access', r)
+  //   await setDoc(ref, updated, { merge: true })
+  // })
   const records = []
   const getAllRolesQueryById = await query(
     collection(db, `${orgId}_roles_access`)
@@ -695,7 +780,7 @@ export const getMyProjects = async (orgId, data, snapshot, error) => {
   console.log('what is this', projAccessA)
   const getAllProjectsQuery = await query(
     collection(db, `${orgId}_projects`),
-
+    // where('uid', 'in', projAccessA),
     orderBy('created', 'desc')
   )
   return onSnapshot(getAllProjectsQuery, snapshot, error)
@@ -784,6 +869,9 @@ export const getAdditionalCharges = async (
   return onSnapshot(getAllAdditionalCharges, snapshot, error)
 }
 
+// **********************************************
+// addF
+// **********************************************
 export const createUser = async (data: any) => {
   try {
     const userRef = doc(db, 'users', data.uid)
@@ -791,7 +879,7 @@ export const createUser = async (data: any) => {
     if (!docSnap.exists()) {
       await setDoc(userRef, data, { merge: true })
     } else {
-
+      // doc.data() will be undefined in this case
       console.log('No such document!')
       return null
     }
@@ -804,11 +892,17 @@ export const deleteLeadSupabase = async (payload) => {
   await console.log('error as ', error)
 }
 export const addLeadSupabase = async (payload) => {
-
+  // const { data, error } = await supabase
+  //   .from('maahomes_leads')
+  //   .insert([payload])
+  // await console.log('error as ', error)
 }
 
 export const addNotificationSupabase = async (payload, enqueueSnackbar) => {
-
+  // const { data, error } = await supabase
+  //   .from('maahomes_leads')
+  //   .insert([payload])
+  // await console.log('error as ', error)
 
   const { data, error } = await supabase
     .from('maahomes_notifyTemplates')
@@ -871,6 +965,16 @@ export const addLead = async (orgId, data, by, msg) => {
       )
     }
     await console.log('what is this supbase', data3, errorx)
+    // await addLeadLog(orgId, x.id, {
+    //   s: 's',
+    //   type: 'status',
+    //   subtype: 'added',
+    //   T: Timestamp.now().toMillis(),
+    //   txt: msg,
+    //   by,
+    // })
+
+    // add task to scheduler to Intro call in 3 hrs
 
     const data1 = {
       by: by,
@@ -892,7 +996,7 @@ export const addLead = async (orgId, data, by, msg) => {
     console.log('error in uploading file with data', data, error)
   }
 }
-
+// This function is used to add leads for cp
 export const addCpLead = async (orgId, data, by, msg) => {
   const x = await addDoc(collection(db, `${orgId}_leads_cp`), data)
   await console.log('add Lead value is ', x, x.id, data)
@@ -915,7 +1019,32 @@ export const addCpLead = async (orgId, data, by, msg) => {
     )
   }
   await console.log('what is this supbase', data3, errorx)
+  // await addLeadLog(orgId, x.id, {
+  //   s: 's',
+  //   type: 'status',
+  //   subtype: 'added',
+  //   T: Timestamp.now().toMillis(),
+  //   txt: msg,
+  //   by,
+  // })
 
+  // add task to scheduler to Intro call in 3 hrs
+
+  // const data1 = {
+  //   by: by,
+  //   type: 'schedule',
+  //   pri: 'priority 1',
+  //   notes: 'Get into Introduction Call with customer',
+  //   sts: 'pending',
+  //   schTime: Timestamp.now().toMillis() + 10800000, // 3 hrs
+  //   ct: Timestamp.now().toMillis(),
+  // }
+
+  // const x1 = []
+
+  // x1.push('pending')
+
+  // await addLeadScheduler(orgId, x.id, data1, x1, data.assignedTo)
   return
 }
 
@@ -958,10 +1087,12 @@ export const addUnit = async (orgId, data, by, msg) => {
     data
   )
 
-
+  // get the cost sheet charges obj & successully create total unit cost
 
   const yo = {
-
+    // totalEstValue: increment(plot_value + construct_value),
+    // totalEstPlotVal: increment(plot_value),
+    // totalEstConstuctVal: increment(construct_value),
     plotcost: 10,
     constCost: 10,
     plcCharges: 10,
@@ -972,7 +1103,7 @@ export const addUnit = async (orgId, data, by, msg) => {
     bescom_bwssb: 10,
     totalPlotArea: plot_Sqf,
     totalConstructArea: super_built_up_area,
-
+    // totalArea: increment(area),
     totalUnitCount: 1,
     availableCount: 1,
   }
@@ -982,7 +1113,16 @@ export const addUnit = async (orgId, data, by, msg) => {
 
   const x = await addDoc(collection(db, `${orgId}_units`), data)
   await console.log('x value is', x, x.id)
+  // await addLeadLog(x.id, {
+  //   s: 's',
+  //   type: 'status',
+  //   subtype: 'added',
+  //   T: Timestamp.now().toMillis(),
+  //   txt: msg,
+  //   by,
+  // })
 
+  // add task to scheduler to Intro call in 3 hrs
 
   addUnitComputedValues(
     `${orgId}_projects`,
@@ -1012,8 +1152,12 @@ export const addUnit = async (orgId, data, by, msg) => {
     1
   )
 
+  // add data to bank account
+  // 1) get bank account id of project
+  // 2) convert owner name to something friendly
 
-
+  // 1) get bank account id of project
+  // builderbankId
   addUnitBankComputed(
     orgId,
     `${orgId}_BankDetails`,
@@ -1024,7 +1168,7 @@ export const addUnit = async (orgId, data, by, msg) => {
     super_built_up_area * construct_cost_sqf || 0,
     1
   )
-
+  // 2) convert owner name to something friendly
   const owner_docId = owner_name
     ?.replace(/[^A-Za-z\s!?]/g, '')
     .replaceAll(' ', '')
@@ -1094,7 +1238,10 @@ export const updateLeadLakeStatus = async (orgId, id, data) => {
 }
 
 export const addUserLog = (orgId, data) => {
-
+  // type    === addUser || updateUserRole || deleteUser
+  // subtype === addUser
+  // subType === RoleAdd || RoleRemoved
+  // subType === deleteUser
   data.time = Timestamp.now().toMillis()
   addDoc(collection(db, `${orgId}_user_log`), data)
 }
@@ -1223,7 +1370,13 @@ export const createProject = async (
     const ref1 = doc(db, `${orgId}_phases`, uid1)
     await setDoc(ref1, phasePayload, { merge: true })
 
-
+    // add phase-0
+    // created
+    // editMode
+    // phaseName
+    // projectId
+    // uid
+    // phaseArea
     await updateBankEntry(
       orgId,
       builderBankDocId,
@@ -1317,7 +1470,7 @@ export const addPaymentReceivedEntry = async (
       unitId: unitDocId,
       created: Timestamp.now().toMillis(),
     }
-
+    // const ref = doc(db, `${orgId}_fincance', unitDocId)
     const x = await addDoc(collection(db, `${orgId}_fincance`), updated)
 
     enqueueSnackbar('Payment Captured..!', {
@@ -1346,7 +1499,7 @@ export const createBookedCustomer = async (
     }
     const ref = doc(db, `${orgId}_customers`, unitDocId)
     await setDoc(ref, updated, { merge: true })
-
+    // const x = await addDoc(collection(db, `${orgId}_customers`), updated)
     enqueueSnackbar('Customer added successfully', {
       variant: 'success',
     })
@@ -1470,7 +1623,9 @@ export const createUserToAttendance = async (element, enqueueSnackbar) => {
     })
   }
 }
-
+// **********************************************
+// updateF PLsiSl3rnbYxyBxis4r0f5MpX0u1
+// **********************************************
 export const updateUserRole = async (
   empId,
   orgName,
@@ -1532,7 +1687,9 @@ export const updateAccessRoles = async (
   enqueueSnackbar,
   currentPage
 ) => {
-
+  // data.forEach(async (d) => {
+  //   await updateDoc(doc(db, `${orgId}_roles_access', d.uid), d)
+  // })
   try {
     await updateDoc(doc(db, `${orgId}_roles_access`, role.uid), {
       access: accessRoles,
@@ -1544,7 +1701,7 @@ export const updateAccessRoles = async (
       txt: `${currentUser.email} is updated the user access roles`,
       by: currentUser.email,
     })
-
+    // variant could be success, error, warning, info, or default
     enqueueSnackbar(
       `User roles for ${role.type} & ${currentPage.name} updated successfully`,
       {
@@ -1743,10 +1900,30 @@ export const removeProjectInBankEntry = async (
 ) => {
   try {
     if (oldbankDocId === '') return
-
+    // get the exisiting usedInA from old docId and filter the matched project Id
     console.log('oldbankDocId', oldbankDocId)
     const getBankProfile = doc(db, `${orgId}_BankDetails`, oldbankDocId)
+    // let records
+    // const docSnap1 = await await getDoc(getBankProfile)
+    // if (docSnap1.exists()) {
+    //   records = docSnap1.data()
+    // } else {
+    //   // doc.data() will be undefined in this case
+    //   console.log('No such document!')
+    //   return null
+    // }
+    // const { usedInA } = records
+    // try {
+    //   const removedUsedinA = usedInA?.filter((item) => item.pId != pId)
 
+    //   await updateDoc(doc(db, `${orgId}_BankDetails`, oldbankDocId), {
+    //     usedIn: increment(-1),
+    //     usedInA: removedUsedinA,
+    //     updated: Timestamp.now().toMillis(),
+    //   })
+    // } catch (error) {
+    //   console.log('error1 ', error, usedInA, pId)
+    // }
   } catch (e) {
     console.log('updateBankEntry error', e, oldbankDocId)
   }
@@ -1887,7 +2064,13 @@ export const updateLeadAssigTo = async (
   )
 
   return
-
+  // return await addUserLog({
+  //   s: 's',
+  //   type: 'updateRole',
+  //   subtype: 'updateRole',
+  //   txt: `${email} is updated with ${role}`,
+  //   by,
+  // })
 }
 
 export const IncrementTastCompletedCount = async (
@@ -1917,7 +2100,7 @@ export const IncrementTastTotalCount = async (
   todayTasksIncre,
   txt
 ) => {
-
+  // this is used when new task is created for the same day
   console.log('IncrementTastTotalCount')
   try {
     await updateDoc(doc(db, `${orgId}_emp_performance`, `${userId}DD${ddMy}`), {
@@ -2002,7 +2185,13 @@ export const updateLeadCostSheetDetailsTo = async (
   }
 
   return
-
+  // return await addUserLog({
+  //   s: 's',
+  //   type: 'updateRole',
+  //   subtype: 'updateRole',
+  //   txt: `${email} is updated with ${role}`,
+  //   by,
+  // })
 }
 export const updateUnitAsBooked = async (
   orgId,
@@ -2032,7 +2221,13 @@ export const updateUnitAsBooked = async (
   }
 
   return
-
+  // return await addUserLog({
+  //   s: 's',
+  //   type: 'updateRole',
+  //   subtype: 'updateRole',
+  //   txt: `${email} is updated with ${role}`,
+  //   by,
+  // })
 }
 
 export const updateLeadRemarks_NotIntrested = async (
@@ -2151,14 +2346,16 @@ export const updateLeadLastUpdateTime = async (
   schTime
 ) => {
   try {
-
+    // console.log('wow it should be here', leadDocId, schTime)
     await updateDoc(doc(db, `${orgId}_leads`, leadDocId), {
       leadUpT: time,
       schTime,
     })
   } catch (e) {
     console.log('failed to throw error at updateLeadLastUpdateTime ', e)
-
+    // enqueueSnackbar(e.message, {
+    //   variant: 'error',
+    // })
   }
 }
 export const updateLeadStatus = async (
@@ -2178,7 +2375,14 @@ export const updateLeadStatus = async (
       stsUpT: Timestamp.now().toMillis(),
       leadUpT: Timestamp.now().toMillis(),
     })
-
+    // await addLeadLog(orgId, x.id, {
+    //   s: 's',
+    //   type: 'status',
+    //   subtype: 'added',
+    //   T: Timestamp.now().toMillis(),
+    //   txt: msg,
+    //   by,
+    // })
     const { data1, error1 } = await supabase.from(`${orgId}_lead_logs`).insert([
       {
         type: 'sts_change',
@@ -2216,12 +2420,16 @@ export const updateProjectCounts = async (
       bookUnitCount: increment(1),
       availableCount: increment(-1),
       soldUnitCount: increment(1),
-
+      // s_agreeCount: increment(1),
+      // s_registerCount: increment(1),
+      // s_constCount: increment(1),
+      // s_possCount: increment(1),
+      // t_mtd: increment(1),
       soldValue: increment(soldVal),
       t_collect: increment(t_collect),
 
       t_bal: soldVal - t_collect,
-
+      // t_refund: increment(1)
     })
 
     console.log('chek if ther is any erro in supa', data)
@@ -2243,7 +2451,7 @@ export const updateSchLog = async (orgId, uid, kId, newStat, schStsA) => {
   const y = `${kId}.comT`
   await updateDoc(doc(db, `${orgId}_leads_sch`, uid), {
     staA: schStsA,
-
+    // staDA: arrayUnion(xo),
     [x]: newStat,
     [y]: Timestamp.now().toMillis() + 21600000,
   })
@@ -2256,7 +2464,7 @@ export const undoSchLog = async (orgId, uid, kId, newStat, schStsA, oldSch) => {
 
   await updateDoc(doc(db, `${orgId}_leads_sch`, uid), {
     staA: schStsA,
-
+    // staDA: arrayUnion(xo),
     [x]: newStat,
     [y]: schTime,
   })
@@ -2268,7 +2476,7 @@ export const editTaskDB = async (orgId, uid, kId, newStat, schStsA, oldSch) => {
   console.log('undo time is ', schStsA, schTime)
   await updateDoc(doc(db, `${orgId}_leads_sch`, uid), {
     staA: schStsA,
-
+    // staDA: arrayUnion(xo),
     [x]: notes,
     [y]: schTime,
   })
@@ -2325,7 +2533,12 @@ export const updateSch = async (
 ) => {
   const x = `${kId}.schTime`
   const y = `${kId}.${actionType}`
+  // const y = {
+  //   [x]: newCt,
+  //   [x]: newCt,
 
+  //   assignedTo,
+  // }
   const z = `${actionType}`
   console.log('xo xo xo 1', actionType, y)
   try {
@@ -2412,7 +2625,9 @@ export const updateAdditionalCharges = async (
     })
   }
 }
-
+// **********************************************
+// deleteF
+// **********************************************
 
 export const deleteUser = async (orgId, uid, by, email, myRole) => {
   await deleteDoc(doc(db, 'users', uid))
@@ -2427,7 +2642,13 @@ export const deleteUser = async (orgId, uid, by, email, myRole) => {
 
 export const deleteAsset = async (orgId, uid, by, email, myRole) => {
   await deleteDoc(doc(db, `${orgId}_project_docs`, uid))
-
+  // return await addUserLog({
+  //   s: 's',
+  //   type: 'deleteRole',
+  //   subtype: 'deleteRole',
+  //   txt: `Employee ${email} as ${myRole} is deleted`,
+  //   by,
+  // })
 }
 export const deleteBankAccount = async (
   orgId,
@@ -2448,6 +2669,13 @@ export const deleteBankAccount = async (
     })
   }
 
+  // return await addUserLog({
+  //   s: 's',
+  //   type: 'deleteRole',
+  //   subtype: 'deleteRole',
+  //   txt: `Employee ${email} as ${myRole} is deleted`,
+  //   by,
+  // })
 }
 
 export const deletePayment = async (uid, enqueueSnackbar) => {
@@ -2493,6 +2721,9 @@ export const deleteSchLog = async (
   })
 }
 
+/// **********************************************
+// Manipulators
+// **********************************************
 
 export const addUnitComputedValues = async (
   c_name,
@@ -2509,7 +2740,7 @@ export const addUnitComputedValues = async (
     totalEstConstuctVal: increment(construct_value),
     totalPlotArea: increment(plot_Sqf),
     totalConstructArea: increment(super_built_up_area),
-    
+    // totalArea: increment(area),
     totalUnitCount: increment(unitCount),
     availableCount: increment(unitCount),
   }

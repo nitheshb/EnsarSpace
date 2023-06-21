@@ -47,7 +47,11 @@ export const CustomSelect = ({
             styles={customStyles}
           />
         </label>
-        
+        {/* <ErrorMessage
+        component="div"
+        name={name}
+        className="error-message text-red-700 text-xs px-2"
+      /> */}
       </div>
     </label>
   )

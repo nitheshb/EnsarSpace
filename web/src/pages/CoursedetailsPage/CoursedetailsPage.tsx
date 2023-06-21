@@ -14,15 +14,9 @@ import { FaBars } from 'react-icons/fa'
 import { RiClosedCaptioningFill } from 'react-icons/ri'
 
 import { BiCheck } from 'react-icons/bi'
-
 import { courses } from 'src/constants/courses'
 
 import styled from 'styled-components'
-
-
-
-
-
 
 
 const CoursedetailsPage = () => {
@@ -93,10 +87,6 @@ const CoursedetailsPage = () => {
 
 
       <div>
-
-
-
-
 
 
         <div key={course.id}>
@@ -339,9 +329,6 @@ const CoursedetailsPage = () => {
                 </div>
 
               </div>
-
-
-
 
 
 
@@ -832,9 +819,9 @@ const SingleCourseWrapper = styled.div`
     font-size: 18
 
 
+  
 
-
-
+  }
 
 
 

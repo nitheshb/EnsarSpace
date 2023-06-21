@@ -1,4 +1,9 @@
-
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+// import { useState } from 'react'
+// import ProjectStatsCard from '../ProjectStatsCard/ProjectStatsCard'
+// import PhaseDetailsCard from '../PhaseDetailsCard/PhaseDetailsCard'
 import { useState, useEffect } from 'react'
 
 import { useTheme } from '@mui/material'
@@ -234,7 +239,18 @@ const CrmDashboardHome = ({ project }) => {
     <div>
       <section className=" mt-1 mr-1 py-8 mb-2 leading-7 text-gray-900 bg-white  rounded-lg  ">
         <div className="box-border px-4 mx-auto border-solid sm:px-6 md:px-6 lg:px-8 max-w-full ">
-
+          {/* <div className="flex flex-col  leading-7  text-gray-900 border-0 border-gray-200 ">
+            <div className="flex items-center flex-shrink-0  px-0  pl-0   mb-2">
+              <Link
+                className="flex items-center"
+                // to={routes.projectEdit({ uid })}
+              >
+                <span className="relative z-10 flex items-center w-auto text-3xl font-bold leading-none pl-0 mt-[18px]">
+                  Documents
+                </span>
+              </Link>
+            </div>
+          </div> */}
 
           <section className="flex flex-row justify-between">
             <div className="">
@@ -244,7 +260,9 @@ const CrmDashboardHome = ({ project }) => {
                 Check your inventory and update your stocks.
               </p>
 
-              
+              {/* <p className=" MuiBox-root css-1veg4n0">You have done */}
+              {/* <span className=" MuiBox-root css-1sej3o2">76%</span> more sales today. <br>
+            Check your inventory and update your stocks.</p> */}
               <div className="montF MuiBox-root cardBg">
                 <div className="montF flex w-full">
                   <svg
