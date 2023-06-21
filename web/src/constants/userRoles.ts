@@ -159,7 +159,7 @@ export const options2 = [
   { value: '16GB', label: '16GB' },
 ]
  export const options3 = [
-  { label: 'Select the SerialNUmber', value: '' },
+  { label: 'Select the Serial NUmber', value: '' },
   { value: '01', label: '01' },
   { value: '02', label: '02' },
   { value: '03', label: '03' },
@@ -173,21 +173,15 @@ export const options2 = [
 
 ]
 export const options4 = [
-  { label: 'Select the AllocationStatus', value: '' },
+  { label: 'Select the Allocation Status', value: '' },
   { value: 'Yes', label: 'Yes' },
   { value: 'No', label: 'No' },
 ]
 export const options5 = [
-  { label: 'Select WorkingStatus', value: '' },
+  { label: 'Select the Working Status', value: '' },
   { value: 'Good ', label: 'Good' },
   { value: 'Average', label: 'Average' },
   { value: 'Bad', label: 'Bad' },
-]
-export const options6 = [
-  { label: 'Select the keypad', value: '' },
-  { value: 'virtual keypad', label: 'Virtual keypad' },
-  { value: 'gboard', label: 'Gboard' },
-  { value: 'swiftkey', label: 'Swiftkwy' },
 ]
 
 export const ROLES_LIST = [

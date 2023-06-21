@@ -341,7 +341,7 @@ const OnBoardAssertBody = () => {
           >
             {({ values, setFieldValue }) => (
               <Form className="space-y-6">
-                <div>
+                {/* <div>
                   <label
                     htmlFor="Name"
                     className="block text-sm font-medium bold-black-700"
@@ -363,7 +363,7 @@ const OnBoardAssertBody = () => {
                     component="div"
                     className="text-red-500 text-sm mt-1"
                   />
-                </div>
+                </div> */}
 
                 <div>
                   <label
@@ -418,6 +418,30 @@ const OnBoardAssertBody = () => {
                     />
                   </div>
                 )}
+
+                <div>
+                  <label
+                    htmlFor="Name"
+                    className="block text-sm font-medium bold-black-700"
+                  >
+                    Name
+                  </label>
+
+                  <Field
+                    as={CustomSelect}
+                    name="Name"
+                    options={Name}
+                    placeholder="Select a Name"
+                    className="mt-1"
+                    onChange={(option) => setFieldValue('Name', option.value)}
+                  />
+
+                  <ErrorMessage
+                    name="Name"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
+                </div>
 
                 <div>
                   <label
@@ -487,7 +511,7 @@ const OnBoardAssertBody = () => {
                   />
                 </div>
 
-                <div className="mt-6">
+                <div className="flex justify-end">
                   <button
                     type="submit"
                     className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
