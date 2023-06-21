@@ -14,13 +14,12 @@ export const USER_ROLES = {
   LEGAL_SENIOR_ASSOCIATE: 'legal-senior-associate',
   LEGAL_SENIOR_MANAGER: 'legal-senior-manager',
 
-
-  CRM_MANAGER: 'crm-manager',
-  CRM_EXECUTIVE: 'crm-executive',
-  CRM_ASSOCIATE: 'crm-associate',
-  CRM_SENIOR_EXECUTIVE: 'crm-senior-executive',
-  CRM_SENIOR_ASSOCIATE: 'crm-senior-associate',
-  CRM_SENIOR_MANAGER: 'crm-senior-manager',
+  ITDESK_EXECUTIVE: 'itdesk-executive',
+  ITDESK_MANAGER: 'itdesk-manager',
+  ITDESK_ASSOCIATE: 'itdesk-associate',
+  ITDESK_SENIOR_EXECUTIVE: 'itdesk-senior-executive',
+  ITDESK_SENIOR_MANAGER: 'itdesk-senior-manager',
+  ITDESK_SENIOR_ASSOCIATE: 'itdesk-senior-associate',
 
 
   FINANCE_MANAGER: 'finance-manager',
@@ -30,15 +29,7 @@ export const USER_ROLES = {
   FINANCE_SENIOR_ASSOCIATE: 'finance-senior-associate',
   FINANCE_SENIOR_MANAGER: 'finance-senior-manager',
 
-
-  HR_MANAGER: 'hr-manager',
-  HR_EXECUTIVE: 'hr-executive',
-  HR_ASSOCIATE: 'hr-associate',
-  HR_SENIOR_EXECUTIVE: 'hr-senior-executive',
-  HR_SENIOR_ASSOCIATE: 'hr-senior-associate',
-  HR_SENIOR_MANAGER: 'hr-senior-manager',
-
-
+  SUPPORT_EXECUTIVE: 'support-executive',
   SUPPORT_MANAGER: 'support-manager',
   SUPPORT_EXECUTIVE: 'support-executive',
   SUPPORT_ASSOCIATE: 'support-associate',
@@ -46,7 +37,7 @@ export const USER_ROLES = {
   SUPPORT_SENIOR_ASSOCIATE: 'support-senior-associate',
   SUPPORT_SENIOR_MANAGER: 'support-senior-manager',
 
-
+  HELPER_EXECUTIVE: 'helper-executive',
   HELPER_MANAGER: 'helper-manager',
   HELPER_EXECUTIVE: 'helper-executive',
   HELPER_ASSOCIATE: 'helper-associate',
@@ -54,7 +45,7 @@ export const USER_ROLES = {
   HELPER_SENIOR_ASSOCIATE: 'helper-senior-associate',
   HELPER_SENIOR_MANAGER: 'helper-senior-manager',
 
-
+  PROJECT_EXECUTIVE: 'project-executive',
   PROJECT_MANAGER: 'project-manager',
   PROJECT_EXECUTIVE: 'project-executive',
   PROJECT_ASSOCIATE: 'project-associate',
@@ -62,13 +53,21 @@ export const USER_ROLES = {
   PROJECT_SENIOR_ASSOCIATE: 'project-senior-associate',
   PROJECT_SENIOR_MANAGER: 'project-senior-manager',
 
-
+  DEVELOPER_EXECUTIVE: 'developer executive',
   DEVELOPER_MANAGER: 'developer manager',
   DEVELOPER_SENIOR_MANAGER: 'developer senior manager',
   DEVELOPER_EXECUTIVE: 'developer executive',
   DEVELOPER_SENIOR_EXECUTIVE: 'developer senior executive',
   DEVELOPER_ASSOCIATE: 'developer associate',
   DEVELOPER_SENIOR_ASSOCIATE: 'developer senior associate',
+
+ HL-58-Assets-management
+  LEARNER_MANAGER: 'learner manager',
+  LEARNER_EXECUTIVE: 'learner executive',
+  LEARNER_ASSOCIATE: 'learner associate',
+  LEARNER_SENIOR_MANAGER: 'learner senior manager',
+  LEARNER_SENIOR_EXECUTIVE: 'learner senior executive',
+  LEARNER_SENIOR_ASSOCIATE: 'learner senior associate',
 
   TRAINER_MANAGER: 'trainer manager',
   TRAINER_EXECUTIVE: 'trainer executive',
@@ -77,13 +76,21 @@ export const USER_ROLES = {
   TRAINER_SENIOR_EXECUTIVE: 'trainer senior executive',
   TRAINER_SENIOR_ASSOCIATE: 'trainer senior associate',
 
+  LEARNING_EXECUTIVE: 'learning executive',
+  LEARNING_MANAGER: 'learning manager',
+  LEARNING_ASSOCIATE: 'learning associate',
+  LEARNING_SENIOR_EXECUTIVE: 'learning senior executive',
+  LEARNING_SENIOR_MANAGER: 'learning senior manager',
+  LEARNING_SENIOR_ASSOCIATE: 'learning senior associate',
+ Development_dev
+
+  FRESHER_EXECUTIVE: 'fresher executive',
   FRESHER_MANAGER: 'fresher manager',
   FRESHER_SENIOR_MANAGER: 'fresher senior manager',
   FRESHER_EXECUTIVE: 'fresher executive',
   FRESHER_SENIOR_EXECUTIVE: 'fresher senior executive',
   FRESHER_ASSOCIATE: 'fresher associate',
   FRESHER_SENIOR_ASSOCIATE: 'fresher senior associate',
-
 
   ADMIN: 'admin',
   TRAINEE: 'trainee',
@@ -107,7 +114,6 @@ export const DEPARTMENT_LIST = [
   { label: 'Trainer', value: 'trainer' },
   { label: 'Fresher', value: 'fresher' },
 ]
-
 
 export const QUALIFICATION_LIST = [
   { label: 'Select the Qualification', value: '' },
@@ -147,7 +153,49 @@ export const Lang = [
   { label: 'French', value: 'French' },
 ]
 
-
+export const options = [
+  { label: 'Select the product', value: '' },
+  { value: 'Laptop', label: 'Laptop' },
+  { value: 'Phone windows', label: 'Phone windows' },
+  { value: 'Phone android', label: 'Phone android' },
+  { value: 'Sim', label: 'Sim' },
+]
+export const options1 = [
+  { label: 'Select the screen', value: '' },
+  { value: 'amoled', label: 'Amoled' },
+  { value: 'lcd', label: 'Lcd' },
+  { value: 'hd', label: 'Hd' },
+]
+export const options2 = [
+  { label: 'Select the sensor', value: '' },
+  { value: 'acclerometer', label: 'Acclerometer' },
+  { value: 'gyroscope', label: 'Gyroscope' },
+  { value: 'proximity', label: 'Proximity' },
+  { value: 'fingerprint', label: 'Fingerprint' },
+]
+ export const options3 = [
+  { label: 'Select the Nfc', value: '' },
+  { value: 'yes', label: 'Yes' },
+  { value: 'no', label: 'No' },
+]
+export const options4 = [
+  { label: 'Select the display', value: '' },
+  { value: 'gorilla', label: 'Gorilla' },
+  { value: 'diamondglass', label: 'Diamond glass' },
+  { value: 'temperglass', label: 'Temperglass' },
+]
+export const options5 = [
+  { label: 'Select phone connector', value: '' },
+  { value: 'microusb ', label: 'Micro USB' },
+  { value: 'type-c', label: 'Type-c' },
+  { value: 'usb type-a', label: 'Usb type-a' },
+]
+export const options6 = [
+  { label: 'Select the keypad', value: '' },
+  { value: 'virtual keypad', label: 'Virtual keypad' },
+  { value: 'gboard', label: 'Gboard' },
+  { value: 'swiftkey', label: 'Swiftkwy' },
+]
 
 export const ROLES_LIST = [
   { label: 'Select the role', value: '' },
@@ -160,7 +208,12 @@ export const ROLES_LIST = [
     value: USER_ROLES.SALES_EXECUTIVE,
     dept: 'sales',
   },
-
+  { label: 'Sales Manager', value: USER_ROLES.SALES_MANAGER, dept: 'sales' },
+  {
+    label: 'Sales Associate',
+    value: USER_ROLES.SALES_ASSOCIATE,
+    dept: 'sales',
+  },
   {
     label: 'Sales senior executive',
     value: USER_ROLES.SALES_SENIOR_EXECUTIVE,
@@ -171,7 +224,11 @@ export const ROLES_LIST = [
     value: USER_ROLES.SALES_SENIOR_MANAGER,
     dept: 'sales',
   },
-
+  {
+    label: 'Sales Senior Associate',
+    value: USER_ROLES.SALES_SENIOR_ASSOCIATE,
+    dept: 'sales',
+  },
 
   {
     label: 'CP Agent',
@@ -179,18 +236,30 @@ export const ROLES_LIST = [
     dept: 'sales',
   },
 
-
-  { label: 'Legal manager', value: USER_ROLES.LEGAL_MANAGER, dept: 'legal' },
-  { label: 'Legal senior manager', value: USER_ROLES.LEGAL_SENIOR_MANAGER, dept: 'legal' },
   {
-    label: 'Legal executive',
-    value: USER_ROLES.LEGAL_EXECUTIVE,
-    dept: 'legal',
+    label: 'IT Employee Executive',
+    value: USER_ROLES.ITEMPLOYEE_EXECUTIVE,
+    dept: 'it_employee',
+  },
+  {
+    label: 'IT Employee Manager',
+    value: USER_ROLES.ITEMPLOYEE_MANAGER,
+    dept: 'it_employee',
+  },
+  {
+    label: 'IT Employee Associate',
+    value: USER_ROLES.ITEMPLOYEE_ASSOCIATE,
+    dept: 'it_employee',
   },
   {
     label: 'Legal senior executive',
     value: USER_ROLES.LEGAL_SENIOR_EXECUTIVE,
     dept: 'legal',
+  },
+  {
+    label: 'IT Employee Senior Manager',
+    value: USER_ROLES.ITEMPLOYEE_SENIOR_MANAGER,
+    dept: 'it_employee',
   },
   {
     label: 'Legal associate',
@@ -203,14 +272,36 @@ export const ROLES_LIST = [
     dept: 'legal',
   },
 
-
-  { label: 'CRM manager', value: USER_ROLES.CRM_MANAGER, dept: 'crm' },
-  { label: 'CRM executive', value: USER_ROLES.CRM_EXECUTIVE, dept: 'crm' },
-  { label: 'CRM senior executive', value: USER_ROLES.CRM_SENIOR_EXECUTIVE, dept: 'crm' },
-  { label: 'CRM associate', value: USER_ROLES.CRM_ASSOCIATE, dept: 'crm' },
-  { label: 'CRM senior associate', value: USER_ROLES.CRM_SENIOR_ASSOCIATE, dept: 'crm' },
-  { label: 'CRM senior manager', value: USER_ROLES.CRM_SENIOR_MANAGER, dept: 'crm' },
-
+  {
+    label: 'IT Desk Executive',
+    value: USER_ROLES.ITDESK_EXECUTIVE,
+    dept: 'it_desk',
+  },
+  {
+    label: 'IT Desk Manager',
+    value: USER_ROLES.ITDESK_MANAGER,
+    dept: 'it_desk',
+  },
+  {
+    label: 'IT Desk Associate',
+    value: USER_ROLES.ITDESK_ASSOCIATE,
+    dept: 'it_desk',
+  },
+  {
+    label: 'IT Desk Senior executive',
+    value: USER_ROLES.ITDESK_SENIOR_EXECUTIVE,
+    dept: 'it_desk',
+  },
+  {
+    label: 'IT Desk Senior manager',
+    value: USER_ROLES.ITDESK_SENIOR_MANAGER,
+    dept: 'it_desk',
+  },
+  {
+    label: 'IT Desk Senior associate',
+    value: USER_ROLES.ITDESK_SENIOR_ASSOCIATE,
+    dept: 'it_desk',
+  },
 
   {
     label: 'Finance manager',
@@ -243,13 +334,24 @@ export const ROLES_LIST = [
     dept: 'finance',
   },
 
-
-  { label: 'HR manager', value: USER_ROLES.HR_MANAGER, dept: 'hr' },
-  { label: 'HR senior manager', value: USER_ROLES.HR_SENIOR_MANAGER, dept: 'hr' },
-  { label: 'HR executive', value: USER_ROLES.HR_EXECUTIVE, dept: 'hr' },
-  { label: 'HR senior executive', value: USER_ROLES.HR_SENIOR_EXECUTIVE, dept: 'hr' },
-  { label: 'HR associate', value: USER_ROLES.HR_ASSOCIATE, dept: 'hr' },
-  { label: 'HR senior associate', value: USER_ROLES.HR_SENIOR_ASSOCIATE, dept: 'hr' },
+  { label: 'HR Executive', value: USER_ROLES.HR_EXECUTIVE, dept: 'hr' },
+  { label: 'HR Manager', value: USER_ROLES.HR_MANAGER, dept: 'hr' },
+  { label: 'HR Associate', value: USER_ROLES.HR_ASSOCIATE, dept: 'hr' },
+  {
+    label: 'HR Senior Executive',
+    value: USER_ROLES.HR_SENIOR_EXECUTIVE,
+    dept: 'hr',
+  },
+  {
+    label: 'HR Senior Manager',
+    value: USER_ROLES.HR_SENIOR_MANAGER,
+    dept: 'hr',
+  },
+  {
+    label: 'HR Senior Associate',
+    value: USER_ROLES.HR_SENIOR_ASSOCIATE,
+    dept: 'hr',
+  },
 
   {
     label: 'Support manager',
@@ -291,12 +393,27 @@ export const ROLES_LIST = [
     value: USER_ROLES.HELPER_EXECUTIVE,
     dept: 'helper',
   },
+  { label: 'Helper Manager', value: USER_ROLES.HELPER_MANAGER, dept: 'helper' },
+  {
+    label: 'Helper Associate',
+    value: USER_ROLES.HELPER_ASSOCIATE,
+    dept: 'helper',
+  },
   {
     label: 'Helper senior executive',
     value: USER_ROLES.HELPER_SENIOR_EXECUTIVE,
     dept: 'helper',
   },
-
+  {
+    label: 'Helper Senior Manager',
+    value: USER_ROLES.HELPER_SENIOR_MANAGER,
+    dept: 'helper',
+  },
+  {
+    label: 'Helper Senior Associate',
+    value: USER_ROLES.HELPER_SENIOR_ASSOCIATE,
+    dept: 'helper',
+  },
 
   { label: 'project head', value: USER_ROLES.PROJECT_MANAGER, dept: 'project' },
   {
@@ -324,23 +441,35 @@ export const ROLES_LIST = [
     value: USER_ROLES.PROJECT_SENIOR_ASSOCIATE,
     dept: 'project',
   },
+
   {
-    label: 'project senior executive',
-    value: USER_ROLES.PROJECT_SENIOR_EXECUTIVE,
-    dept: 'project',
+    label: 'Developer Executive',
+    value: USER_ROLES.DEVELOPER_EXECUTIVE,
+    dept: 'developer',
   },
 
 
   {
     label: 'developer manager',
     value: USER_ROLES.DEVELOPER_MANAGER,
-    dept:'developer',
+    dept: 'developer',
   },
 
   {
-    label: 'developer senior manager',
+    label: 'Developer Associate',
+    value: USER_ROLES.DEVELOPER_ASSOCIATE,
+    dept: 'developer',
+  },
+
+  {
+    label: 'Developer Senior Executive',
+    value: USER_ROLES.DEVELOPER_SENIOR_EXECUTIVE,
+    dept: 'developer',
+  },
+  {
+    label: 'Developer Senior Manager',
     value: USER_ROLES.DEVELOPER_SENIOR_MANAGER,
-    dept:'developer',
+    dept: 'developer',
   },
 
   {
@@ -361,48 +490,97 @@ export const ROLES_LIST = [
   {
     label: 'developer senior associate',
     value: USER_ROLES.DEVELOPER_SENIOR_ASSOCIATE,
-    dept:'developer',
+    dept: 'developer',
   },
 
   {
-    label: 'trainer manager',
-    value: USER_ROLES.TRAINER_MANAGER,
-    dept:'trainer',
+    label: 'Learning Executive',
+    value: USER_ROLES.LEARNING_EXECUTIVE,
+    dept: 'learning',
   },
   {
-    label: 'trainer senior manager',
-    value: USER_ROLES.TRAINER_SENIOR_MANAGER,
-    dept:'trainer',
+    label: 'Learning Manager',
+    value: USER_ROLES.LEARNING_MANAGER,
+    dept: 'learning',
   },
   {
-    label: 'trainer executive',
-    value: USER_ROLES.TRAINER_EXECUTIVE,
-    dept:'trainer',
+    label: 'Learning Associate',
+    value: USER_ROLES.LEARNING_ASSOCIATE,
+    dept: 'learning',
   },
   {
-    label: 'trainer senior executive',
-    value: USER_ROLES.TRAINER_SENIOR_EXECUTIVE,
-    dept:'trainer',
+    label: 'Learning Senior Executive',
+    value: USER_ROLES.LEARNING_SENIOR_EXECUTIVE,
+    dept: 'learning',
   },
   {
-    label: 'trainer associate',
-    value: USER_ROLES.TRAINER_ASSOCIATE,
-    dept:'trainer',
+    label: 'Learning Senior Manager',
+    value: USER_ROLES.LEARNING_SENIOR_MANAGER,
+    dept: 'learning',
   },
   {
-    label: 'trainer senior associate',
-    value: USER_ROLES.TRAINER_SENIOR_ASSOCIATE,
-    dept:'trainer',
+    label: 'Learning Senior Associate',
+    value: USER_ROLES.LEARNING_SENIOR_ASSOCIATE,
+    dept: 'learning',
   },
+
+  {
+    label: 'Fresher Executive',
+    value: USER_ROLES.FRESHER_EXECUTIVE,
+    dept: 'fresher',
+  },
+
+  {
+    label: 'learner manager',
+    value: USER_ROLES.LEARNER_MANAGER,
+    dept:'learner',
+  },
+  {
+    label: 'learner senior manager',
+    value: USER_ROLES.LEARNER_SENIOR_MANAGER,
+    dept:'learner',
+  },
+  {
+    label: 'learner executive',
+    value: USER_ROLES.LEARNER_EXECUTIVE,
+    dept:'learner',
+  },
+  {
+    label: 'learner senior executive',
+    value: USER_ROLES.LEARNER_SENIOR_EXECUTIVE,
+    dept:'learner',
+  },
+  {
+    label: 'learner associate',
+    value: USER_ROLES.LEARNER_ASSOCIATE,
+    dept:'learner',
+  },
+  {
+    label: 'learner senior associate',
+    value: USER_ROLES.LEARNER_SENIOR_ASSOCIATE,
+    dept:'learner',
+  },
+
+
   {
     label: 'fresher manager',
     value: USER_ROLES.FRESHER_MANAGER,
-    dept:'fresher',
+    dept: 'fresher',
   },
   {
-    label: 'fresher senior manager',
+    label: 'Fresher Associate',
+    value: USER_ROLES.FRESHER_ASSOCIATE,
+    dept: 'fresher',
+  },
+  {
+    label: 'Fresher Senior Executive',
+    value: USER_ROLES.FRESHER_SENIOR_EXECUTIVE,
+    dept: 'fresher',
+  },
+  {
+    label: 'Fresher Senior Manager',
     value: USER_ROLES.FRESHER_SENIOR_MANAGER,
-    dept:'fresher',
+    dept: 'fresher',
   },
   {
     label: 'fresher executive',
@@ -422,7 +600,7 @@ export const ROLES_LIST = [
   {
     label: 'fresher senior associate',
     value: USER_ROLES.FRESHER_SENIOR_ASSOCIATE,
-    dept:'fresher',
+    dept: 'fresher',
   },
 
   { label: 'Admin', value: USER_ROLES.ADMIN, dept: 'admin' },

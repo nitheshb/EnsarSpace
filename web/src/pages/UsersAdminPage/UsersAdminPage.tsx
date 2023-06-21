@@ -7,6 +7,7 @@ import HeadNavBar2 from 'src/components/HeadNavBar/HeadNavBar2'
 // import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
+import OnBoarding from 'src/components/TableComp/OnBoarding'
 // import OnBoarding from 'src/components/TableComp/OnBoarding'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
@@ -18,8 +19,9 @@ import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 import AttendancePage from 'src/components/A_LearningModule/Attendance'
 import TimeOff from 'src/components/TableComp/TimeOff'
-
-
+import Calendar from 'src/components/TableComp/Calendar'
+import OnBoarding1 from 'src/components/ConstructModule/OnBoarding1'
+import Assets from 'src/components/ConstructModule/OnBoarding'
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -44,13 +46,10 @@ const UsersAdminPage = () => {
           setViewable={setViewable}
           viewable={viewable}
         />
-
         <div className="flex flex-col flex-grow">
-
           <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">
-              {/* <h1 className="text-lg font-medium">redefine.</h1> */}
               <span className="relative  flex items-center w-auto text-2xl font-bold leading-none pl-0">
                 {viewable}
               </span>
@@ -82,7 +81,6 @@ const UsersAdminPage = () => {
                 <button
                   onClick={() => editEmployeeFun({})}
                   className="flex items-center justify-center h-10 px-5  bg-gray-200 ml-auto text-sm font-medium rounded hover:bg-gray-400 "
-
                 >
                   <svg
                     className="w-5 h-5"
@@ -90,8 +88,6 @@ const UsersAdminPage = () => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-
-
                   >
                     <path
                       strokeLinecap="round"
@@ -105,7 +101,6 @@ const UsersAdminPage = () => {
               )}
             </div>
 
-
             {viewable === 'User Management' && (
               <UserManageTable editEmployeeFun={editEmployeeFun} />
             )}
@@ -118,7 +113,21 @@ const UsersAdminPage = () => {
 
             {viewable === 'Roles Management' && (
               <>
-                <TableData />
+                <OnBoarding leadsTyper={undefined} />
+              </>
+            )}
+
+
+            {viewable === 'On Boarding' && (
+              <>
+                <OnBoarding leadsTyper={undefined} />
+              </>
+            )}
+
+
+            {viewable === 'Holidays Calendar' && (
+              <>
+                <Calendar />
               </>
             )}
 
@@ -139,7 +148,6 @@ const UsersAdminPage = () => {
               </>
             )}
 
-
             {viewable === 'AttendancePage' && (
               <>
                 <AttendancePage />
@@ -152,11 +160,6 @@ const UsersAdminPage = () => {
               </>
             )}
             {viewable === 'Pay Slips' && (
-
-              <>
-
-
-              </>
             )}
 
             {viewable === 'User Report' && (
@@ -172,10 +175,7 @@ const UsersAdminPage = () => {
               />
             )}
 
-
-
-
-            {viewable === 'User Report' && (
+            {/* {viewable === 'User Report' && (
               // <ReportMain/>
               <ActivitySummaryReport
                 project={{
@@ -187,8 +187,7 @@ const UsersAdminPage = () => {
                 }}
                 isEdit={false}
               />
-            )}
-
+            )} */}
 
             <SUserSignup
               open={isOpen}
