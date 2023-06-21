@@ -415,6 +415,7 @@ const OnBoarding = ({ leadsTyper }) => {
               <div className=" m-1">
                 <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                   <section>
+                  <div className="flex item-center justify-between">
                     <svg
                       width="38"
                       height="38"
@@ -451,6 +452,7 @@ const OnBoarding = ({ leadsTyper }) => {
 
                     <div className="px-2 flex flex-row justify-between">
                       <h3 className=" css-5mn5yy">Sim Card</h3>
+                    </div>
                     </div>
 
                     <span className="css-1lpgd8m px-4 text-[#767676] text-[10px]">
