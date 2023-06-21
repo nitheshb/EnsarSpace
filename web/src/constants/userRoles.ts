@@ -145,34 +145,43 @@ export const options = [
   { value: 'Sim', label: 'Sim' },
 ]
 export const options1 = [
-  { label: 'Select the screen', value: '' },
-  { value: 'amoled', label: 'Amoled' },
-  { value: 'lcd', label: 'Lcd' },
-  { value: 'hd', label: 'Hd' },
+  { label: 'Select the Processor', value: '' },
+  { value: 'Ryzen', label: 'Ryzen' },
+  { value: 'Intel', label: 'Intel' },
+  { value: 'Snapdragon', label: 'Snapdragon' },
+  { value: 'Mediatek', label: 'Mediatek' },
 ]
 export const options2 = [
-  { label: 'Select the sensor', value: '' },
-  { value: 'acclerometer', label: 'Acclerometer' },
-  { value: 'gyroscope', label: 'Gyroscope' },
-  { value: 'proximity', label: 'Proximity' },
-  { value: 'fingerprint', label: 'Fingerprint' },
+  { label: 'Select the Ram', value: '' },
+  { value: '32GB', label: '32GB' },
+  { value: '64GB', label: '64GB' },
+  { value: '128GB', label: '128GB' },
+  { value: '256GB', label: '256GB' },
 ]
  export const options3 = [
-  { label: 'Select the Nfc', value: '' },
-  { value: 'yes', label: 'Yes' },
-  { value: 'no', label: 'No' },
+  { label: 'Select the SerialNUmber', value: '' },
+  { value: '01', label: '01' },
+  { value: '02', label: '02' },
+  { value: '03', label: '03' },
+  { value: '04', label: '02' },
+  { value: '05', label: '02' },
+  { value: '06', label: '02' },
+  { value: '07', label: '02' },
+  { value: '08', label: '08' },
+  { value: '09', label: '09' },
+  { value: '10', label: '10' },
+
 ]
 export const options4 = [
-  { label: 'Select the display', value: '' },
-  { value: 'gorilla', label: 'Gorilla' },
-  { value: 'diamondglass', label: 'Diamond glass' },
-  { value: 'temperglass', label: 'Temperglass' },
+  { label: 'Select the AllocationStatus', value: '' },
+  { value: 'Yes', label: 'Yes' },
+  { value: 'No', label: 'No' },
 ]
 export const options5 = [
-  { label: 'Select phone connector', value: '' },
-  { value: 'microusb ', label: 'Micro USB' },
-  { value: 'type-c', label: 'Type-c' },
-  { value: 'usb type-a', label: 'Usb type-a' },
+  { label: 'Select WorkingStatus', value: '' },
+  { value: 'Good ', label: 'Good' },
+  { value: 'Average', label: 'Average' },
+  { value: 'Bad', label: 'Bad' },
 ]
 export const options6 = [
   { label: 'Select the keypad', value: '' },
