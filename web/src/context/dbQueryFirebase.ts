@@ -730,20 +730,7 @@ export const createEnsarUser = async (data) => {
 }
 
 
-// export const createCourse = async (courseDetails) => {
-//   try {
-//     const courseRef = doc(db, 'courses', courseDetails.id);
-//     const docSnap = await getDoc(courseRef);
-//     if (!docSnap.exists()) {
-//       await setDoc(courseRef, courseDetails, { merge: true });
-//     } else {
-//       console.log('Course already exists!');
-//       return null;
-//     }
-//   } catch (error) {
-//     console.log('Error in Firestore:', error);
-//   }
-// };
+
 
 
 export const storeCourseDetails = async (orgId, uid, courseDetails) => {
@@ -755,6 +742,11 @@ export const storeCourseDetails = async (orgId, uid, courseDetails) => {
     console.log('Error storing Course details:', error)
   }
 }
+
+
+
+
+
 
 export const getCourseDetails = async () => {
   try {
