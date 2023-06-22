@@ -91,20 +91,6 @@ const OnBoardAssertBody = () => {
       console.log(error)
     }
 
-    // const Onboarding = () => {
-    //   const [loading, setLoading] = useState(false);
-    //   const [count, setCount] = useState(0);
-
-    //   const handleSubmit = () => {
-    //     setLoading(true);
-    //     // Perform your submit logic here
-    //     // You can increment the count after successful submission
-    //     setCount(prevCount => prevCount + 1);
-    //     setLoading(false);
-    //   };
-
-    // Display form values in the console
-
     console.log('Form Values:', values)
   }
 
@@ -232,29 +218,6 @@ const OnBoardAssertBody = () => {
                   />
                 </div>
 
-                {/* <div>
-                  <label
-                    htmlFor="SerialNumber"
-                    className="block text-sm font-medium bold-black-700"
-                  >
-                    Serial Number
-                  </label>
-                  <Field
-                    as={CustomSelect}
-                    name="SerialNumber"
-                    options={options3}
-                    placeholder="Select SerialNumber"
-                    className="mt-1"
-                    onChange={(option) =>
-                      setFieldValue('SerialNumber', option.value)
-                    }
-                  />
-                  <ErrorMessage
-                    name="SerialNumber"
-                    component="div"
-                    className="text-red-500 text-sm mt-1"
-                  />
-                </div> */}
 
                 <div>
                   <label
@@ -305,16 +268,9 @@ const OnBoardAssertBody = () => {
                 </div>
 
                 <div className="flex justify-end">
-                  {/* <button
-                    type="submit"
-                    className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                  >
-                    {loading ? <Loader /> : 'Submit'}
-                  </button> */}
                   <button
                     type="submit"
                     className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                    // onClick={handleSubmit}
                   >
                     {loading ? <Loader texColor={undefined} size={undefined} /> : 'Submit'}
                   </button>
