@@ -163,6 +163,7 @@ const OnBoarding = ({ leadsTyper }) => {
 
   console.log('add productData is', OnBoardAssertBody)
 
+
   useEffect(() => {
     const getAssetData = async () => {
       try {
@@ -435,6 +436,7 @@ const OnBoarding = ({ leadsTyper }) => {
                       android
                     </span>
                   </section>
+
                 </div>
 
                 {/* <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
@@ -512,3 +514,4 @@ export default OnBoarding
 function getassetRepo(orgId: any) {
   throw new Error('Function not implemented.')
 }
+

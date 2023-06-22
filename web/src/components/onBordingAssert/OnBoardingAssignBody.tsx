@@ -225,6 +225,9 @@ import Loader from '../Loader/Loader'
 
 import OnBoardingAssign from './OnBoardingAssign'
 
+
+const [currentDate, setCurrentDate] = useState('');
+
 const validate = Yup.object().shape({
   Name: Yup.string().required('Name is required'),
   ProductName: Yup.string().required('Product name is required'),
@@ -509,6 +512,7 @@ const OnBoardingAssignBody = () => {
                     className="text-red-500 text-sm mt-1"
                   />
                 </div>
+
 
                 <div>
                   <label
