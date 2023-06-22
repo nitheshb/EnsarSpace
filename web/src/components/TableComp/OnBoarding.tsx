@@ -33,7 +33,7 @@ const OnBoarding = ({ leadsTyper }) => {
   const [isAssetOpen, handleAssetOnClose] = useState(false)
   const [isAssignOpen, handleAssignOnClose] = useState(false)
   const [laptopCount, setLaptopCount] = useState(0);
-  const [PhonewindowsCount, setPhonewindowsCount] = useState(0);
+  const [PhoneiphoneCount, setPhoneiphoneCount] = useState(0);
   const [PhoneandroidCount, setPhoneandroidCount ] = useState(0);
   const [SimCount, setSimCount] = useState(0);
 
@@ -163,29 +163,6 @@ const OnBoarding = ({ leadsTyper }) => {
 
   console.log('add productData is', OnBoardAssertBody)
 
-  // useEffect(() => {
-  //   const getAssetData = async () => {
-  //     try {
-  //       const requests = await getAssetdetails(user.orgId)
-
-  //       return requests
-  //     } catch (error) {
-  //       console.error('Error retrieving Asset data:', error)
-
-  //       return []
-  //     }
-  //   }
-  //   getAssetData()
-  //     .then((requests) => {
-  //       console.log('REQUEST DETAILS DATA')
-  //       console.log(requests)
-  //    // setAssetData(requests);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error setting asset details:', error)
-  //     })
-  // }, [])
-
   useEffect(() => {
     const getAssetData = async () => {
       try {
@@ -195,10 +172,10 @@ const OnBoarding = ({ leadsTyper }) => {
         const laptopCount = requests.filter(request => request.Product === 'Laptop').length;
         setLaptopCount(laptopCount);
 
-        const PhonewindowsCount = requests.filter(request => request.Product === 'phone windows').length;
-        setPhonewindowsCount(PhonewindowsCount);
+        const PhoneiphoneCount = requests.filter(request => request.Product === 'Phone iphone').length;
+        setPhoneiphoneCount(PhoneiphoneCount);
 
-        const PhoneandroidCount = requests.filter(request => request.Product === 'phone android').length;
+        const PhoneandroidCount = requests.filter(request => request.Product === 'Phone android').length;
         setPhoneandroidCount(PhoneandroidCount);
 
         const SimCount = requests.filter(request => request.Product === 'Sim').length;
@@ -357,7 +334,7 @@ const OnBoarding = ({ leadsTyper }) => {
                       </svg>
                       <div className="width-30 height-50 font-medium flex-end text-black-1500">
                         {/* <p className=" css-6mn6yy">0</p> */}
-                        <p className="css-6mn6yy">{PhonewindowsCount.toString().padStart(2, '0')}</p>
+                        <p className="css-6mn6yy">{PhoneiphoneCount.toString().padStart(2, '0')}</p>
                       </div>
                     </div>
 
@@ -365,7 +342,7 @@ const OnBoarding = ({ leadsTyper }) => {
                       <h3 className=" css-5mn5yy">Phone</h3>
                     </div>
                     <span className="css-1lpgd8m px-3 text-[black] text-[10px]">
-                      Iphone
+                      iphone
                     </span>
                   </section>
                 </div>
