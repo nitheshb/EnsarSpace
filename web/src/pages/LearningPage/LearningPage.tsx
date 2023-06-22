@@ -1,7 +1,7 @@
 import { MetaTags } from '@redwoodjs/web'
-import CategoriesList from 'src/components/A_LearningModule/CategoriesList'
-import CoursesList from 'src/components/A_LearningModule/CoursesList'
 
+import CategoriesList from 'src/components/A_LearningModule/CategoriesList'
+import CourseList from 'src/components/A_LearningModule/CoursesList'
 import Hero from 'src/components/A_LearningModule/hero'
 
 const LearningPage = () => {
@@ -10,8 +10,8 @@ const LearningPage = () => {
       <MetaTags title="Learning" description="Learning page" />
       <div className="holder">
         <Hero />
-       <CoursesList />
-      <CategoriesList />
+        <CourseList />
+        <CategoriesList />
       </div>
     </>
   )

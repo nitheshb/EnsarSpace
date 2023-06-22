@@ -14,7 +14,6 @@ import StarRating from 'src/components/A_LearningModule/StarRatings'
 import { courses } from 'src/constants/courses'
 import {
   checkIfIdExists,
-  getCourseDetails,
   storeCourseDetails,
 } from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
@@ -33,7 +32,7 @@ const CoursedetailsPage = async () => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useEffect(() => {
         const getAllCourses = async () => {
-          const courses = await getCourseDetails()
+          const courses = await checkIfIdExists()
 
           return courses
         }

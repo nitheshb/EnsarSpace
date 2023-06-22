@@ -122,6 +122,7 @@
         "react-number-format": "^4.9.1",
         "react-papaparse": "^4.0.2",
         "react-quill": "^2.0.0",
+        "react-rating-stars-component": "^2.2.0",
         "react-redux": "^7.2.6",
         "react-select": "^5.2.2",
         "react-select-search": "^3.0.9",

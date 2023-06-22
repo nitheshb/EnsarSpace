@@ -729,9 +729,41 @@ export const createEnsarUser = async (data) => {
   }
 }
 
+export const storeCourseDetails = async (orgId, uid, courseDetails) => {
+  try {
+    const addCourseData = { uid, ...courseDetails }
+
+    const x = await addDoc(
+      collection(db, `${orgId}_course_Repo`),
+      addCourseData
+    )
+
+    console.log('Course details stored successfully!')
+  } catch (error) {
+    console.log('Error storing Course details:', error)
+  }
+}
+
+export const getCourseDetails = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'ensar_course_Repo'))
+
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+  }
+}
+
+export const checkIfIdExists = async (orgId, id) => {
+  const collectionName = `${orgId}_course_Repo`
+  const q = query(collection(db, collectionName), where('id', '==', id))
+  const querySnapshot = await getDocs(q)
+  return querySnapshot.size > 0
+}
+
 export const storeLeaveDetails = async (leaveDetails) => {
   try {
-    const leaveRef = doc(db, 'leaves', leaveDetails.employeeName) 
+    const leaveRef = doc(db, 'leaves', leaveDetails.employeeName)
     await setDoc(leaveRef, leaveDetails, { merge: true })
     console.log('Leave details stored successfully!')
   } catch (error) {

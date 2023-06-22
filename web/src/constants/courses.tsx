@@ -1,8 +1,8 @@
 export const courses = [
   {
-    id: 'xMHCZl',
+    id: '1',
     category: 'python',
-    image:'learning_images/python_5.jpg',
+    image: 'learning_images/python_5.jpg',
 
     course_name: 'Learn Python: The Complete Python Programming Course',
     description:
@@ -14,7 +14,7 @@ export const courses = [
     creator: 'Avinash Jain, The Codex',
     updated_date: '9/2015',
     lang: 'english',
-    
+
     actual_price: 84.99,
     discounted_price: 9.99,
     what_you_will_learn: [
@@ -35,7 +35,7 @@ export const courses = [
   {
     id: 'dtfo9e',
     category: 'python',
-    image:'learning_images/python_4.jpg',
+    image: 'learning_images/python_4.jpg',
     course_name: 'Learning Python for Data Analysis and Visualization',
     description:
       'Learn python and how to use it to analyze,visualize and present data. Includes tons of sample code and hours of video!',
@@ -53,9 +53,6 @@ export const courses = [
       'Learn how to work with various data formats within python, including: JSON,HTML, and MS Excel Worksheets.',
       'Have a portfolio of various data analysis projects.',
     ],
-
-
-
 
     content: [
       'Intro to Course and Python',
@@ -86,8 +83,6 @@ export const courses = [
       'To learn the python language',
       'To learn the CORE skills to understand any programming language',
     ],
-
-
 
     content: [
       'Programming fundamentals',
@@ -120,8 +115,6 @@ export const courses = [
       'Work with Python file handling',
       'Manipulate strings and data',
     ],
-
-
 
     content: [
       'Getting Started',
