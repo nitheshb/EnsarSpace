@@ -136,6 +136,32 @@ const OnBoardAssertBody = () => {
           >
             {({ values, setFieldValue }) => (
               <Form className="space-y-6">
+
+                   <div>
+                  <label
+                    htmlFor="SerialNumber"
+                    className="block text-sm font-medium bold-black-700"
+                  >
+                    Serial Number
+                  </label>
+                  <Field
+                    as={CustomSelect}
+                    name="SerialNumber"
+                    options={options3}
+                    placeholder="Select SerialNumber"
+                    className="mt-1"
+                    onChange={(option) =>
+                      setFieldValue('SerialNumber', option.value)
+                    }
+                  />
+                  <ErrorMessage
+                    name="SerialNumber"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
+                </div>
+
+
                 <div>
                   <label
                     htmlFor="Product"
@@ -206,7 +232,7 @@ const OnBoardAssertBody = () => {
                   />
                 </div>
 
-                <div>
+                {/* <div>
                   <label
                     htmlFor="SerialNumber"
                     className="block text-sm font-medium bold-black-700"
@@ -228,7 +254,7 @@ const OnBoardAssertBody = () => {
                     component="div"
                     className="text-red-500 text-sm mt-1"
                   />
-                </div>
+                </div> */}
 
                 <div>
                   <label
