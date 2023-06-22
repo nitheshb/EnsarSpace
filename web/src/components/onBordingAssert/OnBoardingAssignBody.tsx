@@ -255,7 +255,7 @@ const ProductName = [
   { value: 'Laptop', label: 'Laptop' },
   { value: 'phone android', label: 'Phone android' },
   { value: 'Phone windows', label: 'phone windows' },
-  { value: 'Sim', label: 'Sim Card' },
+  { value: 'Sim', label: 'Sim' },
 ]
 
 const Model = [
