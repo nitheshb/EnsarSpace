@@ -1,20 +1,57 @@
-import React from 'react'
-import { Link, useParams } from '@redwoodjs/router'
-import StarRating from 'src/components/A_LearningModule/StarRatings'
-import { MdInfo } from 'react-icons/md'
-import { TbWorld } from 'react-icons/tb'
-import { FaBars, FaShoppingCart } from 'react-icons/fa'
-import { RiClosedCaptioningFill } from 'react-icons/ri'
+import React, { useEffect, useState } from 'react'
+
+import { id } from 'date-fns/locale'
 import { BiCheck } from 'react-icons/bi'
-import { courses } from 'src/constants/courses'
+import { FaBars, FaShoppingCart } from 'react-icons/fa'
+import { MdInfo } from 'react-icons/md'
+import { RiClosedCaptioningFill } from 'react-icons/ri'
+import { TbWorld } from 'react-icons/tb'
 import styled from 'styled-components'
 
+import { Link, useParams } from '@redwoodjs/router'
 
-const CoursedetailsPage = () => {
-  const { id } = useParams()
-  const course = courses.find((p) => p.id === id)
+import StarRating from 'src/components/A_LearningModule/StarRatings'
+import { courses } from 'src/constants/courses'
+import {
+  checkIfIdExists,
+  getCourseDetails,
+  storeCourseDetails,
+} from 'src/context/dbQueryFirebase'
+import { useAuth } from 'src/context/firebase-auth-context'
 
-  console.log('course', course)
+const CoursedetailsPage = async () => {
+  // const { id } = useParams()
+  // const course = courses.find((p) => p.id === id)
+  const [loading, setLoading] = useState(false)
+  const { user } = useAuth()
+
+  // console.log('course', course)
+
+  const idAlreadyExists = await checkIfIdExists(user.orgId, id)
+  try {
+    if (idAlreadyExists) {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useEffect(() => {
+        const getAllCourses = async () => {
+          const courses = await getCourseDetails()
+
+          return courses
+        }
+
+        console.log('COURSE DETAILS DATA')
+
+        getAllCourses().then((courses) => setAllCourses(courses))
+      }, [])
+
+      setLoading(false)
+      return // Exit the function
+    } else {
+      setLoading(false)
+      await storeCourseDetails(user.orgId, user.uid, user.displayName)
+    }
+  } catch (error) {
+    console.error('Error submitting leave request:', error)
+  }
 
   return (
     <SingleCourseWrapper>
@@ -43,8 +80,6 @@ const CoursedetailsPage = () => {
       </nav>
 
       <div>
-
-
         <div key={course.id}>
           <div style={{ backgroundColor: 'black', color: 'white' }}>
             <div className="course-intro mx-auto grid bg-dark">
@@ -164,13 +199,6 @@ const CoursedetailsPage = () => {
                 </div>
               </div>
 
-
-
-
-
-
-
-
               <img
                 src={course.image}
                 alt={course.category}
@@ -184,7 +212,6 @@ const CoursedetailsPage = () => {
                 }}
                 className="responsive-image"
               />
-
             </div>
           </div>
 
