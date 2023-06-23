@@ -38,6 +38,10 @@ export const steamUsersList = (orgId, snapshot, error) => {
   console.log('orgname is ====>', orgId)
   return onSnapshot(itemsQuery, snapshot, error)
 }
+export const steamAssetsList = (orgId, snapshot, error) => {
+  const itemsQuery = query(collection(db, `${orgId}_asset_Repo`))
+  return onSnapshot(itemsQuery, snapshot, error)
+}
 // get users list
 export const steamUsersListByRole = (orgId, snapshot, error) => {
   const itemsQuery = query(
@@ -760,6 +764,16 @@ export const getAssetdetails = async (orgId) => {
     return querySnapshot.docs.map((doc) => doc.data())
   } catch (error) {
     console.log('Error getting Asset details:', error)
+  }
+}
+
+export const getUserdetails = async (orgId) => {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'users'))
+
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting user details:', error)
   }
 }
 

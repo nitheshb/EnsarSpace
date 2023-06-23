@@ -1,6 +1,6 @@
 import { pid } from 'process'
 
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
@@ -33,7 +33,9 @@ import {
 } from 'src/state/actions/search'
 import { useDispatch } from 'react-redux'
 import NotificationsSetupForm from '../A_ProjModule/NotificatoinsSetupFromHome'
+import OnBoardingAssignBody from '../onBordingAssert/OnBoardingAssignBody'
 const SiderForm = ({
+  assetPayload,
   open,
   setOpen,
   title,
@@ -65,6 +67,9 @@ const SiderForm = ({
 }) => {
   // dont write too many here
   //  this is for customerProfileSideView
+  useEffect(() => {
+console.log('title is ', title)
+  }, [])
   const dispatch = useDispatch()
   return (
     <Transition.Root show={open || false} as={Fragment}>
@@ -149,6 +154,12 @@ const SiderForm = ({
                     phase={data}
                   />
                 )}
+               {(title === 'LaptopDetailPage') && (
+                  <OnBoardingAssignBody
+                  assetPayload={assetPayload}
+                  />
+                  )}
+
                 {(title === 'Add Block' || title === 'Edit Block') && (
                   <AddBlockForm
                     title={title}

@@ -20,6 +20,7 @@ import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 
 import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
+import LaptopDetailsPage from '../LaptopDetailPage/LaptopDetailPage'
 
 // import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 
@@ -130,6 +131,12 @@ const UsersAdminPage = () => {
                 <OnBoarding leadsTyper={undefined} />
               </>
             )}
+
+              {/* {viewable === 'LaptopDetailsPage' && (
+              <>
+                <LaptopDetailsPage />
+              </>
+            )} */}
             {/* {viewable === 'OnBoarding' && (
               <>
                 <OnBoarding />
