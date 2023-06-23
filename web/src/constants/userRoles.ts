@@ -153,49 +153,141 @@ export const Lang = [
   { label: 'French', value: 'French' },
 ]
 
+// export const options = [
+//   { label: 'Select the product', value: '' },
+//   { value: 'Laptop', label: 'Laptop' },
+//   { value: 'Phone windows', label: 'Phone windows' },
+//   { value: 'Phone android', label: 'Phone android' },
+//   { value: 'Sim', label: 'Sim' },
+// ]
+// export const options1 = [
+//   { label: 'Select the screen', value: '' },
+//   { value: 'amoled', label: 'Amoled' },
+//   { value: 'lcd', label: 'Lcd' },
+//   { value: 'hd', label: 'Hd' },
+// ]
+// export const options2 = [
+//   { label: 'Select the sensor', value: '' },
+//   { value: 'acclerometer', label: 'Acclerometer' },
+//   { value: 'gyroscope', label: 'Gyroscope' },
+//   { value: 'proximity', label: 'Proximity' },
+//   { value: 'fingerprint', label: 'Fingerprint' },
+// ]
+//  export const options3 = [
+//   { label: 'Select the Nfc', value: '' },
+//   { value: 'yes', label: 'Yes' },
+//   { value: 'no', label: 'No' },
+// ]
+// export const options4 = [
+//   { label: 'Select the display', value: '' },
+//   { value: 'gorilla', label: 'Gorilla' },
+//   { value: 'diamondglass', label: 'Diamond glass' },
+//   { value: 'temperglass', label: 'Temperglass' },
+// ]
+// export const options5 = [
+//   { label: 'Select phone connector', value: '' },
+//   { value: 'microusb ', label: 'Micro USB' },
+//   { value: 'type-c', label: 'Type-c' },
+//   { value: 'usb type-a', label: 'Usb type-a' },
+// ]
+// export const options6 = [
+//   { label: 'Select the keypad', value: '' },
+//   { value: 'virtual keypad', label: 'Virtual keypad' },
+//   { value: 'gboard', label: 'Gboard' },
+//   { value: 'swiftkey', label: 'Swiftkwy' },
+// ]
+
 export const options = [
+
   { label: 'Select the product', value: '' },
-  { value: 'Laptop', label: 'Laptop' },
-  { value: 'Phone windows', label: 'Phone windows' },
-  { value: 'Phone android', label: 'Phone android' },
-  { value: 'Sim', label: 'Sim' },
+
+  { label: 'Laptop', value: 'Laptop' },
+
+  { label: 'Phone windows', value: 'Phone windows' },
+
+  { label: 'Phone android', value: 'Phone android' },
+
+  { label: 'Sim', value: 'Sim' },
+
 ]
+
 export const options1 = [
-  { label: 'Select the screen', value: '' },
-  { value: 'amoled', label: 'Amoled' },
-  { value: 'lcd', label: 'Lcd' },
-  { value: 'hd', label: 'Hd' },
+
+  { label: 'Select the Processor', value: '' },
+
+  { label: 'Ryzen', value: 'Ryzen' },
+
+  { label: 'Intel', value: 'Intel' },
+
+  { label: 'Snapdragon', value: 'Snapdragon' },
+
+  { label: 'Mediatek', value: 'Mediatek' },
+
 ]
+
 export const options2 = [
-  { label: 'Select the sensor', value: '' },
-  { value: 'acclerometer', label: 'Acclerometer' },
-  { value: 'gyroscope', label: 'Gyroscope' },
-  { value: 'proximity', label: 'Proximity' },
-  { value: 'fingerprint', label: 'Fingerprint' },
+
+  { label: 'Select the Ram', value: '' },
+
+  { label: '4GB', value: '4GB' },
+
+  { label: '6GB', value: '6GB' },
+
+  { label: '8GB', value: '8GB' },
+
+  { label: '16GB', value: '16GB' },
+
 ]
- export const options3 = [
-  { label: 'Select the Nfc', value: '' },
-  { value: 'yes', label: 'Yes' },
-  { value: 'no', label: 'No' },
+
+export const options3 = [
+
+  { label: 'Select the Serial Number', value: '' },
+
+  { label: '01', value: '01' },
+
+  { label: '02', value: '02' },
+
+  { label: '03', value: '03' },
+
+  { label: '04', value: '04' },
+
+  { label: '05', value: '05' },
+
+  { label: '06', value: '06' },
+
+  { label: '07', value: '07' },
+
+  { label: '08', value: '08' },
+
+  { label: '09', value: '09' },
+
+  { label: '10', value: '10' },
+
 ]
+
 export const options4 = [
-  { label: 'Select the display', value: '' },
-  { value: 'gorilla', label: 'Gorilla' },
-  { value: 'diamondglass', label: 'Diamond glass' },
-  { value: 'temperglass', label: 'Temperglass' },
+
+  { label: 'Select the Allocation Status', value: '' },
+
+  { label: 'Yes', value: 'Yes' },
+
+  { label: 'No', value: 'No' },
+
 ]
+
 export const options5 = [
-  { label: 'Select phone connector', value: '' },
-  { value: 'microusb ', label: 'Micro USB' },
-  { value: 'type-c', label: 'Type-c' },
-  { value: 'usb type-a', label: 'Usb type-a' },
+
+  { label: 'Select the Working Status', value: '' },
+
+  { label: 'Good ', value: 'Good' },
+
+  { label: 'Average', value: 'Average' },
+
+  { label: 'Bad', value: 'Bad' },
+
 ]
-export const options6 = [
-  { label: 'Select the keypad', value: '' },
-  { value: 'virtual keypad', label: 'Virtual keypad' },
-  { value: 'gboard', label: 'Gboard' },
-  { value: 'swiftkey', label: 'Swiftkwy' },
-]
+
+
 
 export const ROLES_LIST = [
   { label: 'Select the role', value: '' },

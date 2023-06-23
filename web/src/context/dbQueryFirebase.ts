@@ -25,7 +25,8 @@ import { sendWhatAppTextSms1 } from 'src/util/axiosWhatAppApi'
 
 import { db } from './firebaseConfig'
 import { supabase } from './supabase'
-
+import { useAuth } from './firebase-auth-context'
+// import { collection, onSnapshot } from "firebase/firestore";
 // import { userAccessRoles } from 'src/constants/userAccess'
 
 // **********************************************
@@ -729,15 +730,72 @@ export const createEnsarUser = async (data) => {
   }
 }
 
+
+
 export const storeLeaveDetails = async (leaveDetails) => {
   try {
-    const leaveRef = doc(db, 'leaves', leaveDetails.employeeName) 
+    const leaveRef = doc(db, 'leaves', leaveDetails.employeeName)
     await setDoc(leaveRef, leaveDetails, { merge: true })
     console.log('Leave details stored successfully!')
   } catch (error) {
     console.log('Error storing leave details:', error)
   }
 }
+
+
+// export const storeAssetDetails = async (assetDetails) => {
+//   try {
+//     const assetRef = doc(db, 'assets', assetDetails.productName)
+//     await setDoc(assetRef, assetDetails, { merge: true })
+//     console.log('Asset details stored successfully!')
+//   } catch (error) {
+//     console.log('Error storing asset details:', error)
+//   }
+// }
+
+
+
+
+
+export const storeAssetDetails = async (orgId, assetDetails) => {
+  try {
+    // const { user } = useAuth();
+    const assetManagementData = { ...assetDetails}
+    const x = await addDoc(collection(db, `${orgId}_asset_Repo`), assetManagementData)
+    console.log('Asset details stored successfully!')
+  } catch (error) {
+    console.log('Error storing Asset details:', error)
+  }
+}
+
+
+export const getAssetdetails = async (orgId) => {
+  try {
+ const querySnapshot = await getDocs(collection(db, `${orgId}_asset_Repo`))
+ return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+ console.log('Error getting Asset details:', error)
+  }
+}
+
+
+
+export const storeAssignDetails = async (orgId, assignDetails) => {
+  try {
+    // const { user } = useAuth();
+    const assignManagementData = { ...assignDetails}
+    const x = await addDoc(collection(db, `${orgId}_assign_Repo`), assignManagementData)
+    console.log('Assign details stored successfully!')
+  } catch (error) {
+    console.log('Error storing Assign details:', error)
+  }
+}
+
+
+
+
+
+
 
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data
