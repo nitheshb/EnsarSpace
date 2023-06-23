@@ -493,7 +493,7 @@ const OnBoarding = ({ leadsTyper }) => {
               </div>
             </section>
             <div></div>
-            <LaptopDetailPage/>
+            <LaptopDetailPage onBoardAssertBody={undefined}/>
           </div>
         </div>
       </div>
