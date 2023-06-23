@@ -140,10 +140,21 @@ const UsersAdminPage = () => {
               </>
             )}
 
-          {viewable === 'AttendancePage' && (
-            <>
-            <AttendancePage />
-            </>
+            {viewable === 'OnBoarding' && (
+
+              <>
+
+                <OnBoarding leadsTyper={undefined} />
+
+              </>
+
+            )}
+
+
+            {viewable === 'AttendancePage' && (
+              <>
+                <AttendancePage />
+              </>
             )}
 
             {viewable === 'Team Activity' && (

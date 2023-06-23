@@ -1,12 +1,1054 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 
-import { Dialog } from '@headlessui/react'
-import { Form, Formik, Field, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
+// import { Dialog } from '@headlessui/react'
+// import { Form, Formik, Field, ErrorMessage } from 'formik'
+// import * as Yup from 'yup'
 
-import { CustomSelect } from 'src/util/formFields/selectBoxField'
+// import { CustomSelect } from 'src/util/formFields/selectBoxField'
 
-import Loader from '../Loader/Loader'
+// import Loader from '../Loader/Loader'
+
+// const validate = Yup.object().shape({
+//   Name: Yup.string().required('Name is required'),
+//   ProductName: Yup.string().required('Product name is required'),
+//   Date: Yup.string().required('Date is required'),
+//   Time: Yup.string().required('Time is required'),
+//   Version: Yup.string().required('Version is required'),
+// })
+
+// const Name = [
+//   { label: 'Select the name', value: '' },
+//   { value: 'kalyankurapati', label: 'kalyankurapati' },
+//   { value: 'kalyankambampati', label: 'kalyan kambampati' },
+//   { value: 'ooha', label: 'ooha' },
+//   { value: 'saisumanth', label: 'saisumanth' },
+//   { value: 'Abhishek', label: 'Abhishek' },
+//   { value: 'pavan', label: 'pavan' },
+//   { value: 'venkatesh', label: 'venkatesh' },
+//   { value: 'salahuddin', label: 'salahuddin' },
+//   { value: 'sandeep', label: 'sandeep' },
+//   { value: 'Avanthika', label: 'Avanthika' },
+//   { value: 'Deepthi', label: 'Deepthi' },
+//   { value: 'Hazarath', label: 'Hazarath' },
+
+// ]
+
+// const ProductName = [
+//   { label: 'Select the product', value: '' },
+//   { value: 'Laptop', label: 'Laptop' },
+//   { value: 'phone android', label: 'Phone android' },
+//   { value: 'Phone windows', label: 'phone windows' },
+//   { value: 'Sim', label: 'Sim Card' },
+// ]
+
+
+// const Version = [
+//   { label: 'Select the Version', value: '' },
+//   { value: 'updated 11.0', label: 'updated 11.0' },
+//   { value: 'WW 12.0', label: 'WW 12.0' },
+//   { value: 'Touch 15', label: 'Touch 15' },
+//   { value: ' andriod 1 Above', label: '1_10' },
+//   { value: 'android 10 Above', label: '_10' },
+// ]
+
+// const OnBoardAssertBody = () => {
+//   const [formMessage, setFormMessage] = useState({
+//     color: 'green',
+//     message: '',
+//   })
+
+//   const [loading, setLoading] = useState(false)
+
+//   const handleSubmit = (values) => {
+//     console.log('Submitted', values)
+//     // Handle form submission
+
+//     // Example: Simulating form submission delay
+//     setLoading(true)
+//     setTimeout(() => {
+//       setLoading(false)
+//       setFormMessage({
+//         color: 'green',
+//         message: 'Product added successfully!',
+//       })
+//     }, 2000)
+
+//     // Display form values in the console
+//     console.log('Form Values:', values)
+//   }
+
+//   return (
+//     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+//       <div className="px-4 sm:px-6">
+//         <Dialog.Title className="font-semibold text-lg mr-auto ml-3">
+//           Add Products
+//         </Dialog.Title>
+//       </div>
+//       {formMessage.message && (
+//         <div className="w-full bg-[#E9F6ED] ml-2 mt-3 mb-5 p-3 text-green-700">
+//           {formMessage.message}
+//         </div>
+//       )}
+//       <div className="px-4 sm:px-6 mt-4">
+//         <div className="mt-1">
+//           <Formik
+//             initialValues={{
+//               Name: '',
+//               ProductName: '',
+//               Date: '',
+//               Time: '',
+//               Version: '',
+//             }}
+//             validationSchema={validate}
+//             onSubmit={handleSubmit}
+//           >
+//             {({ values, setFieldValue }) => (
+//               <Form className="space-y-6">
+//                  <div>
+//                   <label
+//                     htmlFor="Name"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                      Name
+//                   </label>
+//                   <Field
+//                     as={CustomSelect}
+//                     name="Name"
+//                     options={Name}
+//                     placeholder="Select a Name"
+//                     className="mt-1"
+//                     onChange={(option) =>
+//                       setFieldValue('Name', option.value)
+//                     }
+//                   />
+//                   <ErrorMessage
+//                     name="Name"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="ProductName"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Product Name
+//                   </label>
+//                   <Field
+//                     as={CustomSelect}
+//                     name="ProductName"
+//                     options={ProductName}
+//                     placeholder="Select a product"
+//                     className="mt-1"
+//                     onChange={(option) =>
+//                       setFieldValue('ProductName', option.value)
+//                     }
+//                   />
+//                   <ErrorMessage
+//                     name="ProductName"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="Date"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Date
+//                   </label>
+//                   <Field
+//                     type="Date"
+//                     name="Date"
+//                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+//                   />
+//                   <ErrorMessage
+//                     name="Date"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="Time"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Time
+//                   </label>
+//                   <Field
+//                     type="text"
+//                     name="Time"
+//                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+//                   />
+//                   <ErrorMessage
+//                     name="Time"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="Version"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Version
+//                   </label>
+//                   <Field
+//                     as={CustomSelect}
+//                     name="Version"
+//                     options={Version}
+//                     placeholder="Select a version"
+//                     className="mt-1"
+//                     onChange={(option) =>
+//                       setFieldValue('Version', option.value)
+//                     }
+//                   />
+//                   <ErrorMessage
+//                     name="Version"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div className="flex justify-end">
+//                   <button
+//                     type="submit"
+//                     className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+//                   >
+//                     {loading ? <Loader /> : 'Submit'}
+//                   </button>
+//                 </div>
+//               </Form>
+//             )}
+//           </Formik>
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default OnBoardAssertBody
+// newcode start from here
+
+// import React, { useState } from 'react';
+// import { Dialog } from '@headlessui/react';
+// import { Form, Formik, Field, ErrorMessage } from 'formik';
+// import * as Yup from 'yup';
+// import { CustomSelect } from 'src/util/formFields/selectBoxField';
+// import Loader from '../Loader/Loader';
+
+// const validate = Yup.object().shape({
+//   Name: Yup.string().required('Name is required'),
+//   ProductName: Yup.string().required('Product name is required'),
+//   Date: Yup.string().required('Date is required'),
+//   Time: Yup.string().required('Time is required'),
+//   Version: Yup.string().required('Version is required'),
+//   City: Yup.string().required('City is required'),
+// });
+
+// const Name = [
+//   { label: 'Select the name', value: '' },
+//   { value: 'kalyankurapati', label: 'kalyankurapati' },
+//   { value: 'kalyankambampati', label: 'kalyan kambampati' },
+//   { value: 'ooha', label: 'ooha' },
+//   { value: 'saisumanth', label: 'saisumanth' },
+//   { value: 'Abhishek', label: 'Abhishek' },
+//   { value: 'pavan', label: 'pavan' },
+//   { value: 'venkatesh', label: 'venkatesh' },
+//   { value: 'salahuddin', label: 'salahuddin' },
+//   { value: 'sandeep', label: 'sandeep' },
+//   { value: 'Avanthika', label: 'Avanthika' },
+//   { value: 'Deepthi', label: 'Deepthi' },
+//   { value: 'Hazarath', label: 'Hazarath' },
+// ];
+
+// const ProductName = [
+//   { label: 'Select the product', value: '' },
+//   { value: 'Laptop', label: 'Laptop' },
+//   { value: 'phone android', label: 'Phone android' },
+//   { value: 'Phone windows', label: 'phone windows' },
+//   { value: 'Sim', label: 'Sim Card' },
+// ];
+
+// const Version = [
+//   { label: 'Select the Version', value: '' },
+//   { value: 'updated 11.0', label: 'updated 11.0' },
+//   { value: 'WW 12.0', label: 'WW 12.0' },
+//   { value: 'Touch 15', label: 'Touch 15' },
+//   { value: ' andriod 1 Above', label: '1_10' },
+//   { value: 'android 10 Above', label: '_10' },
+// ];
+
+// const City = [
+//   { label: 'Select the city', value: '' },
+//   { value: 'City 1', label: 'City 1' },
+//   { value: 'City 2', label: 'City 2' },
+//   { value: 'City 3', label: 'City 3' },
+// ];
+
+// const OnBoardAssertBody = () => {
+//   const [formMessage, setFormMessage] = useState({
+//     color: 'green',
+//     message: '',
+//   });
+
+//   const [loading, setLoading] = useState(false);
+
+//   const handleSubmit = (values) => {
+//     console.log('Submitted', values);
+//     // Handle form submission
+
+//     // Example: Simulating form submission delay
+//     setLoading(true);
+//     setTimeout(() => {
+//       setLoading(false);
+//       setFormMessage({
+//         color: 'green',
+//         message: 'Product added successfully!',
+//       });
+//     }, 2000);
+
+//     // Display form values in the console
+//     console.log('Form Values:', values);
+//   };
+
+//   return (
+//     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+//       <div className="px-4 sm:px-6">
+//         <Dialog.Title className="font-semibold text-lg mr-auto ml-3">
+//           Add Products
+//         </Dialog.Title>
+//       </div>
+//       {formMessage.message && (
+//         <div className="w-full bg-[#E9F6ED] ml-2 mt-3 mb-5 p-3 text-green-700">
+//           {formMessage.message}
+//         </div>
+//       )}
+//       <div className="px-4 sm:px-6 mt-4">
+//         <div className="mt-1">
+//           <Formik
+//             initialValues={{
+//               Name: '',
+//               ProductName: '',
+//               Date: '',
+//               Time: '',
+//               Version: '',
+//               City: '',
+//             }}
+//             validationSchema={validate}
+//             onSubmit={handleSubmit}
+//           >
+//             {({ values, setFieldValue }) => (
+//               <Form className="space-y-6">
+//                 <div>
+//                   <label
+//                     htmlFor="Name"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Name
+//                   </label>
+//                   <Field
+//                     as={CustomSelect}
+//                     name="Name"
+//                     options={Name}
+//                     placeholder="Select a Name"
+//                     className="mt-1"
+//                     onChange={(option) => setFieldValue('Name', option.value)}
+//                   />
+//                   <ErrorMessage
+//                     name="Name"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="ProductName"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Product Name
+//                   </label>
+//                   <Field
+//                     as={CustomSelect}
+//                     name="ProductName"
+//                     options={ProductName}
+//                     placeholder="Select a product"
+//                     className="mt-1"
+//                     onChange={(option) =>
+//                       setFieldValue('ProductName', option.value)
+//                     }
+//                   />
+//                   <ErrorMessage
+//                     name="ProductName"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="Date"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Date
+//                   </label>
+//                   <Field
+//                     type="Date"
+//                     name="Date"
+//                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+//                   />
+//                   <ErrorMessage
+//                     name="Date"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="Time"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Time
+//                   </label>
+//                   <Field
+//                     type="text"
+//                     name="Time"
+//                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+//                   />
+//                   <ErrorMessage
+//                     name="Time"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="Version"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Version
+//                   </label>
+//                   <Field
+//                     as={CustomSelect}
+//                     name="Version"
+//                     options={Version}
+//                     placeholder="Select a version"
+//                     className="mt-1"
+//                     onChange={(option) =>
+//                       setFieldValue('Version', option.value)
+//                     }
+//                   />
+//                   <ErrorMessage
+//                     name="Version"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="City"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     City
+//                   </label>
+//                   <Field
+//                     as={CustomSelect}
+//                     name="City"
+//                     options={City}
+//                     placeholder="Select a city"
+//                     className="mt-1"
+//                     onChange={(option) => setFieldValue('City', option.value)}
+//                   />
+//                   <ErrorMessage
+//                     name="City"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div className="flex justify-end">
+//                   <button
+//                     type="submit"
+//                     className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+//                   >
+//                     {loading ? <Loader /> : 'Submit'}
+//                   </button>
+//                 </div>
+//               </Form>
+//             )}
+//           </Formik>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default OnBoardAssertBody;
+
+// import React, { useState } from 'react';
+// import { Dialog } from '@headlessui/react';
+// import { Form, Formik, Field, ErrorMessage } from 'formik';
+// import * as Yup from 'yup';
+// import { CustomSelect } from 'src/util/formFields/selectBoxField';
+// import Loader from '../Loader/Loader';
+
+// const validate = Yup.object().shape({
+//   Name: Yup.string().required('Name is required'),
+//   ProductName: Yup.string().required('Product name is required'),
+//   Date: Yup.string().required('Date is required'),
+//   Time: Yup.string().required('Time is required'),
+//   Version: Yup.string().required('Version is required'),
+//   Model: Yup.string().required('Model is required'),
+// });
+
+// const Name = [
+//   { label: 'Select the name', value: '' },
+//   { value: 'kalyankurapati', label: 'kalyankurapati' },
+//   { value: 'kalyankambampati', label: 'kalyan kambampati' },
+//   { value: 'ooha', label: 'ooha' },
+//   { value: 'saisumanth', label: 'saisumanth' },
+//   { value: 'Abhishek', label: 'Abhishek' },
+//   { value: 'pavan', label: 'pavan' },
+//   { value: 'venkatesh', label: 'venkatesh' },
+//   { value: 'salahuddin', label: 'salahuddin' },
+//   { value: 'sandeep', label: 'sandeep' },
+//   { value: 'Avanthika', label: 'Avanthika' },
+//   { value: 'Deepthi', label: 'Deepthi' },
+//   { value: 'Hazarath', label: 'Hazarath' },
+// ];
+
+// const ProductName = [
+//   { label: 'Select the product', value: '' },
+//   { value: 'Laptop', label: 'Laptop' },
+//   { value: 'phone android', label: 'Phone android' },
+//   { value: 'Phone windows', label: 'Phone windows' },
+//   { value: 'Sim', label: 'Sim Card' },
+// ];
+
+// const Version = [
+//   { label: 'Select the Version', value: '' },
+//   { value: 'updated 11.0', label: 'updated 11.0' },
+//   { value: 'WW 12.0', label: 'WW 12.0' },
+//   { value: 'Touch 15', label: 'Touch 15' },
+//   { value: ' andriod 1 Above', label: '1_10' },
+//   { value: 'android 10 Above', label: '_10' },
+// ];
+
+// const modelsByProduct = {
+//   Laptop: ['hp', 'lenovo', 'dell', 'asus'],
+//   'phone android': ['samsung', 'google', 'oneplus', 'xiaomi'],
+//   'Phone windows': ['microsoft', 'nokia'],
+//   Sim: ['at&t', 'verizon', 't-mobile'],
+// };
+
+// const OnBoardAssertBody = () => {
+//   const [formMessage, setFormMessage] = useState({
+//     color: 'green',
+//     message: '',
+//   });
+
+//   const [loading, setLoading] = useState(false);
+
+//   const handleSubmit = (values) => {
+//     console.log('Submitted', values);
+//     // Handle form submission
+
+//     // Example: Simulating form submission delay
+//     setLoading(true);
+//     setTimeout(() => {
+//       setLoading(false);
+//       setFormMessage({
+//         color: 'green',
+//         message: 'Product added successfully!',
+//       });
+//     }, 2000);
+
+//     // Display form values in the console
+//     console.log('Form Values:', values);
+//   };
+
+//   return (
+//     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+//       <div className="px-4 sm:px-6">
+//         <Dialog.Title className="font-semibold text-lg mr-auto ml-3">
+//           Add Products
+//         </Dialog.Title>
+//       </div>
+//       {formMessage.message && (
+//         <div className="w-full bg-[#E9F6ED] ml-2 mt-3 mb-5 p-3 text-green-700">
+//           {formMessage.message}
+//         </div>
+//       )}
+//       <div className="px-4 sm:px-6 mt-4">
+//         <div className="mt-1">
+//           <Formik
+//             initialValues={{
+//               Name: '',
+//               ProductName: '',
+//               Date: '',
+//               Time: '',
+//               Version: '',
+//               Model: '',
+//             }}
+//             validationSchema={validate}
+//             onSubmit={handleSubmit}
+//           >
+//             {({ values, setFieldValue }) => (
+//               <Form className="space-y-6">
+//                 <div>
+//                   <label
+//                     htmlFor="Name"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Name
+//                   </label>
+//                   <Field
+//                     as={CustomSelect}
+//                     name="Name"
+//                     options={Name}
+//                     placeholder="Select a Name"
+//                     className="mt-1"
+//                     onChange={(option) =>
+//                       setFieldValue('Name', option.value)
+//                     }
+//                   />
+//                   <ErrorMessage
+//                     name="Name"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="ProductName"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Product Name
+//                   </label>
+//                   <Field
+//                     as={CustomSelect}
+//                     name="ProductName"
+//                     options={ProductName}
+//                     placeholder="Select a product"
+//                     className="mt-1"
+//                     onChange={(option) =>
+//                       setFieldValue('ProductName', option.value)
+//                     }
+//                   />
+//                   <ErrorMessage
+//                     name="ProductName"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 {values.ProductName && (
+//                   <div>
+//                     <label
+//                       htmlFor="Model"
+//                       className="block text-sm font-medium bold-black-700"
+//                     >
+//                       Model
+//                     </label>
+//                     <Field
+//                       as={CustomSelect}
+//                       name="Model"
+//                       options={modelsByProduct[values.ProductName] || []}
+//                       placeholder="Select a model"
+//                       className="mt-1"
+//                       onChange={(option) =>
+//                         setFieldValue('Model', option.value)
+//                       }
+//                     />
+//                     <ErrorMessage
+//                       name="Model"
+//                       component="div"
+//                       className="text-red-500 text-sm mt-1"
+//                     />
+//                   </div>
+//                 )}
+
+//                 <div>
+//                   <label
+//                     htmlFor="Date"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Date
+//                   </label>
+//                   <Field
+//                     type="Date"
+//                     name="Date"
+//                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+//                   />
+//                   <ErrorMessage
+//                     name="Date"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="Time"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Time
+//                   </label>
+//                   <Field
+//                     type="text"
+//                     name="Time"
+//                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+//                   />
+//                   <ErrorMessage
+//                     name="Time"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="Version"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Version
+//                   </label>
+//                   <Field
+//                     as={CustomSelect}
+//                     name="Version"
+//                     options={Version}
+//                     placeholder="Select a version"
+//                     className="mt-1"
+//                     onChange={(option) =>
+//                       setFieldValue('Version', option.value)
+//                     }
+//                   />
+//                   <ErrorMessage
+//                     name="Version"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div className="flex justify-end">
+//                   <button
+//                     type="submit"
+//                     className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+//                   >
+//                     {loading ? <Loader /> : 'Submit'}
+//                   </button>
+//                 </div>
+//               </Form>
+//             )}
+//           </Formik>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default OnBoardAssertBody;
+
+// using code start from here
+
+// import React, { useState } from 'react';
+
+// import { Dialog } from '@headlessui/react';
+// import { Form, Formik, Field, ErrorMessage } from 'formik';
+// import * as Yup from 'yup';
+
+// import { CustomSelect } from 'src/util/formFields/selectBoxField';
+
+// import Loader from '../Loader/Loader';
+
+// const validate = Yup.object().shape({
+//   Name: Yup.string().required('Name is required'),
+//   ProductName: Yup.string().required('Product name is required'),
+//   Date: Yup.string().required('Date is required'),
+//   Time: Yup.string().required('Time is required'),
+//   Version: Yup.string().required('Version is required'),
+//   Model: Yup.string().required('Model is required'),
+// });
+
+// const Name = [
+//   { label: 'Select the name', value: '' },
+//   { value: 'kalyankurapati', label: 'kalyankurapati' },
+//   { value: 'kalyankambampati', label: 'kalyan kambampati' },
+//   { value: 'ooha', label: 'ooha' },
+//   { value: 'saisumanth', label: 'saisumanth' },
+//   { value: 'Abhishek', label: 'Abhishek' },
+//   { value: 'pavan', label: 'pavan' },
+//   { value: 'venkatesh', label: 'venkatesh' },
+//   { value: 'salahuddin', label: 'salahuddin' },
+//   { value: 'sandeep', label: 'sandeep' },
+//   { value: 'Avanthika', label: 'Avanthika' },
+//   { value: 'Deepthi', label: 'Deepthi' },
+//   { value: 'Hazarath', label: 'Hazarath' },
+// ];
+
+// const ProductName = [
+//   { label: 'Select the product', value: '' },
+//   { value: 'Laptop', label: 'Laptop' },
+//   { value: 'phone android', label: 'Phone android' },
+//   { value: 'Phone windows', label: 'phone windows' },
+//   { value: 'Sim', label: 'Sim Card' },
+// ];
+
+// const Model = [
+//   { label: 'Select the Model', value: '' },
+//   { value: 'hp', label: 'HP' },
+//   { value: 'lenovo', label: 'Lenovo' },
+//   { value: 'apple', label: 'Apple' },
+//   { value: 'MI', label: 'MI' },
+//   { value: 'REALME', label: 'REALME' },
+//   { value: 'Oneplus', label: 'Oneplus' },
+
+// ];
+
+// const Version = [
+//   { label: 'Select the Version', value: '' },
+//   { value: 'updated 11.0', label: 'updated 11.0' },
+//   { value: 'WW 12.0', label: 'WW 12.0' },
+//   { value: 'Touch 15', label: 'Touch 15' },
+//   { value: ' andriod 1 Above', label: '1_10' },
+//   { value: 'android 10 Above', label: '_10' },
+// ];
+
+// const OnBoardAssertBody = () => {
+//   const [formMessage, setFormMessage] = useState({
+//     color: 'green',
+//     message: '',
+//   });
+
+//   const [loading, setLoading] = useState(false);
+
+//   const handleSubmit = (values) => {
+//     console.log('Submitted', values);
+//     // Handle form submission
+
+//     // Example: Simulating form submission delay
+//     setLoading(true);
+//     setTimeout(() => {
+//       setLoading(false);
+//       setFormMessage({
+//         color: 'green',
+//         message: 'Product added successfully!',
+//       });
+//     }, 2000);
+
+//     // Display form values in the console
+//     console.log('Form Values:', values);
+//   };
+
+//   return (
+//     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+//       <div className="px-4 sm:px-6">
+//         <Dialog.Title className="font-semibold text-lg mr-auto ml-3">
+//           Add Products
+//         </Dialog.Title>
+//       </div>
+//       {formMessage.message && (
+//         <div className="w-full bg-[#E9F6ED] ml-2 mt-3 mb-5 p-3 text-green-700">
+//           {formMessage.message}
+//         </div>
+//       )}
+//       <div className="px-4 sm:px-6 mt-4">
+//         <div className="mt-1">
+//           <Formik
+//             initialValues={{
+//               Name: '',
+//               ProductName: '',
+//               Date: '',
+//               Time: '',
+//               Version: '',
+//               Model: '',
+//             }}
+//             validationSchema={validate}
+//             onSubmit={handleSubmit}
+//           >
+//             {({ values, setFieldValue }) => (
+//               <Form className="space-y-6">
+//                 <div>
+//                   <label
+//                     htmlFor="Name"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Name
+//                   </label>
+//                   <Field
+//                     as={CustomSelect}
+//                     name="Name"
+//                     options={Name}
+//                     placeholder="Select a Name"
+//                     className="mt-1"
+//                     onChange={(option) =>
+//                       setFieldValue('Name', option.value)
+//                     }
+//                   />
+//                   <ErrorMessage
+//                     name="Name"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="ProductName"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Product Name
+//                   </label>
+//                   <Field
+//                     as={CustomSelect}
+//                     name="ProductName"
+//                     options={ProductName}
+//                     placeholder="Select a product"
+//                     className="mt-1"
+//                     onChange={(option) =>
+//                       setFieldValue('ProductName', option.value)
+//                     }
+//                   />
+//                   <ErrorMessage
+//                     name="ProductName"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 {values.ProductName && (
+//                   <div>
+//                     <label
+//                       htmlFor="Model"
+//                       className="block text-sm font-medium bold-black-700"
+//                     >
+//                       Model
+//                     </label>
+//                     <Field
+//                       as={CustomSelect}
+//                       name="Model"
+//                       options={Model}
+//                       placeholder="Select a model"
+//                       className="mt-1"
+//                       onChange={(option) =>
+//                         setFieldValue('Model', option.value)
+//                       }
+//                     />
+//                     <ErrorMessage
+//                       name="Model"
+//                       component="div"
+//                       className="text-red-500 text-sm mt-1"
+//                     />
+//                   </div>
+//                 )}
+
+//                 <div>
+//                   <label
+//                     htmlFor="Date"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Date
+//                   </label>
+//                   <Field
+//                     type="Date"
+//                     name="Date"
+//                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+//                   />
+//                   <ErrorMessage
+//                     name="Date"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="Time"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Time
+//                   </label>
+//                   <Field
+//                     type="Time"
+//                     name="Time"
+//                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+//                   />
+//                   <ErrorMessage
+//                     name="Time"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label
+//                     htmlFor="Version"
+//                     className="block text-sm font-medium bold-black-700"
+//                   >
+//                     Version
+//                   </label>
+//                   <Field
+//                     as={CustomSelect}
+//                     name="Version"
+//                     options={Version}
+//                     placeholder="Select a version"
+//                     className="mt-1"
+//                     onChange={(option) =>
+//                       setFieldValue('Version', option.value)
+//                     }
+//                   />
+//                   <ErrorMessage
+//                     name="Version"
+//                     component="div"
+//                     className="text-red-500 text-sm mt-1"
+//                   />
+//                 </div>
+
+//                 <div className="mt-6">
+//                   <button
+//                     type="submit"
+//                     disabled={loading}
+//                     className={`inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ${
+//                       loading
+//                         ? 'bg-gray-400 cursor-not-allowed'
+//                         : 'bg-green-500 hover:bg-green-600'
+//                     }`}
+//                   >
+//                     {loading ? (
+//                       <Loader size={20} color="#FFFFFF" />
+//                     ) : (
+//                       'Submit'
+//                     )}
+//                   </button>
+//                 </div>
+//               </Form>
+//             )}
+//           </Formik>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default OnBoardAssertBody;
+
+import React, { useState } from 'react';
+import { Dialog } from '@headlessui/react';
+import { Form, Formik, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+import { CustomSelect } from 'src/util/formFields/selectBoxField';
+
+import Loader from '../Loader/Loader';
 
 const validate = Yup.object().shape({
   Name: Yup.string().required('Name is required'),
@@ -14,15 +1056,42 @@ const validate = Yup.object().shape({
   Date: Yup.string().required('Date is required'),
   Time: Yup.string().required('Time is required'),
   Version: Yup.string().required('Version is required'),
-})
+  Model: Yup.string().required('Model is required'),
+});
+
+const Name = [
+  { label: 'Select the name', value: '' },
+  { value: 'kalyankurapati', label: 'kalyankurapati' },
+  { value: 'kalyankambampati', label: 'kalyan kambampati' },
+  { value: 'ooha', label: 'ooha' },
+  { value: 'saisumanth', label: 'saisumanth' },
+  { value: 'Abhishek', label: 'Abhishek' },
+  { value: 'pavan', label: 'pavan' },
+  { value: 'venkatesh', label: 'venkatesh' },
+  { value: 'salahuddin', label: 'salahuddin' },
+  { value: 'sandeep', label: 'sandeep' },
+  { value: 'Avanthika', label: 'Avanthika' },
+  { value: 'Deepthi', label: 'Deepthi' },
+  { value: 'Hazarath', label: 'Hazarath' },
+];
 
 const ProductName = [
   { label: 'Select the product', value: '' },
   { value: 'Laptop', label: 'Laptop' },
   { value: 'phone android', label: 'Phone android' },
-  { value: 'Phone windows', label: 'phone windows' },
+  { value: 'Phone windows', label: 'Phone windows' },
   { value: 'Sim', label: 'Sim Card' },
-]
+];
+
+const Model = [
+  { label: 'Select the Model', value: '' },
+  { value: 'hp', label: 'HP' },
+  { value: 'lenovo', label: 'Lenovo' },
+  { value: 'apple', label: 'Apple' },
+  { value: 'MI', label: 'MI' },
+  { value: 'REALME', label: 'REALME' },
+  { value: 'Oneplus', label: 'Oneplus' },
+];
 
 const Version = [
   { label: 'Select the Version', value: '' },
@@ -31,33 +1100,33 @@ const Version = [
   { value: 'Touch 15', label: 'Touch 15' },
   { value: ' andriod 1 Above', label: '1_10' },
   { value: 'android 10 Above', label: '_10' },
-]
+];
 
 const OnBoardAssertBody = () => {
   const [formMessage, setFormMessage] = useState({
     color: 'green',
     message: '',
-  })
+  });
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (values) => {
-    console.log('Submitted', values)
+    console.log('Submitted', values);
     // Handle form submission
 
     // Example: Simulating form submission delay
-    setLoading(true)
+    setLoading(true);
     setTimeout(() => {
-      setLoading(false)
+      setLoading(false);
       setFormMessage({
         color: 'green',
         message: 'Product added successfully!',
-      })
-    }, 2000)
+      });
+    }, 2000);
 
     // Display form values in the console
-    console.log('Form Values:', values)
-  }
+    console.log('Form Values:', values);
+  };
 
   return (
     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
@@ -80,6 +1149,7 @@ const OnBoardAssertBody = () => {
               Date: '',
               Time: '',
               Version: '',
+              Model: '',
             }}
             validationSchema={validate}
             onSubmit={handleSubmit}
@@ -94,9 +1164,12 @@ const OnBoardAssertBody = () => {
                     Name
                   </label>
                   <Field
-                    type="text"
+                    as={CustomSelect}
                     name="Name"
-                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                    options={Name}
+                    placeholder="Select a Name"
+                    className="mt-1"
+                    onChange={(option) => setFieldValue('Name', option.value)}
                   />
                   <ErrorMessage
                     name="Name"
@@ -118,9 +1191,10 @@ const OnBoardAssertBody = () => {
                     options={ProductName}
                     placeholder="Select a product"
                     className="mt-1"
-                    onChange={(option) =>
-                      setFieldValue('ProductName', option.value)
-                    }
+                    onChange={(option) => {
+                      setFieldValue('ProductName', option.value);
+                      setFieldValue('Model', ''); // Reset Model field when changing the product
+                    }}
                   />
                   <ErrorMessage
                     name="ProductName"
@@ -128,6 +1202,102 @@ const OnBoardAssertBody = () => {
                     className="text-red-500 text-sm mt-1"
                   />
                 </div>
+
+                {values.ProductName === 'Laptop' && (
+                  <div>
+                    <label
+                      htmlFor="Model"
+                      className="block text-sm font-medium bold-black-700"
+                    >
+                      Laptop Model
+                    </label>
+                    <Field
+                      as={CustomSelect}
+                      name="Model"
+                      options={Model}
+                      placeholder="Select a model"
+                      className="mt-1"
+                      onChange={(option) => setFieldValue('Model', option.value)}
+                    />
+                    <ErrorMessage
+                      name="Model"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
+                )}
+
+                {values.ProductName === 'phone android' && (
+                  <div>
+                    <label
+                      htmlFor="AndroidModel"
+                      className="block text-sm font-medium bold-black-700"
+                    >
+                      Android Model
+                    </label>
+                    <Field
+                      as={CustomSelect}
+                      name="AndroidModel"
+                      options={Model}
+                      placeholder="Select an Android model"
+                      className="mt-1"
+                      onChange={(option) => setFieldValue('Model', option.value)}
+                    />
+                    <ErrorMessage
+                      name="AndroidModel"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
+                )}
+
+                {values.ProductName === 'Phone windows' && (
+                  <div>
+                    <label
+                      htmlFor="WindowsModel"
+                      className="block text-sm font-medium bold-black-700"
+                    >
+                      Windows Model
+                    </label>
+                    <Field
+                      as={CustomSelect}
+                      name="WindowsModel"
+                      options={Model}
+                      placeholder="Select a Windows model"
+                      className="mt-1"
+                      onChange={(option) => setFieldValue('Model', option.value)}
+                    />
+                    <ErrorMessage
+                      name="WindowsModel"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
+                )}
+
+                {values.ProductName === 'Sim' && (
+                  <div>
+                    <label
+                      htmlFor="SimModel"
+                      className="block text-sm font-medium bold-black-700"
+                    >
+                      SIM Model
+                    </label>
+                    <Field
+                      as={CustomSelect}
+                      name="SimModel"
+                      options={Model}
+                      placeholder="Select a SIM model"
+                      className="mt-1"
+                      onChange={(option) => setFieldValue('Model', option.value)}
+                    />
+                    <ErrorMessage
+                      name="SimModel"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
+                )}
 
                 <div>
                   <label
@@ -137,9 +1307,9 @@ const OnBoardAssertBody = () => {
                     Date
                   </label>
                   <Field
-                    type="Date"
+                    type="date"
                     name="Date"
-                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                    className="mt-1 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                   />
                   <ErrorMessage
                     name="Date"
@@ -156,9 +1326,9 @@ const OnBoardAssertBody = () => {
                     Time
                   </label>
                   <Field
-                    type="text"
+                    type="time"
                     name="Time"
-                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                    className="mt-1 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                   />
                   <ErrorMessage
                     name="Time"
@@ -180,9 +1350,7 @@ const OnBoardAssertBody = () => {
                     options={Version}
                     placeholder="Select a version"
                     className="mt-1"
-                    onChange={(option) =>
-                      setFieldValue('Version', option.value)
-                    }
+                    onChange={(option) => setFieldValue('Version', option.value)}
                   />
                   <ErrorMessage
                     name="Version"
@@ -194,7 +1362,8 @@ const OnBoardAssertBody = () => {
                 <div className="flex justify-end">
                   <button
                     type="submit"
-                    className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                    className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+                    disabled={loading}
                   >
                     {loading ? <Loader /> : 'Submit'}
                   </button>
@@ -205,7 +1374,8 @@ const OnBoardAssertBody = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default OnBoardAssertBody
+export default OnBoardAssertBody;
+

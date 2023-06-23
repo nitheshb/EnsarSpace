@@ -731,7 +731,7 @@ export const createEnsarUser = async (data) => {
 
 export const storeLeaveDetails = async (leaveDetails) => {
   try {
-    const leaveRef = doc(db, 'leaves', leaveDetails.employeeName) 
+    const leaveRef = doc(db, 'leaves', leaveDetails.employeeName)
     await setDoc(leaveRef, leaveDetails, { merge: true })
     console.log('Leave details stored successfully!')
   } catch (error) {
@@ -747,6 +747,27 @@ export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   )
   return onSnapshot(getAllProjectsQuery, snapshot, error)
 }
+
+export const storeAssetDetails = async (orgId, assetDetails) => {
+
+  try {
+
+    // const { user } = useAuth();
+
+    const assetManagementData = { ...assetDetails}
+
+    const x = await addDoc(collection(db, `${orgId}_asset_Repo`), assetManagementData)
+
+    console.log('Asset details stored successfully!')
+
+  } catch (error) {
+
+    console.log('Error storing Asset details:', error)
+
+  }
+
+}
+
 export const getAllRoleAccess = async (orgId) => {
   // userAccessRoles.forEach(async (element) => {
   //   const r = 'A' + Math.random() * 100000000000000000 + 'Z'
