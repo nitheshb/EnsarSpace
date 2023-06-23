@@ -712,6 +712,82 @@ export const checkIfUserAlreadyExists = async (cName, matchVal) => {
 
   // db.collection(`${orgId}_leads`).add(data)
 }
+
+export const createEnsarUser = async (data) => {
+  try {
+    const userRef = doc(db, 'users', data.uid)
+    const docSnap = await getDoc(userRef)
+    if (!docSnap.exists()) {
+      await setDoc(userRef, data, { merge: true })
+    } else {
+      // doc.data() will be undefined in this case
+      console.log('No such document!')
+      return null
+    }
+  } catch (error) {
+    console.log('error in db', error)
+  }
+}
+
+export const storeLeaveDetails = async (orgId, leaveDetails) => {
+  try {
+    const x = await addDoc(collection(db, `${orgId}_leaveApproval`), leaveDetails)
+    console.log('Leave Approval details stored successfully!')
+  } catch (error) {
+    console.log('Error storing leave approval:', error)
+  }
+}
+
+export const storeLeaveRequest = async (orgId,uid, displayName, data) => {
+  try {
+    const leaveRequestData = {
+      uid,
+      displayName,
+      ...data}
+    const x = await addDoc(collection(db, `${orgId}_leaveRequest`), leaveRequestData)
+    console.log('Leave Submission data stored sucessfully:')
+  } catch (error) {
+    console.log('Error storing leave details:', error)
+  }
+}
+
+export const getLeaveRequests = async (orgId) => {
+  try {
+    const querySnapshot = await getDocs(collection(db, `${orgId}_leaveRequest`));
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+  }
+}
+
+export const showLeaveRequests = async (orgId) => {
+  try {
+    const querySnapshot = await getDocs(collection(db, `${orgId}_leaveApproval`));
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+  }
+}
+
+// export const checkIfLeaveExists = async (orgId, date) => {
+//   const collectionName = `${orgId}_leaveRequest`;
+//   const q = query(collection(db, collectionName), where('fromDate', '==', date));
+//   const querySnapshot = await getDocs(q);
+//   if (querySnapshot.docs.length > 0) {
+//     console.error('Leave for this date already exists.');
+//   } else {
+//     console.log('No leave for this date exists.');
+//   }
+// };
+
+export const checkIfLeaveExists = async (orgId, date) => {
+  const collectionName = `${orgId}_leaveRequest`;
+  const q = query(collection(db, collectionName), where('fromDate', '==', date));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.length > 0;
+};
+
+
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data
   const getAllProjectsQuery = await query(

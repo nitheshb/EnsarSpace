@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import SlimSideMenuBar from 'src/components/A_SideMenu/slimSideMenu'
 
+import SlimSideMenuBar from 'src/components/A_SideMenu/slimSideMenu'
 import ConstructUnitsHome from 'src/components/ConstructModule/ConstructUnitsHome'
 import ExecutiveHomeViewerPage from 'src/components/ExecutiveHomeViewerPage'
 import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
@@ -17,6 +17,8 @@ import { USER_ROLES } from 'src/constants/userRoles'
 import { useAuth } from 'src/context/firebase-auth-context'
 
 import HeadNavBar from '../../components/HeadNavBar/HeadNavBar'
+import Assets from 'src/components/ConstructModule/OnBoarding'
+import OnBoarding from 'src/components/ConstructModule/OnBoarding'
 
 const ConstructModulePage = () => {
   const { user } = useAuth()
@@ -63,20 +65,16 @@ const ConstructModulePage = () => {
               }`}
             >
               <SlimSideMenuBar
-              pgName={'constructModule'}
-              sourceLink={'constructModule'}
-              showSideView1={undefined}
-              setViewable={setViewable}
-              viewable={viewable}
-            />
-
+                pgName={'constructModule'}
+                sourceLink={'constructModule'}
+                showSideView1={undefined}
+                setViewable={setViewable}
+                viewable={viewable}
+              />
             </div>
 
             <div className="flex-grow  items-center overflow-y-auto  px-300  py-300">
-            <HeadNavBar2
-              selModule ={selModule}
-              setSelModule={setSelModule}
-            />
+              <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
 
               {viewable === 'ConstructUnits' && (
                 <ConstructUnitsHome
@@ -86,6 +84,13 @@ const ConstructModulePage = () => {
                   isEdit={undefined}
                 />
               )}
+{/*
+ {viewable === 'On Boarding1' && (
+             <OnBoarding/>
+              )} */}
+
+ 
+
             </div>
             {/* <div className="flex-grow mx-4  my-2 items-center overflow-y-auto  h-screen  px-300  py-300"> */}
             {/* {viewable === 'Today' && <ExecutiveHomeViewerPage />} *SS/}
