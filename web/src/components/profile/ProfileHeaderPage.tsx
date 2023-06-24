@@ -1,9 +1,11 @@
 import React, { ChangeEvent, useState } from 'react';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import { useAuth } from 'src/context/firebase-auth-context';
 
 const ProfileHeader = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const { user } = useAuth();
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -13,6 +15,20 @@ const ProfileHeader = () => {
   const handleHover = (isHovered: boolean) => {
     setIsHovered(isHovered);
   };
+
+  const getInitials = (name) => {
+    if (!name) {
+      return ''; // Handle the case when name is null or undefined
+    }
+
+    const names = name.split(' ');
+    const initials = names.map((n) => n.charAt(0));
+    return initials.join('');
+  };
+
+
+  const initials = user ? getInitials(user.displayName) : '';
+
   function handleImageClick(): void {
     throw new Error('Function not implemented.');
   }
@@ -53,7 +69,7 @@ const ProfileHeader = () => {
                     {isHovered ? (
                       <CloudUploadIcon style={{ fontSize: 60 }} />
                     ) : (
-                      'DR'
+                      <>{initials}</>
                     )}
                   </span>
                 )}
