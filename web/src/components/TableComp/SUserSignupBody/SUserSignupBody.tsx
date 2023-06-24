@@ -6,9 +6,10 @@ import { Form, Formik } from 'formik';
 import axios from 'axios';
 import Loader from '../../Loader/Loader';
 import { TextField } from 'src/util/formFields/TextField';
-import { checkIfLeaveExists, storeLeaveRequest } from 'src/context/dbQueryFirebase';
+import { checkIfLeaveExists, submitLeaveRequest } from 'src/context/dbQueryFirebase';
 import { format, differenceInDays } from 'date-fns';
 import { useAuth } from 'src/context/firebase-auth-context';
+import { v4 as uuidv4 } from 'uuid';
 
 const LEAVE_OPTIONS = ['Casual Leave', 'Sick Leave', 'LOP'];
 
@@ -19,7 +20,19 @@ const AddCourseDialog = ({ isOpen, onClose }) => {
   const [dateApplied, setDateApplied] = useState('');
   const { user } = useAuth();
 
+  const sendEmailFun = async (email, messageData, recepname, tableData) => {
+    try {
+      const { data } = await axios.post('https://ensarspace-welcomeemailtrigger.azurewebsites.net/api/httptrigger1', {
+        email, messageData, recepname, tableData
+      })
+    }
+    catch (e) {
+      console.log(e)
+    }
+  }
+
   const onSubmit = async (data) => {
+    const leaveStatus = 'Pending';
     try {
       setLoading(true);
       setDateApplied(format(new Date(), 'yyyy-MM-dd'));
@@ -30,10 +43,12 @@ const AddCourseDialog = ({ isOpen, onClose }) => {
 
       const newData = {
         ...data,
+        requestId: uuidv4(),
+        isLeaveApproved: leaveStatus,
         noOfDays: numberOfDays,
       };
 
-      console.log('Hazarath', newData);
+      console.log('Submitted Data:', newData);
 
       const leaveAlreadyExists = await checkIfLeaveExists(user.orgId, data.fromDate);
       if (leaveAlreadyExists) {
@@ -44,7 +59,10 @@ const AddCourseDialog = ({ isOpen, onClose }) => {
         setLoading(false);
         setFormMessage({ color: 'green', message: 'Leave Applied Successfully' });
         formMethods.reset();
-        await storeLeaveRequest(user.orgId, user.uid, user.displayName, newData);
+        await submitLeaveRequest(user.orgId, user.uid, user.displayName, newData);
+
+        // Call function that triggers email
+        await sendEmailFun(user.email, 'Regarding Leave', user.displayName, 'tableData');
       }
     } catch (error) {
       console.error('Error submitting leave request:', error);
@@ -65,7 +83,7 @@ const AddCourseDialog = ({ isOpen, onClose }) => {
   return (
     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
       <div className="px-4 sm:px-6">
-        <Dialog.Title className="font-semibold text-lg mr-auto ml-3">Time Off Form</Dialog.Title>
+        <Dialog.Title className="font-semibold text-lg mr-auto ml-3">Apply Leave</Dialog.Title>
       </div>
       {formMessage.message && (
         <div className="w-full bg-[#E9F6ED] ml-9 mr-9">
@@ -119,7 +137,7 @@ const AddCourseDialog = ({ isOpen, onClose }) => {
                     disabled={loading}
                   >
                     {loading && <Loader texColor={undefined} size={undefined} />}
-                    Submit
+                    Apply Leave
                   </button>
                 </div>
               </Form>

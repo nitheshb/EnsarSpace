@@ -33,14 +33,6 @@ const LeaveForm = () => {
   };
   return (
     <div style={containerStyle}> {" "}
-      {!showForm && (
-        <button type="button" className={`tab-btn`}
-          style={openButtonStyle}
-          onClick={() => tabHandler("TIME_OFF")}
-        >Time Off Form{" "}
-        </button>)}
-      {" "}
-
       <SUserSignup open={isOpen}
         setOpen={handleOnClose}
         title="User" empData={empData}

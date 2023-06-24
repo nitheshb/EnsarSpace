@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { format } from 'date-fns';
 import { useDispatch } from 'react-redux';
 import { approveLeave, rejectLeave } from "../../../state/actions/index"; // Import the action creators
-import { storeLeaveDetails } from 'src/context/dbQueryFirebase';
+import { updateLeaveRequest } from 'src/context/dbQueryFirebase';
 import { useAuth } from 'src/context/firebase-auth-context';
-import { v4 as uuidv4 } from 'uuid';
-import differenceInCalendarDays from 'date-fns/esm/differenceInCalendarDays';
 
 interface LeaveApprovalProps {
-  requestId:string;
-  employeeName: string;
-  employeeId: string;
+  requestId: string;
+  displayName: string;
+  uid: string;
   fromDate: string;
   toDate: string;
   noOfDays: string,
@@ -25,8 +23,8 @@ interface LeaveApprovalProps {
 
 const LeaveApproval: React.FC<LeaveApprovalProps> = ({
   requestId,
-  employeeName,
-  employeeId,
+  displayName,
+  uid,
   fromDate,
   toDate,
   noOfDays,
@@ -38,7 +36,7 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
 }) => {
   const [approved, setApproved] = useState(false);
 
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   const dispatch = useDispatch();
 
@@ -46,9 +44,9 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
     const leaveStatus = status === 'Accepted' ? 'Approved' : 'Rejected';
 
     const leaveDetails = {
-      requestId: uuidv4(),
-      employeeName,
-      employeeId,
+      requestId,
+      displayName,
+      uid,
       leaveType,
       fromDate,
       toDate,
@@ -58,7 +56,7 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
       isLeaveApproved: leaveStatus,
     };
 
-    await storeLeaveDetails(user.orgId, leaveDetails);
+    await updateLeaveRequest(user.orgId, leaveDetails.requestId, { isLeaveApproved: leaveStatus });
 
     if (status === 'Accepted') {
       toast.success('Leave Approved', { position: 'top-right' });
@@ -73,42 +71,65 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
     onLeaveStatusChange(leaveDetails.requestId);
   };
 
-  const calculateNumberOfDays = () => {
-    const startDate = new Date(fromDate);
-    const endDate = new Date(toDate);
-    const numberOfDays = differenceInCalendarDays(endDate, startDate) + 1;
-    return numberOfDays;
-  };
-
   if (approved) {
     return null;
   }
 
   return (
     <tr>
-      <td className="py-2 text-center border border-black">{employeeName}</td>
-      <td className="py-2 text-center border border-black">{employeeId}</td>
-      <td className="py-2 text-center border border-black">{format(new Date(fromDate), 'dd-MM-yyyy')}</td>
-      <td className="py-2 text-center border border-black">{format(new Date(toDate), 'dd-MM-yyyy')}</td>
-      <td className="py-2 text-center border border-black">{noOfDays}</td>
-      <td className="py-2 text-center border border-black">{leaveType}</td>
-      <td className="py-2 text-center border border-black">{leaveReason}</td>
-      <td className="py-2 text-center border border-black">{comment}</td>
-      <td className="py-2 text-center border border-black">
-        <div className="flex justify-center">
-          <button
-            className="px-4 py-2 bg-green-500 text-white rounded mr-2"
-            onClick={() => handleApproval('Accepted')}
-          >
-            Accept
-          </button>
-          <button
-            className="px-4 py-2 bg-red-500 text-white rounded"
-            onClick={() => handleApproval('Rejected')}
-          >
-            Reject
-          </button>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-gray-900">
+          {displayName}
         </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-gray-900">
+          {uid}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-gray-900">
+          {format(new Date(fromDate), 'dd-MM-yyyy')}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-gray-900">
+          {format(new Date(toDate), 'dd-MM-yyyy')}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-gray-900">
+          {noOfDays}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-gray-900">
+          {leaveType}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-gray-900">
+          {leaveReason}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-gray-900">
+          {comment}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <button
+          className="px-4 py-2 bg-green-500 text-white rounded mr-2"
+          onClick={() => handleApproval('Accepted')}
+        >
+          Accept
+        </button>
+        <button
+          className="px-4 py-2 bg-red-500 text-white rounded"
+          onClick={() => handleApproval('Rejected')}
+        >
+          Reject
+        </button>
       </td>
     </tr>
   );
