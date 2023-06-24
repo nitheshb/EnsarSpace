@@ -9,7 +9,6 @@ import { useAuth } from 'src/context/firebase-auth-context'
 const SlimSideMenuBar = (props) => {
   const { pgName, sourceLink, showSideView1, setViewable, viewable } = props
   const { user } = useAuth()
-  const specificEmail = 'abhishek@ensarsolutions.com';
 
   return (
     <div className="flex flex-col items-center w-20 min-w-[83px] pb-4   bg-white bg-opacity-75  bg-[#f0f3ff] h-screen w-[83px] max-w-[83px]">
@@ -1472,7 +1471,6 @@ const SlimSideMenuBar = (props) => {
               </span>
             </li>
 
-            {user.email === specificEmail && (
               <li className="relative mt-1">
                 <span
                   className={
@@ -1499,7 +1497,6 @@ const SlimSideMenuBar = (props) => {
                   </span>
                 </span>
               </li>
-            )}
 
             <li className="relative mt-1 pt-1">
               <span

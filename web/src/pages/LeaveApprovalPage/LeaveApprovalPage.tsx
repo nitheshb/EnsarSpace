@@ -9,7 +9,7 @@ import { useAuth } from 'src/context/firebase-auth-context';
 const LeaveApprovalPage: React.FC = () => {
   const [leaveApprovals, setLeaveApprovals] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     const getAllRequests = async () => {
@@ -43,10 +43,11 @@ const LeaveApprovalPage: React.FC = () => {
     setSelectedDate(date);
   };
 
-  const filteredLeaveApprovals = leaveApprovals.filter(approval =>
-    format(new Date(approval.fromDate), 'dd-MM-yyyy') ===
-    format(selectedDate, 'dd-MM-yyyy')
-  );
+  const filteredLeaveApprovals = leaveApprovals.filter((approval) => {
+    const isLeavePending = approval.isLeaveApproved === 'Pending';
+    const isSameFromDate = format(new Date(approval.fromDate), 'dd-MM-yyyy') === format(selectedDate, 'dd-MM-yyyy');
+    return isLeavePending && isSameFromDate;
+  });
 
   return (
     <div className="bg-white mt-10">
@@ -80,15 +81,15 @@ const LeaveApprovalPage: React.FC = () => {
         <table className="w-full table-auto">
           <thead>
             <tr className="bg-gray-200">
-              <th className="py-2 px-4 text-center border border-black">Employee Name</th>
-              <th className="py-2 px-4 text-center border border-black">Employee ID</th>
-              <th className="py-2 px-4 text-center border border-black">From Date</th>
-              <th className="py-2 px-4 text-center border border-black">To Date</th>
-              <th className="py-2 px-4 text-center border border-black">No of Days</th>
-              <th className="py-2 px-4 text-center border border-black">Leave Type</th>
-              <th className="py-2 px-4 text-center border border-black">Leave Reason</th>
-              <th className="py-2 px-4 text-center border border-black">Comment</th>
-              <th className="py-2 px-4 text-center border border-black">Actions</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Employee Name</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Employee ID</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">From Date</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">To Date</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No of Days</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Leave Type</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Leave Reason</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Comment</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -96,8 +97,8 @@ const LeaveApprovalPage: React.FC = () => {
               <LeaveApproval
                 key={index}
                 requestId={approval.requestId}
-                employeeName={approval.displayName}
-                employeeId={approval.uid}
+                displayName={approval.displayName}
+                uid={approval.uid}
                 fromDate={approval.fromDate}
                 toDate={approval.toDate}
                 noOfDays={approval.noOfDays}
