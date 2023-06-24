@@ -1567,11 +1567,10 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-
-            <li className="relative justify-center ">
+            <li className="relative mt-1">
               <span
                 className={
-                  'flex items-center justify-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
                   (viewable === 'TimeOff'
                     ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
                     : '')
@@ -1586,23 +1585,23 @@ const SlimSideMenuBar = (props) => {
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
                     <svg
+                      xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                       className="w-5 h-5"
                     >
-                      <path d="M12 2c-5.514 0-10 4.486-10 10s4.486 10 10 10 10-4.486 10-10c0-5.514-4.486-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
+                      <circle cx="12" cy="12" r="10" />
                       <path d="M12 6v6l4 2" />
                     </svg>
+
                   </span>
-                  <span>
-                  </span>
-                  <span className="text-xs pl-1">Time off</span>
+                  <span className="text-[9px] font-bold  pl-1">Time off</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>

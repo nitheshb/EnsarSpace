@@ -1861,35 +1861,12 @@ align-items: center;
 }
 
 
+   .categoty-wrap{
 
-
-
-
-
-
-.categoty-wrap {
-
-
-
-
-
-
-  border: 1px solid transparent;
-
-
-
-
-  transition: var(--transition);
-
-
-
-
-  margin: 2px;
-
-
-
-
-}
+    border: 1px solid transparent;
+    transition: var(--transition);
+    margin:2px;
+   }
 
 
 
@@ -1933,17 +1910,6 @@ align-items: center;
 
 
 
-.category-item-name {
-
-
-
-
-  margin-top: 24px;
-
-
-
-
-}
 
 /* Rectangle 4610 */
 .e-r2{
@@ -1955,7 +1921,5 @@ top: 0px;
 background: #F1ECFE;
 border-radius: 13.8053px;
 }
-
-
 
 
