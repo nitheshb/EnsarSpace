@@ -101,7 +101,7 @@ const LeaveApprovalPage: React.FC = () => {
         (approval) => approval.displayName === selectedEmployee
       );
     }
-
+ 
     if (selectedCategory !== 'all') {
       filteredApprovals = filteredApprovals.filter(
         (approval) => approval.leaveType === selectedCategory || approval.isLeaveApproved === selectedCategory
