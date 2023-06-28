@@ -20,6 +20,7 @@ import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 import AttendancePage from 'src/components/A_LearningModule/Attendance'
 import TimeOff from 'src/components/TableComp/TimeOff'
 import Calendar from 'src/components/TableComp/Calendar'
+import SiderForm from 'src/components/SiderForm/SiderForm'
 // import OnBoarding1 from 'src/components/ConstructModule/OnBoarding1'
 // import Assets from 'src/components/ConstructModule/OnBoarding'
 
@@ -29,6 +30,7 @@ const UsersAdminPage = () => {
   const [viewable, setViewable] = useState('User Management')
   const [empData, setEmpData] = useState({})
   const [selModule, setSelModule] = useState('HR')
+  const [isLeaveOpen, setisLeaveOpen] = useState(false)
 
   const editEmployeeFun = (empData) => {
     setEmpData(empData)
@@ -97,6 +99,29 @@ const UsersAdminPage = () => {
                     />
                   </svg>
                   <span className="ml-1 leading-none">Add Role</span>
+                </button>
+              )}
+
+              {viewable === 'TimeOff' && (
+                <button
+                  onClick={() => setisLeaveOpen(true)}
+                  className="flex items-center justify-center h-10 px-5  bg-gray-200 ml-auto text-sm font-medium rounded hover:bg-gray-400 "
+                >
+                  <svg
+                    className="w-5 h-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                    />
+                  </svg>
+                  <span className="ml-1 leading-none">Apply Leave</span>
                 </button>
               )}
             </div>
@@ -200,7 +225,13 @@ const UsersAdminPage = () => {
             />
           </div>
         </div>
-      </div>
+      </div >
+      <SiderForm
+        open={isLeaveOpen}
+        setOpen={setisLeaveOpen}
+        title='applyLeave'
+        widthClass="max-w-xl"
+      />
     </>
   )
 }

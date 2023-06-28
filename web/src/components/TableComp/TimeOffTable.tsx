@@ -1,103 +1,250 @@
 import React, { useEffect, useState } from 'react'
-import { showLeaveRequests } from 'src/context/dbQueryFirebase'
+
+import { PencilIcon, TrashIcon } from '@heroicons/react/outline'
+
+import {
+  getLeaveRequests,
+  deleteLeaveRequest,
+} from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
 
 const TimeOffTable = () => {
-  const [leaveRequests, setLeaveRequests] = useState([])
+  const [leaveApplied, setLeaveApplied] = useState([])
+  const [selLeave, setSelLeave] = useState('all')
+  const [filteredLeaveApplied, setFilteredLeaveApplied] = useState([])
+  const [casualLeaveCount, setCasualLeaveCount] = useState(0)
+  const [sickLeaveCount, setSickLeaveCount] = useState(0)
   const { user } = useAuth()
 
   useEffect(() => {
-    const fetchLeaveRequests = async () => {
+    const fetchLeaveApplied = async () => {
       try {
-        const requests = await showLeaveRequests(user.orgId)
-        setLeaveRequests(requests) // Update the state with the retrieved data
+        const applied = await getLeaveRequests(user.orgId)
+        setLeaveApplied(applied)
+        setFilteredLeaveApplied(applied)
+        updateLeaveCounts(applied) // Update leave counts when data is fetched
       } catch (error) {
-        console.error('Error fetching leave requests:', error)
+        console.error('Error fetching applied leaves:', error)
       }
     }
-    console.log('PREVIOUS LEAVES DETAILS DATA')
-    fetchLeaveRequests()
-  }, [user])
+    fetchLeaveApplied()
+  }, [])
+
+  useEffect(() => {
+    updateLeaveCounts(filteredLeaveApplied) // Update leave counts when filtered data changes
+  }, [filteredLeaveApplied])
+
+  const updateLeaveCounts = (leaveData) => {
+    const casualCount = leaveData.filter(
+      (leave) => leave.leaveType === 'Casual Leave'
+    ).length
+    const sickCount = leaveData.filter(
+      (leave) => leave.leaveType === 'Sick Leave'
+    ).length
+    setCasualLeaveCount(casualCount)
+    setSickLeaveCount(sickCount)
+  }
+
+  const showOnlyLeave = (category) => {
+    if (category === 'all') {
+      setFilteredLeaveApplied(leaveApplied)
+    } else {
+      const filteredLeaves = leaveApplied.filter(
+        (leave) =>
+          leave.leaveType === category || leave.isLeaveApproved === category
+      )
+      setFilteredLeaveApplied(filteredLeaves)
+    }
+    setSelLeave(category)
+  }
+
+  const handleDelete = async (requestId) => {
+    try {
+      await deleteLeaveRequest(user.orgId, requestId)
+      setLeaveApplied((prevRequests) =>
+        prevRequests
+          ? prevRequests.filter((request) => request.id !== requestId)
+          : []
+      )
+      console.log('Leave request deleted successfully.')
+    } catch (error) {
+      console.error('Error deleting leave request:', error)
+    }
+  }
 
   return (
     <>
-      <div className="bg-white mt-2">
-        <h1 className="p-2 m-2 text-xl font-bold">Past Leaves :</h1>
-        <div className="mx-auto p-4 mb-20">
-          {leaveRequests.length > 0 ? (
-            <table className="w-full table-auto">
-              <thead>
-                <tr className="bg-gray-200">
-                  <th className="px-4 py-2 text-center border border-black">
-                    Leave Type
-                  </th>
-                  <th className="px-4 py-2 text-center border border-black">
-                    From Date
-                  </th>
-                  <th className="px-4 py-2 text-center border border-black">
-                    To Date
-                  </th>
-                  <th className="px-4 py-2 text-center border border-black">
-                    No of Days
-                  </th>
-                  <th className="px-4 py-2 text-center border border-black">
-                    Reason
-                  </th>
-                  <th className="px-4 py-2 text-center border border-black">
-                    Comment
-                  </th>
-                  <th className="px-4 py-2 text-center border border-black">
-                    Approved By
-                  </th>
-                  <th className="px-4 py-2 text-center border border-black ">
-                    Status
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {leaveRequests.map((leaveRequest, index) => (
-                  <tr key={index}>
-                    <td className="px-4 py-2 text-center border border-black">
-                      {leaveRequest.leaveType}
-                    </td>
-                    <td className="px-4 py-2 text-center border border-black">
-                      {leaveRequest.fromDate}
-                    </td>
-                    <td className="px-4 py-2 text-center border border-black">
-                      {leaveRequest.toDate}
-                    </td>
-                    <td className="px-4 py-2 text-center border border-black">
-                      {leaveRequest.noOfDays}
-                    </td>
-                    <td className="px-4 py-2 text-center border border-black">
-                      {leaveRequest.leaveReason}
-                    </td>
-                    <td className="px-4 py-2 text-center border border-black">
-                      {leaveRequest.comment}
-                    </td>
-                    <td className="px-4 py-2 text-center border border-black">
-                      {leaveRequest.employeeName}
-                    </td>
-                    <td
-                      className={`px-4 py-2 text-center border border-black ${
-                        leaveRequest.isLeaveApproved === 'Approved'
-                          ? 'text-green-500'
-                          : leaveRequest.isLeaveApproved === 'Rejected'
-                          ? 'text-red-500'
-                          : ''
-                      }`}
+      <section className="flex flex-col  md:px-8  rounded-md  mb-10">
+        <div className="bg-white">
+          <div className="flex flex-col">
+            <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <section className="flex ml-auto mt-[18px]  bg-white  border-gray-100 py-4 md:py-7 px-4">
+                  {[
+                    { label: 'All', val: 'all' },
+                    { label: 'Sick', val: 'Sick Leave' },
+                    { label: 'Casual', val: 'Casual Leave' },
+                    { label: 'LOP', val: 'LOP' },
+                    { label: 'Approved', val: 'Approved' },
+                    { label: 'Rejected', val: 'Rejected' },
+                    { label: 'Pending', val: 'Pending' },
+                  ].map((dat, index) => (
+                    <a
+                      key={index}
+                      className={`rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800 mr-4`}
+                      onClick={() => showOnlyLeave(dat.val)}
                     >
-                      {leaveRequest.isLeaveApproved}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <p>No past leaves found.</p>
-          )}
+                      <div
+                        className={`py-2 px-8 rounded-full hover:text-indigo-700 hover:bg-indigo-100  ${
+                          selLeave.includes(dat.val)
+                            ? 'bg-indigo-100 text-indigo-700'
+                            : 'text-gray-600'
+                        }`}
+                      >
+                        {dat.label}
+                        {dat.val === 'Casual Leave' && casualLeaveCount > 0 && (
+                          <sup className="rounded-full bg-indigo-500 text-white px-2 py-1 m-1 text-xs">
+                            {casualLeaveCount}
+                          </sup>
+                        )}
+                        {dat.val === 'Sick Leave' && sickLeaveCount > 0 && (
+                          <sup className="rounded-full bg-indigo-500 text-white px-2 py-1 m-1 text-xs">
+                            {sickLeaveCount}
+                          </sup>
+                        )}
+                      </div>
+                    </a>
+                  ))}
+                </section>
+                <div className="border-black rounded-xl border w-full drop-shadow bg-white">
+                  <div className="shadow overflow-hidden border-b border-gray-200 mx-auto p-4 mb-10">
+                    {filteredLeaveApplied.length > 0 ? (
+                      <table className="w-full table-auto">
+                        <thead className="bg-gray-50">
+                          <tr>
+                            <th
+                              scope="col"
+                              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                              Leave Type
+                            </th>
+                            <th
+                              scope="col"
+                              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                              From Date
+                            </th>
+                            <th
+                              scope="col"
+                              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                              To Date
+                            </th>
+                            <th
+                              scope="col"
+                              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                              No of Days
+                            </th>
+                            <th
+                              scope="col"
+                              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                              Reason
+                            </th>
+                            <th
+                              scope="col"
+                              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                              Comment
+                            </th>
+                            <th
+                              scope="col"
+                              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                              Status
+                            </th>
+                            <th
+                              scope="col"
+                              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            ></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {filteredLeaveApplied.map((leave) => (
+                            <tr key={leave.requestId}>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="text-sm text-gray-900">
+                                  {leave.leaveType}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="text-sm text-gray-900">
+                                  {leave.fromDate}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="text-sm text-gray-900">
+                                  {leave.toDate}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="text-sm text-gray-900">
+                                  {leave.noOfDays}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="text-sm text-gray-900">
+                                  {leave.leaveReason}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="text-sm text-gray-900">
+                                  {leave.comment}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <div
+                                  className={`text-sm ${
+                                    leave.isLeaveApproved === 'Approved'
+                                      ? 'text-green-500'
+                                      : leave.isLeaveApproved === 'Rejected'
+                                      ? 'text-red-500'
+                                      : 'text-gray-900'
+                                  }`}
+                                >
+                                  {leave.isLeaveApproved}
+                                </div>
+                              </td>
+
+                              <td className="px-6 py-4 whitespace-nowrap text-center">
+                                {leave.isLeaveApproved === 'Pending' && (
+                                  <>
+                                    <PencilIcon
+                                      className="w-5 h-5 ml-[6px] mb-[4px] inline cursor-pointer"
+                                      // onClick={() => setisLeaveOpen(true)}
+                                    />
+                                    <TrashIcon
+                                      className="w-5 h-5 ml-[18px] mb-[4px] inline cursor-pointer"
+                                      onClick={() => handleDelete(user.orgId)}
+                                    />
+                                  </>
+                                )}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    ) : (
+                      <p>No leave found.</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </>
   )
 }

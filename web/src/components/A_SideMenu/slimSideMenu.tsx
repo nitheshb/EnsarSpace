@@ -1573,14 +1573,39 @@ const SlimSideMenuBar = (props) => {
                         fill="#068e3a"
                       ></path>{' '}
                     </svg>
+              <li className="relative mt-1">
+                <span
+                  className={
+                    'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                    (viewable === 'Leave Approval'
+                      ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                      : '')
+                  }
+                  onClick={() => setViewable('Leave Approval')}
+                  style={{
+                    display: 'block',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}
+                >
+                  <span className="flex items-center flex-col pt-[8px]">
+                    <span style={{ color: '#058527' }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" fill="#068e3a"></path> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" fill="#068e3a"></path> <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" fill="#068e3a"></path> </svg>
+                    </span>
+                    <span className="text-[9px] font-bold  pl-1">Leave</span>
+                  </span>
+                  <span className="flex ml-auto items-bottom">
+                    <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                   </span>
                   <span className="text-[9px] font-bold  pl-1">Leave</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                 </span>
+                </li>
               </span>
-            </li>
+            </span>
+
 
             <li className="relative mt-1 pt-1">
               <span
@@ -1661,11 +1686,10 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-
-            <li className="relative justify-center ">
+            <li className="relative mt-1">
               <span
                 className={
-                  'flex items-center justify-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
                   (viewable === 'TimeOff'
                     ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
                     : '')
@@ -1680,6 +1704,7 @@ const SlimSideMenuBar = (props) => {
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
                     <svg
+                      xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"
@@ -1690,12 +1715,14 @@ const SlimSideMenuBar = (props) => {
                       strokeLinejoin="round"
                       className="w-5 h-5"
                     >
-                      <path d="M12 2c-5.514 0-10 4.486-10 10s4.486 10 10 10 10-4.486 10-10c0-5.514-4.486-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
+                      <circle cx="12" cy="12" r="10" />
                       <path d="M12 6v6l4 2" />
                     </svg>
+
                   </span>
                   <span></span>
                   <span className="text-xs pl-1">Time off</span>
+                  <span className="text-[9px] font-bold  pl-1">Time off</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
@@ -1961,15 +1988,14 @@ const SlimSideMenuBar = (props) => {
               </span>
             </li>
             {/* )} */}
+            </span>
+          </li>
           </ul>
         </>
       )}
       <Link
-        className={
-          'flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300 ' +
-          (pgName === 'erpAccount' ? 'bg-gray-300' : '')
-        }
-        // to={routes.erpAccount()}
+        className={'flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300 ' +
+          (pgName === 'erpAccount' ? 'bg-gray-300' : '')} to={''}        // to={routes.erpAccount()}
       >
         <svg
           className="w-5 h-5"
@@ -1987,7 +2013,9 @@ const SlimSideMenuBar = (props) => {
         </svg>
       </Link>
     </div>
+
   )
-}
+      }
+
 
 export default SlimSideMenuBar
