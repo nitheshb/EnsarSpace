@@ -1,40 +1,61 @@
 import React, { useState } from 'react';
 import { format } from 'date-fns';
 import { useDispatch } from 'react-redux';
-import { useSnackbar } from 'notistack'; // Import the useSnackbar hook
-import { approveLeave, rejectLeave } from '../../../../state/actions/';
+import { approveLeave, rejectLeave } from "../../../state/actions/index"; // Import the action creators
+import { storeLeaveDetails } from 'src/context/dbQueryFirebase';
+import { useAuth } from 'src/context/firebase-auth-context';
+import { v4 as uuidv4 } from 'uuid';
+import differenceInCalendarDays from 'date-fns/esm/differenceInCalendarDays';
 
 interface LeaveApprovalProps {
-  dateApplied: string;
+  requestId:string;
   employeeName: string;
+  employeeId: string;
   fromDate: string;
   toDate: string;
+  noOfDays: string,
+  leaveReason: string;
+  comment: string;
+  leaveType: string;
   isLeaveApproved: boolean;
-  onLeaveStatusChange: () => void;
+  onLeaveStatusChange: (requestId: string) => void;
 }
 
 const LeaveApproval: React.FC<LeaveApprovalProps> = ({
-  dateApplied,
+  requestId,
   employeeName,
+  employeeId,
   fromDate,
   toDate,
+  noOfDays,
+  leaveReason,
+  comment,
+  leaveType,
   isLeaveApproved,
   onLeaveStatusChange,
 }) => {
   const [approved, setApproved] = useState(false);
-  const { enqueueSnackbar } = useSnackbar(); // Use the enqueueSnackbar function from useSnackbar
+
+  const {user} = useAuth();
+
   const dispatch = useDispatch();
 
-  const handleApproval = (status: string) => {
+  const handleApproval = async (status: string) => {
     const leaveStatus = status === 'Accepted' ? 'Approved' : 'Rejected';
     const leaveDetails = {
-      dateApplied,
+      requestId: uuidv4(),
       employeeName,
+      employeeId,
+      leaveType,
       fromDate,
       toDate,
-      leaveDays: 0, // Update this value with the actual calculation of leave days
+      noOfDays,
+      leaveReason,
+      comment,
       isLeaveApproved: leaveStatus,
     };
+
+    await storeLeaveDetails(user.orgId, leaveDetails);
 
     if (status === 'Accepted') {
       enqueueSnackbar('Leave Approved', { variant: 'success' }); // Show success snackbar
@@ -46,20 +67,30 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
       dispatch(rejectLeave(leaveDetails));
     }
 
-    onLeaveStatusChange();
+    onLeaveStatusChange(leaveDetails.requestId);
+  };
+
+  const calculateNumberOfDays = () => {
+    const startDate = new Date(fromDate);
+    const endDate = new Date(toDate);
+    const numberOfDays = differenceInCalendarDays(endDate, startDate) + 1;
+    return numberOfDays;
   };
 
   if (approved) {
-    return null; // Render nothing if leave is already approved
+    return null;
   }
 
   return (
     <tr>
-      <td className="py-2 text-center border border-black">{format(new Date(dateApplied), 'dd-MM-yyyy')}</td>
       <td className="py-2 text-center border border-black">{employeeName}</td>
+      <td className="py-2 text-center border border-black">{employeeId}</td>
       <td className="py-2 text-center border border-black">{format(new Date(fromDate), 'dd-MM-yyyy')}</td>
       <td className="py-2 text-center border border-black">{format(new Date(toDate), 'dd-MM-yyyy')}</td>
-      <td className="py-2 text-center border border-black">Leave Days</td>
+      <td className="py-2 text-center border border-black">{noOfDays}</td>
+      <td className="py-2 text-center border border-black">{leaveType}</td>
+      <td className="py-2 text-center border border-black">{leaveReason}</td>
+      <td className="py-2 text-center border border-black">{comment}</td>
       <td className="py-2 text-center border border-black">
         <div className="flex justify-center">
           <button

@@ -52,6 +52,8 @@ module.exports = async function (context, req) {
   const orgId = req.query.orgId || (req.body && req.body.orgId)
   const offPh = req.query.offPh || (req.body && req.body.offPh)
   const perPh = req.query.perPh || (req.body && req.body.perPh)
+  const jobTitle = req.query.roles|| (req.body && req.body.roles)
+  const organization = req.query.orgName || (req.body && req.body.orgName)
 
   let responseMessage = name
     ? 'Hello, ' + name + '. This HTTP triggered function executed successfully.'
@@ -76,6 +78,8 @@ module.exports = async function (context, req) {
         email: email,
         offPh: offPh,
         perPh: perPh,
+        jobTitle:[role],
+        organization:orgName
       })
       responseMessage = {
         success: true,

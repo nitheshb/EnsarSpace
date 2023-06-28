@@ -5,6 +5,7 @@ import HeadSideBar from 'src/components/HeadSideBar/HeadSideBar'
 import Account from 'src/components/A_HrModule/profile/account'
 import CheckBox from 'src/components/A_HrModule/profile/checkBox'
 import PersonalDetails from 'src/components/A_HrModule/profile/personalDetails'
+import { useAuth } from 'src/context/firebase-auth-context'
 import bg from '../../../public/Group7.png'
 import { Link } from '@redwoodjs/router/dist/links'
 import LfileUploadTableHome from 'src/components/LfileUploadTableHome'
@@ -17,9 +18,10 @@ import { SingleFileUploadWithProgress } from 'src/components/LeadUplodCsv/Single
 import { UploadError } from 'src/components/LeadUplodCsv/UploadError'
 import { Height } from '@mui/icons-material'
 import ProfileHeaderPage from 'src/components/A_HrModule/profile/ProfileHeaderPage'
-import { useAuth } from 'src/context/firebase-auth-context'
 import ProfileAssetManagement from 'src/components/A_HrModule/ProfileAssetManagement'
-import LeaveApproval from 'src/components/A_HrModule/LeaveApproval'
+import TimeOffTable from 'src/components/TableComp/TimeOffTable'
+import LeaveManagement from 'src/components/A_HrModule/profile/LeaveManagement'
+
 
 const Profile = () => {
   const { user } = useAuth()
@@ -255,9 +257,11 @@ const Profile = () => {
               >
                 <PersonalDetails />
                 <ProfileAssetManagement />
-                <LeaveApproval />
+                 < LeaveManagement />
                 <CheckBox />
                 <Account />
+                {/* <TimeOffTable /> */}
+
               </div>
             </div>
           </div>
