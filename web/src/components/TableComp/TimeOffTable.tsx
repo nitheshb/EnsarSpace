@@ -5,9 +5,10 @@ import { PencilIcon, TrashIcon } from "@heroicons/react/outline";
 
 const TimeOffTable = () => {
   const [leaveApplied, setLeaveApplied] = useState([]);
-  const [selLeave, setSelLeave] = useState('all')
+  const [selLeave, setSelLeave] = useState('all');
   const [filteredLeaveApplied, setFilteredLeaveApplied] = useState([]);
-
+  const [casualLeaveCount, setCasualLeaveCount] = useState(0);
+  const [sickLeaveCount, setSickLeaveCount] = useState(0);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -16,34 +17,46 @@ const TimeOffTable = () => {
         const applied = await getLeaveRequests(user.orgId);
         setLeaveApplied(applied);
         setFilteredLeaveApplied(applied);
+        updateLeaveCounts(applied); // Update leave counts when data is fetched
       } catch (error) {
-        console.error("Error fetching applied leaves:", error);
+        console.error('Error fetching applied leaves:', error);
       }
     };
-
     fetchLeaveApplied();
   }, []);
 
+  useEffect(() => {
+    updateLeaveCounts(filteredLeaveApplied); // Update leave counts when filtered data changes
+  }, [filteredLeaveApplied]);
+
+  const updateLeaveCounts = (leaveData) => {
+    const casualCount = leaveData.filter(leave => leave.leaveType === 'Casual Leave').length;
+    const sickCount = leaveData.filter(leave => leave.leaveType === 'Sick Leave').length;
+    setCasualLeaveCount(casualCount);
+    setSickLeaveCount(sickCount);
+  };
+
   const showOnlyLeave = (category) => {
-    if (category === "all") {
+    if (category === 'all') {
       setFilteredLeaveApplied(leaveApplied);
     } else {
-      const filteredLeaves = leaveApplied.filter(leave => leave.leaveType === category || leave.isLeaveApproved === category);
+      const filteredLeaves = leaveApplied.filter(
+        leave => leave.leaveType === category || leave.isLeaveApproved === category
+      );
       setFilteredLeaveApplied(filteredLeaves);
     }
     setSelLeave(category);
   };
 
-
   const handleDelete = async (requestId) => {
     try {
       await deleteLeaveRequest(user.orgId, requestId);
-      setLeaveApplied((prevRequests) =>
-        prevRequests ? prevRequests.filter((request) => request.id !== requestId) : []
+      setLeaveApplied(prevRequests =>
+        prevRequests ? prevRequests.filter(request => request.id !== requestId) : []
       );
-      console.log("Leave request deleted successfully.");
+      console.log('Leave request deleted successfully.');
     } catch (error) {
-      console.error("Error deleting leave request:", error);
+      console.error('Error deleting leave request:', error);
     }
   };
 
@@ -75,16 +88,26 @@ const TimeOffTable = () => {
                         }`}
                     >
                       {dat.label}
+                      {dat.val === 'Casual Leave' && casualLeaveCount > 0 && (
+                        <sup className="rounded-full bg-indigo-500 text-white px-2 py-1 m-1 text-xs">
+                          {casualLeaveCount}
+                        </sup>
+                      )}
+                      {dat.val === 'Sick Leave' && sickLeaveCount > 0 && (
+                        <sup className="rounded-full bg-indigo-500 text-white px-2 py-1 m-1 text-xs">
+                          {sickLeaveCount}
+                        </sup>
+                      )}
                     </div>
                   </a>
                 ))}
               </section>
               <div className="bg-white">
-                <div className="mx-auto p-4 mb-10">
+                <div className="shadow overflow-hidden border-b border-gray-200 mx-auto p-4 mb-10">
                   {filteredLeaveApplied.length > 0 ? (
                     <table className="w-full table-auto">
-                      <thead>
-                        <tr className="bg-gray-200">
+                      <thead className="bg-gray-50">
+                        <tr>
                           <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Leave Type</th>
                           <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">From Date</th>
                           <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">To Date</th>
@@ -129,17 +152,19 @@ const TimeOffTable = () => {
                               </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                              <div className="text-sm text-gray-900">
+                              <div className={`text-sm ${leave.isLeaveApproved === 'Approved' ? 'text-green-500' : leave.isLeaveApproved === 'Rejected' ? 'text-red-500' : 'text-gray-900'}`}>
                                 {leave.isLeaveApproved}
                               </div>
                             </td>
+
+
                             <td className="px-6 py-4 whitespace-nowrap text-center">
                               {leave.isLeaveApproved === "Pending" && (
                                 <>
                                   <PencilIcon
                                     className="w-5 h-5 ml-[6px] mb-[4px] inline cursor-pointer"
-                                    // onClick={() => setisLeaveOpen(true)}
-                                    />
+                                  // onClick={() => setisLeaveOpen(true)}
+                                  />
                                   <TrashIcon
                                     className="w-5 h-5 ml-[18px] mb-[4px] inline cursor-pointer"
                                     onClick={() => handleDelete(user.orgId
