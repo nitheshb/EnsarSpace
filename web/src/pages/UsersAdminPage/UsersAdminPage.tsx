@@ -21,6 +21,7 @@ import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 
 import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
 import LaptopDetailsPage from '../LaptopDetailPage/LaptopDetailPage'
+import SiderForm from 'src/components/SiderForm/SiderForm'
 
 // import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 
@@ -30,6 +31,10 @@ const UsersAdminPage = () => {
   const [viewable, setViewable] = useState('User Management')
   const [empData, setEmpData] = useState({})
   const [selModule, setSelModule] = useState('HR')
+  const [isImportLeadsOpen, setisImportLeadsOpen] = useState(false)
+  // const [isImportLeadsOpened, setisImportLeadsOpened] = useState(false)
+
+
 
   const editEmployeeFun = (empData) => {
     setEmpData(empData)
@@ -80,6 +85,54 @@ const UsersAdminPage = () => {
                 </button>
               )}
 
+              {viewable === 'OnBoarding' && (
+                <button
+                  onClick={() => setisImportLeadsOpen(true)}
+                  className="flex items-center justify-center h-10 px-4  bg-gray-200 ml-auto text-sm font-medium rounded hover:bg-gray-300"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                    />
+                  </svg>
+                  <span className="ml-1 leading-none">Add Asset</span>
+                </button>
+              )}
+
+               {/* {viewable === 'OnBoarding' && (
+                <button
+                  onClick={() => setisImportLeadsOpened(true)}
+                  className="flex items-center justify-center h-10 px-4  bg-gray-200 ml-auto text-sm font-medium rounded hover:bg-gray-300"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                    />
+                  </svg>
+                  <span className="ml-1 leading-none">Assign Asset</span>
+                </button>
+              )} */}
+
+
+
               {viewable === 'Roles Management' && (
                 <button
                   onClick={() => editEmployeeFun({})}
@@ -126,22 +179,18 @@ const UsersAdminPage = () => {
               </>
             )}
 
-            {viewable === 'OnBoarding' && (
-              <>
-                <OnBoarding leadsTyper={undefined} />
-              </>
-            )}
+
 
               {/* {viewable === 'LaptopDetailsPage' && (
               <>
                 <LaptopDetailsPage />
               </>
             )} */}
-            {/* {viewable === 'OnBoarding' && (
+            {viewable === 'OnBoarding' && (
               <>
-                <OnBoarding />
+                <OnBoarding leadsTyper={undefined} />
               </>
-            )} */}
+            )}
 
             {viewable === 'My Activity' && (
               <>
@@ -206,6 +255,21 @@ const UsersAdminPage = () => {
               title="User"
               empData={empData}
             />
+
+            <SiderForm
+            open={isImportLeadsOpen}
+            setOpen={setisImportLeadsOpen}
+            title='AddAsset'
+            widthClass="max-w-xl"
+            />
+
+           {/* <SiderForm
+            open={isImportLeadsOpened}
+            setOpen={setisImportLeadsOpened}
+            title='AssignAsset'
+            widthClass="max-w-xl"
+            /> */}
+
           </div>
         </div>
       </div>

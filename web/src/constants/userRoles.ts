@@ -147,7 +147,10 @@ export const options1 = [
   { label: 'Ryzen', value: 'Ryzen' },
   { label: 'Intel', value: 'Intel' },
   { label: 'Snapdragon', value: 'Snapdragon' },
-  { label: 'Mediatek', value: 'Mediatek' },
+  { label: 'Mediatek', value: 'mediatek' },
+  { label: 'jio', value: 'jio' },
+  { label: 'VI', value: 'vi' },
+
 ]
 export const options2 = [
   { label: 'Select the Ram', value: '' },
@@ -155,6 +158,10 @@ export const options2 = [
   { label: '6GB', value: '6GB' },
   { label: '8GB', value: '8GB' },
   { label: '16GB', value: '16GB' },
+  { label: '64GB', value: '64GB' },
+  { label: '128GB', value: '128GB' },
+  { label: '512GB', value: '512GB' },
+  { label: '1TB', value: '1TB' },
 ]
 export const options3 = [
   { label: 'Select the Serial Number', value: '' },
@@ -176,10 +183,15 @@ export const options4 = [
 ]
 export const options5 = [
   { label: 'Select the Working Status', value: '' },
-  { label: 'Good ', value: 'Good' },
-  { label: 'Average', value: 'Average' },
-  { label: 'Bad', value: 'Bad' },
+  { label: 'Active', value: 'Active' },
+  { label: 'Repair', value: 'Repair' },
 ]
+
+// export const options6 = [
+//   { label: 'Select the AssignTo', value: '' },
+//   { label: 'Active', value: 'Active' },
+//   { label: 'Repair', value: 'Repair' },
+// ]
 
 export const ROLES_LIST = [
   { label: 'Select the role', value: '' },

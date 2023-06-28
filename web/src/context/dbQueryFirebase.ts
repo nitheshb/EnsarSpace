@@ -777,6 +777,16 @@ export const getUserdetails = async (orgId) => {
   }
 }
 
+export const getUsers = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'users'))
+
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting user details:', error)
+  }
+}
+
 
 export const storeAssignDetails = async (orgId, assignDetails) => {
   try {
@@ -791,6 +801,19 @@ export const storeAssignDetails = async (orgId, assignDetails) => {
     console.log('Error storing Assign details:', error)
   }
 }
+// export const storeUserDetails = async (orgId, userDetails) => {
+//   try {
+//     // const { user } = useAuth();
+//     const assignManagementData = { ...userDetails }
+//     const x = await addDoc(
+//       collection(db, `users`),
+//       assignManagementData
+//     )
+//     console.log('user details stored successfully!')
+//   } catch (error) {
+//     console.log('Error storing Assign details:', error)
+//   }
+// }
 
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data
