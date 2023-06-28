@@ -17,6 +17,7 @@ import ProfileHeaderPage from 'src/components/A_HrModule/profile/ProfileHeaderPa
 import ProfileAssetManagement from 'src/components/A_HrModule/ProfileAssetManagement'
 import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
 import HeadNavBar from 'src/components/HeadNavBar/HeadNavBar'
+import LeaveApproval from 'src/components/A_LeaveModule/LeaveApproval/LeaveApproval'
 import HeadSideBar from 'src/components/HeadSideBar/HeadSideBar'
 import { SingleFileUploadWithProgress } from 'src/components/LeadUplodCsv/SingleFileUploadWithProgress'
 import { UploadError } from 'src/components/LeadUplodCsv/UploadError'
@@ -25,6 +26,7 @@ import Loader from 'src/components/Loader/Loader'
 import TimeOff from 'src/components/TableComp/TimeOff'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 import { useAuth } from 'src/context/firebase-auth-context'
+import LeaveApprovalPage from 'src/pages/LeaveApprovalPage/LeaveApprovalPage'
 
 import bg from '../../../public/Group7.png'
 
@@ -279,7 +281,9 @@ const Profile = () => {
                 <CheckBox />
                 <Account />
                 <TimeOffTable />
-                <TimeOff />
+                <LeaveApproval />
+                <LeaveApprovalPage />
+                {/* <TimeOff /> */}
               </div>
             </div>
           </div>
