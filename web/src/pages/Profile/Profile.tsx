@@ -227,7 +227,7 @@ const Profile = () => {
                             {/* <span className="mr-2">{user?.perPh}</span> */}
                             <input
                               type="text"
-                              placeholder={user?.perPh}
+                              placeholder={user?.phone}
                               readOnly
                               className="border-b border-black py-2 pl-10 pr-4 w-full border-none bg-transparent rounded-lg focus:border-black focus:outline-none focus:ring-1 focus:white  "
                             />
