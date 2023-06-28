@@ -89,14 +89,14 @@ const TimeOffTable = () => {
                     >
                       {dat.label}
                       {dat.val === 'Casual Leave' && casualLeaveCount > 0 && (
-                        <sup className="rounded-full bg-indigo-500 text-white px-2 py-1 m-1 text-xs">
+                        <span className="text-black px-2 py-1 m-1 text-m">
                           {casualLeaveCount}
-                        </sup>
+                        </span>
                       )}
                       {dat.val === 'Sick Leave' && sickLeaveCount > 0 && (
-                        <sup className="rounded-full bg-indigo-500 text-white px-2 py-1 m-1 text-xs">
+                        <span className="text-black px-2 py-1 m-1 text-m">
                           {sickLeaveCount}
-                        </sup>
+                        </span>
                       )}
                     </div>
                   </a>
@@ -153,9 +153,12 @@ const TimeOffTable = () => {
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
                               <div className={`text-sm ${leave.isLeaveApproved === 'Approved' ? 'text-green-500' : leave.isLeaveApproved === 'Rejected' ? 'text-red-500' : 'text-gray-900'}`}>
-                                {leave.isLeaveApproved}
+                                <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${leave.isLeaveApproved === 'Approved' ? 'bg-green-100 text-green-800' : leave.isLeaveApproved === 'Rejected' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800'}`}>
+                                  {leave.isLeaveApproved}
+                                </span>
                               </div>
                             </td>
+
 
 
                             <td className="px-6 py-4 whitespace-nowrap text-center">

@@ -6,6 +6,7 @@ import { getLeaveRequests, steamUsersList } from 'src/context/dbQueryFirebase';
 import { useAuth } from 'src/context/firebase-auth-context';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Select from 'react-select';
 
 
 const LeaveApprovalPage: React.FC = () => {
@@ -16,6 +17,14 @@ const LeaveApprovalPage: React.FC = () => {
   const [selectedEmployee, setSelectedEmployee] = useState('');
 
   const { user } = useAuth();
+
+  const options = [
+    { value: '', label: 'All Employees' },
+    ...leadsFetchedData.map((employee) => ({
+      value: employee.name,
+      label: employee.name,
+    })),
+  ];
 
   useEffect(() => {
     getLeadsDataFun()
@@ -86,7 +95,7 @@ const LeaveApprovalPage: React.FC = () => {
 
 
   return (
-    <div className="bg-white mt-10">
+    <div className="bg-white mt-4">
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -115,19 +124,21 @@ const LeaveApprovalPage: React.FC = () => {
                   </div>
                 </a>
               ))}
-              <div className="ml-auto flex items-center">
-                <select
-                  className="bg-white border border-gray-300 rounded-md py-2 px-4 text-sm"
-                  value={selectedEmployee}
-                  onChange={(e) => setSelectedEmployee(e.target.value)}
-                >
-                  <option value="">All Employees</option>
-                  {leadsFetchedData.map((employee) => (
-                    <option key={employee.name} value={employee.name}>
-                      {employee.name}
-                    </option>
-                  ))}
-                </select>
+              <div className="ml-auto pl-40 flex items-center">
+                <Select
+                  className="bg-white rounded-md py-2 px-4 text-sm"
+                  classNamePrefix="react-select"
+                  value={{ value: selectedEmployee, label: selectedEmployee }}
+                  onChange={(selectedOption) => setSelectedEmployee(selectedOption.value)}
+                  options={options}
+                  styles={{
+                    control: (provided) => ({
+                      ...provided,
+                      minWidth: '10rem',
+                      width: 'auto',
+                    }),
+                  }}
+                />
                 <DatePicker
                   selected={selectedDate}
                   onChange={handleDateChange}
