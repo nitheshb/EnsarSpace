@@ -119,10 +119,13 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">
+        <span
+          className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${isLeaveApproved === 'Approved' ? 'bg-green-100 text-green-800' : isLeaveApproved === 'Rejected' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-black'}`}
+        >
           {isLeaveApproved}
-        </div>
+        </span>
       </td>
+
       <td className="px-6 py-4 whitespace-nowrap">
         {showActions ? (
           <>

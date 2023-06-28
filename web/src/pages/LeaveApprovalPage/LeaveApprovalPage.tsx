@@ -6,6 +6,7 @@ import { getLeaveRequests, steamUsersList } from 'src/context/dbQueryFirebase';
 import { useAuth } from 'src/context/firebase-auth-context';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Select from 'react-select';
 
 
 const LeaveApprovalPage: React.FC = () => {
@@ -14,8 +15,18 @@ const LeaveApprovalPage: React.FC = () => {
   const [leadsFetchedData, setLeadsFetchedData] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedEmployee, setSelectedEmployee] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
 
   const { user } = useAuth();
+
+  const options = [
+    { value: '', label: 'All Employees' },
+    ...leadsFetchedData.map((employee) => ({
+      value: employee.name,
+      label: employee.name,
+    })),
+  ];
 
   useEffect(() => {
     getLeadsDataFun()
@@ -66,8 +77,10 @@ const LeaveApprovalPage: React.FC = () => {
   };
 
   const showOnlyLeave = (category) => {
-    setSelLeave(category);
+    setSelectedCategory(category);
+    setSelectedEmployee(''); // Reset the selected employee when a leave category is selected
   };
+
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -75,20 +88,34 @@ const LeaveApprovalPage: React.FC = () => {
   };
 
   const filteredLeaveApprovals = useMemo(() => {
+    let filteredApprovals = leaveApprovals;
+
     if (selectedDate) {
-      return leaveApprovals.filter((approval) => {
+      filteredApprovals = filteredApprovals.filter((approval) => {
         const fromDate = new Date(approval.fromDate).setHours(0, 0, 0, 0);
         const selectedDateValue = selectedDate.setHours(0, 0, 0, 0);
-        return fromDate === selectedDateValue && (selectedEmployee === '' || approval.displayName === selectedEmployee);
+        return fromDate === selectedDateValue;
       });
-    } else {
-      return leaveApprovals.filter((approval) => approval.displayName === selectedEmployee || selectedEmployee === '');
     }
-  }, [leaveApprovals, selectedDate, selectedEmployee]);
+
+    if (selectedEmployee) {
+      filteredApprovals = filteredApprovals.filter(
+        (approval) => approval.displayName === selectedEmployee
+      );
+    }
+
+    if (selectedCategory !== 'all') {
+      filteredApprovals = filteredApprovals.filter(
+        (approval) => approval.leaveType === selectedCategory || approval.isLeaveApproved === selectedCategory
+      );
+    }
+
+    return filteredApprovals;
+  }, [leaveApprovals, selectedDate, selectedEmployee, selectedCategory]);
 
 
   return (
-    <div className="bg-white mt-10">
+    <div className="bg-white mt-4">
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -117,19 +144,21 @@ const LeaveApprovalPage: React.FC = () => {
                   </div>
                 </a>
               ))}
-              <div className="ml-auto flex items-center">
-                <select
-                  className="bg-white border border-gray-300 rounded-md py-2 px-4 text-sm"
-                  value={selectedEmployee}
-                  onChange={(e) => setSelectedEmployee(e.target.value)}
-                >
-                  <option value="">All Employees</option>
-                  {leadsFetchedData.map((employee) => (
-                    <option key={employee.name} value={employee.name}>
-                      {employee.name}
-                    </option>
-                  ))}
-                </select>
+              <div className="ml-auto pl-40 flex items-center">
+                <Select
+                  className="bg-white rounded-md py-2 px-4 text-sm"
+                  classNamePrefix="react-select"
+                  value={{ value: selectedEmployee, label: selectedEmployee }}
+                  onChange={(selectedOption) => setSelectedEmployee(selectedOption.value)}
+                  options={options}
+                  styles={{
+                    control: (provided) => ({
+                      ...provided,
+                      minWidth: '10rem',
+                      width: 'auto',
+                    }),
+                  }}
+                />
                 <DatePicker
                   selected={selectedDate}
                   onChange={handleDateChange}
