@@ -15,6 +15,8 @@ const LeaveApprovalPage: React.FC = () => {
   const [leadsFetchedData, setLeadsFetchedData] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedEmployee, setSelectedEmployee] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
 
   const { user } = useAuth();
 
@@ -73,8 +75,10 @@ const LeaveApprovalPage: React.FC = () => {
   };
 
   const showOnlyLeave = (category) => {
-    setSelLeave(category);
+    setSelectedCategory(category);
+    setSelectedEmployee(''); // Reset the selected employee when a leave category is selected
   };
+
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -82,16 +86,30 @@ const LeaveApprovalPage: React.FC = () => {
   };
 
   const filteredLeaveApprovals = useMemo(() => {
+    let filteredApprovals = leaveApprovals;
+
     if (selectedDate) {
-      return leaveApprovals.filter((approval) => {
+      filteredApprovals = filteredApprovals.filter((approval) => {
         const fromDate = new Date(approval.fromDate).setHours(0, 0, 0, 0);
         const selectedDateValue = selectedDate.setHours(0, 0, 0, 0);
-        return fromDate === selectedDateValue && (selectedEmployee === '' || approval.displayName === selectedEmployee);
+        return fromDate === selectedDateValue;
       });
-    } else {
-      return leaveApprovals.filter((approval) => approval.displayName === selectedEmployee || selectedEmployee === '');
     }
-  }, [leaveApprovals, selectedDate, selectedEmployee]);
+
+    if (selectedEmployee) {
+      filteredApprovals = filteredApprovals.filter(
+        (approval) => approval.displayName === selectedEmployee
+      );
+    }
+
+    if (selectedCategory !== 'all') {
+      filteredApprovals = filteredApprovals.filter(
+        (approval) => approval.leaveType === selectedCategory || approval.isLeaveApproved === selectedCategory
+      );
+    }
+
+    return filteredApprovals;
+  }, [leaveApprovals, selectedDate, selectedEmployee, selectedCategory]);
 
 
   return (
