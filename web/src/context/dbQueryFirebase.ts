@@ -38,6 +38,10 @@ export const steamUsersList = (orgId, snapshot, error) => {
   console.log('orgname is ====>', orgId)
   return onSnapshot(itemsQuery, snapshot, error)
 }
+export const steamAssetsList = (orgId, snapshot, error) => {
+  const itemsQuery = query(collection(db, `${orgId}_asset_Repo`))
+  return onSnapshot(itemsQuery, snapshot, error)
+}
 // get users list
 export const steamUsersListByRole = (orgId, snapshot, error) => {
   const itemsQuery = query(
@@ -739,6 +743,55 @@ export const storeLeaveDetails = async (leaveDetails) => {
   }
 }
 
+export const storeAssetDetails = async (orgId, assetDetails) => {
+  try {
+    // const { user } = useAuth();
+    const assetManagementData = { ...assetDetails }
+    const x = await addDoc(
+      collection(db, `${orgId}_asset_Repo`),
+      assetManagementData
+    )
+    console.log('Asset details stored successfully!')
+  } catch (error) {
+    console.log('Error storing Asset details:', error)
+  }
+}
+
+export const getAssetdetails = async (orgId) => {
+  try {
+    const querySnapshot = await getDocs(collection(db, `${orgId}_asset_Repo`))
+
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting Asset details:', error)
+  }
+}
+
+export const getUserdetails = async (orgId) => {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'users'))
+
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting user details:', error)
+  }
+}
+
+
+export const storeAssignDetails = async (orgId, assignDetails) => {
+  try {
+    // const { user } = useAuth();
+    const assignManagementData = { ...assignDetails }
+    const x = await addDoc(
+      collection(db, `${orgId}_assign_Repo`),
+      assignManagementData
+    )
+    console.log('Assign details stored successfully!')
+  } catch (error) {
+    console.log('Error storing Assign details:', error)
+  }
+}
+
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data
   const getAllProjectsQuery = await query(
@@ -748,25 +801,25 @@ export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   return onSnapshot(getAllProjectsQuery, snapshot, error)
 }
 
-export const storeAssetDetails = async (orgId, assetDetails) => {
+// export const storeAssetDetails = async (orgId, assetDetails) => {
 
-  try {
+//   try {
 
-    // const { user } = useAuth();
+//     // const { user } = useAuth();
 
-    const assetManagementData = { ...assetDetails}
+//     const assetManagementData = { ...assetDetails}
 
-    const x = await addDoc(collection(db, `${orgId}_asset_Repo`), assetManagementData)
+//     const x = await addDoc(collection(db, `${orgId}_asset_Repo`), assetManagementData)
 
-    console.log('Asset details stored successfully!')
+//     console.log('Asset details stored successfully!')
 
-  } catch (error) {
+//   } catch (error) {
 
-    console.log('Error storing Asset details:', error)
+//     console.log('Error storing Asset details:', error)
 
-  }
+//   }
 
-}
+// }
 
 export const getAllRoleAccess = async (orgId) => {
   // userAccessRoles.forEach(async (element) => {

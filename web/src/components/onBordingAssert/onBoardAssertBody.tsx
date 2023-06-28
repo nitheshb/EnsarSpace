@@ -11,20 +11,20 @@ import {
   options3,
   options4,
   options5,
-  options6,
 } from 'src/constants/userRoles'
+import { storeAssetDetails } from 'src/context/dbQueryFirebase'
+import { useAuth } from 'src/context/firebase-auth-context'
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 
 import Loader from '../Loader/Loader'
 
 const validate = Yup.object().shape({
   Product: Yup.string().required('Product is required'),
-  Touchscreen: Yup.string().required('Touchscreen is required'),
-  Sensors: Yup.string().required('Sensors is required'),
-  NFC: Yup.string().required('NFC is required'),
-  Display: Yup.string().required('Display is required'),
-  PhoneConnector: Yup.string().required('Phone connector is required'),
-  Keypad: Yup.string().required('Keypad is required'),
+  Processor: Yup.string().required('Processor is required'),
+  Ram: Yup.string().required('Ram is required'),
+  SerialNumber: Yup.string().required('SerialNumber is required'),
+  AllocationStatus: Yup.string().required('AllocationStatus is required'),
+  WorkingStatus: Yup.string().required('Working Status is required'),
 })
 
 // const options = [
@@ -78,21 +78,19 @@ const OnBoardAssertBody = () => {
 
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (values) => {
+  const { user } = useAuth()
+  const handleSubmit = async (values) => {
     console.log('Submitted', values)
-    // Handle form submission
+    try {
+      setLoading(true)
 
-    // Example: Simulating form submission delay
-    setLoading(true)
-    setTimeout(() => {
+      await storeAssetDetails(user.orgId, values)
+
       setLoading(false)
-      setFormMessage({
-        color: 'green',
-        message: 'Asset added successfully!',
-      })
-    }, 2000)
+    } catch (error) {
+      console.log(error)
+    }
 
-    // Display form values in the console
     console.log('Form Values:', values)
   }
 
@@ -113,18 +111,43 @@ const OnBoardAssertBody = () => {
           <Formik
             initialValues={{
               Product: '',
-              Touchscreen: '',
-              Sensors: '',
-              NFC: '',
-              Display: '',
-              PhoneConnector: '',
-              Keypad: '',
+              Processor: '',
+              Ram: '',
+              SerialNumber: '',
+              AllocationStatus: '',
+              WorkingStaus: '',
             }}
             validationSchema={validate}
             onSubmit={handleSubmit}
           >
             {({ values, setFieldValue }) => (
               <Form className="space-y-6">
+
+                   <div>
+                  <label
+                    htmlFor="SerialNumber"
+                    className="block text-sm font-medium bold-black-700"
+                  >
+                    Serial Number
+                  </label>
+                  <Field
+                    as={CustomSelect}
+                    name="SerialNumber"
+                    options={options3}
+                    placeholder="Select SerialNumber"
+                    className="mt-1"
+                    onChange={(option) =>
+                      setFieldValue('SerialNumber', option.value)
+                    }
+                  />
+                  <ErrorMessage
+                    name="SerialNumber"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
+                </div>
+
+
                 <div>
                   <label
                     htmlFor="Product"
@@ -151,23 +174,23 @@ const OnBoardAssertBody = () => {
 
                 <div>
                   <label
-                    htmlFor="Touchscreen"
+                    htmlFor="Processor"
                     className="block text-sm font-medium bold-black-700"
                   >
-                    Touchscreen
+                    Processor
                   </label>
                   <Field
                     as={CustomSelect}
-                    name="Touchscreen"
+                    name="Processor"
                     options={options1}
                     placeholder="Select touchscreen option"
                     className="mt-1"
                     onChange={(option) =>
-                      setFieldValue('Touchscreen', option.value)
+                      setFieldValue('Processor', option.value)
                     }
                   />
                   <ErrorMessage
-                    name="Touchscreen"
+                    name="Processor"
                     component="div"
                     className="text-red-500 text-sm mt-1"
                   />
@@ -175,69 +198,46 @@ const OnBoardAssertBody = () => {
 
                 <div>
                   <label
-                    htmlFor="Sensors"
+                    htmlFor="Ram"
                     className="block text-sm font-medium bold-black-700"
                   >
-                    Sensors
+                    Ram
                   </label>
                   <Field
                     as={CustomSelect}
-                    name="Sensors"
+                    name="Ram"
                     options={options2}
-                    placeholder="Select sensor"
+                    placeholder="Select Ram"
                     className="mt-1"
-                    onChange={(option) =>
-                      setFieldValue('Sensors', option.value)
-                    }
+                    onChange={(option) => setFieldValue('Ram', option.value)}
                   />
                   <ErrorMessage
-                    name="Sensors"
+                    name="Ram"
                     component="div"
                     className="text-red-500 text-sm mt-1"
                   />
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="NFC"
-                    className="block text-sm font-medium bold-black-700"
-                  >
-                    NFC
-                  </label>
-                  <Field
-                    as={CustomSelect}
-                    name="NFC"
-                    options={options3}
-                    placeholder="Select NFC option"
-                    className="mt-1"
-                    onChange={(option) => setFieldValue('NFC', option.value)}
-                  />
-                  <ErrorMessage
-                    name="NFC"
-                    component="div"
-                    className="text-red-500 text-sm mt-1"
-                  />
-                </div>
 
                 <div>
                   <label
-                    htmlFor="Display"
+                    htmlFor="AllocationStatus"
                     className="block text-sm font-medium bold-black-700"
                   >
-                    Display
+                    Allocation Status
                   </label>
                   <Field
                     as={CustomSelect}
-                    name="Display"
+                    name="AllocationStatus"
                     options={options4}
-                    placeholder="Select display type"
+                    placeholder="Select Allocation Status"
                     className="mt-1"
                     onChange={(option) =>
-                      setFieldValue('Display', option.value)
+                      setFieldValue('AllocationStatus', option.value)
                     }
                   />
                   <ErrorMessage
-                    name="Display"
+                    name="AllocationStatus"
                     component="div"
                     className="text-red-500 text-sm mt-1"
                   />
@@ -245,45 +245,23 @@ const OnBoardAssertBody = () => {
 
                 <div>
                   <label
-                    htmlFor="PhoneConnector"
+                    htmlFor="WorkingStatus"
                     className="block text-sm font-medium bold-black-700"
                   >
-                    Phone Connector
+                    Working Status
                   </label>
                   <Field
                     as={CustomSelect}
-                    name="PhoneConnector"
+                    name="WorkingStatus"
                     options={options5}
-                    placeholder="Select phone connector"
+                    placeholder="Select Working Status"
                     className="mt-1"
                     onChange={(option) =>
-                      setFieldValue('PhoneConnector', option.value)
+                      setFieldValue('WorkingStatus', option.value)
                     }
                   />
                   <ErrorMessage
-                    name="PhoneConnector"
-                    component="div"
-                    className="text-red-500 text-sm mt-1"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="Keypad"
-                    className="block text-sm font-medium bold-black-700"
-                  >
-                    Keypad
-                  </label>
-                  <Field
-                    as={CustomSelect}
-                    name="Keypad"
-                    options={options6}
-                    placeholder="Select keypad"
-                    className="mt-1"
-                    onChange={(option) => setFieldValue('Keypad', option.value)}
-                  />
-                  <ErrorMessage
-                    name="Keypad"
+                    name="WorkingStatus"
                     component="div"
                     className="text-red-500 text-sm mt-1"
                   />
@@ -294,7 +272,7 @@ const OnBoardAssertBody = () => {
                     type="submit"
                     className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   >
-                    {loading ? <Loader /> : 'Submit'}
+                    {loading ? <Loader texColor={undefined} size={undefined} /> : 'Submit'}
                   </button>
                 </div>
               </Form>
