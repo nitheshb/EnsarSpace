@@ -44,7 +44,6 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
 
   const handleApproval = async (status: string) => {
     const leaveStatus = status === 'Accepted' ? 'Approved' : 'Rejected';
-
     const leaveDetails = {
       requestId,
       displayName,
@@ -61,11 +60,11 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
     await updateLeaveRequest(user.orgId, leaveDetails.requestId, { isLeaveApproved: leaveStatus });
 
     if (status === 'Accepted') {
-      toast.success('Leave Approved', { position: 'top-right' });
+      enqueueSnackbar('Leave Approved', { variant: 'success' }); // Show success snackbar
       setApproved(true);
       dispatch(approveLeave(leaveDetails));
     } else if (status === 'Rejected') {
-      toast.error('Leave Rejected', { position: 'top-right' });
+      enqueueSnackbar('Leave Rejected', { variant: 'error' }); // Show error snackbar
       setApproved(true);
       dispatch(rejectLeave(leaveDetails));
     }
@@ -153,3 +152,5 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
 };
 
 export default LeaveApproval;
+
+

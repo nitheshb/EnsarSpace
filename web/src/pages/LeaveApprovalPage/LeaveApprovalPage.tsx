@@ -72,6 +72,8 @@ const LeaveApprovalPage: React.FC = () => {
     setLeaveApprovals((prevApprovals) =>
       prevApprovals.filter((approval) => approval.isLeaveApproved !== 'Pending')
     );
+
+    enqueueSnackbar('Leave status changed successfully!', { variant: 'success' });
   };
 
   const showOnlyLeave = (category) => {

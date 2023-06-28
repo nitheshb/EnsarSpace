@@ -99,6 +99,8 @@ export const steamUsersActivityLog = (orgId, snapshot, error) => {
   return onSnapshot(itemsQuery, snapshot, error)
 }
 
+
+
 // export const steamUsersActivityLog = (orgId, snapshot, error) => {
 //   const itemsQuery = query(
 //     collection(db, `${orgId}_user_log`),

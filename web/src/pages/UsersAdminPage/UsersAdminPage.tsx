@@ -9,11 +9,11 @@ import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 import OnBoarding from 'src/components/TableComp/OnBoarding'
 // import OnBoarding from 'src/components/TableComp/OnBoarding'
-import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
+// import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 // import TimeOff from 'src/components/TableComp/TimeOff'
-import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
-import TableData from 'src/components/Access/TableData'
+import LeaveApprovalPage from 'src/pages/LeaveApprovalPage/LeaveApprovalPage'
+import TableData from 'src/components/A_AccessManagement/TableData'
 import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 // import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
@@ -130,6 +130,12 @@ const UsersAdminPage = () => {
               <UserManageTable editEmployeeFun={editEmployeeFun} />
             )}
 
+            {viewable === 'ongoing_projects' && (
+              <>
+                <UserManageTable editEmployeeFun={editEmployeeFun} />
+              </>
+            )}
+
             {viewable === 'Leave Approval' && (
               <>
                 <LeaveApprovalPage />
@@ -142,13 +148,11 @@ const UsersAdminPage = () => {
               </>
             )}
 
-
             {viewable === 'On Boarding' && (
               <>
                 <OnBoarding leadsTyper={undefined} />
               </>
             )}
-
 
             {viewable === 'Holidays Calendar' && (
               <>
@@ -184,8 +188,7 @@ const UsersAdminPage = () => {
                 <MyActivityHome source={'team'} />
               </>
             )}
-            {viewable === 'Pay Slips'
-            }
+            {viewable === 'Pay Slips'}
 
             {viewable === 'User Report' && (
               <LeadsTeamReportBody
