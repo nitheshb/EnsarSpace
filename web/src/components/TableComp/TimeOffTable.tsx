@@ -12,7 +12,7 @@ const TimeOffTable = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    const fetchLeaveApplied = async () => {
+    const fetchLeaveApplied = async () => { 
       try {
         const applied = await getLeaveRequests(user.orgId);
         setLeaveApplied(applied);
