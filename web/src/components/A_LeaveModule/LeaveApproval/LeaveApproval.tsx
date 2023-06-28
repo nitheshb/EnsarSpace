@@ -18,6 +18,7 @@ interface LeaveApprovalProps {
   comment: string;
   leaveType: string;
   isLeaveApproved: boolean;
+  showActions: boolean;
   onLeaveStatusChange: (requestId: string) => void;
 }
 
@@ -31,6 +32,7 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
   leaveReason,
   comment,
   leaveType,
+  showActions,
   isLeaveApproved,
   onLeaveStatusChange,
 }) => {
@@ -118,18 +120,30 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <button
-          className="px-4 py-2 bg-green-500 text-white rounded mr-2"
-          onClick={() => handleApproval('Accepted')}
-        >
-          Accept
-        </button>
-        <button
-          className="px-4 py-2 bg-red-500 text-white rounded"
-          onClick={() => handleApproval('Rejected')}
-        >
-          Reject
-        </button>
+        <div className="text-sm text-gray-900">
+          {isLeaveApproved}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        {showActions ? (
+          <>
+            <button
+              className="px-2 py-1 bg-green-500 text-white rounded-md text-sm mr-2"
+              onClick={() => handleApproval(requestId)}
+            >
+              Approve
+            </button>
+            <button
+              className="px-2 py-1 bg-red-500 text-white rounded-md text-sm"
+              onClick={() => handleApproval(requestId)}
+            >
+              Reject
+            </button>
+
+          </>
+        ) : (
+          'N/A'
+        )}
       </td>
     </tr>
   );
