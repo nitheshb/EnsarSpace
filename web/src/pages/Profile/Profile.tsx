@@ -11,12 +11,10 @@ import { Link } from '@redwoodjs/router/dist/links'
 
 import Account from 'src/components/A_HrModule/profile/account'
 import CheckBox from 'src/components/A_HrModule/profile/checkBox'
-import LeaveManagement from 'src/components/A_HrModule/profile/LeaveManagement'
 import PersonalDetails from 'src/components/A_HrModule/profile/personalDetails'
 import ProfileHeaderPage from 'src/components/A_HrModule/profile/ProfileHeaderPage'
 import ProfileAssetManagement from 'src/components/A_HrModule/ProfileAssetManagement'
 import CategoriesList from 'src/components/A_LearningModule/CategoriesList'
-import CoursesList from 'src/components/A_LearningModule/CoursesList'
 import CourseList from 'src/components/A_LearningModule/CoursesList'
 import LeaveApproval from 'src/components/A_LeaveModule/LeaveApproval/LeaveApproval'
 import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
@@ -31,7 +29,7 @@ import LeaveForm from 'src/components/TableComp/TimeOff'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 import { useAuth } from 'src/context/firebase-auth-context'
 import LeaveApprovalPage from 'src/pages/LeaveApprovalPage/LeaveApprovalPage'
-import myStyles from 'src/styles/myStyles.css'
+
 import bg from '../../../public/Group7.png'
 
 const Profile = () => {
@@ -93,8 +91,7 @@ const Profile = () => {
                 >
                   <div className="flex flex-col">
                     <div
-
-                      style={{ position: 'relative'  }}
+                      style={{ position: 'relative' }}
                       className="md:w-[12vw] flex flex-col justify-between items-center md:h-[10vh] rounded-md"
                     >
                       <div className=" justify-center items-end mt-20 mb-16 ml-10">
