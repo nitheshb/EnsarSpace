@@ -99,6 +99,8 @@ export const steamUsersActivityLog = (orgId, snapshot, error) => {
   return onSnapshot(itemsQuery, snapshot, error)
 }
 
+
+
 // export const steamUsersActivityLog = (orgId, snapshot, error) => {
 //   const itemsQuery = query(
 //     collection(db, `${orgId}_user_log`),
@@ -712,6 +714,103 @@ export const checkIfUserAlreadyExists = async (cName, matchVal) => {
 
   // db.collection(`${orgId}_leads`).add(data)
 }
+
+export const createEnsarUser = async (data) => {
+  try {
+    const userRef = doc(db, 'users', data.uid)
+    const docSnap = await getDoc(userRef)
+    if (!docSnap.exists()) {
+      await setDoc(userRef, data, { merge: true })
+    } else {
+      // doc.data() will be undefined in this case
+      console.log('No such document!')
+      return null
+    }
+  } catch (error) {
+    console.log('error in db', error)
+  }
+}
+
+
+
+
+// -----------------------------------------------LEAVE MODULE ---------------------------------------------------------------------
+
+export const submitLeaveRequest = async (orgId, uid, displayName, leaveDetails) => {
+  try {
+    const leaveRequestData = {
+      uid,
+      displayName,
+      ...leaveDetails
+    };
+    const leaveRequestRef = collection(db, `${orgId}_leave_Applications`);
+    const newLeaveRequestDoc = await addDoc(leaveRequestRef, leaveRequestData);
+    console.log('Leave request submitted successfully!');
+    const newLeaveRequestId = newLeaveRequestDoc.id; // Get the ID of the newly created leave request
+    return newLeaveRequestId;
+  } catch (error) {
+    console.log('Error submitting leave request:', error);
+    throw error;
+  }
+};
+
+export const updateLeaveRequest = async (orgId, requestId, updatedLeaveDetails) => {
+  try {
+    const leaveApplicationsCollectionRef = collection(db, `${orgId}_leave_Applications`);
+    const q = query(leaveApplicationsCollectionRef, where('requestId', '==', requestId));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach(async (queryDocSnapshot) => {
+      const leaveRequestRef = doc(db, `${orgId}_leave_Applications`, queryDocSnapshot.id);
+      await updateDoc(leaveRequestRef, updatedLeaveDetails);
+      console.log('Leave request updated successfully!');
+    });
+  } catch (error) {
+    console.log('Error updating leave request:', error);
+    throw error;
+  }
+};
+
+export const getLeaveRequests = async (orgId) => {
+  try {
+    const leaveRequestRef = collection(db, `${orgId}_leave_Applications`);
+    const querySnapshot = await getDocs(leaveRequestRef);
+    const leaveRequests = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    return leaveRequests;
+  } catch (error) {
+    console.log('Error getting leave requests:', error);
+    throw error; // Rethrow the error to handle it at a higher level if needed
+  }
+};
+
+export const checkIfLeaveExists = async (orgId, date) => {
+  const collectionName = `${orgId}_leave_Applications`;
+  const q = query(collection(db, collectionName), where('fromDate', '==', date));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.length > 0;
+};
+
+export const deleteLeaveRequest = async (orgId, requestId) => {
+  try {
+    const leaveApplicationsCollectionRef = collection(db, `${orgId}_leave_Applications`);
+    const q = query(leaveApplicationsCollectionRef, where('requestId', '==', requestId));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach(async (queryDocSnapshot) => {
+      const leaveRequestRef = doc(db, `${orgId}_leave_Applications`, queryDocSnapshot.id);
+      await deleteDoc(leaveRequestRef);
+      console.log('Leave request deleted successfully!');
+    });
+  } catch (error) {
+  console.error('Error deleting leave request:', error);
+    throw error;
+  }
+};
+
+
+//---------------------------------------------------------------------------------------------------------------------------------
+
+
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data
   const getAllProjectsQuery = await query(

@@ -210,7 +210,7 @@ if (val.trim() && val.length>=10 ) {
                 {showLoader ? (
                   <div className="z-10 absolute w-72 bg-zinc-700 text-white p-2">
                     <div className="flex justify-center">
-                      <Loader texColor="text-white" />
+                      <Loader texColor="text-white" size={undefined} />
                     </div>
                   </div>
                 ) : (

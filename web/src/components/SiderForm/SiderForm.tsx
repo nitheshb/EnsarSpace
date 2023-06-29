@@ -33,6 +33,7 @@ import {
 } from 'src/state/actions/search'
 import { useDispatch } from 'react-redux'
 import NotificationsSetupForm from '../A_ProjModule/NotificatoinsSetupFromHome'
+import AddCourseDialog from '../TableComp/SUserSignupBody/SUserSignupBody'
 const SiderForm = ({
   open,
   setOpen,
@@ -166,6 +167,10 @@ const SiderForm = ({
                       myBlock={myBlock}
                     />
                   ))}
+                {title === 'applyLeave'
+                  && (
+                    <AddCourseDialog />
+                  )}
 
                 {title === 'Add Unit' && (
                   <AddUnit
