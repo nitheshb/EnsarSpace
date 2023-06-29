@@ -44,6 +44,7 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
 
   const handleApproval = async (status: string) => {
     const leaveStatus = status === 'Accepted' ? 'Approved' : 'Rejected';
+
     const leaveDetails = {
       requestId,
       displayName,
@@ -60,11 +61,11 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
     await updateLeaveRequest(user.orgId, leaveDetails.requestId, { isLeaveApproved: leaveStatus });
 
     if (status === 'Accepted') {
-      enqueueSnackbar('Leave Approved', { variant: 'success' }); // Show success snackbar
+      toast.success('Leave Approved', { position: 'top-right' });
       setApproved(true);
       dispatch(approveLeave(leaveDetails));
     } else if (status === 'Rejected') {
-      enqueueSnackbar('Leave Rejected', { variant: 'error' }); // Show error snackbar
+      toast.error('Leave Rejected', { position: 'top-right' });
       setApproved(true);
       dispatch(rejectLeave(leaveDetails));
     }
@@ -108,7 +109,7 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
           {leaveType}
         </div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap"> 
+      <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-gray-900">
           {leaveReason}
         </div>
@@ -119,13 +120,10 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <span
-          className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${isLeaveApproved === 'Approved' ? 'bg-green-100 text-green-800' : isLeaveApproved === 'Rejected' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-black'}`}
-        >
+        <div className="text-sm text-gray-900">
           {isLeaveApproved}
-        </span>
+        </div>
       </td>
-
       <td className="px-6 py-4 whitespace-nowrap">
         {showActions ? (
           <>
@@ -151,6 +149,4 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
   );
 };
 
-export default LeaveApproval;
-
-
+export default LeaveApproval

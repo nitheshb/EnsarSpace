@@ -154,11 +154,10 @@ const TableData = () => {
       : rows.filter((row) => row[0] === selectedCategory);
 
   return (
-    <section className="flex flex-col ml-auto mt-[18px] bg-white border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10">
-      <div className="category-buttons" >
+    <section className="flex flex-col ml-auto mt-[18px] bg-white border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10 table-container">
+      <div className="category-buttons">
         <button
           className={selectedCategory === 'all' ? 'active' : ''}
-
           onClick={() => handleCategoryChange('all')}
         >
           All
@@ -182,41 +181,31 @@ const TableData = () => {
           Legal Manager
         </button>
         <button
-          className={
-            selectedCategory === 'Admin Project Manager' ? 'active' : ''
-          }
+          className={selectedCategory === 'Admin Project Manager' ? 'active' : ''}
           onClick={() => handleCategoryChange('Admin Project Manager')}
         >
           Admin Project Manager
         </button>
         <button
-          className={
-            selectedCategory === 'Project Executive' ? 'active' : ''
-          }
+          className={selectedCategory === 'Project Executive' ? 'active' : ''}
           onClick={() => handleCategoryChange('Project Executive')}
         >
           Project Executive
         </button>
         <button
-          className={
-            selectedCategory === 'Data Scientist' ? 'active' : ''
-          }
+          className={selectedCategory === 'Data Scientist' ? 'active' : ''}
           onClick={() => handleCategoryChange('Data Scientist')}
         >
           Data Scientist
         </button>
         <button
-          className={
-            selectedCategory === 'Sales Manager' ? 'active' : ''
-          }
+          className={selectedCategory === 'Sales Manager' ? 'active' : ''}
           onClick={() => handleCategoryChange('Sales Manager')}
         >
           Sales Manager
         </button>
         <button
-          className={
-            selectedCategory === 'HR Executive' ? 'active' : ''
-          }
+          className={selectedCategory === 'HR Executive' ? 'active' : ''}
           onClick={() => handleCategoryChange('HR Executive')}
         >
           HR Executive
@@ -249,37 +238,43 @@ const TableData = () => {
       </table>
       <style>
         {`
-        table {
-          border-collapse: collapse;
-          width: 100%;
-        }
+          .table-container {
+            border-radius: 10px;
+            overflow: hidden;
+            margin-right: 18px; /* Add desired spacing to the right */
+          }
 
-        th, td {
-          border: 1px solid black;
-          padding: 8px;
-          text-align: center;
-        }
+          table {
+            border-collapse: collapse;
+            width: 100%;
+          }
 
-        th {
-          border-bottom: none; /* Remove bottom border from table header */
-        }
+          th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+          }
 
-        .category-buttons {
-          display: flex;
-          justify-content: flex-start;
-          margin-bottom: 10px;
-        }
+          th {
+            border-bottom: none; /* Remove bottom border from table header */
+          }
 
-        .category-buttons button {
-          padding: 5px 10px;
-          margin-right: 5px;
-          font-size: 14px;
-          cursor: pointer;
-        }
+          .category-buttons {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 10px;
+          }
 
-        .category-buttons button.active {
-          background-color: #ccc;
-        }
+          .category-buttons button {
+            padding: 5px 10px;
+            margin-right: 5px;
+            font-size: 14px;
+            cursor: pointer;
+          }
+
+          .category-buttons button.active {
+            background-color: #ccc;
+          }
         `}
       </style>
     </section>

@@ -10,6 +10,10 @@ import LeaveManagement from 'src/components/A_HrModule/profile/LeaveManagement'
 import PersonalDetails from 'src/components/A_HrModule/profile/personalDetails'
 import ProfileHeaderPage from 'src/components/A_HrModule/profile/ProfileHeaderPage'
 import ProfileAssetManagement from 'src/components/A_HrModule/ProfileAssetManagement'
+import CategoriesList from 'src/components/A_LearningModule/CategoriesList'
+import CoursesList from 'src/components/A_LearningModule/CoursesList'
+import CourseList from 'src/components/A_LearningModule/CoursesList'
+import LeaveApproval from 'src/components/A_LeaveModule/LeaveApproval/LeaveApproval'
 import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
 import HeadNavBar from 'src/components/HeadNavBar/HeadNavBar'
 import HeadSideBar from 'src/components/HeadSideBar/HeadSideBar'
@@ -20,8 +24,10 @@ import ProfileHeader from 'src/components/profile/ProfileHeaderPage'
 import LfileUploadTableHome from 'src/components/LfileUploadTableHome'
 import Loader from 'src/components/Loader/Loader'
 import TimeOff from 'src/components/TableComp/TimeOff'
+import LeaveForm from 'src/components/TableComp/TimeOff'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 import { useAuth } from 'src/context/firebase-auth-context'
+
 import bg from '../../../public/Group7.png'
 
 const Profile = () => {
@@ -79,7 +85,8 @@ const Profile = () => {
                 >
                   <div className="flex flex-col">
                     <div
-                      style={{ position: 'relative' }}
+
+                      style={{ position: 'relative'  }}
                       className="md:w-[12vw] flex flex-col justify-between items-center md:h-[10vh] rounded-md"
                     >
                       <div className=" justify-center items-end mt-20 mb-16 ml-10">
@@ -265,12 +272,16 @@ const Profile = () => {
                 style={{ right: '15rem' }}
               >
                 <PersonalDetails />
+                {/* <CategoriesList /> */}
+                {/* <CourseList /> */}
                 <ProfileAssetManagement />
 
                 <CheckBox />
                 <Account />
                 <TimeOffTable />
-                <TimeOff />
+                {/* <LeaveApproval /> */}
+                {/* <LeaveApprovalPage /> */}
+                {/* <LeaveForm /> */}
               </div>
             </div>
           </div>
