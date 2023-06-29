@@ -4,15 +4,15 @@ import { Dialog } from '@headlessui/react'
 import { Form, Formik, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
-// import {
-//   options,
-//   options1,
-//   options2,
-//   options3,
-//   options4,
-//   options5,
-//   options6,
-// } from 'src/constants/userRoles'
+import {
+  options,
+  options1,
+  options2,
+  options3,
+  options4,
+  options5,
+  options6,
+} from 'src/constants/userRoles'
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 
 import Loader from '../Loader/Loader'
@@ -27,47 +27,48 @@ const validate = Yup.object().shape({
   Keypad: Yup.string().required('Keypad is required'),
 })
 
-const options = [
-  { value: 'apple iphone', label: 'Apple iphone' },
-  { value: 'realme gt', label: 'Realme gt' },
-  { value: 'oppo', label: 'Oppo' },
-]
+// const options = [
+//   { value: 'Laptop', label: 'Laptop' },
+//   { value: 'Phone windows', label: 'Phone windows' },
+//   { value: 'Phone android', label: 'Phone android' },
+//   { value: 'Sim', label: 'Sim' },
+// ]
 
-const options1 = [
-  { value: 'amoled', label: 'Amoled' },
-  { value: 'lcd', label: 'Lcd' },
-  { value: 'hd', label: 'Hd' },
-]
+// const options1 = [
+//   { value: 'amoled', label: 'Amoled' },
+//   { value: 'lcd', label: 'Lcd' },
+//   { value: 'hd', label: 'Hd' },
+// ]
 
-const options2 = [
-  { value: 'acclerometer', label: 'Acclerometer' },
-  { value: 'gyroscope', label: 'Gyroscope' },
-  { value: 'proximity', label: 'Proximity' },
-  { value: 'fingerprint', label: 'Fingerprint' },
-]
+// const options2 = [
+//   { value: 'acclerometer', label: 'Acclerometer' },
+//   { value: 'gyroscope', label: 'Gyroscope' },
+//   { value: 'proximity', label: 'Proximity' },
+//   { value: 'fingerprint', label: 'Fingerprint' },
+// ]
 
-const options3 = [
-  { value: 'yes', label: 'Yes' },
-  { value: 'no', label: 'No' },
-]
+// const options3 = [
+//   { value: 'yes', label: 'Yes' },
+//   { value: 'no', label: 'No' },
+// ]
 
-const options4 = [
-  { value: 'gorilla', label: 'Gorilla' },
-  { value: 'diamondglass', label: 'Diamond glass' },
-  { value: 'temperglass', label: 'Temperglass' },
-]
+// const options4 = [
+//   { value: 'gorilla', label: 'Gorilla' },
+//   { value: 'diamondglass', label: 'Diamond glass' },
+//   { value: 'temperglass', label: 'Temperglass' },
+// ]
 
-const options5 = [
-  { value: 'microusb ', label: 'Micro USB' },
-  { value: 'type-c', label: 'Type-c' },
-  { value: 'usb type-a', label: 'Usb type-a' },
-]
+// const options5 = [
+//   { value: 'microusb ', label: 'Micro USB' },
+//   { value: 'type-c', label: 'Type-c' },
+//   { value: 'usb type-a', label: 'Usb type-a' },
+// ]
 
-const options6 = [
-  { value: 'virtual keypad', label: 'Virtual keypad' },
-  { value: 'gboard', label: 'Gboard' },
-  { value: 'swiftkey', label: 'Swiftkwy' },
-]
+// const options6 = [
+//   { value: 'virtual keypad', label: 'Virtual keypad' },
+//   { value: 'gboard', label: 'Gboard' },
+//   { value: 'swiftkey', label: 'Swiftkwy' },
+// ]
 
 const OnBoardAssertBody = () => {
   const [formMessage, setFormMessage] = useState({

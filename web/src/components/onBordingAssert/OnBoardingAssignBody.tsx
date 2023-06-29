@@ -17,18 +17,23 @@ const validate = Yup.object().shape({
 })
 
 const ProductName = [
-  { value: 'a', label: 'Apple iphone' },
-  { value: 'realme gt', label: 'Realme gt' },
-  { value: 'oppo', label: 'Oppo' },
+  { label: 'Select the product', value: '' },
+  { value: 'Laptop', label: 'Laptop' },
+  { value: 'phone android', label: 'Phone android' },
+  { value: 'Phone windows', label: 'phone windows' },
+  { value: 'Sim', label: 'Sim Card' },
 ]
 
 const Version = [
-  { value: 'virtual keypad', label: 'Virtual keypad' },
-  { value: 'gboard', label: 'Gboard' },
-  { value: 'swiftkey', label: 'Swiftkey' },
+  { label: 'Select the Version', value: '' },
+  { value: 'updated 11.0', label: 'updated 11.0' },
+  { value: 'WW 12.0', label: 'WW 12.0' },
+  { value: 'Touch 15', label: 'Touch 15' },
+  { value: ' andriod 1 Above', label: '1_10' },
+  { value: 'android 10 Above', label: '_10' },
 ]
 
-const OnBoardingAssignBody = () => {
+const OnBoardAssertBody = () => {
   const [formMessage, setFormMessage] = useState({
     color: 'green',
     message: '',
@@ -58,7 +63,7 @@ const OnBoardingAssignBody = () => {
     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
       <div className="px-4 sm:px-6">
         <Dialog.Title className="font-semibold text-lg mr-auto ml-3">
-          Assign Assets
+          Add Products
         </Dialog.Title>
       </div>
       {formMessage.message && (
@@ -132,7 +137,7 @@ const OnBoardingAssignBody = () => {
                     Date
                   </label>
                   <Field
-                    type="text"
+                    type="Date"
                     name="Date"
                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
                   />
@@ -203,4 +208,4 @@ const OnBoardingAssignBody = () => {
   )
 }
 
-export default OnBoardingAssignBody
+export default OnBoardAssertBody

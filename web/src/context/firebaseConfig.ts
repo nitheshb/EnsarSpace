@@ -13,11 +13,17 @@ import { getStorage } from 'firebase/storage'
 //
 const firebaseConfig = {
   apiKey: 'AIzaSyANYyTx06DsGPRERNipL3ahWv2gTXSu8LU',
+
   authDomain: 'ensar-space.firebaseapp.com',
+
   projectId: 'ensar-space',
+
   storageBucket: 'ensar-space.appspot.com',
+
   messagingSenderId: '519786637049',
+
   appId: '1:519786637049:web:013048b1e92b3593636428',
+
   measurementId: 'G-0B0R3VR78D',
 }
 

@@ -162,46 +162,22 @@ const OnBoarding = ({ leadsTyper }) => {
     setTransactionData(docData)
     setisImportLeadsOpen(!isImportLeadsOpen)
   }
-  const OnBoardAssertBody = (productData) => {
-    setproductData(productData)
-    setIsOpen(true)
-  }
   const OnBoardingAssignBody = (assetData) => {
     setassetData(assetData)
     setIsOpen(true)
   }
 
-  console.log('add productData is', OnBoardAssertBody)
+  console.log('add assetData is', OnBoardingAssignBody)
 
   return (
     <>
-      <div className="flex items-center justify-between mb-4">
-        <h1 className="text-xl font-semibold"></h1>
-        <div className="flex space-x-2">
+      <div className="">
+        <span>
           <button
-            className="flex items-center justify-center h-10 px-4 bg-gray-200 text-sm font-medium rounded hover:bg-gray-300"
-            onClick={() => OnBoardAssertBody('Add Asset')}
+            className="flex items-center justify-center h-10 px-4  bg-gray-200 ml-auto text-sm font-medium rounded hover:bg-gray-300"
+            onClick={() => OnBoardingAssignBody({})}
           >
-            <svg
-              className="w-5 h-5"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-              />
-            </svg>
-            <span className="ml-1 leading-none">Add Asset</span>
-          </button>
-          <button
-            className="flex items-center justify-center h-10 px-4 bg-gray-200 text-sm font-medium rounded hover:bg-gray-300"
-            onClick={() => OnBoardingAssignBody('Assign Asset')}
-          >
+            {' '}
             <svg
               className="w-5 h-5"
               xmlns="http://www.w3.org/2000/svg"
@@ -218,10 +194,7 @@ const OnBoarding = ({ leadsTyper }) => {
             </svg>
             <span className="ml-1 leading-none">Assign Asset</span>
           </button>
-        </div>
-      </div>
-
-      <div className="">
+        </span>
         <div className="">
           <div className="">
             <section className="flex flex-row justify-between">
@@ -399,24 +372,14 @@ const OnBoarding = ({ leadsTyper }) => {
                     </span>
                   </section>
                 </div>
-                <div>
-                  <OnBoardingAssign
-                    open={isOpen}
-                    setOpen={handleOnClose}
-                    title="User"
-                    assetData={assetData}
-                  />
-                </div>
               </div>
             </section>
-            <div>
-              <OnBoardingAsset
-                open={isOpen}
-                setOpen={handleOnClose}
-                title="User"
-                productData={productData}
-              />
-            </div>
+            <OnBoardingAssign
+              open={isOpen}
+              setOpen={handleOnClose}
+              title="User"
+              assetData={assetData}
+            />
           </div>
         </div>
       </div>

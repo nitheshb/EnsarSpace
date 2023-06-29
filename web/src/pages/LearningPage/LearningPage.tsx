@@ -1,7 +1,6 @@
 import { MetaTags } from '@redwoodjs/web'
 import CategoriesList from 'src/components/A_LearningModule/CategoriesList'
 import CoursesList from 'src/components/A_LearningModule/CoursesList'
-
 import Hero from 'src/components/A_LearningModule/hero'
 
 const LearningPage = () => {
