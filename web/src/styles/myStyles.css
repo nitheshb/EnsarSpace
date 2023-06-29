@@ -964,16 +964,6 @@
 }
 
 /* Rectangle 4610 */
-<<<<<<< HEAD
-.e-r2 {
-  position: absolute;
-  width: 115.04px;
-  height: 27.61px;
-  left: 0px;
-  top: 0px;
-  background: #f1ecfe;
-  border-radius: 13.8053px;
-=======
 .e-r2{
 position: absolute;
 width: 115.04px;
@@ -986,7 +976,6 @@ line-height: 30px;
   font-size: 18px;
   border-radius: 50%;
   transition: background-color 0.3s;
->>>>>>> ca4e93d9f64b0906608566ba0976634c7d2bfd42
 }
 
 .css-6mn6yy {
