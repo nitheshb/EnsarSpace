@@ -15,15 +15,19 @@ import LeaveManagement from 'src/components/A_HrModule/profile/LeaveManagement'
 import PersonalDetails from 'src/components/A_HrModule/profile/personalDetails'
 import ProfileHeaderPage from 'src/components/A_HrModule/profile/ProfileHeaderPage'
 import ProfileAssetManagement from 'src/components/A_HrModule/ProfileAssetManagement'
+import CategoriesList from 'src/components/A_LearningModule/CategoriesList'
+import CoursesList from 'src/components/A_LearningModule/CoursesList'
+import CourseList from 'src/components/A_LearningModule/CoursesList'
+import LeaveApproval from 'src/components/A_LeaveModule/LeaveApproval/LeaveApproval'
 import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
 import HeadNavBar from 'src/components/HeadNavBar/HeadNavBar'
-import LeaveApproval from 'src/components/A_LeaveModule/LeaveApproval/LeaveApproval'
 import HeadSideBar from 'src/components/HeadSideBar/HeadSideBar'
 import { SingleFileUploadWithProgress } from 'src/components/LeadUplodCsv/SingleFileUploadWithProgress'
 import { UploadError } from 'src/components/LeadUplodCsv/UploadError'
 import LfileUploadTableHome from 'src/components/LfileUploadTableHome'
 import Loader from 'src/components/Loader/Loader'
 import TimeOff from 'src/components/TableComp/TimeOff'
+import LeaveForm from 'src/components/TableComp/TimeOff'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 import { useAuth } from 'src/context/firebase-auth-context'
 import LeaveApprovalPage from 'src/pages/LeaveApprovalPage/LeaveApprovalPage'
@@ -276,14 +280,16 @@ const Profile = () => {
                 style={{ right: '15rem' }}
               >
                 <PersonalDetails />
+                {/* <CategoriesList /> */}
+                {/* <CourseList /> */}
                 <ProfileAssetManagement />
 
                 <CheckBox />
                 <Account />
                 <TimeOffTable />
-                <LeaveApproval />
-                <LeaveApprovalPage />
-                {/* <TimeOff /> */}
+                {/* <LeaveApproval /> */}
+                {/* <LeaveApprovalPage /> */}
+                {/* <LeaveForm /> */}
               </div>
             </div>
           </div>
