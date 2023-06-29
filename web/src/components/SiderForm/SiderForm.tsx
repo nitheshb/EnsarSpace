@@ -183,6 +183,11 @@ const SiderForm = ({
                     <AddCourseDialog />
                   )}
 
+                {title === 'AddAsset'
+                  &&  (
+                    <OnBoardAssertBody />
+                )}
+
                 {title === 'Add Unit' && (
                   <AddUnit
                     title={title}
@@ -341,7 +346,7 @@ const SiderForm = ({
                   />
                 )}
 
-                {title === 'AddAsset' && <OnBoardAssertBody />}
+
 
                 {/* {title === 'AssignAsset' && <OnBoardAssertBody />} */}
 

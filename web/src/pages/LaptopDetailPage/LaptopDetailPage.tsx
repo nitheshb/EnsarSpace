@@ -392,6 +392,18 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
     assetPayload: {},
   })
 
+  // function YourComponent() {
+  //   const [filterName, setFilterName] = useState('');
+  //   const [filteredData, setFilteredData] = useState([]);
+
+  //   const filteredUsers = users.filter((user) =>
+  //   user.name.toLowerCase().includes(filterName.toLowerCase())
+  // );
+
+  // // Update the filteredData state variable with the filtered users
+  // setFilteredData(filteredUsers);
+
+
   const showOnlyRole = (role) => {
     setSelRole(role)
   }
@@ -510,7 +522,7 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-          <section className="ml-auto mt-[18px]  bg-white  border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10">
+          <section className="ml-auto mt-[18px]  bg-white  border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10" style={{ borderRadius: '20px' }}>
             <div
               style={{
                 overflow: 'hidden',
@@ -522,7 +534,7 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
                 paddingBottom: '10px',
                 width: '100%',
                 borderRadius: '16px',
-                backgroundColor: 'lightgrey',
+                backgroundColor: '#e5eaf2',
               }}
             >
               {[
@@ -713,38 +725,61 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
         </span> */}
             </div>
             <div className="flex ml-auto bg-white  border-gray-100 py-2">
-            <Stack
-            style={{
-              width:'100%'
-            }}
-              spacing={2}
-              direction={{ xs: 'column', sm: 'row' }}
-              sx={{ py: 2.5, px: 3 }}
-            >
-
-              <TextField
-                fullWidth
-                // value={filterName}
-                // onChange={(event) => onFilterName(event.target.value)}
-                placeholder="Search user..."
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      {/* <Iconify
-                        icon={'eva:search-fill'}
-                        sx={{ color: 'text.disabled', width: 20, height: 20 }}
-                      /> */}
-                    </InputAdornment>
-                  ),
+              <Stack
+                style={{
+                  width: '100%',
                 }}
-              />
-            </Stack>
-          </div>
+                spacing={2}
+                direction={{ xs: 'column', sm: 'row' }}
+                sx={{ py: 2.5, px: 3 }}
+
+              >
+                <TextField
+                  fullWidth
+                  // value={filterName}
+                  // onChange={(event) => onFilterName(event.target.value)}
+                  placeholder="Search user..."
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+                width="30px"
+                height="30px"
+              >
+                <path
+                  fill="#616161"
+                  d="M34.6 28.1H38.6V45.1H34.6z"
+                  transform="rotate(-45.001 36.586 36.587)"
+                />
+                <path
+                  fill="#616161"
+                  d="M20 4A16 16 0 1 0 20 36A16 16 0 1 0 20 4Z"
+                />
+                <path
+                  fill="#37474F"
+                  d="M36.2 32.1H40.2V44.400000000000006H36.2z"
+                  transform="rotate(-45.001 38.24 38.24)"
+                />
+                <path
+                  fill="#64B5F6"
+                  d="M20 7A13 13 0 1 0 20 33A13 13 0 1 0 20 7Z"
+                />
+                <path
+                  fill="#BBDEFB"
+                  d="M26.9,14.2c-1.7-2-4.2-3.2-6.9-3.2s-5.2,1.2-6.9,3.2c-0.4,0.4-0.3,1.1,0.1,1.4c0.4,0.4,1.1,0.3,1.4-0.1C16,13.9,17.9,13,20,13s4,0.9,5.4,2.5c0.2,0.2,0.5,0.4,0.8,0.4c0.2,0,0.5-0.1,0.6-0.2C27.2,15.3,27.2,14.6,26.9,14.2z"
+                />
+              </svg>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </Stack>
+            </div>
           </section>
 
-
-
-          <div className="shadow overflow-hidden border-b border-gray-200  bg-white pb-4 md:py-7 px-4 md:px-8 xl:px-10 br-16">
+          <div className="shadow overflow-hidden border-b border-gray-200  bg-white pb-4 md:py-7 px-4 md:px-8 xl:px-10 br-16" style={{ borderRadius: '20px' }}>
             <table className="min-w-full divide-y divide-gray-200 ">
               <thead className="bg-gray-50">
                 <tr>
