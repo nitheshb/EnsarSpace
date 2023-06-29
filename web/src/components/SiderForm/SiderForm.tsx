@@ -35,6 +35,7 @@ import { useDispatch } from 'react-redux'
 import NotificationsSetupForm from '../A_ProjModule/NotificatoinsSetupFromHome'
 import OnBoardingAssignBody from '../onBordingAssert/OnBoardingAssignBody'
 import OnBoardAssertBody from '../onBordingAssert/onBoardAssertBody'
+import AddCourseDialog from '../TableComp/SUserSignupBody/SUserSignupBody'
 const SiderForm = ({
   assetPayload,
   open,
@@ -177,6 +178,10 @@ const SiderForm = ({
                       myBlock={myBlock}
                     />
                   ))}
+                {title === 'applyLeave'
+                  && (
+                    <AddCourseDialog />
+                  )}
 
                 {title === 'Add Unit' && (
                   <AddUnit

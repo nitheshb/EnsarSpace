@@ -5,7 +5,6 @@ import { MetaTags } from '@redwoodjs/web'
 import AttendancePage from 'src/components/A_LearningModule/Attendance'
 import SlimSideMenuBar from 'src/components/A_SideMenu/slimSideMenu'
 // import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
-import TableData from 'src/components/Access/TableData'
 import HeadNavBar2 from 'src/components/HeadNavBar/HeadNavBar2'
 // import HeadSideBar from 'src/components/HeadSideBar/HeadSideBar'
 // import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
@@ -14,16 +13,21 @@ import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 import OnBoarding from 'src/components/TableComp/OnBoarding'
 // import OnBoarding from 'src/components/TableComp/OnBoarding'
-import Timeoff from 'src/components/TableComp/Timeoff'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
-
 import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
 import LaptopDetailsPage from '../LaptopDetailPage/LaptopDetailPage'
 import SiderForm from 'src/components/SiderForm/SiderForm'
-
 // import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
+// import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
+// import TimeOff from 'src/components/TableComp/TimeOff'
+import TableData from 'src/components/A_AccessManagement/TableData'
+// import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
+import TimeOff from 'src/components/TableComp/TimeOff'
+import Calendar from 'src/components/TableComp/Calendar'
+// import OnBoarding1 from 'src/components/ConstructModule/OnBoarding1'
+// import Assets from 'src/components/ConstructModule/OnBoarding'
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -32,9 +36,7 @@ const UsersAdminPage = () => {
   const [empData, setEmpData] = useState({})
   const [selModule, setSelModule] = useState('HR')
   const [isImportLeadsOpen, setisImportLeadsOpen] = useState(false)
-  // const [isImportLeadsOpened, setisImportLeadsOpened] = useState(false)
-
-
+  const [isLeaveOpen, setisLeaveOpen] = useState(false)
 
   const editEmployeeFun = (empData) => {
     setEmpData(empData)
@@ -155,10 +157,39 @@ const UsersAdminPage = () => {
                   <span className="ml-1 leading-none">Add Role</span>
                 </button>
               )}
+
+              {viewable === 'TimeOff' && (
+                <button
+                  onClick={() => setisLeaveOpen(true)}
+                  className="flex items-center justify-center h-10 px-5  bg-gray-200 ml-auto text-sm font-medium rounded hover:bg-gray-400 "
+                >
+                  <svg
+                    className="w-5 h-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                    />
+                  </svg>
+                  <span className="ml-1 leading-none">Apply Leave</span>
+                </button>
+              )}
             </div>
 
             {viewable === 'User Management' && (
               <UserManageTable editEmployeeFun={editEmployeeFun} />
+            )}
+
+            {viewable === 'ongoing_projects' && (
+              <>
+                <UserManageTable editEmployeeFun={editEmployeeFun} />
+              </>
             )}
 
             {viewable === 'Leave Approval' && (
@@ -186,9 +217,15 @@ const UsersAdminPage = () => {
                 <LaptopDetailsPage />
               </>
             )} */}
-            {viewable === 'OnBoarding' && (
+            {viewable === 'On Boarding' && (
               <>
                 <OnBoarding leadsTyper={undefined} />
+              </>
+            )}
+
+            {viewable === 'Holidays Calendar' && (
+              <>
+                <Calendar />
               </>
             )}
 
@@ -206,7 +243,7 @@ const UsersAdminPage = () => {
 
             {viewable === 'Time Off' && (
               <>
-                <Timeoff />
+                <TimeOff />
               </>
             )}
 
@@ -221,6 +258,7 @@ const UsersAdminPage = () => {
                 <MyActivityHome source={'team'} />
               </>
             )}
+            {viewable === 'Pay Slips'}
 
             {viewable === 'User Report' && (
               <LeadsTeamReportBody
@@ -273,6 +311,12 @@ const UsersAdminPage = () => {
           </div>
         </div>
       </div>
+      <SiderForm
+        open={isLeaveOpen}
+        setOpen={setisLeaveOpen}
+        title='applyLeave'
+        widthClass="max-w-xl"
+      />
     </>
   )
 }
