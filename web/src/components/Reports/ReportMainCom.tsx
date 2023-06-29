@@ -270,7 +270,29 @@ export default function ReportMainCom() {
     setmounted(true)
     getLeadsDataFun(startOfDay(d).getTime(), true, true, true)
   }, [])
+  // useEffect(() => {
+  //   fetchLogsData()
+  // }, [])
+  // useEffect(() => {
+  //   fetchLogsData()
+  // }, [sourceDateRange])
 
+  // const fetchLogsData = async () => {
+  //   try{
+  //   const steamLeadLogs = await steamAllLeadsActivity(
+  //     orgId,
+  //     'snap',
+  //     {
+  //       uid: 'VIzMzz5rl0NAywdnpHpb',
+  //       cutoffDate: sourceDateRange,
+  //     },
+  //     (error) => setLeadLogsRawData([])
+  //   )
+  //   await setLeadLogsRawData(steamLeadLogs)
+  //   }catch(err){
+  //     setLeadLogsRawData([])
+  //   }
+  // }
   useEffect(() => {
     if (sourceDateRange) {
       getLeadsDataFun(sourceDateRange, true, false, false)
@@ -320,7 +342,7 @@ export default function ReportMainCom() {
         return da.value == viewSource?.value
       })
       setFiltSourceListTuned(z)
-
+      // viewSource
     }
   }, [sourceListTuned, viewSource])
 
@@ -364,7 +386,7 @@ export default function ReportMainCom() {
         const projectsListA = querySnapshot.docs.map((docSnapshot) =>
           docSnapshot.data()
         )
-
+        // setprojectList(projectsListA)
         projectsListA.map((user) => {
           user.label = user.projectName
           user.value = user.uid
@@ -421,7 +443,7 @@ export default function ReportMainCom() {
         const usersListA1 = querySnapshot.docs.map((docSnapshot) =>
           docSnapshot.data()
         )
-
+        // setusersList(usersListA)
         usersListA1.map((user) => {
           user.label = user.displayName || user.name
           user.value = user.uid
@@ -448,10 +470,10 @@ export default function ReportMainCom() {
         onChange={(value) => {
           console.log('zoro condition changed one  is', value)
           selViewSource(value)
-
+          // formik.setFieldValue('project', value.value)
         }}
         value={viewSource?.value}
-
+        // options={aquaticCreatures}
         options={[
           ...[{ label: 'All Sources', value: 'allsources' }],
           ...sourceListTuned,
@@ -500,7 +522,7 @@ export default function ReportMainCom() {
         onChange={async (value) => {
           console.log(value, 'dateValueSource')
           setSourceDateRange(value)
-
+          //getLeadsDataFun()
         }}
       />
     )
@@ -511,7 +533,7 @@ export default function ReportMainCom() {
         onChange={async (value) => {
           console.log(value, 'dateValueSource')
           setProjectDateRange(value)
-
+          //getLeadsDataFun()
         }}
       />
     )
@@ -522,7 +544,7 @@ export default function ReportMainCom() {
         onChange={async (value) => {
           console.log(value, 'dateValueSource')
           setEmpDateRange(value)
-
+          //getLeadsDataFun()
         }}
       />
     )
@@ -537,10 +559,10 @@ export default function ReportMainCom() {
         onChange={(value) => {
           console.log('zoro condition changed one  is', value)
           selEmp1(value)
-
+          // formik.setFieldValue('project', value.value)
         }}
         value={viewEmp1?.value}
-
+        // options={aquaticCreatures}
         options={[
           ...[{ label: 'All Employees', value: 'allemployees' }],
           ...empListTuned,
@@ -575,7 +597,7 @@ export default function ReportMainCom() {
         style={{
           padding: '10px',
           paddingLeft: '10px',
-          
+          /* padding: 5px; */
           borderBottom: '1px solid gray',
           display: 'flex',
           alignItems: 'center',

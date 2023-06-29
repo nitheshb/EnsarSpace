@@ -28,7 +28,27 @@ import { timeConv, prettyDate } from '../../util/dateConverter'
 import EventNoteTwoToneIcon from '@mui/icons-material/EventNoteTwoTone'
 import { ConnectingAirportsOutlined } from '@mui/icons-material'
 
-
+// function createData(
+//   Date,
+//   Name,
+//   Mobile,
+//   Email,
+//   Project,
+//   Source,
+//   Empmobile,
+//   Note
+// ) {
+//   return {
+//     Date,
+//     Name,
+//     Mobile,
+//     Email,
+//     Project,
+//     Source,
+//     Empmobile,
+//     Note,
+//   }
+// }
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -46,6 +66,8 @@ function getComparator(order, orderBy) {
     : (a, b) => -descendingComparator(a, b, orderBy)
 }
 
+// This method is created for cross-browser compatibility, if you don't
+// need to support IE11, you can use Array.prototype.sort() directly
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index])
   stabilizedThis.sort((a, b) => {
@@ -59,7 +81,12 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-
+  // {
+  //   id: 'S.No',
+  //   numeric: true,
+  //   disablePadding: false,
+  //   label: 'S.No',
+  // },
   {
     id: 'Date',
     numeric: false,
@@ -130,7 +157,15 @@ function EnhancedTableHead(props) {
           size="small"
           style={{ backgroundColor: '#efedfe' }}
         >
-
+          {/* <Checkbox
+            color="primary"
+            indeterminate={numSelected > 0 && numSelected < rowCount}
+            checked={rowCount > 0 && numSelected === rowCount}
+            onChange={onSelectAllClick}
+            inputProps={{
+              'aria-label': 'select all desserts',
+            }}
+          /> */}
           <TableSortLabel>S.No</TableSortLabel>
         </TableCell>
         {headCells.map((headCell) => (
@@ -180,7 +215,7 @@ const EnhancedTableToolbar = (props) => {
   }, [rows])
 
   const searchKeyField = (e) => {
-
+    // console.log('searched values is ', e.target.value)
     setSearchKey(e.target.value)
     const searchString = e.target.value
 
@@ -189,7 +224,8 @@ const EnhancedTableToolbar = (props) => {
         console.log('ami here')
         return item
       } else if (
-
+        // item.Assignedto.toLowerCase().includes(searchString.toLowerCase()) ||
+        // item.Date.toLowerCase().includes(searchString.toLowerCase()) ||
         item.Email.toLowerCase().includes(searchString.toLowerCase()) ||
         item.Mobile.toLowerCase().includes(searchString.toLowerCase()) ||
         item.Name.toLowerCase().includes(searchString.toLowerCase()) ||
@@ -201,7 +237,7 @@ const EnhancedTableToolbar = (props) => {
       }
     })
     setRowsAfterSearchKey(rowsR)
-
+    // setRows(rowsR)
   }
   return (
     <Toolbar
@@ -262,7 +298,10 @@ const EnhancedTableToolbar = (props) => {
       )}
       <span style={{ display: 'flex' }}>
         <Tooltip title={`Download ${rowsAfterSearchKey.length} Rows`}>
-
+          {/* <IconButton>
+            <FileDownloadIcon />
+            <CSVDownloader />
+          </IconButton> */}
           <IconButton className="bg-gray-200">
             <EventNoteTwoToneIcon />
           </IconButton>
@@ -276,7 +315,10 @@ const EnhancedTableToolbar = (props) => {
           </Tooltip>
         ) : (
           <Tooltip title={`Download ${rowsAfterSearchKey.length} Rows`}>
-
+            {/* <IconButton>
+            <FileDownloadIcon />
+            <CSVDownloader />
+          </IconButton> */}
 
             <CSVDownloader className="mr-6" downloadRows={rowsAfterSearchKey} />
           </Tooltip>
@@ -324,7 +366,25 @@ export default function FinanceTableBody({
   React.useEffect(() => {
     console.log('send values is', rowsParent, selStatus)
     filterStuff(rowsParent)
+    // let x = rowsParent.filter((item) => {
+    //   if (selStatus === 'all') {
+    //     return item
+    //   } else if (item.Status.toLowerCase() === selStatus.toLowerCase()) {
+    //     console.log('All1', item)
+    //     return item
+    //   } else if (item.Status.toLowerCase().includes(selStatus.toLowerCase())) {
+    //     return item
+    //   } else {
+    //     return item
+    //   }
+    // })
+    // // console.log('All2', x)
 
+    // console.log('what is x', rows)
+
+    // return () => {
+    //   second
+    // }
   }, [selStatus, rowsParent])
 
   React.useEffect(() => {
@@ -350,7 +410,12 @@ export default function FinanceTableBody({
       if (item.Source.toLowerCase().includes(selStatus.toLowerCase())) {
         return item
       }
-
+      //  else if (item.Status.toLowerCase() === selStatus.toLowerCase()) {
+      //   console.log('All1', item)
+      //   return item
+      // } else if (item.Source.toLowerCase().includes(selStatus.toLowerCase())) {
+      //   return item
+      // }
     })
     await setRows(x)
     await console.log('xo', x)
@@ -371,10 +436,21 @@ export default function FinanceTableBody({
   }
 
   const handleClick = (event, row) => {
-
+    // const selectedIndex = selected.indexOf(name)
     const newSelected = []
 
-
+    // if (selectedIndex === -1) {
+    //   newSelected = newSelected.concat(selected, name)
+    // } else if (selectedIndex === 0) {
+    //   newSelected = newSelected.concat(selected.slice(1))
+    // } else if (selectedIndex === selected.length - 1) {
+    //   newSelected = newSelected.concat(selected.slice(0, -1))
+    // } else if (selectedIndex > 0) {
+    //   newSelected = newSelected.concat(
+    //     selected.slice(0, selectedIndex),
+    //     selected.slice(selectedIndex + 1)
+    //   )
+    // }
     console.log('is row clicked', row)
     selUserProfileF('User Profile', row)
 
@@ -396,7 +472,7 @@ export default function FinanceTableBody({
 
   const isSelected = (name) => selected.indexOf(name) !== -1
 
-
+  // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
 
@@ -488,7 +564,9 @@ export default function FinanceTableBody({
                 <span className="font-semibold text-sm app-color-black border p-2 rounded-2xl rounded-tl-none px-6">
                   Cleared
                 </span>
-               
+                {/* <span className="font-semibold text-xs app-color-gray-2">
+                  Un Cleared
+                </span> */}
               </div>
             </div>
           )

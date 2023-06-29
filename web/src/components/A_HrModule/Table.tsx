@@ -13,7 +13,7 @@ const PieChartTable = (props: { pieData: any; allPieData: any }) => {
   }
 
   return (
-    <div className="p-10">
+    <div className="p-2">
       <table>
         <tr>
           <th

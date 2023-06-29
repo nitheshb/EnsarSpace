@@ -9,7 +9,7 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 import { MetaTags } from '@redwoodjs/web'
 
-// import LLeadsTableView from 'src/components/LLeadsTableView/LLeadsTableView'
+import LLeadsTableView from 'src/components/LLeadsTableView/LLeadsTableView'
 import { USER_ROLES } from 'src/constants/userRoles'
 import { getFinanceTransactionsByStatus } from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
@@ -18,6 +18,9 @@ import { CustomSelect } from 'src/util/formFields/selectBoxField'
 import CircleProgress from '../Charts_Graphs/CircleProgress'
 import SemiCircleProgress from '../Charts_Graphs/SemiCircleProgress'
 import CardItem from '../leadsCard'
+import OnBoardAssertBody from '../onBordingAssert/OnBoardAssertBody'
+import OnBoardingAsset from '../onBordingAssert/OnBoardingAsset'
+import OnBoardingAssign from '../onBordingAssert/OnBoardingAssign'
 import SiderForm from '../SiderForm/SiderForm'
 
 import FinanceTableView from './financeTableView'
@@ -35,7 +38,12 @@ const OnBoarding = ({ leadsTyper }) => {
   const [leadsFetchedData, setLeadsFetchedData] = useState([])
   const [serialLeadsData, setSerialLeadsData] = useState([])
   const [projectList, setprojectList] = useState([])
+  const [productData, setproductData] = useState({})
+  const [assetData, setassetData] = useState({})
+  const [viewable] = useState('On Boarding')
   const [transactionData, setTransactionData] = useState({})
+  const [isOpen, setIsOpen] = useState(false)
+  const handleOnClose = () => setIsOpen(false)
 
   const [value, setValue] = useState('latest')
   const tabHeadFieldsA = [
@@ -154,9 +162,65 @@ const OnBoarding = ({ leadsTyper }) => {
     setTransactionData(docData)
     setisImportLeadsOpen(!isImportLeadsOpen)
   }
+  const OnBoardAssertBody = (productData) => {
+    setproductData(productData)
+    setIsOpen(true)
+  }
+  const OnBoardingAssignBody = (assetData) => {
+    setassetData(assetData)
+    setIsOpen(true)
+  }
+
+  console.log('add productData is', OnBoardAssertBody)
 
   return (
     <>
+      <div className="flex items-center justify-between mb-4">
+        <h1 className="text-xl font-semibold"></h1>
+        <div className="flex space-x-2">
+          <button
+            className="flex items-center justify-center h-10 px-4 bg-gray-200 text-sm font-medium rounded hover:bg-gray-300"
+            onClick={() => OnBoardAssertBody('Add Asset')}
+          >
+            <svg
+              className="w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              />
+            </svg>
+            <span className="ml-1 leading-none">Add Asset</span>
+          </button>
+          <button
+            className="flex items-center justify-center h-10 px-4 bg-gray-200 text-sm font-medium rounded hover:bg-gray-300"
+            onClick={() => OnBoardingAssignBody('Assign Asset')}
+          >
+            <svg
+              className="w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              />
+            </svg>
+            <span className="ml-1 leading-none">Assign Asset</span>
+          </button>
+        </div>
+      </div>
+
       <div className="">
         <div className="">
           <div className="">
@@ -164,7 +228,7 @@ const OnBoarding = ({ leadsTyper }) => {
               <div className=" m-1">
                 <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                   <section>
-                    <div class="flex item-center justify-between">
+                    <div className="flex item-center justify-between">
                       <svg
                         width="45.46px"
                         height="40.42px"
@@ -198,7 +262,7 @@ const OnBoarding = ({ leadsTyper }) => {
                         />
                       </svg>
 
-                      <div class="width-30 height-55 font-medium flex-end text-black-1500">
+                      <div className="width-30 height-55 font-medium flex-end text-black-1500">
                         <p className=" css-6mn6yy">01</p>
                       </div>
                     </div>
@@ -216,7 +280,7 @@ const OnBoarding = ({ leadsTyper }) => {
               <div className=" m-1">
                 <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                   <section>
-                    <div class="flex item-center justify-between">
+                    <div className="flex item-center justify-between">
                       <svg
                         width="40"
                         height="40"
@@ -224,7 +288,7 @@ const OnBoarding = ({ leadsTyper }) => {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g clip-path="url(#clip0_77_21456)">
+                        <g clipPath="url(#clip0_77_21456)">
                           <path
                             d="M16.967 28.3334C17.8366 28.3416 18.6968 28.1536 19.4837 27.7834C19.7006 27.638 19.9558 27.5603 20.217 27.5603C20.4782 27.5603 20.7334 27.638 20.9503 27.7834C21.7357 28.1599 22.5961 28.3537 23.467 28.3501C25.3837 28.3501 27.4337 25.4334 28.2837 22.6167C28.3185 22.5015 28.328 22.3801 28.3114 22.2609C28.2948 22.1416 28.2526 22.0274 28.1877 21.926C28.1228 21.8246 28.0366 21.7385 27.9352 21.6737C27.8338 21.6088 27.7196 21.5666 27.6003 21.5501C27.0385 21.4861 26.5185 21.2218 26.1358 20.8054C25.7531 20.3891 25.5334 19.8487 25.517 19.2834C25.523 18.7886 25.6884 18.309 25.9886 17.9156C26.2889 17.5223 26.708 17.2363 27.1837 17.1001C27.3065 17.0617 27.4188 16.9954 27.5117 16.9064C27.6047 16.8173 27.6757 16.708 27.7193 16.5869C27.7629 16.4658 27.7778 16.3363 27.763 16.2084C27.7481 16.0806 27.7039 15.9579 27.6337 15.8501C27.2399 15.1741 26.6978 14.5963 26.0482 14.1603C25.3986 13.7244 24.6585 13.4416 23.8837 13.3334C23.1248 13.3716 22.3768 13.5291 21.667 13.8001C21.218 13.9724 20.7465 14.0791 20.267 14.1167C19.7875 14.0791 19.316 13.9724 18.867 13.8001C18.1308 13.5204 17.354 13.3627 16.567 13.3334C14.617 13.3334 11.667 15.8501 11.667 19.6501C11.667 23.4501 14.417 28.3334 16.967 28.3334ZM20.8337 11.6667C21.3808 11.6667 21.9227 11.559 22.4282 11.3496C22.9337 11.1402 23.393 10.8333 23.7799 10.4464C24.1668 10.0594 24.4738 9.60012 24.6832 9.0946C24.8926 8.58907 25.0003 8.04726 25.0003 7.50008C25.0003 7.27907 24.9125 7.06711 24.7562 6.91083C24.6 6.75455 24.388 6.66675 24.167 6.66675C23.0619 6.66675 22.0021 7.10573 21.2207 7.88714C20.4393 8.66854 20.0003 9.72835 20.0003 10.8334C20.0003 11.0544 20.0881 11.2664 20.2444 11.4227C20.4007 11.579 20.6126 11.6667 20.8337 11.6667Z"
                             fill="#8B50FF"
@@ -240,7 +304,7 @@ const OnBoarding = ({ leadsTyper }) => {
                           </clipPath>
                         </defs>
                       </svg>
-                      <div class="width-30 height-50 font-medium flex-end text-black-1500">
+                      <div className="width-30 height-50 font-medium flex-end text-black-1500">
                         <p className=" css-6mn6yy">0</p>
                       </div>
                     </div>
@@ -257,7 +321,7 @@ const OnBoarding = ({ leadsTyper }) => {
               <div className=" m-1">
                 <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                   <section>
-                    <div class="flex item-center justify-between">
+                    <div className="flex item-center justify-between">
                       <svg
                         width="48"
                         height="40"
@@ -279,7 +343,7 @@ const OnBoarding = ({ leadsTyper }) => {
                         />
                       </svg>
 
-                      <div class="width-30 height-55 font-medium flex-end text-black-1500">
+                      <div className="width-30 height-55 font-medium flex-end text-black-1500">
                         <p className=" css-6mn6yy">02</p>
                       </div>
                     </div>
@@ -297,40 +361,34 @@ const OnBoarding = ({ leadsTyper }) => {
               <div className=" m-1">
                 <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                   <section>
-                    <div class="flex item-center justify-between">
-                      <svg
-                        width="38"
-                        height="38"
-                        viewBox="0 0 38 38"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M24.2846 2.24878H8.7877C8.20879 2.24878 7.74121 2.71636 7.74121 3.29526V34.7121C7.74121 35.291 8.20879 35.7585 8.7877 35.7585H29.2053C29.7842 35.7585 30.2518 35.291 30.2518 34.7121V8.21597C30.2518 7.93394 30.1404 7.67417 29.9475 7.47378L25.0193 2.54565C24.8264 2.35269 24.5666 2.24878 24.2846 2.24878Z"
-                          fill="white"
-                        />
-                        <path
-                          d="M23.8543 4.3418H9.8418V5.65547H12.6102C13.1891 5.65547 13.6566 6.12305 13.6566 6.70195C13.6566 7.28086 13.1891 7.74844 12.6102 7.74844H9.8418V10.3238H10.5098C11.0887 10.3238 11.5562 10.7914 11.5562 11.3703C11.5562 11.9492 11.0887 12.4168 10.5098 12.4168H9.8418V33.6656H28.1664V8.65391L23.8543 4.3418Z"
-                          fill="#D1C3FC"
-                        />
-                        <path
-                          d="M31.432 5.98955L26.5039 1.06143C25.9102 0.467676 25.1234 0.141113 24.2848 0.141113H8.78789C7.05859 0.148535 5.64844 1.55869 5.64844 3.28799V34.7048C5.64844 36.4341 7.05859 37.8442 8.78789 37.8442H29.2055C30.9348 37.8442 32.3449 36.4341 32.3449 34.7048V8.20869C32.3523 7.37744 32.0258 6.5833 31.432 5.98955ZM30.2594 34.7122C30.2594 35.2911 29.7918 35.7587 29.2129 35.7587H8.78789C8.20898 35.7587 7.74141 35.2911 7.74141 34.7122V3.28799C7.74141 2.70908 8.20898 2.2415 8.78789 2.2415H24.2848C24.5668 2.2415 24.8266 2.35283 25.027 2.5458L29.9551 7.47393C30.1555 7.67432 30.2594 7.93408 30.2594 8.21611V34.7122Z"
-                          fill="#194F82"
-                        />
-                        <path
-                          d="M24.2842 16.6548H13.7154C12.1346 16.6548 10.8506 17.9388 10.8506 19.5196V30.0884C10.8506 31.6692 12.1346 32.9532 13.7154 32.9532H24.2842C25.865 32.9532 27.149 31.6692 27.149 30.0884V19.5196C27.149 17.9388 25.865 16.6548 24.2842 16.6548ZM18.0424 31.0384H13.7154C13.1885 31.0384 12.758 30.6079 12.758 30.081V25.754H18.0424V31.0384ZM18.0424 23.8466H12.7654V19.5196C12.7654 18.9927 13.1959 18.5622 13.7229 18.5622H18.0498V23.8466H18.0424ZM25.2342 30.0884C25.2342 30.6153 24.8037 31.0458 24.2768 31.0458H19.9498V28.3071H25.2342V30.0884ZM25.2342 26.3923H19.9498V23.2083H25.2342V26.3923ZM25.2342 21.3009H19.9498V18.5622H24.2768C24.8037 18.5622 25.2342 18.9927 25.2342 19.5196V21.3009Z"
-                          fill="#194F82"
-                        />
-                        <path
-                          d="M19.9574 23.2155H25.2418V26.3995H19.9574V23.2155ZM24.2324 18.562H19.9574V21.3007H25.2344V19.5417C25.2047 19.0073 24.7668 18.5843 24.2324 18.562ZM18.0426 31.0382V25.7538H12.7656V30.0659C12.7953 30.5409 13.1367 30.9269 13.5895 31.0233C13.634 31.0308 13.6785 31.0382 13.723 31.0382H18.0426ZM12.7656 19.5417V23.8464H18.05V18.562H13.775C13.2332 18.5843 12.7953 19.0073 12.7656 19.5417ZM25.2344 30.0733V28.3069H19.95V31.0456H24.277C24.3215 31.0456 24.366 31.0382 24.4105 31.0308C24.8633 30.9343 25.2047 30.5409 25.2344 30.0733Z"
-                          fill="#FFC10D"
-                        />
-                      </svg>
-
-                      <div class="width-30 height-55 font-medium flex-end text-black-1500">
-                        <p className=" css-6mn6yy">0</p>
-                      </div>
-                    </div>
+                    <svg
+                      width="38"
+                      height="38"
+                      viewBox="0 0 38 38"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M24.2846 2.24878H8.7877C8.20879 2.24878 7.74121 2.71636 7.74121 3.29526V34.7121C7.74121 35.291 8.20879 35.7585 8.7877 35.7585H29.2053C29.7842 35.7585 30.2518 35.291 30.2518 34.7121V8.21597C30.2518 7.93394 30.1404 7.67417 29.9475 7.47378L25.0193 2.54565C24.8264 2.35269 24.5666 2.24878 24.2846 2.24878Z"
+                        fill="white"
+                      />
+                      <path
+                        d="M23.8543 4.3418H9.8418V5.65547H12.6102C13.1891 5.65547 13.6566 6.12305 13.6566 6.70195C13.6566 7.28086 13.1891 7.74844 12.6102 7.74844H9.8418V10.3238H10.5098C11.0887 10.3238 11.5562 10.7914 11.5562 11.3703C11.5562 11.9492 11.0887 12.4168 10.5098 12.4168H9.8418V33.6656H28.1664V8.65391L23.8543 4.3418Z"
+                        fill="#D1C3FC"
+                      />
+                      <path
+                        d="M31.432 5.98955L26.5039 1.06143C25.9102 0.467676 25.1234 0.141113 24.2848 0.141113H8.78789C7.05859 0.148535 5.64844 1.55869 5.64844 3.28799V34.7048C5.64844 36.4341 7.05859 37.8442 8.78789 37.8442H29.2055C30.9348 37.8442 32.3449 36.4341 32.3449 34.7048V8.20869C32.3523 7.37744 32.0258 6.5833 31.432 5.98955ZM30.2594 34.7122C30.2594 35.2911 29.7918 35.7587 29.2129 35.7587H8.78789C8.20898 35.7587 7.74141 35.2911 7.74141 34.7122V3.28799C7.74141 2.70908 8.20898 2.2415 8.78789 2.2415H24.2848C24.5668 2.2415 24.8266 2.35283 25.027 2.5458L29.9551 7.47393C30.1555 7.67432 30.2594 7.93408 30.2594 8.21611V34.7122Z"
+                        fill="#194F82"
+                      />
+                      <path
+                        d="M24.2842 16.6548H13.7154C12.1346 16.6548 10.8506 17.9388 10.8506 19.5196V30.0884C10.8506 31.6692 12.1346 32.9532 13.7154 32.9532H24.2842C25.865 32.9532 27.149 31.6692 27.149 30.0884V19.5196C27.149 17.9388 25.865 16.6548 24.2842 16.6548ZM18.0424 31.0384H13.7154C13.1885 31.0384 12.758 30.6079 12.758 30.081V25.754H18.0424V31.0384ZM18.0424 23.8466H12.7654V19.5196C12.7654 18.9927 13.1959 18.5622 13.7229 18.5622H18.0498V23.8466H18.0424ZM25.2342 30.0884C25.2342 30.6153 24.8037 31.0458 24.2768 31.0458H19.9498V28.3071H25.2342V30.0884ZM25.2342 26.3923H19.9498V23.2083H25.2342V26.3923ZM25.2342 21.3009H19.9498V18.5622H24.2768C24.8037 18.5622 25.2342 18.9927 25.2342 19.5196V21.3009Z"
+                        fill="#194F82"
+                      />
+                      <path
+                        d="M19.9574 23.2155H25.2418V26.3995H19.9574V23.2155ZM24.2324 18.562H19.9574V21.3007H25.2344V19.5417C25.2047 19.0073 24.7668 18.5843 24.2324 18.562ZM18.0426 31.0382V25.7538H12.7656V30.0659C12.7953 30.5409 13.1367 30.9269 13.5895 31.0233C13.634 31.0308 13.6785 31.0382 13.723 31.0382H18.0426ZM12.7656 19.5417V23.8464H18.05V18.562H13.775C13.2332 18.5843 12.7953 19.0073 12.7656 19.5417ZM25.2344 30.0733V28.3069H19.95V31.0456H24.277C24.3215 31.0456 24.366 31.0382 24.4105 31.0308C24.8633 30.9343 25.2047 30.5409 25.2344 30.0733Z"
+                        fill="#FFC10D"
+                      />
+                    </svg>
 
                     <div className="px-2 flex flex-row justify-between">
                       <h3 className=" css-5mn5yy">Sim Card</h3>
@@ -341,8 +399,24 @@ const OnBoarding = ({ leadsTyper }) => {
                     </span>
                   </section>
                 </div>
+                <div>
+                  <OnBoardingAssign
+                    open={isOpen}
+                    setOpen={handleOnClose}
+                    title="User"
+                    assetData={assetData}
+                  />
+                </div>
               </div>
             </section>
+            <div>
+              <OnBoardingAsset
+                open={isOpen}
+                setOpen={handleOnClose}
+                title="User"
+                productData={productData}
+              />
+            </div>
           </div>
         </div>
       </div>

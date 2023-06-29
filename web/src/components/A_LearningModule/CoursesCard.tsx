@@ -25,7 +25,7 @@ const CoursesCard = (props) => {
   } = props
 
 
-  
+
 
 
   return (
@@ -54,7 +54,7 @@ const CoursesCard = (props) => {
         </Link>
 
 
-
+        
 
         {/* <Link
           to="/cart"
