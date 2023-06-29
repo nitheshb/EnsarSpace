@@ -427,7 +427,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                   value={formik.values.role}
                   disabled={editMode}
                 />
-
                 <TextField
                   label="Organization*"
                   name="organizor"
@@ -515,6 +514,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     {formik.values.myRole}
                   </div>
                 ) : null}
+
 
                 <CustomSelect
                   name="qualName"

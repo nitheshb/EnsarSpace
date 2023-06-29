@@ -1,14 +1,9 @@
 import { title } from 'process'
-
 import React, { ChangeEvent } from 'react'
-
 import { DownloadIcon } from '@heroicons/react/outline'
-import { Height } from '@mui/icons-material'
 import { Hidden, TextField } from '@mui/material'
 import { Form, Formik } from 'formik'
-
 import { Link } from '@redwoodjs/router/dist/links'
-
 import Account from 'src/components/A_HrModule/profile/account'
 import CheckBox from 'src/components/A_HrModule/profile/checkBox'
 import LeaveManagement from 'src/components/A_HrModule/profile/LeaveManagement'
@@ -24,25 +19,22 @@ import HeadNavBar from 'src/components/HeadNavBar/HeadNavBar'
 import HeadSideBar from 'src/components/HeadSideBar/HeadSideBar'
 import { SingleFileUploadWithProgress } from 'src/components/LeadUplodCsv/SingleFileUploadWithProgress'
 import { UploadError } from 'src/components/LeadUplodCsv/UploadError'
+import { Height } from '@mui/icons-material'
+import ProfileHeader from 'src/components/profile/ProfileHeaderPage'
 import LfileUploadTableHome from 'src/components/LfileUploadTableHome'
 import Loader from 'src/components/Loader/Loader'
 import TimeOff from 'src/components/TableComp/TimeOff'
 import LeaveForm from 'src/components/TableComp/TimeOff'
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 import { useAuth } from 'src/context/firebase-auth-context'
-import LeaveApprovalPage from 'src/pages/LeaveApprovalPage/LeaveApprovalPage'
-import myStyles from 'src/styles/myStyles.css'
+
 import bg from '../../../public/Group7.png'
 
 const Profile = () => {
-  const { user } = useAuth()
-  console.log('user detailsssssssss', user)
 
   function handleFileInputChange(event: ChangeEvent<HTMLInputElement>): void {}
   // const { user } = useAuth()
   // console.log("user detailsssssssss", user)
-
-  function handleFileInputChange(event: ChangeEvent<HTMLInputElement>): void {}
   function getRootProps(arg0: {
     style: any
   }): JSX.IntrinsicAttributes &
@@ -99,7 +91,7 @@ const Profile = () => {
                     >
                       <div className=" justify-center items-end mt-20 mb-16 ml-10">
                         <h1 className="text-center text-xl font-bold blink">
-                          {user?.displayName}
+                          Deepthi Rani
                         </h1>
                       </div>
                     </div>
@@ -181,8 +173,7 @@ const Profile = () => {
                           </svg>
                           <input
                             type="text"
-                            placeholder={user?.orgName}
-                            readOnly
+                            placeholder="Your Organization"
                             className="border-b border-black py-2 pl-10 pr-4 w-full border-none bg-transparent rounded-lg focus:border-black focus:outline-none focus:ring-1 focus:white  "
                           />
                         </div>
@@ -217,7 +208,7 @@ const Profile = () => {
                             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
                           </svg>
                           <p className="text-black mb-2.5">
-                            <span className="mr-2">{user?.email}</span>
+                            <span className="mr-2">deepthi@ensarsolutions.com</span>
                           </p>
                         </div>
                         <div className="relative flex items-center">
@@ -301,4 +292,3 @@ const Profile = () => {
 }
 
 export default Profile
-
