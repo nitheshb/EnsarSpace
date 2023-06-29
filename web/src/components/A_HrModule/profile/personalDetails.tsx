@@ -47,9 +47,20 @@ const PersonalDetails = () => {
                   fill="#7248EA"
                 />
               </svg>
+
               <span className="ml-4">{course.title}</span>
             </a>
           ))}
+          <div>
+            <p
+              className="p-2 "
+              style={{
+                textDecoration: 'underline',
+              }}
+            >
+              Show More
+            </p>
+          </div>
         </div>
       </div>
     </section>
