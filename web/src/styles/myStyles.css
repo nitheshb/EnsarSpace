@@ -1919,6 +1919,10 @@ left: 0px;
 top: 0px;
 background: #F1ECFE;
 border-radius: 13.8053px;
+line-height: 30px;
+  font-size: 18px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
 }
 
 

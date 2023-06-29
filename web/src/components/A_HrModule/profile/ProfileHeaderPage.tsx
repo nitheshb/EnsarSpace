@@ -1,41 +1,40 @@
-import React, { ChangeEvent, useState } from 'react';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import { useAuth } from 'src/context/firebase-auth-context';
+import React, { ChangeEvent, useState } from 'react'
+import CloudUploadIcon from '@material-ui/icons/CloudUpload'
+import { useAuth } from 'src/context/firebase-auth-context'
 
 const ProfileHeaderPage = () => {
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const { user } = useAuth();
+  const [selectedImage, setSelectedImage] = useState<File | null>(null)
+  const [isHovered, setIsHovered] = useState(false)
+  const { user } = useAuth()
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
+    const file = event.target.files?.[0]
     if (file) {
-      setSelectedImage(file);
+      setSelectedImage(file)
     }
-  };
+  }
   const handleHover = (isHovered: boolean) => {
-    setIsHovered(isHovered);
-  };
+    setIsHovered(isHovered)
+  }
 
   const getInitials = (name) => {
     if (!name) {
-      return ''; // Handle the case when name is null or undefined
+      return '' // Handle the case when name is null or undefined
     }
 
-    const names = name.split(' ');
-    const initials = names.map((n) => n.charAt(0));
-    return initials.join('');
-  };
+    const names = name.split(' ')
+    const initials = names.map((n) => n.charAt(0))
+    return initials.join('')
+  }
 
-
-  const initials = user ? getInitials(user.displayName) : '';
+  const initials = user ? getInitials(user.displayName) : ''
 
   function handleImageClick(): void {
-    throw new Error('Function not implemented.');
+    throw new Error('Function not implemented.')
   }
   return (
     <div
       className="profileHeaderCursor page-container flex flex-col overflow-auto bg-blue-300 from-blue-500 to-white"
-      style={{ height: '180px' }}
+      style={{ height: '180px', width: '200%' }}
     >
       <div>
         <div data-testid="profile-header-hover-overlay">
@@ -80,7 +79,7 @@ const ProfileHeaderPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProfileHeaderPage;
+export default ProfileHeaderPage
