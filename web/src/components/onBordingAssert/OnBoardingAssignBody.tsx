@@ -8,7 +8,6 @@ import { CustomSelect } from 'src/util/formFields/selectBoxField'
 import Loader from '../Loader/Loader'
 import OnBoardingAssign from './OnBoardingAssign'
 
-
 const validate = Yup.object().shape({
   Name: Yup.string().required('Name is required'),
   ProductName: Yup.string().required('Product name is required'),
@@ -122,12 +121,12 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
             {({ values, setFieldValue }) => (
               <Form className="space-y-6">
                 <div className=" m-1">
-                  <div className=" border-[#E5EAF2] rounded-xl border w-100 h-80 bg-gray-500 px-8 py-5">
+                  <div className=" border-[#E5EAF2] rounded-xl border w-100 h-80 bg-white-500 px-8 py-5">
                     <section>
                       {assetPayload?.Product === 'Laptop' && (
                         <div className="flex item-center justify-between">
                           <svg
-                            width="1800.46px"
+                            width="120.46px"
                             height="140.42px"
                             viewBox="0 0 43 41"
                             fill="none"
@@ -169,7 +168,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                       {assetPayload?.Product === 'Phone android' && (
                         <div className="flex item-center justify-between">
                           <svg
-                            width="1800.46px"
+                            width="120.46px"
                             // className="mr-[8px] mt-[2px]"
                             height="140.42px"
                             viewBox="0 0 40 40"
@@ -201,7 +200,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                       {assetPayload?.Product === 'Sim' && (
                         <div className="flex item-center justify-between">
                           <svg
-                            width="1800.46px"
+                            width="120.46px"
                             //className="mr-[8px] mt-[2px]"
                             height="140.42px"
                             viewBox="0 0 38 38"
@@ -407,9 +406,16 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                   </div>
 
                   <div>
-                    <div>
+                  <div style={{ color: 'black' }}>
+                  <label
+                    htmlFor="Assign To"
+                    className="block text-sm font-medium color-blue bold-green-700"
+                  >
 
-                      <select className="ml-auto bg-white border border-gray-300 rounded-md py-2 px-4 text-sm">
+                    Assign To :
+                  </label>
+
+                      <select className="ml-auto bg-white border border-gray-300 rounded-md py-2 px-4 text-sm"> */}
                         <option value="">Assign To</option>
 
                         {leadsFetchedData.map((employee) => (
@@ -417,10 +423,10 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                             {employee.name}
                           </option>
                         ))}
-                      </select>
+                       </select>
                     </div>
 
-                    <Field
+                     {/* <Field
                       as={CustomSelect}
                       name="AssignTo"
                       // options={}
@@ -429,7 +435,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                       onChange={(option) =>
                         setFieldValue('AssignTo', option.value)
                       }
-                    />
+                    /> */}
 
                     <ErrorMessage
                       name="Name"
@@ -439,15 +445,42 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                   </div>
                 </div>
 
-                 <div className="flex justify-end">
+                 {/* <div className="flex justify-end">
                   <button
                     type="submit"
                     className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   >
                     {loading ? <Loader /> : 'Submit'}
                   </button>
-                </div>
+                </div> */}
 
+
+                <div style={{ color: 'black' }}>
+                  <label
+                    htmlFor="WorkingStatus"
+                    className="block text-sm font-medium color-blue bold-green-700"
+                  >
+
+                    WorkingStatus :
+                  </label>
+                  <select
+                    id="WorkingStatus"
+                    name="WorkingStatus"
+                    className="block mt-1 w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    value={assetPayload?.WorkingStatus}
+                    onChange={(e) => {
+                      // Handle the selection change here
+                      console.log(e.target.value) // Example: Log the selected value to the console
+                    }}
+                  >
+                    {/* Render options based on assetPayload values */}
+                    {Object.keys(assetPayload).map((key) => (
+                      <option key={key} value={assetPayload[key]}>
+                        {assetPayload[key]}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </Form>
             )}
           </Formik>

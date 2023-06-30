@@ -157,9 +157,9 @@ export const options2 = [
   { label: '6GB', value: '6GB' },
   { label: '8GB', value: '8GB' },
   { label: '16GB', value: '16GB' },
-  {lable: '128GB',value:'128GB'},
-  {lable: '512GB',value:'512GB'},
-  {lable: '1TB',value:'1TB'},
+  {lable: '128GB', value:'128GB'},
+  {lable: '512GB', value:'512GB'},
+  {lable: '1TB', value:'1TB'},
 ]
 
 export const options3 = [
