@@ -278,7 +278,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                       >
                         <label
                           htmlFor="Processor"
-                          className="block text-sm font-medium bold-green-700"
+                          className="block text-sm font-medium bold-black-700"
                         >
                           Processor : {assetPayload?.Processor}
                         </label>
@@ -291,7 +291,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                       >
                         <label
                           htmlFor="Product"
-                          className="block text-sm font-medium bold-green-700"
+                          className="block text-sm font-medium bold-black-700"
                         >
                           Product : {assetPayload?.Product}
                         </label>
@@ -304,7 +304,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                       >
                         <label
                           htmlFor="Ram"
-                          className="block text-sm font-medium bold-green-700"
+                          className="block text-sm font-medium bold-black-700"
                         >
                           Ram : {assetPayload?.Ram}
                         </label>
@@ -330,7 +330,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                       >
                         <label
                           htmlFor="Version"
-                          className="block text-sm font-medium bold-green-700"
+                          className="block text-sm font-medium bold-black-700"
                         >
                           AllocationStatus : {assetPayload?.AllocationStatus}
                         </label>
@@ -351,7 +351,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                 <div style={{ color: 'black' }}>
                   <label
                     htmlFor="WorkingStatus"
-                    className="block text-sm font-medium color-blue bold-green-700"
+                    className="block text-sm font-medium color-blue bold-black-700"
                   >
                     WorkingStatus :
                   </label>
@@ -380,7 +380,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                 <div style={{ color: 'black' }}>
                   <label
                     htmlFor="AssignTo"
-                    className="block text-sm font-medium color-blue bold-green-700"
+                    className="block text-sm font-medium color-blue bold-black-700"
                   >
                     AssignTo :
                   </label>
