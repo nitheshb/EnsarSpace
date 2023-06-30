@@ -1,323 +1,19 @@
-// import React, { useEffect, useState } from 'react'
-
-// import { Dialog } from '@headlessui/react'
-// import { Form, Formik, Field, ErrorMessage } from 'formik'
-// import * as Yup from 'yup'
-
-// import { storeAssignDetails } from 'src/context/dbQueryFirebase'
-// import { getUsers } from 'src/context/dbQueryFirebase'
-// import { useAuth } from 'src/context/firebase-auth-context'
-// import { CustomSelect } from 'src/util/formFields/selectBoxField'
-
-// import Loader from '../Loader/Loader'
-
-// import OnBoardingAssign from './OnBoardingAssign'
-
-// const validate = Yup.object().shape({
-//   Name: Yup.string().required('Name is required'),
-//   ProductName: Yup.string().required('Product name is required'),
-//   Date: Yup.string().required('Date is required'),
-//   Time: Yup.string().required('Time is required'),
-//   Version: Yup.string().required('Version is required'),
-//   Model: Yup.string().required('Model is required'),
-// })
-
-// // const Name = [
-// //   { label: 'Select the name', value: '' },
-// //   { value: 'kalyankurapati', label: 'kalyankurapati' },
-// //   { value: 'kalyankambampati', label: 'kalyan kambampati' },
-// //   { value: 'ooha', label: 'ooha' },
-// //   { value: 'saisumanth', label: 'saisumanth' },
-// //   { value: 'Abhishek', label: 'Abhishek' },
-// //   { value: 'pavan', label: 'pavan' },
-// //   { value: 'venkatesh', label: 'venkatesh' },
-// //   { value: 'salahuddin', label: 'salahuddin' },
-// //   { value: 'sandeep', label: 'sandeep' },
-// //   { value: 'Avanthika', label: 'Avanthika' },
-// //   { value: 'Deepthi', label: 'Deepthi' },
-// //   { value: 'Hazarath', label: 'Hazarath' },
-// // ]
-
-// const OnBoardingAssignBody = ({ assetPayload }) => {
-//   const [formMessage, setFormMessage] = useState({
-//     color: 'green',
-
-//     message: '',
-//   })
-
-//   const [loading, setLoading] = useState(false)
-//   const [usergetData, setuserData] = useState([])
-
-//   const { user } = useAuth()
-
-//   const handleSubmit = async (values) => {
-//     console.log('Submitted', values)
-
-//     try {
-//       setLoading(true)
-
-//       await storeAssignDetails(user.orgId, values)
-
-//       setLoading(false)
-//     } catch (error) {
-//       console.log(error)
-//     }
-
-//     // Display form values in the console
-
-//     console.log('Form Values:', values)
-//   }
-
-//   // useEffect(() => {
-//   //   const getUsers = async () => {
-//   //     try {
-//   //       const requests = await getUsers();
-//   //       // const usergetData = requests.filter((request) => request.Product === 'users');
-//   //       return Users;
-//   //       // setuserData(usergetData);
-//   //       console.log('REQUEST DETAILS DATA', requests);
-//   //     // } catch (error) {
-//   //       // console.error('Error retrieving Asset data:', error);
-//   //       getusers().then(users => setuserData(users));
-//   //     }
-
-//   //   getUsers().catch((error) => {
-//   //     console.error('Error setting user details:', error);
-//   //   });
-//   // }, []);
-
-//   useEffect(() => {
-//     const getUsers = async () => {
-//       const users = await getUsers()
-//       return users
-//     }
-//     console.log('User DETAILS DATA')
-//     getUsers().then((users) => setuserData(users))
-//   }, [])
-
-//   return (
-//     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
-//       <div className="px-4 sm:px-6">
-//         <Dialog.Title className="font-semibold text-lg mr-auto ml-3">
-//           Asset details
-//         </Dialog.Title>
-//       </div>
-
-//       {formMessage.message && (
-//         <div className="w-full bg-[#E9F6ED] ml-2 mt-3 mb-5 p-3 text-green-700">
-//           {formMessage.message}
-//         </div>
-//       )}
-
-//       <div className="px-4 sm:px-6 mt-4">
-//         <div className="mt-1">
-//           <Formik
-//             initialValues={{
-//               SerialNumber: assetPayload?.SerialNumber || '',
-
-//               Processor: assetPayload?.Processor || '',
-
-//               Product: assetPayload?.Product || '',
-
-//               Ram: assetPayload?.Ram || '',
-
-//               WorkingStatus: assetPayload?.WorkingStatus || '',
-
-//               AllocationStatus: assetPayload?.AllocationStatus || '',
-//             }}
-//             validationSchema={validate}
-//             onSubmit={handleSubmit}
-//           >
-//             {({ values, setFieldValue }) => (
-//               <Form className="space-y-6">
-//                 <div className=" m-1">
-//                   <div className=" border-[#E5EAF2] rounded-xl border w-100 h-80 bg-grey px-8 py-5">
-//                     <section>
-//                       <div className="flex item-center justify-between">
-//                         <svg
-//                           width="45.46px"
-//                           height="40.42px"
-//                           viewBox="0 0 43 41"
-//                           fill="none"
-//                           xmlns="http://www.w3.org/2000/svg"
-//                         >
-//                           <path
-//                             d="M38.5153 9.55307C38.5153 8.23331 37.9568 6.9676 36.9626 6.03439C35.9683 5.10118 34.6199 4.5769 33.2139 4.5769H9.35756C7.95154 4.5769 6.60311 5.10118 5.6089 6.03439C4.61469 6.9676 4.05615 8.23331 4.05615 9.55307V21.9935H38.5153V9.55307Z"
-//                             fill="#EEE5FF"
-//                           ></path>
-//                           <path
-//                             d="M4.05615 21.9937V24.4817C4.05615 25.8015 4.61469 27.0672 5.6089 28.0004C6.60311 28.9336 7.95154 29.4579 9.35756 29.4579H33.2139C34.6199 29.4579 35.9683 28.9336 36.9626 28.0004C37.9568 27.0672 38.5153 25.8015 38.5153 24.4817V21.9937H4.05615ZM17.3097 36.9222L18.635 29.4579H23.9497L25.2618 36.9222H17.3097Z"
-//                             fill="#D1C3FC"
-//                           ></path>
-//                           <path
-//                             d="M33.214 30.7019H9.35772C7.60019 30.7019 5.91465 30.0466 4.67189 28.8801C3.42913 27.7136 2.73096 26.1314 2.73096 24.4817V9.55322C2.73096 7.90352 3.42913 6.32138 4.67189 5.15487C5.91465 3.98835 7.60019 3.33301 9.35772 3.33301H33.214C34.9716 3.33301 36.6571 3.98835 37.8999 5.15487C39.1426 6.32138 39.8408 7.90352 39.8408 9.55322V24.4817C39.8408 25.2986 39.6694 26.1074 39.3364 26.8621C39.0033 27.6168 38.5152 28.3025 37.8999 28.8801C37.2845 29.4577 36.554 29.9158 35.75 30.2284C34.946 30.541 34.0843 30.7019 33.214 30.7019ZM9.35772 5.82109C8.3032 5.82109 7.29188 6.2143 6.54622 6.91421C5.80057 7.61412 5.38166 8.5634 5.38166 9.55322V24.4817C5.38166 25.4715 5.80057 26.4208 6.54622 27.1207C7.29188 27.8206 8.3032 28.2138 9.35772 28.2138H33.214C34.2686 28.2138 35.2799 27.8206 36.0255 27.1207C36.7712 26.4208 37.1901 25.4715 37.1901 24.4817V9.55322C37.1901 8.5634 36.7712 7.61412 36.0255 6.91421C35.2799 6.2143 34.2686 5.82109 33.214 5.82109H9.35772Z"
-//                             fill="#2B3145"
-//                           ></path>
-//                           <path
-//                             d="M33.214 23.2376H4.05631C3.7048 23.2376 3.3677 23.1065 3.11914 22.8732C2.87059 22.6399 2.73096 22.3235 2.73096 21.9936C2.73096 21.6636 2.87059 21.3472 3.11914 21.1139C3.3677 20.8806 3.7048 20.7495 4.05631 20.7495H33.214C33.5656 20.7495 33.9027 20.8806 34.1512 21.1139C34.3998 21.3472 34.5394 21.6636 34.5394 21.9936C34.5394 22.3235 34.3998 22.6399 34.1512 22.8732C33.9027 23.1065 33.5656 23.2376 33.214 23.2376ZM27.9126 38.1661H14.6591C14.3076 38.1661 13.9705 38.035 13.722 37.8017C13.4734 37.5684 13.3338 37.252 13.3338 36.9221C13.3338 36.5921 13.4734 36.2757 13.722 36.0424C13.9705 35.8091 14.3076 35.678 14.6591 35.678H27.9126C28.2641 35.678 28.6013 35.8091 28.8498 36.0424C29.0984 36.2757 29.238 36.5921 29.238 36.9221C29.238 37.252 29.0984 37.5684 28.8498 37.8017C28.6013 38.035 28.2641 38.1661 27.9126 38.1661Z"
-//                             fill="#2B3145"
-//                           ></path>
-//                           <path
-//                             d="M17.3096 38.1662H17.0976C16.9225 38.142 16.7544 38.0852 16.6032 37.9992C16.4519 37.9131 16.3205 37.7995 16.2167 37.665C16.113 37.5305 16.039 37.3778 15.999 37.2161C15.9591 37.0543 15.9541 36.8867 15.9843 36.7231L17.3096 29.2588C17.3375 29.0954 17.3993 28.9388 17.4917 28.7979C17.584 28.657 17.705 28.5345 17.8478 28.4374C17.9905 28.3404 18.1522 28.2707 18.3237 28.2323C18.4952 28.194 18.673 28.1877 18.847 28.2138C19.0211 28.24 19.1879 28.298 19.3381 28.3847C19.4882 28.4714 19.6187 28.5849 19.7221 28.7189C19.8255 28.8529 19.8997 29.0047 19.9406 29.1657C19.9815 29.3266 19.9882 29.4935 19.9603 29.6569L18.635 37.1212C18.5842 37.4155 18.4224 37.683 18.1791 37.8748C17.9359 38.0666 17.6273 38.17 17.3096 38.1662ZM25.2617 38.1662C24.9441 38.17 24.6355 38.0666 24.3922 37.8748C24.149 37.683 23.9872 37.4155 23.9364 37.1212L22.611 29.6569C22.5832 29.4935 22.5899 29.3266 22.6308 29.1657C22.6716 29.0047 22.7459 28.8529 22.8493 28.7189C22.9527 28.5849 23.0831 28.4714 23.2333 28.3847C23.3834 28.298 23.5503 28.24 23.7243 28.2138C23.8984 28.1877 24.0762 28.194 24.2477 28.2323C24.4191 28.2707 24.5808 28.3404 24.7236 28.4374C24.8664 28.5345 24.9874 28.657 25.0797 28.7979C25.172 28.9388 25.2339 29.0954 25.2617 29.2588L26.5871 36.7231C26.6173 36.8867 26.6123 37.0543 26.5723 37.2161C26.5324 37.3778 26.4584 37.5305 26.3546 37.665C26.2509 37.7995 26.1195 37.9131 25.9682 37.9992C25.8169 38.0852 25.6488 38.142 25.4738 38.1662H25.2617Z"
-//                             fill="#2B3145"
-//                           ></path>
-//                           <path
-//                             d="M21.2858 26.9698C22.0178 26.9698 22.6112 26.4128 22.6112 25.7257C22.6112 25.0387 22.0178 24.4817 21.2858 24.4817C20.5538 24.4817 19.9604 25.0387 19.9604 25.7257C19.9604 26.4128 20.5538 26.9698 21.2858 26.9698Z"
-//                             fill="#8B50FF"
-//                           ></path>
-//                         </svg>
-//                         <div className="width-30 height-55 font-medium flex-end text-green-1500">
-//                           <p className="css-6mn6yy"></p>
-//                         </div>
-//                       </div>
-//                       <div className="px-2 flex flex-row justify-between">
-//                         <h3 className=" css-5mn5yy"></h3>
-//                       </div>
-//                       <span className="css-1lpgd8m px-3 text-[black] text-[10px]"></span>
-
-//                       <div>
-//                         <label
-//                           htmlFor="SerialNumber"
-//                           className="block text-sm font-medium bold-green-700"
-//                         >
-//                           SerialNumber : {assetPayload?.SerialNumber}
-//                         </label>
-//                       </div>
-
-//                       <div>
-//                         <label
-//                           htmlFor="Processor"
-//                           className="block text-sm font-medium bold-green-700"
-//                         >
-//                           Processor : {assetPayload?.Processor}
-//                         </label>
-//                       </div>
-
-//                       <div>
-//                         <label
-//                           htmlFor="Product"
-//                           className="block text-sm font-medium bold-green-700"
-//                         >
-//                           Product : {assetPayload?.Product}
-//                         </label>
-//                       </div>
-
-//                       <div>
-//                         <label
-//                           htmlFor="Ram"
-//                           className="block text-sm font-medium bold-green-700"
-//                         >
-//                           Ram : {assetPayload?.Ram}
-//                         </label>
-//                       </div>
-
-//                       <div>
-//                         <label
-//                           htmlFor="WorkingStatus"
-//                           className="block text-sm font-medium bold-green-700"
-//                         >
-//                           WorkingStatus : {assetPayload?.WorkingStatus}
-//                         </label>
-//                       </div>
-
-//                       <label
-//                         htmlFor="AllocationStatus"
-//                         className="block text-sm font-medium bold-green-700"
-//                       >
-//                         AllocationStatus : {assetPayload?.AllocationStatus}
-//                       </label>
-//                     </section>
-//                   </div>
-
-//                   {/* <div>
-//                   <label
-//                     htmlFor="AssignTo"
-//                     className="block text-sm font-medium bold-black-700"
-//                   >
-//                     AssignTo : {userFetchData}
-//                   </label>
-
-//                   <Field
-//                     as={CustomSelect}
-//                     name="AssignTo"
-//                     placeholder="Select a Name"
-//                     className="mt-1"
-//                     onChange={(option) =>
-//                       setFieldValue('AssignTo', option.value)
-//                     }
-//                   />
-
-//                   <ErrorMessage
-//                     name="AssignTo"
-//                     component="div"
-//                     className="text-red-500 text-sm mt-1"
-//                   />
-//                 </div> */}
-
-//                   <div className="sm:col-span-2">
-//                     <label
-//                       htmlFor="AssignTo"
-//                       className="block text-sm font-medium text-gray-700"
-//                     >
-//                       Assign To
-//                     </label>
-//                     <CustomSelect
-//                       id="AssignTo"
-//                       name="AssignTo"
-//                       options={usergetData}
-//                       getOptionValue={(option) => option.id}
-//                       getOptionLabel={(option) => option.displayName}
-//                       placeholder="Select a user"
-//                     />
-//                   </div>
-//                 </div>
-//                 <div className="flex justify-end">
-//                   <button
-//                     type="submit"
-//                     className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-//                   >
-//                     {loading ? <Loader /> : 'Submit'}
-//                   </button>
-//                 </div>
-//               </Form>
-//             )}
-//           </Formik>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default OnBoardingAssignBody
 import React, { useEffect, useState } from 'react'
-
 import { Dialog } from '@headlessui/react'
-
 import { Form, Formik, Field, ErrorMessage } from 'formik'
-
 import * as Yup from 'yup'
-
 import { steamUsersList, storeAssignDetails } from 'src/context/dbQueryFirebase'
-
 import { useAuth } from 'src/context/firebase-auth-context'
-
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
-
 import Loader from '../Loader/Loader'
-
 import OnBoardingAssign from './OnBoardingAssign'
 
 const validate = Yup.object().shape({
   Name: Yup.string().required('Name is required'),
-
   ProductName: Yup.string().required('Product name is required'),
-
   Date: Yup.string().required('Date is required'),
-
   Time: Yup.string().required('Time is required'),
-
   Version: Yup.string().required('Version is required'),
-
   Model: Yup.string().required('Model is required'),
 })
 
@@ -349,9 +45,6 @@ const validate = Yup.object().shape({
 //   { value: 'Hazarath', label: 'Hazarath' },
 // ]
 
-
-
-
 const OnBoardingAssignBody = ({ assetPayload }) => {
   const [formMessage, setFormMessage] = useState({
     color: 'green',
@@ -359,34 +52,29 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
     message: '',
   })
 
-
-
   const [loading, setLoading] = useState(false)
 
   const [leadsFetchedData, setLeadsFetchedData] = useState([])
 
   const { user } = useAuth()
 
-
   useEffect(() => {
     getLeadsDataFun()
   }, [])
 
-   const getLeadsDataFun = async () => {
-      const unsubscribe = steamUsersList(
-        user.orgId,
-        (querySnapshot) => {
-          const usersListA = querySnapshot.docs.map((docSnapshot) =>
-            docSnapshot.data()
-          )
-          setLeadsFetchedData(usersListA)
-        },
-        () => setLeadsFetchedData([])
-      )
-      return unsubscribe
-    }
-
-
+  const getLeadsDataFun = async () => {
+    const unsubscribe = steamUsersList(
+      user.orgId,
+      (querySnapshot) => {
+        const usersListA = querySnapshot.docs.map((docSnapshot) =>
+          docSnapshot.data()
+        )
+        setLeadsFetchedData(usersListA)
+      },
+      () => setLeadsFetchedData([])
+    )
+    return unsubscribe
+  }
 
   const handleSubmit = async (values) => {
     console.log('Submitted', values)
@@ -437,7 +125,6 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
               AllocationStatus: assetPayload?.AllocationStatus || '',
 
               AssignTo: assetPayload?.AssignTo || '',
-
             }}
             validationSchema={validate}
             onSubmit={handleSubmit}
@@ -450,8 +137,8 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                       {assetPayload?.Product === 'Laptop' && (
                         <div className="flex item-center justify-between">
                           <svg
-                            width="56px"
-                            height="56px"
+                            width="80px"
+                            height="140px"
                             viewBox="0 0 43 41"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -486,14 +173,25 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                               fill="#8B50FF"
                             ></path>
                           </svg>
+                          {/* <span style={{
+                            position:'absolute',
+                            height:'2px',
+                            bottom:'0',
+                            transition:'all 300ms',
+                            backgroundColor:'#00AB55',
+                            left:'0px',
+                            width:'48px',
+                          }}>
+                            </span> */}
                         </div>
+
                       )}
 
                       {assetPayload?.Product === 'Phone android' && (
                         <div className="flex item-center justify-between">
                           <svg
-                            width="56px"
-                            height="56px"
+                            width="80px"
+                            height="140px"
                             viewBox="0 0 40 40"
                             fill="none"
                             xmlns="c"
@@ -526,8 +224,8 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                       {assetPayload?.Product === 'Sim' && (
                         <div className="flex item-center justify-between">
                           <svg
-                            width="56px"
-                            height="56px"
+                            width="80px"
+                            height="140px"
                             viewBox="0 0 38 38"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -612,7 +310,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                         </label>
                       </div>
 
-                      <div
+                      {/* <div
                         style={{
                           color: 'black',
                         }}
@@ -623,7 +321,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                         >
                           WorkingStatus : {assetPayload?.WorkingStatus}
                         </label>
-                      </div>
+                      </div> */}
 
                       <div
                         style={{
@@ -638,26 +336,83 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                         </label>
                       </div>
 
-                      <div>
-                      <label
-                        htmlFor="AssignTo"
-                        className="block text-sm font-medium bold-black-700"
-                      >
-                        AssignTo : {assetPayload?.AssignTo}
-                      </label>
-                    </div>
-
+                      {/* <div>
+                        <label
+                          htmlFor="AssignTo"
+                          className="block text-sm font-medium bold-black-700"
+                        >
+                          AssignTo : {assetPayload?.AssignTo}
+                        </label>
+                      </div> */}
                     </section>
                   </div>
-                  </div>
+                </div>
+
+                <div style={{ color: 'black' }}>
+                  <label
+                    htmlFor="WorkingStatus"
+                    className="block text-sm font-medium color-blue bold-green-700"
+                  >
+                    WorkingStatus :
+                  </label>
+
+                  <select
+                    id="WorkingStatus"
+                    name="WorkingStatus"
+                    className="block mt-1 w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    value={assetPayload?.WorkingStatus}
+                    onChange={(e) => {
+                      // Handle the selection change here
+
+                      console.log(e.target.value) // Example: Log the selected value to the console
+                    }}
+                  >
+                    {/* Render options based on assetPayload values */}
+
+                    {Object.keys(assetPayload).map((key) => (
+                      <option key={key} value={assetPayload[key]}>
+                        {assetPayload[key]}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div style={{ color: 'black' }}>
+                  <label
+                    htmlFor="AssignTo"
+                    className="block text-sm font-medium color-blue bold-green-700"
+                  >
+                    AssignTo :
+                  </label>
+
+                  <select
+                    id="AssignTo"
+                    name="AssignTo"
+                    className="block mt-1 w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    value={assetPayload?.AssignTo}
+                    onChange={(e) => {
+                      // Handle the selection change here
+
+                      console.log(e.target.value) // Example: Log the selected value to the console
+                    }}
+                  >
+                    {/* Render options based on assetPayload values */}
+
+                    {Object.keys(assetPayload).map((key) => (
+                      <option key={key} value={assetPayload[key]}>
+                        {assetPayload[key]}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
                 <div className="flex justify-end">
-                  <button
+                  {/* <button
                     type="Edit"
                     className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   >
                     {loading ? <Loader /> : 'Edit'}
-                  </button>
+                  </button> */}
                 </div>
               </Form>
             )}
@@ -672,4 +427,3 @@ export default OnBoardingAssignBody
 function getLeadsDataFun() {
   throw new Error('Function not implemented.')
 }
-

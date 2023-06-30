@@ -396,7 +396,7 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
   //   const [filterName, setFilterName] = useState('');
   //   const [filteredData, setFilteredData] = useState([]);
 
-  //   const filteredUsers = users.filter((user) =>
+  //   const filteredUsers = AssignTo.filter((user) =>
   //   user.name.toLowerCase().includes(filterName.toLowerCase())
   // );
 
@@ -522,7 +522,7 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-          <section className="ml-auto mt-[18px]  bg-white  border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10" style={{ borderRadius: '20px' }}>
+          <section className="ml-auto mt-[18px] bg-white  border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10" >
             <div
               style={{
                 overflow: 'hidden',
@@ -677,9 +677,6 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
                   val: 'Sim',
                 },
 
-                // { label: 'Phone', val: 'Phone' },
-
-                // { label: 'Sim', val: 'Sim' },
               ].map((dat, index) => (
                 <a
                   key={index}
@@ -725,7 +722,7 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
         </span> */}
             </div>
             <div className="flex ml-auto bg-white  border-gray-100 py-2">
-              <Stack
+              {/* <Stack
                 style={{
                   width: '100%',
                 }}
@@ -737,8 +734,8 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
                 <TextField
                   fullWidth
                   // value={filterName}
-                  // onChange={(event) => onFilterName(event.target.value)}
-                  placeholder="Search user..."
+                  // onChange={(event) => filterName(event.target.value)}
+                  placeholder="Search name..."
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -775,52 +772,52 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
                     ),
                   }}
                 />
-              </Stack>
+              </Stack> */}
             </div>
           </section>
 
-          <div className="shadow overflow-hidden border-b border-gray-200  bg-white pb-4 md:py-7 px-4 md:px-8 xl:px-10 br-16" style={{ borderRadius: '20px' }}>
+          <div className="shadow overflow-hidden border-b border-gray-200  bg-white pb-4 md:py-7 px-4 md:px-8 xl:px-10 br-16">
             <table className="min-w-full divide-y divide-gray-200 ">
               <thead className="bg-gray-50">
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider"
                   >
                     serialNumber
                   </th>
 
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider"
                   >
                     productName
                   </th>
 
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider"
                   >
                     Category
                   </th>
 
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider"
                   >
                     Assign To
                   </th>
 
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider"
                   >
                     AllocationStatus
                   </th>
 
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider"
                   >
                     WorkingStatus
                   </th>
@@ -849,13 +846,6 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
-                          {/* <img
-                            className="h-10 w-10 rounded-full"
-                            src={
-                              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60'
-                            }
-                            alt=""
-                          /> */}
                         </div>
 
                         <div className="ml-4">
