@@ -126,7 +126,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                       {assetPayload?.Product === 'Laptop' && (
                         <div className="flex item-center justify-between">
                           <svg
-                            width="120.46px"
+                            width="80.46px"
                             height="140.42px"
                             viewBox="0 0 43 41"
                             fill="none"
@@ -168,7 +168,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                       {assetPayload?.Product === 'Phone android' && (
                         <div className="flex item-center justify-between">
                           <svg
-                            width="120.46px"
+                            width="80.46px"
                             // className="mr-[8px] mt-[2px]"
                             height="140.42px"
                             viewBox="0 0 40 40"
@@ -200,7 +200,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                       {assetPayload?.Product === 'Sim' && (
                         <div className="flex item-center justify-between">
                           <svg
-                            width="120.46px"
+                            width="80.46px"
                             //className="mr-[8px] mt-[2px]"
                             height="140.42px"
                             viewBox="0 0 38 38"
@@ -457,11 +457,11 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
 
                 <div style={{ color: 'black' }}>
                   <label
-                    htmlFor="WorkingStatus"
+                    htmlFor="Working Status"
                     className="block text-sm font-medium color-blue bold-green-700"
                   >
 
-                    WorkingStatus :
+                 WorkingStatus :
                   </label>
                   <select
                     id="WorkingStatus"

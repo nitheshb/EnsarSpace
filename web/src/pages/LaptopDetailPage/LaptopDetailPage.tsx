@@ -362,6 +362,7 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
                   >
                     serialNumber
                   </th>
+                  
 
                   <th
                     scope="col"
