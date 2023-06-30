@@ -277,7 +277,6 @@ export const Lang = [
 export const options = [
   { label: 'Select the product', value: '' },
   { label: 'Laptop', value: 'Laptop' },
-  { label: 'Phone iphone', value: 'Phone iphone' },
   { label: 'Phone android', value: 'Phone android' },
   { label: 'Sim', value: 'Sim' },
 ]

@@ -110,7 +110,7 @@ const UsersAdminPage = () => {
                 </button>
               )}
 
-               {/* {viewable === 'OnBoarding' && (
+              {/* {viewable === 'OnBoarding' && (
                 <button
                   onClick={() => setisImportLeadsOpened(true)}
                   className="flex items-center justify-center h-10 px-4  bg-gray-200 ml-auto text-sm font-medium rounded hover:bg-gray-300"
@@ -132,8 +132,6 @@ const UsersAdminPage = () => {
                   <span className="ml-1 leading-none">Assign Asset</span>
                 </button>
               )} */}
-
-
 
               {viewable === 'Roles Management' && (
                 <button
@@ -210,14 +208,12 @@ const UsersAdminPage = () => {
               </>
             )}
 
-
-
-              {/* {viewable === 'LaptopDetailsPage' && (
+            {/* {viewable === 'LaptopDetailsPage' && (
               <>
                 <LaptopDetailsPage />
               </>
             )} */}
-            {viewable === 'On Boarding' && (
+            {viewable === 'OnBoarding' && (
               <>
                 <OnBoarding leadsTyper={undefined} />
               </>
@@ -235,7 +231,7 @@ const UsersAdminPage = () => {
               </>
             )}
 
-            {viewable === 'Time Off' && (
+            {viewable === 'TimeOff' && (
               <>
                 <TimeOffTable />
               </>
@@ -294,27 +290,26 @@ const UsersAdminPage = () => {
               empData={empData}
             />
 
-            <SiderForm
-            open={isImportLeadsOpen}
-            setOpen={setisImportLeadsOpen}
-            title='AddAsset'
-            widthClass="max-w-xl"
-            />
-
-           {/* <SiderForm
+            {/* <SiderForm
             open={isImportLeadsOpened}
             setOpen={setisImportLeadsOpened}
             title='AssignAsset'
             widthClass="max-w-xl"
             /> */}
-
           </div>
         </div>
       </div>
       <SiderForm
+        open={isImportLeadsOpen}
+        setOpen={setisImportLeadsOpen}
+        title="AddAsset"
+        widthClass="max-w-xl"
+      />
+
+      <SiderForm
         open={isLeaveOpen}
         setOpen={setisLeaveOpen}
-        title='applyLeave'
+        title="applyLeave"
         widthClass="max-w-xl"
       />
     </>
