@@ -1,9 +1,5 @@
 import { useState, useEffect } from 'react'
 
-<<<<<<< HEAD
-=======
-import { useState, useEffect } from 'react'
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
 // import marketing_2 from '/learning_images/marketing_2.jpg'
 
 // import AddCourseForm from 'src/pages/CoursedetailsPage/CourseForm'
@@ -13,18 +9,13 @@ import styled from 'styled-components'
 import { courses } from 'src/constants/courses'
 import { getCourseDetails } from 'src/context/dbQueryFirebase'
 
-<<<<<<< HEAD
 import SUserSignup from './addLearning/SUserSignup'
-=======
-import styled from 'styled-components';
 
-import { getCourseDetails } from 'src/context/dbQueryFirebase';
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
+// import { getCourseDetails } from 'src/context/dbQueryFirebase';
 
 const Button = styled.button`
   background-color: #f1f1f1;
 
-<<<<<<< HEAD
   border: none;
 
   border-radius: 4px;
@@ -42,8 +33,6 @@ const Button = styled.button`
   cursor: pointer;
 `
 
-=======
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
 import CoursesCard from './CoursesCard'
 
 import { routes } from '@redwoodjs/router/dist/router'
@@ -52,7 +41,6 @@ import { Link } from '@redwoodjs/router'
 const CourseList = () => {
   const [allCourses, setAllCourses] = useState([])
 
-<<<<<<< HEAD
   const [activeTab, setActiveTab] = useState('')
 
   const [isOpen, setIsOpen] = useState(false)
@@ -71,24 +59,6 @@ const CourseList = () => {
     console.log('COURSE DETAILS DATA')
 
     getAllCourses().then((courses) => setAllCourses(courses))
-=======
-  const [allCourses,setAllCourses] = useState([]);
-
-  const [activeTab, setActiveTab] = useState('')
-  const [isOpen, setIsOpen] = useState(false)
-  const handleOnClose = () => setIsOpen(false)
-  const [empData, setEmpData] = useState({})
-
-
-  useEffect(() => {
-    const getAllCourses = async () => {
-
-      const courses = await getCourseDetails();
-      return courses;
-    }
-    console.log("COURSE DETAILS DATA");
-    getAllCourses().then(courses => setAllCourses(courses));
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
   }, [])
 
   const tabHandler = (sel) => {
@@ -98,7 +68,6 @@ const CourseList = () => {
 
     setIsOpen(true)
   }
-<<<<<<< HEAD
 
   const filteredCoursesList = allCourses.filter((course) => {
     if (activeTab === '') {
@@ -108,10 +77,8 @@ const CourseList = () => {
     }
   })
 
-=======
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
   return (
-    <div className="container ml-[50px]  mt-8">
+    <div className="container pl-[50px]  mt-8">
       <div className="courses-list-top">
         <div>
           <button
@@ -208,57 +175,37 @@ const CourseList = () => {
                 Marketing
               </button>
             </li>
-<<<<<<< HEAD
           </ul>
         </div>
 
         <div className="tabs-body">
           {filteredCoursesList.length > 0 ? (
             filteredCoursesList.map((course) => (
-=======
-
-
-          </ul>
-
-
-
-        </div>
-
-        <div className="tabs-body">
-          {allCourses.length > 0 && allCourses
-            // .filter((course) => course.category === activeTab)
-            .filter((course) => {
-              if(activeTab === ""){
-                return course.category !== activeTab
-
-              }else {
-              return course.category === activeTab
-              }
-              })
-            .map((course) => (
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
               <CoursesCard key={course.id} {...course} />
             ))
           ) : (
             <div
-              className="no-courses-message"
+              className="course-card"
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 height: '200px',
                 fontSize: '32px',
+                marginBottom: '20px',
                 color: 'black',
+                boxSizing: 'border-box',
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                borderColor: '#e5e7eb',
+                borderRadius: '4px',
+                padding: '20px',
               }}
             >
-              <img
-                src="web\public\learning_images\no data.png"
-                alt="No Data Found"
-              />
+              <div>No Data Found</div>
             </div>
           )}
         </div>
-<<<<<<< HEAD
         <Button>
           <Link
             to={routes.myJourney()}
@@ -267,43 +214,16 @@ const CourseList = () => {
             My Journey
           </Link>
         </Button>
-=======
-
-
-
-        <Button>
-          <Link to={routes.myJourney()} style={{ textDecoration: 'none', color: '#333' }}>
-            My Journey
-          </Link>
-        </Button>
-
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
       </div>
 
       <SUserSignup
-<<<<<<< HEAD
-=======
-
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
         open={isOpen}
         setOpen={handleOnClose}
         title="User"
         empData={empData}
-<<<<<<< HEAD
       />
-=======
-
-      />
-
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
     </div>
   )
 }
 
 export default CourseList
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768

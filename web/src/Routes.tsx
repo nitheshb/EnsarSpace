@@ -1,32 +1,29 @@
-
-
 import { Router, Route, Redirect } from '@redwoodjs/router'
-
-
 
 import { USER_ROLES } from 'src/constants/userRoles'
 import { useAuth } from 'src/context/firebase-auth-context'
 
-import FinanceHomePagePage from './pages/FinanceHomePagePage/FinanceHomePagePage'
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage/PrivacyPolicyPage'
-import Profile from './pages/Profile/Profile'
-import LeaveApprovalPage from './pages/LeaveApprovalPage/LeaveApprovalPage'
-import ProjectEditPage from './pages/ProjectEditPage/ProjectEditPage'
-import ProjectModulePage from './pages/ProjectModulePage/ProjectModulePage'
-import ErpAccountHomePage from './pages/ErpAccountHomePage/ErpAccountHomePage'
-import LoginPage from './pages/LoginPage/LoginPage'
+import CourseProgress from './components/A_LearningModule/CourseProgress'
 import AccessDeniedPage from './pages/AccessDeniedPage/AccessDeniedPage'
 import ConstructModulePage from './pages/ConstructModulePage/ConstructModulePage'
 import CourceContentPage from './pages/CourceContentPage/CourceContentPage'
 import CourceOverviewPage from './pages/CourceOverviewPage/CourceOverviewPage'
 import CrmHomePage from './pages/CrmHomePage/CrmHomePage'
+import ErpAccountHomePage from './pages/ErpAccountHomePage/ErpAccountHomePage'
+import FinanceHomePagePage from './pages/FinanceHomePagePage/FinanceHomePagePage'
 import HomePage from './pages/HomePage/HomePage'
 import LeadsCallerBoardPage from './pages/LeadsCallerBoardPage/LeadsCallerBoardPage'
 import LeadsManagerPage from './pages/LeadsManagerPage/LeadsManagerPage'
 import LearningPage from './pages/LearningPage/LearningPage'
+import LeaveApprovalPage from './pages/LeaveApprovalPage/LeaveApprovalPage'
 import LegalHomePage from './pages/LegalHomePage/LegalHomePage'
+import LoginPage from './pages/LoginPage/LoginPage'
 import MyJourneyPage from './pages/MyJourneyPage/MyJourneyPage'
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage/PrivacyPolicyPage'
+import Profile from './pages/Profile/Profile'
+import ProjectEditPage from './pages/ProjectEditPage/ProjectEditPage'
+import ProjectModulePage from './pages/ProjectModulePage/ProjectModulePage'
 import UsersAdminPage from './pages/UsersAdminPage/UsersAdminPage'
 
 const defaultRoutes = () => {
@@ -135,18 +132,16 @@ const Routes = () => {
 
   return (
     <Router>
-
       <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" />
 
       <Route path="/my-journey" page={MyJourneyPage} name="myJourney" />
-
-
 
       <Route path="/leave-approval" page={LeaveApprovalPage} name="leaveApproval" />
 
       {/* <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" /> */}
       <Route path="/cource-overview/{uid}" page={CourceOverviewPage} name="courceOverview" />
-      <Route path="/cource-content" page={CourceContentPage} name="courceContent" />
+      {/* <Route path="/cource-content" page={CourceContentPage} name="courceContent" /> */}
+      <Route path="/course-progress" page={CourseProgress} name="CourseProgress" />
       <Route path="/learning" page={LearningPage} name="learning" />
       <Route path="/privacyPolicy" page={PrivacyPolicyPage} name="privacyPolicy" />
       <Route path="/construct-module" page={ConstructModulePage} name="constructModule" />
@@ -160,7 +155,7 @@ const Routes = () => {
       <Route path="/admin/login" page={LoginPage} name="login" />
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/" page={LoginPage} name="login" />
-      <Route path="/courses/{id}" page={CoursedetailsPage} name="coursedetails"  />
+      <Route path="/courses/{id}" page={CoursedetailsPage} name="coursedetails" />
       <Route notfound page={NotFoundPage} />
     </Router>
   )

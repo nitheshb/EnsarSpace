@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { id } from 'date-fns/locale'
+import { category } from 'date-fns/locale'
 import { BiCheck } from 'react-icons/bi'
 import { FaBars, FaShoppingCart } from 'react-icons/fa'
 import { MdInfo } from 'react-icons/md'
@@ -8,54 +8,28 @@ import { RiClosedCaptioningFill } from 'react-icons/ri'
 import { TbWorld } from 'react-icons/tb'
 import styled from 'styled-components'
 
-<<<<<<< HEAD
 import { Link, useParams } from '@redwoodjs/router'
 
 import StarRating from 'src/components/A_LearningModule/StarRatings'
 import { courses } from 'src/constants/courses'
-import {
-  checkIfIdExists,
-  storeCourseDetails,
-} from 'src/context/dbQueryFirebase'
-import { useAuth } from 'src/context/firebase-auth-context'
-=======
+import { getCourseDetailsById } from 'src/context/dbQueryFirebase'
+
 const CoursedetailsPage = () => {
   const { id } = useParams()
-  const course = courses.find((p) => p.id === id)
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
-
-const CoursedetailsPage = async () => {
-  // const { id } = useParams()
   // const course = courses.find((p) => p.id === id)
-  const [loading, setLoading] = useState(false)
-  const { user } = useAuth()
+  const [course, setCourse] = useState(null)
 
-  // console.log('course', course)
-
-  const idAlreadyExists = await checkIfIdExists(user.orgId, id)
-  try {
-    if (idAlreadyExists) {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      useEffect(() => {
-        const getAllCourses = async () => {
-          const courses = await checkIfIdExists()
-
-          return courses
-        }
-
-        console.log('COURSE DETAILS DATA')
-
-        getAllCourses().then((courses) => setAllCourses(courses))
-      }, [])
-
-      setLoading(false)
-      return // Exit the function
-    } else {
-      setLoading(false)
-      await storeCourseDetails(user.orgId, user.uid, user.displayName)
+  useEffect(() => {
+    const fetchCourseDetails = async () => {
+      const courseDetails = await getCourseDetailsById(id)
+      setCourse(courseDetails)
     }
-  } catch (error) {
-    console.error('Error submitting leave request:', error)
+
+    fetchCourseDetails()
+  }, [id])
+
+  if (!course) {
+    return <div>Loading...</div>
   }
 
   return (
@@ -85,7 +59,7 @@ const CoursedetailsPage = async () => {
       </nav>
 
       <div>
-        <div key={course.id}>
+        <div key={course.category}>
           <div style={{ backgroundColor: 'black', color: 'white' }}>
             <div className="course-intro mx-auto grid bg-dark">
               <div className="course-details ">
@@ -123,12 +97,12 @@ const CoursedetailsPage = async () => {
                   </p>
                   <div className="course-rating flex">
                     <span className="rating-star-val fw-8 fs-16">
-                      {course.rating_star}
+                      {course.rating}
                     </span>
-                    <StarRating rating_star={course.rating_star} />
-                    <span className="rating-count fw-5 fs-14">
-                      {course.rating_count}
-                    </span>
+                    <StarRating rating={course.rating} count={5} />
+                    {/* <span className="rating-count fw-5 fs-14">
+                      {course.rating}
+                    </span> */}
                     <span className="students-count fs-14">
                       {course.students}
                     </span>
@@ -171,7 +145,7 @@ const CoursedetailsPage = async () => {
                   </ul>
                 </div>
 
-                <div className="course-foot">
+                {/* <div className="course-foot">
                   <div className="course-price">
                     <span className="new-price fs-26 fw-8">
                       ${course.discounted_price}
@@ -180,7 +154,7 @@ const CoursedetailsPage = async () => {
                       ${course.actual_price}
                     </span>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="course-price">
                   <button
@@ -199,7 +173,7 @@ const CoursedetailsPage = async () => {
                       transition: 'background-color 0.3s ease',
                     }}
                   >
-                    Add to Cart
+                    Start Course
                   </button>
                 </div>
               </div>
@@ -220,7 +194,7 @@ const CoursedetailsPage = async () => {
             </div>
           </div>
 
-          <div className="course-full bg-white text-dark">
+          {/* <div className="course-full bg-white text-dark">
             <div className="course-learn mx-auto">
               <div className="course-sc-title">What you'll learn</div>
               <ul className="course-learn-list grid">
@@ -238,19 +212,43 @@ const CoursedetailsPage = async () => {
                     )
                   })}
               </ul>
-            </div>
+            </div> */}
 
-            <div className="course-content mx-auto">
-              <div className="course-sc-title">Course content</div>
-              <ul className="course-content-list">
-                {course.content &&
-                  course.content.map((contentItem, idx) => {
-                    return (
-                      <li key={idx}>
-                        <span>{contentItem}</span>
-                      </li>
-                    )
-                  })}
+          <div className="course-full bg-white text-dark">
+            <div className="course-learn mx-auto">
+              <div className="course-sc-title">What you'll learn</div>
+              <p className="fs-14 fw-5 opacity-09">
+                {course.what_you_will_learn}
+              </p>
+            </div>
+          </div>
+
+          {/* <div className="course-content mx-auto">
+            <div className="course-sc-title">Course content</div>
+            <ul className="course-content-list">
+              {course.content &&
+                course.content.map((contentItem, idx) => {
+                  return (
+                    <li key={idx}>
+                      <span>{contentItem}</span>
+                    </li>
+                  )
+                })}
+            </ul>
+          </div> */}
+
+          <div className="course-full bg-white text-dark">
+            <div className="course-learn mx-auto">
+              <div className="course-sc-title">Content</div>
+              <ul className="course-learn-list grid">
+                <li>
+                  <span>
+                    <BiCheck />
+                  </span>
+                  <span className="fs-14 fw-5 opacity-09">
+                    {course.content}
+                  </span>
+                </li>
               </ul>
             </div>
           </div>

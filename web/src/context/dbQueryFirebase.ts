@@ -1,4 +1,5 @@
 import { WhereToVote } from '@mui/icons-material'
+import { id } from 'date-fns/locale'
 import {
   setDoc,
   doc,
@@ -729,60 +730,76 @@ export const createEnsarUser = async (data) => {
   }
 }
 
-<<<<<<< HEAD
+// export const storeCourseDetails = async (orgId, uid, courseDetails) => {
+//   try {
+//     const addCourseData = { uid, ...courseDetails }
+
+//     const x = await addDoc(
+//       collection(db, `${orgId}_course_Repo`),
+//       addCourseData
+//     )
+
 export const storeCourseDetails = async (orgId, uid, courseDetails) => {
   try {
     const addCourseData = { uid, ...courseDetails }
-
     const x = await addDoc(
       collection(db, `${orgId}_course_Repo`),
       addCourseData
     )
-
-=======
-
-
-
-
-export const storeCourseDetails = async (orgId, uid, courseDetails) => {
-  try {
-    const addCourseData = {uid, ...courseDetails}
-    const x = await addDoc(collection(db, `${orgId}_course_Repo`), addCourseData)
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
     console.log('Course details stored successfully!')
   } catch (error) {
     console.log('Error storing Course details:', error)
   }
 }
 
-<<<<<<< HEAD
+// export const getCourseDetails = async () => {
+//   try {
+//     const querySnapshot = await getDocs(collection(db, 'ensar_course_Repo'))
+
 export const getCourseDetails = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, 'ensar_course_Repo'))
-
-=======
-
-
-
-
-
-export const getCourseDetails = async () => {
-  try {
-    const querySnapshot = await getDocs(collection(db, "ensar_course_Repo"));
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
     return querySnapshot.docs.map((doc) => doc.data())
   } catch (error) {
     console.log('Error getting Course details:', error)
   }
 }
 
-<<<<<<< HEAD
-export const checkIfIdExists = async (orgId, id) => {
-  const collectionName = `${orgId}_course_Repo`
-  const q = query(collection(db, collectionName), where('id', '==', id))
-  const querySnapshot = await getDocs(q)
-  return querySnapshot.size > 0
+export const getCourseDetailsById = async (id) => {
+  try {
+    const querySnapshot = await getDocs(
+      query(collection(db, 'ensar_course_Repo'), where('id', '==', id))
+    )
+    const documents = querySnapshot.docs.map((doc) => doc.data())
+    return documents[0] // Assuming there's only one document with the given ID
+  } catch (error) {
+    console.log('Error getting Course details by ID:', error)
+  }
 }
+
+// export const checkIfIdExists = async (orgId, id) => {
+//   const collectionName = `${orgId}_course_Repo`
+//   const q = query(collection(db, collectionName), where('id', '==', id))
+//   const querySnapshot = await getDocs(q)
+//   return querySnapshot.size > 0
+// }
+
+// export const getCourseDetailsById = async (id) => {
+//   try {
+//     const docRef = doc(db, 'ensar_course_Repo', id)
+//     const docSnapshot = await getDoc(docRef)
+
+//     if (docSnapshot.exists()) {
+//       return docSnapshot.data()
+//     } else {
+//       console.log('Course not found!')
+//       return null
+//     }
+//   } catch (error) {
+//     console.error('Error getting course details:', error)
+//     return null
+//   }
+// }
 
 export const storeLeaveDetails = async (leaveDetails) => {
   try {
@@ -793,10 +810,6 @@ export const storeLeaveDetails = async (leaveDetails) => {
     console.log('Error storing leave details:', error)
   }
 }
-=======
-
-
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
 
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data

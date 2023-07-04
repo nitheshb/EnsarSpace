@@ -1,22 +1,12 @@
 export const CategoryOptions = [
   { label: 'Select the Category', value: '' },
-<<<<<<< HEAD
-  { label: 'Aws', value: 'Aws' },
-  { label: 'Data Science', value: 'Data Science' },
-  { label: 'Design', value: 'Design' },
-  { label: 'Marketing', value: 'Marketing' },
-  { label: 'Python', value: 'Python' },
-  { label: 'Web Development', value: 'Web Development' },
-]
-=======
   { label: 'aws', value: 'aws' },
   { label: 'data science', value: 'data science' },
-  { label: 'design', value: 'design'},
+  { label: 'design', value: 'design' },
   { label: 'marketing', value: 'marketing' },
   { label: 'python', value: 'python' },
   { label: 'web development', value: 'web development' },
-];
->>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
+]
 
 export const LangOptions = [
   { label: 'Select the Language', value: '' },
@@ -25,29 +15,28 @@ export const LangOptions = [
   { label: 'Spanish', value: 'Spanish' },
 ]
 
-export const AuthorOptions = [
+// export const AuthorOptions = [
+//   { value: 'Guido Rossum', label: 'Guido Rossum' },
+
+//   { value: 'Amazon', label: 'Amazon' },
+
+//   { value: 'John Tukey', label: 'John Tukey' },
+
+//   { value: 'Philip', label: 'Philip' },
+
+//   { value: 'Tim Lee', label: 'Tim Lee' },
+
+//   { value: 'Lowey', label: 'Lowey' },
+// ]
+
+export const CreatorOptions = [
   { value: 'Guido Rossum', label: 'Guido Rossum' },
-
   { value: 'Amazon', label: 'Amazon' },
-
   { value: 'John Tukey', label: 'John Tukey' },
-
   { value: 'Philip', label: 'Philip' },
-
   { value: 'Tim Lee', label: 'Tim Lee' },
-
   { value: 'Lowey', label: 'Lowey' },
 ]
-
-
-export const AuthorOptions = [
-  { value: 'Guido Rossum', label: 'Guido Rossum' },
-  { value: 'Amazon', label: 'Amazon' },
-  { value: 'John Tukey', label: 'John Tukey' },
-  { value: 'Philip', label: 'Philip' },
-  { value: 'Tim Lee', label: 'Tim Lee' },
-  { value: 'Lowey', label: 'Lowey' },
-];
 
 export const Course_Names = [
   { label: 'Select the Course', value: '' },
