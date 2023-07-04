@@ -8,6 +8,7 @@ import { RiClosedCaptioningFill } from 'react-icons/ri'
 import { TbWorld } from 'react-icons/tb'
 import styled from 'styled-components'
 
+<<<<<<< HEAD
 import { Link, useParams } from '@redwoodjs/router'
 
 import StarRating from 'src/components/A_LearningModule/StarRatings'
@@ -17,6 +18,11 @@ import {
   storeCourseDetails,
 } from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
+=======
+const CoursedetailsPage = () => {
+  const { id } = useParams()
+  const course = courses.find((p) => p.id === id)
+>>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
 
 const CoursedetailsPage = async () => {
   // const { id } = useParams()

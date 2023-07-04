@@ -1,6 +1,6 @@
 import { render } from '@redwoodjs/testing/web'
 
-import SUserSignupBody from './SUserSignupBody'
+import SUserSignupBody from './CourseDetails'
 
 describe('SUserSignupBody', () => {
   it('renders successfully', () => {

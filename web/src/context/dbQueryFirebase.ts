@@ -729,6 +729,7 @@ export const createEnsarUser = async (data) => {
   }
 }
 
+<<<<<<< HEAD
 export const storeCourseDetails = async (orgId, uid, courseDetails) => {
   try {
     const addCourseData = { uid, ...courseDetails }
@@ -738,22 +739,44 @@ export const storeCourseDetails = async (orgId, uid, courseDetails) => {
       addCourseData
     )
 
+=======
+
+
+
+
+export const storeCourseDetails = async (orgId, uid, courseDetails) => {
+  try {
+    const addCourseData = {uid, ...courseDetails}
+    const x = await addDoc(collection(db, `${orgId}_course_Repo`), addCourseData)
+>>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
     console.log('Course details stored successfully!')
   } catch (error) {
     console.log('Error storing Course details:', error)
   }
 }
 
+<<<<<<< HEAD
 export const getCourseDetails = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, 'ensar_course_Repo'))
 
+=======
+
+
+
+
+
+export const getCourseDetails = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "ensar_course_Repo"));
+>>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
     return querySnapshot.docs.map((doc) => doc.data())
   } catch (error) {
     console.log('Error getting Course details:', error)
   }
 }
 
+<<<<<<< HEAD
 export const checkIfIdExists = async (orgId, id) => {
   const collectionName = `${orgId}_course_Repo`
   const q = query(collection(db, collectionName), where('id', '==', id))
@@ -770,6 +793,10 @@ export const storeLeaveDetails = async (leaveDetails) => {
     console.log('Error storing leave details:', error)
   }
 }
+=======
+
+
+>>>>>>> 77fa80314e977923c4a18afeb67b495c6d621768
 
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data

@@ -712,6 +712,7 @@ export const courses = [
       'Learn how to create a Financially Viable Business and understand exactly what it will take to reach your financial goals',
       'Learn how to easily create your own Wordpress Coaching or Consulting Website',
     ],
+    
     content: [
       'Building Your Business & Marketing Foundation',
       'Packaging Your Services',

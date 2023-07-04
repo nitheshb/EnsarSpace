@@ -1,4 +1,4 @@
-import SUserSignupBody from './SUserSignupBody'
+import SUserSignupBody from './CourseDetails'
 
 export const generated = () => {
   return <SUserSignupBody />
