@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-import SUserSignupBody from '../LearningForms/CourseDetails'
+import SUserSignupBody from '../LearningModules/CourseDetails'
 
 const SUserSignup = ({ open, setOpen, title, empData }) => {
   return (

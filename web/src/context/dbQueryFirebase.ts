@@ -744,6 +744,57 @@ export const storeCourseDetails = async (orgId, uid, courseDetails) => {
 }
 
 
+export const startCourse = async (orgId, courseData) => {
+  try {
+ const uuid = uuidv4();
+ console.log('uuid',uuid);
+
+    await addDoc(collection(db, `${orgId}_start_Course`), {uuid, ...courseData});
+    console.log('Course details stored successfully!');
+  } catch (error) {
+    console.log('Error storing Course details:', error);
+  }
+};
+
+
+
+
+
+// src/context/dbQueryFirebase.js
+
+
+
+
+
+
+
+
+export const getCourseProgress = async (orgId, uid, courseId) => {
+  try {
+    const userDocRef = doc(db, `${orgId}_Progress_users`, uid);
+    const userSnapshot = await getDoc(userDocRef);
+
+    if (userSnapshot.exists()) {
+      const userData = userSnapshot.data();
+      const courseProgress = userData.courseProgress;
+
+      if (courseProgress && courseProgress[courseId]) {
+        return courseProgress[courseId];
+      }
+    }
+
+    return null; // Return null if course progress not found
+  } catch (error) {
+    throw new Error('Error retrieving course progress: ' + error);
+  }
+};
+
+
+
+
+
+
+
 
 
 
@@ -756,6 +807,63 @@ export const getCourseDetails = async () => {
     console.log('Error getting Course details:', error)
   }
 }
+
+
+// export const getCourseContent = async () => {
+
+
+//   try {
+//     const querySnapshot = await getDocs(collection(db, "ensar_course_content"));
+//     return querySnapshot.docs.map((doc) => doc.data());
+//   } catch (error) {
+//     console.error('Error getting course content:', error);
+//     return [];
+//   }
+// };
+
+
+export const getCourseContent = async () => {
+  try {
+    const courseContentRef = collection(db, 'ensar_course_content');
+    const querySnapshot = await getDocs(courseContentRef);
+    const CourseContent = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    return CourseContent;
+
+  } catch (error) {
+    console.log('Error getting course content:', error);
+
+    throw error; // Rethrow the error to handle it at a higher level if needed
+  }
+
+
+
+
+};
+
+
+
+
+// export const startCourse = async (orgId,name, courseId, courseName, uuid) => {
+//   try {
+//     // const orgId = 'ensar'; // Replace with the actual organization ID
+
+//     const docData = {
+//       name: name.trim(),
+//       courseId,
+//       orgId,
+//       courseName,
+//       uuid,
+//     };
+//     const docRef = doc(db, `${orgId}_startCourse`, uuid);
+//     await setDoc(docRef, docData);
+//     console.log('Course started successfully');
+//   } catch (error) {
+//     console.error('Error starting course: ', error);
+//   }
+// };
+
+
+
 
 
 

@@ -1,19 +1,31 @@
 import React from 'react'
-import { Link, useParams } from '@redwoodjs/router'
+import { navigate, Link, useParams } from '@redwoodjs/router'
 import StarRating from 'src/components/A_LearningModule/StarRatings'
 import { MdInfo } from 'react-icons/md'
 import { TbWorld } from 'react-icons/tb'
-import { FaBars, FaShoppingCart } from 'react-icons/fa'
+import { FaBars, FaPlay, FaShoppingCart } from 'react-icons/fa'
 import { RiClosedCaptioningFill } from 'react-icons/ri'
 import { BiCheck } from 'react-icons/bi'
 import { courses } from 'src/constants/courses'
 import styled from 'styled-components'
+import { BsClock, BsFileText, BsLink45Deg, BsDownload } from 'react-icons/bs';
+import StartCourseButton from 'src/components/A_LearningModule/LearningModules/StartCourse'
+
+
+
 
 const CoursedetailsPage = () => {
-  const { id } = useParams()
-  const course = courses.find((p) => p.id === id)
+  // const navigate = useNavigate();
+  const { category } = useParams();
+  const course = courses.find((p) => p.category === category)
 
   console.log('course', course)
+
+  const handleStartCourse = () => {
+    // await storeCourseDetails(orgId, uid, course);
+
+    navigate('/my-journey');
+  };
 
   return (
     <SingleCourseWrapper>
@@ -44,7 +56,7 @@ const CoursedetailsPage = () => {
       <div>
 
 
-        <div key={course.id}>
+        <div key={course.category}>
           <div style={{ backgroundColor: 'black', color: 'white' }}>
             <div className="course-intro mx-auto grid bg-dark">
               <div className="course-details ">
@@ -130,7 +142,7 @@ const CoursedetailsPage = () => {
                   </ul>
                 </div>
 
-                <div className="course-foot">
+                {/* <div className="course-foot">
                   <div className="course-price">
                     <span className="new-price fs-26 fw-8">
                       ${course.discounted_price}
@@ -139,10 +151,10 @@ const CoursedetailsPage = () => {
                       ${course.actual_price}
                     </span>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="course-price">
-                  <button
+                  {/* <button
                     style={{
                       textDecoration: 'none',
                       fontWeight: 'bold',
@@ -157,20 +169,62 @@ const CoursedetailsPage = () => {
                       boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
                       transition: 'background-color 0.3s ease',
                     }}
+                    onClick={handleStartCourse}
                   >
-                    Add to Cart
-                  </button>
+                 Start Course
+                  </button> */}
                 </div>
               </div>
 
 
+              <div className="enroll-card">
 
 
 
 
+                <div className="enroll-image">
+                  <img src="https://img-c.udemycdn.com/course/750x422/1448458_d1b3_3.jpg" alt="Enroll" />
+                  <div className="play-button">
+                    <FaPlay />
+                  </div>
+                </div><br/>
 
+                {/* <div className="enroll-content"><br />
+                  <button onClick={handleStartCourse}> Start Course</button>
+                </div> */}
 
-              <img
+                <StartCourseButton course={course} />
+
+                <div className="course-content">
+                  <h3>Course Content</h3>
+                  <div className="content-item">
+                    <BsClock className="content-icon" />
+                    <p>
+                      <span className="content-label">Watch Hours:</span> 10 hours
+                    </p>
+                  </div>
+                  <div className="content-item">
+                    <BsFileText className="content-icon" />
+                    <p>
+                      <span className="content-label">Articles:</span> 5 articles
+                    </p>
+                  </div>
+                  <div className="content-item">
+                    <BsLink45Deg className="content-icon" />
+                    <p>
+                      <span className="content-label">Resources:</span> 3 resources
+                    </p>
+                  </div>
+                  <div className="content-item">
+                    <BsDownload className="content-icon" />
+                    <p>
+                      <span className="content-label">Downloads:</span> 2 downloads
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+              {/* <img
                 src={course.image}
                 alt={course.category}
                 style={{
@@ -182,7 +236,7 @@ const CoursedetailsPage = () => {
                   maxWidth: '100%',
                 }}
                 className="responsive-image"
-              />
+              /> */}
 
             </div>
           </div>
@@ -221,6 +275,7 @@ const CoursedetailsPage = () => {
               </ul>
             </div>
           </div>
+
         </div>
       </div>
     </SingleCourseWrapper>
@@ -228,8 +283,138 @@ const CoursedetailsPage = () => {
 }
 
 const SingleCourseWrapper = styled.div`
+
+.enroll-image {
+  position: relative;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.play-button i {
+  color: #fff;
+  font-size: 24px;
+}
+
+
+
+
+
+
+
+
+
+.course-content {
+  margin-top: 30px;
+}
+
+.content-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.content-icon {
+  font-size: 24px;
+  margin-right: 10px;
+  color:black;
+}
+
+.content-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+
+.enroll-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+
+
+.enroll-content h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.enroll-content p {
+  margin-bottom: 10px;
+}
+
+.enroll-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+
+}
+
+.enroll-content h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.enroll-content p {
+  margin-bottom: 20px;
+}
+
+.enroll-content button {
+  background-color: #b823fc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.enroll-content button:hover {
+  background-color: #9c1ae6;
+}
+
+.course-content {
+  margin-top: 20px;
+}
+
+.course-content h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color:black;
+}
+
+.course-content p {
+  margin-bottom: 10px;
+  color:black;
+
+}
+
+
   background: var(--clr-dark);
-  color: var(--clr-white);
+  color: var(--clr-orange);
 
   .course-intro{
     padding: 40px 16px;
@@ -372,6 +557,40 @@ const SingleCourseWrapper = styled.div`
 
 
 
+
+
+  /* Journey Panel */
+  .journey-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #fff;
+    z-index: 10;
+    overflow-x: hidden;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+  }
+
+  .journey-panel.open {
+    transform: translateX(0);
+  }
+
+  .close-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    background-color: #f8f8f8;
+    border-top: 1px solid #e0e0e0;
+    cursor: pointer;
+  }
+
+
+
   .navbar {
     background-color: #f2f2f2;
     padding: 16px;
@@ -407,6 +626,6 @@ const SingleCourseWrapper = styled.div`
 
 
 
-`
+`;
 
 export default CoursedetailsPage

@@ -15,12 +15,8 @@ const CoursesCard = (props) => {
     creator,
     actual_price,
     discounted_price,
-
-
-
-
     rating_count,
-    rating_star,
+    rating_star,rating,
     category,
   } = props
 
@@ -39,22 +35,22 @@ const CoursesCard = (props) => {
         <span className="item-creator">{creator}</span>
         <div className="item-rating flex">
           <span className="rating-star-val">{rating_star}</span>
-          <StarRating rating_star={rating_star} />
+          <StarRating rating_star={rating} />
           <span className="rating-count">({rating_count})</span>
         </div>
-        <div className="item-price">
+        {/* <div className="item-price">
           <span className="item-price-new">${discounted_price}</span>
           <span className="item-price-old">${actual_price}</span>
-        </div>
+        </div> */}
 
       </div>
       <div className="item-btns flex">
-        <Link to={`/courses/${id}`} className="item-btn see-details-btn">
+        <Link to={`/courses/${category}`} className="item-btn see-details-btn">
           See details
         </Link>
 
 
-        
+
 
         {/* <Link
           to="/cart"

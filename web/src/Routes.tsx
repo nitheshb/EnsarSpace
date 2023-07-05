@@ -28,6 +28,7 @@ import LegalHomePage from './pages/LegalHomePage/LegalHomePage'
 import MyJourneyPage from './pages/MyJourneyPage/MyJourneyPage'
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage'
 import UsersAdminPage from './pages/UsersAdminPage/UsersAdminPage'
+import CourseProgress from './components/A_LearningModule/LearningModules/CourseProgress'
 
 const defaultRoutes = () => {
   return (
@@ -160,8 +161,14 @@ const Routes = () => {
       <Route path="/admin/login" page={LoginPage} name="login" />
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/" page={LoginPage} name="login" />
-      <Route path="/courses/{id}" page={CoursedetailsPage} name="coursedetails"  />
+      <Route path="/courses/{category}" page={CoursedetailsPage} name="coursedetails"  />
       <Route notfound page={NotFoundPage} />
+
+      <Route path="/course-progress" page={CourseProgress} name="CourseProgress" />
+
+
+
+
     </Router>
   )
 }
