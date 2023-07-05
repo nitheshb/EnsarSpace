@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-
 import { Dialog } from '@headlessui/react'
-
 import { Form, Formik, Field, ErrorMessage } from 'formik'
-
 import * as Yup from 'yup'
 
 import {
@@ -15,11 +12,13 @@ import {
   options5,
 } from 'src/constants/userRoles'
 
+import { storeAssetDetails } from 'src/context/dbQueryFirebase'
+
+import { useAuth } from 'src/context/firebase-auth-context'
+
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 
 import Loader from '../Loader/Loader'
-import { useAuth } from 'src/context/firebase-auth-context'
-import { storeAssetDetails } from 'src/context/dbQueryFirebase'
 
 const validate = Yup.object().shape({
   Product: Yup.string().required('Product is required'),
@@ -43,63 +42,24 @@ const OnBoardAssertBody = () => {
   })
 
   const [loading, setLoading] = useState(false)
+
   const { user } = useAuth()
 
-  // const handleSubmit = async (values) => {
-  //   console.log('Submitted', values)
+  const handleSubmit = async (values) => {
+    console.log('Submitted', values)
 
-  //   // Example: Simulating form submission delay
-
-  //   // setLoading(true)
-
-  //   // setTimeout(() => {
-
-  //   //   setLoading(false)
-
-  //   //   setFormMessage({
-
-  //   //     color: 'green',
-
-  //   //     message: 'Asset added successfully!',
-
-  //   //   })
-
-  //   // }, 2000)
-
-  //   try {
-  //     setLoading(true)
-  //     await storeAssetDetails(user.orgId, values)
-  //     setLoading(false)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-
-  //   console.log('Form Values:', values)
-  // }
-
-
-  const handleSubmit = async (values, { resetForm }) => {
     try {
-      setLoading(true);
-      await storeAssetDetails(user.orgId, values);
-      setLoading(false);
-      setFormMessage({
-        color: 'green',
-        message: 'Product added successfully!',
-      });
-      resetForm(); // Reset the form fields
+      setLoading(true)
+
+      await storeAssetDetails(user.orgId, values)
+
+      setLoading(false)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
 
-
-
-    // Display form values in the console
-    console.log('Form Values:', values);
-  };
-
-
-
+    console.log('Form Values:', values)
+  }
 
   return (
     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
@@ -136,6 +96,32 @@ const OnBoardAssertBody = () => {
           >
             {({ values, setFieldValue }) => (
               <Form className="space-y-6">
+                <div>
+                  <label
+                    htmlFor="SerialNumber"
+                    className="block text-sm font-medium bold-black-700"
+                  >
+                    Serial Number
+                  </label>
+
+                  <Field
+                    as={CustomSelect}
+                    name="SerialNumber"
+                    options={options3}
+                    placeholder="Select SerialNumber"
+                    className="mt-1"
+                    onChange={(option) =>
+                      setFieldValue('SerialNumber', option.value)
+                    }
+                  />
+
+                  <ErrorMessage
+                    name="SerialNumber"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
+                </div>
+
                 <div>
                   <label
                     htmlFor="Product"
@@ -214,32 +200,6 @@ const OnBoardAssertBody = () => {
 
                 <div>
                   <label
-                    htmlFor="SerialNumber"
-                    className="block text-sm font-medium bold-black-700"
-                  >
-                    Serial Number
-                  </label>
-
-                  <Field
-                    as={CustomSelect}
-                    name="SerialNumber"
-                    options={options3}
-                    placeholder="Select SerialNumber option"
-                    className="mt-1"
-                    onChange={(option) =>
-                      setFieldValue('SerialNumber', option.value)
-                    }
-                  />
-
-                  <ErrorMessage
-                    name="SerialNumber"
-                    component="div"
-                    className="text-red-500 text-sm mt-1"
-                  />
-                </div>
-
-                <div>
-                  <label
                     htmlFor="AllocationStatus"
                     className="block text-sm font-medium bold-black-700"
                   >
@@ -250,7 +210,7 @@ const OnBoardAssertBody = () => {
                     as={CustomSelect}
                     name="AllocationStatus"
                     options={options4}
-                    placeholder="Select display type"
+                    placeholder="Select Allocation Status"
                     className="mt-1"
                     onChange={(option) =>
                       setFieldValue('AllocationStatus', option.value)
@@ -276,7 +236,7 @@ const OnBoardAssertBody = () => {
                     as={CustomSelect}
                     name="WorkingStatus"
                     options={options5}
-                    placeholder="Select phone connector"
+                    placeholder="Select Working Status"
                     className="mt-1"
                     onChange={(option) =>
                       setFieldValue('WorkingStatus', option.value)
@@ -295,7 +255,11 @@ const OnBoardAssertBody = () => {
                     type="submit"
                     className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   >
-                    {loading ? <Loader /> : 'Submit'}
+                    {loading ? (
+                      <Loader texColor={undefined} size={undefined} />
+                    ) : (
+                      'Submit'
+                    )}
                   </button>
                 </div>
               </Form>

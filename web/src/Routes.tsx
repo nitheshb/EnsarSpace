@@ -136,6 +136,8 @@ const Routes = () => {
   return (
     <Router>
 
+      <Route path="/laptop-detail" page={LaptopDetailPage} name="laptopDetail" />
+
       <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" />
 
       <Route path="/my-journey" page={MyJourneyPage} name="myJourney" />

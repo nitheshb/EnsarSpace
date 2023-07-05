@@ -1,30 +1,28 @@
 import { Fragment, useState } from 'react'
+
 import { MetaTags } from '@redwoodjs/web'
+
+import AttendancePage from 'src/components/A_LearningModule/Attendance'
 import SlimSideMenuBar from 'src/components/A_SideMenu/slimSideMenu'
 // import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
+import TableData from 'src/components/Access/TableData'
 import HeadNavBar2 from 'src/components/HeadNavBar/HeadNavBar2'
 // import HeadSideBar from 'src/components/HeadSideBar/HeadSideBar'
 // import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
+import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
 import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 import OnBoarding from 'src/components/TableComp/OnBoarding'
 // import OnBoarding from 'src/components/TableComp/OnBoarding'
+import Timeoff from 'src/components/TableComp/Timeoff'
+import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
-import Timeoff from 'src/components/TableComp/Timeoff'
+
 import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
-import TableData from 'src/components/Access/TableData'
-import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
+import LaptopDetailsPage from '../LaptopDetailPage/LaptopDetailPage'
+
 // import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
-import TimeOffTable from 'src/components/TableComp/TimeOffTable'
-import AttendancePage from 'src/components/A_LearningModule/Attendance'
-// import OnBoarding from 'src/components/TableComp/OnBoarding'
-import Calendar from 'src/components/TableComp/Calendar'
-import OnBoarding1 from 'src/components/ConstructModule/OnBoarding1'
-import Assets from 'src/components/ConstructModule/OnBoarding'
-
-
-
 
 const UsersAdminPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -51,7 +49,6 @@ const UsersAdminPage = () => {
         />
 
         <div className="flex flex-col flex-grow">
-
           <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">
@@ -87,7 +84,6 @@ const UsersAdminPage = () => {
                 <button
                   onClick={() => editEmployeeFun({})}
                   className="flex items-center justify-center h-10 px-5  bg-gray-200 ml-auto text-sm font-medium rounded hover:bg-gray-400 "
-
                 >
                   <svg
                     className="w-5 h-5"
@@ -95,8 +91,6 @@ const UsersAdminPage = () => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-
-
                   >
                     <path
                       strokeLinecap="round"
@@ -110,7 +104,6 @@ const UsersAdminPage = () => {
               )}
             </div>
 
-
             {viewable === 'User Management' && (
               <UserManageTable editEmployeeFun={editEmployeeFun} />
             )}
@@ -120,30 +113,35 @@ const UsersAdminPage = () => {
                 <LeaveApprovalPage />
               </>
             )}
+            {/* {viewable === 'Roles Management' && (
+              <>
+                <TableData />
+              </>
+            )} */}
 
             {viewable === 'Roles Management' && (
+              <>
+                <TableData />
+                {/* <OnBoarding leadsTyper={undefined} /> */}
+              </>
+            )}
+
+            {viewable === 'OnBoarding' && (
               <>
                 <OnBoarding leadsTyper={undefined} />
               </>
             )}
 
-
-               {viewable === 'On Boarding' && (
+              {/* {viewable === 'LaptopDetailsPage' && (
+              <>
+                <LaptopDetailsPage />
+              </>
+            )} */}
+            {/* {viewable === 'OnBoarding' && (
               <>
                 <OnBoarding />
               </>
-            )}
-
-
-             {viewable === 'Holidays Calendar' && (
-              <>
-                <Calendar />
-              </>
-            )}
-
-
-
-
+            )} */}
 
             {viewable === 'My Activity' && (
               <>
@@ -163,22 +161,15 @@ const UsersAdminPage = () => {
               </>
             )}
 
-          {viewable === 'AttendancePage' && (
-            <>
-            <AttendancePage />
-            </>
+            {viewable === 'AttendancePage' && (
+              <>
+                <AttendancePage />
+              </>
             )}
 
             {viewable === 'Team Activity' && (
               <>
                 <MyActivityHome source={'team'} />
-              </>
-            )}
-            {viewable === 'Pay Slips' && (
-
-              <>
-
-
               </>
             )}
 
@@ -195,9 +186,6 @@ const UsersAdminPage = () => {
               />
             )}
 
-
-
-
             {viewable === 'User Report' && (
               // <ReportMain/>
               <ActivitySummaryReport
@@ -212,7 +200,6 @@ const UsersAdminPage = () => {
               />
             )}
 
-
             <SUserSignup
               open={isOpen}
               setOpen={handleOnClose}
@@ -221,13 +208,9 @@ const UsersAdminPage = () => {
             />
           </div>
         </div>
-      </div >
+      </div>
     </>
   )
 }
 
 export default UsersAdminPage
-
-
-
-

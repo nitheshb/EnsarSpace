@@ -21,7 +21,6 @@ export const USER_ROLES = {
   ITDESK_SENIOR_MANAGER: 'itdesk-senior-manager',
   ITDESK_SENIOR_ASSOCIATE: 'itdesk-senior-associate',
 
-
   FINANCE_MANAGER: 'finance-manager',
   FINANCE_EXECUTIVE: 'finance-executive',
   FINANCE_ASSOCIATE: 'finance-associate',
@@ -61,28 +60,12 @@ export const USER_ROLES = {
   DEVELOPER_ASSOCIATE: 'developer associate',
   DEVELOPER_SENIOR_ASSOCIATE: 'developer senior associate',
 
-//  HL-58-Assets-management
-  LEARNER_MANAGER: 'learner manager',
-  LEARNER_EXECUTIVE: 'learner executive',
-  LEARNER_ASSOCIATE: 'learner associate',
-  LEARNER_SENIOR_MANAGER: 'learner senior manager',
-  LEARNER_SENIOR_EXECUTIVE: 'learner senior executive',
-  LEARNER_SENIOR_ASSOCIATE: 'learner senior associate',
-
-  TRAINER_MANAGER: 'trainer manager',
-  TRAINER_EXECUTIVE: 'trainer executive',
-  TRAINER_ASSOCIATE: 'trainer associate',
-  TRAINER_SENIOR_MANAGER: 'trainer senior manager',
-  TRAINER_SENIOR_EXECUTIVE: 'trainer senior executive',
-  TRAINER_SENIOR_ASSOCIATE: 'trainer senior associate',
-
   LEARNING_EXECUTIVE: 'learning executive',
   LEARNING_MANAGER: 'learning manager',
   LEARNING_ASSOCIATE: 'learning associate',
   LEARNING_SENIOR_EXECUTIVE: 'learning senior executive',
   LEARNING_SENIOR_MANAGER: 'learning senior manager',
   LEARNING_SENIOR_ASSOCIATE: 'learning senior associate',
-//  Development_dev
 
   FRESHER_EXECUTIVE: 'fresher executive',
   FRESHER_MANAGER: 'fresher manager',
@@ -95,7 +78,6 @@ export const USER_ROLES = {
   ADMIN: 'admin',
   TRAINEE: 'trainee',
   DATA_SCIENTIST: 'data-scientist',
-
 }
 
 export const DEPARTMENT_LIST = [
@@ -200,91 +182,52 @@ export const Lang = [
 export const options = [
 
   { label: 'Select the product', value: '' },
-
   { label: 'Laptop', value: 'Laptop' },
-
-  { label: 'Phone windows', value: 'Phone windows' },
-
+  { label: 'Phone iphone', value: 'Phone iphone' },
   { label: 'Phone android', value: 'Phone android' },
-
   { label: 'Sim', value: 'Sim' },
-
 ]
 
 export const options1 = [
-
   { label: 'Select the Processor', value: '' },
-
   { label: 'Ryzen', value: 'Ryzen' },
-
   { label: 'Intel', value: 'Intel' },
-
   { label: 'Snapdragon', value: 'Snapdragon' },
-
   { label: 'Mediatek', value: 'Mediatek' },
-
 ]
 
 export const options2 = [
-
   { label: 'Select the Ram', value: '' },
-
   { label: '4GB', value: '4GB' },
-
   { label: '6GB', value: '6GB' },
-
   { label: '8GB', value: '8GB' },
-
   { label: '16GB', value: '16GB' },
-
 ]
-
 export const options3 = [
-
   { label: 'Select the Serial Number', value: '' },
-
   { label: '01', value: '01' },
-
   { label: '02', value: '02' },
-
   { label: '03', value: '03' },
-
   { label: '04', value: '04' },
-
   { label: '05', value: '05' },
-
   { label: '06', value: '06' },
-
   { label: '07', value: '07' },
-
   { label: '08', value: '08' },
-
   { label: '09', value: '09' },
-
   { label: '10', value: '10' },
-
 ]
 
 export const options4 = [
-
   { label: 'Select the Allocation Status', value: '' },
-
   { label: 'Yes', value: 'Yes' },
-
   { label: 'No', value: 'No' },
-
 ]
 
 export const options5 = [
-
   { label: 'Select the Working Status', value: '' },
-
   { label: 'Good ', value: 'Good' },
-
   { label: 'Average', value: 'Average' },
-
   { label: 'Bad', value: 'Bad' },
-
 ]
 
 
@@ -293,8 +236,16 @@ export const ROLES_LIST = [
   { label: 'Select the role', value: '' },
   { label: 'Sales manager', value: USER_ROLES.SALES_MANAGER, dept: 'sales' },
 
-  { label: 'Sales senior associate', value: USER_ROLES.SALES_SENIOR_ASSOCIATE, dept: 'sales' },
-  { label: 'Sales associate', value: USER_ROLES.SALES_ASSOCIATE, dept: 'sales' },
+  {
+    label: 'Sales senior associate',
+    value: USER_ROLES.SALES_SENIOR_ASSOCIATE,
+    dept: 'sales',
+  },
+  {
+    label: 'Sales associate',
+    value: USER_ROLES.SALES_ASSOCIATE,
+    dept: 'sales',
+  },
   {
     label: 'Sales executive',
     value: USER_ROLES.SALES_EXECUTIVE,
@@ -477,9 +428,21 @@ export const ROLES_LIST = [
   },
 
   { label: 'Helper manager', value: USER_ROLES.HELPER_MANAGER, dept: 'helper' },
-  { label: 'Helper senior manager', value: USER_ROLES.HELPER_SENIOR_MANAGER, dept: 'helper' },
-  { label: 'Helper associate', value: USER_ROLES.HELPER_ASSOCIATE, dept: 'helper' },
-  { label: 'Helper senior associate', value: USER_ROLES.HELPER_SENIOR_ASSOCIATE, dept: 'helper' },
+  {
+    label: 'Helper senior manager',
+    value: USER_ROLES.HELPER_SENIOR_MANAGER,
+    dept: 'helper',
+  },
+  {
+    label: 'Helper associate',
+    value: USER_ROLES.HELPER_ASSOCIATE,
+    dept: 'helper',
+  },
+  {
+    label: 'Helper senior associate',
+    value: USER_ROLES.HELPER_SENIOR_ASSOCIATE,
+    dept: 'helper',
+  },
   {
     label: 'Helper executive',
     value: USER_ROLES.HELPER_EXECUTIVE,
@@ -540,7 +503,6 @@ export const ROLES_LIST = [
     dept: 'developer',
   },
 
-
   {
     label: 'developer manager',
     value: USER_ROLES.DEVELOPER_MANAGER,
@@ -567,17 +529,17 @@ export const ROLES_LIST = [
   {
     label: 'developer executive',
     value: USER_ROLES.DEVELOPER_EXECUTIVE,
-    dept:'developer',
+    dept: 'developer',
   },
   {
     label: 'developer senior executive',
     value: USER_ROLES.DEVELOPER_SENIOR_EXECUTIVE,
-    dept:'developer',
+    dept: 'developer',
   },
   {
     label: 'developer associate',
     value: USER_ROLES.DEVELOPER_ASSOCIATE,
-    dept:'developer',
+    dept: 'developer',
   },
   {
     label: 'developer senior associate',
@@ -621,39 +583,6 @@ export const ROLES_LIST = [
     value: USER_ROLES.FRESHER_EXECUTIVE,
     dept: 'fresher',
   },
-
-  {
-    label: 'learner manager',
-    value: USER_ROLES.LEARNER_MANAGER,
-    dept:'learner',
-  },
-  {
-    label: 'learner senior manager',
-    value: USER_ROLES.LEARNER_SENIOR_MANAGER,
-    dept:'learner',
-  },
-  {
-    label: 'learner executive',
-    value: USER_ROLES.LEARNER_EXECUTIVE,
-    dept:'learner',
-  },
-  {
-    label: 'learner senior executive',
-    value: USER_ROLES.LEARNER_SENIOR_EXECUTIVE,
-    dept:'learner',
-  },
-  {
-    label: 'learner associate',
-    value: USER_ROLES.LEARNER_ASSOCIATE,
-    dept:'learner',
-  },
-  {
-    label: 'learner senior associate',
-    value: USER_ROLES.LEARNER_SENIOR_ASSOCIATE,
-    dept:'learner',
-  },
-
-
   {
     label: 'fresher manager',
     value: USER_ROLES.FRESHER_MANAGER,
@@ -677,17 +606,17 @@ export const ROLES_LIST = [
   {
     label: 'fresher executive',
     value: USER_ROLES.FRESHER_EXECUTIVE,
-    dept:'fresher',
+    dept: 'fresher',
   },
   {
     label: 'fresher senior executive',
     value: USER_ROLES.FRESHER_SENIOR_EXECUTIVE,
-    dept:'fresher',
+    dept: 'fresher',
   },
   {
     label: 'fresher associate',
     value: USER_ROLES.FRESHER_ASSOCIATE,
-    dept:'fresher',
+    dept: 'fresher',
   },
   {
     label: 'fresher senior associate',

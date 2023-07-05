@@ -1,14 +1,24 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Fragment, useState, useEffect, SetStateAction } from 'react'
 import {
   getAssetdetails,
   getFinanceTransactionsByStatus,
 } from 'src/context/dbQueryFirebase'
 
+// import {
+//   getAssetdetails,
+//   getFinanceTransactionsByStatus,
+// } from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
+
 import OnBoardAssertBody from '../onBordingAssert/onBoardAssertBody'
 import OnBoardingAsset from '../onBordingAssert/OnBoardingAsset'
 import OnBoardingAssign from '../onBordingAssert/OnBoardingAssign'
 import OnBoardingAssignBody from '../onBordingAssert/OnBoardingAssignBody'
+import { navigate, useLocation } from '@redwoodjs/router'
+import LaptopDetailPage from 'src/pages/LaptopDetailPage/LaptopDetailPage'
+
 const OnBoarding = ({ leadsTyper }) => {
   const { user } = useAuth()
   const { orgId } = user
@@ -25,12 +35,17 @@ const OnBoarding = ({ leadsTyper }) => {
   const [transactionData, setTransactionData] = useState({})
   const [isAssetOpen, handleAssetOnClose] = useState(false)
   const [isAssignOpen, handleAssignOnClose] = useState(false)
-  const [laptopCount, setLaptopCount] = useState(0)
-  const [PhoneiphoneCount, setPhoneiphoneCount] = useState(0)
-  const [PhoneandroidCount, setPhoneandroidCount] = useState(0)
-  const [SimCount, setSimCount] = useState(0)
-   const [value, setValue] = useState('latest')
-   const tabHeadFieldsA = [
+  const [laptopCount, setLaptopCount] = useState(0);
+  const [PhoneiphoneCount, setPhoneiphoneCount] = useState(0);
+  const [PhoneandroidCount, setPhoneandroidCount ] = useState(0);
+  const [SimCount, setSimCount] = useState(0);
+
+
+  const handleOnClose = () => setIsOpen(false)
+
+  const [value, setValue] = useState('latest')
+  // const [assetData, setAssetData] = useState()
+  const tabHeadFieldsA = [
     { lab: 'All Transactions', val: 'all' },
     { lab: 'Latest', val: 'latest' },
     { lab: 'Reviewing', val: 'reviewing' },
@@ -126,8 +141,14 @@ const OnBoarding = ({ leadsTyper }) => {
 
         {
           uid: uid,
-
-          status: ['new', 'reviewing', 'review', 'cleared', 'rejected', ''],
+          status: [
+            'new',
+            'reviewing',
+            'review',
+            'cleared',
+            'rejected',
+            '',
+          ],
         },
 
         () => setLeadsFetchedData([])
@@ -136,7 +157,6 @@ const OnBoarding = ({ leadsTyper }) => {
       return unsubscribe
     }
   }
-
   const serealizeData = (array) => {
     const x = [
       'new',
@@ -166,7 +186,6 @@ const OnBoarding = ({ leadsTyper }) => {
 
     setSelUserProfile(data)
   }
-
   const viewTransaction = (docData) => {
     setTransactionData(docData)
 
@@ -185,58 +204,76 @@ const OnBoarding = ({ leadsTyper }) => {
     handleAssignOnClose(true)
   }
 
+  const location = useLocation();
+    const redirectToPage = () => {
+      navigate('/laptop-details');
+
+    };
+
   console.log('add productData is', OnBoardAssertBody)
 
+
+  // useEffect(() => {
+  //   const getAssetData = async () => {
+  //     try {
+  //       const requests = await getAssetdetails(user.orgId);
+
+  //       // Calculate the count of laptops
+  //       const laptopCount = requests.filter(request => request.Product === 'Laptop').length;
+  //       setLaptopCount(laptopCount);
+
+  //       const PhoneiphoneCount = requests.filter(request => request.Product === 'Phone iphone').length;
+  //       setPhoneiphoneCount(PhoneiphoneCount);
+
+  //       const PhoneandroidCount = requests.filter(request => request.Product === 'Phone android').length;
+  //       setPhoneandroidCount(PhoneandroidCount);
+
+  //       const SimCount = requests.filter(request => request.Product === 'Sim').length;
+  //       setSimCount(SimCount);
+
+
+  //       return requests;
+  //     } catch (error) {
+  //       console.error('Error retrieving Asset data:', error);
+  //       return [];
+  //     }
+  //   };
+
+  //   getAssetData()
+  //     .then((requests) => {
+  //       console.log('REQUEST DETAILS DATA');
+  //       console.log(requests);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error setting asset details:', error);
+  //     });
+  // }, []);
   useEffect(() => {
     const getAssetData = async () => {
       try {
-        const requests = await getAssetdetails(user.orgId)
+        const requests = await getAssetdetails(user.orgId);
 
         // Calculate the count of laptops
+        const laptopCount = requests.filter(request => request.Product === 'Laptop').length;
+        setLaptopCount(laptopCount);
 
-        const laptopCount = requests.filter(
-          (request) => request.Product === 'Laptop'
-        ).length
-
-        setLaptopCount(laptopCount)
-
-        const  PhoneiphoneCount= requests.filter(
-          (request) => request.Product === 'Phone iphone'
-        ).length
-
-        setPhoneiphoneCount(PhoneiphoneCount)
-
-        const PhoneandroidCount = requests.filter(
-          (request) => request.Product === 'Phone android'
-        ).length
-
-        setPhoneandroidCount(PhoneandroidCount)
-
-        const SimCount = requests.filter(
-          (request) => request.Product === 'Sim'
-        ).length
-
-        setSimCount(SimCount)
-
-        return requests
+        return requests;
       } catch (error) {
-        console.error('Error retrieving Asset data:', error)
-
-        return []
+        console.error('Error retrieving Asset data:', error);
+        return [];
       }
-    }
+    };
 
     getAssetData()
       .then((requests) => {
-        console.log('REQUEST DETAILS DATA')
-
-        console.log(requests)
+        console.log('REQUEST DETAILS DATA');
+        console.log(requests);
       })
-
       .catch((error) => {
-        console.error('Error setting asset details:', error)
-      })
-  }, [])
+        console.error('Error setting asset details:', error);
+      });
+  }, []);
+
 
   return (
     <>
@@ -265,8 +302,7 @@ const OnBoarding = ({ leadsTyper }) => {
 
             <span className="ml-1 leading-none">Add Asset</span>
           </button>
-
-          <button
+          {/* <button
             className="flex items-center justify-center h-10 px-4 bg-gray-200 text-sm font-medium rounded hover:bg-gray-300"
             onClick={() => OnBoardingAssignBody('Assign Asset')}
           >
@@ -286,19 +322,20 @@ const OnBoarding = ({ leadsTyper }) => {
             </svg>
 
             <span className="ml-1 leading-none">Assign Asset</span>
-          </button>
+          </button> */}
         </div>
       </div>
 
-      <div className="">
-        <div className="">
-          <div className="">
-            <section className="flex flex-row justify-between">
-              <div className=" m-1">
-                <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
-                  <section>
-                    <div className="flex item-center justify-between">
-                      <svg
+          {/* <div className=""> */}
+        {/* <div className=""> */}
+          {/* <div className=""> */}
+                    {/* <section className="flex flex-row justify-between"> */}
+                   {/* <button onClick={redirectToPage}> */}
+                    {/* <div className=" m-1"> */}
+                {/* <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5"> */}
+                  {/* <section> */}
+                    {/* <div className="flex item-center justify-between"> */}
+                      {/* <svg
                         width="45.46px"
                         height="40.42px"
                         viewBox="0 0 43 41"
@@ -334,29 +371,27 @@ const OnBoarding = ({ leadsTyper }) => {
                           d="M21.2858 26.9698C22.0178 26.9698 22.6112 26.4128 22.6112 25.7257C22.6112 25.0387 22.0178 24.4817 21.2858 24.4817C20.5538 24.4817 19.9604 25.0387 19.9604 25.7257C19.9604 26.4128 20.5538 26.9698 21.2858 26.9698Z"
                           fill="#8B50FF"
                         />
-                      </svg>
+                      </svg> */}
 
-                      <div className="width-30 height-55 font-medium flex-end text-black-1500">
+                        {/* <div className="width-30 height-55 font-medium flex-end text-black-1500"> */}
+                        {/* <p className=" css-6mn6yy">01</p> */}
+                        {/* <p className="css-6mn6yy">{laptopCount.toString().padStart(2, '0')}</p> */}
+                      {/* </div> */}
+                    {/* </div> */}
 
-
-                        <p className="css-6mn6yy">
-                          {laptopCount.toString().padStart(2, '0')}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="px-2 flex flex-row justify-between">
+                    {/* <div className="px-2 flex flex-row justify-between">
                       <h3 className=" css-5mn5yy">Laptop</h3>
-                    </div>
+                    </div> */}
 
-                    <span className="css-1lpgd8m px-3 text-[black] text-[10px]">
+                    {/* <span className="css-1lpgd8m px-3 text-[black] text-[10px]">
                       Windows
-                    </span>
-                  </section>
-                </div>
-              </div>
-
-              <div className=" m-1">
+                    </span> */}
+                  {/* </section> */}
+                {/* </div> */}
+                   {/* </div> */}
+                   {/* </button> */}
+                     {/*
+                  <div className=" m-1">
                 <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                   <section>
                     <div className="flex item-center justify-between">
@@ -388,25 +423,22 @@ const OnBoarding = ({ leadsTyper }) => {
 
                       <div className="width-30 height-50 font-medium flex-end text-black-1500">
                         {/* <p className=" css-6mn6yy">0</p> */}
-
-                        <p className="css-6mn6yy">
-                          {PhoneiphoneCount.toString().padStart(2, '0')}
-                        </p>
+                        {/* <p className="css-6mn6yy">{PhoneiphoneCount.toString().padStart(2, '0')}</p>
                       </div>
                     </div>
 
                     <div className="px-2 flex flex-row justify-between">
                       <h3 className=" css-5mn5yy">Phone</h3>
-                    </div>
+                    </div> */}
 
-                    <span className="css-1lpgd8m px-3 text-[black] text-[10px]">
+                    {/* <span className="css-1lpgd8m px-3 text-[black] text-[10px]">
                       iphone
-                    </span>
-                  </section>
+                    </span> */}
+                  {/* </section>
                 </div>
-              </div>
+                  </div> */}
 
-              <div className=" m-1">
+                  {/* <div className=" m-1">
                 <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                   <section>
                     <div className="flex item-center justify-between">
@@ -434,9 +466,7 @@ const OnBoarding = ({ leadsTyper }) => {
                       </svg>
 
                       <div className="width-30 height-55 font-medium flex-end text-black-1500">
-                        <p className="css-6mn6yy">
-                          {PhoneandroidCount.toString().padStart(2, '0')}
-                        </p>
+                        <p className="css-6mn6yy">{PhoneandroidCount.toString().padStart(2, '0')}</p>
                       </div>
                     </div>
 
@@ -449,49 +479,43 @@ const OnBoarding = ({ leadsTyper }) => {
                     </span>
                   </section>
                 </div>
-              </div>
+                 </div> */}
 
-              <div className=" m-1">
-                <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
+                  {/* <div className=" m-1">
+                 <div className=" border-[#E5EAF2] rounded-xl border w-60 h-40 bg-white px-8 py-5">
                   <section>
                     <div className="flex item-center justify-between">
-                      <svg
-                        width="38"
-                        height="38"
-                        viewBox="0 0 38 38"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M24.2846 2.24878H8.7877C8.20879 2.24878 7.74121 2.71636 7.74121 3.29526V34.7121C7.74121 35.291 8.20879 35.7585 8.7877 35.7585H29.2053C29.7842 35.7585 30.2518 35.291 30.2518 34.7121V8.21597C30.2518 7.93394 30.1404 7.67417 29.9475 7.47378L25.0193 2.54565C24.8264 2.35269 24.5666 2.24878 24.2846 2.24878Z"
-                          fill="white"
-                        />
+                    <svg
+                      width="38"
+                      height="38"
+                      viewBox="0 0 38 38"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M24.2846 2.24878H8.7877C8.20879 2.24878 7.74121 2.71636 7.74121 3.29526V34.7121C7.74121 35.291 8.20879 35.7585 8.7877 35.7585H29.2053C29.7842 35.7585 30.2518 35.291 30.2518 34.7121V8.21597C30.2518 7.93394 30.1404 7.67417 29.9475 7.47378L25.0193 2.54565C24.8264 2.35269 24.5666 2.24878 24.2846 2.24878Z"
+                        fill="white"
+                      />
+                      <path
+                        d="M23.8543 4.3418H9.8418V5.65547H12.6102C13.1891 5.65547 13.6566 6.12305 13.6566 6.70195C13.6566 7.28086 13.1891 7.74844 12.6102 7.74844H9.8418V10.3238H10.5098C11.0887 10.3238 11.5562 10.7914 11.5562 11.3703C11.5562 11.9492 11.0887 12.4168 10.5098 12.4168H9.8418V33.6656H28.1664V8.65391L23.8543 4.3418Z"
+                        fill="#D1C3FC"
+                      />
+                      <path
+                        d="M31.432 5.98955L26.5039 1.06143C25.9102 0.467676 25.1234 0.141113 24.2848 0.141113H8.78789C7.05859 0.148535 5.64844 1.55869 5.64844 3.28799V34.7048C5.64844 36.4341 7.05859 37.8442 8.78789 37.8442H29.2055C30.9348 37.8442 32.3449 36.4341 32.3449 34.7048V8.20869C32.3523 7.37744 32.0258 6.5833 31.432 5.98955ZM30.2594 34.7122C30.2594 35.2911 29.7918 35.7587 29.2129 35.7587H8.78789C8.20898 35.7587 7.74141 35.2911 7.74141 34.7122V3.28799C7.74141 2.70908 8.20898 2.2415 8.78789 2.2415H24.2848C24.5668 2.2415 24.8266 2.35283 25.027 2.5458L29.9551 7.47393C30.1555 7.67432 30.2594 7.93408 30.2594 8.21611V34.7122Z"
+                        fill="#194F82"
+                      />
+                      <path
+                        d="M24.2842 16.6548H13.7154C12.1346 16.6548 10.8506 17.9388 10.8506 19.5196V30.0884C10.8506 31.6692 12.1346 32.9532 13.7154 32.9532H24.2842C25.865 32.9532 27.149 31.6692 27.149 30.0884V19.5196C27.149 17.9388 25.865 16.6548 24.2842 16.6548ZM18.0424 31.0384H13.7154C13.1885 31.0384 12.758 30.6079 12.758 30.081V25.754H18.0424V31.0384ZM18.0424 23.8466H12.7654V19.5196C12.7654 18.9927 13.1959 18.5622 13.7229 18.5622H18.0498V23.8466H18.0424ZM25.2342 30.0884C25.2342 30.6153 24.8037 31.0458 24.2768 31.0458H19.9498V28.3071H25.2342V30.0884ZM25.2342 26.3923H19.9498V23.2083H25.2342V26.3923ZM25.2342 21.3009H19.9498V18.5622H24.2768C24.8037 18.5622 25.2342 18.9927 25.2342 19.5196V21.3009Z"
+                        fill="#194F82"
+                      />
+                      <path
+                        d="M19.9574 23.2155H25.2418V26.3995H19.9574V23.2155ZM24.2324 18.562H19.9574V21.3007H25.2344V19.5417C25.2047 19.0073 24.7668 18.5843 24.2324 18.562ZM18.0426 31.0382V25.7538H12.7656V30.0659C12.7953 30.5409 13.1367 30.9269 13.5895 31.0233C13.634 31.0308 13.6785 31.0382 13.723 31.0382H18.0426ZM12.7656 19.5417V23.8464H18.05V18.562H13.775C13.2332 18.5843 12.7953 19.0073 12.7656 19.5417ZM25.2344 30.0733V28.3069H19.95V31.0456H24.277C24.3215 31.0456 24.366 31.0382 24.4105 31.0308C24.8633 30.9343 25.2047 30.5409 25.2344 30.0733Z"
+                        fill="#FFC10D"
+                      />
+                    </svg>
 
-                        <path
-                          d="M23.8543 4.3418H9.8418V5.65547H12.6102C13.1891 5.65547 13.6566 6.12305 13.6566 6.70195C13.6566 7.28086 13.1891 7.74844 12.6102 7.74844H9.8418V10.3238H10.5098C11.0887 10.3238 11.5562 10.7914 11.5562 11.3703C11.5562 11.9492 11.0887 12.4168 10.5098 12.4168H9.8418V33.6656H28.1664V8.65391L23.8543 4.3418Z"
-                          fill="#D1C3FC"
-                        />
-
-                        <path
-                          d="M31.432 5.98955L26.5039 1.06143C25.9102 0.467676 25.1234 0.141113 24.2848 0.141113H8.78789C7.05859 0.148535 5.64844 1.55869 5.64844 3.28799V34.7048C5.64844 36.4341 7.05859 37.8442 8.78789 37.8442H29.2055C30.9348 37.8442 32.3449 36.4341 32.3449 34.7048V8.20869C32.3523 7.37744 32.0258 6.5833 31.432 5.98955ZM30.2594 34.7122C30.2594 35.2911 29.7918 35.7587 29.2129 35.7587H8.78789C8.20898 35.7587 7.74141 35.2911 7.74141 34.7122V3.28799C7.74141 2.70908 8.20898 2.2415 8.78789 2.2415H24.2848C24.5668 2.2415 24.8266 2.35283 25.027 2.5458L29.9551 7.47393C30.1555 7.67432 30.2594 7.93408 30.2594 8.21611V34.7122Z"
-                          fill="#194F82"
-                        />
-
-                        <path
-                          d="M24.2842 16.6548H13.7154C12.1346 16.6548 10.8506 17.9388 10.8506 19.5196V30.0884C10.8506 31.6692 12.1346 32.9532 13.7154 32.9532H24.2842C25.865 32.9532 27.149 31.6692 27.149 30.0884V19.5196C27.149 17.9388 25.865 16.6548 24.2842 16.6548ZM18.0424 31.0384H13.7154C13.1885 31.0384 12.758 30.6079 12.758 30.081V25.754H18.0424V31.0384ZM18.0424 23.8466H12.7654V19.5196C12.7654 18.9927 13.1959 18.5622 13.7229 18.5622H18.0498V23.8466H18.0424ZM25.2342 30.0884C25.2342 30.6153 24.8037 31.0458 24.2768 31.0458H19.9498V28.3071H25.2342V30.0884ZM25.2342 26.3923H19.9498V23.2083H25.2342V26.3923ZM25.2342 21.3009H19.9498V18.5622H24.2768C24.8037 18.5622 25.2342 18.9927 25.2342 19.5196V21.3009Z"
-                          fill="#194F82"
-                        />
-
-                        <path
-                          d="M19.9574 23.2155H25.2418V26.3995H19.9574V23.2155ZM24.2324 18.562H19.9574V21.3007H25.2344V19.5417C25.2047 19.0073 24.7668 18.5843 24.2324 18.562ZM18.0426 31.0382V25.7538H12.7656V30.0659C12.7953 30.5409 13.1367 30.9269 13.5895 31.0233C13.634 31.0308 13.6785 31.0382 13.723 31.0382H18.0426ZM12.7656 19.5417V23.8464H18.05V18.562H13.775C13.2332 18.5843 12.7953 19.0073 12.7656 19.5417ZM25.2344 30.0733V28.3069H19.95V31.0456H24.277C24.3215 31.0456 24.366 31.0382 24.4105 31.0308C24.8633 30.9343 25.2047 30.5409 25.2344 30.0733Z"
-                          fill="#FFC10D"
-                        />
-                      </svg>
-
-                      <div className="width-30 height-55 font-medium flex-end text-black-1500">
-                        <p className="css-6mn6yy">
-                          {SimCount.toString().padStart(2, '0')}
-                        </p>
+                    <div className="width-30 height-55 font-medium flex-end text-black-1500">
+                        <p className="css-6mn6yy">{SimCount.toString().padStart(2, '0')}</p>
                       </div>
                     </div>
 
@@ -503,7 +527,11 @@ const OnBoarding = ({ leadsTyper }) => {
                       android
                     </span>
                   </section>
-                </div>
+                </div> */}
+
+
+
+
 
                 <div>
                   <OnBoardingAsset
@@ -520,19 +548,20 @@ const OnBoarding = ({ leadsTyper }) => {
                     assetData={assetData}
                   />
                 </div>
-              </div>
-            </section>
 
-            <div></div>
-          </div>
-        </div>
-      </div>
+              {/* </div> */}
+            {/* </section> */}
+            {/* <div></div> */}
+            <LaptopDetailPage onBoardAssertBody={undefined}/>
+          {/* </div> */}
+        {/* </div> */}
+      {/* </div> */}
     </>
   )
 }
 
 export default OnBoarding
-
 function getassetRepo(orgId: any) {
   throw new Error('Function not implemented.')
 }
+
