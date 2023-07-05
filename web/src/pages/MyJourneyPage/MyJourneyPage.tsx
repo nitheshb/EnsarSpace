@@ -217,6 +217,8 @@ const EnrollCoursePage = () => {
               </>
             )}
 
+
+
           </div>
         </CourseVideo>
 
@@ -294,45 +296,7 @@ const EnrollCoursePage = () => {
 
 
 
-              {/* {chapter.expanded && (
-                <div className="lessons-wrapper">
-                  {chapter.lessons.map((lesson, lessonIndex) => (
-                    <div
-                      key={lesson.id}
-                      className="lesson"
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        marginTop: '9px',
-                        marginBottom: '10px',
-                        backgroundColor: '#e0e0e0',
 
-                      }}
-                      onClick={(event) =>
-                        handleLessonClick(event, chapterIndex, lessonIndex)
-                      }
-                    >
-                      <Checkbox
-                        type="checkbox"
-                        checked={lesson.completed}
-                        onChange={() =>
-                          handleCheckboxChange(chapterIndex, lessonIndex)
-                        }
-                      />
-                      <div
-                        className={`lesson-title ${selectedVideo === lesson ? 'active' : ''
-                          }`}
-                        style={{
-                          marginLeft: '10px', fontFamily: 'Times New Roman',
-                          marginBottom: '10px',
-                        }}
-                      >
-                        {lesson.title}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )} */}
 
 
 
