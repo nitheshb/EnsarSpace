@@ -4,7 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { AiOutlineDown, AiOutlineSearch } from 'react-icons/ai';
 import { curriculum } from 'src/components/A_LearningModule/LearningModules/courseContent';
 import MyJourneyNavBar from './MyJourneyNavBar';
-import { navigate} from '@redwoodjs/router'
+import { navigate } from '@redwoodjs/router'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -210,48 +210,46 @@ const EnrollCoursePage = () => {
             </div>
 
 
-{selectedVideo && (
-  <>
-    <VideoPlayer src={selectedVideo.videoLink} frameBorder="0" allowFullScreen autoplay={false} />
-    <LessonName>{selectedVideo.title}</LessonName>
-  </>
-)}
+            {selectedVideo && (
+              <>
+                <VideoPlayer src={selectedVideo.videoLink} frameBorder="0" allowFullScreen autoplay={false} />
+                <LessonName>{selectedVideo.title}</LessonName>
+              </>
+            )}
 
           </div>
         </CourseVideo>
+
+
+
+
         <SideNavigation>
           <div className="section-title" style={{ marginBottom: '10px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' ,fontFamily: 'Arial',
-            fontSize: '18px'}}>
+            <div style={{
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'Arial',
+              fontSize: '18px'
+            }}>
               <h1>Syllabus</h1>
-              {/* <div
-  style={{
-    color: 'black',
-    display: 'flex',
-    alignItems: 'center',
-  }}
->
-  <AiOutlineSearch style={{ marginRight: '5px' }} />
 
-</div> */}
 
             </div>
           </div>
           <div className="progress-container">
 
 
-            <div style={{ display: 'flex', justifyContent: 'space-between',
-            alignItems: 'center',
-            fontFamily: 'Arial, sans-serif',
-            fontSize: '16px'
-             }}>
+            <div style={{
+              display: 'flex', justifyContent: 'space-between',
+              alignItems: 'center',
+              fontFamily: 'Arial, sans-serif',
+              fontSize: '16px'
+            }}>
               <h1>Course Analytics</h1>
               <button
-              style={{ backgroundColor: '#ff9b3d', color: 'white', padding: '8px 16px', border: 'none', borderRadius: '4px' }}
-              onClick={handleViewAnalytics}
-            >
-              View Analytics
-            </button>
+                style={{ backgroundColor: '#ff9b3d', color: 'white', padding: '8px 16px', border: 'none', borderRadius: '4px' }}
+                onClick={handleViewAnalytics}
+              >
+                View Analytics
+              </button>
 
 
             </div>
@@ -285,7 +283,7 @@ const EnrollCoursePage = () => {
                   backgroundColor: '#fafffb',
                   padding: '10px',
                   color: '#333',
-                  fontFamily: ' sans-serif',fontSize: '16px'
+                  fontFamily: ' sans-serif', fontSize: '16px'
                 }}
               >
                 {chapter.title}
@@ -296,7 +294,7 @@ const EnrollCoursePage = () => {
 
 
 
-              {chapter.expanded && (
+              {/* {chapter.expanded && (
                 <div className="lessons-wrapper">
                   {chapter.lessons.map((lesson, lessonIndex) => (
                     <div
@@ -305,9 +303,10 @@ const EnrollCoursePage = () => {
                       style={{
                         display: 'flex',
                         alignItems: 'center',
-                        marginTop: '10px',
+                        marginTop: '9px',
                         marginBottom: '10px',
                         backgroundColor: '#e0e0e0',
+
                       }}
                       onClick={(event) =>
                         handleLessonClick(event, chapterIndex, lessonIndex)
@@ -321,18 +320,66 @@ const EnrollCoursePage = () => {
                         }
                       />
                       <div
-                        className={`lesson-title ${
-                          selectedVideo === lesson ? 'active' : ''
-                        }`}
-                        style={{ marginLeft: '10px', fontFamily: 'Times New Roman',
-                         marginBottom:'10px',}}
+                        className={`lesson-title ${selectedVideo === lesson ? 'active' : ''
+                          }`}
+                        style={{
+                          marginLeft: '10px', fontFamily: 'Times New Roman',
+                          marginBottom: '10px',
+                        }}
                       >
                         {lesson.title}
                       </div>
                     </div>
                   ))}
                 </div>
-              )}
+              )} */}
+
+
+
+{chapter.expanded && (
+  <div className="lessons-wrapper" style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    {chapter.lessons.map((lesson, lessonIndex) => (
+      <div
+        key={lesson.id}
+        className="lesson"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          marginTop: '10px',
+          backgroundColor: '#e0e0e0',
+          padding: '10px',
+          borderRadius: '8px',
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+          width: '300px',
+        }}
+        onClick={(event) =>
+          handleLessonClick(event, chapterIndex, lessonIndex)
+        }
+      >
+        <div
+          className={`lesson-title ${selectedVideo === lesson ? 'active' : ''}`}
+          style={{
+            fontFamily: 'Times New Roman',
+            fontSize: '16px',
+            marginRight: '10px',
+            flexGrow: 1,
+            textAlign: 'center',
+          }}
+        >
+          {lesson.title}
+        </div>
+        <Checkbox
+          type="checkbox"
+          checked={lesson.completed}
+          onChange={() =>
+            handleCheckboxChange(chapterIndex, lessonIndex)
+          }
+        />
+      </div>
+    ))}
+  </div>
+)}
+
 
             </div>
           ))}

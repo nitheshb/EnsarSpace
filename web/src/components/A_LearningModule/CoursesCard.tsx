@@ -10,7 +10,7 @@ import styled from 'styled-components'
 const CoursesCard = (props) => {
   const {
     id,
-    image,
+    image,reference,
     course_name,
     creator,
     actual_price,
@@ -45,7 +45,7 @@ const CoursesCard = (props) => {
 
       </div>
       <div className="item-btns flex">
-        <Link to={`/courses/${category}`} className="item-btn see-details-btn">
+        <Link to={`/courses/${reference}`} className="item-btn see-details-btn">
           See details
         </Link>
 

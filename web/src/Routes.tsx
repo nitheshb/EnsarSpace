@@ -161,7 +161,7 @@ const Routes = () => {
       <Route path="/admin/login" page={LoginPage} name="login" />
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/" page={LoginPage} name="login" />
-      <Route path="/courses/{category}" page={CoursedetailsPage} name="coursedetails"  />
+      <Route path="/courses/{id}" page={CoursedetailsPage} name="coursedetails"  />
       <Route notfound page={NotFoundPage} />
 
       <Route path="/course-progress" page={CourseProgress} name="CourseProgress" />

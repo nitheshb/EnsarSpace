@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { navigate, Link, useParams } from '@redwoodjs/router'
 import StarRating from 'src/components/A_LearningModule/StarRatings'
 import { MdInfo } from 'react-icons/md'
@@ -10,14 +10,38 @@ import { courses } from 'src/constants/courses'
 import styled from 'styled-components'
 import { BsClock, BsFileText, BsLink45Deg, BsDownload } from 'react-icons/bs';
 import StartCourseButton from 'src/components/A_LearningModule/LearningModules/StartCourse'
+import { getCourseDataById } from 'src/context/dbQueryFirebase'
 
 
 
 
 const CoursedetailsPage = () => {
   // const navigate = useNavigate();
-  const { category } = useParams();
-  const course = courses.find((p) => p.category === category)
+  const { id } = useParams();
+
+  const[course, setCourse] = useState(null)
+
+  // useEffect(()=>{
+  //  const data = getCourseDataById(id).then((details)=>setCourse(details) )
+  // //  setCourse(data);
+
+  // },[])
+  // const course = courses.find((p) => p.id === id)
+
+  useEffect(() => {
+
+    const fetchCourseDetails = async () => {
+
+      const courseDetails = await getCourseDataById(id)
+console.log('courseDetails',courseDetails);
+
+      setCourse(courseDetails)
+
+    }
+    fetchCourseDetails()
+
+    // QgSt8vjPsfYZxQIcyDOs
+  }, [id])
 
   console.log('course', course)
 
@@ -27,6 +51,11 @@ const CoursedetailsPage = () => {
     navigate('/my-journey');
   };
 
+  if (!course) {
+
+    return <div>Loading...</div>
+
+  }
   return (
     <SingleCourseWrapper>
       <nav className="navbar">
@@ -245,7 +274,7 @@ const CoursedetailsPage = () => {
             <div className="course-learn mx-auto">
               <div className="course-sc-title">What you'll learn</div>
               <ul className="course-learn-list grid">
-                {course.what_you_will_learn &&
+                {/* {course.what_you_will_learn &&
                   course.what_you_will_learn.map((what_you_will_learn, idx) => {
                     return (
                       <li key={idx}>
@@ -257,21 +286,21 @@ const CoursedetailsPage = () => {
                         </span>
                       </li>
                     )
-                  })}
+                  })} */}
               </ul>
             </div>
 
             <div className="course-content mx-auto">
               <div className="course-sc-title">Course content</div>
               <ul className="course-content-list">
-                {course.content &&
+                {/* {course.content &&
                   course.content.map((contentItem, idx) => {
                     return (
                       <li key={idx}>
                         <span>{contentItem}</span>
                       </li>
                     )
-                  })}
+                  })} */}
               </ul>
             </div>
           </div>

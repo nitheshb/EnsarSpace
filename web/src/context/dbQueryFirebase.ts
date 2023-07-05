@@ -756,11 +756,18 @@ export const startCourse = async (orgId, courseData) => {
   }
 };
 
+export const getStartCourses = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "ensar_start_Course"));
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+  }
+}
 
 
 
 
-// src/context/dbQueryFirebase.js
 
 
 
@@ -805,6 +812,24 @@ export const getCourseDetails = async () => {
     return querySnapshot.docs.map((doc) => doc.data())
   } catch (error) {
     console.log('Error getting Course details:', error)
+  }
+}
+
+
+export const getCourseDataById = async (courseId) =>{
+  try {
+    const querySnapshot = doc(db, 'ensar_course_Repo', courseId )
+
+    const data = await getDoc(querySnapshot);
+    console.log('data',data);
+    console.log('data data',data.data());
+
+    return data.data();
+
+
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+
   }
 }
 
