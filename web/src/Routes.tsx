@@ -3,7 +3,7 @@ import { Router, Route, Redirect } from '@redwoodjs/router'
 import { USER_ROLES } from 'src/constants/userRoles'
 import { useAuth } from 'src/context/firebase-auth-context'
 
-import CourseProgress from './components/A_LearningModule/CourseProgress'
+// import CourseProgress from './components/A_LearningModule/CourseProgress'
 import AccessDeniedPage from './pages/AccessDeniedPage/AccessDeniedPage'
 import ConstructModulePage from './pages/ConstructModulePage/ConstructModulePage'
 import CourceContentPage from './pages/CourceContentPage/CourceContentPage'
@@ -25,6 +25,7 @@ import Profile from './pages/Profile/Profile'
 import ProjectEditPage from './pages/ProjectEditPage/ProjectEditPage'
 import ProjectModulePage from './pages/ProjectModulePage/ProjectModulePage'
 import UsersAdminPage from './pages/UsersAdminPage/UsersAdminPage'
+import CourseProgress from './components/A_LearningModule/LearningModules/CourseProgress'
 // import CourseProgress from './components/A_LearningModule/LearningModules/CourseProgress'
 
 const defaultRoutes = () => {
@@ -142,7 +143,7 @@ const Routes = () => {
       {/* <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" /> */}
       <Route path="/cource-overview/{uid}" page={CourceOverviewPage} name="courceOverview" />
       {/* <Route path="/cource-content" page={CourceContentPage} name="courceContent" /> */}
-      <Route path="/course-progress" page={CourseProgress} name="CourseProgress" />
+      {/* <Route path="/course-progress" page={CourseProgress} name="CourseProgress" /> */}
       <Route path="/learning" page={LearningPage} name="learning" />
       <Route path="/privacyPolicy" page={PrivacyPolicyPage} name="privacyPolicy" />
       <Route path="/construct-module" page={ConstructModulePage} name="constructModule" />

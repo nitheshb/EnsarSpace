@@ -1,9 +1,7 @@
-
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { navigate } from '@redwoodjs/router';
-// import { startCourse, getCourseProgress, getStartCourses } from 'src/context/dbQueryFirebase';
-import {startCourse}
+import { startCourse, getCourseProgress, getStartCourses } from 'src/context/dbQueryFirebase';
 import { useAuth } from 'src/context/firebase-auth-context';
 
 const StartCourseButton = ({ course }) => {
@@ -24,11 +22,9 @@ const StartCourseButton = ({ course }) => {
   //   }
   // };
 
-
   const getStartCourseData = async () => {
     try {
       console.log("DATA");
-
 
       const data = await getStartCourses();
       // data.forEach((item)=>{
@@ -46,7 +42,6 @@ const StartCourseButton = ({ course }) => {
       console.log("CourseStarted",courseStarted);
 
 
-
      const selectedCourses =  data.filter((item)=>{
 
         if(item.course_category === course.category){
@@ -61,13 +56,11 @@ if(courseEnrolled != undefined){
   setCourseStarted(true);
 }
 
-
     } catch (error) {
 
       console.error('Error checking course progress:', error);
     }
   };
-
 
   const handleStartCourse = async () => {
     try {
@@ -100,7 +93,6 @@ if(courseEnrolled != undefined){
 
   );
 };
-
 
 const Button = styled.button`
   padding: 10px 20px;

@@ -61,7 +61,7 @@ const CoursesCard = ({
 
         <div className="item-rating flex">
 
-          <StarRating rating={rating} count={5} />
+          <StarRating rating={rating} count={5} size={undefined} activeColor={undefined} />
 
           <span className="rating-count">({rating_count})</span>
 

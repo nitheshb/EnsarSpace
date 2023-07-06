@@ -739,18 +739,18 @@ export const createEnsarUser = async (data) => {
 //       addCourseData
 //     )
 
-export const storeCourseDetails = async (orgId, uid, courseDetails) => {
-  try {
-    const addCourseData = { uid, ...courseDetails }
-    const x = await addDoc(
-      collection(db, `${orgId}_course_Repo`),
-      addCourseData
-    )
-    console.log('Course details stored successfully!')
-  } catch (error) {
-    console.log('Error storing Course details:', error)
-  }
-}
+// export const storeCourseDetails = async (orgId, uid, courseDetails) => {
+//   try {
+//     const addCourseData = { uid, ...courseDetails }
+//     const x = await addDoc(
+//       collection(db, `${orgId}_course_Repo`),
+//       addCourseData
+//     )
+//     console.log('Course details stored successfully!')
+//   } catch (error) {
+//     console.log('Error storing Course details:', error)
+//   }
+// }
 
 // export const getCourseDetails = async () => {
 //   try {
@@ -777,29 +777,104 @@ export const getCourseDetailsById = async (id) => {
   }
 }
 
-// export const checkIfIdExists = async (orgId, id) => {
-//   const collectionName = `${orgId}_course_Repo`
-//   const q = query(collection(db, collectionName), where('id', '==', id))
-//   const querySnapshot = await getDocs(q)
-//   return querySnapshot.size > 0
-// }
 
-// export const getCourseDetailsById = async (id) => {
-//   try {
-//     const docRef = doc(db, 'ensar_course_Repo', id)
-//     const docSnapshot = await getDoc(docRef)
 
-//     if (docSnapshot.exists()) {
-//       return docSnapshot.data()
-//     } else {
-//       console.log('Course not found!')
-//       return null
-//     }
-//   } catch (error) {
-//     console.error('Error getting course details:', error)
-//     return null
-//   }
-// }
+
+export const storeCourseDetails = async (orgId, uid, courseDetails) => {
+  try {
+    const addCourseData = {uid, ...courseDetails}
+    const x = await addDoc(collection(db, `${orgId}_course_Repo`), addCourseData)
+    console.log('Course details stored successfully!')
+  } catch (error) {
+    console.log('Error storing Course details:', error)
+  }
+}
+
+export const startCourse = async (orgId, courseData) => {
+  try {
+ const uuid = uuidv4();
+ console.log('uuid',uuid);
+
+    await addDoc(collection(db, `${orgId}_start_Course`), {uuid, ...courseData});
+    console.log('Course details stored successfully!');
+  } catch (error) {
+    console.log('Error storing Course details:', error);
+  }
+};
+
+
+export const getStartCourses = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "ensar_start_Course"));
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+  }
+}
+
+
+export const getCourseProgress = async (orgId, uid, courseId) => {
+  try {
+    const userDocRef = doc(db, `${orgId}_Progress_users`, uid);
+    const userSnapshot = await getDoc(userDocRef);
+
+    if (userSnapshot.exists()) {
+      const userData = userSnapshot.data();
+      const courseProgress = userData.courseProgress;
+
+      if (courseProgress && courseProgress[courseId]) {
+        return courseProgress[courseId];
+      }
+    }
+
+    return null; 
+  } catch (error) {
+    throw new Error('Error retrieving course progress: ' + error);
+  }
+};
+
+
+
+
+
+
+export const getCourseDataById = async (courseId) =>{
+  try {
+    const querySnapshot = doc(db, 'ensar_course_Repo', courseId )
+
+    const data = await getDoc(querySnapshot);
+    console.log('data',data);
+    console.log('data data',data.data());
+
+    return data.data();
+
+
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+
+  }
+}
+
+
+
+
+export const getCourseContent = async () => {
+  try {
+    const courseContentRef = collection(db, 'ensar_course_content');
+    const querySnapshot = await getDocs(courseContentRef);
+    const CourseContent = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    return CourseContent;
+
+  } catch (error) {
+    console.log('Error getting course content:', error);
+
+    throw error; // Rethrow the error to handle it at a higher level if needed
+  }
+
+
+
+
+}
 
 export const storeLeaveDetails = async (leaveDetails) => {
   try {
