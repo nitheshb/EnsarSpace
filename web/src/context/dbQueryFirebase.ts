@@ -1,4 +1,5 @@
 import { WhereToVote } from '@mui/icons-material'
+import { id } from 'date-fns/locale'
 import {
   setDoc,
   doc,
@@ -729,169 +730,86 @@ export const createEnsarUser = async (data) => {
   }
 }
 
+// export const storeCourseDetails = async (orgId, uid, courseDetails) => {
+//   try {
+//     const addCourseData = { uid, ...courseDetails }
 
-
-
+//     const x = await addDoc(
+//       collection(db, `${orgId}_course_Repo`),
+//       addCourseData
+//     )
 
 export const storeCourseDetails = async (orgId, uid, courseDetails) => {
   try {
-    const addCourseData = {uid, ...courseDetails}
-    const x = await addDoc(collection(db, `${orgId}_course_Repo`), addCourseData)
+    const addCourseData = { uid, ...courseDetails }
+    const x = await addDoc(
+      collection(db, `${orgId}_course_Repo`),
+      addCourseData
+    )
     console.log('Course details stored successfully!')
   } catch (error) {
     console.log('Error storing Course details:', error)
   }
 }
 
-
-export const startCourse = async (orgId, courseData) => {
-  try {
- const uuid = uuidv4();
- console.log('uuid',uuid);
-
-    await addDoc(collection(db, `${orgId}_start_Course`), {uuid, ...courseData});
-    console.log('Course details stored successfully!');
-  } catch (error) {
-    console.log('Error storing Course details:', error);
-  }
-};
-
-export const getStartCourses = async () => {
-  try {
-    const querySnapshot = await getDocs(collection(db, "ensar_start_Course"));
-    return querySnapshot.docs.map((doc) => doc.data())
-  } catch (error) {
-    console.log('Error getting Course details:', error)
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-export const getCourseProgress = async (orgId, uid, courseId) => {
-  try {
-    const userDocRef = doc(db, `${orgId}_Progress_users`, uid);
-    const userSnapshot = await getDoc(userDocRef);
-
-    if (userSnapshot.exists()) {
-      const userData = userSnapshot.data();
-      const courseProgress = userData.courseProgress;
-
-      if (courseProgress && courseProgress[courseId]) {
-        return courseProgress[courseId];
-      }
-    }
-
-    return null; // Return null if course progress not found
-  } catch (error) {
-    throw new Error('Error retrieving course progress: ' + error);
-  }
-};
-
-
-
-
-
-
-
-
-
-
+// export const getCourseDetails = async () => {
+//   try {
+//     const querySnapshot = await getDocs(collection(db, 'ensar_course_Repo'))
 
 export const getCourseDetails = async () => {
   try {
-    const querySnapshot = await getDocs(collection(db, "ensar_course_Repo"));
+    const querySnapshot = await getDocs(collection(db, 'ensar_course_Repo'))
     return querySnapshot.docs.map((doc) => doc.data())
   } catch (error) {
     console.log('Error getting Course details:', error)
   }
 }
 
-
-export const getCourseDataById = async (courseId) =>{
+export const getCourseDetailsById = async (id) => {
   try {
-    const querySnapshot = doc(db, 'ensar_course_Repo', courseId )
-
-    const data = await getDoc(querySnapshot);
-    console.log('data',data);
-    console.log('data data',data.data());
-
-    return data.data();
-
-
+    const querySnapshot = await getDocs(
+      query(collection(db, 'ensar_course_Repo'), where('id', '==', id))
+    )
+    const documents = querySnapshot.docs.map((doc) => doc.data())
+    return documents[0] // Assuming there's only one document with the given ID
   } catch (error) {
-    console.log('Error getting Course details:', error)
-
+    console.log('Error getting Course details by ID:', error)
   }
 }
 
+// export const checkIfIdExists = async (orgId, id) => {
+//   const collectionName = `${orgId}_course_Repo`
+//   const q = query(collection(db, collectionName), where('id', '==', id))
+//   const querySnapshot = await getDocs(q)
+//   return querySnapshot.size > 0
+// }
 
-// export const getCourseContent = async () => {
-
-
+// export const getCourseDetailsById = async (id) => {
 //   try {
-//     const querySnapshot = await getDocs(collection(db, "ensar_course_content"));
-//     return querySnapshot.docs.map((doc) => doc.data());
+//     const docRef = doc(db, 'ensar_course_Repo', id)
+//     const docSnapshot = await getDoc(docRef)
+
+//     if (docSnapshot.exists()) {
+//       return docSnapshot.data()
+//     } else {
+//       console.log('Course not found!')
+//       return null
+//     }
 //   } catch (error) {
-//     console.error('Error getting course content:', error);
-//     return [];
+//     console.error('Error getting course details:', error)
+//     return null
 //   }
-// };
+// }
 
-
-export const getCourseContent = async () => {
+export const storeLeaveDetails = async (leaveDetails) => {
   try {
-    const courseContentRef = collection(db, 'ensar_course_content');
-    const querySnapshot = await getDocs(courseContentRef);
-    const CourseContent = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    return CourseContent;
-
+    const leaveRef = doc(db, 'leaves', leaveDetails.employeeName)
+    await setDoc(leaveRef, leaveDetails, { merge: true })
+    console.log('Leave details stored successfully!')
   } catch (error) {
-    console.log('Error getting course content:', error);
-
-    throw error; // Rethrow the error to handle it at a higher level if needed
+    console.log('Error storing leave details:', error)
   }
-
-
-
-
-};
-
-
-
-
-// export const startCourse = async (orgId,name, courseId, courseName, uuid) => {
-//   try {
-//     // const orgId = 'ensar'; // Replace with the actual organization ID
-
-//     const docData = {
-//       name: name.trim(),
-//       courseId,
-//       orgId,
-//       courseName,
-//       uuid,
-//     };
-//     const docRef = doc(db, `${orgId}_startCourse`, uuid);
-//     await setDoc(docRef, docData);
-//     console.log('Course started successfully');
-//   } catch (error) {
-//     console.error('Error starting course: ', error);
-//   }
-// };
-
-
-
-
-
-
+}
 
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data
