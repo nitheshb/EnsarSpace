@@ -19,7 +19,7 @@ import {
   LangOptions,
   Course_Names,
   Content,
-  AuthorOptions,
+  CreatorOptions,
 } from './dropdown'
 
 const AddCourseDialog = ({ isOpen, onClose }) => {
@@ -184,7 +184,7 @@ const AddCourseDialog = ({ isOpen, onClose }) => {
                   name="author"
                   label="Author*"
                   className="input mt-3"
-                  options={AuthorOptions}
+                  options={CreatorOptions}
                   onChange={(selectedOption) =>
                     formik.setFieldValue('author', selectedOption.value)
                   }
