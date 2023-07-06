@@ -61,20 +61,11 @@ if(courseEnrolled != undefined){
 }
 
 
-
-
     } catch (error) {
 
       console.error('Error checking course progress:', error);
     }
   };
-
-
-
-
-
-
-
 
 
   const handleStartCourse = async () => {
@@ -84,7 +75,7 @@ if(courseEnrolled != undefined){
         course_id: course.id,
         course_category: course.category,
         course_progress: 0,
-        name: user.displayName, // Use the user's name from authentication context
+        name: user.displayName, 
         uid: user.uid
       }
       await startCourse(user.orgId, courseData);
