@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { navigate } from '@redwoodjs/router';
-import { startCourse, getCourseProgress, getStartCourses } from 'src/context/dbQueryFirebase';
+import { startCourse, getStartCourses } from 'src/context/dbQueryFirebase';
 import { useAuth } from 'src/context/firebase-auth-context';
 
 const StartCourseButton = ({ course }) => {
@@ -10,7 +10,7 @@ const StartCourseButton = ({ course }) => {
 
   useEffect(() => {
     getStartCourseData();
-    
+
   }, []);
 
 
@@ -53,7 +53,8 @@ if(courseEnrolled != undefined){
         course_category: course.category,
         course_progress: 0,
         name: user.displayName,
-        uid: user.uid
+        uid: user.uid,
+        
       }
       await startCourse(user.orgId, courseData);
       console.log('Course started:', course.course_name);

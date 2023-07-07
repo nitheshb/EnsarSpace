@@ -766,6 +766,25 @@ export const storeCourseDetails = async (orgId, uid, courseDetails) => {
 }
 
 
+export const updateCourseId = async (orgId, uid, id) => {
+  try {
+    const ensarStartCourseId = collection(db, `${orgId}_start_Course`);
+    const q = query(ensarStartCourseId, where('uid', '==', uid));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach(async (queryDocSnapshot) => {
+      const courseProgressRef = doc(db, `${orgId}_start_Course`, queryDocSnapshot.id);
+      await updateDoc(courseProgressRef, { lessonsId: arrayUnion(id) });
+      console.log('CourseProgress updated successfully!');
+    });
+  } catch (error) {
+    console.log('Error updating CourseProgress:', error);
+    throw error;
+  }
+};
+
+
+
 
 
 export const startCourse = async (orgId, courseData) => {
@@ -791,25 +810,53 @@ export const getStartCourses = async () => {
 }
 
 
-export const getCourseProgress = async (orgId, uid, courseId) => {
+// export const getCourseProgress = async (orgId, uid, courseId) => {
+//   try {
+//     const userDocRef = doc(db, `${orgId}_Progress_users`, uid);
+//     const userSnapshot = await getDoc(userDocRef);
+
+//     if (userSnapshot.exists()) {
+//       const userData = userSnapshot.data();
+//       const courseProgress = userData.courseProgress;
+
+//       if (courseProgress && courseProgress[courseId]) {
+//         return courseProgress[courseId];
+//       }
+//     }
+
+//     return null;
+//   } catch (error) {
+//     throw new Error('Error retrieving course progress: ' + error);
+//   }
+// };
+
+
+
+
+export const updateCourseProgress = async (orgId, courseId, progress) => {
   try {
-    const userDocRef = doc(db, `${orgId}_Progress_users`, uid);
-    const userSnapshot = await getDoc(userDocRef);
+    const courseRef = doc(db, `${orgId}_start_Course`, courseId);
+    const courseData = {
+      course_progress: progress,
+      last_updated: Timestamp.now(),
+    };
 
-    if (userSnapshot.exists()) {
-      const userData = userSnapshot.data();
-      const courseProgress = userData.courseProgress;
-
-      if (courseProgress && courseProgress[courseId]) {
-        return courseProgress[courseId];
-      }
-    }
-
-    return null;
+    await updateDoc(courseRef, courseData);
+    console.log('Course progress updated in Firestore');
   } catch (error) {
-    throw new Error('Error retrieving course progress: ' + error);
+    console.error('Error updating course progress:', error);
   }
 };
+
+
+
+
+
+
+
+
+
+
 
 
 
