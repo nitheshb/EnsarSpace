@@ -10,34 +10,17 @@ const StartCourseButton = ({ course }) => {
 
   useEffect(() => {
     getStartCourseData();
-    // checkCourseProgress();
+    
   }, []);
 
-  // const checkCourseProgress = async () => {
-  //   try {
-  //     const progress = await getCourseProgress(user.orgId, user.uid, course.id);
-  //     setCourseStarted(progress !== null);
-  //   } catch (error) {
-  //     console.error('Error checking course progress:', error);
-  //   }
-  // };
+
 
   const getStartCourseData = async () => {
     try {
       console.log("DATA");
 
       const data = await getStartCourses();
-      // data.forEach((item)=>{
-      //   if(item.course_category === course.category){
-      //     console.log('itemUserid',item.uid);
-      //     console.log('USERID',user.uid);
 
-      //     if(item.uid === user.uid){
-      //       setCourseStarted(true);
-      //     }
-      //   }
-
-      // })
 
       console.log("CourseStarted",courseStarted);
 

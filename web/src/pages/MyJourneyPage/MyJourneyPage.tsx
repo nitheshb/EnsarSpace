@@ -757,7 +757,7 @@ const EnrollCoursePage = () => {
                 padding: '10px',
               }}
             >
-              <div
+              {/* <div
                 className="chapter-title"
                 style={{
                   display: 'flex',
@@ -774,7 +774,27 @@ const EnrollCoursePage = () => {
                 <div className="expand-icon">
                   <ExpandIcon expanded={chapter.expanded} />
                 </div>
-              </div>
+              </div> */}
+              <div
+  className="chapter-title"
+  style={{
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    backgroundColor: '#fafffb',
+    padding: '10px',
+    color: '#333',
+    fontFamily: ' sans-serif',
+    fontSize: '16px'
+  }}
+>
+  <strong>{chapter.title}</strong>
+  <div className="expand-icon">
+    <ExpandIcon expanded={chapter.expanded} />
+  </div>
+</div>
+
 
 
 

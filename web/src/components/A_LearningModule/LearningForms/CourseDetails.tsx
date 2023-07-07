@@ -57,8 +57,7 @@ const AddCourseDialog = ({ isOpen, onClose }) => {
         updated_date: data.updated_date,
         rating,
         status: 'Course Added Successfully',
-        // actual_price: data.actual_price,
-        // discounted_price: data.discounted_price,
+       
       })
 
       setLoading(false)

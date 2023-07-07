@@ -266,6 +266,30 @@ const CourseList = () => {
 
           <ul className="flex flex-wrap">
 
+
+
+
+          <li className="tabs-head-item">
+
+                <button
+
+                  type="button"
+
+                  className={`tab-btn py-[10px] px-[13px] mr-[6px]`}
+
+                  style={{ border: '1px solid rgba(0,0,0,0.7)' }}
+
+                  onClick={() => setActiveTab('react js')}
+
+                >
+
+                  React Js
+
+                </button>
+
+                </li>
+
+                
             <li className="tabs-head-item">
 
               <button
@@ -285,6 +309,8 @@ const CourseList = () => {
               </button>
 
             </li>
+
+
 
 
 

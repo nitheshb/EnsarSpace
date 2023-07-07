@@ -730,31 +730,6 @@ export const createEnsarUser = async (data) => {
   }
 }
 
-// export const storeCourseDetails = async (orgId, uid, courseDetails) => {
-//   try {
-//     const addCourseData = { uid, ...courseDetails }
-
-//     const x = await addDoc(
-//       collection(db, `${orgId}_course_Repo`),
-//       addCourseData
-//     )
-
-// export const storeCourseDetails = async (orgId, uid, courseDetails) => {
-//   try {
-//     const addCourseData = { uid, ...courseDetails }
-//     const x = await addDoc(
-//       collection(db, `${orgId}_course_Repo`),
-//       addCourseData
-//     )
-//     console.log('Course details stored successfully!')
-//   } catch (error) {
-//     console.log('Error storing Course details:', error)
-//   }
-// }
-
-// export const getCourseDetails = async () => {
-//   try {
-//     const querySnapshot = await getDocs(collection(db, 'ensar_course_Repo'))
 
 export const getCourseDetails = async () => {
   try {
@@ -789,6 +764,9 @@ export const storeCourseDetails = async (orgId, uid, courseDetails) => {
     console.log('Error storing Course details:', error)
   }
 }
+
+
+
 
 export const startCourse = async (orgId, courseData) => {
   try {
@@ -827,7 +805,7 @@ export const getCourseProgress = async (orgId, uid, courseId) => {
       }
     }
 
-    return null; 
+    return null;
   } catch (error) {
     throw new Error('Error retrieving course progress: ' + error);
   }

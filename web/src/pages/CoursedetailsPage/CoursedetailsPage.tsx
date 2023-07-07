@@ -1,26 +1,10 @@
-
 import React, { useEffect, useState } from 'react'
-
-
-
-
-// import { category } from 'date-fns/locale'
-
 import { BiCheck } from 'react-icons/bi'
-
 import { FaBars, FaShoppingCart, FaPlay } from 'react-icons/fa'
-
 import { MdInfo } from 'react-icons/md'
-
 import { RiClosedCaptioningFill } from 'react-icons/ri'
-
 import { TbWorld } from 'react-icons/tb'
-
 import styled from 'styled-components'
-
-
-
-
 import { Link, useParams } from '@redwoodjs/router'
 
 
