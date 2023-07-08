@@ -8,6 +8,7 @@ import MyJourneyNavBar from './MyJourneyNavBar';
 import { navigate } from '@redwoodjs/router'
 import { storeCourseDetails } from 'src/context/dbQueryFirebase';
 import { useAuth } from 'src/context/firebase-auth-context';
+import LessonComponent from 'src/components/A_LearningModule/LearningModules/About';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -30,9 +31,13 @@ const CourseVideo = styled.div`
   padding: 5px;
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 60px);
   justify-content: center;
 `;
+
+
 
 
 
@@ -230,6 +235,8 @@ const EnrollCoursePage = () => {
 
 
           </div>
+
+
         </CourseVideo>
 
 
@@ -379,6 +386,7 @@ const EnrollCoursePage = () => {
           ))}
         </SideNavigation>
       </Card>
+
     </div>
   );
 };
