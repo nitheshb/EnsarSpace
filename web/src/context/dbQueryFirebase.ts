@@ -812,10 +812,6 @@ export const getCourseProgress = async (orgId, uid, courseId) => {
 };
 
 
-
-
-
-
 export const getCourseDataById = async (courseId) =>{
   try {
     const querySnapshot = doc(db, 'ensar_course_Repo', courseId )
@@ -853,6 +849,73 @@ export const getCourseContent = async () => {
 
 
 }
+
+
+export const updateCourseProgress = async (orgId, uid, allCompleted) => {
+  try {
+    const ensarStartCourseRef = collection(db, `${orgId}_start_Course`);
+    const q = query(ensarStartCourseRef, where('uid', '==', uid));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach(async (queryDocSnapshot) => {
+      const courseProgressRef = doc(db, `${orgId}_start_Course`, queryDocSnapshot.id);
+      await updateDoc(courseProgressRef, { courseProgress: allCompleted });
+      console.log('CourseProgress updated successfully!');
+    });
+
+  } catch (error) {
+    console.log('Error updating CourseProgress:', error);
+    throw error;
+  }
+};
+
+
+
+
+
+export const updateCourseId = async (orgId, uid, id) => {
+
+  try {
+
+    const ensarStartCourseId = collection(db, `${orgId}_start_Course`);
+
+    const q = query(ensarStartCourseId, where('uid', '==', uid));
+
+    const querySnapshot = await getDocs(q);
+
+
+
+    querySnapshot.forEach(async (queryDocSnapshot) => {
+
+      const courseProgressRef = doc(db, `${orgId}_start_Course`, queryDocSnapshot.id);
+
+      await updateDoc(courseProgressRef, { lessonsId: arrayUnion(id) });
+
+      console.log('CourseProgress updated successfully!');
+
+    });
+
+  } catch (error) {
+
+    console.log('Error updating CourseProgress:', error);
+
+    throw error;
+
+  }
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const storeLeaveDetails = async (leaveDetails) => {
   try {
