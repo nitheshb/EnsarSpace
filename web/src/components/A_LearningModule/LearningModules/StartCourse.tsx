@@ -51,10 +51,10 @@ if(courseEnrolled != undefined){
         course_name: course.course_name,
         course_id: course.id,
         course_category: course.category,
-        course_progress: 0,
         name: user.displayName,
         uid: user.uid,
-        
+        courseProgress:'',
+        lessonsId:[]
       }
       await startCourse(user.orgId, courseData);
       console.log('Course started:', course.course_name);
