@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Dialog } from '@headlessui/react'
 import { Form, Formik, Field, ErrorMessage } from 'formik'
@@ -12,7 +12,7 @@ import {
   options4,
   options5,
 } from 'src/constants/userRoles'
-import { storeAssetDetails } from 'src/context/dbQueryFirebase'
+import { steamUsersList, storeAssetDetails } from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 
@@ -27,49 +27,6 @@ const validate = Yup.object().shape({
   WorkingStatus: Yup.string().required('Working Status is required'),
 })
 
-// const options = [
-//   { value: 'Laptop', label: 'Laptop' },
-//   { value: 'Phone windows', label: 'Phone windows' },
-//   { value: 'Phone android', label: 'Phone android' },
-//   { value: 'Sim', label: 'Sim' },
-// ]
-
-// const options1 = [
-//   { value: 'amoled', label: 'Amoled' },
-//   { value: 'lcd', label: 'Lcd' },
-//   { value: 'hd', label: 'Hd' },
-// ]
-
-// const options2 = [
-//   { value: 'acclerometer', label: 'Acclerometer' },
-//   { value: 'gyroscope', label: 'Gyroscope' },
-//   { value: 'proximity', label: 'Proximity' },
-//   { value: 'fingerprint', label: 'Fingerprint' },
-// ]
-
-// const options3 = [
-//   { value: 'yes', label: 'Yes' },
-//   { value: 'no', label: 'No' },
-// ]
-
-// const options4 = [
-//   { value: 'gorilla', label: 'Gorilla' },
-//   { value: 'diamondglass', label: 'Diamond glass' },
-//   { value: 'temperglass', label: 'Temperglass' },
-// ]
-
-// const options5 = [
-//   { value: 'microusb ', label: 'Micro USB' },
-//   { value: 'type-c', label: 'Type-c' },
-//   { value: 'usb type-a', label: 'Usb type-a' },
-// ]
-
-// const options6 = [
-//   { value: 'virtual keypad', label: 'Virtual keypad' },
-//   { value: 'gboard', label: 'Gboard' },
-//   { value: 'swiftkey', label: 'Swiftkwy' },
-// ]
-
 const OnBoardAssertBody = () => {
   const [formMessage, setFormMessage] = useState({
     color: 'green',
@@ -77,6 +34,8 @@ const OnBoardAssertBody = () => {
   })
 
   const [loading, setLoading] = useState(false)
+  const [leadsFetchedData, setLeadsFetchedData] = useState([])
+  // const [selectedEmployee, setSelectedEmployee] = useState(null);
 
   const { user } = useAuth()
   const handleSubmit = async (values) => {
@@ -84,7 +43,7 @@ const OnBoardAssertBody = () => {
     try {
       setLoading(true)
 
-      await storeAssetDetails(user.orgId, values)
+      await storeAssetDetails(user.orgId,user.uid, values)
 
       setLoading(false)
     } catch (error) {
@@ -94,12 +53,31 @@ const OnBoardAssertBody = () => {
     console.log('Form Values:', values)
   }
 
+  useEffect(() => {
+    getLeadsDataFun()
+  }, [])
+
+  const getLeadsDataFun = async () => {
+    const unsubscribe = steamUsersList(
+      user.orgId,
+      (querySnapshot) => {
+        const usersListA = querySnapshot.docs.map((docSnapshot) =>
+          docSnapshot.data()
+        )
+        setLeadsFetchedData(usersListA)
+      },
+      () => setLeadsFetchedData([])
+    )
+    return unsubscribe
+  }
+
   return (
-    <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+    <div className="h-full flex flex-col py-6 bg-gray-100 shadow-xl overflow-y-scroll">
       <div className="px-4 sm:px-6">
-        <Dialog.Title className="font-semibold text-lg mr-auto ml-3">
-          Add Assets
-        </Dialog.Title>
+      <Dialog.Title className="font-semibold text-lg mr-auto ml-3 text-green-500">
+  Add Assets
+</Dialog.Title>
+
       </div>
       {formMessage.message && (
         <div className="w-full bg-[#E9F6ED] ml-2 mt-3 mb-5 p-3 text-green-700">
@@ -111,19 +89,21 @@ const OnBoardAssertBody = () => {
           <Formik
             initialValues={{
               Product: '',
+              uid: '' ,
               Processor: '',
               Ram: '',
               SerialNumber: '',
               AllocationStatus: '',
               WorkingStaus: '',
+              AssignTo: '',
             }}
             validationSchema={validate}
             onSubmit={handleSubmit}
           >
+
             {({ values, setFieldValue }) => (
               <Form className="space-y-6">
-
-                   <div>
+                <div>
                   <label
                     htmlFor="SerialNumber"
                     className="block text-sm font-medium bold-black-700"
@@ -146,7 +126,6 @@ const OnBoardAssertBody = () => {
                     className="text-red-500 text-sm mt-1"
                   />
                 </div>
-
 
                 <div>
                   <label
@@ -218,7 +197,6 @@ const OnBoardAssertBody = () => {
                   />
                 </div>
 
-
                 <div>
                   <label
                     htmlFor="AllocationStatus"
@@ -267,12 +245,64 @@ const OnBoardAssertBody = () => {
                   />
                 </div>
 
+                <div>
+                  <div>
+                    <label
+                      htmlFor="AssignTo"
+                      className="block text-sm font-medium bold-black-700"
+                    >
+                      AssignTo :
+                    </label>
+                    <Field
+                      as="select"
+                      name="AssignTo"
+                      className="ml-auto bg-white border border-gray-700 rounded-md py-2 px-4 text-sm"
+                    >
+                      <option value="">Employees</option>
+                      {leadsFetchedData.map((employee) => (
+                        <option key={employee.name} value={employee.name}>
+                          {employee.name}
+                        </option>
+                      ))}
+
+                    </Field>
+                  </div>
+                </div>
+
+                {/* <div>
+                  <label
+                    htmlFor="AssignTo"
+                    className="block text-sm font-medium bold-black-700"
+                  >
+                    AssignTo :
+                  </label>
+                  <Field
+                    as="select"
+                    name="AssignTo"
+                    className="ml-auto bg-white border border-gray-700 rounded-md py-2 px-4 text-sm"
+                    onChange={(event) => {
+                      setFieldValue('AssignTo', event.target.value)
+                    }}
+                  >
+                    <option value="">Employees</option>
+                    {leadsFetchedData.map((employee) => (
+                      <option key={employee.name} value={employee.email}>
+                        {employee.name} ({employee.email})
+                      </option>
+                    ))}
+                  </Field>
+                </div> */}
+
                 <div className="flex justify-end">
                   <button
                     type="submit"
                     className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   >
-                    {loading ? <Loader texColor={undefined} size={undefined} /> : 'Submit'}
+                    {loading ? (
+                      <Loader texColor={undefined} size={undefined} />
+                    ) : (
+                      'Submit'
+                    )}
                   </button>
                 </div>
               </Form>
@@ -283,5 +313,4 @@ const OnBoardAssertBody = () => {
     </div>
   )
 }
-
 export default OnBoardAssertBody

@@ -1,7 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-
 import { Fragment, useState, useEffect, SetStateAction } from 'react'
 
 import {
@@ -320,19 +316,34 @@ const OnBoarding = ({ leadsTyper }) => {
   return (
     <>
       {/* <div>
+
         <OnBoardingAsset
+
           open={isAssetOpen}
+
           setOpen={handleAssetOnClose}
+
           title="User"
+
           productData={productData}
+
         />
 
+
+
+
         <OnBoardingAssign
+
           open={isAssignOpen}
+
           setOpen={handleAssignOnClose}
+
           title="User"
+
           assetData={assetData}
+
         />
+
       </div> */}
 
       {/* </div> */}

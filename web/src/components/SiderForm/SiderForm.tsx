@@ -34,8 +34,8 @@ import {
 import { useDispatch } from 'react-redux'
 import NotificationsSetupForm from '../A_ProjModule/NotificatoinsSetupFromHome'
 import OnBoardingAssignBody from '../onBordingAssert/OnBoardingAssignBody'
-import OnBoarding from '../TableComp/OnBoarding'
 import OnBoardAssertBody from '../onBordingAssert/onBoardAssertBody'
+import AddCourseDialog from '../TableComp/SUserSignupBody/SUserSignupBody'
 const SiderForm = ({
   assetPayload,
   open,
@@ -70,7 +70,7 @@ const SiderForm = ({
   // dont write too many here
   //  this is for customerProfileSideView
   useEffect(() => {
-console.log('title is ', title)
+    console.log('title is ', title)
   }, [])
   const dispatch = useDispatch()
   return (
@@ -156,14 +156,9 @@ console.log('title is ', title)
                     phase={data}
                   />
                 )}
-               {(title === 'LaptopDetailPage') && (
-                  <OnBoardingAssignBody
-                  assetPayload={assetPayload}
-                  />
-                  )}
-               {(title === 'AddAsset') && (
-                  <OnBoardAssertBody />
-                  )}
+                {title === 'LaptopDetailPage' && (
+                  <OnBoardingAssignBody assetPayload={assetPayload} />
+                )}
 
                 {(title === 'Add Block' || title === 'Edit Block') && (
                   <AddBlockForm
@@ -172,6 +167,7 @@ console.log('title is ', title)
                     data={data}
                   />
                 )}
+
                 {title === 'Import Units' ||
                   (title === 'Import Project Units' && (
                     <LeadsDropHomes
@@ -182,6 +178,15 @@ console.log('title is ', title)
                       myBlock={myBlock}
                     />
                   ))}
+                {title === 'applyLeave'
+                  && (
+                    <AddCourseDialog />
+                  )}
+
+                {title === 'AddAsset'
+                  &&  (
+                    <OnBoardAssertBody />
+                )}
 
                 {title === 'Add Unit' && (
                   <AddUnit
@@ -270,12 +275,12 @@ console.log('title is ', title)
                     setUnitsViewMode={setUnitsViewMode}
                   />
                 )}
-                  {title === 'Notification Setup' && (
+                {title === 'Notification Setup' && (
                   <NotificationsSetupForm
-                  title={title}
-                  projectDetails={projectDetails}
-                  wbPayload={wbPayload}
-                />
+                    title={title}
+                    projectDetails={projectDetails}
+                    wbPayload={wbPayload}
+                  />
                 )}
                 {title === 'Project Inventory' && (
                   <InventoryViewSideForm
@@ -340,6 +345,11 @@ console.log('title is ', title)
                     myBlock={myBlock}
                   />
                 )}
+
+
+
+                {/* {title === 'AssignAsset' && <OnBoardAssertBody />} */}
+
                 {title === 'Bank Accounts' && (
                   <AddBankDetailsForm
                     title={title}
