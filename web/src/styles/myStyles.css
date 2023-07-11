@@ -285,8 +285,6 @@
   white-space: normal;
 }
 
-
-
 /* font-family: 'Montserrat', sans-serif;
 
   font-size: 8px;
@@ -987,12 +985,36 @@
 }
 
 /* Rectangle 4610 */
-.e-r2 {
-  position: absolute;
-  width: 115.04px;
-  height: 27.61px;
-  left: 0px;
-  top: 0px;
-  background: #f1ecfe;
-  border-radius: 13.8053px;
+.e-r2{
+position: absolute;
+width: 115.04px;
+height: 27.61px;
+left: 0px;
+top: 0px;
+background: #F1ECFE;
+border-radius: 13.8053px;
+line-height: 30px;
+  font-size: 18px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.css-6mn6yy {
+  font-family: 'Montserrat', sans-serif;
+
+  margin-bottom: 0px;
+
+  margin-left: 8px;
+
+  margin-top: 4px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  text-transform: none;
+
+  white-space: normal;
 }

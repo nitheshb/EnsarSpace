@@ -1,20 +1,15 @@
-import React, { useState } from 'react'
-
+import React, { useEffect, useState } from 'react'
 import { Dialog } from '@headlessui/react'
 
 import { Form, Formik, Field, ErrorMessage } from 'formik'
 
 import * as Yup from 'yup'
-
-import { storeAssignDetails } from 'src/context/dbQueryFirebase'
-
+import { steamUsersList, storeAssignDetails, updateAssetDetails } from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
 
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
-
 import Loader from '../Loader/Loader'
-import OnBoardAssertBody from './onBoardAssertBody'
-
+import OnBoardingAssign from './OnBoardingAssign'
 import {
   options,
   options1,
@@ -38,76 +33,6 @@ const validate = Yup.object().shape({
   Model: Yup.string().required('Model is required'),
 })
 
-const Name = [
-  { label: 'Select the name', value: '' },
-
-  { value: 'kalyankurapati', label: 'kalyankurapati' },
-
-  { value: 'kalyankambampati', label: 'kalyan kambampati' },
-
-  { value: 'ooha', label: 'ooha' },
-
-  { value: 'saisumanth', label: 'saisumanth' },
-
-  { value: 'Abhishek', label: 'Abhishek' },
-
-  { value: 'pavan', label: 'pavan' },
-
-  { value: 'venkatesh', label: 'venkatesh' },
-
-  { value: 'salahuddin', label: 'salahuddin' },
-
-  { value: 'sandeep', label: 'sandeep' },
-
-  { value: 'Avanthika', label: 'Avanthika' },
-
-  { value: 'Deepthi', label: 'Deepthi' },
-
-  { value: 'Hazarath', label: 'Hazarath' },
-]
-
-const ProductName = [
-  { label: 'Select the product', value: '' },
-
-  { value: 'Laptop', label: 'Laptop' },
-
-  { value: 'phone android', label: 'Phone android' },
-
-  { value: 'Phone windows', label: 'phone windows' },
-
-  { value: 'Sim', label: 'Sim' },
-]
-
-const Model = [
-  { label: 'Select the Model', value: '' },
-
-  { value: 'hp', label: 'HP' },
-
-  { value: 'lenovo', label: 'Lenovo' },
-
-  { value: 'apple', label: 'Apple' },
-
-  { value: 'MI', label: 'MI' },
-
-  { value: 'REALME', label: 'REALME' },
-
-  { value: 'Oneplus', label: 'Oneplus' },
-]
-
-const Version = [
-  { label: 'Select the Version', value: '' },
-
-  { value: 'updated 11.0', label: 'updated 11.0' },
-
-  { value: 'WW 12.0', label: 'WW 12.0' },
-
-  { value: 'Touch 15', label: 'Touch 15' },
-
-  { value: ' andriod 1 Above', label: '1_10' },
-
-  { value: 'android 10 Above', label: '_10' },
-]
-
 const OnBoardingAssignBody = ({ assetPayload }) => {
   const [formMessage, setFormMessage] = useState({
     color: 'green',
@@ -117,7 +42,27 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
 
   const [loading, setLoading] = useState(false)
 
+  const [leadsFetchedData, setLeadsFetchedData] = useState([])
+  const [showEditAssetform, setShowEditAssetForm] = useState(false)
   const { user } = useAuth()
+
+  useEffect(() => {
+    getLeadsDataFun()
+  }, [])
+
+  const getLeadsDataFun = async () => {
+    const unsubscribe = steamUsersList(
+      user.orgId,
+      (querySnapshot) => {
+        const usersListA = querySnapshot.docs.map((docSnapshot) =>
+          docSnapshot.data()
+        )
+        setLeadsFetchedData(usersListA)
+      },
+      () => setLeadsFetchedData([])
+    )
+    return unsubscribe
+  }
 
   const handleSubmit = async (values) => {
     console.log('Submitted', values)
@@ -125,8 +70,7 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
     try {
       setLoading(true)
 
-      await storeAssignDetails(user.orgId, values)
-
+      await storeAssignDetails(user.orgId, user.uid)
       setLoading(false)
     } catch (error) {
       console.log(error)
@@ -134,13 +78,33 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
     console.log('Form Values:', values)
   }
 
-  const [showEditAssetform, setShowEditAssetForm] = useState(false)
+
+
+
+  const handleUpdate = async (values) => {
+
+    console.log('Updated Form Values:', values);
+
+       try {
+      setLoading(true)
+      setShowEditAssetForm(!showEditAssetform)
+     await updateAssetDetails(user.orgId, values)
+     setLoading(false)
+
+
+     console.log('Updated Form Values:', assetPayload)
+
+       } catch (error) {
+
+         console.log(error)
+       }
+     }
+
+
 
   const onBoardAssertBody = () => {
     setShowEditAssetForm(!showEditAssetform)
   }
-
-  const [EditForm, setEditForm] = useState(false)
 
   return (
     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
@@ -154,12 +118,11 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
         <h1 className="text-xl font-semibold"></h1>
 
         <div className="flex space-x-2">
-
           <button
             className="flex items-center justify-center h-10 px-4 border font-medium focus:outline-none bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors duration-300"
             onClick={onBoardAssertBody}
           >
-           {showEditAssetform ? "Cancel" : "Edit Asset"}
+            {showEditAssetform ? 'Cancel' : 'Edit Asset'}
           </button>
         </div>
       </div>
@@ -175,6 +138,11 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
           {showEditAssetform ? (
             <Formik
               initialValues={{
+
+                uid: assetPayload?.uid || 0,
+
+                  requestId: assetPayload?.requestId || '',
+
                 SerialNumber: assetPayload?.SerialNumber || '',
 
                 Processor: assetPayload?.Processor || '',
@@ -186,13 +154,13 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                 WorkingStatus: assetPayload?.WorkingStatus || '',
 
                 AllocationStatus: assetPayload?.AllocationStatus || '',
+
+                AssignTo: assetPayload?.AssignTo || '',
               }}
               validationSchema={validate}
               onSubmit={handleSubmit}
-              enableReinitialize={true}
             >
               {({ values, setFieldValue }) => (
-
                 <Form className="space-y-6">
                   <div>
                     <label
@@ -348,10 +316,35 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                     />
                   </div>
 
+                  <div>
+                    <div>
+                      <label
+                        htmlFor="AssignTo"
+                        className="block text-sm font-medium bold-black-700"
+                      >
+                        AssignTo :
+                      </label>
+                      <Field
+                        as="select"
+                        name="AssignTo"
+                        className="ml-auto bg-white border border-gray-700 rounded-md py-2 px-4 text-sm"
+                      >
+                        <option value="">Employees</option>
+                        {leadsFetchedData.map((employee) => (
+                          <option key={employee.name} value={employee.name}>
+                            {employee.name}
+                          </option>
+                        ))}
+                      </Field>
+                    </div>
+                  </div>
+
                   <div className="flex justify-end">
                     <button
                       type="submit"
                       className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                      // onClick={handleUpdate}
+                      onClick={() => handleUpdate(values)}
                     >
                       {loading ? (
                         <Loader texColor={undefined} size={undefined} />
@@ -366,6 +359,9 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
           ) : (
             <Formik
               initialValues={{
+
+                uid: assetPayload?.uid || 0,
+
                 SerialNumber: assetPayload?.SerialNumber || '',
 
                 Processor: assetPayload?.Processor || '',
@@ -377,25 +373,23 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                 WorkingStatus: assetPayload?.WorkingStatus || '',
 
                 AllocationStatus: assetPayload?.AllocationStatus || '',
+
+                AssignTo: assetPayload?.AssignTo || '',
               }}
               validationSchema={validate}
               onSubmit={handleSubmit}
-              enableReinitialize={true}
             >
               {({ values, setFieldValue }) => (
                 <Form className="space-y-6">
                   <div className=" m-1">
-                    <div className=" border-[#E5EAF2] rounded-xl border w-100 h-70 bg-gray-500 px-8 py-5">
+                    <div className=" border-[#E5EAF2] rounded-xl border w-100 h-80 bg-grey-400 px-8 py-5">
                       <section>
                         {assetPayload?.Product === 'Laptop' && (
                           <div className="flex item-center justify-between">
-
                             <svg
-                              width="1800.46px"
-                              height="100.42px"
-                              viewBox="0 3 170 41"
-                              margin-right="321px"
-                              margin-bottom="13px"
+                              width="80px"
+                              height="140px"
+                              viewBox="0 0 43 41"
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"
                             >
@@ -429,16 +423,25 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                                 fill="#8B50FF"
                               ></path>
                             </svg>
-
+                            {/* <span style={{
+                            position:'absolute',
+                            height:'2px',
+                            bottom:'0',
+                            transition:'all 300ms',
+                            backgroundColor:'#00AB55',
+                            left:'0px',
+                            width:'48px',
+                          }}>
+                            </span> */}
                           </div>
                         )}
 
                         {assetPayload?.Product === 'Phone android' && (
                           <div className="flex item-center justify-between">
                             <svg
-                              width="1800.46px"
-                              height="140.42px"
-                              viewBox="0 0 170 46"
+                              width="80px"
+                              height="140px"
+                              viewBox="0 0 40 40"
                               fill="none"
                               xmlns="c"
                             >
@@ -470,9 +473,9 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
                         {assetPayload?.Product === 'Sim' && (
                           <div className="flex item-center justify-between">
                             <svg
-                              width="1800.46px"
-                              height="140.42px"
-                              viewBox="0 0 170 46"
+                              width="80px"
+                              height="140px"
+                              viewBox="0 0 38 38"
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"
                             >
@@ -506,143 +509,161 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
 
                         <div
                           style={{
-                            color: 'white',
-                            display: 'grid',
-                            gridTemplateColumns: '150px auto',
+                            color: 'black',
                           }}
                         >
                           <label
-                            htmlFor="ProductName"
-                            className="text-sm font-medium bold-black-700"
+                            htmlFor="SerialNumber"
+                            className="block text-sm font-medium bold-black-700"
                           >
-                            SerialNumber:
+                            SerialNumber : {assetPayload?.SerialNumber}
                           </label>
-                          <span>{assetPayload?.SerialNumber}</span>
                         </div>
 
                         <div
                           style={{
-                            color: 'white',
-                            display: 'grid',
-                            gridTemplateColumns: '150px auto',
+                            color: 'black',
                           }}
                         >
                           <label
                             htmlFor="Processor"
-                            className="text-sm font-medium bold-green-700"
+                            className="block text-sm font-medium bold-black-700"
                           >
-                            Processor:
+                            Processor : {assetPayload?.Processor}
                           </label>
-                          <span>{assetPayload?.Processor}</span>
                         </div>
 
                         <div
                           style={{
-                            color: 'white',
-                            display: 'grid',
-                            gridTemplateColumns: '150px auto',
+                            color: 'black',
                           }}
                         >
                           <label
                             htmlFor="Product"
-                            className="text-sm font-medium bold-green-700"
+                            className="block text-sm font-medium bold-black-700"
                           >
-                            Product:
+                            Product : {assetPayload?.Product}
                           </label>
-                          <span>{assetPayload?.Product}</span>
                         </div>
 
                         <div
                           style={{
-                            color: 'white',
-                            display: 'grid',
-                            gridTemplateColumns: '150px auto',
+                            color: 'black',
                           }}
                         >
                           <label
                             htmlFor="Ram"
-                            className="text-sm font-medium bold-green-700"
+                            className="block text-sm font-medium bold-black-700"
                           >
-                            Ram:
+                            Ram : {assetPayload?.Ram}
                           </label>
-                          <span>{assetPayload?.Ram}</span>
                         </div>
 
-                        <div
-                          style={{
-                            color: 'white',
-                            display: 'grid',
-                            gridTemplateColumns: '150px auto',
-                          }}
+                        {/* <div
+                        style={{
+                          color: 'black',
+                        }}
+                      >
+                        <label
+                          htmlFor="WorkingStatus"
+                          className="block text-sm font-medium color-blue bold-green-700"
                         >
-                          <label
-                            htmlFor="WorkingStatus"
-                            className="text-sm font-medium color-blue bold-green-700"
-                          >
-                            WorkingStatus:
-                          </label>
-                          <span>{assetPayload?.WorkingStatus}</span>
-                        </div>
+                          WorkingStatus : {assetPayload?.WorkingStatus}
+                        </label>
+                      </div> */}
 
                         <div
                           style={{
-                            color: 'white',
-                            display: 'grid',
-                            gridTemplateColumns: '150px auto',
+                            color: 'black',
                           }}
                         >
                           <label
                             htmlFor="Version"
-                            className="text-sm font-medium bold-green-700"
+                            className="block text-sm font-medium bold-black-700"
                           >
-                            AllocationStatus:
+                            AllocationStatus : {assetPayload?.AllocationStatus}
                           </label>
-                          <span>{assetPayload?.AllocationStatus}</span>
                         </div>
-                      </section>
-                    </div>
 
-                    <div>
-                      <div>
-                        <br />
-
+                        {/* <div>
                         <label
                           htmlFor="AssignTo"
                           className="block text-sm font-medium bold-black-700"
                         >
-                          AssignTo
+                          AssignTo : {assetPayload?.AssignTo}
                         </label>
-                      </div>
-
-                      <Field
-                        as={CustomSelect}
-                        name="AssignTo"
-                        options={Name}
-                        placeholder="Select a Name"
-                        className="mt-1"
-                        onChange={(option) =>
-                          setFieldValue('AssignTo', option.value)
-                        }
-                      />
-
-                      <ErrorMessage
-                        name="Name"
-                        component="div"
-                        className="text-red-500 text-sm mt-1"
-                      />
+                      </div> */}
+                      </section>
                     </div>
                   </div>
 
-                  <div className="flex justify-end">
-                    <button
-                      type="submit"
-                      className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                  <div style={{ color: 'black' }}>
+                    <label
+                      htmlFor="WorkingStatus"
+                      className="block text-sm font-medium color-blue bold-black-700"
                     >
-                      {loading ? <Loader /> : 'Submit'}
-                    </button>
+                      WorkingStatus :
+                    </label>
+
+                    <select
+                      id="WorkingStatus"
+                      name="WorkingStatus"
+                      className="block mt-1 w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                      value={assetPayload?.WorkingStatus}
+                      onChange={(e) => {
+                        // Handle the selection change here
+
+                        console.log(e.target.value) // Example: Log the selected value to the console
+                      }}
+                    >
+                      {/* Render options based on assetPayload values */}
+
+                      {Object.keys(assetPayload).map((key) => (
+                        <option key={key} value={assetPayload[key]}>
+                          {assetPayload[key]}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div style={{ color: 'black' }}>
+                    <label
+                      htmlFor="AssignTo"
+                      className="block text-sm font-medium color-blue bold-black-700"
+                    >
+                      AssignTo :
+                    </label>
+
+                    <select
+                      id="AssignTo"
+                      name="AssignTo"
+                      className="block mt-1 w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                      value={assetPayload?.AssignTo}
+                      onChange={(e) => {
+                        // Handle the selection change here
+
+                        console.log(e.target.value) // Example: Log the selected value to the console
+                      }}
+                    >
+                      {/* Render options based on assetPayload values */}
+
+                      {Object.keys(assetPayload).map((key) => (
+                        <option key={key} value={assetPayload[key]}>
+                          {assetPayload[key]}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="flex justify-end">
+                    {/* <button
+                    type="Edit"
+                    className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                  >
+                    {loading ? <Loader /> : 'Edit'}
+                  </button> */}
                   </div>
                 </Form>
-
               )}
             </Formik>
           )}
@@ -653,3 +674,8 @@ const OnBoardingAssignBody = ({ assetPayload }) => {
 }
 
 export default OnBoardingAssignBody
+{
+  /* function getLeadsDataFun() {
+  throw new Error('Function not implemented.')
+} */
+}

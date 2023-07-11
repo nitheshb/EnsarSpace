@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+
 import { Dialog } from '@headlessui/react'
 import { Form, Formik, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
@@ -11,9 +12,7 @@ import {
   options4,
   options5,
 } from 'src/constants/userRoles'
-
-import { storeAssetDetails } from 'src/context/dbQueryFirebase'
-
+import { steamUsersList, storeAssetDetails } from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
 
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
@@ -42,6 +41,8 @@ const OnBoardAssertBody = () => {
   })
 
   const [loading, setLoading] = useState(false)
+  const [leadsFetchedData, setLeadsFetchedData] = useState([])
+  // const [selectedEmployee, setSelectedEmployee] = useState(null);
 
   const { user } = useAuth()
 
@@ -51,14 +52,32 @@ const OnBoardAssertBody = () => {
     try {
       setLoading(true)
 
-      await storeAssetDetails(user.orgId, values)
-
+      await storeAssetDetails(user.orgId, user.uid, values)
+      console.log('values:', values);
       setLoading(false)
     } catch (error) {
       console.log(error)
     }
 
     console.log('Form Values:', values)
+  }
+
+  useEffect(() => {
+    getLeadsDataFun()
+  }, [])
+
+  const getLeadsDataFun = async () => {
+    const unsubscribe = steamUsersList(
+      user.orgId,
+      (querySnapshot) => {
+        const usersListA = querySnapshot.docs.map((docSnapshot) =>
+          docSnapshot.data()
+        )
+        setLeadsFetchedData(usersListA)
+      },
+      () => setLeadsFetchedData([])
+    )
+    return unsubscribe
   }
 
   return (
@@ -79,6 +98,9 @@ const OnBoardAssertBody = () => {
         <div className="mt-1">
           <Formik
             initialValues={{
+
+              uid: '',
+
               Product: '',
 
               Processor: '',
@@ -90,10 +112,12 @@ const OnBoardAssertBody = () => {
               AllocationStatus: '',
 
               WorkingStaus: '',
+              AssignTo: '',
             }}
             validationSchema={validate}
             onSubmit={handleSubmit}
           >
+
             {({ values, setFieldValue }) => (
               <Form className="space-y-6">
                 <div>
@@ -250,6 +274,54 @@ const OnBoardAssertBody = () => {
                   />
                 </div>
 
+                <div>
+                  <div>
+                    <label
+                      htmlFor="AssignTo"
+                      className="block text-sm font-medium bold-black-700"
+                    >
+                      AssignTo :
+                    </label>
+                    <Field
+                      as="select"
+                      name="AssignTo"
+                      className="ml-auto bg-white border border-gray-700 rounded-md py-2 px-4 text-sm"
+                    >
+                      <option value="">Employees</option>
+                      {leadsFetchedData.map((employee) => (
+                        <option key={employee.name} value={employee.name}>
+                          {employee.name}
+                        </option>
+                      ))}
+
+                    </Field>
+                  </div>
+                </div>
+
+                {/* <div>
+                  <label
+                    htmlFor="AssignTo"
+                    className="block text-sm font-medium bold-black-700"
+                  >
+                    AssignTo :
+                  </label>
+                  <Field
+                    as="select"
+                    name="AssignTo"
+                    className="ml-auto bg-white border border-gray-700 rounded-md py-2 px-4 text-sm"
+                    onChange={(event) => {
+                      setFieldValue('AssignTo', event.target.value)
+                    }}
+                  >
+                    <option value="">Employees</option>
+                    {leadsFetchedData.map((employee) => (
+                      <option key={employee.name} value={employee.email}>
+                        {employee.name} ({employee.email})
+                      </option>
+                    ))}
+                  </Field>
+                </div> */}
+
                 <div className="flex justify-end">
                   <button
                     type="submit"
@@ -270,5 +342,4 @@ const OnBoardAssertBody = () => {
     </div>
   )
 }
-
 export default OnBoardAssertBody
