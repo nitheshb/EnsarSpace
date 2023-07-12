@@ -227,7 +227,7 @@ const Profile = () => {
 
       <ProfileHeaderPage />
 
-     
+    
 
 
       <div>
