@@ -214,8 +214,6 @@ const ConstructUnitsHome = ({ project }) => {
               source={"ConstructModule"}
               unitDetails={undefined}
             />
-
-        
             </section>)}
           {projectDetails.uid === undefined && (
             <section className="grid justify-center md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-7 my-10 ">
@@ -237,7 +235,6 @@ const ConstructUnitsHome = ({ project }) => {
                   })
                 }}
               >
-
                 <div
                   className="flex flex-col items-center justify-between"
                   onClick={() => setIsOpenSideView(!isOpenSideView)}

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { format } from 'date-fns';
 import { useDispatch } from 'react-redux';
-import { approveLeave, rejectLeave } from "../../../state/actions/index"; // Import the action creators
+import { approveLeave, rejectLeave } from '../../../../state/actions/'; // Import the action creators
 import { updateLeaveRequest } from 'src/context/dbQueryFirebase';
 import { useAuth } from 'src/context/firebase-auth-context';
 
@@ -149,4 +149,4 @@ const LeaveApproval: React.FC<LeaveApprovalProps> = ({
   );
 };
 
-export default LeaveApproval
+export default LeaveApproval;

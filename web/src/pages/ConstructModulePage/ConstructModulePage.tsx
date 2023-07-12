@@ -17,8 +17,6 @@ import { USER_ROLES } from 'src/constants/userRoles'
 import { useAuth } from 'src/context/firebase-auth-context'
 
 import HeadNavBar from '../../components/HeadNavBar/HeadNavBar'
-import Assets from 'src/components/ConstructModule/OnBoarding'
-import OnBoarding from 'src/components/ConstructModule/OnBoarding'
 
 const ConstructModulePage = () => {
   const { user } = useAuth()
@@ -84,13 +82,6 @@ const ConstructModulePage = () => {
                   isEdit={undefined}
                 />
               )}
-{/*
- {viewable === 'On Boarding1' && (
-             <OnBoarding/>
-              )} */}
-
- 
-
             </div>
             {/* <div className="flex-grow mx-4  my-2 items-center overflow-y-auto  h-screen  px-300  py-300"> */}
             {/* {viewable === 'Today' && <ExecutiveHomeViewerPage />} *SS/}

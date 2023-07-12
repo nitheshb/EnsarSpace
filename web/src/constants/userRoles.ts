@@ -100,13 +100,77 @@ export const USER_ROLES = {
   SALES_SENIOR_MANAGER: 'sales-senior-manager',
   CP_AGENT: 'cp-agent',
 
+  LEGAL_MANAGER: 'legal-manager',
+  LEGAL_EXECUTIVE: 'legal-executive',
+  LEGAL_ASSOCIATE: 'legal-associate',
+  LEGAL_SENIOR_EXECUTIVE: 'legal-senior-executive',
+  LEGAL_SENIOR_ASSOCIATE: 'legal-senior-associate',
+  LEGAL_SENIOR_MANAGER: 'legal-senior-manager',
+
+  ITDESK_EXECUTIVE: 'itdesk-executive',
+  ITDESK_MANAGER: 'itdesk-manager',
+  ITDESK_ASSOCIATE: 'itdesk-associate',
+  ITDESK_SENIOR_EXECUTIVE: 'itdesk-senior-executive',
+  ITDESK_SENIOR_MANAGER: 'itdesk-senior-manager',
+  ITDESK_SENIOR_ASSOCIATE: 'itdesk-senior-associate',
+
+  FINANCE_MANAGER: 'finance-manager',
+  FINANCE_EXECUTIVE: 'finance-executive',
+  FINANCE_ASSOCIATE: 'finance-associate',
+  FINANCE_SENIOR_EXECUTIVE: 'finance-senior-executive',
+  FINANCE_SENIOR_ASSOCIATE: 'finance-senior-associate',
+  FINANCE_SENIOR_MANAGER: 'finance-senior-manager',
+
   SUPPORT_EXECUTIVE: 'support-executive',
   SUPPORT_MANAGER: 'support-manager',
+  SUPPORT_EXECUTIVE: 'support-executive',
   SUPPORT_ASSOCIATE: 'support-associate',
   SUPPORT_SENIOR_EXECUTIVE: 'support-senior-executive',
   SUPPORT_SENIOR_ASSOCIATE: 'support-senior-associate',
   SUPPORT_SENIOR_MANAGER: 'support-senior-manager',
 
+  HELPER_EXECUTIVE: 'helper-executive',
+  HELPER_MANAGER: 'helper-manager',
+  HELPER_EXECUTIVE: 'helper-executive',
+  HELPER_ASSOCIATE: 'helper-associate',
+  HELPER_SENIOR_EXECUTIVE: 'helper-senior-executive',
+  HELPER_SENIOR_ASSOCIATE: 'helper-senior-associate',
+  HELPER_SENIOR_MANAGER: 'helper-senior-manager',
+
+  PROJECT_EXECUTIVE: 'project-executive',
+  PROJECT_MANAGER: 'project-manager',
+  PROJECT_EXECUTIVE: 'project-executive',
+  PROJECT_ASSOCIATE: 'project-associate',
+  PROJECT_SENIOR_EXECUTIVE: 'project-senior-executive',
+  PROJECT_SENIOR_ASSOCIATE: 'project-senior-associate',
+  PROJECT_SENIOR_MANAGER: 'project-senior-manager',
+
+  DEVELOPER_EXECUTIVE: 'developer executive',
+  DEVELOPER_MANAGER: 'developer manager',
+  DEVELOPER_SENIOR_MANAGER: 'developer senior manager',
+  DEVELOPER_EXECUTIVE: 'developer executive',
+  DEVELOPER_SENIOR_EXECUTIVE: 'developer senior executive',
+  DEVELOPER_ASSOCIATE: 'developer associate',
+  DEVELOPER_SENIOR_ASSOCIATE: 'developer senior associate',
+
+  LEARNING_EXECUTIVE: 'learning executive',
+  LEARNING_MANAGER: 'learning manager',
+  LEARNING_ASSOCIATE: 'learning associate',
+  LEARNING_SENIOR_EXECUTIVE: 'learning senior executive',
+  LEARNING_SENIOR_MANAGER: 'learning senior manager',
+  LEARNING_SENIOR_ASSOCIATE: 'learning senior associate',
+
+  FRESHER_EXECUTIVE: 'fresher executive',
+  FRESHER_MANAGER: 'fresher manager',
+  FRESHER_SENIOR_MANAGER: 'fresher senior manager',
+  FRESHER_EXECUTIVE: 'fresher executive',
+  FRESHER_SENIOR_EXECUTIVE: 'fresher senior executive',
+  FRESHER_ASSOCIATE: 'fresher associate',
+  FRESHER_SENIOR_ASSOCIATE: 'fresher senior associate',
+
+  ADMIN: 'admin',
+  TRAINEE: 'trainee',
+  DATA_SCIENTIST: 'data-scientist',
   TRAINER_MANAGER: 'trainer manager',
 
   TRAINER_EXECUTIVE: 'trainer executive',
@@ -212,47 +276,61 @@ export const Lang = [
 
 export const options = [
   { label: 'Select the product', value: '' },
-  { value: 'Laptop', label: 'Laptop' },
-  { value: 'Phone windows', label: 'Phone windows' },
-  { value: 'Phone android', label: 'Phone android' },
-  { value: 'Sim', label: 'Sim' },
+  { label: 'Laptop', value: 'Laptop' },
+  { label: 'Phone iphone', value: 'Phone iphone' },
+  { label: 'Phone android', value: 'Phone android' },
+  { label: 'Sim', value: 'Sim' },
 ]
 export const options1 = [
-  { label: 'Select the screen', value: '' },
-  { value: 'amoled', label: 'Amoled' },
-  { value: 'lcd', label: 'Lcd' },
-  { value: 'hd', label: 'Hd' },
+  { label: 'Select the Processor', value: '' },
+  { label: 'Ryzen', value: 'Ryzen' },
+  { label: 'Intel', value: 'Intel' },
+  { label: 'Snapdragon', value: 'Snapdragon' },
+  { label: 'Mediatek', value: 'mediatek' },
+  { label: 'jio', value: 'jio' },
+  { label: 'VI', value: 'vi' },
+
 ]
 export const options2 = [
-  { label: 'Select the sensor', value: '' },
-  { value: 'acclerometer', label: 'Acclerometer' },
-  { value: 'gyroscope', label: 'Gyroscope' },
-  { value: 'proximity', label: 'Proximity' },
-  { value: 'fingerprint', label: 'Fingerprint' },
+  { label: 'Select the Ram', value: '' },
+  { label: '4GB', value: '4GB' },
+  { label: '6GB', value: '6GB' },
+  { label: '8GB', value: '8GB' },
+  { label: '16GB', value: '16GB' },
+  { label: '64GB', value: '64GB' },
+  { label: '128GB', value: '128GB' },
+  { label: '512GB', value: '512GB' },
+  { label: '1TB', value: '1TB' },
 ]
 export const options3 = [
-  { label: 'Select the Nfc', value: '' },
-  { value: 'yes', label: 'Yes' },
-  { value: 'no', label: 'No' },
+  { label: 'Select the Serial Number', value: '' },
+  { label: '01', value: '01' },
+  { label: '02', value: '02' },
+  { label: '03', value: '03' },
+  { label: '04', value: '04' },
+  { label: '05', value: '05' },
+  { label: '06', value: '06' },
+  { label: '07', value: '07' },
+  { label: '08', value: '08' },
+  { label: '09', value: '09' },
+  { label: '10', value: '10' },
 ]
 export const options4 = [
-  { label: 'Select the display', value: '' },
-  { value: 'gorilla', label: 'Gorilla' },
-  { value: 'diamondglass', label: 'Diamond glass' },
-  { value: 'temperglass', label: 'Temperglass' },
+  { label: 'Select the Allocation Status', value: '' },
+  { label: 'Yes', value: 'Yes' },
+  { label: 'No', value: 'No' },
 ]
 export const options5 = [
-  { label: 'Select phone connector', value: '' },
-  { value: 'microusb ', label: 'Micro USB' },
-  { value: 'type-c', label: 'Type-c' },
-  { value: 'usb type-a', label: 'Usb type-a' },
+  { label: 'Select the Working Status', value: '' },
+  { label: 'Active', value: 'Active' },
+  { label: 'Repair', value: 'Repair' },
 ]
-export const options6 = [
-  { label: 'Select the keypad', value: '' },
-  { value: 'virtual keypad', label: 'Virtual keypad' },
-  { value: 'gboard', label: 'Gboard' },
-  { value: 'swiftkey', label: 'Swiftkwy' },
-]
+
+// export const options6 = [
+//   { label: 'Select the AssignTo', value: '' },
+//   { label: 'Active', value: 'Active' },
+//   { label: 'Repair', value: 'Repair' },
+// ]
 
 export const ROLES_LIST = [
   { label: 'Select the role', value: '' },
