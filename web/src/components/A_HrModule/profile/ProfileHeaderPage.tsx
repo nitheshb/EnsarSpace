@@ -68,7 +68,7 @@ const ProfileHeaderPage = () => {
                     {isHovered ? (
                       <CloudUploadIcon style={{ fontSize: 60 }} />
                     ) : (
-                      // user.displayName
+                      //  user.displayName
                       <>{initials}</>
                     )}
                   </span>

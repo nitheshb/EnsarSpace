@@ -21,47 +21,46 @@ const SlimSideMenuBar = (props) => {
         'constructModule',
         'legalModule',
       ].includes(sourceLink) && (
-          <a
-            className="flex items-center justify-center flex-shrink-0 w-full py-[9px] mr-4  border-b mt-[4px] pt-[10px]"
-            href="#"
+        <a
+          className="flex items-center justify-center flex-shrink-0 w-full py-[9px] mr-4  border-b mt-[4px] pt-[10px]"
+          href="#"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="78"
+            height="24"
+            viewBox="0 0 1 28"
+            fill="none"
+            className="my-1"
+            data-src="/images/logo/cubejs-logo.svg"
           >
-
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="78"
-              height="24"
-              viewBox="0 0 1 28"
-              fill="none"
-              className="my-1"
-              data-src="/images/logo/cubejs-logo.svg"
-            >
-              <path
-                d="M22.1337 7.03243L11.8594 1V5.17391L22.1336 11.1804L22.1337 7.03243Z"
-                fill="#FF6492"
-              ></path>
-              <path
-                d="M22.1336 11.1823L19.0513 13.0019L11.8574 8.78565L7.74692 11.1857L4.66406 9.49917L11.8593 5.17578L22.1336 11.1823Z"
-                fill="#141446"
-              ></path>
-              <path
-                d="M7.74692 11.1826L4.66406 9.49609V12.9988L7.74692 11.1826Z"
-                fill="#A14474"
-              ></path>
-              <path
-                d="M1.58105 18.9676L11.8572 13L22.1334 18.9676L11.8572 25L1.58105 18.9676Z"
-                fill="#141446"
-              ></path>
-              <path
-                d="M22.1336 14.8259L11.8574 8.71875V12.9998L22.1336 18.9674L22.1336 14.8259Z"
-                fill="#FF6492"
-              ></path>
-              <path
-                d="M4.66391 13V9.4973L11.8592 5.17391V1L1.58105 7.03243V18.9676L11.8573 13V8.71892L4.66391 13Z"
-                fill="#7A77FF"
-              ></path>
-            </svg>
-          </a>
-        )}
+            <path
+              d="M22.1337 7.03243L11.8594 1V5.17391L22.1336 11.1804L22.1337 7.03243Z"
+              fill="#FF6492"
+            ></path>
+            <path
+              d="M22.1336 11.1823L19.0513 13.0019L11.8574 8.78565L7.74692 11.1857L4.66406 9.49917L11.8593 5.17578L22.1336 11.1823Z"
+              fill="#141446"
+            ></path>
+            <path
+              d="M7.74692 11.1826L4.66406 9.49609V12.9988L7.74692 11.1826Z"
+              fill="#A14474"
+            ></path>
+            <path
+              d="M1.58105 18.9676L11.8572 13L22.1334 18.9676L11.8572 25L1.58105 18.9676Z"
+              fill="#141446"
+            ></path>
+            <path
+              d="M22.1336 14.8259L11.8574 8.71875V12.9998L22.1336 18.9674L22.1336 14.8259Z"
+              fill="#FF6492"
+            ></path>
+            <path
+              d="M4.66391 13V9.4973L11.8592 5.17391V1L1.58105 7.03243V18.9676L11.8573 13V8.71892L4.66391 13Z"
+              fill="#7A77FF"
+            ></path>
+          </svg>
+        </a>
+      )}
       <section className="mb-4"></section>
       {['crmModule'].includes(sourceLink) && (
         <>
@@ -173,6 +172,16 @@ const SlimSideMenuBar = (props) => {
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
+                    {/* <svg width="24" height="24" viewBox="0 0 24 24">
+                            <g fill="currentColor" fillRule="nonzero">
+                              <path
+                                d="M10 14.5a2 2 0adfaf 104 0h5.5V18a1.5 1.5 0 01-1.5 1.5H6A1.5 1.5 0 014.5 18v-3.5H10z"
+                                opacity="0.1"
+                              ></path>
+                              <path d="M8.062 adfafafafa4h7.876a2 2 0 011.94 1.515l2.062 8.246a2 2 0 01.06.485V18a2 2 0 01-2 2H6a2 2 0 01-2-2v-3.754a2 2 0 01.06-.485l2.06-8.246A2 2 0 018.061 4zm0 1a1 1 0 00-.97.757L5.03 14.004a1 1 0 00-.03.242V18a1 1 0 001 1h12a1 1 0 001-1v-3.754a1 1 0 00-.03-.242l-2.06-8.247A1 1 0 0015.94 5H8.061zM12 17.25A2.75 2.75 0 019.295 15H7a.5.5 0 110-1h2.75a.5.5 0 01.5.5 1.75 1.75 0 003.5 0 .5.5 0 01.5-.5H17a.5.5 0 110 1h-2.295A2.75 2.75 0 0112 17.25z"></path>
+                            </g>
+                          </svg> */}
+
                     <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
                   </span>
                   <span className="text-[9px] font-bold  pl-1">Customers</span>
@@ -300,6 +309,7 @@ const SlimSideMenuBar = (props) => {
                       </g>
                     </svg>
                   </span>
+
                   <span className="text-[9px] font-bold  pl-1">Reports</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
@@ -310,7 +320,6 @@ const SlimSideMenuBar = (props) => {
           </ul>
         </>
       )}
-
       {['constructModule'].includes(sourceLink) && (
         <>
           <ul className="w-full">
@@ -444,7 +453,6 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-
             <li className="relative mt-1">
               <span
                 className={
@@ -486,7 +494,6 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-
             <li className="relative mt-1">
               <span
                 className={
@@ -646,6 +653,16 @@ const SlimSideMenuBar = (props) => {
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
+                    {/* <svg width="24" height="24" viewBox="0 0 24 24">
+                            <g fill="currentColor" fillRule="nonzero">
+                              <path
+                                d="M10 14.5a2 2 0adfaf 104 0h5.5V18a1.5 1.5 0 01-1.5 1.5H6A1.5 1.5 0 014.5 18v-3.5H10z"
+                                opacity="0.1"
+                              ></path>
+                              <path d="M8.062 adfafafafa4h7.876a2 2 0 011.94 1.515l2.062 8.246a2 2 0 01.06.485V18a2 2 0 01-2 2H6a2 2 0 01-2-2v-3.754a2 2 0 01.06-.485l2.06-8.246A2 2 0 018.061 4zm0 1a1 1 0 00-.97.757L5.03 14.004a1 1 0 00-.03.242V18a1 1 0 001 1h12a1 1 0 001-1v-3.754a1 1 0 00-.03-.242l-2.06-8.247A1 1 0 0015.94 5H8.061zM12 17.25A2.75 2.75 0 019.295 15H7a.5.5 0 110-1h2.75a.5.5 0 01.5.5 1.75 1.75 0 003.5 0 .5.5 0 01.5-.5H17a.5.5 0 110 1h-2.295A2.75 2.75 0 0112 17.25z"></path>
+                            </g>
+                          </svg> */}
+
                     <UserGroupIcon className="h-5 w-5 " aria-hidden="true" />
                   </span>
                   <span className="text-[9px] font-bold  pl-1">Templates</span>
@@ -695,7 +712,6 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-
             <li className="relative mt-1">
               <span
                 className={
@@ -739,7 +755,6 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-
             <li className="relative mt-1">
               <span
                 className={
@@ -777,6 +792,7 @@ const SlimSideMenuBar = (props) => {
                       </g>
                     </svg>
                   </span>
+
                   <span className="text-[9px] font-bold  pl-1">Reports</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
@@ -883,7 +899,6 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-
             <li className="relative mt-1">
               <span
                 className={
@@ -986,9 +1001,7 @@ const SlimSideMenuBar = (props) => {
                       />
                     </svg>
                   </span>
-                  <span className="text-[9px] font-bold  pl-1">
-                    Leads Bank
-                  </span>
+                  <span className="text-[9px] font-bold  pl-1">Leads Bank</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
@@ -1033,6 +1046,7 @@ const SlimSideMenuBar = (props) => {
                       </g>
                     </svg>
                   </span>
+
                   <span className="text-[9px] font-bold  pl-1">Reports</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
@@ -1040,59 +1054,59 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-            {/* {(user?.role?.includes(USER_ROLES.SALES_MANAGER) ||
-              user?.role?.includes(USER_ROLES.ADMIN)) && ( */}
-            <li className="relative mt-1">
-              <span
-                className={
-                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
-                  (viewable === 'Team Lead Report'
-                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
-                    : '')
-                }
-                onClick={() => setViewable('Team Lead Report')}
-                style={{
-                  display: 'block',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                }}
-              >
-                <span className="flex items-center flex-col pt-[8px]">
-                  <span style={{ color: '#692fc2' }}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                    >
-                      <g fill="none" fillRule="evenodd">
-                        <g fill="currentColor" fillRule="nonzero">
-                          <g>
+            {(user?.role?.includes(USER_ROLES.SALES_MANAGER) ||
+              user?.role?.includes(USER_ROLES.ADMIN)) && (
+              <li className="relative mt-1">
+                <span
+                  className={
+                    'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                    (viewable === 'Team Lead Report'
+                      ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                      : '')
+                  }
+                  onClick={() => setViewable('Team Lead Report')}
+                  style={{
+                    display: 'block',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}
+                >
+                  <span className="flex items-center flex-col pt-[8px]">
+                    <span style={{ color: '#692fc2' }}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                      >
+                        <g fill="none" fillRule="evenodd">
+                          <g fill="currentColor" fillRule="nonzero">
                             <g>
-                              <path
-                                d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 1c-4.418 0-8 3.582-8 8 0 .702.09 1.383.26 2.031l2.886-2.885c.196-.195.512-.195.708 0l2.646 2.647 4.793-4.794L13 9c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h3.52l.052.005L16.5 8c.036 0 .071.004.105.011l.046.012.04.015c.014.005.027.012.04.019.013.006.025.013.036.02l.035.025c.014.01.027.02.04.033l.012.011.011.013c.012.012.023.025.033.039l-.044-.052c.026.027.05.056.069.087l.02.034.02.042.014.04c.005.015.009.03.012.046l.006.033.005.051V12c0 .276-.224.5-.5.5s-.5-.224-.5-.5V9.706l-5.146 5.148c-.196.195-.512.195-.708 0L7.5 12.207 4.618 15.09C5.827 17.974 8.677 20 12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8z"
-                                transform="translate(-564 -480) translate(528 444) translate(36 36)"
-                              ></path>
+                              <g>
+                                <path
+                                  d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 1c-4.418 0-8 3.582-8 8 0 .702.09 1.383.26 2.031l2.886-2.885c.196-.195.512-.195.708 0l2.646 2.647 4.793-4.794L13 9c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h3.52l.052.005L16.5 8c.036 0 .071.004.105.011l.046.012.04.015c.014.005.027.012.04.019.013.006.025.013.036.02l.035.025c.014.01.027.02.04.033l.012.011.011.013c.012.012.023.025.033.039l-.044-.052c.026.027.05.056.069.087l.02.034.02.042.014.04c.005.015.009.03.012.046l.006.033.005.051V12c0 .276-.224.5-.5.5s-.5-.224-.5-.5V9.706l-5.146 5.148c-.196.195-.512.195-.708 0L7.5 12.207 4.618 15.09C5.827 17.974 8.677 20 12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8z"
+                                  transform="translate(-564 -480) translate(528 444) translate(36 36)"
+                                ></path>
+                              </g>
                             </g>
                           </g>
                         </g>
-                      </g>
-                    </svg>
+                      </svg>
+                    </span>
+
+                    <span className="text-[9px] font-bold  pl-1">
+                      Team Reports
+                    </span>
                   </span>
-                  <span className="text-[9px] font-bold  pl-1">
-                    Team Reports
+                  <span className="flex ml-auto items-bottom">
+                    <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                   </span>
                 </span>
-                <span className="flex ml-auto items-bottom">
-                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
-                </span>
-              </span>
-            </li>
-            {/* )} */}
+              </li>
+            )}
           </ul>
         </>
       )}
-
       {['legalModule'].includes(sourceLink) && (
         <>
           <ul className="w-full">
@@ -1186,6 +1200,7 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
+
             <li className="relative mt-1">
               <span
                 className={
@@ -1408,6 +1423,7 @@ const SlimSideMenuBar = (props) => {
                       </g>
                     </svg>
                   </span>
+
                   <span className="text-[9px] font-bold  pl-1">Reports</span>
                 </span>
                 <span className="flex ml-auto items-bottom">
@@ -1418,7 +1434,6 @@ const SlimSideMenuBar = (props) => {
           </ul>
         </>
       )}
-
       {['hrModule'].includes(sourceLink) && (
         <>
           <ul className="w-full">
@@ -1471,32 +1486,53 @@ const SlimSideMenuBar = (props) => {
               </span>
             </li>
 
-              <li className="relative mt-1">
-                <span
-                  className={
-                    'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
-                    (viewable === 'Leave Approval'
-                      ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
-                      : '')
-                  }
-                  onClick={() => setViewable('Leave Approval')}
-                  style={{
-                    display: 'block',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                  }}
-                >
-                  <span className="flex items-center flex-col pt-[8px]">
-                    <span style={{ color: '#058527' }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" fill="#068e3a"></path> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" fill="#068e3a"></path> <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" fill="#068e3a"></path> </svg>
-                    </span> 
-                    <span className="text-[9px] font-bold  pl-1">Leave</span>
+            <li className="relative mt-1">
+              <span
+                className={
+                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  (viewable === 'Leave Approval'
+                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
+                    : '')
+                }
+                onClick={() => setViewable('Leave Approval')}
+                style={{
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                }}
+              >
+                <span className="flex items-center flex-col pt-[8px]">
+                  <span style={{ color: '#058527' }}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
+                      {' '}
+                      <path
+                        fill-rule="evenodd"
+                        d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+                        fill="#068e3a"
+                      ></path>{' '}
+                      <path
+                        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
+                        fill="#068e3a"
+                      ></path>{' '}
+                      <path
+                        d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+                        fill="#068e3a"
+                      ></path>{' '}
+                    </svg>
                   </span>
-                  <span className="flex ml-auto items-bottom">
-                    <span className="flex ml-auto items-bottom text-xs mt-2"></span>
-                  </span>
+                  <span className="text-[9px] font-bold  pl-1">Leave</span>
                 </span>
-              </li>
+                <span className="flex ml-auto items-bottom">
+                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
+                </span>
+              </span>
+            </li>
 
             <li className="relative mt-1 pt-1">
               <span
@@ -1567,10 +1603,11 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-            <li className="relative mt-1">
+
+            <li className="relative justify-center ">
               <span
                 className={
-                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
+                  'flex items-center justify-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
                   (viewable === 'TimeOff'
                     ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
                     : '')
@@ -1585,7 +1622,6 @@ const SlimSideMenuBar = (props) => {
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"
@@ -1599,7 +1635,6 @@ const SlimSideMenuBar = (props) => {
                       <circle cx="12" cy="12" r="10" />
                       <path d="M12 6v6l4 2" />
                     </svg>
-
                   </span>
                   <span className="text-[9px] font-bold  pl-1">Time off</span>
                 </span>
@@ -1653,11 +1688,11 @@ const SlimSideMenuBar = (props) => {
               <span
                 className={
                   'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
-                  (viewable === 'On Boarding'
+                  (viewable === 'OnBoarding'
                     ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
                     : '')
                 }
-                onClick={() => setViewable('On Boarding')}
+                onClick={() => setViewable('OnBoarding')}
                 style={{
                   display: 'block',
                   marginLeft: 'auto',
@@ -1708,7 +1743,6 @@ const SlimSideMenuBar = (props) => {
               >
                 <span className="flex items-center flex-col pt-[8px]">
                   <span style={{ color: '#058527' }}>
-
                     <svg
                       width="24"
                       height="24"
@@ -1725,7 +1759,6 @@ const SlimSideMenuBar = (props) => {
                         d="M4 5H20V19H4V5ZM8 3V5M16 3V5M8 19V21M16 19V21M8 8H9M15 8H16M8 12H9M15 12H16M8 16H9M12 8H13M12 12H13M12 16H13"
                       />
                     </svg>
-
                   </span>
                   <span className="text-[9px] font-bold  pl-1">Calendar</span>
                 </span>
@@ -1776,108 +1809,15 @@ const SlimSideMenuBar = (props) => {
                 </span>
               </span>
             </li>
-
-            <li className="relative mt-1">
-              <span
-                className={
-                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
-                  (viewable === 'projectReports'
-                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
-                    : '')
-                }
-                onClick={() => setViewable('projectReports')}
-                style={{
-                  display: 'block',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                }}
-              >
-                <span className="flex items-center flex-col pt-[8px]">
-                  <span style={{ color: '#692fc2' }}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                    >
-                      <g fill="none" fillRule="evenodd">
-                        <g fill="currentColor" fillRule="nonzero">
-                          <g>
-                            <g>
-                              <path
-                                d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 1c-4.418 0-8 3.582-8 8 0 .702.09 1.383.26 2.031l2.886-2.885c.196-.195.512-.195.708 0l2.646 2.647 4.793-4.794L13 9c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h3.52l.052.005L16.5 8c.036 0 .071.004.105.011l.046.012.04.015c.014.005.027.012.04.019.013.006.025.013.036.02l.035.025c.014.01.027.02.04.033l.012.011.011.013c.012.012.023.025.033.039l-.044-.052c.026.027.05.056.069.087l.02.034.02.042.014.04c.005.015.009.03.012.046l.006.033.005.051V12c0 .276-.224.5-.5.5s-.5-.224-.5-.5V9.706l-5.146 5.148c-.196.195-.512.195-.708 0L7.5 12.207 4.618 15.09C5.827 17.974 8.677 20 12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8z"
-                                transform="translate(-564 -480) translate(528 444) translate(36 36)"
-                              ></path>
-                            </g>
-                          </g>
-                        </g>
-                      </g>
-                    </svg>
-                  </span>
-
-                  <span className="text-[9px] font-bold  pl-1">Reports</span>
-                </span>
-                <span className="flex ml-auto items-bottom">
-                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
-                </span>
-              </span>
-            </li>
-            {/* {(user?.role?.includes(USER_ROLES.HR_MANAGER) ||
-              user?.role?.includes(USER_ROLES.ADMIN)) && ( */}
-            <li className="relative mt-1">
-              <span
-                className={
-                  'flex items-center text-sm py-1  overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded  rounded-tl-[30px] rounded-bl-[30px]  hover:text-blue-600 hover:bg-[#ecdbd1] transition duration-300 ease-in-out cursor-pointer ' +
-                  (viewable === 'User Report'
-                    ? 'bg-[#ecdbd1] w-100 rounded-tl-[30px] rounded-bl-[30px] '
-                    : '')
-                }
-                onClick={() => setViewable('User Report')}
-                style={{
-                  display: 'block',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                }}
-              >
-                <span className="flex items-center flex-col pt-[8px]">
-                  <span style={{ color: '#692fc2' }}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                    >
-                      <g fill="none" fillRule="evenodd">
-                        <g fill="currentColor" fillRule="nonzero">
-                          <g>
-                            <g>
-                              <path
-                                d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 1c-4.418 0-8 3.582-8 8 0 .702.09 1.383.26 2.031l2.886-2.885c.196-.195.512-.195.708 0l2.646 2.647 4.793-4.794L13 9c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h3.52l.052.005L16.5 8c.036 0 .071.004.105.011l.046.012.04.015c.014.005.027.012.04.019.013.006.025.013.036.02l.035.025c.014.01.027.02.04.033l.012.011.011.013c.012.012.023.025.033.039l-.044-.052c.026.027.05.056.069.087l.02.034.02.042.014.04c.005.015.009.03.012.046l.006.033.005.051V12c0 .276-.224.5-.5.5s-.5-.224-.5-.5V9.706l-5.146 5.148c-.196.195-.512.195-.708 0L7.5 12.207 4.618 15.09C5.827 17.974 8.677 20 12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8z"
-                                transform="translate(-564 -480) translate(528 444) translate(36 36)"
-                              ></path>
-                            </g>
-                          </g>
-                        </g>
-                      </g>
-                    </svg>
-                  </span>
-                  <span className="text-[9px] font-bold  pl-1">
-                    User Reports
-                  </span>
-                </span>
-                <span className="flex ml-auto items-bottom">
-                  <span className="flex ml-auto items-bottom text-xs mt-2"></span>
-                </span>
-              </span>
-            </li>
-            {/* )} */}
           </ul>
         </>
-      )
-      }
+      )}
       <Link
-        className={'flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300 ' +
-          (pgName === 'erpAccount' ? 'bg-gray-300' : '')} to={''}      // to={routes.erpAccount()}
+        className={
+          'flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 mt-auto rounded hover:bg-gray-300 ' +
+          (pgName === 'erpAccount' ? 'bg-gray-300' : '')
+        }
+        to={''} // to={routes.erpAccount()}
       >
         <svg
           className="w-5 h-5"
@@ -1894,7 +1834,7 @@ const SlimSideMenuBar = (props) => {
           />
         </svg>
       </Link>
-    </div >
+    </div>
   )
 }
 
