@@ -1,6 +1,12 @@
 import { title } from 'process'
 
+
+
+
 import React, { ChangeEvent } from 'react'
+
+
+
 
 import { DownloadIcon } from '@heroicons/react/outline'
 
@@ -10,20 +16,28 @@ import { Hidden, TextField } from '@mui/material'
 
 import { Form, Formik } from 'formik'
 
+
+
+
 import { Link } from '@redwoodjs/router/dist/links'
+
+
+
+
 import LessonComponent from 'src/components/A_HrModule/profile/AboutProfile'
 
 import Account from 'src/components/A_HrModule/profile/account'
 
 import CheckBox from 'src/components/A_HrModule/profile/checkBox'
 
-// import LeaveManagement from 'src/components/A_HrModule/profile/LeaveManagement'
+import LeaveManagement from 'src/components/A_HrModule/profile/LeaveManagement'
 
 import PersonalDetails from 'src/components/A_HrModule/profile/personalDetails'
 
 import ProfileHeaderPage from 'src/components/A_HrModule/profile/ProfileHeaderPage'
 
 import ProfileAssetManagement from 'src/components/A_HrModule/ProfileAssetManagement'
+
 import HeadSideBarDetailView from 'src/components/HeadDetailSideBar'
 
 import HeadNavBar from 'src/components/HeadNavBar/HeadNavBar'
@@ -38,6 +52,7 @@ import LfileUploadTableHome from 'src/components/LfileUploadTableHome'
 
 import Loader from 'src/components/Loader/Loader'
 
+import ProfileHeader from 'src/components/profile/ProfileHeaderPage'
 
 import TimeOff from 'src/components/TableComp/TimeOff'
 
@@ -51,76 +66,169 @@ import LeaveApprovalPage from 'src/pages/LeaveApprovalPage/LeaveApprovalPage'
 
 import myStyles from 'src/styles/myStyles.css'
 
+
+
+
 import bg from '../../../public/Group7.png'
 
-const Profile = () => {
+
+
+
+const NewProfile = () => {
+
   const { user } = useAuth()
+
+
+
 
   console.log('user detailsssssssss', user)
 
+
+
+
   function handleFileInputChange(event: ChangeEvent<HTMLInputElement>): void {}
+
+
+
 
   // const { user } = useAuth()
 
+
+
+
   // console.log("user detailsssssssss", user)
+
+
+
 
   function handleFileInputChange(event: ChangeEvent<HTMLInputElement>): void {}
 
+
+
+
   function getRootProps(arg0: {
+
     style: any
+
   }): JSX.IntrinsicAttributes &
+
     globalThis.React.ClassAttributes<HTMLDivElement> &
+
     globalThis.React.HTMLAttributes<HTMLDivElement> {
+
     throw new Error('Function not implemented.')
+
   }
+
+
+
 
   function getInputProps(): JSX.IntrinsicAttributes &
+
     globalThis.React.ClassAttributes<HTMLInputElement> &
+
     globalThis.React.InputHTMLAttributes<HTMLInputElement> {
+
     throw new Error('Function not implemented.')
+
   }
+
+
+
 
   function clearUploadDocs() {
+
     throw new Error('Function not implemented.')
+
   }
+
+
+
 
   function onDelete(file: File): void {
+
     throw new Error('Function not implemented.')
+
   }
+
+
+
 
   function onUpload(file: File, url: string): void {
+
     throw new Error('Function not implemented.')
+
   }
+
+
+
 
   function uploadFile(file: any) {
+
     throw new Error('Function not implemented.')
+
   }
+
+
+
 
   function setFileName(value: string) {
+
     throw new Error('Function not implemented.')
+
   }
+
+
+
 
   function resetter(): void {
+
     throw new Error('Function not implemented.')
+
   }
 
+
+
+
   function handleSubmit(file: any): void {
+
     throw new Error('Function not implemented.')
+
   }
+
+
+
 
   // function handleClick(event: MouseEvent<HTMLHeadingElement, MouseEvent>): void {
 
+
+
+
   //   throw new Error('Function not implemented.')
+
+
+
 
   // }
 
+
+
+
   return (
+
     <>
-      <ProfileHeaderPage />
 
-      <LessonComponent />
+      {/* <ProfileHeaderPage /> */}
 
-      {/* <div>
+
+
+
+      {/* <LessonComponent /> */}
+
+
+
+
+      <div>
 
         <div className="white-bg">
 
@@ -140,25 +248,16 @@ const Profile = () => {
 
                   <div className="flex flex-col">
 
-                    <div
+                    {/* <div className="mb-12">
 
-                      style={{ position: 'relative' }}
+                      <h1 className="text-left text-xl font-bold blink ml-9">
 
-                      className="md:w-[12vw] flex flex-col justify-between items-center md:h-[10vh] rounded-md"
+                        {user?.displayName}
 
-                    >
+                      </h1>
 
-                      <div className=" justify-center items-end mt-20 mb-16 ml-10">
+                    </div> */}
 
-                        <h1 className="text-center text-xl font-bold blink">
-
-                          {user?.displayName}
-
-                        </h1>
-
-                      </div>
-
-                    </div>
 
 
 
@@ -192,6 +291,7 @@ const Profile = () => {
 
 
 
+
                           <div className="relative">
 
                             <svg
@@ -213,6 +313,7 @@ const Profile = () => {
                               <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5zm1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0zM1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5z" />
 
                             </svg>
+
 
 
 
@@ -239,6 +340,7 @@ const Profile = () => {
                             />
 
                           </div>
+
 
 
 
@@ -272,6 +374,7 @@ const Profile = () => {
 
 
 
+
                             <input
 
                               type="text"
@@ -295,6 +398,7 @@ const Profile = () => {
                             />
 
                           </div>
+
 
 
 
@@ -328,6 +432,7 @@ const Profile = () => {
 
 
 
+
                             <input
 
                               type="text"
@@ -341,6 +446,7 @@ const Profile = () => {
                             />
 
                           </div>
+
 
 
 
@@ -366,6 +472,7 @@ const Profile = () => {
 
 
 
+
                             <input
 
                               type="text"
@@ -382,6 +489,9 @@ const Profile = () => {
 
                       </div>
 
+
+
+
                       <div className="flex-1 shadow-lg border rounded-lg p-4 mr-4">
 
                         <div>
@@ -391,6 +501,7 @@ const Profile = () => {
                             CONTACT
 
                           </h2>
+
 
 
 
@@ -418,6 +529,7 @@ const Profile = () => {
 
 
 
+
                             <p className="text-black mb-2.5">
 
                               <span className="mr-2">{user?.email}</span>
@@ -425,6 +537,7 @@ const Profile = () => {
                             </p>
 
                           </div>
+
 
 
 
@@ -450,6 +563,7 @@ const Profile = () => {
 
 
 
+
                             <p className="text-black mb-2.5">
 
                               <input
@@ -457,6 +571,9 @@ const Profile = () => {
                                 type="text"
 
                                 // placeholder={user?.phone}
+
+
+
 
                                 placeholder="8765456776"
 
@@ -474,9 +591,13 @@ const Profile = () => {
 
                       </div>
 
+
+
+
                       <div className="flex-1 shadow-lg border rounded-lg p-4">
 
                         <h2 className="text-black font-medium mb-3">TEAMS</h2>
+
 
 
 
@@ -510,6 +631,7 @@ const Profile = () => {
 
 
 
+
                           <Link
 
                             to="/about/create-team"
@@ -523,6 +645,7 @@ const Profile = () => {
                           </Link>
 
                         </div>
+
 
 
 
@@ -541,6 +664,7 @@ const Profile = () => {
                       </div>
 
                     </div>
+
 
 
 
@@ -564,6 +688,7 @@ const Profile = () => {
 
 
 
+
               <div
 
                 className="flex flex-col gap-3 absolute top-0 right-10 mr-6"
@@ -574,26 +699,54 @@ const Profile = () => {
 
                 {/* <PersonalDetails /> */}
 
-      {/* <CategoriesList /> */}
 
-      {/* <CourseList /> */}
 
-      {/* <ProfileAssetManagement /> */}
 
-      {/* <CheckBox /> */}
+                {/* <CategoriesList /> */}
 
-      {/* <Account /> */}
-      {/* <button /> */}
 
-      {/* <TimeOffTable /> */}
 
-      {/* <LeaveApproval /> */}
 
-      {/* <LeaveApprovalPage /> */}
+                {/* <CourseList /> */}
 
-      {/* <LeaveForm /> */}
 
-      {/* </div>
+
+
+                {/* <ProfileAssetManagement /> */}
+
+
+
+
+                {/* <CheckBox /> */}
+
+
+
+
+                {/* <Account /> */}
+
+                {/* <button /> */}
+
+
+
+
+                {/* <TimeOffTable /> */}
+
+
+
+
+                {/* <LeaveApproval /> */}
+
+
+
+
+                {/* <LeaveApprovalPage /> */}
+
+
+
+
+                {/* <LeaveForm /> */}
+
+              </div>
 
             </div>
 
@@ -601,9 +754,15 @@ const Profile = () => {
 
         </div>
 
-      </div> */}
+      </div>
+
     </>
+
   )
+
 }
 
-export default Profile
+
+
+
+export default NewProfile
