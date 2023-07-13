@@ -12,7 +12,11 @@ import {
   options4,
   options5,
 } from 'src/constants/userRoles'
-import { steamUsersList, storeAssetDetails } from 'src/context/dbQueryFirebase'
+import {
+  steamUsersList,
+  storeAssetDetails,
+  getAssetdetails,
+} from 'src/context/dbQueryFirebase'
 import { useAuth } from 'src/context/firebase-auth-context'
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
 
@@ -22,7 +26,7 @@ const validate = Yup.object().shape({
   Product: Yup.string().required('Product is required'),
   Processor: Yup.string().required('Processor is required'),
   Ram: Yup.string().required('Ram is required'),
-  SerialNumber: Yup.string().required('SerialNumber is required'),
+  ProductId: Yup.string().required('Product id is required'),
   AllocationStatus: Yup.string().required('AllocationStatus is required'),
   WorkingStatus: Yup.string().required('Working Status is required'),
 })
@@ -35,15 +39,35 @@ const OnBoardAssertBody = () => {
 
   const [loading, setLoading] = useState(false)
   const [leadsFetchedData, setLeadsFetchedData] = useState([])
+  const [selectedProduct, setSelectedProduct] = useState('')
+  const [processorOptions, setProcessorOptions] = useState(options1)
+  const [companyOptions, setCompanyOptions] = useState([])
   // const [selectedEmployee, setSelectedEmployee] = useState(null);
 
   const { user } = useAuth()
   const handleSubmit = async (values) => {
-    console.log('Submitted', values)
     try {
       setLoading(true)
 
-      await storeAssetDetails(user.orgId, values)
+      // Check if the ID already exists in the database
+      const idExists = await checkIdExists(values.ProductId)
+
+      if (idExists) {
+        // Display a form message indicating that the ID already exists
+        setFormMessage({
+          color: 'red',
+          message: 'ID already exists',
+        })
+      } else {
+        // Store the form details in the database
+        await storeAssetDetails(user.orgId, user.uid, values)
+
+        // Display a success message or perform any other necessary actions
+        setFormMessage({
+          color: 'green',
+          message: 'Form submitted successfully',
+        })
+      }
 
       setLoading(false)
     } catch (error) {
@@ -53,9 +77,64 @@ const OnBoardAssertBody = () => {
     console.log('Form Values:', values)
   }
 
+  const checkIdExists = async (id) => {
+    try {
+      const assetDetails = await getAssetdetails(user.orgId)
+
+      // Check if the provided ID exists in the asset details
+      return assetDetails.some((asset) => asset.ProductId === id)
+    } catch (error) {
+      console.log('Error checking ID existence:', error)
+      return false // Return false in case of any error or exception
+    }
+  }
+
   useEffect(() => {
     getLeadsDataFun()
   }, [])
+
+  useEffect(() => {
+    if (selectedProduct === 'Laptop') {
+      setProcessorOptions([
+        { label: 'Select the Processor', value: '' },
+        { label: 'Ryzen', value: 'Ryzen' },
+        { label: 'Intel', value: 'Intel' },
+      ])
+
+      setCompanyOptions([
+        { label: 'Select the Company', value: '' },
+        { label: 'HP', value: 'hp' },
+        { label: 'Dell', value: 'dell' },
+      ])
+    } else if (selectedProduct === 'Phone android') {
+      setProcessorOptions([
+        { label: 'Select the Processor', value: '' },
+        { label: 'Snapdragon', value: 'Snapdragon' },
+        { label: 'Mediatek', value: 'Mediatek' },
+      ])
+
+      setCompanyOptions([
+        { label: 'Select the Product Company', value: '' },
+        { label: 'Realme', value: 'realme' },
+        { label: 'Redmi', value: 'redmi' },
+      ])
+    } else if (selectedProduct === 'Sim') {
+      setProcessorOptions([
+        { label: 'Select the Processor', value: '' },
+        { label: 'jio', value: 'jio' },
+        { label: 'VI', value: 'VI' },
+      ])
+
+      setCompanyOptions([
+        { label: 'Select the Processor', value: '' },
+        { label: 'Jio', value: 'jio' },
+        { label: 'VI', value: 'vi' },
+      ])
+    } else {
+      setProcessorOptions(options1)
+      setCompanyOptions([])
+    }
+  }, [selectedProduct])
 
   const getLeadsDataFun = async () => {
     const unsubscribe = steamUsersList(
@@ -72,25 +151,29 @@ const OnBoardAssertBody = () => {
   }
 
   return (
-    <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+    <div className="h-full flex flex-col py-6 bg-gray-100 shadow-xl overflow-y-scroll">
       <div className="px-4 sm:px-6">
-        <Dialog.Title className="font-semibold text-lg mr-auto ml-3">
+        <Dialog.Title className="font-semibold text-lg mr-auto ml-3 text-green-500">
           Add Assets
         </Dialog.Title>
       </div>
       {formMessage.message && (
-        <div className="w-full bg-[#E9F6ED] ml-2 mt-3 mb-5 p-3 text-green-700">
+        <div
+          className={`w-full bg-${formMessage.color}-200 ml-2 mt-3 mb-5 p-3 text-green-700`}
+        >
           {formMessage.message}
         </div>
       )}
+
       <div className="px-4 sm:px-6 mt-4">
         <div className="mt-1">
           <Formik
             initialValues={{
               Product: '',
+              ProductCompany: '',
               Processor: '',
               Ram: '',
-              SerialNumber: '',
+              ProductId: '',
               AllocationStatus: '',
               WorkingStaus: '',
               AssignTo: '',
@@ -98,28 +181,27 @@ const OnBoardAssertBody = () => {
             validationSchema={validate}
             onSubmit={handleSubmit}
           >
-
             {({ values, setFieldValue }) => (
               <Form className="space-y-6">
                 <div>
                   <label
-                    htmlFor="SerialNumber"
+                    htmlFor="ProductId"
                     className="block text-sm font-medium bold-black-700"
                   >
-                    Serial Number
+                    Product Id
                   </label>
                   <Field
                     as={CustomSelect}
-                    name="SerialNumber"
+                    name="ProductId"
                     options={options3}
-                    placeholder="Select SerialNumber"
+                    placeholder="Select ProductId"
                     className="mt-1"
                     onChange={(option) =>
-                      setFieldValue('SerialNumber', option.value)
+                      setFieldValue('ProductId', option.value)
                     }
                   />
                   <ErrorMessage
-                    name="SerialNumber"
+                    name="ProductId"
                     component="div"
                     className="text-red-500 text-sm mt-1"
                   />
@@ -138,9 +220,11 @@ const OnBoardAssertBody = () => {
                     options={options}
                     placeholder="Select a product"
                     className="mt-1"
-                    onChange={(option) =>
+                    onChange={(option) => {
                       setFieldValue('Product', option.value)
-                    }
+                      setSelectedProduct(option.value)
+                      setFieldValue('ProductCompany', '') // Reset Product Company when Product changes
+                    }}
                   />
                   <ErrorMessage
                     name="Product"
@@ -151,50 +235,77 @@ const OnBoardAssertBody = () => {
 
                 <div>
                   <label
-                    htmlFor="Processor"
+                    htmlFor="ProductCompany"
                     className="block text-sm font-medium bold-black-700"
                   >
-                    Processor
+                    Product Company
                   </label>
                   <Field
                     as={CustomSelect}
-                    name="Processor"
-                    options={options1}
-                    placeholder="Select touchscreen option"
+                    name="ProductCompany"
+                    options={companyOptions}
+                    placeholder="Select the product company"
                     className="mt-1"
+                    disabled={!selectedProduct} // Disable the field when no product is selected
                     onChange={(option) =>
-                      setFieldValue('Processor', option.value)
+                      setFieldValue('ProductCompany', option.value)
                     }
                   />
                   <ErrorMessage
-                    name="Processor"
+                    name="ProductCompany"
                     component="div"
                     className="text-red-500 text-sm mt-1"
                   />
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="Ram"
-                    className="block text-sm font-medium bold-black-700"
-                  >
-                    Ram
-                  </label>
-                  <Field
-                    as={CustomSelect}
-                    name="Ram"
-                    options={options2}
-                    placeholder="Select Ram"
-                    className="mt-1"
-                    onChange={(option) => setFieldValue('Ram', option.value)}
-                  />
-                  <ErrorMessage
-                    name="Ram"
-                    component="div"
-                    className="text-red-500 text-sm mt-1"
-                  />
-                </div>
-
+                {selectedProduct !== 'Sim' && (
+                  <div>
+                    <label
+                      htmlFor="Processor"
+                      className="block text-sm font-medium bold-black-700"
+                    >
+                      Processor
+                    </label>
+                    <Field
+                      as={CustomSelect}
+                      name="Processor"
+                      options={processorOptions}
+                      placeholder="Select processor option"
+                      className="mt-1"
+                      onChange={(option) =>
+                        setFieldValue('Processor', option.value)
+                      }
+                    />
+                    <ErrorMessage
+                      name="Processor"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
+                )}
+                {selectedProduct !== 'Sim' && (
+                  <div>
+                    <label
+                      htmlFor="Ram"
+                      className="block text-sm font-medium bold-black-700"
+                    >
+                      Ram
+                    </label>
+                    <Field
+                      as={CustomSelect}
+                      name="Ram"
+                      options={options2}
+                      placeholder="Select Ram"
+                      className="mt-1"
+                      onChange={(option) => setFieldValue('Ram', option.value)}
+                    />
+                    <ErrorMessage
+                      name="Ram"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
+                )}
                 <div>
                   <label
                     htmlFor="AllocationStatus"
@@ -262,7 +373,6 @@ const OnBoardAssertBody = () => {
                           {employee.name}
                         </option>
                       ))}
-
                     </Field>
                   </div>
                 </div>

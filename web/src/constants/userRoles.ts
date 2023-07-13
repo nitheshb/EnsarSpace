@@ -288,7 +288,6 @@ export const options1 = [
   { label: 'Mediatek', value: 'mediatek' },
   { label: 'jio', value: 'jio' },
   { label: 'VI', value: 'vi' },
-
 ]
 export const options2 = [
   { label: 'Select the Ram', value: '' },
@@ -301,8 +300,9 @@ export const options2 = [
   { label: '512GB', value: '512GB' },
   { label: '1TB', value: '1TB' },
 ]
+
 export const options3 = [
-  { label: 'Select the Serial Number', value: '' },
+  { label: 'Select the Product Id', value: '' },
   { label: '01', value: '01' },
   { label: '02', value: '02' },
   { label: '03', value: '03' },
