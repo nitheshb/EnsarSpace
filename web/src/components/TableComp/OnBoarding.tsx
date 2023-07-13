@@ -1,5 +1,4 @@
 import { Fragment, useState, useEffect, SetStateAction } from 'react'
-
 import {
   getAssetdetails,
   getFinanceTransactionsByStatus,
@@ -33,9 +32,7 @@ const OnBoarding = ({ leadsTyper }) => {
   const { orgId } = user
 
   const [isImportLeadsOpen, setisImportLeadsOpen] = useState(false)
-
   const [ready, setReady] = useState(false)
-
   const [addLeadsTypes, setAddLeadsTypes] = useState('')
 
   const [selUserProfile, setSelUserProfile] = useState({})
@@ -224,62 +221,6 @@ const OnBoarding = ({ leadsTyper }) => {
 
   console.log('add productData is', OnBoardAssertBody)
 
-  // useEffect(() => {
-
-  //   const getAssetData = async () => {
-
-  //     try {
-
-  //       const requests = await getAssetdetails(user.orgId);
-
-  //       // Calculate the count of laptops
-
-  //       const laptopCount = requests.filter(request => request.Product === 'Laptop').length;
-
-  //       setLaptopCount(laptopCount);
-
-  //       const PhoneiphoneCount = requests.filter(request => request.Product === 'Phone iphone').length;
-
-  //       setPhoneiphoneCount(PhoneiphoneCount);
-
-  //       const PhoneandroidCount = requests.filter(request => request.Product === 'Phone android').length;
-
-  //       setPhoneandroidCount(PhoneandroidCount);
-
-  //       const SimCount = requests.filter(request => request.Product === 'Sim').length;
-
-  //       setSimCount(SimCount);
-
-  //       return requests;
-
-  //     } catch (error) {
-
-  //       console.error('Error retrieving Asset data:', error);
-
-  //       return [];
-
-  //     }
-
-  //   };
-
-  //   getAssetData()
-
-  //     .then((requests) => {
-
-  //       console.log('REQUEST DETAILS DATA');
-
-  //       console.log(requests);
-
-  //     })
-
-  //     .catch((error) => {
-
-  //       console.error('Error setting asset details:', error);
-
-  //     });
-
-  // }, []);
-
   useEffect(() => {
     const getAssetData = async () => {
       try {
@@ -315,50 +256,7 @@ const OnBoarding = ({ leadsTyper }) => {
 
   return (
     <>
-      {/* <div>
-
-        <OnBoardingAsset
-
-          open={isAssetOpen}
-
-          setOpen={handleAssetOnClose}
-
-          title="User"
-
-          productData={productData}
-
-        />
-
-
-
-
-        <OnBoardingAssign
-
-          open={isAssignOpen}
-
-          setOpen={handleAssignOnClose}
-
-          title="User"
-
-          assetData={assetData}
-
-        />
-
-      </div> */}
-
-      {/* </div> */}
-
-      {/* </section> */}
-
-      {/* <div></div> */}
-
       <LaptopDetailPage onBoardAssertBody={undefined} />
-
-      {/* </div> */}
-
-      {/* </div> */}
-
-      {/* </div> */}
     </>
   )
 }

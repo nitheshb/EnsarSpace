@@ -1642,8 +1642,12 @@ const SlimSideMenuBar = (props) => {
                   <span className="flex ml-auto items-bottom text-xs mt-2"></span>
                 </span>
               </span>
-            </li>
 
+            </li> 
+
+            {/* </li> */}
+
+              {/* Development_dev */}
             <li className="relative mt-1">
               <span
                 className={
