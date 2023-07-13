@@ -91,14 +91,14 @@ const TimeOffTable = () => {
                     >
                       {dat.label}
                       {dat.val === 'Casual Leave' && casualLeaveCount > 0 && (
-                        <sup className="rounded-full bg-indigo-500 text-white px-2 py-1 m-1 text-xs">
+                        <span className="inline-flex items-center justify-center h-6 w-6 ml-1 rounded-full bg-indigo-400 text-white">
                           {casualLeaveCount}
-                        </sup>
+                        </span>
                       )}
                       {dat.val === 'Sick Leave' && sickLeaveCount > 0 && (
-                        <sup className="rounded-full bg-indigo-500 text-white px-2 py-1 m-1 text-xs">
+                        <span className="inline-flex items-center justify-center h-6 w-6 ml-1 rounded-full bg-indigo-400 text-white">
                           {sickLeaveCount}
-                        </sup>
+                        </span>
                       )}
                     </div>
                   </a>
