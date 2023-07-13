@@ -117,7 +117,7 @@ const LeaveApprovalPage: React.FC = () => {
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <section className="flex ml-auto mt-[18px] bg-white border-gray-100 py-4 md:py-7 px-4">
+            <section className="flex items-center ml-auto mt-[18px] bg-white border-gray-100 py-4 md:py-7 px-4">
               {[
                 { label: 'All', val: 'all' },
                 { label: 'Sick', val: 'Sick Leave' },
@@ -142,7 +142,7 @@ const LeaveApprovalPage: React.FC = () => {
                   </div>
                 </a>
               ))}
-              <div className="ml-auto pl-40 flex items-center">
+              <div className="ml-auto flex items-center justify-end">
                 <Select
                   className="bg-white rounded-md py-2 px-4 text-sm"
                   classNamePrefix="react-select"
@@ -162,14 +162,13 @@ const LeaveApprovalPage: React.FC = () => {
                   onChange={handleDateChange}
                   dateFormat="yyyy-MM-dd"
                   customInput={
-                    <button className="ml-4 bg-white border border-gray-300 rounded-md py-2 px-4 text-sm">
+                    <button className="ml-4 bg-white border border-gray-300 rounded-md py-2 px-4 text-sm" style={{ minWidth: 'unset', width: 'auto' }}>
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                         <line x1="16" y1="2" x2="16" y2="6" />
                         <line x1="8" y1="2" x2="8" y2="6" />
                         <line x1="3" y1="10" x2="21" y2="10" />
                       </svg>
-
                     </button>
                   }
                 />

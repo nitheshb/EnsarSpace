@@ -1,144 +1,144 @@
-import React, { ChangeEvent, useState } from 'react';
+// import React, { ChangeEvent, useState } from 'react';
 
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+// import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 
 
 
-const ProfileHeader = () => {
+// const ProfileHeader = () => {
 
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+//   const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
-  const [isHovered, setIsHovered] = useState(false);
+//   const [isHovered, setIsHovered] = useState(false);
 
 
 
 
-  const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
+//   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
 
-    const file = event.target.files?.[0];
+//     const file = event.target.files?.[0];
 
-    if (file) {
+//     if (file) {
 
-      setSelectedImage(file);
+//       setSelectedImage(file);
 
-      // Perform additional logic here if needed
+//       // Perform additional logic here if needed
 
-    }
+//     }
 
-  };
+//   };
 
 
 
 
-  const handleHover = (isHovered: boolean) => {
+//   const handleHover = (isHovered: boolean) => {
 
-    setIsHovered(isHovered);
+//     setIsHovered(isHovered);
 
-  };
+//   };
 
 
 
 
-  return (
+//   return (
 
-    <div
+//     <div
 
-      className="profileHeaderCursor page-container flex flex-col overflow-auto bg-blue-300 from-blue-500 to-white"
+//       className="profileHeaderCursor page-container flex flex-col overflow-auto bg-blue-300 from-blue-500 to-white"
 
-      style={{ height: '180px' }}
+//       style={{ height: '180px' }}
 
-    >
+//     >
 
-      <div>
+//       <div>
 
-        <div data-testid="profile-header-hover-overlay">
+//         <div data-testid="profile-header-hover-overlay">
 
-          <input
+//           <input
 
-            id="file-input"
+//             id="file-input"
 
-            type="file"
+//             type="file"
 
-            accept="image/*"
+//             accept="image/*"
 
-            className="sr-only"
+//             className="sr-only"
 
-            onChange={handleImageUpload}
+//             onChange={handleImageUpload}
 
-          />
+//           />
 
-          <label htmlFor="file-input">
+//           <label htmlFor="file-input">
 
-            <div
+//             <div
 
-              className="flex flex-col items-center justify-center"
+//               className="flex flex-col items-center justify-center"
 
-              onMouseEnter={() => handleHover(true)}
+//               onMouseEnter={() => handleHover(true)}
 
-              onMouseLeave={() => handleHover(false)}
+//               onMouseLeave={() => handleHover(false)}
 
-              style={{ cursor: 'pointer', height: '100%' }} // Added height style
+//               style={{ cursor: 'pointer', height: '100%' }} // Added height style
 
-            >
+//             >
 
-              <div
+//               <div
 
-                className="w-32 h-32 bg-blue-700 rounded-full flex items-center justify-center absolute left-1/4"
+//                 className="w-32 h-32 bg-blue-700 rounded-full flex items-center justify-center absolute left-1/4"
 
-                style={{ top: '100px', border: '4px solid white' }}
+//                 style={{ top: '100px', border: '4px solid white' }}
 
-              >
+//               >
 
-                <input
+//                 <input
 
-                  id="file-input"
+//                   id="file-input"
 
-                  type="file"
+//                   type="file"
 
-                  accept="image/*"
+//                   accept="image/*"
 
-                  onChange={handleImageUpload}
+//                   onChange={handleImageUpload}
 
-                  className="sr-only"
+//                   className="sr-only"
 
-                />
+//                 />
 
-                {!selectedImage && (
+//                 {!selectedImage && (
 
-                  <span className="text-white text-5xl font-bold">
+//                   <span className="text-white text-5xl font-bold">
 
-                    {isHovered ? (
+//                     {isHovered ? (
 
-                      <CloudUploadIcon style={{ fontSize: 60 }} />
+//                       <CloudUploadIcon style={{ fontSize: 60 }} />
 
-                    ) : (
+//                     ) : (
 
-                      'DR'
+//                       'DR'
 
-                    )}
+//                     )}
 
-                  </span>
+//                   </span>
 
-                )}
+//                 )}
 
-              </div>
+//               </div>
 
-            </div>
+//             </div>
 
-          </label>
+//           </label>
 
-        </div>
+//         </div>
 
-      </div>
+//       </div>
 
-    </div>
+//     </div>
 
-  );
+//   );
 
-};
+// };
 
 
 
 
-export default ProfileHeader;
+// export default ProfileHeader;

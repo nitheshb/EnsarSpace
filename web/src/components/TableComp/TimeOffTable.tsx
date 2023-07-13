@@ -14,16 +14,18 @@ const TimeOffTable = () => {
   useEffect(() => {
     const fetchLeaveApplied = async () => {
       try {
-        const applied = await getLeaveRequests(user.orgId);
-        setLeaveApplied(applied);
-        setFilteredLeaveApplied(applied);
-        updateLeaveCounts(applied); // Update leave counts when data is fetched
+        if (user && user.orgId) { // Add null check for user and orgId
+          const applied = await getLeaveRequests(user.orgId);
+          setLeaveApplied(applied);
+          setFilteredLeaveApplied(applied);
+          updateLeaveCounts(applied); // Update leave counts when data is fetched
+        }
       } catch (error) {
         console.error('Error fetching applied leaves:', error);
       }
     };
     fetchLeaveApplied();
-  }, []);
+  }, [user]); // Update the dependency array to re-fetch when user changes
 
   useEffect(() => {
     updateLeaveCounts(filteredLeaveApplied); // Update leave counts when filtered data changes
@@ -89,14 +91,14 @@ const TimeOffTable = () => {
                     >
                       {dat.label}
                       {dat.val === 'Casual Leave' && casualLeaveCount > 0 && (
-                        <sup className="rounded-full bg-indigo-500 text-white px-2 py-1 m-1 text-xs">
+                        <span className="inline-flex items-center justify-center h-6 w-6 ml-1 rounded-full bg-indigo-400 text-white">
                           {casualLeaveCount}
-                        </sup>
+                        </span>
                       )}
                       {dat.val === 'Sick Leave' && sickLeaveCount > 0 && (
-                        <sup className="rounded-full bg-indigo-500 text-white px-2 py-1 m-1 text-xs">
+                        <span className="inline-flex items-center justify-center h-6 w-6 ml-1 rounded-full bg-indigo-400 text-white">
                           {sickLeaveCount}
-                        </sup>
+                        </span>
                       )}
                     </div>
                   </a>
@@ -137,13 +139,13 @@ const TimeOffTable = () => {
                               </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                              <div className="text-sm text-gray-900" >
+                              <div className="text-sm text-gray-900">
                                 {leave.noOfDays}
                               </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
                               <div className="text-sm text-gray-900">
-                                {leave.leaveReason}
+                                {leave.reason}
                               </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
@@ -152,32 +154,43 @@ const TimeOffTable = () => {
                               </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                              <div className={`text-sm ${leave.isLeaveApproved === 'Approved' ? 'text-green-500' : leave.isLeaveApproved === 'Rejected' ? 'text-red-500' : 'text-gray-900'}`}>
+                              <span
+                                className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                                  leave.isLeaveApproved === "Approved"
+                                    ? "bg-green-100 text-green-800"
+                                    : leave.isLeaveApproved === "Rejected"
+                                      ? "bg-red-100 text-red-800"
+                                      : leave.isLeaveApproved === "Pending"
+                                        ? "bg-yellow-100 text-yellow-800"
+                                        : ""
+                                  }`}
+                              >
                                 {leave.isLeaveApproved}
-                              </div>
+                              </span>
                             </td>
-
-
-                            <td className="px-6 py-4 whitespace-nowrap text-center">
-                              {leave.isLeaveApproved === "Pending" && (
-                                <>
-                                  <PencilIcon
-                                    className="w-5 h-5 ml-[6px] mb-[4px] inline cursor-pointer"
-                                  // onClick={() => setisLeaveOpen(true)}
-                                  />
-                                  <TrashIcon
-                                    className="w-5 h-5 ml-[18px] mb-[4px] inline cursor-pointer"
-                                    onClick={() => handleDelete(user.orgId
-                                    )} />
-                                </>
-                              )}
+                            <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                              <a
+                                href="#"
+                                className="text-indigo-600 hover:text-indigo-900 mr-3"
+                              >
+                                <PencilIcon className="h-5 w-5" />
+                              </a>
+                              <a
+                                href="#"
+                                className="text-red-600 hover:text-red-900"
+                                onClick={() => handleDelete(leave.requestId)}
+                              >
+                                <TrashIcon className="h-5 w-5" />
+                              </a>
                             </td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   ) : (
-                    <p>No leave found.</p>
+                    <div className="text-center py-10">
+                      No leave requests found.
+                    </div>
                   )}
                 </div>
               </div>
