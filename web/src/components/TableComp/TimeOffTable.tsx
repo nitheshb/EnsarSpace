@@ -12,7 +12,7 @@ const TimeOffTable = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    const fetchLeaveApplied = async () => { 
+    const fetchLeaveApplied = async () => {
       try {
         const applied = await getLeaveRequests(user.orgId);
         setLeaveApplied(applied);
@@ -89,12 +89,12 @@ const TimeOffTable = () => {
                     >
                       {dat.label}
                       {dat.val === 'Casual Leave' && casualLeaveCount > 0 && (
-                        <span className="text-black px-2 py-1 m-1 text-m">
+                        <span className="inline-flex items-center justify-center h-6 w-6 ml-1 rounded-full bg-indigo-400 text-white">
                           {casualLeaveCount}
                         </span>
                       )}
                       {dat.val === 'Sick Leave' && sickLeaveCount > 0 && (
-                        <span className="text-black px-2 py-1 m-1 text-m">
+                        <span className="inline-flex items-center justify-center h-6 w-6 ml-1 rounded-full bg-indigo-400 text-white">
                           {sickLeaveCount}
                         </span>
                       )}
