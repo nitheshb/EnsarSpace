@@ -7,9 +7,17 @@
 import React, { useEffect, useState } from 'react'
 
 import { Dialog } from '@headlessui/react'
-
+import axios from 'axios'
+import { Form, Formik } from 'formik'
+import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 
+// import { DEPARTMENT_LIST, ROLES_LIST, QUALIFICATION_LIST, EXPERIENCE_LIST } from 'src/constants/userRoles'
+
+import { DEPARTMENT_LIST } from 'src/constants/userRoles'
+import { ROLES_LIST } from 'src/constants/userRoles'
+import { QUALIFICATION_LIST } from 'src/constants/userRoles'
+import { EXPERIENCE_LIST } from 'src/constants/userRoles'
 import {
   addUserLog,
   checkIfUserAlreadyExists,
@@ -18,29 +26,12 @@ import {
   createUserToWorkReport,
   updateUserRole,
 } from 'src/context/dbQueryFirebase'
-
 import { useAuth } from 'src/context/firebase-auth-context'
-
-import { useForm } from 'react-hook-form'
-
-import { Form, Formik } from 'formik'
-
+import { PhoneNoField } from 'src/util/formFields/phNoField'
+import { CustomSelect } from 'src/util/formFields/selectBoxField'
 import { TextField } from 'src/util/formFields/TextField'
 
-import { CustomSelect } from 'src/util/formFields/selectBoxField'
-
-import axios from 'axios'
-
 import Loader from '../Loader/Loader'
-// import { DEPARTMENT_LIST, ROLES_LIST, QUALIFICATION_LIST, EXPERIENCE_LIST } from 'src/constants/userRoles'
-
-import { DEPARTMENT_LIST } from 'src/constants/userRoles'
-import { ROLES_LIST } from 'src/constants/userRoles'
-import { QUALIFICATION_LIST } from 'src/constants/userRoles'
-import { EXPERIENCE_LIST } from 'src/constants/userRoles'
-import { MANAGER_LIST } from 'src/constants/managerList'
-
-import { PhoneNoField } from 'src/util/formFields/phNoField'
 
 const SUserSignupBody = ({ title, dialogOpen, empData }) => {
   const { register, user } = useAuth()
@@ -79,8 +70,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
     department,
 
     uid,
-
-    managerVal,
 
     roles: rolees,
   } = empData
@@ -124,7 +113,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
     setLoading(true)
 
-    const { empId, email, myRole, deptVal, name, offPh, perPh, orgName } = data
+    const { empId, email, myRole, deptVal, name, offPh, perPh } = data
 
     if (editMode) {
       updateUserRole(
@@ -145,7 +134,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
         offPh,
 
         perPh,
-        // managerVal,
 
         'nitheshreddy.email@gmail.com'
       )
@@ -224,7 +212,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                 email
               )
 
-              let addedUserDocR = await createEnsarUser({
+              const addedUserDocR = await createEnsarUser({
                 empId: empId,
 
                 uid: uId,
@@ -244,7 +232,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                 offPh: offPh,
 
                 perPh: perPh,
-                manager:[managerVal]
               })
 
               console.log('docDetailsIs', docDetailsIs, docDetailsIs)
@@ -279,8 +266,9 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                 empId,
 
                 email,
-                // uid: docDetailsIs[0]['uid'],
-                uid: uId,
+
+                uid: docDetailsIs[0]['uid'],
+
                 userStatus: 'active',
 
                 orgStatus: 'active',
@@ -343,13 +331,8 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
     email: Yup.string().email('Email is invalid').required('Email is required'),
 
     deptVal: Yup.string().required('Req Dept'),
-    jobTitle: Yup.string().required('Required job Title'),
-    OrgName: Yup.string().required('Required organization'),
-    offPh: Yup.string().required('Official Phone Number is required'),
-    perPh: Yup.string().required('Personal Phone Number is required'),
 
     myRole: Yup.string().required('Required Role'),
-    managerName: Yup.string().required('Required Manager'),
   })
 
   return (
@@ -379,12 +362,14 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
 
             deptVal: department != undefined ? department[0] : '',
 
-            myRole: roles != undefined ? roles[0] : '',
+            myRole: rolees != undefined ? rolees[0] : '',
+
             qualval: '',
+
             expval: '',
+
             empId: empId,
-             role: roles,
-            orgName: orgName,
+
             perPh: perPh,
 
             offPh: offPh,
@@ -514,7 +499,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     {formik.values.myRole}
                   </div>
                 ) : null}
-
 
                 <CustomSelect
                   name="qualName"

@@ -8,8 +8,12 @@ import { Link } from '@redwoodjs/router/dist/links'
 
 // import ModuleSwitchDrop from 'src/components/A_SideMenu/modulesSwitchDrop'
 // import { GlobalSearchBar } from 'src/components/HeadNavBar/GlobalSearchBar'
+// import { Link } from '@redwoodjs/router/dist/links'
+
 import { useAuth } from 'src/context/firebase-auth-context'
 import { logout as logoutAction } from 'src/state/actions/user'
+
+// import { routes } from '@redwoodjs/router'
 
 const MyJourneyNavBar = ({ selModule, setSelModule }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -52,17 +56,7 @@ const MyJourneyNavBar = ({ selModule, setSelModule }) => {
         >
           EnsarSpace .
         </span>
-        {/* <section className="mt-1">
-          <ModuleSwitchDrop
-            type={selModule}
-            id={'Status'}
-            setStatusFun={makeFilterFun}
-            filteredUnits={filteredUnits}
-            pickedValue={selModule}
-          />
-        </section> */}
 
-        {/* <GlobalSearchBar /> */}
         <button className="flex items-center justify-center h-10 px-4 ml-auto "></button>
         <button className="flex items-center justify-center h-10 text-sm font-medium "></button>
         <Box

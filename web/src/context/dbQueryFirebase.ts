@@ -1,4 +1,5 @@
 import { WhereToVote } from '@mui/icons-material'
+import { id } from 'date-fns/locale'
 import {
   setDoc,
   doc,
@@ -736,22 +737,234 @@ export const createEnsarUser = async (data) => {
 }
 
 
-
-
-// -----------------------------------------------LEAVE MODULE ---------------------------------------------------------------------
-
-export const submitLeaveRequest = async (orgId, uid, displayName, leaveDetails) => {
+export const getCourseDetails = async () => {
   try {
-    const leaveRequestData = {
-      uid,
-      displayName,
-      ...leaveDetails
-    };
-    const leaveRequestRef = collection(db, `${orgId}_leave_Applications`);
-    const newLeaveRequestDoc = await addDoc(leaveRequestRef, leaveRequestData);
-    console.log('Leave request submitted successfully!');
-    const newLeaveRequestId = newLeaveRequestDoc.id; // Get the ID of the newly created leave request
-    return newLeaveRequestId;
+    const querySnapshot = await getDocs(collection(db, 'ensar_course_Repo'))
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+  }
+}
+
+export const getCourseDetailsById = async (id) => {
+  try {
+    const querySnapshot = await getDocs(
+      query(collection(db, 'ensar_course_Repo'), where('id', '==', id))
+    )
+    const documents = querySnapshot.docs.map((doc) => doc.data())
+    return documents[0] // Assuming there's only one document with the given ID
+  } catch (error) {
+    console.log('Error getting Course details by ID:', error)
+  }
+}
+
+
+
+
+export const storeCourseDetails = async (orgId, uid, courseDetails) => {
+  try {
+    const addCourseData = {uid, ...courseDetails}
+    const x = await addDoc(collection(db, `${orgId}_course_Repo`), addCourseData)
+    console.log('Course details stored successfully!')
+  } catch (error) {
+    console.log('Error storing Course details:', error)
+  }
+}
+
+
+// export const updateCourseId = async (orgId, uid, id) => {
+//   try {
+//     const ensarStartCourseId = collection(db, `${orgId}_start_Course`);
+//     const q = query(ensarStartCourseId, where('uid', '==', uid));
+//     const querySnapshot = await getDocs(q);
+
+//     querySnapshot.forEach(async (queryDocSnapshot) => {
+//       const courseProgressRef = doc(db, `${orgId}_start_Course`, queryDocSnapshot.id);
+//       await updateDoc(courseProgressRef, { lessonsId: arrayUnion(id) });
+//       console.log('CourseProgress updated successfully!');
+//     });
+//   } catch (error) {
+//     console.log('Error updating CourseProgress:', error);
+//     throw error;
+//   }
+// };
+
+
+
+
+
+export const startCourse = async (orgId, courseData) => {
+  try {
+ const uuid = uuidv4();
+ console.log('uuid',uuid);
+
+    await addDoc(collection(db, `${orgId}_start_Course`), {uuid, ...courseData});
+    console.log('Course details stored successfully!');
+  } catch (error) {
+    console.log('Error storing Course details:', error);
+  }
+};
+
+
+export const getStartCourses = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "ensar_start_Course"));
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+  }
+}
+
+
+// export const getCourseProgress = async (orgId, uid, courseId) => {
+//   try {
+//     const userDocRef = doc(db, `${orgId}_Progress_users`, uid);
+//     const userSnapshot = await getDoc(userDocRef);
+
+//     if (userSnapshot.exists()) {
+//       const userData = userSnapshot.data();
+//       const courseProgress = userData.courseProgress;
+
+//       if (courseProgress && courseProgress[courseId]) {
+//         return courseProgress[courseId];
+//       }
+//     }
+
+//     return null;
+//   } catch (error) {
+//     throw new Error('Error retrieving course progress: ' + error);
+//   }
+// };
+
+
+
+
+// export const updateCourseProgress = async (orgId, courseId, progress) => {
+//   try {
+//     const courseRef = doc(db, `${orgId}_start_Course`, courseId);
+//     const courseData = {
+//       course_progress: progress,
+//       last_updated: Timestamp.now(),
+//     };
+
+//     await updateDoc(courseRef, courseData);
+//     console.log('Course progress updated in Firestore');
+//   } catch (error) {
+//     console.error('Error updating course progress:', error);
+//   }
+// };
+
+
+export const getCourseDataById = async (courseId) =>{
+  try {
+    const querySnapshot = doc(db, 'ensar_course_Repo', courseId )
+
+    const data = await getDoc(querySnapshot);
+    console.log('data',data);
+    console.log('data data',data.data());
+
+    return data.data();
+
+
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+
+  }
+}
+
+
+
+
+export const getCourseContent = async () => {
+  try {
+    const courseContentRef = collection(db, 'ensar_course_content');
+    const querySnapshot = await getDocs(courseContentRef);
+    const CourseContent = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    return CourseContent;
+
+  } catch (error) {
+    console.log('Error getting course content:', error);
+
+    throw error; // Rethrow the error to handle it at a higher level if needed
+  }
+
+
+
+
+}
+
+
+export const updateCourseProgress = async (orgId, uid, allCompleted) => {
+  try {
+    const ensarStartCourseRef = collection(db, `${orgId}_start_Course`);
+    const q = query(ensarStartCourseRef, where('uid', '==', uid));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach(async (queryDocSnapshot) => {
+      const courseProgressRef = doc(db, `${orgId}_start_Course`, queryDocSnapshot.id);
+      await updateDoc(courseProgressRef, { courseProgress: allCompleted });
+      console.log('CourseProgress updated successfully!');
+    });
+
+  } catch (error) {
+    console.log('Error updating CourseProgress:', error);
+    throw error;
+  }
+};
+
+
+
+
+
+export const updateCourseId = async (orgId, uid, id) => {
+
+  try {
+
+    const ensarStartCourseId = collection(db, `${orgId}_start_Course`);
+
+    const q = query(ensarStartCourseId, where('uid', '==', uid));
+
+    const querySnapshot = await getDocs(q);
+
+
+
+    querySnapshot.forEach(async (queryDocSnapshot) => {
+
+      const courseProgressRef = doc(db, `${orgId}_start_Course`, queryDocSnapshot.id);
+
+      await updateDoc(courseProgressRef, { lessonsId: arrayUnion(id) });
+
+      console.log('CourseProgress updated successfully!');
+
+    });
+
+  } catch (error) {
+
+    console.log('Error updating CourseProgress:', error);
+
+    throw error;
+
+  }
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const storeLeaveDetails = async (leaveDetails) => {
+  try {
+    const leaveRef = doc(db, 'leaves', leaveDetails.employeeName)
+    await setDoc(leaveRef, leaveDetails, { merge: true })
+    console.log('Leave details stored successfully!')
   } catch (error) {
     console.log('Error submitting leave request:', error);
     throw error;

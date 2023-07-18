@@ -1,8 +1,8 @@
 export const courses = [
   {
-    id: 'xMHCZl',
+    id: '001',
     category: 'python',
-    image:'learning_images/python_5.jpg',
+    image: 'learning_images/python_5.jpg',
 
     course_name: 'Learn Python: The Complete Python Programming Course',
     description:
@@ -14,9 +14,9 @@ export const courses = [
     creator: 'Avinash Jain, The Codex',
     updated_date: '9/2015',
     lang: 'english',
-    
-    actual_price: 84.99,
-    discounted_price: 9.99,
+
+    // actual_price: 84.99,
+    // discounted_price: 9.99,
     what_you_will_learn: [
       'Create their own Python Programs',
       'Become an experienced Python Programmer',
@@ -35,7 +35,7 @@ export const courses = [
   {
     id: 'dtfo9e',
     category: 'python',
-    image:'learning_images/python_4.jpg',
+    image: 'learning_images/python_4.jpg',
     course_name: 'Learning Python for Data Analysis and Visualization',
     description:
       'Learn python and how to use it to analyze,visualize and present data. Includes tons of sample code and hours of video!',
@@ -45,17 +45,14 @@ export const courses = [
     creator: 'Jose Portilla',
     updated_date: '9/2019',
     lang: 'english',
-    actual_price: 84.99,
-    discounted_price: 9.99,
+    // actual_price: 84.99,
+    // discounted_price: 9.99,
     what_you_will_learn: [
       'Have an intermediate skill level of Python programming.',
       'Use the numpy library to create and manipulate arrays.',
       'Learn how to work with various data formats within python, including: JSON,HTML, and MS Excel Worksheets.',
       'Have a portfolio of various data analysis projects.',
     ],
-
-
-
 
     content: [
       'Intro to Course and Python',
@@ -80,14 +77,12 @@ export const courses = [
     creator: 'Edwin Diaz, Coding Faculty Solutionss',
     updated_date: '5/2022',
     lang: 'english',
-    actual_price: 84.99,
-    discounted_price: 9.99,
+    // actual_price: 84.99,
+    // discounted_price: 9.99,
     what_you_will_learn: [
       'To learn the python language',
       'To learn the CORE skills to understand any programming language',
     ],
-
-
 
     content: [
       'Programming fundamentals',
@@ -112,16 +107,14 @@ export const courses = [
     creator: 'Abrar Hussain',
     updated_date: '9/2019',
     lang: 'english',
-    actual_price: 29.99,
-    discounted_price: 9.99,
+    // actual_price: 29.99,
+    // discounted_price: 9.99,
     what_you_will_learn: [
       'Create fully functional Python programs',
       'Learn about loop structures and conditionals',
       'Work with Python file handling',
       'Manipulate strings and data',
     ],
-
-
 
     content: [
       'Getting Started',
@@ -145,8 +138,8 @@ export const courses = [
     creator: 'Infinite Skills',
     updated_date: '9/2019',
     lang: 'english',
-    actual_price: 49.99,
-    discounted_price: 10.99,
+    // actual_price: 49.99,
+    // discounted_price: 10.99,
     what_you_will_learn: [
       'Design Reusable Object-Oriented Python Classes',
       'How to handle Errors',
@@ -176,8 +169,8 @@ export const courses = [
     creator: 'Tech Learning Network, Mark Lassoff',
     updated_date: '11/2020',
     lang: 'english',
-    actual_price: 84.99,
-    discounted_price: 9.99,
+    // actual_price: 84.99,
+    // discounted_price: 9.99,
     what_you_will_learn: [
       'Prepare for Industry Certification Exam',
       'Hours and Hours of Video Instruction',
@@ -211,8 +204,8 @@ export const courses = [
     creator: 'Kalob Taulien',
     updated_date: '9/2019',
     lang: 'english',
-    actual_price: 72.99,
-    discounted_price: 14.99,
+    // actual_price: 72.99,
+    // discounted_price: 14.99,
     what_you_will_learn: [
       'Learn Python from beginner to advanced',
       'Lots of projects, big and small!',
@@ -254,8 +247,8 @@ export const courses = [
     creator: 'Tech Learning Network, Mark Lassoff',
     updated_date: '10/2020',
     lang: 'english',
-    actual_price: 19.99,
-    discounted_price: 8.99,
+    // actual_price: 19.99,
+    // discounted_price: 8.99,
     what_you_will_learn: [
       'Understand the technologies used in web development',
       'Apply HTML document structure',
@@ -281,8 +274,8 @@ export const courses = [
     creator: 'Evan Kimbrell',
     updated_date: '8/2022',
     lang: 'english',
-    actual_price: 70.99,
-    discounted_price: 14.99,
+    // actual_price: 70.99,
+    // discounted_price: 14.99,
     what_you_will_learn: [
       'Understand how development stacks work and pick which stack is ideal for you',
       'Decide between hiring in-house employees or contractors for your business',
@@ -319,8 +312,8 @@ export const courses = [
     creator: 'Brad Hussey',
     updated_date: '3/2022',
     lang: 'english',
-    actual_price: 50.99,
-    discounted_price: 11.99,
+    // actual_price: 50.99,
+    // discounted_price: 11.99,
     what_you_will_learn: [
       'Build 23+ custom web design & development projects by hand',
       'Plan, design and code your very own self-directed website project from scratch to launch!',
@@ -357,8 +350,8 @@ export const courses = [
     creator: 'Kirill Eremenko, Ligency Team',
     updated_date: '9/2022',
     lang: 'english',
-    actual_price: 77.99,
-    discounted_price: 16.99,
+    // actual_price: 77.99,
+    // discounted_price: 16.99,
     what_you_will_learn: [
       'Successfully perform all steps in a complex Data Science project',
       'Perform Data Mining in Tableau',
@@ -393,8 +386,8 @@ export const courses = [
     creator: 'Sundog Education by Frank Kane',
     updated_date: '2/2022',
     lang: ['english', 'french'],
-    actual_price: 87.99,
-    discounted_price: 14.99,
+    // actual_price: 87.99,
+    // discounted_price: 14.99,
     what_you_will_learn: [
       'Build artificial neural networks with Tensorflow and Keras',
       'Classify images, data, and sentiments using deep learning',
@@ -427,8 +420,8 @@ export const courses = [
     creator: 'Lazy Programmer Inc.',
     updated_date: '8/2022',
     lang: ['english', 'Portuguese'],
-    actual_price: 90.99,
-    discounted_price: 19.99,
+    // actual_price: 90.99,
+    // discounted_price: 19.99,
     what_you_will_learn: [
       'Learn how Deep Learning REALLY works (not just some diagrams and magical black box code)',
       'Code a neural network from scratch in Python and numpy',
@@ -459,8 +452,8 @@ export const courses = [
     creator: 'Kirill Eremenko, Ligency Team',
     updated_date: '11/2021',
     lang: 'english',
-    actual_price: 45.99,
-    discounted_price: 6.99,
+    // actual_price: 45.99,
+    // discounted_price: 6.99,
     what_you_will_learn: [
       'Learn to program in R at a good level',
       'Learn the core principles of programming',
@@ -492,8 +485,8 @@ export const courses = [
     creator: 'Jose Portilla',
     updated_date: '12/2020',
     lang: ['english', 'arabic'],
-    actual_price: 77.99,
-    discounted_price: 16.99,
+    // actual_price: 77.99,
+    // discounted_price: 16.99,
     what_you_will_learn: [
       'Program in R',
       'Create Data Visualizations',
@@ -526,8 +519,8 @@ export const courses = [
     creator: 'BackSpace Academy, Paul Coady',
     updated_date: '12/2021',
     lang: ['english', 'arabic'],
-    actual_price: 69.99,
-    discounted_price: 11.99,
+    // actual_price: 69.99,
+    // discounted_price: 11.99,
     what_you_will_learn: [
       'You will be fully prepared for the',
       'AWS Certified Solutions Architect',
@@ -555,8 +548,8 @@ export const courses = [
     creator: 'Zeal Vora',
     updated_date: '12/2022',
     lang: ['english', 'french'],
-    actual_price: 34.99,
-    discounted_price: 10.99,
+    // actual_price: 34.99,
+    // discounted_price: 10.99,
     what_you_will_learn: [
       'Will be prepared to give AWS Certified Security Specialty Exam',
       'Gain deep insights about Enterprise grade Security implementation.',
@@ -585,8 +578,8 @@ export const courses = [
     creator: 'Chandra Lingam',
     updated_date: '8/2022',
     lang: 'english',
-    actual_price: 71.99,
-    discounted_price: 15.99,
+    // actual_price: 71.99,
+    // discounted_price: 15.99,
     what_you_will_learn: [
       'Breadth of understanding of various AWS services',
       'How to Integrate Services into a Complete Solution',
@@ -616,8 +609,8 @@ export const courses = [
     creator: 'Manfred Werner',
     updated_date: '7/2020',
     lang: ['english', 'spanish'],
-    actual_price: 13.99,
-    discounted_price: 5.99,
+    // actual_price: 13.99,
+    // discounted_price: 5.99,
     what_you_will_learn: [
       'What Photoshop is & how to get into it!',
       'Customize the programs layout & feel comfortable',
@@ -648,8 +641,8 @@ export const courses = [
     creator: 'David Travis',
     updated_date: '4/2020',
     lang: ['english', 'italian'],
-    actual_price: 79.99,
-    discounted_price: 16.99,
+    // actual_price: 79.99,
+    // discounted_price: 16.99,
     what_you_will_learn: [
       'Bake UX into your workflow by following a proven, user centred design framework.',
       'Moderate a usability test and prioritise the observations.',
@@ -680,8 +673,8 @@ export const courses = [
     creator: 'Len Smith, Sean Kaye',
     updated_date: '4/2018',
     lang: 'english',
-    actual_price: 88.99,
-    discounted_price: 16.99,
+    // actual_price: 88.99,
+    // discounted_price: 16.99,
     what_you_will_learn: [
       'Part one – everything you need for a fast-track start, including your first article',
       'Part three – the essential skills that mark out a real pro',
@@ -710,8 +703,8 @@ export const courses = [
     creator: 'Debbie LaChusa',
     updated_date: '4/2022',
     lang: 'english',
-    actual_price: 40.99,
-    discounted_price: 10.99,
+    // actual_price: 40.99,
+    // discounted_price: 10.99,
     what_you_will_learn: [
       'Identify who your Ideal Clients are so you know exactly who to market and sell to',
       'Learn how to create a Signature Program so you can stop selling your time or creating spec proposals',
@@ -719,6 +712,7 @@ export const courses = [
       'Learn how to create a Financially Viable Business and understand exactly what it will take to reach your financial goals',
       'Learn how to easily create your own Wordpress Coaching or Consulting Website',
     ],
+
     content: [
       'Building Your Business & Marketing Foundation',
       'Packaging Your Services',
