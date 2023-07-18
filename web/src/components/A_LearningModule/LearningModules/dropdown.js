@@ -135,6 +135,7 @@ export const CategoryOptions = [
 
   { label: 'aws', value: 'aws' },
   { label: 'react js', value: 'react js' },
+  { label: 'angular', value: 'angular' },
 
 
   { label: 'data science', value: 'data science' },
@@ -239,6 +240,16 @@ export const Course_Names = [
     value: 'Learn React Js: The Complete React Js Programming Course',
 
   },
+
+  {
+
+    label: 'Learn Angular: The Complete Angular Programming Course',
+
+    value: 'Learn Angular: The Complete Angular Programming Course',
+
+  },
+
+
 
 
   {

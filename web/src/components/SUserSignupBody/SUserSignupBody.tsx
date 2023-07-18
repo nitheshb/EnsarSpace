@@ -321,6 +321,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
   const validate = Yup.object({
+    empId: Yup.string().required('Employee Id is required'),
     name: Yup.string()
 
       .max(15, 'Must be 15 characters or less')
@@ -372,6 +373,7 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
             perPh: perPh,
 
             offPh: offPh,
+            managerVal: managerVal != undefined ? managerVal[0] : '',
           }}
           validationSchema={validate}
           onSubmit={(values) => {
@@ -403,6 +405,41 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                   type="email"
                   disabled={editMode}
                 />
+                <TextField
+                  label="Job Title*"
+                  name="job"
+                  type="text"
+                  value={formik.values.role}
+                  disabled={editMode}
+                />
+                <TextField
+                  label="Organization*"
+                  name="organizor"
+                  type="text"
+                  value={formik.values.orgName}
+                  disabled={editMode}
+                />
+                <CustomSelect
+                  name="managerName"
+                  label="Manager*"
+                  className="input mt-3"
+                  onChange={(value) => {
+                    changed(value)
+
+                    formik.setFieldValue('managerVal', value.value)
+
+                    formik.setFieldValue('user', '')
+                  }}
+                  value={formik.values.managerVal}
+                  options={MANAGER_LIST}
+                />
+
+                <TextField
+                  label="Location*"
+                  name="location"
+                  type="location"
+                  disabled={editMode}
+                />
 
                 <PhoneNoField
                   name="offPh"
@@ -423,7 +460,6 @@ const SUserSignupBody = ({ title, dialogOpen, empData }) => {
                     formik.setFieldValue('perPh', value.value)
                   }}
                 />
-
                 <CustomSelect
                   name="deptName"
                   label="Department"

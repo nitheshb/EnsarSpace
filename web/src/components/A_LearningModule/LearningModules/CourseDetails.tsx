@@ -257,32 +257,13 @@
 
 // export default AddCourseDialog;
 
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState } from 'react'
 
-
-
-
 import { Dialog } from '@headlessui/react'
-
 import axios from 'axios'
-
 import { Form, Formik } from 'formik'
-
 import { useForm } from 'react-hook-form'
-
-import ReactStars from 'react-rating-stars-component'
+// import ReactStars from 'react-rating-stars-component'
 
 import * as Yup from 'yup'
 
@@ -290,11 +271,8 @@ import * as Yup from 'yup'
 
 
 import { storeCourseDetails } from 'src/context/dbQueryFirebase'
-
 import { useAuth } from 'src/context/firebase-auth-context'
-
 import { CustomSelect } from 'src/util/formFields/selectBoxField'
-
 import { TextField } from 'src/util/formFields/TextField'
 
 

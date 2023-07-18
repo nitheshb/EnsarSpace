@@ -769,7 +769,7 @@ const EnrollCoursePage = () => {
         </SideNavigation>
       </Card>
     </div>
-  );
-};
+  )
+}
 
 export default EnrollCoursePage;
