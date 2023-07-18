@@ -6,9 +6,9 @@ const CheckBox = () => {
   const [enabled, setEnabled] = useState(false)
   return (
     <section
-      className="md:w-[30vw] flex flex-col  md:px-8  rounded-md "
+      className="md:w-[30vw] flex flex-col  md:pr-8  rounded-md "
       style={{
-        width: '600px',
+        width: '350px',
       }}
     >
       <div className="w-full   flex flex-row py-1 items-center">

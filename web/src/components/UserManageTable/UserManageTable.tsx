@@ -176,6 +176,7 @@ const UserManageTable = ({ editEmployeeFun }) => {
                         Active
                       </span>
                     </td>
+                    
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <PencilIcon
                         className="w-5 h-5 ml-[6px] mb-[4px] inline cursor-pointer"

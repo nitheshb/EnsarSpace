@@ -350,7 +350,6 @@ export const Lang = [
 export const options = [
   { label: 'Select the product', value: '' },
   { label: 'Laptop', value: 'Laptop' },
-  { label: 'Phone iphone', value: 'Phone iphone' },
   { label: 'Phone android', value: 'Phone android' },
   { label: 'Sim', value: 'Sim' },
 ]
@@ -362,7 +361,6 @@ export const options1 = [
   { label: 'Mediatek', value: 'mediatek' },
   { label: 'jio', value: 'jio' },
   { label: 'VI', value: 'vi' },
-
 ]
 export const options2 = [
   { label: 'Select the Ram', value: '' },
@@ -375,10 +373,22 @@ export const options2 = [
   { label: '512GB', value: '512GB' },
   { label: '1TB', value: '1TB' },
 ]
+
 export const options3 = [
   { label: 'Select the Nfc', value: '' },
   { value: 'yes', label: 'Yes' },
   { value: 'no', label: 'No' },
+  { label: 'Select the Product Id', value: '' },
+  { label: '01', value: '01' },
+  { label: '02', value: '02' },
+  { label: '03', value: '03' },
+  { label: '04', value: '04' },
+  { label: '05', value: '05' },
+  { label: '06', value: '06' },
+  { label: '07', value: '07' },
+  { label: '08', value: '08' },
+  { label: '09', value: '09' },
+  { label: '10', value: '10' },
 ]
 export const options4 = [
   { label: 'Select the Allocation Status', value: '' },

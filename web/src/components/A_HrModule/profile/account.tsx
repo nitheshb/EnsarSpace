@@ -3,18 +3,33 @@ import React from 'react'
 const Account = () => {
   return (
     <section
-      className="md:w-[30vw] flex flex-col  md:px-8  rounded-md  mb-10"
+      className="flex md:w-[30vw] flex flex-col  md:pr-8  rounded-md  mb-10"
       style={{
-        width: '600px',
+        width: '850px',
+        alignItems:'center',
+        justifyContent:'center',
+        margin:'auto',
+
       }}
     >
-      <div className="w-full   flex flex-row py-4 items-center">
-        <p className="text-2xl">Places you work in </p>{' '}
+      <div className="w-full   flex flex-row py-4 items-center"
+      style={{
+        justifyContent:'center',
+        alignItems:'center',
+      }}>
+        <p className="text-2xl">Technologies you Know </p>{' '}
       </div>
 
       <div>
-        <div className="border-black rounded-xl border w-full drop-shadow">
-          <div className="flex p-2">
+        <div className="flex border-black rounded-xl border w-full drop-shadow"
+        style={{
+          width:'100%',
+          height:'250px'
+        }}>
+          <div className="flex p-2"
+          style={{
+            alignItems:'center'
+          }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 640 512"
@@ -28,7 +43,10 @@ const Account = () => {
             </svg>
             <p className="p-2 font-bold text-l">ENSAR SOLUTIONS </p>
           </div>
-          <div className="flex p-2">
+          <div className="flex p-2"
+           style={{
+            alignItems:'center'
+          }}>
             <img
               className="w-10 h-10"
               src="learning_images/cat_python.png"
@@ -36,7 +54,10 @@ const Account = () => {
             ></img>
             <p className="p-2 font-bold text-l">Python</p>
           </div>
-          <div className="flex p-2">
+          <div className="flex p-2"
+           style={{
+            alignItems:'center'
+          }}>
             <img
               className="w-10 h-10"
               src="learning_images/cat_web_development.png"
@@ -44,7 +65,10 @@ const Account = () => {
             ></img>
             <p className="p-2 font-bold text-l">WEB DEVELOPMENT </p>
           </div>
-          <div className="flex p-2">
+          <div className="flex p-2"
+           style={{
+            alignItems:'center'
+          }}>
             <img
               className="w-10 h-10"
               src="learning_images/cat_aws.png" alt="aws"></img>

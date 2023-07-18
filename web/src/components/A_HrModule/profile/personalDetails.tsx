@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from "react";
 
 const PersonalDetails = () => {
   const [coursesList, setCoursesList] = useState([
@@ -9,29 +9,38 @@ const PersonalDetails = () => {
     },
     { id: 2, title: 'Python', url: 'http://localhost:8910/courses/xMHCZl' },
     { id: 3, title: 'AWS', url: 'http://localhost:8910/courses/NkZeqm' },
-  ])
+  ]);
 
   return (
-    <section
-      className="flex flex-col md:px-8 rounded-md"
-      style={{ width: '600px' }}
-    >
-      <div className="w-full flex flex-row py-4 items-center">
-        <span>
-          <p className="text-[20px] font-medium text-gray-900">Learnings</p>
-          <p className="text-[10px] text-gray-500">
-            Others will only see what they can access.
-          </p>
-        </span>
-      </div>
+    <div className="flex justify-center h-screen">
+      <section className="max-w-10xl">
+        <div
+          className="w-full flex flex-row py-6 items-center"
+          style={{ alignItems: 'center', justifyContent: 'center' }}
+        >
+          <span>
+            <p className="text-2xl font-medium text-gray-850">
+              Explore Your Courses
+            </p>
+            <p className="text-base text-gray-500">
+              Expand Your Knowledge and Skills
+            </p>
+          </span>
+        </div>
 
-      <div>
-        <div className="border-black rounded-xl border w-full">
+        <div
+          className="border-black rounded-xl border hover:text-gray-800 p-8 mx-auto max-w-full font-sans flex flex-wrap justify-center gap-6 w-110"
+          style={{
+            height: '250px',
+            whiteSpace: 'nowrap',
+            overflowX: 'auto',
+          }}
+        >
           {coursesList.map((course) => (
             <a
               key={course.id}
               href={course.url}
-              className="flex items-center hover:bg-gray-200"
+              className="flex items-center hover:bg-gray-200 p-2"
             >
               <svg
                 style={{
@@ -47,13 +56,13 @@ const PersonalDetails = () => {
                   fill="#7248EA"
                 />
               </svg>
-
               <span className="ml-4">{course.title}</span>
             </a>
           ))}
-          <div>
+
+          <div className="p-2">
             <p
-              className="p-2 "
+              className="underline item-center"
               style={{
                 textDecoration: 'underline',
               }}
@@ -62,9 +71,9 @@ const PersonalDetails = () => {
             </p>
           </div>
         </div>
-      </div>
-    </section>
-  )
-}
+      </section>
+    </div>
+  );
+};
 
-export default PersonalDetails
+export default PersonalDetails;

@@ -143,6 +143,8 @@ const Routes = () => {
     <Router>
       <Route path="/laptop-detail" page={LaptopDetailPage} name="laptopDetail" />
 
+      <Route path="/laptop-details" page={LaptopDetailsPage} name="laptopDetails" />
+
       <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" />
 
       <Route path="/cource-overview/{uid}" page={CourceOverviewPage} name="courceOverview" />

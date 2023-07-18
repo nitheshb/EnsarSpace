@@ -9,28 +9,38 @@ const ProfileAssetManagement = () => {
 
   return (
     <section
-      className=" flex flex-col  md:px-8  rounded-md"
+      className=" flex flex-col  md:pr-8  rounded-md"
       style={{
-        width: '600px',
+        width: '900px',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: '200px',
       }}
     >
-      <div className="w-full  flex flex-row py-4 items-center ">
+      <div className="w-full  flex flex-row py-4 items-center "
+      style={{
+        justifyContent: 'center',
+      }}>
         {' '}
         <span>
-          <p className="text-[20px] font-medium text-gray-900">
-            {' '}
-            Asset Management{' '}
-          </p>{' '}
-          {/* <p className="text-[10px] text-gray-500">
 
+          <p className="text-2xl font-medium text-gray-900"> Asset Management </p>{' '}
+          <p className="text-[13px] text-gray-500">
             Others will only see what they can access.
 
-          </p> */}
+          </p>
         </span>
       </div>
 
       <div>
-        <div className="border-black rounded-xl border w-full">
+        <div className="flex border-black rounded-xl border w-full"
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          height:'250px',
+          width:'650px'
+        }}
+        >
           {/* <span className="flex">
 
             <svg
@@ -69,7 +79,7 @@ const ProfileAssetManagement = () => {
 
           </span> */}
 
-          <span className="flex">
+          <span className="flex p-4">
             <svg
               style={{
                 width: '50px',
@@ -136,7 +146,7 @@ const ProfileAssetManagement = () => {
 
  */}
 
-          <span className="flex">
+          <span className="flex p-4">
             <svg
               style={{
                 width: '50px',
@@ -204,7 +214,7 @@ const ProfileAssetManagement = () => {
 
           </span> */}
 
-          <span className="flex">
+          <span className="flex p-4">
             <svg
               style={{
                 width: '50px',
@@ -241,6 +251,10 @@ const ProfileAssetManagement = () => {
           </div>
         </div>
       </div>
+
+
+
+
     </section>
   )
 }

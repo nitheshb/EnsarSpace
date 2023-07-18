@@ -14,16 +14,19 @@ const TimeOffTable = () => {
   useEffect(() => {
     const fetchLeaveApplied = async () => {
       try {
-        const applied = await getLeaveRequests(user.orgId);
-        setLeaveApplied(applied);
-        setFilteredLeaveApplied(applied);
-        updateLeaveCounts(applied); // Update leave counts when data is fetched
+        if (user && user.orgId) {
+          // Add null check for user and orgId
+          const applied = await getLeaveRequests(user.orgId);
+          setLeaveApplied(applied);
+          setFilteredLeaveApplied(applied);
+          updateLeaveCounts(applied); // Update leave counts when data is fetched
+        }
       } catch (error) {
         console.error('Error fetching applied leaves:', error);
       }
     };
     fetchLeaveApplied();
-  }, []);
+  }, [user]); // Update the dependency array to re-fetch when user changes
 
   useEffect(() => {
     updateLeaveCounts(filteredLeaveApplied); // Update leave counts when filtered data changes
@@ -63,10 +66,10 @@ const TimeOffTable = () => {
   return (
     <>
       <div className="bg-white">
-        <div className="flex flex-col">
+        <div className="flex flex-col " style={{justifyContent:'center', alignItems:'center'}}>
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-              <section className="flex ml-auto mt-[18px]  bg-white  border-gray-100 py-4 md:py-7 px-4">
+            <div className="py-2 align-middle inline-block  sm:px-6 lg:px-8">
+              <section className="flex ml-auto mt-[18px] bg-white border-gray-100 py-4 md:py-7 px-4">
                 {[
                   { label: 'All', val: 'all' },
                   { label: 'Sick', val: 'Sick Leave' },
@@ -82,7 +85,7 @@ const TimeOffTable = () => {
                     onClick={() => showOnlyLeave(dat.val)}
                   >
                     <div
-                      className={`py-2 px-8 rounded-full hover:text-indigo-700 hover:bg-indigo-100  ${selLeave.includes(dat.val)
+                      className={`py-1 px-4 rounded-full hover:text-indigo-700 hover:bg-indigo-100  ${selLeave.includes(dat.val)
                         ? 'bg-indigo-100 text-indigo-700'
                         : 'text-gray-600'
                         }`}
@@ -108,76 +111,87 @@ const TimeOffTable = () => {
                     <table className="w-full table-auto">
                       <thead className="bg-gray-50">
                         <tr>
-                          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Leave Type</th>
-                          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">From Date</th>
-                          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">To Date</th>
-                          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No of Days</th>
-                          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Reason</th>
-                          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Comment</th>
-                          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+                          <th scope="col" className="px-1 py-2 text-xs font-medium  text-gray-500 uppercase tracking-wider"style={{textAlign:'inherit'}}>Leave Type</th>
+                          <th scope="col" className="px-1 py-2 text-xs font-medium  text-gray-500 uppercase tracking-wider"style={{textAlign:'inherit'}}>From Date</th>
+                          <th scope="col" className="px-1 py-2 text-xs font-medium  text-gray-500 uppercase tracking-wider"style={{textAlign:'inherit'}}>To Date</th>
+                          <th scope="col" className="px-1 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider"style={{textAlign:'inherit'}}>No of Days</th>
+                          <th scope="col" className="px-1 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider"style={{textAlign:'inherit'}}>Reason</th>
+                          <th scope="col" className="px-1 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider"style={{textAlign:'inherit'}}>Comment</th>
+                          <th scope="col" className="px-1 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider"style={{textAlign:'inherit'}}>Status</th>
+                          <th scope="col" className="px-1 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider"style={{textAlign:'inherit'}}></th>
                         </tr>
                       </thead>
                       <tbody>
                         {filteredLeaveApplied.map((leave) => (
                           <tr key={leave.requestId}>
-                            <td className="px-6 py-4 whitespace-nowrap">
+                            <td className="px-4 py-2 whitespace-nowrap">
                               <div className="text-sm text-gray-900">
                                 {leave.leaveType}
                               </div>
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
+                            <td className="px-4 py-2 whitespace-nowrap">
                               <div className="text-sm text-gray-900">
                                 {leave.fromDate}
                               </div>
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
+                            <td className="px-4 py-2 whitespace-nowrap">
                               <div className="text-sm text-gray-900">
                                 {leave.toDate}
                               </div>
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <div className="text-sm text-gray-900" >
+                            <td className="px-4 py-2 whitespace-nowrap">
+                              <div className="text-sm text-gray-900">
                                 {leave.noOfDays}
                               </div>
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
+                            <td className="px-4 py-2 whitespace-nowrap">
                               <div className="text-sm text-gray-900">
-                                {leave.leaveReason}
+                                {leave.reason}
                               </div>
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
+                            <td className="px-4 py-2 whitespace-nowrap">
                               <div className="text-sm text-gray-900">
                                 {leave.comment}
                               </div>
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <div className={`text-sm ${leave.isLeaveApproved === 'Approved' ? 'text-green-500' : leave.isLeaveApproved === 'Rejected' ? 'text-red-500' : 'text-gray-900'}`}>
+                            <td className="px-2 py-2 whitespace-nowrap">
+                              <span
+                                className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                                  leave.isLeaveApproved === "Approved"
+                                    ? "bg-green-100 text-green-800"
+                                    : leave.isLeaveApproved === "Rejected"
+                                      ? "bg-red-100 text-red-800"
+                                      : leave.isLeaveApproved === "Pending"
+                                        ? "bg-yellow-100 text-yellow-800"
+                                        : ""
+                                }`}
+                              >
                                 {leave.isLeaveApproved}
-                              </div>
+                              </span>
                             </td>
-
-
-                            <td className="px-6 py-4 whitespace-nowrap text-center">
-                              {leave.isLeaveApproved === "Pending" && (
-                                <>
-                                  <PencilIcon
-                                    className="w-5 h-5 ml-[6px] mb-[4px] inline cursor-pointer"
-                                  // onClick={() => setisLeaveOpen(true)}
-                                  />
-                                  <TrashIcon
-                                    className="w-5 h-5 ml-[18px] mb-[4px] inline cursor-pointer"
-                                    onClick={() => handleDelete(user.orgId
-                                    )} />
-                                </>
-                              )}
+                            <td className="px-4 py-2 whitespace-nowrap text-right text-sm font-medium">
+                              <a
+                                href="#"
+                                className="text-indigo-600 hover:text-indigo-900 mr-3"
+                              >
+                                <PencilIcon className="h-5 w-5" />
+                              </a>
+                              <a
+                                href="#"
+                                className="text-red-600 hover:text-red-900"
+                                onClick={() => handleDelete(leave.requestId)}
+                              >
+                                <TrashIcon className="h-5 w-5" />
+                              </a>
                             </td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   ) : (
-                    <p>No leave found.</p>
+                    <div className="text-center py-10">
+                      No leave requests found.
+                    </div>
                   )}
                 </div>
               </div>
