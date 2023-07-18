@@ -52,7 +52,7 @@ const Account = () => {
               src="learning_images/cat_python.png"
               alt="python"
             ></img>
-            <p className="p-2 font-bold text-l">PYTHON </p>
+            <p className="p-2 font-bold text-l">Python</p>
           </div>
           <div className="flex p-2"
            style={{

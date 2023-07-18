@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const TableData = () => {
   const headers = [
@@ -14,7 +14,7 @@ const TableData = () => {
     'View Users',
     'View CRM',
     'Update CRM',
-  ];
+  ]
 
   const rows = [
     [
@@ -129,10 +129,10 @@ const TableData = () => {
       true,
       true,
     ],
-  ];
+  ]
 
-  const [checkboxValues, setCheckboxValues] = useState({});
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [checkboxValues, setCheckboxValues] = useState({})
+  const [selectedCategory, setSelectedCategory] = useState('all')
 
   const handleCheckboxChange = (rowIndex, columnIndex) => {
     setCheckboxValues((prevValues) => ({
@@ -141,17 +141,17 @@ const TableData = () => {
         ...prevValues[rowIndex],
         [columnIndex]: !prevValues[rowIndex]?.[columnIndex],
       },
-    }));
-  };
+    }))
+  }
 
   const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-  };
+    setSelectedCategory(category)
+  }
 
   const filteredRows =
     selectedCategory === 'all'
       ? rows
-      : rows.filter((row) => row[0] === selectedCategory);
+      : rows.filter((row) => row[0] === selectedCategory)
 
   return (
     <section className="flex flex-col ml-auto mt-[18px] bg-white border-gray-100 py-4 md:py-7 px-4 md:px-8 xl:px-10 table-container">
@@ -181,7 +181,9 @@ const TableData = () => {
           Legal Manager
         </button>
         <button
-          className={selectedCategory === 'Admin Project Manager' ? 'active' : ''}
+          className={
+            selectedCategory === 'Admin Project Manager' ? 'active' : ''
+          }
           onClick={() => handleCategoryChange('Admin Project Manager')}
         >
           Admin Project Manager
@@ -278,7 +280,7 @@ const TableData = () => {
         `}
       </style>
     </section>
-  );
-};
+  )
+}
 
-export default TableData;
+export default TableData

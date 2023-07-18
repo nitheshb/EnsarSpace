@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react'
+import { MetaTags } from '@redwoodjs/web'
 
 
 
@@ -19,6 +20,7 @@ import HeadNavBar2 from 'src/components/HeadNavBar/HeadNavBar2'
 
 // import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 
+
 import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 
 import MyActivityHome from 'src/components/MyActivityHome/MyActivityHome'
@@ -28,6 +30,7 @@ import SUserSignup from 'src/components/SUserSignup/SUserSignup'
 import OnBoarding from 'src/components/TableComp/OnBoarding'
 
 // import OnBoarding from 'src/components/TableComp/OnBoarding'
+
 import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
@@ -39,11 +42,17 @@ import LaptopDetailsPage from '../LaptopDetailPage/LaptopDetailPage'
 import SiderForm from 'src/components/SiderForm/SiderForm'
 // import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
 // import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
+import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 // import TimeOff from 'src/components/TableComp/TimeOff'
+import LeaveApprovalPage from 'src/pages/LeaveApprovalPage/LeaveApprovalPage'
 import TableData from 'src/components/A_AccessManagement/TableData'
+import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 // import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
+import TimeOffTable from 'src/components/TableComp/TimeOffTable'
+import AttendancePage from 'src/components/A_LearningModule/Attendance'
 import TimeOff from 'src/components/TableComp/TimeOff'
 import Calendar from 'src/components/TableComp/Calendar'
+import SiderForm from 'src/components/SiderForm/SiderForm'
 // import OnBoarding1 from 'src/components/ConstructModule/OnBoarding1'
 // import Assets from 'src/components/ConstructModule/OnBoarding'
 
@@ -61,7 +70,6 @@ const UsersAdminPage = () => {
   const [empData, setEmpData] = useState({})
 
   const [selModule, setSelModule] = useState('HR')
-  const [isImportLeadsOpen, setisImportLeadsOpen] = useState(false)
   const [isLeaveOpen, setisLeaveOpen] = useState(false)
 
 
@@ -105,9 +113,6 @@ const UsersAdminPage = () => {
 
         />
 
-
-
-
         <div className="flex flex-col flex-grow">
 
           <HeadNavBar2 selModule={selModule} setSelModule={setSelModule} />
@@ -115,6 +120,7 @@ const UsersAdminPage = () => {
           <div className="flex-grow p-6 overflow-auto  text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
 
             <div className="flex items-center flex-shrink-0 h-16 px-0  pl-0  ">
+
 
               {/* <h1 className="text-lg font-medium">redefine.</h1> */}
 
@@ -170,6 +176,7 @@ const UsersAdminPage = () => {
                 </button>
 
               )}
+
 
               {viewable === 'OnBoarding' && (
                 // <button
@@ -353,6 +360,7 @@ const UsersAdminPage = () => {
 
             )}
 
+
             {/* {viewable === 'Roles Management' && (
 
               <>
@@ -371,6 +379,10 @@ const UsersAdminPage = () => {
               <>
 
                 <TableData />
+              </>
+            )}
+
+            {viewable === 'On Boarding' && (
 
                 {/* <OnBoarding leadsTyper={undefined} /> */}
 
@@ -407,12 +419,14 @@ const UsersAdminPage = () => {
 
             {viewable === 'TimeOff' && (
               <>
+                <TimeOff />
 
                 <TimeOffTable />
 
               </>
 
             )}
+            {viewable === 'TimeOff' && (
 
 
 
@@ -420,7 +434,7 @@ const UsersAdminPage = () => {
             {viewable === 'Time Off' && (
 
               <>
-                <TimeOff />
+                <TimeOffTable />
               </>
 
             )}
@@ -479,6 +493,7 @@ const UsersAdminPage = () => {
 
             )}
 
+            {/* {viewable === 'User Report' && (
 
 
 
@@ -505,6 +520,7 @@ const UsersAdminPage = () => {
                 isEdit={false}
 
               />
+            )} */}
 
             )}
 
@@ -520,6 +536,7 @@ const UsersAdminPage = () => {
               title="User"
 
               empData={empData}
+            />
 
             />
 
@@ -532,8 +549,11 @@ const UsersAdminPage = () => {
           </div>
 
         </div>
+      </div >
+
 
       </div>
+
       <SiderForm
         open={isImportLeadsOpen}
         setOpen={setisImportLeadsOpen}
