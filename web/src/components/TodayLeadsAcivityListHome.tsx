@@ -212,18 +212,19 @@ const TodayLeadsActivityListHomeView = ({
     value !== '' ? item.role.toLowerCase() === value : item.role
   )
   return (
-    <TodayLeadsActivitySearchView
-      data={filterTable}
-      searchKey={searchKey}
-      setSearchKey={setSearchKey}
-      handleDelete={{}}
-      selStatus={value}
-      todaySch={todaySchL}
-      schLoading={schLoading}
-      rowsParent={leadsFetchedData}
-      selUserProfileF={selUserProfileF}
-      taskType={taskType}
-    />
+    <div>one new</div>
+    // <TodayLeadsActivitySearchView
+    //   data={filterTable}
+    //   searchKey={searchKey}
+    //   setSearchKey={setSearchKey}
+    //   handleDelete={{}}
+    //   selStatus={value}
+    //   todaySch={todaySchL}
+    //   schLoading={schLoading}
+    //   rowsParent={leadsFetchedData}
+    //   selUserProfileF={selUserProfileF}
+    //   taskType={taskType}
+    // />
   )
 }
 

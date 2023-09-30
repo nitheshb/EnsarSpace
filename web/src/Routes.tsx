@@ -141,6 +141,9 @@ const Routes = () => {
 
   return (
     <Router>
+      <Route path="/asset-management" page={AssetManagementPage} name="assetManagement" />
+      <Route path="/emp-performance" page={EmpPerformancePage} name="empPerformance" />
+      <Route path="/leave-management" page={LeaveManagementPage} name="leaveManagement" />
       <Route path="/laptop-detail" page={LaptopDetailPage} name="laptopDetail" />
 
       <Route path="/laptop-details" page={LaptopDetailsPage} name="laptopDetails" />

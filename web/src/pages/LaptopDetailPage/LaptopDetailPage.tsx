@@ -367,9 +367,6 @@ import { motion } from 'framer-motion'
 import OnBoardAssertBody from 'src/components/onBordingAssert/onBoardAssertBody'
 import StyledButton from 'src/components/RoundedButton'
 import SiderForm from 'src/components/SiderForm/SiderForm'
-import { useEffect, useState } from 'react'
-
-import { motion } from 'framer-motion'
 
 import {
   deleteUser,
@@ -380,19 +377,7 @@ import {
 import { useAuth } from 'src/context/firebase-auth-context'
 
 
-import { TrashIcon } from '@heroicons/react/outline'
-
-import StyledButton from 'src/components/RoundedButton'
-
 import Select from 'react-select'
-
-import { useAuth } from 'src/context/firebase-auth-context'
-
-import OnBoardAssertBody from 'src/components/onBordingAssert/onBoardAssertBody'
-
-import SiderForm from 'src/components/SiderForm/SiderForm'
-
-import { InputAdornment, Stack, TextField } from '@mui/material'
 
 import Dropdown from './Dropdown'
 
@@ -860,7 +845,6 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
               <div className="ml-auto flex items-center justify-right ml-2">
                 <Select
                   // className='bg-white rounded-md py-2 px-4 text-sm'
-
                   options={selectOptions}
                   value={selectedOption}
                   onChange={handleOptionChange}
@@ -876,7 +860,6 @@ const LaptopDetailPage = ({ onBoardAssertBody }) => {
                 />
               </div>
             </div>
-          </section>
           <div className="shadow overflow-hidden border-b border-gray-200 bg-white pb-4 md:py-7 px-4 md:px-8 xl:px-10 br-16">
             <table className="min-w-full divide-y divide-gray-200 ">
               <thead className="bg-gray-100">

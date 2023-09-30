@@ -4,7 +4,6 @@ import { MetaTags } from '@redwoodjs/web'
 
 
 
-import { MetaTags } from '@redwoodjs/web'
 
 
 
@@ -35,7 +34,6 @@ import TimeOffTable from 'src/components/TableComp/TimeOffTable'
 
 import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 
-import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 import LeaveApprovalPage from '../LeaveApprovalPage/LeaveApprovalPage'
 
 import LaptopDetailsPage from '../LaptopDetailPage/LaptopDetailPage'
@@ -44,15 +42,10 @@ import SiderForm from 'src/components/SiderForm/SiderForm'
 // import UserAccessTable from 'src/components/UserAccessTable/UserAccessTable'
 import UserManageTable from 'src/components/UserManageTable/UserManageTable'
 // import TimeOff from 'src/components/TableComp/TimeOff'
-import LeaveApprovalPage from 'src/pages/LeaveApprovalPage/LeaveApprovalPage'
 import TableData from 'src/components/A_AccessManagement/TableData'
-import LeadsTeamReportBody from 'src/components/LeadsTeamReportBody'
 // import ActivitySummaryReport from 'src/components/ActivitySummaryReport'
-import TimeOffTable from 'src/components/TableComp/TimeOffTable'
-import AttendancePage from 'src/components/A_LearningModule/Attendance'
 import TimeOff from 'src/components/TableComp/TimeOff'
 import Calendar from 'src/components/TableComp/Calendar'
-import SiderForm from 'src/components/SiderForm/SiderForm'
 // import OnBoarding1 from 'src/components/ConstructModule/OnBoarding1'
 // import Assets from 'src/components/ConstructModule/OnBoarding'
 
@@ -386,7 +379,7 @@ const UsersAdminPage = () => {
 
                 {/* <OnBoarding leadsTyper={undefined} /> */}
 
-              </>
+
 
             )}
 
@@ -426,7 +419,7 @@ const UsersAdminPage = () => {
               </>
 
             )}
-            {viewable === 'TimeOff' && (
+
 
 
 
@@ -522,7 +515,7 @@ const UsersAdminPage = () => {
               />
             )} */}
 
-            )}
+
 
 
 
@@ -538,7 +531,7 @@ const UsersAdminPage = () => {
               empData={empData}
             />
 
-            />
+
 
             {/* <SiderForm
             open={isImportLeadsOpened}
@@ -552,14 +545,14 @@ const UsersAdminPage = () => {
       </div >
 
 
-      </div>
 
-      <SiderForm
+
+      {/* <SiderForm
         open={isImportLeadsOpen}
         setOpen={setisImportLeadsOpen}
         title="AddAsset"
         widthClass="max-w-xl"
-      />
+      /> */}
 
       <SiderForm
         open={isLeaveOpen}

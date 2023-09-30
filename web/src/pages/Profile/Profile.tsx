@@ -12,15 +12,7 @@ import { Form, Formik } from 'formik'
 
 // import { Link } from '@redwoodjs/router/dist/links'
 import { Link } from '@redwoodjs/router/dist/links'
-import { DownloadIcon } from '@heroicons/react/outline'
 
-import { Height } from '@mui/icons-material'
-
-import { Hidden, TextField } from '@mui/material'
-
-import { Form, Formik } from 'formik'
-
-import { Link } from '@redwoodjs/router/dist/links'
 import LessonComponent from 'src/components/A_HrModule/profile/AboutProfile'
 
 import Account from 'src/components/A_HrModule/profile/account'
@@ -54,7 +46,6 @@ import LfileUploadTableHome from 'src/components/LfileUploadTableHome'
 import ProfileHeader from 'src/components/profile/ProfileHeaderPage'
 // import LfileUploadTableHome from 'src/components/LfileUploadTableHome'
 
-import LfileUploadTableHome from 'src/components/LfileUploadTableHome'
 
 import Loader from 'src/components/Loader/Loader'
 
@@ -70,25 +61,24 @@ import { useAuth } from 'src/context/firebase-auth-context'
 // import bg from '../../../public/Group7.png'
 import bg from '../../../public/Group7.png'
 
-const Profile = () => {
+
 import LeaveApprovalPage from 'src/pages/LeaveApprovalPage/LeaveApprovalPage'
 
 import myStyles from 'src/styles/myStyles.css'
 
-import bg from '../../../public/Group7.png'
 
 const Profile = () => {
   const { user } = useAuth()
 
   console.log('user detailsssssssss', user)
 
-  function handleFileInputChange(event: ChangeEvent<HTMLInputElement>): void {}
+
 
   // const { user } = useAuth()
 
   // console.log("user detailsssssssss", user)
 
-  function handleFileInputChange(event: ChangeEvent<HTMLInputElement>): void {}
+
 
   function getRootProps(arg0: {
     style: any

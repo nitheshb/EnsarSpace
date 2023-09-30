@@ -964,8 +964,11 @@ export const storeLeaveDetails = async (leaveDetails) => {
     const leaveRef = doc(db, 'leaves', leaveDetails.employeeName)
     await setDoc(leaveRef, leaveDetails, { merge: true })
     console.log('Leave details stored successfully!')
-// -----------------------------------------------LEAVE MODULE ---------------------------------------------------------------------
+  }catch (error){
 
+  }
+// -----------------------------------------------LEAVE MODULE ---------------------------------------------------------------------
+  }
 export const submitLeaveRequest = async (
   orgId,
   uid,

@@ -206,7 +206,7 @@ const ProjectsTaskHome = ({
     <div className="flex  flex-row  text-gray-700">
     <div className="flex-1 overflow-auto">
       <div className="p-3 ">
-    <TodayLeadsActivitySearchView
+    {/* <TodayLeadsActivitySearchView
       data={filterTable}
       searchKey={searchKey}
       setSearchKey={setSearchKey}
@@ -217,7 +217,7 @@ const ProjectsTaskHome = ({
       rowsParent={leadsFetchedData}
       selUserProfileF={selUserProfileF}
       taskType={taskType}
-    />
+    /> */}
     </div>
     </div>
     </div>
