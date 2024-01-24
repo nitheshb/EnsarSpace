@@ -1,50 +1,86 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-// import { Link, routes } from '@redwoodjs/router'
+import { Fragment, useState, useEffect, SetStateAction } from 'react'
+import {
+  getAssetdetails,
+  getFinanceTransactionsByStatus,
+} from 'src/context/dbQueryFirebase'
 
-import { Fragment, useState, useEffect } from 'react'
+// import {
 
-// import { XIcon } from '@heroicons/react/outline'
-import { DragDropContext, Droppable } from 'react-beautiful-dnd'
+//   getAssetdetails,
 
-import { MetaTags } from '@redwoodjs/web'
+//   getFinanceTransactionsByStatus,
 
-import LLeadsTableView from 'src/components/LLeadsTableView/LLeadsTableView'
-import { USER_ROLES } from 'src/constants/userRoles'
-import { getFinanceTransactionsByStatus } from 'src/context/dbQueryFirebase'
+// } from 'src/context/dbQueryFirebase'
+
 import { useAuth } from 'src/context/firebase-auth-context'
-import { CustomSelect } from 'src/util/formFields/selectBoxField'
 
-import CircleProgress from '../Charts_Graphs/CircleProgress'
-import SemiCircleProgress from '../Charts_Graphs/SemiCircleProgress'
-import CardItem from '../leadsCard'
-import SiderForm from '../SiderForm/SiderForm'
+import OnBoardAssertBody from '../onBordingAssert/onBoardAssertBody'
 
-import FinanceTableView from './financeTableView'
+import OnBoardingAsset from '../onBordingAssert/OnBoardingAsset'
+
+import OnBoardingAssign from '../onBordingAssert/OnBoardingAssign'
+
+import OnBoardingAssignBody from '../onBordingAssert/OnBoardingAssignBody'
+
+import { navigate, useLocation } from '@redwoodjs/router'
+
+import LaptopDetailPage from 'src/pages/LaptopDetailPage/LaptopDetailPage'
 
 const OnBoarding = ({ leadsTyper }) => {
   const { user } = useAuth()
+
   const { orgId } = user
+
   const [isImportLeadsOpen, setisImportLeadsOpen] = useState(false)
-
-  // kanban board
   const [ready, setReady] = useState(false)
-
   const [addLeadsTypes, setAddLeadsTypes] = useState('')
+
   const [selUserProfile, setSelUserProfile] = useState({})
+
   const [leadsFetchedData, setLeadsFetchedData] = useState([])
+
   const [serialLeadsData, setSerialLeadsData] = useState([])
+
   const [projectList, setprojectList] = useState([])
+
+  const [productData, setproductData] = useState({})
+
+  const [assetData, setassetData] = useState({})
+
+  const [viewable] = useState('On Boarding')
+
   const [transactionData, setTransactionData] = useState({})
 
+  const [isAssetOpen, handleAssetOnClose] = useState(false)
+
+  const [isAssignOpen, handleAssignOnClose] = useState(false)
+
+  const [laptopCount, setLaptopCount] = useState(0)
+
+  const [PhoneiphoneCount, setPhoneiphoneCount] = useState(0)
+
+  const [PhoneandroidCount, setPhoneandroidCount] = useState(0)
+
+  const [SimCount, setSimCount] = useState(0)
+
+  const handleOnClose = () => setIsOpen(false)
+
   const [value, setValue] = useState('latest')
+
+  // const [assetData, setAssetData] = useState()
+
   const tabHeadFieldsA = [
     { lab: 'All Transactions', val: 'all' },
+
     { lab: 'Latest', val: 'latest' },
+
     { lab: 'Reviewing', val: 'reviewing' },
+
     { lab: 'Cleared', val: 'cleared' },
+
     { lab: 'Rejected', val: 'rejected' },
   ]
+
   useEffect(() => {
     getLeadsDataFun()
   }, [])
@@ -55,6 +91,7 @@ const OnBoarding = ({ leadsTyper }) => {
         return item
       } else if (item.status.toLowerCase() === searchKey.toLowerCase()) {
         console.log('All1', item)
+
         return item
       }
     })
@@ -62,98 +99,108 @@ const OnBoarding = ({ leadsTyper }) => {
 
   const getLeadsDataFun = async () => {
     console.log('login role detials', user)
+
     const { access, uid } = user
 
     if (access?.includes('manage_leads')) {
       const unsubscribe = getFinanceTransactionsByStatus(
         orgId,
+
         async (querySnapshot) => {
           const usersListA = querySnapshot.docs.map((docSnapshot) => {
             const x = docSnapshot.data()
+
             x.id = docSnapshot.id
+
             return x
           })
-          // setBoardData
+
           console.log('my Array data is ', usersListA, leadsFetchedData)
-          // await serealizeData(usersListA)
+
           await setLeadsFetchedData(usersListA)
+
           await console.log('my Array data is set it', leadsFetchedData)
         },
+
         {
           status: [
             'latest',
+
             'reviewing',
+
             'review',
+
             'cleared',
+
             'rejected',
+
             '',
+
             // 'booked',
           ],
         },
+
         () => setLeadsFetchedData([])
       )
+
       return unsubscribe
     } else {
       const unsubscribe = getFinanceTransactionsByStatus(
         orgId,
+
         async (querySnapshot) => {
           const usersListA = querySnapshot.docs.map((docSnapshot) => {
             const x = docSnapshot.data()
+
             x.id = docSnapshot.id
+
             return x
           })
-          // setBoardData
+
           console.log('my Array data is ', usersListA)
+
           await serealizeData(usersListA)
+
           await setLeadsFetchedData(usersListA)
         },
+
         {
           uid: uid,
-          status: [
-            'new',
-            'reviewing',
-            'review',
-            'cleared',
-            'rejected',
-            '',
-            // 'booked',
-          ],
+
+          status: ['new', 'reviewing', 'review', 'cleared', 'rejected', ''],
         },
+
         () => setLeadsFetchedData([])
       )
+
       return unsubscribe
     }
-
-    // await console.log('leadsData', leadsData)
   }
 
   const serealizeData = (array) => {
-    // let newData =
-    const x = [
-      'new',
-      'review',
-      'cleared',
-      'rejected',
-      '',
-      // 'booked',
-    ].map((status) => {
+    const x = ['new', 'review', 'cleared', 'rejected', ''].map((status) => {
       const items = array.filter((data) => data.Status.toLowerCase() == status)
 
       return { name: status, items }
     })
+
     setSerialLeadsData(x)
   }
 
   const selUserProfileF = (title, data) => {
     setAddLeadsTypes(title)
+
     setisImportLeadsOpen(true)
+
     setSelUserProfile(data)
   }
 
   const viewTransaction = (docData) => {
     setTransactionData(docData)
+
     setisImportLeadsOpen(!isImportLeadsOpen)
   }
+<<<<<<< HEAD
   return (
     <>
           <div className="">
@@ -718,26 +765,71 @@ const OnBoarding = ({ leadsTyper }) => {
         widthClass="max-w-md"
         transactionData={transactionData}
       /> */}
+=======
+
+  const OnBoardAssertBody = (productData) => {
+    setproductData(productData)
+
+    handleAssetOnClose(true)
+  }
+
+  const OnBoardingAssignBody = (assetData: SetStateAction<{}>) => {
+    setassetData(assetData)
+
+    handleAssignOnClose(true)
+  }
+
+  const location = useLocation()
+
+  const redirectToPage = () => {
+    navigate('/laptop-details')
+  }
+
+  console.log('add productData is', OnBoardAssertBody)
+
+  useEffect(() => {
+    const getAssetData = async () => {
+      try {
+        const requests = await getAssetdetails(user.orgId)
+
+        // Calculate the count of laptops
+
+        const laptopCount = requests.filter(
+          (request) => request.Product === 'Laptop'
+        ).length
+
+        setLaptopCount(laptopCount)
+
+        return requests
+      } catch (error) {
+        console.error('Error retrieving Asset data:', error)
+
+        return []
+      }
+    }
+
+    getAssetData()
+      .then((requests) => {
+        console.log('REQUEST DETAILS DATA')
+
+        console.log(requests)
+      })
+
+      .catch((error) => {
+        console.error('Error setting asset details:', error)
+      })
+  }, [])
+
+  return (
+    <>
+      <LaptopDetailPage onBoardAssertBody={undefined} />
+>>>>>>> main
     </>
   )
 }
 
 export default OnBoarding
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function getassetRepo(orgId: any) {
+  throw new Error('Function not implemented.')
+}

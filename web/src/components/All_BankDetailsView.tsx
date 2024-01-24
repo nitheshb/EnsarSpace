@@ -290,11 +290,9 @@ const AllBankDetailsView = ({ title, pId, data }) => {
       <SiderForm
         open={sliderInfo.open}
         setOpen={handleSliderClose}
-        title={sliderInfo.title}
+        title={'ShowAssetDetailsForm'}
         data={sliderInfo.sliderData}
         widthClass={sliderInfo.widthClass}
-        pId={pId}
-        phaseDetails={data}
       />
     </>
   )

@@ -1,4 +1,5 @@
 import { WhereToVote } from '@mui/icons-material'
+import { id } from 'date-fns/locale'
 import {
   setDoc,
   doc,
@@ -25,7 +26,8 @@ import { sendWhatAppTextSms1 } from 'src/util/axiosWhatAppApi'
 
 import { db } from './firebaseConfig'
 import { supabase } from './supabase'
-
+import { useAuth } from './firebase-auth-context'
+// import { collection, onSnapshot } from "firebase/firestore";
 // import { userAccessRoles } from 'src/constants/userAccess'
 
 // **********************************************
@@ -36,6 +38,10 @@ import { supabase } from './supabase'
 export const steamUsersList = (orgId, snapshot, error) => {
   const itemsQuery = query(collection(db, 'users'), where('orgId', '==', orgId))
   console.log('orgname is ====>', orgId)
+  return onSnapshot(itemsQuery, snapshot, error)
+}
+export const steamAssetsList = (orgId, snapshot, error) => {
+  const itemsQuery = query(collection(db, `${orgId}_asset_Repo`))
   return onSnapshot(itemsQuery, snapshot, error)
 }
 // get users list
@@ -712,6 +718,522 @@ export const checkIfUserAlreadyExists = async (cName, matchVal) => {
 
   // db.collection(`${orgId}_leads`).add(data)
 }
+
+export const createEnsarUser = async (data) => {
+  try {
+    const userRef = doc(db, 'users', data.uid)
+    const docSnap = await getDoc(userRef)
+    if (!docSnap.exists()) {
+      await setDoc(userRef, data, { merge: true })
+    } else {
+      // doc.data() will be undefined in this case
+      console.log('No such document!')
+      return null
+    }
+  } catch (error) {
+    console.log('error in db', error)
+  }
+}
+
+
+export const getCourseDetails = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'ensar_course_Repo'))
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+  }
+}
+
+export const getCourseDetailsById = async (id) => {
+  try {
+    const querySnapshot = await getDocs(
+      query(collection(db, 'ensar_course_Repo'), where('id', '==', id))
+    )
+    const documents = querySnapshot.docs.map((doc) => doc.data())
+    return documents[0] // Assuming there's only one document with the given ID
+  } catch (error) {
+    console.log('Error getting Course details by ID:', error)
+  }
+}
+
+
+
+
+export const storeCourseDetails = async (orgId, uid, courseDetails) => {
+  try {
+    const addCourseData = {uid, ...courseDetails}
+    const x = await addDoc(collection(db, `${orgId}_course_Repo`), addCourseData)
+    console.log('Course details stored successfully!')
+  } catch (error) {
+    console.log('Error storing Course details:', error)
+  }
+}
+
+
+// export const updateCourseId = async (orgId, uid, id) => {
+//   try {
+//     const ensarStartCourseId = collection(db, `${orgId}_start_Course`);
+//     const q = query(ensarStartCourseId, where('uid', '==', uid));
+//     const querySnapshot = await getDocs(q);
+
+//     querySnapshot.forEach(async (queryDocSnapshot) => {
+//       const courseProgressRef = doc(db, `${orgId}_start_Course`, queryDocSnapshot.id);
+//       await updateDoc(courseProgressRef, { lessonsId: arrayUnion(id) });
+//       console.log('CourseProgress updated successfully!');
+//     });
+//   } catch (error) {
+//     console.log('Error updating CourseProgress:', error);
+//     throw error;
+//   }
+// };
+
+
+
+
+
+export const startCourse = async (orgId, courseData) => {
+  try {
+ const uuid = uuidv4();
+ console.log('uuid',uuid);
+
+    await addDoc(collection(db, `${orgId}_start_Course`), {uuid, ...courseData});
+    console.log('Course details stored successfully!');
+  } catch (error) {
+    console.log('Error storing Course details:', error);
+  }
+};
+
+
+export const getStartCourses = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "ensar_start_Course"));
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+  }
+}
+
+
+// export const getCourseProgress = async (orgId, uid, courseId) => {
+//   try {
+//     const userDocRef = doc(db, `${orgId}_Progress_users`, uid);
+//     const userSnapshot = await getDoc(userDocRef);
+
+//     if (userSnapshot.exists()) {
+//       const userData = userSnapshot.data();
+//       const courseProgress = userData.courseProgress;
+
+//       if (courseProgress && courseProgress[courseId]) {
+//         return courseProgress[courseId];
+//       }
+//     }
+
+//     return null;
+//   } catch (error) {
+//     throw new Error('Error retrieving course progress: ' + error);
+//   }
+// };
+
+
+
+
+// export const updateCourseProgress = async (orgId, courseId, progress) => {
+//   try {
+//     const courseRef = doc(db, `${orgId}_start_Course`, courseId);
+//     const courseData = {
+//       course_progress: progress,
+//       last_updated: Timestamp.now(),
+//     };
+
+//     await updateDoc(courseRef, courseData);
+//     console.log('Course progress updated in Firestore');
+//   } catch (error) {
+//     console.error('Error updating course progress:', error);
+//   }
+// };
+
+
+export const getCourseDataById = async (courseId) =>{
+  try {
+    const querySnapshot = doc(db, 'ensar_course_Repo', courseId )
+
+    const data = await getDoc(querySnapshot);
+    console.log('data',data);
+    console.log('data data',data.data());
+
+    return data.data();
+
+
+  } catch (error) {
+    console.log('Error getting Course details:', error)
+
+  }
+}
+
+
+
+
+export const getCourseContent = async () => {
+  try {
+    const courseContentRef = collection(db, 'ensar_course_content');
+    const querySnapshot = await getDocs(courseContentRef);
+    const CourseContent = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    return CourseContent;
+
+  } catch (error) {
+    console.log('Error getting course content:', error);
+
+    throw error; // Rethrow the error to handle it at a higher level if needed
+  }
+
+
+
+
+}
+
+
+export const updateCourseProgress = async (orgId, uid, allCompleted) => {
+  try {
+    const ensarStartCourseRef = collection(db, `${orgId}_start_Course`);
+    const q = query(ensarStartCourseRef, where('uid', '==', uid));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach(async (queryDocSnapshot) => {
+      const courseProgressRef = doc(db, `${orgId}_start_Course`, queryDocSnapshot.id);
+      await updateDoc(courseProgressRef, { courseProgress: allCompleted });
+      console.log('CourseProgress updated successfully!');
+    });
+
+  } catch (error) {
+    console.log('Error updating CourseProgress:', error);
+    throw error;
+  }
+};
+
+
+
+
+
+export const updateCourseId = async (orgId, uid, id) => {
+
+  try {
+
+    const ensarStartCourseId = collection(db, `${orgId}_start_Course`);
+
+    const q = query(ensarStartCourseId, where('uid', '==', uid));
+
+    const querySnapshot = await getDocs(q);
+
+
+
+    querySnapshot.forEach(async (queryDocSnapshot) => {
+
+      const courseProgressRef = doc(db, `${orgId}_start_Course`, queryDocSnapshot.id);
+
+      await updateDoc(courseProgressRef, { lessonsId: arrayUnion(id) });
+
+      console.log('CourseProgress updated successfully!');
+
+    });
+
+  } catch (error) {
+
+    console.log('Error updating CourseProgress:', error);
+
+    throw error;
+
+  }
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const storeLeaveDetails = async (leaveDetails) => {
+  try {
+    const leaveRef = doc(db, 'leaves', leaveDetails.employeeName)
+    await setDoc(leaveRef, leaveDetails, { merge: true })
+    console.log('Leave details stored successfully!')
+  }catch (error){
+
+  }
+// -----------------------------------------------LEAVE MODULE ---------------------------------------------------------------------
+  }
+export const submitLeaveRequest = async (
+  orgId,
+  uid,
+  displayName,
+  leaveDetails
+) => {
+  try {
+    const leaveRequestData = {
+      uid,
+      displayName,
+      ...leaveDetails,
+    }
+    const leaveRequestRef = collection(db, `${orgId}_leave_Applications`)
+    const newLeaveRequestDoc = await addDoc(leaveRequestRef, leaveRequestData)
+    console.log('Leave request submitted successfully!')
+    const newLeaveRequestId = newLeaveRequestDoc.id // Get the ID of the newly created leave request
+    return newLeaveRequestId
+  } catch (error) {
+    console.log('Error submitting leave request:', error)
+    throw error
+  }
+}
+
+export const updateLeaveRequest = async (
+  orgId,
+  requestId,
+  updatedLeaveDetails
+) => {
+  try {
+    const leaveApplicationsCollectionRef = collection(
+      db,
+      `${orgId}_leave_Applications`
+    )
+    const q = query(
+      leaveApplicationsCollectionRef,
+      where('requestId', '==', requestId)
+    )
+    const querySnapshot = await getDocs(q)
+
+    querySnapshot.forEach(async (queryDocSnapshot) => {
+      const leaveRequestRef = doc(
+        db,
+        `${orgId}_leave_Applications`,
+        queryDocSnapshot.id
+      )
+      await updateDoc(leaveRequestRef, updatedLeaveDetails)
+      console.log('Leave request updated successfully!')
+    })
+  } catch (error) {
+    console.log('Error updating leave request:', error)
+    throw error
+  }
+}
+
+export const getLeaveRequests = async (orgId) => {
+  try {
+    const leaveRequestRef = collection(db, `${orgId}_leave_Applications`)
+    const querySnapshot = await getDocs(leaveRequestRef)
+    const leaveRequests = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }))
+    return leaveRequests
+  } catch (error) {
+    console.log('Error getting leave requests:', error)
+    throw error // Rethrow the error to handle it at a higher level if needed
+  }
+}
+
+export const checkIfLeaveExists = async (orgId, date) => {
+  const collectionName = `${orgId}_leave_Applications`
+  const q = query(collection(db, collectionName), where('fromDate', '==', date))
+  const querySnapshot = await getDocs(q)
+  return querySnapshot.docs.length > 0
+}
+
+export const deleteLeaveRequest = async (orgId, requestId) => {
+  try {
+    const leaveApplicationsCollectionRef = collection(
+      db,
+      `${orgId}_leave_Applications`
+    )
+    const q = query(
+      leaveApplicationsCollectionRef,
+      where('requestId', '==', requestId)
+    )
+    const querySnapshot = await getDocs(q)
+
+    querySnapshot.forEach(async (queryDocSnapshot) => {
+      const leaveRequestRef = doc(
+        db,
+        `${orgId}_leave_Applications`,
+        queryDocSnapshot.id
+      )
+      await deleteDoc(leaveRequestRef)
+      console.log('Leave request deleted successfully!')
+    })
+  } catch (error) {
+    console.error('Error deleting leave request:', error)
+    throw error
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------
+
+export const storeAssetDetails = async (orgId, uid, assetDetails) => {
+  try {
+    // const { user } = useAuth();
+    const assetManagementData = { ...assetDetails, uid }
+    const x = await addDoc(
+      collection(db, `${orgId}_asset_Repo`),
+
+      assetManagementData
+    )
+
+    console.log('Asset details stored successfully!')
+  } catch (error) {
+    console.log('Error storing Asset details:', error)
+  }
+}
+
+export const updateAssetDetails = async (orgId, values) => {
+  try {
+    console.log('values:', values)
+
+    const docRef = collection(db, `${orgId}_asset_Repo`)
+
+    const ProductId = values.ProductId || ''
+
+    const q = query(docRef, where('ProductId', '==', ProductId))
+
+    const querySnapshot = await getDocs(q)
+
+    querySnapshot.forEach(async (queryDocSnapshot) => {
+      const assetRequestRef = doc(
+        db,
+        `${orgId}_asset_Repo`,
+        queryDocSnapshot.id
+      )
+
+      await updateDoc(assetRequestRef, values)
+
+      console.log('Asset request updated successfully!')
+    })
+  } catch (error) {
+    console.log('Error updating Asset request:', error)
+
+    throw error
+  }
+}
+export const getAssetdetails = async (orgId) => {
+  try {
+    const querySnapshot = await getDocs(collection(db, `${orgId}_asset_Repo`))
+
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting Asset details:', error)
+  }
+}
+
+// export const updateAssetDetails = async (orgId, values) => {
+
+//   try {
+//     console.log('values:', values);
+//     const docRef = collection(db, `${orgId}_asset_Repo`);
+//     const SerialNumber = values.SerialNumber || '';
+//     const q = query(docRef, where('SerialNumber', '==', SerialNumber));
+//     const querySnapshot = await getDocs(q);
+
+//     querySnapshot.forEach(async (queryDocSnapshot) => {
+
+//       const assetRequestRef = doc(db, `${orgId}_asset_Repo`, queryDocSnapshot.id);
+
+//       await updateDoc(assetRequestRef, values);
+
+//       console.log('Asset request updated successfully!');
+
+//     });
+
+//   } catch (error) {
+
+//     console.log('Error updating Asset request:', error);
+
+//     throw error;
+
+//   }
+
+// };
+
+// export const updateAssetDetails = async (orgId, values) => {
+//   try {
+//     console.log('values:', values);
+
+//     const { RequiredId, ...updatedValues } = values;
+//     const docRef = collection(db, `${orgId}_asset_Repo`);
+//     const q = query(docRef, where('RequiredId', '==', RequiredId));
+//     const querySnapshot = await getDocs(q);
+
+//     querySnapshot.forEach(async (queryDocSnapshot) => {
+//       const assetRequestRef = doc(
+//         db,
+//         `${orgId}_asset_Repo`,
+//         queryDocSnapshot.id
+//       );
+
+//       await updateDoc(assetRequestRef, {
+//         ...updatedValues,
+//         RequiredId: updatedValues.RequiredId,
+//       });
+
+//       console.log('Asset request updated successfully!');
+//     });
+//   } catch (error) {
+//     console.log('Error updating Asset request:', error);
+//     throw error;
+//   }
+// };
+
+export const getUserdetails = async (orgId) => {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'users'))
+
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting user details:', error)
+  }
+}
+
+export const getUsers = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'users'))
+
+    return querySnapshot.docs.map((doc) => doc.data())
+  } catch (error) {
+    console.log('Error getting user details:', error)
+  }
+}
+
+export const storeAssignDetails = async (orgId, assignDetails) => {
+  try {
+    // const { user } = useAuth();
+    const assignManagementData = { ...assignDetails }
+    const x = await addDoc(
+      collection(db, `${orgId}_assign_Repo`),
+      assignManagementData
+    )
+    console.log('Assign details stored successfully!')
+  } catch (error) {
+    console.log('Error storing Assign details:', error)
+  }
+}
+// export const storeUserDetails = async (orgId, userDetails) => {
+//   try {
+//     // const { user } = useAuth();
+//     const assignManagementData = { ...userDetails }
+//     const x = await addDoc(
+//       collection(db, `users`),
+//       assignManagementData
+//     )
+//     console.log('user details stored successfully!')
+//   } catch (error) {
+//     console.log('Error storing Assign details:', error)
+//   }
+// }
+
 export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   const { dateRange } = data
   const getAllProjectsQuery = await query(
@@ -720,6 +1242,27 @@ export const getLeadsDataLake = async (orgId, snapshot, error, data) => {
   )
   return onSnapshot(getAllProjectsQuery, snapshot, error)
 }
+
+// export const storeAssetDetails = async (orgId, assetDetails) => {
+
+//   try {
+
+//     // const { user } = useAuth();
+
+//     const assetManagementData = { ...assetDetails}
+
+//     const x = await addDoc(collection(db, `${orgId}_asset_Repo`), assetManagementData)
+
+//     console.log('Asset details stored successfully!')
+
+//   } catch (error) {
+
+//     console.log('Error storing Asset details:', error)
+
+//   }
+
+// }
+
 export const getAllRoleAccess = async (orgId) => {
   // userAccessRoles.forEach(async (element) => {
   //   const r = 'A' + Math.random() * 100000000000000000 + 'Z'
@@ -2757,7 +3300,7 @@ export const addUnitBankComputed = async (
     [`${docId}_totalEstPlotVal`]: increment(plot_value),
     [`${docId}_totalEstConstuctVal`]: increment(construct_value),
     [`${docId}_totalPlotArea`]: increment(plot_Sqf),
-    [`${docId}_totalConstructArea`]: increment(super_built_up_area),
+    [`${docId}_totalConstructArea`]: increment(super_built_up_area), //
     [`${docId}_totalUnitCount`]: increment(unitCount),
     [`${docId}_availableCount`]: increment(unitCount),
   }

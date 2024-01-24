@@ -1,15 +1,33 @@
-// In this file, all Page components from 'src/pages` are auto-imported. Nested
-// directories are supported, and should be uppercase. Each subdirectory will be
-// prepended onto the component name.
-
 import { Router, Route, Redirect } from '@redwoodjs/router'
 
 import { USER_ROLES } from 'src/constants/userRoles'
 import { useAuth } from 'src/context/firebase-auth-context'
 
+// import CourseProgress from './components/A_LearningModule/CourseProgress'
+import CourseProgress from './components/A_LearningModule/LearningModules/CourseProgress'
+import AccessDeniedPage from './pages/AccessDeniedPage/AccessDeniedPage'
+import ConstructModulePage from './pages/ConstructModulePage/ConstructModulePage'
+import CourceContentPage from './pages/CourceContentPage/CourceContentPage'
+import CourceOverviewPage from './pages/CourceOverviewPage/CourceOverviewPage'
+import CrmHomePage from './pages/CrmHomePage/CrmHomePage'
+import ErpAccountHomePage from './pages/ErpAccountHomePage/ErpAccountHomePage'
 import FinanceHomePagePage from './pages/FinanceHomePagePage/FinanceHomePagePage'
+import HomePage from './pages/HomePage/HomePage'
+import LaptopDetailPage from './pages/LaptopDetailPage/LaptopDetailPage'
+import LeadsCallerBoardPage from './pages/LeadsCallerBoardPage/LeadsCallerBoardPage'
+import LeadsManagerPage from './pages/LeadsManagerPage/LeadsManagerPage'
+import LearningPage from './pages/LearningPage/LearningPage'
+import LeaveApprovalPage from './pages/LeaveApprovalPage/LeaveApprovalPage'
+import LegalHomePage from './pages/LegalHomePage/LegalHomePage'
+import LoginPage from './pages/LoginPage/LoginPage'
+import MyJourneyPage from './pages/MyJourneyPage/MyJourneyPage'
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage/PrivacyPolicyPage'
 import Profile from './pages/Profile/Profile'
+import ProjectEditPage from './pages/ProjectEditPage/ProjectEditPage'
+import ProjectModulePage from './pages/ProjectModulePage/ProjectModulePage'
+import UsersAdminPage from './pages/UsersAdminPage/UsersAdminPage'
+// import CourseProgress from './components/A_LearningModule/LearningModules/CourseProgress'
 
 const defaultRoutes = () => {
   return (
@@ -61,6 +79,12 @@ const Routes = () => {
         <Route path="/admin/project-edit/{uid}" page={ProjectEditPage} name="projectEdit" />
         <Route path="/admin/project-module" page={ProjectModulePage} name="projectModule" />
         <Route path="/admin/crm-module" page={CrmHomePage} name="crmModule" />
+        <Route path="/admin/finance-module" page={FinanceHomePagePage} name="financeModule" />
+        <Route path="/admin/legal-module" page={LegalHomePage} name="legalModule" />
+        <Route path="/admin/erp-account" page={ErpAccountHomePage} name="erpAccount" />
+        <Route path="/privacyPolicy" page={PrivacyPolicyPage} name="privacyPolicy" />
+
+        {/*----------------------------------------------- Created Route Here -------------------------------*/}
         <Route path="/admin/finance-module" page={FinanceHomePagePage} name="financeModule" />
         <Route path="/admin/legal-module" page={LegalHomePage} name="legalModule" />
         <Route path="/admin/erp-account" page={ErpAccountHomePage} name="erpAccount" />
@@ -117,9 +141,31 @@ const Routes = () => {
 
   return (
     <Router>
-      {/* <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" /> */}
+      <Route path="/asset-management" page={AssetManagementPage} name="assetManagement" />
+      <Route path="/emp-performance" page={EmpPerformancePage} name="empPerformance" />
+      <Route path="/leave-management" page={LeaveManagementPage} name="leaveManagement" />
+      <Route path="/laptop-detail" page={LaptopDetailPage} name="laptopDetail" />
+
+      <Route path="/laptop-details" page={LaptopDetailsPage} name="laptopDetails" />
+
+      <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" />
+
       <Route path="/cource-overview/{uid}" page={CourceOverviewPage} name="courceOverview" />
       <Route path="/cource-content" page={CourceContentPage} name="courceContent" />
+      <Route path="/learning" page={LearningPage} name="learning" />
+      <Route path="/privacyPolicy" page={PrivacyPolicyPage} name="privacyPolicy" />
+      <Route path="/construct-module" page={ConstructModulePage} name="constructModule" />
+      <Route path="/admin/home" page={HomePage} name="home" />
+
+      <Route path="/erp-account-home" page={ErpAccountHomePage} name="erpAccountHome" />
+      <Route path="/my-journey" page={MyJourneyPage} name="myJourney" />
+
+      <Route path="/leave-approval" page={LeaveApprovalPage} name="leaveApproval" />
+
+      {/* <Route path="/cource-overview" page={CourceOverviewPage} name="courceOverview" /> */}
+      <Route path="/cource-overview/{uid}" page={CourceOverviewPage} name="courceOverview" />
+      {/* <Route path="/cource-content" page={CourceContentPage} name="courceContent" /> */}
+      {/* <Route path="/course-progress" page={CourseProgress} name="CourseProgress" /> */}
       <Route path="/learning" page={LearningPage} name="learning" />
       <Route path="/privacyPolicy" page={PrivacyPolicyPage} name="privacyPolicy" />
       <Route path="/construct-module" page={ConstructModulePage} name="constructModule" />
@@ -133,7 +179,11 @@ const Routes = () => {
       <Route path="/admin/login" page={LoginPage} name="login" />
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/" page={LoginPage} name="login" />
+      {/* <Route path="/courses/{id}" page={CoursedetailsPage} name="coursedetails"  /> */}
+      <Route path="/courses/{id}" page={CoursedetailsPage} name="coursedetails" />
       <Route notfound page={NotFoundPage} />
+
+      <Route path="/course-progress" page={CourseProgress} name="CourseProgress" />
     </Router>
   )
 }

@@ -36,7 +36,7 @@ export const CustomSelect = ({
             maxMenuHeight={150}
             name={name}
             value={defaultValue(options, value)}
-            placeholder={label || 'All Projects'}
+            placeholder={label || 'Select Working Status'}
             onChange={(value) => {
               onChange(value)
             }}

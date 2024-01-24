@@ -1,4 +1,5 @@
 import { Reducer } from '@reduxjs/toolkit'
+
 import { TAction, LoggedInUser } from '../types/user'
 
 const initialState: LoggedInUser = {

@@ -1,6 +1,6 @@
 import { pid } from 'process'
 
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
@@ -33,7 +33,11 @@ import {
 } from 'src/state/actions/search'
 import { useDispatch } from 'react-redux'
 import NotificationsSetupForm from '../A_ProjModule/NotificatoinsSetupFromHome'
+import OnBoardingAssignBody from '../onBordingAssert/OnBoardingAssignBody'
+import OnBoardAssertBody from '../onBordingAssert/onBoardAssertBody'
+import AddCourseDialog from '../TableComp/SUserSignupBody/SUserSignupBody'
 const SiderForm = ({
+  assetPayload,
   open,
   setOpen,
   title,
@@ -65,6 +69,9 @@ const SiderForm = ({
 }) => {
   // dont write too many here
   //  this is for customerProfileSideView
+  useEffect(() => {
+    console.log('title is ', title)
+  }, [])
   const dispatch = useDispatch()
   return (
     <Transition.Root show={open || false} as={Fragment}>
@@ -149,6 +156,10 @@ const SiderForm = ({
                     phase={data}
                   />
                 )}
+                {title === 'LaptopDetailPage' && (
+                  <OnBoardingAssignBody assetPayload={assetPayload} />
+                )}
+
                 {(title === 'Add Block' || title === 'Edit Block') && (
                   <AddBlockForm
                     title={title}
@@ -156,6 +167,7 @@ const SiderForm = ({
                     data={data}
                   />
                 )}
+
                 {title === 'Import Units' ||
                   (title === 'Import Project Units' && (
                     <LeadsDropHomes
@@ -166,6 +178,15 @@ const SiderForm = ({
                       myBlock={myBlock}
                     />
                   ))}
+                {title === 'applyLeave'
+                  && (
+                    <AddCourseDialog />
+                  )}
+
+                {title === 'AddAsset'
+                  &&  (
+                    <OnBoardAssertBody />
+                )}
 
                 {title === 'Add Unit' && (
                   <AddUnit
@@ -254,12 +275,12 @@ const SiderForm = ({
                     setUnitsViewMode={setUnitsViewMode}
                   />
                 )}
-                  {title === 'Notification Setup' && (
+                {title === 'Notification Setup' && (
                   <NotificationsSetupForm
-                  title={title}
-                  projectDetails={projectDetails}
-                  wbPayload={wbPayload}
-                />
+                    title={title}
+                    projectDetails={projectDetails}
+                    wbPayload={wbPayload}
+                  />
                 )}
                 {title === 'Project Inventory' && (
                   <InventoryViewSideForm
@@ -324,6 +345,11 @@ const SiderForm = ({
                     myBlock={myBlock}
                   />
                 )}
+
+
+
+                {/* {title === 'AssignAsset' && <OnBoardAssertBody />} */}
+
                 {title === 'Bank Accounts' && (
                   <AddBankDetailsForm
                     title={title}
