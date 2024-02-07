@@ -200,7 +200,6 @@ const OnBoarding = ({ leadsTyper }) => {
 
     setisImportLeadsOpen(!isImportLeadsOpen)
   }
-<<<<<<< HEAD
   return (
     <>
           <div className="">
@@ -765,65 +764,6 @@ const OnBoarding = ({ leadsTyper }) => {
         widthClass="max-w-md"
         transactionData={transactionData}
       /> */}
-=======
-
-  const OnBoardAssertBody = (productData) => {
-    setproductData(productData)
-
-    handleAssetOnClose(true)
-  }
-
-  const OnBoardingAssignBody = (assetData: SetStateAction<{}>) => {
-    setassetData(assetData)
-
-    handleAssignOnClose(true)
-  }
-
-  const location = useLocation()
-
-  const redirectToPage = () => {
-    navigate('/laptop-details')
-  }
-
-  console.log('add productData is', OnBoardAssertBody)
-
-  useEffect(() => {
-    const getAssetData = async () => {
-      try {
-        const requests = await getAssetdetails(user.orgId)
-
-        // Calculate the count of laptops
-
-        const laptopCount = requests.filter(
-          (request) => request.Product === 'Laptop'
-        ).length
-
-        setLaptopCount(laptopCount)
-
-        return requests
-      } catch (error) {
-        console.error('Error retrieving Asset data:', error)
-
-        return []
-      }
-    }
-
-    getAssetData()
-      .then((requests) => {
-        console.log('REQUEST DETAILS DATA')
-
-        console.log(requests)
-      })
-
-      .catch((error) => {
-        console.error('Error setting asset details:', error)
-      })
-  }, [])
-
-  return (
-    <>
-      <LaptopDetailPage onBoardAssertBody={undefined} />
->>>>>>> main
     </>
   )
 }

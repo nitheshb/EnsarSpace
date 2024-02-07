@@ -12,20 +12,14 @@ import { getStorage } from 'firebase/storage'
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 //
 const firebaseConfig = {
-  apiKey: 'AIzaSyANYyTx06DsGPRERNipL3ahWv2gTXSu8LU',
-
-  authDomain: 'ensar-space.firebaseapp.com',
-
-  projectId: 'ensar-space',
-
-  storageBucket: 'ensar-space.appspot.com',
-
-  messagingSenderId: '519786637049',
-
-  appId: '1:519786637049:web:013048b1e92b3593636428',
-
-  measurementId: 'G-0B0R3VR78D',
-}
+  apiKey: "AIzaSyB60IzVnPRXdvSTPJOAIZugVXbrsiwnmkY",
+  authDomain: "ensarspacenew1.firebaseapp.com",
+  projectId: "ensarspacenew1",
+  storageBucket: "ensarspacenew1.appspot.com",
+  messagingSenderId: "97808342690",
+  appId: "1:97808342690:web:d275ef4982e043840a81fb",
+  measurementId: "G-KGP6LHHJDV"
+};
 
 const settings = {
   experimentalForceLongPolling: true,
